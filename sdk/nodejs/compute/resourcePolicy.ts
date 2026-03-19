@@ -191,6 +191,22 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Resource Policy Workload Policy Accelerator Topology Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.compute.ResourcePolicy("bar", {
+ *     name: "gce-policy",
+ *     region: "europe-west1",
+ *     workloadPolicy: {
+ *         type: "HIGH_THROUGHPUT",
+ *         acceleratorTopology: "2x2",
+ *         acceleratorTopologyMode: "AUTO_CONNECT",
+ *     },
+ * });
+ * ```
  * ### Resource Policy Workload Policy Max Topology Distance
  *
  * ```typescript

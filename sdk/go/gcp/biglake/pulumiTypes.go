@@ -941,6 +941,950 @@ func (o IcebergNamespaceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type IcebergTableIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// IcebergTableIamBindingConditionInput is an input type that accepts IcebergTableIamBindingConditionArgs and IcebergTableIamBindingConditionOutput values.
+// You can construct a concrete instance of `IcebergTableIamBindingConditionInput` via:
+//
+//	IcebergTableIamBindingConditionArgs{...}
+type IcebergTableIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToIcebergTableIamBindingConditionOutput() IcebergTableIamBindingConditionOutput
+	ToIcebergTableIamBindingConditionOutputWithContext(context.Context) IcebergTableIamBindingConditionOutput
+}
+
+type IcebergTableIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (IcebergTableIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableIamBindingCondition)(nil)).Elem()
+}
+
+func (i IcebergTableIamBindingConditionArgs) ToIcebergTableIamBindingConditionOutput() IcebergTableIamBindingConditionOutput {
+	return i.ToIcebergTableIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i IcebergTableIamBindingConditionArgs) ToIcebergTableIamBindingConditionOutputWithContext(ctx context.Context) IcebergTableIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableIamBindingConditionOutput)
+}
+
+func (i IcebergTableIamBindingConditionArgs) ToIcebergTableIamBindingConditionPtrOutput() IcebergTableIamBindingConditionPtrOutput {
+	return i.ToIcebergTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergTableIamBindingConditionArgs) ToIcebergTableIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableIamBindingConditionOutput).ToIcebergTableIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// IcebergTableIamBindingConditionPtrInput is an input type that accepts IcebergTableIamBindingConditionArgs, IcebergTableIamBindingConditionPtr and IcebergTableIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `IcebergTableIamBindingConditionPtrInput` via:
+//
+//	        IcebergTableIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergTableIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToIcebergTableIamBindingConditionPtrOutput() IcebergTableIamBindingConditionPtrOutput
+	ToIcebergTableIamBindingConditionPtrOutputWithContext(context.Context) IcebergTableIamBindingConditionPtrOutput
+}
+
+type icebergTableIamBindingConditionPtrType IcebergTableIamBindingConditionArgs
+
+func IcebergTableIamBindingConditionPtr(v *IcebergTableIamBindingConditionArgs) IcebergTableIamBindingConditionPtrInput {
+	return (*icebergTableIamBindingConditionPtrType)(v)
+}
+
+func (*icebergTableIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableIamBindingCondition)(nil)).Elem()
+}
+
+func (i *icebergTableIamBindingConditionPtrType) ToIcebergTableIamBindingConditionPtrOutput() IcebergTableIamBindingConditionPtrOutput {
+	return i.ToIcebergTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergTableIamBindingConditionPtrType) ToIcebergTableIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableIamBindingConditionPtrOutput)
+}
+
+type IcebergTableIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableIamBindingCondition)(nil)).Elem()
+}
+
+func (o IcebergTableIamBindingConditionOutput) ToIcebergTableIamBindingConditionOutput() IcebergTableIamBindingConditionOutput {
+	return o
+}
+
+func (o IcebergTableIamBindingConditionOutput) ToIcebergTableIamBindingConditionOutputWithContext(ctx context.Context) IcebergTableIamBindingConditionOutput {
+	return o
+}
+
+func (o IcebergTableIamBindingConditionOutput) ToIcebergTableIamBindingConditionPtrOutput() IcebergTableIamBindingConditionPtrOutput {
+	return o.ToIcebergTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergTableIamBindingConditionOutput) ToIcebergTableIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergTableIamBindingCondition) *IcebergTableIamBindingCondition {
+		return &v
+	}).(IcebergTableIamBindingConditionPtrOutput)
+}
+
+func (o IcebergTableIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergTableIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergTableIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o IcebergTableIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IcebergTableIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableIamBindingCondition)(nil)).Elem()
+}
+
+func (o IcebergTableIamBindingConditionPtrOutput) ToIcebergTableIamBindingConditionPtrOutput() IcebergTableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IcebergTableIamBindingConditionPtrOutput) ToIcebergTableIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IcebergTableIamBindingConditionPtrOutput) Elem() IcebergTableIamBindingConditionOutput {
+	return o.ApplyT(func(v *IcebergTableIamBindingCondition) IcebergTableIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergTableIamBindingCondition
+		return ret
+	}).(IcebergTableIamBindingConditionOutput)
+}
+
+func (o IcebergTableIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergTableIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergTableIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergTableIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// IcebergTableIamMemberConditionInput is an input type that accepts IcebergTableIamMemberConditionArgs and IcebergTableIamMemberConditionOutput values.
+// You can construct a concrete instance of `IcebergTableIamMemberConditionInput` via:
+//
+//	IcebergTableIamMemberConditionArgs{...}
+type IcebergTableIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToIcebergTableIamMemberConditionOutput() IcebergTableIamMemberConditionOutput
+	ToIcebergTableIamMemberConditionOutputWithContext(context.Context) IcebergTableIamMemberConditionOutput
+}
+
+type IcebergTableIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (IcebergTableIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableIamMemberCondition)(nil)).Elem()
+}
+
+func (i IcebergTableIamMemberConditionArgs) ToIcebergTableIamMemberConditionOutput() IcebergTableIamMemberConditionOutput {
+	return i.ToIcebergTableIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i IcebergTableIamMemberConditionArgs) ToIcebergTableIamMemberConditionOutputWithContext(ctx context.Context) IcebergTableIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableIamMemberConditionOutput)
+}
+
+func (i IcebergTableIamMemberConditionArgs) ToIcebergTableIamMemberConditionPtrOutput() IcebergTableIamMemberConditionPtrOutput {
+	return i.ToIcebergTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergTableIamMemberConditionArgs) ToIcebergTableIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableIamMemberConditionOutput).ToIcebergTableIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// IcebergTableIamMemberConditionPtrInput is an input type that accepts IcebergTableIamMemberConditionArgs, IcebergTableIamMemberConditionPtr and IcebergTableIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `IcebergTableIamMemberConditionPtrInput` via:
+//
+//	        IcebergTableIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergTableIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToIcebergTableIamMemberConditionPtrOutput() IcebergTableIamMemberConditionPtrOutput
+	ToIcebergTableIamMemberConditionPtrOutputWithContext(context.Context) IcebergTableIamMemberConditionPtrOutput
+}
+
+type icebergTableIamMemberConditionPtrType IcebergTableIamMemberConditionArgs
+
+func IcebergTableIamMemberConditionPtr(v *IcebergTableIamMemberConditionArgs) IcebergTableIamMemberConditionPtrInput {
+	return (*icebergTableIamMemberConditionPtrType)(v)
+}
+
+func (*icebergTableIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableIamMemberCondition)(nil)).Elem()
+}
+
+func (i *icebergTableIamMemberConditionPtrType) ToIcebergTableIamMemberConditionPtrOutput() IcebergTableIamMemberConditionPtrOutput {
+	return i.ToIcebergTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergTableIamMemberConditionPtrType) ToIcebergTableIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableIamMemberConditionPtrOutput)
+}
+
+type IcebergTableIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableIamMemberCondition)(nil)).Elem()
+}
+
+func (o IcebergTableIamMemberConditionOutput) ToIcebergTableIamMemberConditionOutput() IcebergTableIamMemberConditionOutput {
+	return o
+}
+
+func (o IcebergTableIamMemberConditionOutput) ToIcebergTableIamMemberConditionOutputWithContext(ctx context.Context) IcebergTableIamMemberConditionOutput {
+	return o
+}
+
+func (o IcebergTableIamMemberConditionOutput) ToIcebergTableIamMemberConditionPtrOutput() IcebergTableIamMemberConditionPtrOutput {
+	return o.ToIcebergTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergTableIamMemberConditionOutput) ToIcebergTableIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergTableIamMemberCondition) *IcebergTableIamMemberCondition {
+		return &v
+	}).(IcebergTableIamMemberConditionPtrOutput)
+}
+
+func (o IcebergTableIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergTableIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergTableIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o IcebergTableIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IcebergTableIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableIamMemberCondition)(nil)).Elem()
+}
+
+func (o IcebergTableIamMemberConditionPtrOutput) ToIcebergTableIamMemberConditionPtrOutput() IcebergTableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IcebergTableIamMemberConditionPtrOutput) ToIcebergTableIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergTableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IcebergTableIamMemberConditionPtrOutput) Elem() IcebergTableIamMemberConditionOutput {
+	return o.ApplyT(func(v *IcebergTableIamMemberCondition) IcebergTableIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergTableIamMemberCondition
+		return ret
+	}).(IcebergTableIamMemberConditionOutput)
+}
+
+func (o IcebergTableIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergTableIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergTableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergTablePartitionSpec struct {
+	// Structure is documented below.
+	Fields []IcebergTablePartitionSpecField `pulumi:"fields"`
+	// (Output)
+	// The unique identifier of the partition spec.
+	SpecId *int `pulumi:"specId"`
+}
+
+// IcebergTablePartitionSpecInput is an input type that accepts IcebergTablePartitionSpecArgs and IcebergTablePartitionSpecOutput values.
+// You can construct a concrete instance of `IcebergTablePartitionSpecInput` via:
+//
+//	IcebergTablePartitionSpecArgs{...}
+type IcebergTablePartitionSpecInput interface {
+	pulumi.Input
+
+	ToIcebergTablePartitionSpecOutput() IcebergTablePartitionSpecOutput
+	ToIcebergTablePartitionSpecOutputWithContext(context.Context) IcebergTablePartitionSpecOutput
+}
+
+type IcebergTablePartitionSpecArgs struct {
+	// Structure is documented below.
+	Fields IcebergTablePartitionSpecFieldArrayInput `pulumi:"fields"`
+	// (Output)
+	// The unique identifier of the partition spec.
+	SpecId pulumi.IntPtrInput `pulumi:"specId"`
+}
+
+func (IcebergTablePartitionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTablePartitionSpec)(nil)).Elem()
+}
+
+func (i IcebergTablePartitionSpecArgs) ToIcebergTablePartitionSpecOutput() IcebergTablePartitionSpecOutput {
+	return i.ToIcebergTablePartitionSpecOutputWithContext(context.Background())
+}
+
+func (i IcebergTablePartitionSpecArgs) ToIcebergTablePartitionSpecOutputWithContext(ctx context.Context) IcebergTablePartitionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTablePartitionSpecOutput)
+}
+
+func (i IcebergTablePartitionSpecArgs) ToIcebergTablePartitionSpecPtrOutput() IcebergTablePartitionSpecPtrOutput {
+	return i.ToIcebergTablePartitionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergTablePartitionSpecArgs) ToIcebergTablePartitionSpecPtrOutputWithContext(ctx context.Context) IcebergTablePartitionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTablePartitionSpecOutput).ToIcebergTablePartitionSpecPtrOutputWithContext(ctx)
+}
+
+// IcebergTablePartitionSpecPtrInput is an input type that accepts IcebergTablePartitionSpecArgs, IcebergTablePartitionSpecPtr and IcebergTablePartitionSpecPtrOutput values.
+// You can construct a concrete instance of `IcebergTablePartitionSpecPtrInput` via:
+//
+//	        IcebergTablePartitionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergTablePartitionSpecPtrInput interface {
+	pulumi.Input
+
+	ToIcebergTablePartitionSpecPtrOutput() IcebergTablePartitionSpecPtrOutput
+	ToIcebergTablePartitionSpecPtrOutputWithContext(context.Context) IcebergTablePartitionSpecPtrOutput
+}
+
+type icebergTablePartitionSpecPtrType IcebergTablePartitionSpecArgs
+
+func IcebergTablePartitionSpecPtr(v *IcebergTablePartitionSpecArgs) IcebergTablePartitionSpecPtrInput {
+	return (*icebergTablePartitionSpecPtrType)(v)
+}
+
+func (*icebergTablePartitionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTablePartitionSpec)(nil)).Elem()
+}
+
+func (i *icebergTablePartitionSpecPtrType) ToIcebergTablePartitionSpecPtrOutput() IcebergTablePartitionSpecPtrOutput {
+	return i.ToIcebergTablePartitionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergTablePartitionSpecPtrType) ToIcebergTablePartitionSpecPtrOutputWithContext(ctx context.Context) IcebergTablePartitionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTablePartitionSpecPtrOutput)
+}
+
+type IcebergTablePartitionSpecOutput struct{ *pulumi.OutputState }
+
+func (IcebergTablePartitionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTablePartitionSpec)(nil)).Elem()
+}
+
+func (o IcebergTablePartitionSpecOutput) ToIcebergTablePartitionSpecOutput() IcebergTablePartitionSpecOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecOutput) ToIcebergTablePartitionSpecOutputWithContext(ctx context.Context) IcebergTablePartitionSpecOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecOutput) ToIcebergTablePartitionSpecPtrOutput() IcebergTablePartitionSpecPtrOutput {
+	return o.ToIcebergTablePartitionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergTablePartitionSpecOutput) ToIcebergTablePartitionSpecPtrOutputWithContext(ctx context.Context) IcebergTablePartitionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergTablePartitionSpec) *IcebergTablePartitionSpec {
+		return &v
+	}).(IcebergTablePartitionSpecPtrOutput)
+}
+
+// Structure is documented below.
+func (o IcebergTablePartitionSpecOutput) Fields() IcebergTablePartitionSpecFieldArrayOutput {
+	return o.ApplyT(func(v IcebergTablePartitionSpec) []IcebergTablePartitionSpecField { return v.Fields }).(IcebergTablePartitionSpecFieldArrayOutput)
+}
+
+// (Output)
+// The unique identifier of the partition spec.
+func (o IcebergTablePartitionSpecOutput) SpecId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IcebergTablePartitionSpec) *int { return v.SpecId }).(pulumi.IntPtrOutput)
+}
+
+type IcebergTablePartitionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergTablePartitionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTablePartitionSpec)(nil)).Elem()
+}
+
+func (o IcebergTablePartitionSpecPtrOutput) ToIcebergTablePartitionSpecPtrOutput() IcebergTablePartitionSpecPtrOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecPtrOutput) ToIcebergTablePartitionSpecPtrOutputWithContext(ctx context.Context) IcebergTablePartitionSpecPtrOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecPtrOutput) Elem() IcebergTablePartitionSpecOutput {
+	return o.ApplyT(func(v *IcebergTablePartitionSpec) IcebergTablePartitionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergTablePartitionSpec
+		return ret
+	}).(IcebergTablePartitionSpecOutput)
+}
+
+// Structure is documented below.
+func (o IcebergTablePartitionSpecPtrOutput) Fields() IcebergTablePartitionSpecFieldArrayOutput {
+	return o.ApplyT(func(v *IcebergTablePartitionSpec) []IcebergTablePartitionSpecField {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(IcebergTablePartitionSpecFieldArrayOutput)
+}
+
+// (Output)
+// The unique identifier of the partition spec.
+func (o IcebergTablePartitionSpecPtrOutput) SpecId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IcebergTablePartitionSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpecId
+	}).(pulumi.IntPtrOutput)
+}
+
+type IcebergTablePartitionSpecField struct {
+	// (Output)
+	// The unique identifier of the partition field.
+	FieldId *int `pulumi:"fieldId"`
+	// The name of the partition field.
+	Name string `pulumi:"name"`
+	// The source field ID for the partition field.
+	SourceId int `pulumi:"sourceId"`
+	// The transform to apply to the source field.
+	Transform string `pulumi:"transform"`
+}
+
+// IcebergTablePartitionSpecFieldInput is an input type that accepts IcebergTablePartitionSpecFieldArgs and IcebergTablePartitionSpecFieldOutput values.
+// You can construct a concrete instance of `IcebergTablePartitionSpecFieldInput` via:
+//
+//	IcebergTablePartitionSpecFieldArgs{...}
+type IcebergTablePartitionSpecFieldInput interface {
+	pulumi.Input
+
+	ToIcebergTablePartitionSpecFieldOutput() IcebergTablePartitionSpecFieldOutput
+	ToIcebergTablePartitionSpecFieldOutputWithContext(context.Context) IcebergTablePartitionSpecFieldOutput
+}
+
+type IcebergTablePartitionSpecFieldArgs struct {
+	// (Output)
+	// The unique identifier of the partition field.
+	FieldId pulumi.IntPtrInput `pulumi:"fieldId"`
+	// The name of the partition field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source field ID for the partition field.
+	SourceId pulumi.IntInput `pulumi:"sourceId"`
+	// The transform to apply to the source field.
+	Transform pulumi.StringInput `pulumi:"transform"`
+}
+
+func (IcebergTablePartitionSpecFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTablePartitionSpecField)(nil)).Elem()
+}
+
+func (i IcebergTablePartitionSpecFieldArgs) ToIcebergTablePartitionSpecFieldOutput() IcebergTablePartitionSpecFieldOutput {
+	return i.ToIcebergTablePartitionSpecFieldOutputWithContext(context.Background())
+}
+
+func (i IcebergTablePartitionSpecFieldArgs) ToIcebergTablePartitionSpecFieldOutputWithContext(ctx context.Context) IcebergTablePartitionSpecFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTablePartitionSpecFieldOutput)
+}
+
+// IcebergTablePartitionSpecFieldArrayInput is an input type that accepts IcebergTablePartitionSpecFieldArray and IcebergTablePartitionSpecFieldArrayOutput values.
+// You can construct a concrete instance of `IcebergTablePartitionSpecFieldArrayInput` via:
+//
+//	IcebergTablePartitionSpecFieldArray{ IcebergTablePartitionSpecFieldArgs{...} }
+type IcebergTablePartitionSpecFieldArrayInput interface {
+	pulumi.Input
+
+	ToIcebergTablePartitionSpecFieldArrayOutput() IcebergTablePartitionSpecFieldArrayOutput
+	ToIcebergTablePartitionSpecFieldArrayOutputWithContext(context.Context) IcebergTablePartitionSpecFieldArrayOutput
+}
+
+type IcebergTablePartitionSpecFieldArray []IcebergTablePartitionSpecFieldInput
+
+func (IcebergTablePartitionSpecFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergTablePartitionSpecField)(nil)).Elem()
+}
+
+func (i IcebergTablePartitionSpecFieldArray) ToIcebergTablePartitionSpecFieldArrayOutput() IcebergTablePartitionSpecFieldArrayOutput {
+	return i.ToIcebergTablePartitionSpecFieldArrayOutputWithContext(context.Background())
+}
+
+func (i IcebergTablePartitionSpecFieldArray) ToIcebergTablePartitionSpecFieldArrayOutputWithContext(ctx context.Context) IcebergTablePartitionSpecFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTablePartitionSpecFieldArrayOutput)
+}
+
+type IcebergTablePartitionSpecFieldOutput struct{ *pulumi.OutputState }
+
+func (IcebergTablePartitionSpecFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTablePartitionSpecField)(nil)).Elem()
+}
+
+func (o IcebergTablePartitionSpecFieldOutput) ToIcebergTablePartitionSpecFieldOutput() IcebergTablePartitionSpecFieldOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecFieldOutput) ToIcebergTablePartitionSpecFieldOutputWithContext(ctx context.Context) IcebergTablePartitionSpecFieldOutput {
+	return o
+}
+
+// (Output)
+// The unique identifier of the partition field.
+func (o IcebergTablePartitionSpecFieldOutput) FieldId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IcebergTablePartitionSpecField) *int { return v.FieldId }).(pulumi.IntPtrOutput)
+}
+
+// The name of the partition field.
+func (o IcebergTablePartitionSpecFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTablePartitionSpecField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source field ID for the partition field.
+func (o IcebergTablePartitionSpecFieldOutput) SourceId() pulumi.IntOutput {
+	return o.ApplyT(func(v IcebergTablePartitionSpecField) int { return v.SourceId }).(pulumi.IntOutput)
+}
+
+// The transform to apply to the source field.
+func (o IcebergTablePartitionSpecFieldOutput) Transform() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTablePartitionSpecField) string { return v.Transform }).(pulumi.StringOutput)
+}
+
+type IcebergTablePartitionSpecFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (IcebergTablePartitionSpecFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergTablePartitionSpecField)(nil)).Elem()
+}
+
+func (o IcebergTablePartitionSpecFieldArrayOutput) ToIcebergTablePartitionSpecFieldArrayOutput() IcebergTablePartitionSpecFieldArrayOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecFieldArrayOutput) ToIcebergTablePartitionSpecFieldArrayOutputWithContext(ctx context.Context) IcebergTablePartitionSpecFieldArrayOutput {
+	return o
+}
+
+func (o IcebergTablePartitionSpecFieldArrayOutput) Index(i pulumi.IntInput) IcebergTablePartitionSpecFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergTablePartitionSpecField {
+		return vs[0].([]IcebergTablePartitionSpecField)[vs[1].(int)]
+	}).(IcebergTablePartitionSpecFieldOutput)
+}
+
+type IcebergTableSchema struct {
+	// Structure is documented below.
+	Fields []IcebergTableSchemaField `pulumi:"fields"`
+	// The field IDs that make up the identifier for the table.
+	IdentifierFieldIds []int `pulumi:"identifierFieldIds"`
+	// (Output)
+	// The unique identifier of the schema.
+	SchemaId *int `pulumi:"schemaId"`
+	// The type of the schema.
+	Type *string `pulumi:"type"`
+}
+
+// IcebergTableSchemaInput is an input type that accepts IcebergTableSchemaArgs and IcebergTableSchemaOutput values.
+// You can construct a concrete instance of `IcebergTableSchemaInput` via:
+//
+//	IcebergTableSchemaArgs{...}
+type IcebergTableSchemaInput interface {
+	pulumi.Input
+
+	ToIcebergTableSchemaOutput() IcebergTableSchemaOutput
+	ToIcebergTableSchemaOutputWithContext(context.Context) IcebergTableSchemaOutput
+}
+
+type IcebergTableSchemaArgs struct {
+	// Structure is documented below.
+	Fields IcebergTableSchemaFieldArrayInput `pulumi:"fields"`
+	// The field IDs that make up the identifier for the table.
+	IdentifierFieldIds pulumi.IntArrayInput `pulumi:"identifierFieldIds"`
+	// (Output)
+	// The unique identifier of the schema.
+	SchemaId pulumi.IntPtrInput `pulumi:"schemaId"`
+	// The type of the schema.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (IcebergTableSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSchema)(nil)).Elem()
+}
+
+func (i IcebergTableSchemaArgs) ToIcebergTableSchemaOutput() IcebergTableSchemaOutput {
+	return i.ToIcebergTableSchemaOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSchemaArgs) ToIcebergTableSchemaOutputWithContext(ctx context.Context) IcebergTableSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSchemaOutput)
+}
+
+func (i IcebergTableSchemaArgs) ToIcebergTableSchemaPtrOutput() IcebergTableSchemaPtrOutput {
+	return i.ToIcebergTableSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSchemaArgs) ToIcebergTableSchemaPtrOutputWithContext(ctx context.Context) IcebergTableSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSchemaOutput).ToIcebergTableSchemaPtrOutputWithContext(ctx)
+}
+
+// IcebergTableSchemaPtrInput is an input type that accepts IcebergTableSchemaArgs, IcebergTableSchemaPtr and IcebergTableSchemaPtrOutput values.
+// You can construct a concrete instance of `IcebergTableSchemaPtrInput` via:
+//
+//	        IcebergTableSchemaArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergTableSchemaPtrInput interface {
+	pulumi.Input
+
+	ToIcebergTableSchemaPtrOutput() IcebergTableSchemaPtrOutput
+	ToIcebergTableSchemaPtrOutputWithContext(context.Context) IcebergTableSchemaPtrOutput
+}
+
+type icebergTableSchemaPtrType IcebergTableSchemaArgs
+
+func IcebergTableSchemaPtr(v *IcebergTableSchemaArgs) IcebergTableSchemaPtrInput {
+	return (*icebergTableSchemaPtrType)(v)
+}
+
+func (*icebergTableSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableSchema)(nil)).Elem()
+}
+
+func (i *icebergTableSchemaPtrType) ToIcebergTableSchemaPtrOutput() IcebergTableSchemaPtrOutput {
+	return i.ToIcebergTableSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergTableSchemaPtrType) ToIcebergTableSchemaPtrOutputWithContext(ctx context.Context) IcebergTableSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSchemaPtrOutput)
+}
+
+type IcebergTableSchemaOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSchema)(nil)).Elem()
+}
+
+func (o IcebergTableSchemaOutput) ToIcebergTableSchemaOutput() IcebergTableSchemaOutput {
+	return o
+}
+
+func (o IcebergTableSchemaOutput) ToIcebergTableSchemaOutputWithContext(ctx context.Context) IcebergTableSchemaOutput {
+	return o
+}
+
+func (o IcebergTableSchemaOutput) ToIcebergTableSchemaPtrOutput() IcebergTableSchemaPtrOutput {
+	return o.ToIcebergTableSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergTableSchemaOutput) ToIcebergTableSchemaPtrOutputWithContext(ctx context.Context) IcebergTableSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergTableSchema) *IcebergTableSchema {
+		return &v
+	}).(IcebergTableSchemaPtrOutput)
+}
+
+// Structure is documented below.
+func (o IcebergTableSchemaOutput) Fields() IcebergTableSchemaFieldArrayOutput {
+	return o.ApplyT(func(v IcebergTableSchema) []IcebergTableSchemaField { return v.Fields }).(IcebergTableSchemaFieldArrayOutput)
+}
+
+// The field IDs that make up the identifier for the table.
+func (o IcebergTableSchemaOutput) IdentifierFieldIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v IcebergTableSchema) []int { return v.IdentifierFieldIds }).(pulumi.IntArrayOutput)
+}
+
+// (Output)
+// The unique identifier of the schema.
+func (o IcebergTableSchemaOutput) SchemaId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IcebergTableSchema) *int { return v.SchemaId }).(pulumi.IntPtrOutput)
+}
+
+// The type of the schema.
+func (o IcebergTableSchemaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergTableSchema) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IcebergTableSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergTableSchema)(nil)).Elem()
+}
+
+func (o IcebergTableSchemaPtrOutput) ToIcebergTableSchemaPtrOutput() IcebergTableSchemaPtrOutput {
+	return o
+}
+
+func (o IcebergTableSchemaPtrOutput) ToIcebergTableSchemaPtrOutputWithContext(ctx context.Context) IcebergTableSchemaPtrOutput {
+	return o
+}
+
+func (o IcebergTableSchemaPtrOutput) Elem() IcebergTableSchemaOutput {
+	return o.ApplyT(func(v *IcebergTableSchema) IcebergTableSchema {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergTableSchema
+		return ret
+	}).(IcebergTableSchemaOutput)
+}
+
+// Structure is documented below.
+func (o IcebergTableSchemaPtrOutput) Fields() IcebergTableSchemaFieldArrayOutput {
+	return o.ApplyT(func(v *IcebergTableSchema) []IcebergTableSchemaField {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(IcebergTableSchemaFieldArrayOutput)
+}
+
+// The field IDs that make up the identifier for the table.
+func (o IcebergTableSchemaPtrOutput) IdentifierFieldIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *IcebergTableSchema) []int {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifierFieldIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// (Output)
+// The unique identifier of the schema.
+func (o IcebergTableSchemaPtrOutput) SchemaId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IcebergTableSchema) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the schema.
+func (o IcebergTableSchemaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergTableSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergTableSchemaField struct {
+	// A description of the field.
+	Doc *string `pulumi:"doc"`
+	// The unique identifier of the field.
+	Id int `pulumi:"id"`
+	// The name of the partition field.
+	Name string `pulumi:"name"`
+	// Whether the field is required.
+	Required bool `pulumi:"required"`
+	// The type of the field.
+	Type string `pulumi:"type"`
+}
+
+// IcebergTableSchemaFieldInput is an input type that accepts IcebergTableSchemaFieldArgs and IcebergTableSchemaFieldOutput values.
+// You can construct a concrete instance of `IcebergTableSchemaFieldInput` via:
+//
+//	IcebergTableSchemaFieldArgs{...}
+type IcebergTableSchemaFieldInput interface {
+	pulumi.Input
+
+	ToIcebergTableSchemaFieldOutput() IcebergTableSchemaFieldOutput
+	ToIcebergTableSchemaFieldOutputWithContext(context.Context) IcebergTableSchemaFieldOutput
+}
+
+type IcebergTableSchemaFieldArgs struct {
+	// A description of the field.
+	Doc pulumi.StringPtrInput `pulumi:"doc"`
+	// The unique identifier of the field.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the partition field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether the field is required.
+	Required pulumi.BoolInput `pulumi:"required"`
+	// The type of the field.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (IcebergTableSchemaFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSchemaField)(nil)).Elem()
+}
+
+func (i IcebergTableSchemaFieldArgs) ToIcebergTableSchemaFieldOutput() IcebergTableSchemaFieldOutput {
+	return i.ToIcebergTableSchemaFieldOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSchemaFieldArgs) ToIcebergTableSchemaFieldOutputWithContext(ctx context.Context) IcebergTableSchemaFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSchemaFieldOutput)
+}
+
+// IcebergTableSchemaFieldArrayInput is an input type that accepts IcebergTableSchemaFieldArray and IcebergTableSchemaFieldArrayOutput values.
+// You can construct a concrete instance of `IcebergTableSchemaFieldArrayInput` via:
+//
+//	IcebergTableSchemaFieldArray{ IcebergTableSchemaFieldArgs{...} }
+type IcebergTableSchemaFieldArrayInput interface {
+	pulumi.Input
+
+	ToIcebergTableSchemaFieldArrayOutput() IcebergTableSchemaFieldArrayOutput
+	ToIcebergTableSchemaFieldArrayOutputWithContext(context.Context) IcebergTableSchemaFieldArrayOutput
+}
+
+type IcebergTableSchemaFieldArray []IcebergTableSchemaFieldInput
+
+func (IcebergTableSchemaFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergTableSchemaField)(nil)).Elem()
+}
+
+func (i IcebergTableSchemaFieldArray) ToIcebergTableSchemaFieldArrayOutput() IcebergTableSchemaFieldArrayOutput {
+	return i.ToIcebergTableSchemaFieldArrayOutputWithContext(context.Background())
+}
+
+func (i IcebergTableSchemaFieldArray) ToIcebergTableSchemaFieldArrayOutputWithContext(ctx context.Context) IcebergTableSchemaFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergTableSchemaFieldArrayOutput)
+}
+
+type IcebergTableSchemaFieldOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSchemaFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergTableSchemaField)(nil)).Elem()
+}
+
+func (o IcebergTableSchemaFieldOutput) ToIcebergTableSchemaFieldOutput() IcebergTableSchemaFieldOutput {
+	return o
+}
+
+func (o IcebergTableSchemaFieldOutput) ToIcebergTableSchemaFieldOutputWithContext(ctx context.Context) IcebergTableSchemaFieldOutput {
+	return o
+}
+
+// A description of the field.
+func (o IcebergTableSchemaFieldOutput) Doc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergTableSchemaField) *string { return v.Doc }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the field.
+func (o IcebergTableSchemaFieldOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v IcebergTableSchemaField) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the partition field.
+func (o IcebergTableSchemaFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableSchemaField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the field is required.
+func (o IcebergTableSchemaFieldOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v IcebergTableSchemaField) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// The type of the field.
+func (o IcebergTableSchemaFieldOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergTableSchemaField) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type IcebergTableSchemaFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (IcebergTableSchemaFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergTableSchemaField)(nil)).Elem()
+}
+
+func (o IcebergTableSchemaFieldArrayOutput) ToIcebergTableSchemaFieldArrayOutput() IcebergTableSchemaFieldArrayOutput {
+	return o
+}
+
+func (o IcebergTableSchemaFieldArrayOutput) ToIcebergTableSchemaFieldArrayOutputWithContext(ctx context.Context) IcebergTableSchemaFieldArrayOutput {
+	return o
+}
+
+func (o IcebergTableSchemaFieldArrayOutput) Index(i pulumi.IntInput) IcebergTableSchemaFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergTableSchemaField {
+		return vs[0].([]IcebergTableSchemaField)[vs[1].(int)]
+	}).(IcebergTableSchemaFieldOutput)
+}
+
 type TableHiveOptions struct {
 	// Stores user supplied Hive table parameters. An object containing a
 	// list of "key": value pairs.
@@ -1316,6 +2260,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergNamespaceIamBindingConditionPtrInput)(nil)).Elem(), IcebergNamespaceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergNamespaceIamMemberConditionInput)(nil)).Elem(), IcebergNamespaceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergNamespaceIamMemberConditionPtrInput)(nil)).Elem(), IcebergNamespaceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableIamBindingConditionInput)(nil)).Elem(), IcebergTableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableIamBindingConditionPtrInput)(nil)).Elem(), IcebergTableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableIamMemberConditionInput)(nil)).Elem(), IcebergTableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableIamMemberConditionPtrInput)(nil)).Elem(), IcebergTableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTablePartitionSpecInput)(nil)).Elem(), IcebergTablePartitionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTablePartitionSpecPtrInput)(nil)).Elem(), IcebergTablePartitionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTablePartitionSpecFieldInput)(nil)).Elem(), IcebergTablePartitionSpecFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTablePartitionSpecFieldArrayInput)(nil)).Elem(), IcebergTablePartitionSpecFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaInput)(nil)).Elem(), IcebergTableSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaPtrInput)(nil)).Elem(), IcebergTableSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaFieldInput)(nil)).Elem(), IcebergTableSchemaFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergTableSchemaFieldArrayInput)(nil)).Elem(), IcebergTableSchemaFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsPtrInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
@@ -1332,6 +2288,18 @@ func init() {
 	pulumi.RegisterOutputType(IcebergNamespaceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergNamespaceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(IcebergNamespaceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(IcebergTableIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(IcebergTableIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(IcebergTableIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(IcebergTableIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(IcebergTablePartitionSpecOutput{})
+	pulumi.RegisterOutputType(IcebergTablePartitionSpecPtrOutput{})
+	pulumi.RegisterOutputType(IcebergTablePartitionSpecFieldOutput{})
+	pulumi.RegisterOutputType(IcebergTablePartitionSpecFieldArrayOutput{})
+	pulumi.RegisterOutputType(IcebergTableSchemaOutput{})
+	pulumi.RegisterOutputType(IcebergTableSchemaPtrOutput{})
+	pulumi.RegisterOutputType(IcebergTableSchemaFieldOutput{})
+	pulumi.RegisterOutputType(IcebergTableSchemaFieldArrayOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorOutput{})

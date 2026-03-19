@@ -7,9 +7,6 @@ import * as utilities from "../utilities";
 /**
  * A trace scope is a collection of resources whose traces are queried together
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## Example Usage
  *
  * ### Observability Trace Scope Basic
@@ -20,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const project_2 = new gcp.organizations.Project("project-2", {
- *     projectId: "tf-test_42702",
- *     name: "tf-test_37426",
+ *     projectId: "tf-test_49175",
+ *     name: "tf-test_79411",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });

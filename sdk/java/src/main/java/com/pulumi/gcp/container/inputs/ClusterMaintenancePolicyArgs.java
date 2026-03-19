@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyDailyMaintenanceWindowArgs;
+import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyDisruptionBudgetArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyRecurringWindowArgs;
 import java.util.List;
@@ -39,6 +40,25 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<ClusterMaintenancePolicyDailyMaintenanceWindowArgs>> dailyMaintenanceWindow() {
         return Optional.ofNullable(this.dailyMaintenanceWindow);
+    }
+
+    /**
+     * structure documented below
+     * 
+     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * 
+     */
+    @Import(name="disruptionBudget")
+    private @Nullable Output<ClusterMaintenancePolicyDisruptionBudgetArgs> disruptionBudget;
+
+    /**
+     * @return structure documented below
+     * 
+     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * 
+     */
+    public Optional<Output<ClusterMaintenancePolicyDisruptionBudgetArgs>> disruptionBudget() {
+        return Optional.ofNullable(this.disruptionBudget);
     }
 
     /**
@@ -89,6 +109,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
 
     private ClusterMaintenancePolicyArgs(ClusterMaintenancePolicyArgs $) {
         this.dailyMaintenanceWindow = $.dailyMaintenanceWindow;
+        this.disruptionBudget = $.disruptionBudget;
         this.maintenanceExclusions = $.maintenanceExclusions;
         this.recurringWindow = $.recurringWindow;
     }
@@ -138,6 +159,31 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
          */
         public Builder dailyMaintenanceWindow(ClusterMaintenancePolicyDailyMaintenanceWindowArgs dailyMaintenanceWindow) {
             return dailyMaintenanceWindow(Output.of(dailyMaintenanceWindow));
+        }
+
+        /**
+         * @param disruptionBudget structure documented below
+         * 
+         * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disruptionBudget(@Nullable Output<ClusterMaintenancePolicyDisruptionBudgetArgs> disruptionBudget) {
+            $.disruptionBudget = disruptionBudget;
+            return this;
+        }
+
+        /**
+         * @param disruptionBudget structure documented below
+         * 
+         * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disruptionBudget(ClusterMaintenancePolicyDisruptionBudgetArgs disruptionBudget) {
+            return disruptionBudget(Output.of(disruptionBudget));
         }
 
         /**

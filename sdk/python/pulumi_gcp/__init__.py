@@ -1464,6 +1464,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "biglake/icebergTable",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergTable:IcebergTable": "IcebergTable"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergTableIamBinding",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding": "IcebergTableIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergTableIamMember",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergTableIamMember:IcebergTableIamMember": "IcebergTableIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergTableIamPolicy",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergTableIamPolicy:IcebergTableIamPolicy": "IcebergTableIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "biglake/table",
   "fqn": "pulumi_gcp.biglake",
   "classes": {
@@ -2204,6 +2236,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/dataAccessScope:DataAccessScope": "DataAccessScope"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/dataTable",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/dataTable:DataTable": "DataTable"
   }
  },
  {
@@ -4284,6 +4324,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
    "gcp:contactcenterinsights/analysisRule:AnalysisRule": "AnalysisRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "contactcenterinsights/autoLabelingRule",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule": "AutoLabelingRule"
   }
  },
  {
@@ -8480,6 +8528,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/ullMirroringCollector",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector": "UllMirroringCollector"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/ullMirroringEngine",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine": "UllMirroringEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/urlList",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -10196,6 +10260,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.sql",
   "classes": {
    "gcp:sql/databaseInstance:DatabaseInstance": "DatabaseInstance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "sql/provisionScript",
+  "fqn": "pulumi_gcp.sql",
+  "classes": {
+   "gcp:sql/provisionScript:ProvisionScript": "ProvisionScript"
   }
  },
  {

@@ -104,9 +104,19 @@ import (
 //				DataStoreIds: pulumi.StringArray{
 //					agentspaceBasic.DataStoreId,
 //				},
-//				IndustryVertical:     pulumi.String("GENERIC"),
-//				AppType:              pulumi.String("APP_TYPE_INTRANET"),
-//				SearchEngineConfig:   &discoveryengine.SearchEngineSearchEngineConfigArgs{},
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				AppType:          pulumi.String("APP_TYPE_INTRANET"),
+//				SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{
+//					SearchTier:               pulumi.String("SEARCH_TIER_STANDARD"),
+//					RequiredSubscriptionTier: pulumi.String("SUBSCRIPTION_TIER_ENTERPRISE"),
+//					SearchAddOns: pulumi.StringArray{
+//						pulumi.String("SEARCH_ADD_ON_LLM"),
+//					},
+//				},
+//				Features: pulumi.StringMap{
+//					"agent-sharing-without-admin-approval": pulumi.String("FEATURE_STATE_ON"),
+//					"disable-agent-sharing":                pulumi.String("FEATURE_STATE_OFF"),
+//				},
 //				KnowledgeGraphConfig: &discoveryengine.SearchEngineKnowledgeGraphConfigArgs{},
 //			})
 //			if err != nil {
@@ -168,7 +178,7 @@ type SearchEngine struct {
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// Configurations for the Knowledge Graph.
 	// Structure is documented below.
-	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrOutput `pulumi:"knowledgeGraphConfig"`
+	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigOutput `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The unique full resource name of the search engine. Values are of the format
@@ -576,8 +586,8 @@ func (o SearchEngineOutput) KmsKeyName() pulumi.StringPtrOutput {
 
 // Configurations for the Knowledge Graph.
 // Structure is documented below.
-func (o SearchEngineOutput) KnowledgeGraphConfig() SearchEngineKnowledgeGraphConfigPtrOutput {
-	return o.ApplyT(func(v *SearchEngine) SearchEngineKnowledgeGraphConfigPtrOutput { return v.KnowledgeGraphConfig }).(SearchEngineKnowledgeGraphConfigPtrOutput)
+func (o SearchEngineOutput) KnowledgeGraphConfig() SearchEngineKnowledgeGraphConfigOutput {
+	return o.ApplyT(func(v *SearchEngine) SearchEngineKnowledgeGraphConfigOutput { return v.KnowledgeGraphConfig }).(SearchEngineKnowledgeGraphConfigOutput)
 }
 
 // Location.

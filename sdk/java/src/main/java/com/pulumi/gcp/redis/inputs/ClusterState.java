@@ -551,6 +551,44 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    @Import(name="serverCaMode")
+    private @Nullable Output<String> serverCaMode;
+
+    /**
+     * @return The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    public Optional<Output<String>> serverCaMode() {
+        return Optional.ofNullable(this.serverCaMode);
+    }
+
+    /**
+     * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    @Import(name="serverCaPool")
+    private @Nullable Output<String> serverCaPool;
+
+    /**
+     * @return The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    public Optional<Output<String>> serverCaPool() {
+        return Optional.ofNullable(this.serverCaPool);
+    }
+
+    /**
      * Required. Number of shards for the Redis cluster.
      * 
      */
@@ -698,6 +736,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.redisConfigs = $.redisConfigs;
         this.region = $.region;
         this.replicaCount = $.replicaCount;
+        this.serverCaMode = $.serverCaMode;
+        this.serverCaPool = $.serverCaPool;
         this.shardCount = $.shardCount;
         this.sizeGb = $.sizeGb;
         this.state = $.state;
@@ -1499,6 +1539,56 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder replicaCount(Integer replicaCount) {
             return replicaCount(Output.of(replicaCount));
+        }
+
+        /**
+         * @param serverCaMode The serverCaMode for the TLS enabled Redis cluster.
+         * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+         * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaMode(@Nullable Output<String> serverCaMode) {
+            $.serverCaMode = serverCaMode;
+            return this;
+        }
+
+        /**
+         * @param serverCaMode The serverCaMode for the TLS enabled Redis cluster.
+         * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+         * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaMode(String serverCaMode) {
+            return serverCaMode(Output.of(serverCaMode));
+        }
+
+        /**
+         * @param serverCaPool The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+         * as the server_ca_mode.
+         * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaPool(@Nullable Output<String> serverCaPool) {
+            $.serverCaPool = serverCaPool;
+            return this;
+        }
+
+        /**
+         * @param serverCaPool The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+         * as the server_ca_mode.
+         * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaPool(String serverCaPool) {
+            return serverCaPool(Output.of(serverCaPool));
         }
 
         /**

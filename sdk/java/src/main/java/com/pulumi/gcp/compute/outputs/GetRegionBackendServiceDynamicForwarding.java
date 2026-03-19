@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceDynamicForwardingForwardProxy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceDynamicForwardingIpPortSelection;
 import java.util.List;
 import java.util.Objects;
@@ -12,12 +13,24 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionBackendServiceDynamicForwarding {
     /**
+     * @return Dynamic Forwarding Proxy configuration.
+     * 
+     */
+    private List<GetRegionBackendServiceDynamicForwardingForwardProxy> forwardProxies;
+    /**
      * @return IP:PORT based dynamic forwarding configuration.
      * 
      */
     private List<GetRegionBackendServiceDynamicForwardingIpPortSelection> ipPortSelections;
 
     private GetRegionBackendServiceDynamicForwarding() {}
+    /**
+     * @return Dynamic Forwarding Proxy configuration.
+     * 
+     */
+    public List<GetRegionBackendServiceDynamicForwardingForwardProxy> forwardProxies() {
+        return this.forwardProxies;
+    }
     /**
      * @return IP:PORT based dynamic forwarding configuration.
      * 
@@ -35,13 +48,26 @@ public final class GetRegionBackendServiceDynamicForwarding {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRegionBackendServiceDynamicForwardingForwardProxy> forwardProxies;
         private List<GetRegionBackendServiceDynamicForwardingIpPortSelection> ipPortSelections;
         public Builder() {}
         public Builder(GetRegionBackendServiceDynamicForwarding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.forwardProxies = defaults.forwardProxies;
     	      this.ipPortSelections = defaults.ipPortSelections;
         }
 
+        @CustomType.Setter
+        public Builder forwardProxies(List<GetRegionBackendServiceDynamicForwardingForwardProxy> forwardProxies) {
+            if (forwardProxies == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceDynamicForwarding", "forwardProxies");
+            }
+            this.forwardProxies = forwardProxies;
+            return this;
+        }
+        public Builder forwardProxies(GetRegionBackendServiceDynamicForwardingForwardProxy... forwardProxies) {
+            return forwardProxies(List.of(forwardProxies));
+        }
         @CustomType.Setter
         public Builder ipPortSelections(List<GetRegionBackendServiceDynamicForwardingIpPortSelection> ipPortSelections) {
             if (ipPortSelections == null) {
@@ -55,6 +81,7 @@ public final class GetRegionBackendServiceDynamicForwarding {
         }
         public GetRegionBackendServiceDynamicForwarding build() {
             final var _resultValue = new GetRegionBackendServiceDynamicForwarding();
+            _resultValue.forwardProxies = forwardProxies;
             _resultValue.ipPortSelections = ipPortSelections;
             return _resultValue;
         }

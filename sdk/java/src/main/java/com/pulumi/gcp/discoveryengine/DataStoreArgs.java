@@ -42,16 +42,16 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      * 
      */
-    @Import(name="contentConfig", required=true)
-    private Output<String> contentConfig;
+    @Import(name="contentConfig")
+    private @Nullable Output<String> contentConfig;
 
     /**
      * @return The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      * 
      */
-    public Output<String> contentConfig() {
-        return this.contentConfig;
+    public Optional<Output<String>> contentConfig() {
+        return Optional.ofNullable(this.contentConfig);
     }
 
     /**
@@ -307,7 +307,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder contentConfig(Output<String> contentConfig) {
+        public Builder contentConfig(@Nullable Output<String> contentConfig) {
             $.contentConfig = contentConfig;
             return this;
         }
@@ -583,9 +583,6 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DataStoreArgs build() {
-            if ($.contentConfig == null) {
-                throw new MissingRequiredPropertyException("DataStoreArgs", "contentConfig");
-            }
             if ($.dataStoreId == null) {
                 throw new MissingRequiredPropertyException("DataStoreArgs", "dataStoreId");
             }

@@ -64,7 +64,15 @@ import * as utilities from "../utilities";
  *     dataStoreIds: [agentspaceBasic.dataStoreId],
  *     industryVertical: "GENERIC",
  *     appType: "APP_TYPE_INTRANET",
- *     searchEngineConfig: {},
+ *     searchEngineConfig: {
+ *         searchTier: "SEARCH_TIER_STANDARD",
+ *         requiredSubscriptionTier: "SUBSCRIPTION_TIER_ENTERPRISE",
+ *         searchAddOns: ["SEARCH_ADD_ON_LLM"],
+ *     },
+ *     features: {
+ *         "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
+ *         "disable-agent-sharing": "FEATURE_STATE_OFF",
+ *     },
  *     knowledgeGraphConfig: {},
  * });
  * ```
@@ -150,7 +158,7 @@ export class SearchEngine extends pulumi.CustomResource {
     /**
      * A map of the feature config for the engine to opt in or opt out of features.
      */
-    declare public readonly features: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly features: pulumi.Output<{[key: string]: string}>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
@@ -169,7 +177,7 @@ export class SearchEngine extends pulumi.CustomResource {
      * Configurations for the Knowledge Graph.
      * Structure is documented below.
      */
-    declare public readonly knowledgeGraphConfig: pulumi.Output<outputs.discoveryengine.SearchEngineKnowledgeGraphConfig | undefined>;
+    declare public readonly knowledgeGraphConfig: pulumi.Output<outputs.discoveryengine.SearchEngineKnowledgeGraphConfig>;
     /**
      * Location.
      */

@@ -888,6 +888,118 @@ func (o AnalysisRuleAnnotatorSelectorSummarizationConfigPtrOutput) Summarization
 	}).(pulumi.StringPtrOutput)
 }
 
+type AutoLabelingRuleCondition struct {
+	// A optional CEL expression to be evaluated as a boolean value.
+	// Once evaluated as true, then we will proceed with the value evaluation.
+	// An empty condition will be auto evaluated as true.
+	Condition *string `pulumi:"condition"`
+	// CEL expression to be evaluated as the value.
+	Value *string `pulumi:"value"`
+}
+
+// AutoLabelingRuleConditionInput is an input type that accepts AutoLabelingRuleConditionArgs and AutoLabelingRuleConditionOutput values.
+// You can construct a concrete instance of `AutoLabelingRuleConditionInput` via:
+//
+//	AutoLabelingRuleConditionArgs{...}
+type AutoLabelingRuleConditionInput interface {
+	pulumi.Input
+
+	ToAutoLabelingRuleConditionOutput() AutoLabelingRuleConditionOutput
+	ToAutoLabelingRuleConditionOutputWithContext(context.Context) AutoLabelingRuleConditionOutput
+}
+
+type AutoLabelingRuleConditionArgs struct {
+	// A optional CEL expression to be evaluated as a boolean value.
+	// Once evaluated as true, then we will proceed with the value evaluation.
+	// An empty condition will be auto evaluated as true.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// CEL expression to be evaluated as the value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AutoLabelingRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoLabelingRuleCondition)(nil)).Elem()
+}
+
+func (i AutoLabelingRuleConditionArgs) ToAutoLabelingRuleConditionOutput() AutoLabelingRuleConditionOutput {
+	return i.ToAutoLabelingRuleConditionOutputWithContext(context.Background())
+}
+
+func (i AutoLabelingRuleConditionArgs) ToAutoLabelingRuleConditionOutputWithContext(ctx context.Context) AutoLabelingRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoLabelingRuleConditionOutput)
+}
+
+// AutoLabelingRuleConditionArrayInput is an input type that accepts AutoLabelingRuleConditionArray and AutoLabelingRuleConditionArrayOutput values.
+// You can construct a concrete instance of `AutoLabelingRuleConditionArrayInput` via:
+//
+//	AutoLabelingRuleConditionArray{ AutoLabelingRuleConditionArgs{...} }
+type AutoLabelingRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToAutoLabelingRuleConditionArrayOutput() AutoLabelingRuleConditionArrayOutput
+	ToAutoLabelingRuleConditionArrayOutputWithContext(context.Context) AutoLabelingRuleConditionArrayOutput
+}
+
+type AutoLabelingRuleConditionArray []AutoLabelingRuleConditionInput
+
+func (AutoLabelingRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoLabelingRuleCondition)(nil)).Elem()
+}
+
+func (i AutoLabelingRuleConditionArray) ToAutoLabelingRuleConditionArrayOutput() AutoLabelingRuleConditionArrayOutput {
+	return i.ToAutoLabelingRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AutoLabelingRuleConditionArray) ToAutoLabelingRuleConditionArrayOutputWithContext(ctx context.Context) AutoLabelingRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoLabelingRuleConditionArrayOutput)
+}
+
+type AutoLabelingRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (AutoLabelingRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoLabelingRuleCondition)(nil)).Elem()
+}
+
+func (o AutoLabelingRuleConditionOutput) ToAutoLabelingRuleConditionOutput() AutoLabelingRuleConditionOutput {
+	return o
+}
+
+func (o AutoLabelingRuleConditionOutput) ToAutoLabelingRuleConditionOutputWithContext(ctx context.Context) AutoLabelingRuleConditionOutput {
+	return o
+}
+
+// A optional CEL expression to be evaluated as a boolean value.
+// Once evaluated as true, then we will proceed with the value evaluation.
+// An empty condition will be auto evaluated as true.
+func (o AutoLabelingRuleConditionOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoLabelingRuleCondition) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// CEL expression to be evaluated as the value.
+func (o AutoLabelingRuleConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoLabelingRuleCondition) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AutoLabelingRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoLabelingRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoLabelingRuleCondition)(nil)).Elem()
+}
+
+func (o AutoLabelingRuleConditionArrayOutput) ToAutoLabelingRuleConditionArrayOutput() AutoLabelingRuleConditionArrayOutput {
+	return o
+}
+
+func (o AutoLabelingRuleConditionArrayOutput) ToAutoLabelingRuleConditionArrayOutputWithContext(ctx context.Context) AutoLabelingRuleConditionArrayOutput {
+	return o
+}
+
+func (o AutoLabelingRuleConditionArrayOutput) Index(i pulumi.IntInput) AutoLabelingRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoLabelingRuleCondition {
+		return vs[0].([]AutoLabelingRuleCondition)[vs[1].(int)]
+	}).(AutoLabelingRuleConditionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorPtrInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorArgs{})
@@ -897,6 +1009,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorQaConfigScorecardListPtrInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorSummarizationConfigInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorSummarizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorSummarizationConfigPtrInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorSummarizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoLabelingRuleConditionInput)(nil)).Elem(), AutoLabelingRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoLabelingRuleConditionArrayInput)(nil)).Elem(), AutoLabelingRuleConditionArray{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorPtrOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorQaConfigOutput{})
@@ -905,4 +1019,6 @@ func init() {
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorQaConfigScorecardListPtrOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorSummarizationConfigOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorSummarizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AutoLabelingRuleConditionOutput{})
+	pulumi.RegisterOutputType(AutoLabelingRuleConditionArrayOutput{})
 }

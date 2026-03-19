@@ -16,6 +16,7 @@ from .get_database_instance_latest_recovery_time import *
 from .get_database_instances import *
 from .get_databases import *
 from .get_tiers import *
+from .provision_script import *
 from .source_representation_instance import *
 from .ssl_cert import *
 from .user import *

@@ -43,6 +43,8 @@ class InstanceArgs:
                  persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
         """
@@ -98,6 +100,12 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] replica_count: Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Memorystore instance.
+               If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.str] transit_encryption_mode: Optional. Immutable. In-transit encryption mode of the instance.
                Possible values:
                TRANSIT_ENCRYPTION_DISABLED
@@ -149,6 +157,10 @@ class InstanceArgs:
             pulumi.set(__self__, "project", project)
         if replica_count is not None:
             pulumi.set(__self__, "replica_count", replica_count)
+        if server_ca_mode is not None:
+            pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool is not None:
+            pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if transit_encryption_mode is not None:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
         if zone_distribution_config is not None:
@@ -448,6 +460,34 @@ class InstanceArgs:
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The serverCaMode for the TLS enabled Memorystore instance.
+        If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "server_ca_mode")
+
+    @server_ca_mode.setter
+    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+        as the server_ca_mode.
+        Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        """
+        return pulumi.get(self, "server_ca_pool")
+
+    @server_ca_pool.setter
+    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_pool", value)
+
+    @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -514,6 +554,8 @@ class _InstanceState:
                  psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoArgs']]]] = None,
@@ -599,6 +641,12 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] replica_count: Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Memorystore instance.
+               If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the instance.
                Possible values:
@@ -696,6 +744,10 @@ class _InstanceState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if replica_count is not None:
             pulumi.set(__self__, "replica_count", replica_count)
+        if server_ca_mode is not None:
+            pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool is not None:
+            pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if shard_count is not None:
             pulumi.set(__self__, "shard_count", shard_count)
         if state is not None:
@@ -1175,6 +1227,34 @@ class _InstanceState:
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The serverCaMode for the TLS enabled Memorystore instance.
+        If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "server_ca_mode")
+
+    @server_ca_mode.setter
+    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+        as the server_ca_mode.
+        Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        """
+        return pulumi.get(self, "server_ca_pool")
+
+    @server_ca_pool.setter
+    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_pool", value)
+
+    @_builtins.property
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -1296,6 +1376,8 @@ class Instance(pulumi.CustomResource):
                  persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_distribution_config: Optional[pulumi.Input[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
@@ -1580,6 +1662,87 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secondary_policy]))
         ```
+        ### Memorystore Instance Flexible Ca
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.certificateauthority.CaPool("default",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
+            ca_pool=default.id,
+            role="roles/privateca.certificateRequester",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-memorystore.iam.gserviceaccount.com")
+        default_authority = gcp.certificateauthority.Authority("default",
+            pool=default.name,
+            certificate_authority_id="ca-auth",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "Google",
+                        "common_name": "my-memorystore-ca",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            ignore_active_certificates_on_deletion=True,
+            deletion_protection=False,
+            skip_grace_period=True)
+        producer_net = gcp.compute.Network("producer_net",
+            name="ca-network",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="ca-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="ca-policy",
+            location="us-central1",
+            service_class="gcp-memorystore",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        test_instance = gcp.memorystore.Instance("test-instance",
+            instance_id="ca-instance",
+            shard_count=3,
+            location="us-central1",
+            desired_auto_created_endpoints=[{
+                "network": producer_net.id,
+                "project_id": project.project_id,
+            }],
+            transit_encryption_mode="SERVER_AUTHENTICATION",
+            server_ca_mode="CUSTOMER_MANAGED_CAS_CA",
+            server_ca_pool=default.id,
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    default_service_connection_policy,
+                    default_authority,
+                    memorystore_p4sa_requester,
+                ]))
+        ```
 
         ## Import
 
@@ -1649,6 +1812,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] replica_count: Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Memorystore instance.
+               If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] transit_encryption_mode: Optional. Immutable. In-transit encryption mode of the instance.
                Possible values:
@@ -1943,6 +2112,87 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secondary_policy]))
         ```
+        ### Memorystore Instance Flexible Ca
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.certificateauthority.CaPool("default",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
+            ca_pool=default.id,
+            role="roles/privateca.certificateRequester",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-memorystore.iam.gserviceaccount.com")
+        default_authority = gcp.certificateauthority.Authority("default",
+            pool=default.name,
+            certificate_authority_id="ca-auth",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "Google",
+                        "common_name": "my-memorystore-ca",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            ignore_active_certificates_on_deletion=True,
+            deletion_protection=False,
+            skip_grace_period=True)
+        producer_net = gcp.compute.Network("producer_net",
+            name="ca-network",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="ca-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="ca-policy",
+            location="us-central1",
+            service_class="gcp-memorystore",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        test_instance = gcp.memorystore.Instance("test-instance",
+            instance_id="ca-instance",
+            shard_count=3,
+            location="us-central1",
+            desired_auto_created_endpoints=[{
+                "network": producer_net.id,
+                "project_id": project.project_id,
+            }],
+            transit_encryption_mode="SERVER_AUTHENTICATION",
+            server_ca_mode="CUSTOMER_MANAGED_CAS_CA",
+            server_ca_pool=default.id,
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    default_service_connection_policy,
+                    default_authority,
+                    memorystore_p4sa_requester,
+                ]))
+        ```
 
         ## Import
 
@@ -1997,6 +2247,8 @@ class Instance(pulumi.CustomResource):
                  persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_distribution_config: Optional[pulumi.Input[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
@@ -2034,6 +2286,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
             __props__.__dict__["replica_count"] = replica_count
+            __props__.__dict__["server_ca_mode"] = server_ca_mode
+            __props__.__dict__["server_ca_pool"] = server_ca_pool
             if shard_count is None and not opts.urn:
                 raise TypeError("Missing required property 'shard_count'")
             __props__.__dict__["shard_count"] = shard_count
@@ -2104,6 +2358,8 @@ class Instance(pulumi.CustomResource):
             psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAutoConnectionArgs', 'InstancePscAutoConnectionArgsDict']]]]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+            server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+            server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
             shard_count: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceStateInfoArgs', 'InstanceStateInfoArgsDict']]]]] = None,
@@ -2193,6 +2449,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.int] replica_count: Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Memorystore instance.
+               If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] state: Output only. Current state of the instance.
                Possible values:
@@ -2250,6 +2512,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["psc_auto_connections"] = psc_auto_connections
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["replica_count"] = replica_count
+        __props__.__dict__["server_ca_mode"] = server_ca_mode
+        __props__.__dict__["server_ca_pool"] = server_ca_pool
         __props__.__dict__["shard_count"] = shard_count
         __props__.__dict__["state"] = state
         __props__.__dict__["state_infos"] = state_infos
@@ -2581,6 +2845,26 @@ class Instance(pulumi.CustomResource):
         Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
         """
         return pulumi.get(self, "replica_count")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The serverCaMode for the TLS enabled Memorystore instance.
+        If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "server_ca_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+        as the server_ca_mode.
+        Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        """
+        return pulumi.get(self, "server_ca_pool")
 
     @_builtins.property
     @pulumi.getter(name="shardCount")

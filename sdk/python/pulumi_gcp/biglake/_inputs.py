@@ -27,6 +27,18 @@ __all__ = [
     'IcebergNamespaceIamBindingConditionArgsDict',
     'IcebergNamespaceIamMemberConditionArgs',
     'IcebergNamespaceIamMemberConditionArgsDict',
+    'IcebergTableIamBindingConditionArgs',
+    'IcebergTableIamBindingConditionArgsDict',
+    'IcebergTableIamMemberConditionArgs',
+    'IcebergTableIamMemberConditionArgsDict',
+    'IcebergTablePartitionSpecArgs',
+    'IcebergTablePartitionSpecArgsDict',
+    'IcebergTablePartitionSpecFieldArgs',
+    'IcebergTablePartitionSpecFieldArgsDict',
+    'IcebergTableSchemaArgs',
+    'IcebergTableSchemaArgsDict',
+    'IcebergTableSchemaFieldArgs',
+    'IcebergTableSchemaFieldArgsDict',
     'TableHiveOptionsArgs',
     'TableHiveOptionsArgsDict',
     'TableHiveOptionsStorageDescriptorArgs',
@@ -317,6 +329,430 @@ class IcebergNamespaceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class IcebergTableIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class IcebergTableIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class IcebergTableIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class IcebergTableIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class IcebergTablePartitionSpecArgsDict(TypedDict):
+    fields: pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgsDict']]]
+    """
+    Structure is documented below.
+    """
+    spec_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The unique identifier of the partition spec.
+    """
+
+@pulumi.input_type
+class IcebergTablePartitionSpecArgs:
+    def __init__(__self__, *,
+                 fields: pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgs']]],
+                 spec_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgs']]] fields: Structure is documented below.
+        :param pulumi.Input[_builtins.int] spec_id: (Output)
+               The unique identifier of the partition spec.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if spec_id is not None:
+            pulumi.set(__self__, "spec_id", spec_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgs']]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgs']]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specId")
+    def spec_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The unique identifier of the partition spec.
+        """
+        return pulumi.get(self, "spec_id")
+
+    @spec_id.setter
+    def spec_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "spec_id", value)
+
+
+class IcebergTablePartitionSpecFieldArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the partition field.
+    """
+    source_id: pulumi.Input[_builtins.int]
+    """
+    The source field ID for the partition field.
+    """
+    transform: pulumi.Input[_builtins.str]
+    """
+    The transform to apply to the source field.
+    """
+    field_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The unique identifier of the partition field.
+    """
+
+@pulumi.input_type
+class IcebergTablePartitionSpecFieldArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 source_id: pulumi.Input[_builtins.int],
+                 transform: pulumi.Input[_builtins.str],
+                 field_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the partition field.
+        :param pulumi.Input[_builtins.int] source_id: The source field ID for the partition field.
+        :param pulumi.Input[_builtins.str] transform: The transform to apply to the source field.
+        :param pulumi.Input[_builtins.int] field_id: (Output)
+               The unique identifier of the partition field.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "transform", transform)
+        if field_id is not None:
+            pulumi.set(__self__, "field_id", field_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the partition field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The source field ID for the partition field.
+        """
+        return pulumi.get(self, "source_id")
+
+    @source_id.setter
+    def source_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "source_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def transform(self) -> pulumi.Input[_builtins.str]:
+        """
+        The transform to apply to the source field.
+        """
+        return pulumi.get(self, "transform")
+
+    @transform.setter
+    def transform(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "transform", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldId")
+    def field_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The unique identifier of the partition field.
+        """
+        return pulumi.get(self, "field_id")
+
+    @field_id.setter
+    def field_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "field_id", value)
+
+
+class IcebergTableSchemaArgsDict(TypedDict):
+    fields: pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgsDict']]]
+    """
+    Structure is documented below.
+    """
+    identifier_field_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The field IDs that make up the identifier for the table.
+    """
+    schema_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Output)
+    The unique identifier of the schema.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the schema.
+    """
+
+@pulumi.input_type
+class IcebergTableSchemaArgs:
+    def __init__(__self__, *,
+                 fields: pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgs']]],
+                 identifier_field_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 schema_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgs']]] fields: Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] identifier_field_ids: The field IDs that make up the identifier for the table.
+        :param pulumi.Input[_builtins.int] schema_id: (Output)
+               The unique identifier of the schema.
+        :param pulumi.Input[_builtins.str] type: The type of the schema.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if identifier_field_ids is not None:
+            pulumi.set(__self__, "identifier_field_ids", identifier_field_ids)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgs']]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgs']]]):
+        pulumi.set(self, "fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identifierFieldIds")
+    def identifier_field_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The field IDs that make up the identifier for the table.
+        """
+        return pulumi.get(self, "identifier_field_ids")
+
+    @identifier_field_ids.setter
+    def identifier_field_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "identifier_field_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The unique identifier of the schema.
+        """
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "schema_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the schema.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class IcebergTableSchemaFieldArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The unique identifier of the field.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the partition field.
+    """
+    required: pulumi.Input[_builtins.bool]
+    """
+    Whether the field is required.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the field.
+    """
+    doc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A description of the field.
+    """
+
+@pulumi.input_type
+class IcebergTableSchemaFieldArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[_builtins.str],
+                 required: pulumi.Input[_builtins.bool],
+                 type: pulumi.Input[_builtins.str],
+                 doc: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] id: The unique identifier of the field.
+        :param pulumi.Input[_builtins.str] name: The name of the partition field.
+        :param pulumi.Input[_builtins.bool] required: Whether the field is required.
+        :param pulumi.Input[_builtins.str] type: The type of the field.
+        :param pulumi.Input[_builtins.str] doc: A description of the field.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "type", type)
+        if doc is not None:
+            pulumi.set(__self__, "doc", doc)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The unique identifier of the field.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the partition field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the field is required.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "required", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def doc(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A description of the field.
+        """
+        return pulumi.get(self, "doc")
+
+    @doc.setter
+    def doc(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "doc", value)
 
 
 class TableHiveOptionsArgsDict(TypedDict):

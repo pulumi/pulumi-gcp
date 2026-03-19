@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyDailyMaintenanceWindow;
+import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyDisruptionBudget;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyMaintenanceExclusion;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyRecurringWindow;
 import java.util.List;
@@ -18,6 +19,11 @@ public final class GetClusterMaintenancePolicy {
      * 
      */
     private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
+    /**
+     * @return Cluster disruption intervals for minor version and patch version upgrade
+     * 
+     */
+    private List<GetClusterMaintenancePolicyDisruptionBudget> disruptionBudgets;
     /**
      * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
      * 
@@ -36,6 +42,13 @@ public final class GetClusterMaintenancePolicy {
      */
     public List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows() {
         return this.dailyMaintenanceWindows;
+    }
+    /**
+     * @return Cluster disruption intervals for minor version and patch version upgrade
+     * 
+     */
+    public List<GetClusterMaintenancePolicyDisruptionBudget> disruptionBudgets() {
+        return this.disruptionBudgets;
     }
     /**
      * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
@@ -62,12 +75,14 @@ public final class GetClusterMaintenancePolicy {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
+        private List<GetClusterMaintenancePolicyDisruptionBudget> disruptionBudgets;
         private List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
         private List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows;
         public Builder() {}
         public Builder(GetClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dailyMaintenanceWindows = defaults.dailyMaintenanceWindows;
+    	      this.disruptionBudgets = defaults.disruptionBudgets;
     	      this.maintenanceExclusions = defaults.maintenanceExclusions;
     	      this.recurringWindows = defaults.recurringWindows;
         }
@@ -82,6 +97,17 @@ public final class GetClusterMaintenancePolicy {
         }
         public Builder dailyMaintenanceWindows(GetClusterMaintenancePolicyDailyMaintenanceWindow... dailyMaintenanceWindows) {
             return dailyMaintenanceWindows(List.of(dailyMaintenanceWindows));
+        }
+        @CustomType.Setter
+        public Builder disruptionBudgets(List<GetClusterMaintenancePolicyDisruptionBudget> disruptionBudgets) {
+            if (disruptionBudgets == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicy", "disruptionBudgets");
+            }
+            this.disruptionBudgets = disruptionBudgets;
+            return this;
+        }
+        public Builder disruptionBudgets(GetClusterMaintenancePolicyDisruptionBudget... disruptionBudgets) {
+            return disruptionBudgets(List.of(disruptionBudgets));
         }
         @CustomType.Setter
         public Builder maintenanceExclusions(List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions) {
@@ -108,6 +134,7 @@ public final class GetClusterMaintenancePolicy {
         public GetClusterMaintenancePolicy build() {
             final var _resultValue = new GetClusterMaintenancePolicy();
             _resultValue.dailyMaintenanceWindows = dailyMaintenanceWindows;
+            _resultValue.disruptionBudgets = disruptionBudgets;
             _resultValue.maintenanceExclusions = maintenanceExclusions;
             _resultValue.recurringWindows = recurringWindows;
             return _resultValue;

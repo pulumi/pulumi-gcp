@@ -409,6 +409,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    @Import(name="serverCaMode")
+    private @Nullable Output<String> serverCaMode;
+
+    /**
+     * @return The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    public Optional<Output<String>> serverCaMode() {
+        return Optional.ofNullable(this.serverCaMode);
+    }
+
+    /**
+     * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    @Import(name="serverCaPool")
+    private @Nullable Output<String> serverCaPool;
+
+    /**
+     * @return The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    public Optional<Output<String>> serverCaPool() {
+        return Optional.ofNullable(this.serverCaPool);
+    }
+
+    /**
      * Required. Number of shards for the instance.
      * 
      */
@@ -485,6 +523,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.persistenceConfig = $.persistenceConfig;
         this.project = $.project;
         this.replicaCount = $.replicaCount;
+        this.serverCaMode = $.serverCaMode;
+        this.serverCaPool = $.serverCaPool;
         this.shardCount = $.shardCount;
         this.transitEncryptionMode = $.transitEncryptionMode;
         this.zoneDistributionConfig = $.zoneDistributionConfig;
@@ -1035,6 +1075,56 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder replicaCount(Integer replicaCount) {
             return replicaCount(Output.of(replicaCount));
+        }
+
+        /**
+         * @param serverCaMode The serverCaMode for the TLS enabled Memorystore instance.
+         * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+         * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaMode(@Nullable Output<String> serverCaMode) {
+            $.serverCaMode = serverCaMode;
+            return this;
+        }
+
+        /**
+         * @param serverCaMode The serverCaMode for the TLS enabled Memorystore instance.
+         * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+         * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaMode(String serverCaMode) {
+            return serverCaMode(Output.of(serverCaMode));
+        }
+
+        /**
+         * @param serverCaPool The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+         * as the server_ca_mode.
+         * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaPool(@Nullable Output<String> serverCaPool) {
+            $.serverCaPool = serverCaPool;
+            return this;
+        }
+
+        /**
+         * @param serverCaPool The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+         * as the server_ca_mode.
+         * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaPool(String serverCaPool) {
+            return serverCaPool(Output.of(serverCaPool));
         }
 
         /**

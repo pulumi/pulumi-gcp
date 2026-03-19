@@ -119,7 +119,7 @@ class RegionBackendServiceArgs:
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[_builtins.str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
                * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -536,7 +536,7 @@ class RegionBackendServiceArgs:
         balancing cannot be used with the other(s). For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `INTERNAL`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -946,7 +946,7 @@ class _RegionBackendServiceState:
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[_builtins.str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
                * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -1409,7 +1409,7 @@ class _RegionBackendServiceState:
         balancing cannot be used with the other(s). For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `INTERNAL`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -2132,6 +2132,42 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+        ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "CLOUD_RUN",
+                },
+            })
+        ```
+        ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "DIRECT_FORWARDING",
+                },
+            })
+        ```
         ### Region Backend Service Ha Policy
 
         ```python
@@ -2327,7 +2363,7 @@ class RegionBackendService(pulumi.CustomResource):
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[_builtins.str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
                * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -2809,6 +2845,42 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             })
         ```
+        ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "CLOUD_RUN",
+                },
+            })
+        ```
+        ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "DIRECT_FORWARDING",
+                },
+            })
+        ```
         ### Region Backend Service Ha Policy
 
         ```python
@@ -3157,7 +3229,7 @@ class RegionBackendService(pulumi.CustomResource):
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[_builtins.str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
                * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -3511,7 +3583,7 @@ class RegionBackendService(pulumi.CustomResource):
         balancing cannot be used with the other(s). For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `INTERNAL`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

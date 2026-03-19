@@ -818,6 +818,122 @@ import (
 //	}
 //
 // ```
+// ### Redis Cluster Flexible Ca
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                   _default.Name,
+//				CertificateAuthorityId: pulumi.String("ca-auth"),
+//				Location:               pulumi.String("us-central1"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("Google"),
+//							CommonName:   pulumi.String("my-redis-ca"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("ca-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("ca-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     consumerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("ca-policy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Network:      consumerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						consumerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "test-cluster", &redis.ClusterArgs{
+//				Name:       pulumi.String("ca-cluster"),
+//				ShardCount: pulumi.Int(3),
+//				Region:     pulumi.String("us-central1"),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: consumerNet.ID(),
+//					},
+//				},
+//				TransitEncryptionMode:     pulumi.String("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"),
+//				ServerCaMode:              pulumi.String("SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"),
+//				ServerCaPool:              _default.ID(),
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultServiceConnectionPolicy,
+//				defaultAuthority,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -932,6 +1048,14 @@ type Cluster struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount pulumi.IntPtrOutput `pulumi:"replicaCount"`
+	// The serverCaMode for the TLS enabled Redis cluster.
+	// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode pulumi.StringOutput `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool pulumi.StringPtrOutput `pulumi:"serverCaPool"`
 	// Required. Number of shards for the Redis cluster.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
 	// Output only. Redis memory size in GB for the entire cluster.
@@ -1084,6 +1208,14 @@ type clusterState struct {
 	Region *string `pulumi:"region"`
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount *int `pulumi:"replicaCount"`
+	// The serverCaMode for the TLS enabled Redis cluster.
+	// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode *string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool *string `pulumi:"serverCaPool"`
 	// Required. Number of shards for the Redis cluster.
 	ShardCount *int `pulumi:"shardCount"`
 	// Output only. Redis memory size in GB for the entire cluster.
@@ -1199,6 +1331,14 @@ type ClusterState struct {
 	Region pulumi.StringPtrInput
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount pulumi.IntPtrInput
+	// The serverCaMode for the TLS enabled Redis cluster.
+	// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode pulumi.StringPtrInput
+	// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool pulumi.StringPtrInput
 	// Required. Number of shards for the Redis cluster.
 	ShardCount pulumi.IntPtrInput
 	// Output only. Redis memory size in GB for the entire cluster.
@@ -1283,6 +1423,14 @@ type clusterArgs struct {
 	Region *string `pulumi:"region"`
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount *int `pulumi:"replicaCount"`
+	// The serverCaMode for the TLS enabled Redis cluster.
+	// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode *string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool *string `pulumi:"serverCaPool"`
 	// Required. Number of shards for the Redis cluster.
 	ShardCount int `pulumi:"shardCount"`
 	// Optional. The in-transit encryption for the Redis cluster.
@@ -1355,6 +1503,14 @@ type ClusterArgs struct {
 	Region pulumi.StringPtrInput
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount pulumi.IntPtrInput
+	// The serverCaMode for the TLS enabled Redis cluster.
+	// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode pulumi.StringPtrInput
+	// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool pulumi.StringPtrInput
 	// Required. Number of shards for the Redis cluster.
 	ShardCount pulumi.IntInput
 	// Optional. The in-transit encryption for the Redis cluster.
@@ -1636,6 +1792,20 @@ func (o ClusterOutput) Region() pulumi.StringOutput {
 // Optional. The number of replica nodes per shard.
 func (o ClusterOutput) ReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// The serverCaMode for the TLS enabled Redis cluster.
+// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+func (o ClusterOutput) ServerCaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ServerCaMode }).(pulumi.StringOutput)
+}
+
+// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+// as the server_ca_mode.
+// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+func (o ClusterOutput) ServerCaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ServerCaPool }).(pulumi.StringPtrOutput)
 }
 
 // Required. Number of shards for the Redis cluster.

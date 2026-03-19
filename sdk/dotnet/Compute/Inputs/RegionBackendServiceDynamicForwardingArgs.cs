@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// (Optional, Beta)
+        /// Dynamic Forwarding Proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("forwardProxy")]
+        public Input<Inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs>? ForwardProxy { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
         /// IP:PORT based dynamic forwarding configuration.
         /// Structure is documented below.
         /// </summary>

@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterMaintenancePolicyDailyMaintenanceWindow? DailyMaintenanceWindow;
         /// <summary>
+        /// structure documented below
+        /// 
+        /// In beta, one or the other of `RecurringWindow` and `DailyMaintenanceWindow` is required if a `MaintenancePolicy` block is supplied.
+        /// </summary>
+        public readonly Outputs.ClusterMaintenancePolicyDisruptionBudget? DisruptionBudget;
+        /// <summary>
         /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterMaintenancePolicyMaintenanceExclusion> MaintenanceExclusions;
@@ -60,11 +66,14 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterMaintenancePolicy(
             Outputs.ClusterMaintenancePolicyDailyMaintenanceWindow? dailyMaintenanceWindow,
 
+            Outputs.ClusterMaintenancePolicyDisruptionBudget? disruptionBudget,
+
             ImmutableArray<Outputs.ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions,
 
             Outputs.ClusterMaintenancePolicyRecurringWindow? recurringWindow)
         {
             DailyMaintenanceWindow = dailyMaintenanceWindow;
+            DisruptionBudget = disruptionBudget;
             MaintenanceExclusions = maintenanceExclusions;
             RecurringWindow = recurringWindow;
         }

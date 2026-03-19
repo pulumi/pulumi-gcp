@@ -142,6 +142,7 @@ __all__ = [
     'ClusterLoggingConfig',
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyDailyMaintenanceWindow',
+    'ClusterMaintenancePolicyDisruptionBudget',
     'ClusterMaintenancePolicyMaintenanceExclusion',
     'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions',
     'ClusterMaintenancePolicyRecurringWindow',
@@ -422,6 +423,7 @@ __all__ = [
     'GetClusterLoggingConfigResult',
     'GetClusterMaintenancePolicyResult',
     'GetClusterMaintenancePolicyDailyMaintenanceWindowResult',
+    'GetClusterMaintenancePolicyDisruptionBudgetResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult',
     'GetClusterMaintenancePolicyRecurringWindowResult',
@@ -6713,6 +6715,8 @@ class ClusterMaintenancePolicy(dict):
         suggest = None
         if key == "dailyMaintenanceWindow":
             suggest = "daily_maintenance_window"
+        elif key == "disruptionBudget":
+            suggest = "disruption_budget"
         elif key == "maintenanceExclusions":
             suggest = "maintenance_exclusions"
         elif key == "recurringWindow":
@@ -6731,6 +6735,7 @@ class ClusterMaintenancePolicy(dict):
 
     def __init__(__self__, *,
                  daily_maintenance_window: Optional['outputs.ClusterMaintenancePolicyDailyMaintenanceWindow'] = None,
+                 disruption_budget: Optional['outputs.ClusterMaintenancePolicyDisruptionBudget'] = None,
                  maintenance_exclusions: Optional[Sequence['outputs.ClusterMaintenancePolicyMaintenanceExclusion']] = None,
                  recurring_window: Optional['outputs.ClusterMaintenancePolicyRecurringWindow'] = None):
         """
@@ -6739,6 +6744,9 @@ class ClusterMaintenancePolicy(dict):
                where HH : \\[00-23\\] and MM : \\[00-59\\] GMT. For example:
                
                Examples:
+        :param 'ClusterMaintenancePolicyDisruptionBudgetArgs' disruption_budget: structure documented below
+               
+               In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
         :param Sequence['ClusterMaintenancePolicyMaintenanceExclusionArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         :param 'ClusterMaintenancePolicyRecurringWindowArgs' recurring_window: Time window for recurring maintenance operations.
                
@@ -6770,6 +6778,8 @@ class ClusterMaintenancePolicy(dict):
         """
         if daily_maintenance_window is not None:
             pulumi.set(__self__, "daily_maintenance_window", daily_maintenance_window)
+        if disruption_budget is not None:
+            pulumi.set(__self__, "disruption_budget", disruption_budget)
         if maintenance_exclusions is not None:
             pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
         if recurring_window is not None:
@@ -6786,6 +6796,16 @@ class ClusterMaintenancePolicy(dict):
         Examples:
         """
         return pulumi.get(self, "daily_maintenance_window")
+
+    @_builtins.property
+    @pulumi.getter(name="disruptionBudget")
+    def disruption_budget(self) -> Optional['outputs.ClusterMaintenancePolicyDisruptionBudget']:
+        """
+        structure documented below
+
+        In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
+        """
+        return pulumi.get(self, "disruption_budget")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceExclusions")
@@ -6865,6 +6885,88 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     @pulumi.getter
     def duration(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "duration")
+
+
+@pulumi.output_type
+class ClusterMaintenancePolicyDisruptionBudget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastDisruptionTime":
+            suggest = "last_disruption_time"
+        elif key == "lastMinorVersionDisruptionTime":
+            suggest = "last_minor_version_disruption_time"
+        elif key == "minorVersionDisruptionInterval":
+            suggest = "minor_version_disruption_interval"
+        elif key == "patchVersionDisruptionInterval":
+            suggest = "patch_version_disruption_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyDisruptionBudget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicyDisruptionBudget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicyDisruptionBudget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_disruption_time: Optional[_builtins.str] = None,
+                 last_minor_version_disruption_time: Optional[_builtins.str] = None,
+                 minor_version_disruption_interval: Optional[_builtins.str] = None,
+                 patch_version_disruption_interval: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str last_disruption_time: The last disruption time of the control plane.
+               
+               Examples:
+        :param _builtins.str last_minor_version_disruption_time: The last minor version disruption time of the control plane.
+        :param _builtins.str minor_version_disruption_interval: The minimum duration between two minor version upgrades of the control plane.
+        :param _builtins.str patch_version_disruption_interval: The minimum duration between two patch version upgrades of the control plane.
+        """
+        if last_disruption_time is not None:
+            pulumi.set(__self__, "last_disruption_time", last_disruption_time)
+        if last_minor_version_disruption_time is not None:
+            pulumi.set(__self__, "last_minor_version_disruption_time", last_minor_version_disruption_time)
+        if minor_version_disruption_interval is not None:
+            pulumi.set(__self__, "minor_version_disruption_interval", minor_version_disruption_interval)
+        if patch_version_disruption_interval is not None:
+            pulumi.set(__self__, "patch_version_disruption_interval", patch_version_disruption_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="lastDisruptionTime")
+    def last_disruption_time(self) -> Optional[_builtins.str]:
+        """
+        The last disruption time of the control plane.
+
+        Examples:
+        """
+        return pulumi.get(self, "last_disruption_time")
+
+    @_builtins.property
+    @pulumi.getter(name="lastMinorVersionDisruptionTime")
+    def last_minor_version_disruption_time(self) -> Optional[_builtins.str]:
+        """
+        The last minor version disruption time of the control plane.
+        """
+        return pulumi.get(self, "last_minor_version_disruption_time")
+
+    @_builtins.property
+    @pulumi.getter(name="minorVersionDisruptionInterval")
+    def minor_version_disruption_interval(self) -> Optional[_builtins.str]:
+        """
+        The minimum duration between two minor version upgrades of the control plane.
+        """
+        return pulumi.get(self, "minor_version_disruption_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="patchVersionDisruptionInterval")
+    def patch_version_disruption_interval(self) -> Optional[_builtins.str]:
+        """
+        The minimum duration between two patch version upgrades of the control plane.
+        """
+        return pulumi.get(self, "patch_version_disruption_interval")
 
 
 @pulumi.output_type
@@ -22856,14 +22958,17 @@ class GetClusterLoggingConfigResult(dict):
 class GetClusterMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  daily_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult'],
+                 disruption_budgets: Sequence['outputs.GetClusterMaintenancePolicyDisruptionBudgetResult'],
                  maintenance_exclusions: Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult'],
                  recurring_windows: Sequence['outputs.GetClusterMaintenancePolicyRecurringWindowResult']):
         """
         :param Sequence['GetClusterMaintenancePolicyDailyMaintenanceWindowArgs'] daily_maintenance_windows: Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+        :param Sequence['GetClusterMaintenancePolicyDisruptionBudgetArgs'] disruption_budgets: Cluster disruption intervals for minor version and patch version upgrade
         :param Sequence['GetClusterMaintenancePolicyMaintenanceExclusionArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         :param Sequence['GetClusterMaintenancePolicyRecurringWindowArgs'] recurring_windows: Time window for recurring maintenance operations.
         """
         pulumi.set(__self__, "daily_maintenance_windows", daily_maintenance_windows)
+        pulumi.set(__self__, "disruption_budgets", disruption_budgets)
         pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
         pulumi.set(__self__, "recurring_windows", recurring_windows)
 
@@ -22874,6 +22979,14 @@ class GetClusterMaintenancePolicyResult(dict):
         Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
         """
         return pulumi.get(self, "daily_maintenance_windows")
+
+    @_builtins.property
+    @pulumi.getter(name="disruptionBudgets")
+    def disruption_budgets(self) -> Sequence['outputs.GetClusterMaintenancePolicyDisruptionBudgetResult']:
+        """
+        Cluster disruption intervals for minor version and patch version upgrade
+        """
+        return pulumi.get(self, "disruption_budgets")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceExclusions")
@@ -22909,6 +23022,39 @@ class GetClusterMaintenancePolicyDailyMaintenanceWindowResult(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyDisruptionBudgetResult(dict):
+    def __init__(__self__, *,
+                 last_disruption_time: _builtins.str,
+                 last_minor_version_disruption_time: _builtins.str,
+                 minor_version_disruption_interval: _builtins.str,
+                 patch_version_disruption_interval: _builtins.str):
+        pulumi.set(__self__, "last_disruption_time", last_disruption_time)
+        pulumi.set(__self__, "last_minor_version_disruption_time", last_minor_version_disruption_time)
+        pulumi.set(__self__, "minor_version_disruption_interval", minor_version_disruption_interval)
+        pulumi.set(__self__, "patch_version_disruption_interval", patch_version_disruption_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="lastDisruptionTime")
+    def last_disruption_time(self) -> _builtins.str:
+        return pulumi.get(self, "last_disruption_time")
+
+    @_builtins.property
+    @pulumi.getter(name="lastMinorVersionDisruptionTime")
+    def last_minor_version_disruption_time(self) -> _builtins.str:
+        return pulumi.get(self, "last_minor_version_disruption_time")
+
+    @_builtins.property
+    @pulumi.getter(name="minorVersionDisruptionInterval")
+    def minor_version_disruption_interval(self) -> _builtins.str:
+        return pulumi.get(self, "minor_version_disruption_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="patchVersionDisruptionInterval")
+    def patch_version_disruption_interval(self) -> _builtins.str:
+        return pulumi.get(self, "patch_version_disruption_interval")
 
 
 @pulumi.output_type
@@ -26393,7 +26539,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         :param Sequence['GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs'] pod_cidr_overprovision_configs: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
         :param _builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
-        :param _builtins.str subnetwork: The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+        :param _builtins.str subnetwork: The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested network_config block (setting this attribute directly is supported for backward compatibility). Once created the node pool's subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
         """
         pulumi.set(__self__, "accelerator_network_profile", accelerator_network_profile)
         pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
@@ -26482,7 +26628,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
     @pulumi.getter
     def subnetwork(self) -> _builtins.str:
         """
-        The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+        The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested network_config block (setting this attribute directly is supported for backward compatibility). Once created the node pool's subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
         """
         return pulumi.get(self, "subnetwork")
 

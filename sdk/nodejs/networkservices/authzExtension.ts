@@ -77,7 +77,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networkservices.AuthzExtension("default", {
  *     name: "my-authz-ext",
  *     location: "us-west1",
- *     authority: "ext11.com",
  *     service: "iap.googleapis.com",
  *     timeout: "0.1s",
  * });
@@ -132,7 +131,7 @@ export class AuthzExtension extends pulumi.CustomResource {
     /**
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      */
-    declare public readonly authority: pulumi.Output<string>;
+    declare public readonly authority: pulumi.Output<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
@@ -263,9 +262,6 @@ export class AuthzExtension extends pulumi.CustomResource {
             resourceInputs["wireFormat"] = state?.wireFormat;
         } else {
             const args = argsOrState as AuthzExtensionArgs | undefined;
-            if (args?.authority === undefined && !opts.urn) {
-                throw new Error("Missing required property 'authority'");
-            }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -414,7 +410,7 @@ export interface AuthzExtensionArgs {
     /**
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      */
-    authority: pulumi.Input<string>;
+    authority?: pulumi.Input<string>;
     /**
      * A human-readable description of the resource.
      */

@@ -568,6 +568,87 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Redis Cluster Flexible Ca
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     name: "ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     pool: _default.name,
+ *     certificateAuthorityId: "ca-auth",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "Google",
+ *                 commonName: "my-redis-ca",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ * });
+ * const consumerNet = new gcp.compute.Network("consumer_net", {
+ *     name: "ca-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
+ *     name: "ca-subnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: consumerNet.id,
+ * });
+ * const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "ca-policy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     network: consumerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [consumerSubnet.id],
+ *     },
+ * });
+ * const test_cluster = new gcp.redis.Cluster("test-cluster", {
+ *     name: "ca-cluster",
+ *     shardCount: 3,
+ *     region: "us-central1",
+ *     pscConfigs: [{
+ *         network: consumerNet.id,
+ *     }],
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+ *     serverCaMode: "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+ *     serverCaPool: _default.id,
+ *     deletionProtectionEnabled: true,
+ * }, {
+ *     dependsOn: [
+ *         defaultServiceConnectionPolicy,
+ *         defaultAuthority,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -769,6 +850,18 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly replicaCount: pulumi.Output<number | undefined>;
     /**
+     * The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     */
+    declare public readonly serverCaMode: pulumi.Output<string>;
+    /**
+     * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     */
+    declare public readonly serverCaPool: pulumi.Output<string | undefined>;
+    /**
      * Required. Number of shards for the Redis cluster.
      */
     declare public readonly shardCount: pulumi.Output<number>;
@@ -845,6 +938,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["redisConfigs"] = state?.redisConfigs;
             resourceInputs["region"] = state?.region;
             resourceInputs["replicaCount"] = state?.replicaCount;
+            resourceInputs["serverCaMode"] = state?.serverCaMode;
+            resourceInputs["serverCaPool"] = state?.serverCaPool;
             resourceInputs["shardCount"] = state?.shardCount;
             resourceInputs["sizeGb"] = state?.sizeGb;
             resourceInputs["state"] = state?.state;
@@ -875,6 +970,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["redisConfigs"] = args?.redisConfigs;
             resourceInputs["region"] = args?.region;
             resourceInputs["replicaCount"] = args?.replicaCount;
+            resourceInputs["serverCaMode"] = args?.serverCaMode;
+            resourceInputs["serverCaPool"] = args?.serverCaPool;
             resourceInputs["shardCount"] = args?.shardCount;
             resourceInputs["transitEncryptionMode"] = args?.transitEncryptionMode;
             resourceInputs["zoneDistributionConfig"] = args?.zoneDistributionConfig;
@@ -1060,6 +1157,18 @@ export interface ClusterState {
      */
     replicaCount?: pulumi.Input<number>;
     /**
+     * The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     */
+    serverCaMode?: pulumi.Input<string>;
+    /**
+     * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     */
+    serverCaPool?: pulumi.Input<string>;
+    /**
      * Required. Number of shards for the Redis cluster.
      */
     shardCount?: pulumi.Input<number>;
@@ -1192,6 +1301,18 @@ export interface ClusterArgs {
      * Optional. The number of replica nodes per shard.
      */
     replicaCount?: pulumi.Input<number>;
+    /**
+     * The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     */
+    serverCaMode?: pulumi.Input<string>;
+    /**
+     * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     */
+    serverCaPool?: pulumi.Input<string>;
     /**
      * Required. Number of shards for the Redis cluster.
      */

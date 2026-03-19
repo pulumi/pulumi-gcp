@@ -699,6 +699,7 @@ namespace Pulumi.Gcp.Iam
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The configuration for OAuth 2.0 client used to get the extended group
         /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
         /// type is supported. Extended groups supports a subset of Google Cloud
@@ -710,6 +711,8 @@ namespace Pulumi.Gcp.Iam
         /// active session. Each user identity in the workforce identity pool must map
         /// to a unique Microsoft Entra ID user.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
         /// </summary>
         [Output("extendedAttributesOauth2Client")]
         public Output<Outputs.WorkforcePoolProviderExtendedAttributesOauth2Client?> ExtendedAttributesOauth2Client { get; private set; } = null!;
@@ -923,6 +926,7 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The configuration for OAuth 2.0 client used to get the extended group
         /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
         /// type is supported. Extended groups supports a subset of Google Cloud
@@ -934,6 +938,8 @@ namespace Pulumi.Gcp.Iam
         /// active session. Each user identity in the workforce identity pool must map
         /// to a unique Microsoft Entra ID user.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
         /// </summary>
         [Input("extendedAttributesOauth2Client")]
         public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>? ExtendedAttributesOauth2Client { get; set; }
@@ -1091,6 +1097,7 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The configuration for OAuth 2.0 client used to get the extended group
         /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
         /// type is supported. Extended groups supports a subset of Google Cloud
@@ -1102,6 +1109,8 @@ namespace Pulumi.Gcp.Iam
         /// active session. Each user identity in the workforce identity pool must map
         /// to a unique Microsoft Entra ID user.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
         /// </summary>
         [Input("extendedAttributesOauth2Client")]
         public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientGetArgs>? ExtendedAttributesOauth2Client { get; set; }

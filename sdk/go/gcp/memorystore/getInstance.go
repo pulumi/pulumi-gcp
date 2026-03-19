@@ -98,6 +98,8 @@ type LookupInstanceResult struct {
 	PscAutoConnections      []GetInstancePscAutoConnection      `pulumi:"pscAutoConnections"`
 	PulumiLabels            map[string]string                   `pulumi:"pulumiLabels"`
 	ReplicaCount            int                                 `pulumi:"replicaCount"`
+	ServerCaMode            string                              `pulumi:"serverCaMode"`
+	ServerCaPool            string                              `pulumi:"serverCaPool"`
 	ShardCount              int                                 `pulumi:"shardCount"`
 	State                   string                              `pulumi:"state"`
 	StateInfos              []GetInstanceStateInfo              `pulumi:"stateInfos"`
@@ -295,6 +297,14 @@ func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
 
 func (o LookupInstanceResultOutput) ReplicaCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceResult) int { return v.ReplicaCount }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceResultOutput) ServerCaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ServerCaMode }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) ServerCaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ServerCaPool }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) ShardCount() pulumi.IntOutput {

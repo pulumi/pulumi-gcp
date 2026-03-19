@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_52865"),
+//				ShortName: pulumi.String("tf-test_56730"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})

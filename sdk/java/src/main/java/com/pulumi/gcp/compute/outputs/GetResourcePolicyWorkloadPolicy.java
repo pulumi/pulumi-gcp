@@ -17,8 +17,19 @@ public final class GetResourcePolicyWorkloadPolicy {
      */
     private String acceleratorTopology;
     /**
+     * @return Specifies the connection mode for the accelerator topology.
+     * Supported values are:
+     *   * &#39;AUTO_CONNECT&#39;: The interconnected chips are pre-configured at the time of VM creation.
+     *   * &#39;PROVISION_ONLY&#39;: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+     * 
+     * If not specified, the default is AUTO_CONNECT.
+     * This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set. Possible values: [&#34;AUTO_CONNECT&#34;, &#34;PROVISION_ONLY&#34;]
+     * 
+     */
+    private String acceleratorTopologyMode;
+    /**
      * @return The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-     * and cannot be set if accelerator topology is set. Possible values: [&#34;BLOCK&#34;, &#34;CLUSTER&#34;, &#34;SUBBLOCK&#34;]
+     * and cannot be set if accelerator topology or accelerator topology mode is set. Possible values: [&#34;BLOCK&#34;, &#34;CLUSTER&#34;, &#34;SUBBLOCK&#34;]
      * 
      */
     private String maxTopologyDistance;
@@ -38,8 +49,21 @@ public final class GetResourcePolicyWorkloadPolicy {
         return this.acceleratorTopology;
     }
     /**
+     * @return Specifies the connection mode for the accelerator topology.
+     * Supported values are:
+     *   * &#39;AUTO_CONNECT&#39;: The interconnected chips are pre-configured at the time of VM creation.
+     *   * &#39;PROVISION_ONLY&#39;: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+     * 
+     * If not specified, the default is AUTO_CONNECT.
+     * This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set. Possible values: [&#34;AUTO_CONNECT&#34;, &#34;PROVISION_ONLY&#34;]
+     * 
+     */
+    public String acceleratorTopologyMode() {
+        return this.acceleratorTopologyMode;
+    }
+    /**
      * @return The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-     * and cannot be set if accelerator topology is set. Possible values: [&#34;BLOCK&#34;, &#34;CLUSTER&#34;, &#34;SUBBLOCK&#34;]
+     * and cannot be set if accelerator topology or accelerator topology mode is set. Possible values: [&#34;BLOCK&#34;, &#34;CLUSTER&#34;, &#34;SUBBLOCK&#34;]
      * 
      */
     public String maxTopologyDistance() {
@@ -63,12 +87,14 @@ public final class GetResourcePolicyWorkloadPolicy {
     @CustomType.Builder
     public static final class Builder {
         private String acceleratorTopology;
+        private String acceleratorTopologyMode;
         private String maxTopologyDistance;
         private String type;
         public Builder() {}
         public Builder(GetResourcePolicyWorkloadPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorTopology = defaults.acceleratorTopology;
+    	      this.acceleratorTopologyMode = defaults.acceleratorTopologyMode;
     	      this.maxTopologyDistance = defaults.maxTopologyDistance;
     	      this.type = defaults.type;
         }
@@ -79,6 +105,14 @@ public final class GetResourcePolicyWorkloadPolicy {
               throw new MissingRequiredPropertyException("GetResourcePolicyWorkloadPolicy", "acceleratorTopology");
             }
             this.acceleratorTopology = acceleratorTopology;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder acceleratorTopologyMode(String acceleratorTopologyMode) {
+            if (acceleratorTopologyMode == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyWorkloadPolicy", "acceleratorTopologyMode");
+            }
+            this.acceleratorTopologyMode = acceleratorTopologyMode;
             return this;
         }
         @CustomType.Setter
@@ -100,6 +134,7 @@ public final class GetResourcePolicyWorkloadPolicy {
         public GetResourcePolicyWorkloadPolicy build() {
             final var _resultValue = new GetResourcePolicyWorkloadPolicy();
             _resultValue.acceleratorTopology = acceleratorTopology;
+            _resultValue.acceleratorTopologyMode = acceleratorTopologyMode;
             _resultValue.maxTopologyDistance = maxTopologyDistance;
             _resultValue.type = type;
             return _resultValue;

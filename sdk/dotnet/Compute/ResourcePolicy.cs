@@ -280,6 +280,30 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Resource Policy Workload Policy Accelerator Topology Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
+    ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "europe-west1",
+    ///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
+    ///         {
+    ///             Type = "HIGH_THROUGHPUT",
+    ///             AcceleratorTopology = "2x2",
+    ///             AcceleratorTopologyMode = "AUTO_CONNECT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Resource Policy Workload Policy Max Topology Distance
     /// 
     /// ```csharp

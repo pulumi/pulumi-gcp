@@ -73,6 +73,8 @@ public final class GetInstanceResult {
     private List<GetInstancePscAutoConnection> pscAutoConnections;
     private Map<String,String> pulumiLabels;
     private Integer replicaCount;
+    private String serverCaMode;
+    private String serverCaPool;
     private Integer shardCount;
     private String state;
     private List<GetInstanceStateInfo> stateInfos;
@@ -194,6 +196,12 @@ public final class GetInstanceResult {
     public Integer replicaCount() {
         return this.replicaCount;
     }
+    public String serverCaMode() {
+        return this.serverCaMode;
+    }
+    public String serverCaPool() {
+        return this.serverCaPool;
+    }
     public Integer shardCount() {
         return this.shardCount;
     }
@@ -261,6 +269,8 @@ public final class GetInstanceResult {
         private List<GetInstancePscAutoConnection> pscAutoConnections;
         private Map<String,String> pulumiLabels;
         private Integer replicaCount;
+        private String serverCaMode;
+        private String serverCaPool;
         private Integer shardCount;
         private String state;
         private List<GetInstanceStateInfo> stateInfos;
@@ -307,6 +317,8 @@ public final class GetInstanceResult {
     	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.replicaCount = defaults.replicaCount;
+    	      this.serverCaMode = defaults.serverCaMode;
+    	      this.serverCaPool = defaults.serverCaPool;
     	      this.shardCount = defaults.shardCount;
     	      this.state = defaults.state;
     	      this.stateInfos = defaults.stateInfos;
@@ -649,6 +661,22 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCaMode(String serverCaMode) {
+            if (serverCaMode == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "serverCaMode");
+            }
+            this.serverCaMode = serverCaMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverCaPool(String serverCaPool) {
+            if (serverCaPool == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "serverCaPool");
+            }
+            this.serverCaPool = serverCaPool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shardCount(Integer shardCount) {
             if (shardCount == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "shardCount");
@@ -748,6 +776,8 @@ public final class GetInstanceResult {
             _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.replicaCount = replicaCount;
+            _resultValue.serverCaMode = serverCaMode;
+            _resultValue.serverCaPool = serverCaPool;
             _resultValue.shardCount = shardCount;
             _resultValue.state = state;
             _resultValue.stateInfos = stateInfos;

@@ -469,6 +469,134 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// ### Memorystore Instance Flexible Ca
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+    ///     {
+    ///         Name = "ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var memorystoreP4saRequester = new Gcp.CertificateAuthority.CaPoolIamMember("memorystore_p4sa_requester", new()
+    ///     {
+    ///         CaPool = @default.Id,
+    ///         Role = "roles/privateca.certificateRequester",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-memorystore.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+    ///     {
+    ///         Pool = @default.Name,
+    ///         CertificateAuthorityId = "ca-auth",
+    ///         Location = "us-central1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "Google",
+    ///                     CommonName = "my-memorystore-ca",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///     });
+    /// 
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "ca-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "ca-subnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "ca-policy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 producerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var test_instance = new Gcp.MemoryStore.Instance("test-instance", new()
+    ///     {
+    ///         InstanceId = "ca-instance",
+    ///         ShardCount = 3,
+    ///         Location = "us-central1",
+    ///         DesiredAutoCreatedEndpoints = new[]
+    ///         {
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///             },
+    ///         },
+    ///         TransitEncryptionMode = "SERVER_AUTHENTICATION",
+    ///         ServerCaMode = "CUSTOMER_MANAGED_CAS_CA",
+    ///         ServerCaPool = @default.Id,
+    ///         DeletionProtectionEnabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultServiceConnectionPolicy,
+    ///             defaultAuthority,
+    ///             memorystoreP4saRequester,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -738,6 +866,22 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("replicaCount")]
         public Output<int> ReplicaCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The serverCaMode for the TLS enabled Memorystore instance.
+        /// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        /// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Output("serverCaMode")]
+        public Output<string> ServerCaMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+        /// as the server_ca_mode.
+        /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        /// </summary>
+        [Output("serverCaPool")]
+        public Output<string?> ServerCaPool { get; private set; } = null!;
 
         /// <summary>
         /// Required. Number of shards for the instance.
@@ -1020,6 +1164,22 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("replicaCount")]
         public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
+        /// The serverCaMode for the TLS enabled Memorystore instance.
+        /// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        /// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Input("serverCaMode")]
+        public Input<string>? ServerCaMode { get; set; }
+
+        /// <summary>
+        /// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+        /// as the server_ca_mode.
+        /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        /// </summary>
+        [Input("serverCaPool")]
+        public Input<string>? ServerCaPool { get; set; }
 
         /// <summary>
         /// Required. Number of shards for the instance.
@@ -1395,6 +1555,22 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("replicaCount")]
         public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
+        /// The serverCaMode for the TLS enabled Memorystore instance.
+        /// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        /// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Input("serverCaMode")]
+        public Input<string>? ServerCaMode { get; set; }
+
+        /// <summary>
+        /// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+        /// as the server_ca_mode.
+        /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        /// </summary>
+        [Input("serverCaPool")]
+        public Input<string>? ServerCaPool { get; set; }
 
         /// <summary>
         /// Required. Number of shards for the instance.

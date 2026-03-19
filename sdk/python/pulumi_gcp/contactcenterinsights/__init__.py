@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .analysis_rule import *
+from .auto_labeling_rule import *
 from .view import *
 from ._inputs import *
 from . import outputs

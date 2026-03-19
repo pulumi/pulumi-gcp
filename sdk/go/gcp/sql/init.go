@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Database{}
 	case "gcp:sql/databaseInstance:DatabaseInstance":
 		r = &DatabaseInstance{}
+	case "gcp:sql/provisionScript:ProvisionScript":
+		r = &ProvisionScript{}
 	case "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance":
 		r = &SourceRepresentationInstance{}
 	case "gcp:sql/sslCert:SslCert":
@@ -52,6 +54,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"sql/databaseInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"sql/provisionScript",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

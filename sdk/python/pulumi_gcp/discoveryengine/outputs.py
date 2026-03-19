@@ -3001,7 +3001,9 @@ class SearchEngineSearchEngineConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "searchAddOns":
+        if key == "requiredSubscriptionTier":
+            suggest = "required_subscription_tier"
+        elif key == "searchAddOns":
             suggest = "search_add_ons"
         elif key == "searchTier":
             suggest = "search_tier"
@@ -3018,19 +3020,35 @@ class SearchEngineSearchEngineConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 required_subscription_tier: Optional[_builtins.str] = None,
                  search_add_ons: Optional[Sequence[_builtins.str]] = None,
                  search_tier: Optional[_builtins.str] = None):
         """
+        :param _builtins.str required_subscription_tier: The required subscription tier of this engine.
+               They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+               Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
         :param Sequence[_builtins.str] search_add_ons: The add-on that this search engine enables.
                Each value may be one of: `SEARCH_ADD_ON_LLM`.
         :param _builtins.str search_tier: The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
                Default value is `SEARCH_TIER_STANDARD`.
                Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
         """
+        if required_subscription_tier is not None:
+            pulumi.set(__self__, "required_subscription_tier", required_subscription_tier)
         if search_add_ons is not None:
             pulumi.set(__self__, "search_add_ons", search_add_ons)
         if search_tier is not None:
             pulumi.set(__self__, "search_tier", search_tier)
+
+    @_builtins.property
+    @pulumi.getter(name="requiredSubscriptionTier")
+    def required_subscription_tier(self) -> Optional[_builtins.str]:
+        """
+        The required subscription tier of this engine.
+        They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+        Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+        """
+        return pulumi.get(self, "required_subscription_tier")
 
     @_builtins.property
     @pulumi.getter(name="searchAddOns")

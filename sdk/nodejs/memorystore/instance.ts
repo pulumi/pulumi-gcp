@@ -311,6 +311,95 @@ import * as utilities from "../utilities";
  *     dependsOn: [secondaryPolicy],
  * });
  * ```
+ * ### Memorystore Instance Flexible Ca
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     name: "ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ * });
+ * const memorystoreP4saRequester = new gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester", {
+ *     caPool: _default.id,
+ *     role: "roles/privateca.certificateRequester",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-memorystore.iam.gserviceaccount.com`),
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ *     pool: _default.name,
+ *     certificateAuthorityId: "ca-auth",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "Google",
+ *                 commonName: "my-memorystore-ca",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ * });
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "ca-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "ca-subnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: producerNet.id,
+ * });
+ * const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "ca-policy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *     },
+ * });
+ * const test_instance = new gcp.memorystore.Instance("test-instance", {
+ *     instanceId: "ca-instance",
+ *     shardCount: 3,
+ *     location: "us-central1",
+ *     desiredAutoCreatedEndpoints: [{
+ *         network: producerNet.id,
+ *         projectId: project.then(project => project.projectId),
+ *     }],
+ *     transitEncryptionMode: "SERVER_AUTHENTICATION",
+ *     serverCaMode: "CUSTOMER_MANAGED_CAS_CA",
+ *     serverCaPool: _default.id,
+ *     deletionProtectionEnabled: true,
+ * }, {
+ *     dependsOn: [
+ *         defaultServiceConnectionPolicy,
+ *         defaultAuthority,
+ *         memorystoreP4saRequester,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -543,6 +632,18 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly replicaCount: pulumi.Output<number>;
     /**
+     * The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     */
+    declare public readonly serverCaMode: pulumi.Output<string>;
+    /**
+     * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     */
+    declare public readonly serverCaPool: pulumi.Output<string | undefined>;
+    /**
      * Required. Number of shards for the instance.
      */
     declare public readonly shardCount: pulumi.Output<number>;
@@ -629,6 +730,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["pscAutoConnections"] = state?.pscAutoConnections;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["replicaCount"] = state?.replicaCount;
+            resourceInputs["serverCaMode"] = state?.serverCaMode;
+            resourceInputs["serverCaPool"] = state?.serverCaPool;
             resourceInputs["shardCount"] = state?.shardCount;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateInfos"] = state?.stateInfos;
@@ -668,6 +771,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["persistenceConfig"] = args?.persistenceConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["replicaCount"] = args?.replicaCount;
+            resourceInputs["serverCaMode"] = args?.serverCaMode;
+            resourceInputs["serverCaPool"] = args?.serverCaPool;
             resourceInputs["shardCount"] = args?.shardCount;
             resourceInputs["transitEncryptionMode"] = args?.transitEncryptionMode;
             resourceInputs["zoneDistributionConfig"] = args?.zoneDistributionConfig;
@@ -888,6 +993,18 @@ export interface InstanceState {
      */
     replicaCount?: pulumi.Input<number>;
     /**
+     * The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     */
+    serverCaMode?: pulumi.Input<string>;
+    /**
+     * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     */
+    serverCaPool?: pulumi.Input<string>;
+    /**
      * Required. Number of shards for the instance.
      */
     shardCount?: pulumi.Input<number>;
@@ -1045,6 +1162,18 @@ export interface InstanceArgs {
      * Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
      */
     replicaCount?: pulumi.Input<number>;
+    /**
+     * The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     */
+    serverCaMode?: pulumi.Input<string>;
+    /**
+     * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     */
+    serverCaPool?: pulumi.Input<string>;
     /**
      * Required. Number of shards for the instance.
      */

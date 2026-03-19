@@ -331,6 +331,62 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///         Name = "test-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var fwPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("fw_policy", new()
+    ///     {
+    ///         Name = "simple-fw-policy",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var assoc = new Gcp.Compute.RegionNetworkFirewallPolicyAssociation("assoc", new()
+    ///     {
+    ///         Name = "fw-policy-assoc",
+    ///         Region = "us-central1",
+    ///         FirewallPolicy = fwPolicy.Id,
+    ///         AttachmentTarget = net.SelfLink,
+    ///     });
+    /// 
+    ///     var internalManagedLbRule = new Gcp.Compute.RegionNetworkFirewallPolicyRule("internal_managed_lb_rule", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         FirewallPolicy = fwPolicy.Name,
+    ///         Priority = 1000,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         TargetType = "INTERNAL_MANAGED_LB",
+    ///         Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "10.0.0.0/8",
+    ///             },
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -457,6 +513,18 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> SecurityProfileGroup { get; private set; } = null!;
 
         /// <summary>
+        /// A list of forwarding rules to which this rule applies.
+        /// This field allows you to control which load balancers get this rule.
+        /// For example, the following are valid values:
+        /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        /// - projects/project/global/forwardingRules/forwardingRule
+        /// - projects/project/regions/region/forwardingRules/forwardingRule
+        /// </summary>
+        [Output("targetForwardingRules")]
+        public Output<ImmutableArray<string>> TargetForwardingRules { get; private set; } = null!;
+
+        /// <summary>
         /// A list of secure tags that controls which instances the firewall rule applies to.
         /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
         /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -470,6 +538,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetServiceAccounts")]
         public Output<ImmutableArray<string>> TargetServiceAccounts { get; private set; } = null!;
+
+        /// <summary>
+        /// Target types of the firewall policy rule.
+        /// Default value is INSTANCES.
+        /// When TargetType is INTERNAL_MANAGED_LB, TargetForwardingRules must be set
+        /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        /// </summary>
+        [Output("targetType")]
+        public Output<string> TargetType { get; private set; } = null!;
 
         /// <summary>
         /// Boolean flag indicating if the traffic should be TLS decrypted.
@@ -609,6 +686,24 @@ namespace Pulumi.Gcp.Compute
         [Input("securityProfileGroup")]
         public Input<string>? SecurityProfileGroup { get; set; }
 
+        [Input("targetForwardingRules")]
+        private InputList<string>? _targetForwardingRules;
+
+        /// <summary>
+        /// A list of forwarding rules to which this rule applies.
+        /// This field allows you to control which load balancers get this rule.
+        /// For example, the following are valid values:
+        /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        /// - projects/project/global/forwardingRules/forwardingRule
+        /// - projects/project/regions/region/forwardingRules/forwardingRule
+        /// </summary>
+        public InputList<string> TargetForwardingRules
+        {
+            get => _targetForwardingRules ?? (_targetForwardingRules = new InputList<string>());
+            set => _targetForwardingRules = value;
+        }
+
         [Input("targetSecureTags")]
         private InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagArgs>? _targetSecureTags;
 
@@ -635,6 +730,15 @@ namespace Pulumi.Gcp.Compute
             get => _targetServiceAccounts ?? (_targetServiceAccounts = new InputList<string>());
             set => _targetServiceAccounts = value;
         }
+
+        /// <summary>
+        /// Target types of the firewall policy rule.
+        /// Default value is INSTANCES.
+        /// When TargetType is INTERNAL_MANAGED_LB, TargetForwardingRules must be set
+        /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        /// </summary>
+        [Input("targetType")]
+        public Input<string>? TargetType { get; set; }
 
         /// <summary>
         /// Boolean flag indicating if the traffic should be TLS decrypted.
@@ -754,6 +858,24 @@ namespace Pulumi.Gcp.Compute
         [Input("securityProfileGroup")]
         public Input<string>? SecurityProfileGroup { get; set; }
 
+        [Input("targetForwardingRules")]
+        private InputList<string>? _targetForwardingRules;
+
+        /// <summary>
+        /// A list of forwarding rules to which this rule applies.
+        /// This field allows you to control which load balancers get this rule.
+        /// For example, the following are valid values:
+        /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        /// - projects/project/global/forwardingRules/forwardingRule
+        /// - projects/project/regions/region/forwardingRules/forwardingRule
+        /// </summary>
+        public InputList<string> TargetForwardingRules
+        {
+            get => _targetForwardingRules ?? (_targetForwardingRules = new InputList<string>());
+            set => _targetForwardingRules = value;
+        }
+
         [Input("targetSecureTags")]
         private InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagGetArgs>? _targetSecureTags;
 
@@ -780,6 +902,15 @@ namespace Pulumi.Gcp.Compute
             get => _targetServiceAccounts ?? (_targetServiceAccounts = new InputList<string>());
             set => _targetServiceAccounts = value;
         }
+
+        /// <summary>
+        /// Target types of the firewall policy rule.
+        /// Default value is INSTANCES.
+        /// When TargetType is INTERNAL_MANAGED_LB, TargetForwardingRules must be set
+        /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        /// </summary>
+        [Input("targetType")]
+        public Input<string>? TargetType { get; set; }
 
         /// <summary>
         /// Boolean flag indicating if the traffic should be TLS decrypted.

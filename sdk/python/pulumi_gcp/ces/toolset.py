@@ -500,7 +500,8 @@ class Toolset(pulumi.CustomResource):
                 },
                 "api_authentication": {
                     "service_account_auth_config": {
-                        "service_account": "testaccount@gmail.com",
+                        "service_account": "my@service-account.com",
+                        "scopes": ["scope1"],
                     },
                 },
             })
@@ -773,6 +774,7 @@ class Toolset(pulumi.CustomResource):
                 "api_authentication": {
                     "service_account_auth_config": {
                         "service_account": "my@service-account.com",
+                        "scopes": ["scope1"],
                     },
                 },
             })
@@ -1067,7 +1069,8 @@ class Toolset(pulumi.CustomResource):
                 },
                 "api_authentication": {
                     "service_account_auth_config": {
-                        "service_account": "testaccount@gmail.com",
+                        "service_account": "my@service-account.com",
+                        "scopes": ["scope1"],
                     },
                 },
             })
@@ -1340,6 +1343,7 @@ class Toolset(pulumi.CustomResource):
                 "api_authentication": {
                     "service_account_auth_config": {
                         "service_account": "my@service-account.com",
+                        "scopes": ["scope1"],
                     },
                 },
             })

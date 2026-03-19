@@ -41,6 +41,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IcebergNamespaceIamMember{}
 	case "gcp:biglake/icebergNamespaceIamPolicy:IcebergNamespaceIamPolicy":
 		r = &IcebergNamespaceIamPolicy{}
+	case "gcp:biglake/icebergTable:IcebergTable":
+		r = &IcebergTable{}
+	case "gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding":
+		r = &IcebergTableIamBinding{}
+	case "gcp:biglake/icebergTableIamMember:IcebergTableIamMember":
+		r = &IcebergTableIamMember{}
+	case "gcp:biglake/icebergTableIamPolicy:IcebergTableIamPolicy":
+		r = &IcebergTableIamPolicy{}
 	case "gcp:biglake/table:Table":
 		r = &Table{}
 	default:
@@ -104,6 +112,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"biglake/icebergNamespaceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/icebergTable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/icebergTableIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/icebergTableIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/icebergTableIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

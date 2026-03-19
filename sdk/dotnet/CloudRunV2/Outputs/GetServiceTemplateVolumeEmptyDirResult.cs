@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class GetServiceTemplateVolumeEmptyDirResult
     {
         /// <summary>
-        /// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+        /// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY", "DISK"]
         /// </summary>
         public readonly string Medium;
         /// <summary>

@@ -129,7 +129,14 @@ import javax.annotation.Nullable;
  *             .industryVertical("GENERIC")
  *             .appType("APP_TYPE_INTRANET")
  *             .searchEngineConfig(SearchEngineSearchEngineConfigArgs.builder()
+ *                 .searchTier("SEARCH_TIER_STANDARD")
+ *                 .requiredSubscriptionTier("SUBSCRIPTION_TIER_ENTERPRISE")
+ *                 .searchAddOns("SEARCH_ADD_ON_LLM")
  *                 .build())
+ *             .features(Map.ofEntries(
+ *                 Map.entry("agent-sharing-without-admin-approval", "FEATURE_STATE_ON"),
+ *                 Map.entry("disable-agent-sharing", "FEATURE_STATE_OFF")
+ *             ))
  *             .knowledgeGraphConfig(SearchEngineKnowledgeGraphConfigArgs.builder()
  *                 .build())
  *             .build());
@@ -279,14 +286,14 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="features", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> features;
+    private Output<Map<String,String>> features;
 
     /**
      * @return A map of the feature config for the engine to opt in or opt out of features.
      * 
      */
-    public Output<Optional<Map<String,String>>> features() {
-        return Codegen.optional(this.features);
+    public Output<Map<String,String>> features() {
+        return this.features;
     }
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
@@ -334,15 +341,15 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="knowledgeGraphConfig", refs={SearchEngineKnowledgeGraphConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SearchEngineKnowledgeGraphConfig> knowledgeGraphConfig;
+    private Output<SearchEngineKnowledgeGraphConfig> knowledgeGraphConfig;
 
     /**
      * @return Configurations for the Knowledge Graph.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<SearchEngineKnowledgeGraphConfig>> knowledgeGraphConfig() {
-        return Codegen.optional(this.knowledgeGraphConfig);
+    public Output<SearchEngineKnowledgeGraphConfig> knowledgeGraphConfig() {
+        return this.knowledgeGraphConfig;
     }
     /**
      * Location.

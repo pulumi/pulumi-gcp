@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_32270"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_82749"});
  * const namespace = new gcp.gkehub.Namespace("namespace", {
- *     scopeNamespaceId: "tf-test-namespace_44703",
+ *     scopeNamespaceId: "tf-test-namespace_15022",
  *     scopeId: scope.scopeId,
  *     scope: scope.name,
  *     namespaceLabels: {

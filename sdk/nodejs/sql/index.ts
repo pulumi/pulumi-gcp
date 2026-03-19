@@ -55,6 +55,11 @@ export const getTiers: typeof import("./getTiers").getTiers = null as any;
 export const getTiersOutput: typeof import("./getTiers").getTiersOutput = null as any;
 utilities.lazyLoad(exports, ["getTiers","getTiersOutput"], () => require("./getTiers"));
 
+export { ProvisionScriptArgs, ProvisionScriptState } from "./provisionScript";
+export type ProvisionScript = import("./provisionScript").ProvisionScript;
+export const ProvisionScript: typeof import("./provisionScript").ProvisionScript = null as any;
+utilities.lazyLoad(exports, ["ProvisionScript"], () => require("./provisionScript"));
+
 export { SourceRepresentationInstanceArgs, SourceRepresentationInstanceState } from "./sourceRepresentationInstance";
 export type SourceRepresentationInstance = import("./sourceRepresentationInstance").SourceRepresentationInstance;
 export const SourceRepresentationInstance: typeof import("./sourceRepresentationInstance").SourceRepresentationInstance = null as any;
@@ -79,6 +84,8 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "gcp:sql/databaseInstance:DatabaseInstance":
                 return new DatabaseInstance(name, <any>undefined, { urn })
+            case "gcp:sql/provisionScript:ProvisionScript":
+                return new ProvisionScript(name, <any>undefined, { urn })
             case "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance":
                 return new SourceRepresentationInstance(name, <any>undefined, { urn })
             case "gcp:sql/sslCert:SslCert":
@@ -92,6 +99,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "sql/database", _module)
 pulumi.runtime.registerResourceModule("gcp", "sql/databaseInstance", _module)
+pulumi.runtime.registerResourceModule("gcp", "sql/provisionScript", _module)
 pulumi.runtime.registerResourceModule("gcp", "sql/sourceRepresentationInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "sql/sslCert", _module)
 pulumi.runtime.registerResourceModule("gcp", "sql/user", _module)

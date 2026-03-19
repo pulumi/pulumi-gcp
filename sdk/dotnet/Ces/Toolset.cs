@@ -84,7 +84,11 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 ServiceAccountAuthConfig = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs
     ///                 {
-    ///                     ServiceAccount = "testaccount@gmail.com",
+    ///                     ServiceAccount = "my@service-account.com",
+    ///                     Scopes = new[]
+    ///                     {
+    ///                         "scope1",
+    ///                     },
     ///                 },
     ///             },
     ///         },
@@ -474,6 +478,10 @@ namespace Pulumi.Gcp.Ces
     ///                 ServiceAccountAuthConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs
     ///                 {
     ///                     ServiceAccount = "my@service-account.com",
+    ///                     Scopes = new[]
+    ///                     {
+    ///                         "scope1",
+    ///                     },
     ///                 },
     ///             },
     ///         },

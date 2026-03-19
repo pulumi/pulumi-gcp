@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// <summary>
         /// The different types of medium supported for EmptyDir.
         /// Default value is `MEMORY`.
-        /// Possible values are: `MEMORY`.
+        /// Possible values are: `MEMORY`, `DISK`.
         /// </summary>
         public readonly string? Medium;
         /// <summary>

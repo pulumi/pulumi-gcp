@@ -111,7 +111,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///     {
     ///         Name = "my-authz-ext",
     ///         Location = "us-west1",
-    ///         Authority = "ext11.com",
     ///         Service = "iap.googleapis.com",
     ///         Timeout = "0.1s",
     ///     });
@@ -144,7 +143,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// The :authority header in the gRPC request sent from Envoy to the extension service.
         /// </summary>
         [Output("authority")]
-        public Output<string> Authority { get; private set; } = null!;
+        public Output<string?> Authority { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was created.
@@ -329,8 +328,8 @@ namespace Pulumi.Gcp.NetworkServices
         /// <summary>
         /// The :authority header in the gRPC request sent from Envoy to the extension service.
         /// </summary>
-        [Input("authority", required: true)]
-        public Input<string> Authority { get; set; } = null!;
+        [Input("authority")]
+        public Input<string>? Authority { get; set; }
 
         /// <summary>
         /// A human-readable description of the resource.

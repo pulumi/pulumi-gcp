@@ -22,6 +22,12 @@ __all__ = [
     'IcebergCatalogReplica',
     'IcebergNamespaceIamBindingCondition',
     'IcebergNamespaceIamMemberCondition',
+    'IcebergTableIamBindingCondition',
+    'IcebergTableIamMemberCondition',
+    'IcebergTablePartitionSpec',
+    'IcebergTablePartitionSpecField',
+    'IcebergTableSchema',
+    'IcebergTableSchemaField',
     'TableHiveOptions',
     'TableHiveOptionsStorageDescriptor',
 ]
@@ -219,6 +225,320 @@ class IcebergNamespaceIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class IcebergTableIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class IcebergTableIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class IcebergTablePartitionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specId":
+            suggest = "spec_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IcebergTablePartitionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IcebergTablePartitionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IcebergTablePartitionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fields: Sequence['outputs.IcebergTablePartitionSpecField'],
+                 spec_id: Optional[_builtins.int] = None):
+        """
+        :param Sequence['IcebergTablePartitionSpecFieldArgs'] fields: Structure is documented below.
+        :param _builtins.int spec_id: (Output)
+               The unique identifier of the partition spec.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if spec_id is not None:
+            pulumi.set(__self__, "spec_id", spec_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Sequence['outputs.IcebergTablePartitionSpecField']:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter(name="specId")
+    def spec_id(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The unique identifier of the partition spec.
+        """
+        return pulumi.get(self, "spec_id")
+
+
+@pulumi.output_type
+class IcebergTablePartitionSpecField(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceId":
+            suggest = "source_id"
+        elif key == "fieldId":
+            suggest = "field_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IcebergTablePartitionSpecField. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IcebergTablePartitionSpecField.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IcebergTablePartitionSpecField.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 source_id: _builtins.int,
+                 transform: _builtins.str,
+                 field_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str name: The name of the partition field.
+        :param _builtins.int source_id: The source field ID for the partition field.
+        :param _builtins.str transform: The transform to apply to the source field.
+        :param _builtins.int field_id: (Output)
+               The unique identifier of the partition field.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "transform", transform)
+        if field_id is not None:
+            pulumi.set(__self__, "field_id", field_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the partition field.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> _builtins.int:
+        """
+        The source field ID for the partition field.
+        """
+        return pulumi.get(self, "source_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def transform(self) -> _builtins.str:
+        """
+        The transform to apply to the source field.
+        """
+        return pulumi.get(self, "transform")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldId")
+    def field_id(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The unique identifier of the partition field.
+        """
+        return pulumi.get(self, "field_id")
+
+
+@pulumi.output_type
+class IcebergTableSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identifierFieldIds":
+            suggest = "identifier_field_ids"
+        elif key == "schemaId":
+            suggest = "schema_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IcebergTableSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IcebergTableSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IcebergTableSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fields: Sequence['outputs.IcebergTableSchemaField'],
+                 identifier_field_ids: Optional[Sequence[_builtins.int]] = None,
+                 schema_id: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence['IcebergTableSchemaFieldArgs'] fields: Structure is documented below.
+        :param Sequence[_builtins.int] identifier_field_ids: The field IDs that make up the identifier for the table.
+        :param _builtins.int schema_id: (Output)
+               The unique identifier of the schema.
+        :param _builtins.str type: The type of the schema.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if identifier_field_ids is not None:
+            pulumi.set(__self__, "identifier_field_ids", identifier_field_ids)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Sequence['outputs.IcebergTableSchemaField']:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter(name="identifierFieldIds")
+    def identifier_field_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        The field IDs that make up the identifier for the table.
+        """
+        return pulumi.get(self, "identifier_field_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The unique identifier of the schema.
+        """
+        return pulumi.get(self, "schema_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the schema.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class IcebergTableSchemaField(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 name: _builtins.str,
+                 required: _builtins.bool,
+                 type: _builtins.str,
+                 doc: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int id: The unique identifier of the field.
+        :param _builtins.str name: The name of the partition field.
+        :param _builtins.bool required: Whether the field is required.
+        :param _builtins.str type: The type of the field.
+        :param _builtins.str doc: A description of the field.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "type", type)
+        if doc is not None:
+            pulumi.set(__self__, "doc", doc)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique identifier of the field.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the partition field.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        """
+        Whether the field is required.
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def doc(self) -> Optional[_builtins.str]:
+        """
+        A description of the field.
+        """
+        return pulumi.get(self, "doc")
 
 
 @pulumi.output_type

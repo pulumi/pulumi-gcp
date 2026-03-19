@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *                 adminPassword: "ABcde_1#234",
  *                 databaseId: "mydb",
  *                 dbName: "db",
+ *                 dbUniqueName: "db",
  *             },
  *         },
  *     },
@@ -76,7 +77,7 @@ import * as utilities from "../utilities";
  *             dbVersion: "19.0.0.0",
  *             database: {
  *                 dbName: "db",
- *                 dbUniqueName: "dbunique",
+ *                 dbUniqueName: "db",
  *                 adminPassword: "ABcde_1#2345",
  *                 tdeWalletPassword: "ABcde_1#2345",
  *                 databaseId: "mydb",

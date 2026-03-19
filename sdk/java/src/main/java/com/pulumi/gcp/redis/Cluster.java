@@ -848,6 +848,135 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Redis Cluster Flexible Ca
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+ *             .pool(default_.name())
+ *             .certificateAuthorityId("ca-auth")
+ *             .location("us-central1")
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("Google")
+ *                         .commonName("my-redis-ca")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .build());
+ * 
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("ca-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("ca-subnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(consumerNet.id())
+ *             .build());
+ * 
+ *         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
+ *             .name("ca-policy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .network(consumerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(consumerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var test_cluster = new Cluster("test-cluster", ClusterArgs.builder()
+ *             .name("ca-cluster")
+ *             .shardCount(3)
+ *             .region("us-central1")
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(consumerNet.id())
+ *                 .build())
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION")
+ *             .serverCaMode("SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA")
+ *             .serverCaPool(default_.id())
+ *             .deletionProtectionEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     defaultServiceConnectionPolicy,
+ *                     defaultAuthority)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1355,6 +1484,42 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> replicaCount() {
         return Codegen.optional(this.replicaCount);
+    }
+    /**
+     * The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    @Export(name="serverCaMode", refs={String.class}, tree="[0]")
+    private Output<String> serverCaMode;
+
+    /**
+     * @return The serverCaMode for the TLS enabled Redis cluster.
+     * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    public Output<String> serverCaMode() {
+        return this.serverCaMode;
+    }
+    /**
+     * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    @Export(name="serverCaPool", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serverCaPool;
+
+    /**
+     * @return The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    public Output<Optional<String>> serverCaPool() {
+        return Codegen.optional(this.serverCaPool);
     }
     /**
      * Required. Number of shards for the Redis cluster.

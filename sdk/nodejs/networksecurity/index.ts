@@ -150,6 +150,16 @@ export type TlsInspectionPolicy = import("./tlsInspectionPolicy").TlsInspectionP
 export const TlsInspectionPolicy: typeof import("./tlsInspectionPolicy").TlsInspectionPolicy = null as any;
 utilities.lazyLoad(exports, ["TlsInspectionPolicy"], () => require("./tlsInspectionPolicy"));
 
+export { UllMirroringCollectorArgs, UllMirroringCollectorState } from "./ullMirroringCollector";
+export type UllMirroringCollector = import("./ullMirroringCollector").UllMirroringCollector;
+export const UllMirroringCollector: typeof import("./ullMirroringCollector").UllMirroringCollector = null as any;
+utilities.lazyLoad(exports, ["UllMirroringCollector"], () => require("./ullMirroringCollector"));
+
+export { UllMirroringEngineArgs, UllMirroringEngineState } from "./ullMirroringEngine";
+export type UllMirroringEngine = import("./ullMirroringEngine").UllMirroringEngine;
+export const UllMirroringEngine: typeof import("./ullMirroringEngine").UllMirroringEngine = null as any;
+utilities.lazyLoad(exports, ["UllMirroringEngine"], () => require("./ullMirroringEngine"));
+
 export { UrlListArgs, UrlListState } from "./urlList";
 export type UrlList = import("./urlList").UrlList;
 export const UrlList: typeof import("./urlList").UrlList = null as any;
@@ -216,6 +226,10 @@ const _module = {
                 return new ServerTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
                 return new TlsInspectionPolicy(name, <any>undefined, { urn })
+            case "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector":
+                return new UllMirroringCollector(name, <any>undefined, { urn })
+            case "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine":
+                return new UllMirroringEngine(name, <any>undefined, { urn })
             case "gcp:networksecurity/urlList:UrlList":
                 return new UrlList(name, <any>undefined, { urn })
             default:
@@ -251,4 +265,6 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfile", 
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfileGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/serverTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/tlsInspectionPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/ullMirroringCollector", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/ullMirroringEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/urlList", _module)

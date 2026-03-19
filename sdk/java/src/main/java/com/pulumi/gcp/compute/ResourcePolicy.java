@@ -419,6 +419,45 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Resource Policy Workload Policy Accelerator Topology Mode
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyWorkloadPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bar = new ResourcePolicy("bar", ResourcePolicyArgs.builder()
+ *             .name("gce-policy")
+ *             .region("europe-west1")
+ *             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
+ *                 .type("HIGH_THROUGHPUT")
+ *                 .acceleratorTopology("2x2")
+ *                 .acceleratorTopologyMode("AUTO_CONNECT")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Resource Policy Workload Policy Max Topology Distance
  * 
  * <pre>

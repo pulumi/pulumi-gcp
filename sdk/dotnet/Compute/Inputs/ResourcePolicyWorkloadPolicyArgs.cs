@@ -20,8 +20,21 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? AcceleratorTopology { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the connection mode for the accelerator topology.
+        /// Supported values are:
+        /// * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+        /// * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+        /// If not specified, the default is AUTO_CONNECT.
+        /// This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+        /// Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+        /// </summary>
+        [Input("acceleratorTopologyMode")]
+        public Input<string>? AcceleratorTopologyMode { get; set; }
+
+        /// <summary>
         /// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-        /// and cannot be set if accelerator topology is set.
+        /// and cannot be set if accelerator topology or accelerator topology mode is set.
         /// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
         /// </summary>
         [Input("maxTopologyDistance")]

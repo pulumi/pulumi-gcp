@@ -274,9 +274,6 @@ class TraceScope(pulumi.CustomResource):
         """
         A trace scope is a collection of resources whose traces are queried together
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Observability Trace Scope Basic
@@ -287,8 +284,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_42702",
-            name="tf-test_37426",
+            project_id="tf-test_49175",
+            name="tf-test_79411",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -340,9 +337,6 @@ class TraceScope(pulumi.CustomResource):
         """
         A trace scope is a collection of resources whose traces are queried together
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Observability Trace Scope Basic
@@ -353,8 +347,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_42702",
-            name="tf-test_37426",
+            project_id="tf-test_49175",
+            name="tf-test_79411",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",

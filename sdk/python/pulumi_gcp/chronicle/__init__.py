@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .data_access_label import *
 from .data_access_scope import *
+from .data_table import *
 from .reference_list import *
 from .retrohunt import *
 from .rule import *

@@ -19,8 +19,20 @@ public final class ResourcePolicyWorkloadPolicy {
      */
     private @Nullable String acceleratorTopology;
     /**
+     * @return (Optional, Beta)
+     * Specifies the connection mode for the accelerator topology.
+     * Supported values are:
+     * * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+     * * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+     *   If not specified, the default is AUTO_CONNECT.
+     *   This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+     *   Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+     * 
+     */
+    private @Nullable String acceleratorTopologyMode;
+    /**
      * @return The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-     * and cannot be set if accelerator topology is set.
+     * and cannot be set if accelerator topology or accelerator topology mode is set.
      * Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
      * 
      */
@@ -42,8 +54,22 @@ public final class ResourcePolicyWorkloadPolicy {
         return Optional.ofNullable(this.acceleratorTopology);
     }
     /**
+     * @return (Optional, Beta)
+     * Specifies the connection mode for the accelerator topology.
+     * Supported values are:
+     * * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+     * * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+     *   If not specified, the default is AUTO_CONNECT.
+     *   This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+     *   Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+     * 
+     */
+    public Optional<String> acceleratorTopologyMode() {
+        return Optional.ofNullable(this.acceleratorTopologyMode);
+    }
+    /**
      * @return The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-     * and cannot be set if accelerator topology is set.
+     * and cannot be set if accelerator topology or accelerator topology mode is set.
      * Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
      * 
      */
@@ -69,12 +95,14 @@ public final class ResourcePolicyWorkloadPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String acceleratorTopology;
+        private @Nullable String acceleratorTopologyMode;
         private @Nullable String maxTopologyDistance;
         private String type;
         public Builder() {}
         public Builder(ResourcePolicyWorkloadPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorTopology = defaults.acceleratorTopology;
+    	      this.acceleratorTopologyMode = defaults.acceleratorTopologyMode;
     	      this.maxTopologyDistance = defaults.maxTopologyDistance;
     	      this.type = defaults.type;
         }
@@ -83,6 +111,12 @@ public final class ResourcePolicyWorkloadPolicy {
         public Builder acceleratorTopology(@Nullable String acceleratorTopology) {
 
             this.acceleratorTopology = acceleratorTopology;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder acceleratorTopologyMode(@Nullable String acceleratorTopologyMode) {
+
+            this.acceleratorTopologyMode = acceleratorTopologyMode;
             return this;
         }
         @CustomType.Setter
@@ -102,6 +136,7 @@ public final class ResourcePolicyWorkloadPolicy {
         public ResourcePolicyWorkloadPolicy build() {
             final var _resultValue = new ResourcePolicyWorkloadPolicy();
             _resultValue.acceleratorTopology = acceleratorTopology;
+            _resultValue.acceleratorTopologyMode = acceleratorTopologyMode;
             _resultValue.maxTopologyDistance = maxTopologyDistance;
             _resultValue.type = type;
             return _resultValue;

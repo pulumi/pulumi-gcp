@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -136,6 +136,12 @@ class GetInstanceResult:
         if replica_count and not isinstance(replica_count, int):
             raise TypeError("Expected argument 'replica_count' to be a int")
         pulumi.set(__self__, "replica_count", replica_count)
+        if server_ca_mode and not isinstance(server_ca_mode, str):
+            raise TypeError("Expected argument 'server_ca_mode' to be a str")
+        pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool and not isinstance(server_ca_pool, str):
+            raise TypeError("Expected argument 'server_ca_pool' to be a str")
+        pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if shard_count and not isinstance(shard_count, int):
             raise TypeError("Expected argument 'shard_count' to be a int")
         pulumi.set(__self__, "shard_count", shard_count)
@@ -342,6 +348,16 @@ class GetInstanceResult:
         return pulumi.get(self, "replica_count")
 
     @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> _builtins.str:
+        return pulumi.get(self, "server_ca_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> _builtins.str:
+        return pulumi.get(self, "server_ca_pool")
+
+    @_builtins.property
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> _builtins.int:
         return pulumi.get(self, "shard_count")
@@ -419,6 +435,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             psc_auto_connections=self.psc_auto_connections,
             pulumi_labels=self.pulumi_labels,
             replica_count=self.replica_count,
+            server_ca_mode=self.server_ca_mode,
+            server_ca_pool=self.server_ca_pool,
             shard_count=self.shard_count,
             state=self.state,
             state_infos=self.state_infos,
@@ -496,6 +514,8 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         psc_auto_connections=pulumi.get(__ret__, 'psc_auto_connections'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         replica_count=pulumi.get(__ret__, 'replica_count'),
+        server_ca_mode=pulumi.get(__ret__, 'server_ca_mode'),
+        server_ca_pool=pulumi.get(__ret__, 'server_ca_pool'),
         shard_count=pulumi.get(__ret__, 'shard_count'),
         state=pulumi.get(__ret__, 'state'),
         state_infos=pulumi.get(__ret__, 'state_infos'),
@@ -570,6 +590,8 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         psc_auto_connections=pulumi.get(__response__, 'psc_auto_connections'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         replica_count=pulumi.get(__response__, 'replica_count'),
+        server_ca_mode=pulumi.get(__response__, 'server_ca_mode'),
+        server_ca_pool=pulumi.get(__response__, 'server_ca_pool'),
         shard_count=pulumi.get(__response__, 'shard_count'),
         state=pulumi.get(__response__, 'state'),
         state_infos=pulumi.get(__response__, 'state_infos'),

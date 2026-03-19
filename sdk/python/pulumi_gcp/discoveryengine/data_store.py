@@ -21,12 +21,12 @@ __all__ = ['DataStoreArgs', 'DataStore']
 @pulumi.input_type
 class DataStoreArgs:
     def __init__(__self__, *,
-                 content_config: pulumi.Input[_builtins.str],
                  data_store_id: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
                  industry_vertical: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  advanced_site_search_config: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']] = None,
+                 content_config: Optional[pulumi.Input[_builtins.str]] = None,
                  create_advanced_site_search: Optional[pulumi.Input[_builtins.bool]] = None,
                  document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,8 +36,6 @@ class DataStoreArgs:
         """
         The set of arguments for constructing a DataStore resource.
 
-        :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
-               Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         :param pulumi.Input[_builtins.str] data_store_id: The unique id of the data store.
         :param pulumi.Input[_builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
@@ -47,6 +45,8 @@ class DataStoreArgs:
                only be one of "global", "us" and "eu".
         :param pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs'] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
+               Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         :param pulumi.Input[_builtins.bool] create_advanced_site_search: If true, an advanced data store for site search will be created. If the
                data store is not configured as site search (GENERIC vertical and
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
@@ -70,13 +70,14 @@ class DataStoreArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] solution_types: The solutions that the data store enrolls.
                Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
-        pulumi.set(__self__, "content_config", content_config)
         pulumi.set(__self__, "data_store_id", data_store_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "industry_vertical", industry_vertical)
         pulumi.set(__self__, "location", location)
         if advanced_site_search_config is not None:
             pulumi.set(__self__, "advanced_site_search_config", advanced_site_search_config)
+        if content_config is not None:
+            pulumi.set(__self__, "content_config", content_config)
         if create_advanced_site_search is not None:
             pulumi.set(__self__, "create_advanced_site_search", create_advanced_site_search)
         if document_processing_config is not None:
@@ -89,19 +90,6 @@ class DataStoreArgs:
             pulumi.set(__self__, "skip_default_schema_creation", skip_default_schema_creation)
         if solution_types is not None:
             pulumi.set(__self__, "solution_types", solution_types)
-
-    @_builtins.property
-    @pulumi.getter(name="contentConfig")
-    def content_config(self) -> pulumi.Input[_builtins.str]:
-        """
-        The content config of the data store.
-        Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
-        """
-        return pulumi.get(self, "content_config")
-
-    @content_config.setter
-    def content_config(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "content_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreId")
@@ -166,6 +154,19 @@ class DataStoreArgs:
     @advanced_site_search_config.setter
     def advanced_site_search_config(self, value: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']]):
         pulumi.set(self, "advanced_site_search_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contentConfig")
+    def content_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content config of the data store.
+        Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
+        """
+        return pulumi.get(self, "content_config")
+
+    @content_config.setter
+    def content_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "content_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createAdvancedSiteSearch")
@@ -871,8 +872,6 @@ class DataStore(pulumi.CustomResource):
             __props__ = DataStoreArgs.__new__(DataStoreArgs)
 
             __props__.__dict__["advanced_site_search_config"] = advanced_site_search_config
-            if content_config is None and not opts.urn:
-                raise TypeError("Missing required property 'content_config'")
             __props__.__dict__["content_config"] = content_config
             __props__.__dict__["create_advanced_site_search"] = create_advanced_site_search
             if data_store_id is None and not opts.urn:
@@ -999,7 +998,7 @@ class DataStore(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="contentConfig")
-    def content_config(self) -> pulumi.Output[_builtins.str]:
+    def content_config(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The content config of the data store.
         Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.

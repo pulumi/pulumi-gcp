@@ -19,8 +19,18 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string AcceleratorTopology;
         /// <summary>
+        /// Specifies the connection mode for the accelerator topology.
+        /// Supported values are:
+        ///   * 'AUTO_CONNECT': The interconnected chips are pre-configured at the time of VM creation.
+        ///   * 'PROVISION_ONLY': The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+        /// 
+        /// If not specified, the default is AUTO_CONNECT.
+        /// This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set. Possible values: ["AUTO_CONNECT", "PROVISION_ONLY"]
+        /// </summary>
+        public readonly string AcceleratorTopologyMode;
+        /// <summary>
         /// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-        /// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+        /// and cannot be set if accelerator topology or accelerator topology mode is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
         /// </summary>
         public readonly string MaxTopologyDistance;
         /// <summary>
@@ -32,11 +42,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetResourcePolicyWorkloadPolicyResult(
             string acceleratorTopology,
 
+            string acceleratorTopologyMode,
+
             string maxTopologyDistance,
 
             string type)
         {
             AcceleratorTopology = acceleratorTopology;
+            AcceleratorTopologyMode = acceleratorTopologyMode;
             MaxTopologyDistance = maxTopologyDistance;
             Type = type;
         }

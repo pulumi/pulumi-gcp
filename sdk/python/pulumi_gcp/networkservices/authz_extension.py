@@ -19,10 +19,10 @@ __all__ = ['AuthzExtensionArgs', 'AuthzExtension']
 @pulumi.input_type
 class AuthzExtensionArgs:
     def __init__(__self__, *,
-                 authority: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.str],
+                 authority: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
                  forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -35,7 +35,6 @@ class AuthzExtensionArgs:
         """
         The set of arguments for constructing a AuthzExtension resource.
 
-        :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[_builtins.str] service: The service that runs the extension.
                The following values and formats are accepted:
@@ -44,6 +43,7 @@ class AuthzExtensionArgs:
                * A fully qualified domain name that can be resolved by the dataplane
                * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
         :param pulumi.Input[_builtins.str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
+        :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[_builtins.bool] fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
                When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
@@ -81,10 +81,11 @@ class AuthzExtensionArgs:
                This option is only supported for regional AuthzExtension resources.
                Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
-        pulumi.set(__self__, "authority", authority)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "timeout", timeout)
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fail_open is not None:
@@ -103,18 +104,6 @@ class AuthzExtensionArgs:
             pulumi.set(__self__, "project", project)
         if wire_format is not None:
             pulumi.set(__self__, "wire_format", wire_format)
-
-    @_builtins.property
-    @pulumi.getter
-    def authority(self) -> pulumi.Input[_builtins.str]:
-        """
-        The :authority header in the gRPC request sent from Envoy to the extension service.
-        """
-        return pulumi.get(self, "authority")
-
-    @authority.setter
-    def authority(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter
@@ -156,6 +145,18 @@ class AuthzExtensionArgs:
     @timeout.setter
     def timeout(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def authority(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The :authority header in the gRPC request sent from Envoy to the extension service.
+        """
+        return pulumi.get(self, "authority")
+
+    @authority.setter
+    def authority(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter
@@ -729,7 +730,6 @@ class AuthzExtension(pulumi.CustomResource):
         default = gcp.networkservices.AuthzExtension("default",
             name="my-authz-ext",
             location="us-west1",
-            authority="ext11.com",
             service="iap.googleapis.com",
             timeout="0.1s")
         ```
@@ -876,7 +876,6 @@ class AuthzExtension(pulumi.CustomResource):
         default = gcp.networkservices.AuthzExtension("default",
             name="my-authz-ext",
             location="us-west1",
-            authority="ext11.com",
             service="iap.googleapis.com",
             timeout="0.1s")
         ```
@@ -937,8 +936,6 @@ class AuthzExtension(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AuthzExtensionArgs.__new__(AuthzExtensionArgs)
 
-            if authority is None and not opts.urn:
-                raise TypeError("Missing required property 'authority'")
             __props__.__dict__["authority"] = authority
             __props__.__dict__["description"] = description
             __props__.__dict__["fail_open"] = fail_open
@@ -1074,7 +1071,7 @@ class AuthzExtension(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def authority(self) -> pulumi.Output[_builtins.str]:
+    def authority(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The :authority header in the gRPC request sent from Envoy to the extension service.
         """

@@ -77,6 +77,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerTlsPolicy{}
 	case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
 		r = &TlsInspectionPolicy{}
+	case "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector":
+		r = &UllMirroringCollector{}
+	case "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine":
+		r = &UllMirroringEngine{}
 	case "gcp:networksecurity/urlList:UrlList":
 		r = &UrlList{}
 	default:
@@ -230,6 +234,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/tlsInspectionPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/ullMirroringCollector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/ullMirroringEngine",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

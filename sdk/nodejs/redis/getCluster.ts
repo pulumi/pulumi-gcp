@@ -87,6 +87,8 @@ export interface GetClusterResult {
     readonly redisConfigs: {[key: string]: string};
     readonly region?: string;
     readonly replicaCount: number;
+    readonly serverCaMode: string;
+    readonly serverCaPool: string;
     readonly shardCount: number;
     readonly sizeGb: number;
     readonly state: string;

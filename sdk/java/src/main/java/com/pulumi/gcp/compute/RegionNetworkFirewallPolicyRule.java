@@ -363,6 +363,73 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociation;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociationArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network("net", NetworkArgs.builder()
+ *             .name("test-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var fwPolicy = new RegionNetworkFirewallPolicy("fwPolicy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("simple-fw-policy")
+ *             .region("us-central1")
+ *             .build());
+ * 
+ *         var assoc = new RegionNetworkFirewallPolicyAssociation("assoc", RegionNetworkFirewallPolicyAssociationArgs.builder()
+ *             .name("fw-policy-assoc")
+ *             .region("us-central1")
+ *             .firewallPolicy(fwPolicy.id())
+ *             .attachmentTarget(net.selfLink())
+ *             .build());
+ * 
+ *         var internalManagedLbRule = new RegionNetworkFirewallPolicyRule("internalManagedLbRule", RegionNetworkFirewallPolicyRuleArgs.builder()
+ *             .region("us-central1")
+ *             .firewallPolicy(fwPolicy.name())
+ *             .priority(1000)
+ *             .action("allow")
+ *             .direction("INGRESS")
+ *             .targetType("INTERNAL_MANAGED_LB")
+ *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("10.0.0.0/8")
+ *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("tcp")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -622,6 +689,32 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
         return Codegen.optional(this.securityProfileGroup);
     }
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    @Export(name="targetForwardingRules", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> targetForwardingRules;
+
+    /**
+     * @return A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    public Output<Optional<List<String>>> targetForwardingRules() {
+        return Codegen.optional(this.targetForwardingRules);
+    }
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -654,6 +747,26 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
      */
     public Output<Optional<List<String>>> targetServiceAccounts() {
         return Codegen.optional(this.targetServiceAccounts);
+    }
+    /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    @Export(name="targetType", refs={String.class}, tree="[0]")
+    private Output<String> targetType;
+
+    /**
+     * @return Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    public Output<String> targetType() {
+        return this.targetType;
     }
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.

@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -121,6 +121,12 @@ class GetClusterResult:
         if replica_count and not isinstance(replica_count, int):
             raise TypeError("Expected argument 'replica_count' to be a int")
         pulumi.set(__self__, "replica_count", replica_count)
+        if server_ca_mode and not isinstance(server_ca_mode, str):
+            raise TypeError("Expected argument 'server_ca_mode' to be a str")
+        pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool and not isinstance(server_ca_pool, str):
+            raise TypeError("Expected argument 'server_ca_pool' to be a str")
+        pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if shard_count and not isinstance(shard_count, int):
             raise TypeError("Expected argument 'shard_count' to be a int")
         pulumi.set(__self__, "shard_count", shard_count)
@@ -302,6 +308,16 @@ class GetClusterResult:
         return pulumi.get(self, "replica_count")
 
     @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> _builtins.str:
+        return pulumi.get(self, "server_ca_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> _builtins.str:
+        return pulumi.get(self, "server_ca_pool")
+
+    @_builtins.property
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> _builtins.int:
         return pulumi.get(self, "shard_count")
@@ -374,6 +390,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             redis_configs=self.redis_configs,
             region=self.region,
             replica_count=self.replica_count,
+            server_ca_mode=self.server_ca_mode,
+            server_ca_pool=self.server_ca_pool,
             shard_count=self.shard_count,
             size_gb=self.size_gb,
             state=self.state,
@@ -445,6 +463,8 @@ def get_cluster(name: Optional[_builtins.str] = None,
         redis_configs=pulumi.get(__ret__, 'redis_configs'),
         region=pulumi.get(__ret__, 'region'),
         replica_count=pulumi.get(__ret__, 'replica_count'),
+        server_ca_mode=pulumi.get(__ret__, 'server_ca_mode'),
+        server_ca_pool=pulumi.get(__ret__, 'server_ca_pool'),
         shard_count=pulumi.get(__ret__, 'shard_count'),
         size_gb=pulumi.get(__ret__, 'size_gb'),
         state=pulumi.get(__ret__, 'state'),
@@ -513,6 +533,8 @@ def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         redis_configs=pulumi.get(__response__, 'redis_configs'),
         region=pulumi.get(__response__, 'region'),
         replica_count=pulumi.get(__response__, 'replica_count'),
+        server_ca_mode=pulumi.get(__response__, 'server_ca_mode'),
+        server_ca_pool=pulumi.get(__response__, 'server_ca_pool'),
         shard_count=pulumi.get(__response__, 'shard_count'),
         size_gb=pulumi.get(__response__, 'size_gb'),
         state=pulumi.get(__response__, 'state'),

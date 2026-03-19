@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceDynamicForwardingForwardProxy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceDynamicForwardingIpPortSelection;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,13 @@ import javax.annotation.Nullable;
 public final class RegionBackendServiceDynamicForwarding {
     /**
      * @return (Optional, Beta)
+     * Dynamic Forwarding Proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RegionBackendServiceDynamicForwardingForwardProxy forwardProxy;
+    /**
+     * @return (Optional, Beta)
      * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
@@ -20,6 +28,15 @@ public final class RegionBackendServiceDynamicForwarding {
     private @Nullable RegionBackendServiceDynamicForwardingIpPortSelection ipPortSelection;
 
     private RegionBackendServiceDynamicForwarding() {}
+    /**
+     * @return (Optional, Beta)
+     * Dynamic Forwarding Proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RegionBackendServiceDynamicForwardingForwardProxy> forwardProxy() {
+        return Optional.ofNullable(this.forwardProxy);
+    }
     /**
      * @return (Optional, Beta)
      * IP:PORT based dynamic forwarding configuration.
@@ -39,13 +56,21 @@ public final class RegionBackendServiceDynamicForwarding {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RegionBackendServiceDynamicForwardingForwardProxy forwardProxy;
         private @Nullable RegionBackendServiceDynamicForwardingIpPortSelection ipPortSelection;
         public Builder() {}
         public Builder(RegionBackendServiceDynamicForwarding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.forwardProxy = defaults.forwardProxy;
     	      this.ipPortSelection = defaults.ipPortSelection;
         }
 
+        @CustomType.Setter
+        public Builder forwardProxy(@Nullable RegionBackendServiceDynamicForwardingForwardProxy forwardProxy) {
+
+            this.forwardProxy = forwardProxy;
+            return this;
+        }
         @CustomType.Setter
         public Builder ipPortSelection(@Nullable RegionBackendServiceDynamicForwardingIpPortSelection ipPortSelection) {
 
@@ -54,6 +79,7 @@ public final class RegionBackendServiceDynamicForwarding {
         }
         public RegionBackendServiceDynamicForwarding build() {
             final var _resultValue = new RegionBackendServiceDynamicForwarding();
+            _resultValue.forwardProxy = forwardProxy;
             _resultValue.ipPortSelection = ipPortSelection;
             return _resultValue;
         }

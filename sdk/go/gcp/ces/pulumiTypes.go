@@ -35201,6 +35201,9 @@ func (o ToolsetMcpToolsetApiAuthenticationOauthConfigPtrOutput) TokenEndpoint() 
 }
 
 type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig struct {
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes []string `pulumi:"scopes"`
 	// The email address of the service account used for authenticatation. CES
 	// uses this service account to exchange an access token and the access token
 	// is then sent in the `Authorization` header of the request.
@@ -35223,6 +35226,9 @@ type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigInput interface {
 }
 
 type ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs struct {
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// The email address of the service account used for authenticatation. CES
 	// uses this service account to exchange an access token and the access token
 	// is then sent in the `Authorization` header of the request.
@@ -35310,6 +35316,12 @@ func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) ToTool
 	}).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
 }
 
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
 // The email address of the service account used for authenticatation. CES
 // uses this service account to exchange an access token and the access token
 // is then sent in the `Authorization` header of the request.
@@ -35343,6 +35355,17 @@ func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) Ele
 		var ret ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig
 		return ret
 	}).(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
+func (o ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
 }
 
 // The email address of the service account used for authenticatation. CES
@@ -37024,6 +37047,9 @@ func (o ToolsetOpenApiToolsetApiAuthenticationOauthConfigPtrOutput) TokenEndpoin
 }
 
 type ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig struct {
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes []string `pulumi:"scopes"`
 	// The email address of the service account used for authenticatation. CES
 	// uses this service account to exchange an access token and the access token
 	// is then sent in the `Authorization` header of the request.
@@ -37046,6 +37072,9 @@ type ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigInput interfa
 }
 
 type ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs struct {
+	// The OAuth scopes to grant. If not specified, the default scope
+	// `https://www.googleapis.com/auth/cloud-platform` is used.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// The email address of the service account used for authenticatation. CES
 	// uses this service account to exchange an access token and the access token
 	// is then sent in the `Authorization` header of the request.
@@ -37133,6 +37162,12 @@ func (o ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigOutput) To
 	}).(ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
 }
 
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
+func (o ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
 // The email address of the service account used for authenticatation. CES
 // uses this service account to exchange an access token and the access token
 // is then sent in the `Authorization` header of the request.
@@ -37166,6 +37201,17 @@ func (o ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput)
 		var ret ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig
 		return ret
 	}).(ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigOutput)
+}
+
+// The OAuth scopes to grant. If not specified, the default scope
+// `https://www.googleapis.com/auth/cloud-platform` is used.
+func (o ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
 }
 
 // The email address of the service account used for authenticatation. CES

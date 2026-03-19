@@ -66,6 +66,8 @@ public final class GetClusterResult {
     private Map<String,String> redisConfigs;
     private @Nullable String region;
     private Integer replicaCount;
+    private String serverCaMode;
+    private String serverCaPool;
     private Integer shardCount;
     private Integer sizeGb;
     private String state;
@@ -172,6 +174,12 @@ public final class GetClusterResult {
     public Integer replicaCount() {
         return this.replicaCount;
     }
+    public String serverCaMode() {
+        return this.serverCaMode;
+    }
+    public String serverCaPool() {
+        return this.serverCaPool;
+    }
     public Integer shardCount() {
         return this.shardCount;
     }
@@ -234,6 +242,8 @@ public final class GetClusterResult {
         private Map<String,String> redisConfigs;
         private @Nullable String region;
         private Integer replicaCount;
+        private String serverCaMode;
+        private String serverCaPool;
         private Integer shardCount;
         private Integer sizeGb;
         private String state;
@@ -275,6 +285,8 @@ public final class GetClusterResult {
     	      this.redisConfigs = defaults.redisConfigs;
     	      this.region = defaults.region;
     	      this.replicaCount = defaults.replicaCount;
+    	      this.serverCaMode = defaults.serverCaMode;
+    	      this.serverCaPool = defaults.serverCaPool;
     	      this.shardCount = defaults.shardCount;
     	      this.sizeGb = defaults.sizeGb;
     	      this.state = defaults.state;
@@ -568,6 +580,22 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCaMode(String serverCaMode) {
+            if (serverCaMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "serverCaMode");
+            }
+            this.serverCaMode = serverCaMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverCaPool(String serverCaPool) {
+            if (serverCaPool == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "serverCaPool");
+            }
+            this.serverCaPool = serverCaPool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shardCount(Integer shardCount) {
             if (shardCount == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "shardCount");
@@ -662,6 +690,8 @@ public final class GetClusterResult {
             _resultValue.redisConfigs = redisConfigs;
             _resultValue.region = region;
             _resultValue.replicaCount = replicaCount;
+            _resultValue.serverCaMode = serverCaMode;
+            _resultValue.serverCaPool = serverCaPool;
             _resultValue.shardCount = shardCount;
             _resultValue.sizeGb = sizeGb;
             _resultValue.state = state;

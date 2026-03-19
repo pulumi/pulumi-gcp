@@ -21887,11 +21887,17 @@ class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDi
     CES service agent
     `service-@gcp-sa-ces.iam.gserviceaccount.com`.
     """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
 
 @pulumi.input_type
 class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs:
     def __init__(__self__, *,
-                 service_account: pulumi.Input[_builtins.str]):
+                 service_account: pulumi.Input[_builtins.str],
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account: The email address of the service account used for authenticatation. CES
                uses this service account to exchange an access token and the access token
@@ -21900,8 +21906,12 @@ class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs:
                `roles/iam.serviceAccountTokenCreator` role granted to the
                CES service agent
                `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
         """
         pulumi.set(__self__, "service_account", service_account)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -21920,6 +21930,19 @@ class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs:
     @service_account.setter
     def service_account(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
 
 
 class ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
@@ -22626,11 +22649,17 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict(Typ
     CES service agent
     `service-@gcp-sa-ces.iam.gserviceaccount.com`.
     """
+    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
 
 @pulumi.input_type
 class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs:
     def __init__(__self__, *,
-                 service_account: pulumi.Input[_builtins.str]):
+                 service_account: pulumi.Input[_builtins.str],
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account: The email address of the service account used for authenticatation. CES
                uses this service account to exchange an access token and the access token
@@ -22639,8 +22668,12 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs:
                `roles/iam.serviceAccountTokenCreator` role granted to the
                CES service agent
                `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
         """
         pulumi.set(__self__, "service_account", service_account)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -22659,6 +22692,19 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs:
     @service_account.setter
     def service_account(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
 
 
 class ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
