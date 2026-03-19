@@ -33,8 +33,10 @@ class RegionNetworkFirewallPolicyRuleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicyRule resource.
@@ -64,11 +66,22 @@ class RegionNetworkFirewallPolicyRuleArgs:
                Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
                Security Profile Group and Firewall Policy Rule must be in the same scope.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_forwarding_rules: A list of forwarding rules to which this rule applies.
+               This field allows you to control which load balancers get this rule.
+               For example, the following are valid values:
+               - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+               - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               - projects/project/global/forwardingRules/forwardingRule
+               - projects/project/regions/region/forwardingRules/forwardingRule
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        :param pulumi.Input[_builtins.str] target_type: Target types of the firewall policy rule.
+               Default value is INSTANCES.
+               When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+               Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
         :param pulumi.Input[_builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
                Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
@@ -91,10 +104,14 @@ class RegionNetworkFirewallPolicyRuleArgs:
             pulumi.set(__self__, "rule_name", rule_name)
         if security_profile_group is not None:
             pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_forwarding_rules is not None:
+            pulumi.set(__self__, "target_forwarding_rules", target_forwarding_rules)
         if target_secure_tags is not None:
             pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
         if tls_inspect is not None:
             pulumi.set(__self__, "tls_inspect", tls_inspect)
 
@@ -256,6 +273,24 @@ class RegionNetworkFirewallPolicyRuleArgs:
         pulumi.set(self, "security_profile_group", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetForwardingRules")
+    def target_forwarding_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of forwarding rules to which this rule applies.
+        This field allows you to control which load balancers get this rule.
+        For example, the following are valid values:
+        - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        - projects/project/global/forwardingRules/forwardingRule
+        - projects/project/regions/region/forwardingRules/forwardingRule
+        """
+        return pulumi.get(self, "target_forwarding_rules")
+
+    @target_forwarding_rules.setter
+    def target_forwarding_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "target_forwarding_rules", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetSecureTags")
     def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]:
         """
@@ -281,6 +316,21 @@ class RegionNetworkFirewallPolicyRuleArgs:
     @target_service_accounts.setter
     def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_service_accounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Target types of the firewall policy rule.
+        Default value is INSTANCES.
+        When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+        Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "target_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsInspect")
@@ -314,8 +364,10 @@ class _RegionNetworkFirewallPolicyRuleState:
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[_builtins.int]] = None,
                  security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicyRule resources.
@@ -348,11 +400,22 @@ class _RegionNetworkFirewallPolicyRuleState:
                Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
                Security Profile Group and Firewall Policy Rule must be in the same scope.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_forwarding_rules: A list of forwarding rules to which this rule applies.
+               This field allows you to control which load balancers get this rule.
+               For example, the following are valid values:
+               - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+               - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               - projects/project/global/forwardingRules/forwardingRule
+               - projects/project/regions/region/forwardingRules/forwardingRule
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        :param pulumi.Input[_builtins.str] target_type: Target types of the firewall policy rule.
+               Default value is INSTANCES.
+               When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+               Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
         :param pulumi.Input[_builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
                Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
@@ -386,10 +449,14 @@ class _RegionNetworkFirewallPolicyRuleState:
             pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if security_profile_group is not None:
             pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_forwarding_rules is not None:
+            pulumi.set(__self__, "target_forwarding_rules", target_forwarding_rules)
         if target_secure_tags is not None:
             pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
         if tls_inspect is not None:
             pulumi.set(__self__, "tls_inspect", tls_inspect)
 
@@ -587,6 +654,24 @@ class _RegionNetworkFirewallPolicyRuleState:
         pulumi.set(self, "security_profile_group", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetForwardingRules")
+    def target_forwarding_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of forwarding rules to which this rule applies.
+        This field allows you to control which load balancers get this rule.
+        For example, the following are valid values:
+        - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        - projects/project/global/forwardingRules/forwardingRule
+        - projects/project/regions/region/forwardingRules/forwardingRule
+        """
+        return pulumi.get(self, "target_forwarding_rules")
+
+    @target_forwarding_rules.setter
+    def target_forwarding_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "target_forwarding_rules", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetSecureTags")
     def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs']]]]:
         """
@@ -612,6 +697,21 @@ class _RegionNetworkFirewallPolicyRuleState:
     @target_service_accounts.setter
     def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_service_accounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Target types of the firewall policy rule.
+        Default value is INSTANCES.
+        When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+        Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "target_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsInspect")
@@ -645,8 +745,10 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -833,6 +935,37 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net",
+            name="test-net",
+            auto_create_subnetworks=False)
+        fw_policy = gcp.compute.RegionNetworkFirewallPolicy("fw_policy",
+            name="simple-fw-policy",
+            region="us-central1")
+        assoc = gcp.compute.RegionNetworkFirewallPolicyAssociation("assoc",
+            name="fw-policy-assoc",
+            region="us-central1",
+            firewall_policy=fw_policy.id,
+            attachment_target=net.self_link)
+        internal_managed_lb_rule = gcp.compute.RegionNetworkFirewallPolicyRule("internal_managed_lb_rule",
+            region="us-central1",
+            firewall_policy=fw_policy.name,
+            priority=1000,
+            action="allow",
+            direction="INGRESS",
+            target_type="INTERNAL_MANAGED_LB",
+            match={
+                "src_ip_ranges": ["10.0.0.0/8"],
+                "layer4_configs": [{
+                    "ip_protocol": "tcp",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -880,11 +1013,22 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
                Security Profile Group and Firewall Policy Rule must be in the same scope.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_forwarding_rules: A list of forwarding rules to which this rule applies.
+               This field allows you to control which load balancers get this rule.
+               For example, the following are valid values:
+               - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+               - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               - projects/project/global/forwardingRules/forwardingRule
+               - projects/project/regions/region/forwardingRules/forwardingRule
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        :param pulumi.Input[_builtins.str] target_type: Target types of the firewall policy rule.
+               Default value is INSTANCES.
+               When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+               Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
         :param pulumi.Input[_builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
                Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
@@ -1078,6 +1222,37 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net",
+            name="test-net",
+            auto_create_subnetworks=False)
+        fw_policy = gcp.compute.RegionNetworkFirewallPolicy("fw_policy",
+            name="simple-fw-policy",
+            region="us-central1")
+        assoc = gcp.compute.RegionNetworkFirewallPolicyAssociation("assoc",
+            name="fw-policy-assoc",
+            region="us-central1",
+            firewall_policy=fw_policy.id,
+            attachment_target=net.self_link)
+        internal_managed_lb_rule = gcp.compute.RegionNetworkFirewallPolicyRule("internal_managed_lb_rule",
+            region="us-central1",
+            firewall_policy=fw_policy.name,
+            priority=1000,
+            action="allow",
+            direction="INGRESS",
+            target_type="INTERNAL_MANAGED_LB",
+            match={
+                "src_ip_ranges": ["10.0.0.0/8"],
+                "layer4_configs": [{
+                    "ip_protocol": "tcp",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -1125,8 +1300,10 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1159,8 +1336,10 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["rule_name"] = rule_name
             __props__.__dict__["security_profile_group"] = security_profile_group
+            __props__.__dict__["target_forwarding_rules"] = target_forwarding_rules
             __props__.__dict__["target_secure_tags"] = target_secure_tags
             __props__.__dict__["target_service_accounts"] = target_service_accounts
+            __props__.__dict__["target_type"] = target_type
             __props__.__dict__["tls_inspect"] = tls_inspect
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
@@ -1190,8 +1369,10 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
             rule_tuple_count: Optional[pulumi.Input[_builtins.int]] = None,
             security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
+            target_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]]] = None,
             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_type: Optional[pulumi.Input[_builtins.str]] = None,
             tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None) -> 'RegionNetworkFirewallPolicyRule':
         """
         Get an existing RegionNetworkFirewallPolicyRule resource's state with the given name, id, and optional extra
@@ -1228,11 +1409,22 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
                Security Profile Group and Firewall Policy Rule must be in the same scope.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_forwarding_rules: A list of forwarding rules to which this rule applies.
+               This field allows you to control which load balancers get this rule.
+               For example, the following are valid values:
+               - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+               - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               - projects/project/global/forwardingRules/forwardingRule
+               - projects/project/regions/region/forwardingRules/forwardingRule
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionNetworkFirewallPolicyRuleTargetSecureTagArgs', 'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
                If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
                targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        :param pulumi.Input[_builtins.str] target_type: Target types of the firewall policy rule.
+               Default value is INSTANCES.
+               When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+               Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
         :param pulumi.Input[_builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
                Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
@@ -1255,8 +1447,10 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         __props__.__dict__["rule_name"] = rule_name
         __props__.__dict__["rule_tuple_count"] = rule_tuple_count
         __props__.__dict__["security_profile_group"] = security_profile_group
+        __props__.__dict__["target_forwarding_rules"] = target_forwarding_rules
         __props__.__dict__["target_secure_tags"] = target_secure_tags
         __props__.__dict__["target_service_accounts"] = target_service_accounts
+        __props__.__dict__["target_type"] = target_type
         __props__.__dict__["tls_inspect"] = tls_inspect
         return RegionNetworkFirewallPolicyRule(resource_name, opts=opts, __props__=__props__)
 
@@ -1394,6 +1588,20 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         return pulumi.get(self, "security_profile_group")
 
     @_builtins.property
+    @pulumi.getter(name="targetForwardingRules")
+    def target_forwarding_rules(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of forwarding rules to which this rule applies.
+        This field allows you to control which load balancers get this rule.
+        For example, the following are valid values:
+        - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        - projects/project/global/forwardingRules/forwardingRule
+        - projects/project/regions/region/forwardingRules/forwardingRule
+        """
+        return pulumi.get(self, "target_forwarding_rules")
+
+    @_builtins.property
     @pulumi.getter(name="targetSecureTags")
     def target_secure_tags(self) -> pulumi.Output[Optional[Sequence['outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag']]]:
         """
@@ -1411,6 +1619,17 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Target types of the firewall policy rule.
+        Default value is INSTANCES.
+        When target_type is INTERNAL_MANAGED_LB, target_forwarding_rules must be set
+        Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        """
+        return pulumi.get(self, "target_type")
 
     @_builtins.property
     @pulumi.getter(name="tlsInspect")

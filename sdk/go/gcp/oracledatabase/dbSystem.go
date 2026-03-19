@@ -56,6 +56,7 @@ import (
 //							AdminPassword: pulumi.String("ABcde_1#234"),
 //							DatabaseId:    pulumi.String("mydb"),
 //							DbName:        pulumi.String("db"),
+//							DbUniqueName:  pulumi.String("db"),
 //						},
 //					},
 //				},
@@ -108,7 +109,7 @@ import (
 //						DbVersion: pulumi.String("19.0.0.0"),
 //						Database: &oracledatabase.DbSystemPropertiesDbHomeDatabaseArgs{
 //							DbName:            pulumi.String("db"),
-//							DbUniqueName:      pulumi.String("dbunique"),
+//							DbUniqueName:      pulumi.String("db"),
 //							AdminPassword:     pulumi.String("ABcde_1#2345"),
 //							TdeWalletPassword: pulumi.String("ABcde_1#2345"),
 //							DatabaseId:        pulumi.String("mydb"),

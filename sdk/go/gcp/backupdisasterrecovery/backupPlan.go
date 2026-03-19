@@ -149,10 +149,11 @@ import (
 //				return err
 //			}
 //			_, err = backupdisasterrecovery.NewBackupPlan(ctx, "my-csql-backup-plan-1", &backupdisasterrecovery.BackupPlanArgs{
-//				Location:     pulumi.String("us-central1"),
-//				BackupPlanId: pulumi.String("backup-plan-csql-test"),
-//				ResourceType: pulumi.String("sqladmin.googleapis.com/Instance"),
-//				BackupVault:  myBackupVault.ID(),
+//				Location:                       pulumi.String("us-central1"),
+//				BackupPlanId:                   pulumi.String("backup-plan-csql-test"),
+//				ResourceType:                   pulumi.String("sqladmin.googleapis.com/Instance"),
+//				BackupVault:                    myBackupVault.ID(),
+//				MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 //						RuleId:              pulumi.String("rule-1"),

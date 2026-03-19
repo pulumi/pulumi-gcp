@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult> DailyMaintenanceWindows;
         /// <summary>
+        /// Cluster disruption intervals for minor version and patch version upgrade
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyDisruptionBudgetResult> DisruptionBudgets;
+        /// <summary>
         /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult> MaintenanceExclusions;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterMaintenancePolicyResult(
             ImmutableArray<Outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult> dailyMaintenanceWindows,
 
+            ImmutableArray<Outputs.GetClusterMaintenancePolicyDisruptionBudgetResult> disruptionBudgets,
+
             ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult> maintenanceExclusions,
 
             ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringWindowResult> recurringWindows)
         {
             DailyMaintenanceWindows = dailyMaintenanceWindows;
+            DisruptionBudgets = disruptionBudgets;
             MaintenanceExclusions = maintenanceExclusions;
             RecurringWindows = recurringWindows;
         }

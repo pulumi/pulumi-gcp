@@ -15,6 +15,11 @@ export type DataAccessScope = import("./dataAccessScope").DataAccessScope;
 export const DataAccessScope: typeof import("./dataAccessScope").DataAccessScope = null as any;
 utilities.lazyLoad(exports, ["DataAccessScope"], () => require("./dataAccessScope"));
 
+export { DataTableArgs, DataTableState } from "./dataTable";
+export type DataTable = import("./dataTable").DataTable;
+export const DataTable: typeof import("./dataTable").DataTable = null as any;
+utilities.lazyLoad(exports, ["DataTable"], () => require("./dataTable"));
+
 export { ReferenceListArgs, ReferenceListState } from "./referenceList";
 export type ReferenceList = import("./referenceList").ReferenceList;
 export const ReferenceList: typeof import("./referenceList").ReferenceList = null as any;
@@ -49,6 +54,8 @@ const _module = {
                 return new DataAccessLabel(name, <any>undefined, { urn })
             case "gcp:chronicle/dataAccessScope:DataAccessScope":
                 return new DataAccessScope(name, <any>undefined, { urn })
+            case "gcp:chronicle/dataTable:DataTable":
+                return new DataTable(name, <any>undefined, { urn })
             case "gcp:chronicle/referenceList:ReferenceList":
                 return new ReferenceList(name, <any>undefined, { urn })
             case "gcp:chronicle/retrohunt:Retrohunt":
@@ -66,6 +73,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTable", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/rule", _module)

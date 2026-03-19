@@ -17,6 +17,25 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
     public static final SearchEngineSearchEngineConfigArgs Empty = new SearchEngineSearchEngineConfigArgs();
 
     /**
+     * The required subscription tier of this engine.
+     * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+     * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+     * 
+     */
+    @Import(name="requiredSubscriptionTier")
+    private @Nullable Output<String> requiredSubscriptionTier;
+
+    /**
+     * @return The required subscription tier of this engine.
+     * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+     * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+     * 
+     */
+    public Optional<Output<String>> requiredSubscriptionTier() {
+        return Optional.ofNullable(this.requiredSubscriptionTier);
+    }
+
+    /**
      * The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
      * 
@@ -55,6 +74,7 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
     private SearchEngineSearchEngineConfigArgs() {}
 
     private SearchEngineSearchEngineConfigArgs(SearchEngineSearchEngineConfigArgs $) {
+        this.requiredSubscriptionTier = $.requiredSubscriptionTier;
         this.searchAddOns = $.searchAddOns;
         this.searchTier = $.searchTier;
     }
@@ -75,6 +95,31 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
 
         public Builder(SearchEngineSearchEngineConfigArgs defaults) {
             $ = new SearchEngineSearchEngineConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param requiredSubscriptionTier The required subscription tier of this engine.
+         * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+         * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredSubscriptionTier(@Nullable Output<String> requiredSubscriptionTier) {
+            $.requiredSubscriptionTier = requiredSubscriptionTier;
+            return this;
+        }
+
+        /**
+         * @param requiredSubscriptionTier The required subscription tier of this engine.
+         * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+         * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredSubscriptionTier(String requiredSubscriptionTier) {
+            return requiredSubscriptionTier(Output.of(requiredSubscriptionTier));
         }
 
         /**

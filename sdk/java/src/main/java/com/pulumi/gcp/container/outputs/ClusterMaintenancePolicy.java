@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyDailyMaintenanceWindow;
+import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyDisruptionBudget;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyMaintenanceExclusion;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyRecurringWindow;
 import java.util.List;
@@ -23,6 +24,13 @@ public final class ClusterMaintenancePolicy {
      * 
      */
     private @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
+    /**
+     * @return structure documented below
+     * 
+     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * 
+     */
+    private @Nullable ClusterMaintenancePolicyDisruptionBudget disruptionBudget;
     /**
      * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
      * 
@@ -52,6 +60,15 @@ public final class ClusterMaintenancePolicy {
      */
     public Optional<ClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindow() {
         return Optional.ofNullable(this.dailyMaintenanceWindow);
+    }
+    /**
+     * @return structure documented below
+     * 
+     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * 
+     */
+    public Optional<ClusterMaintenancePolicyDisruptionBudget> disruptionBudget() {
+        return Optional.ofNullable(this.disruptionBudget);
     }
     /**
      * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
@@ -85,12 +102,14 @@ public final class ClusterMaintenancePolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
+        private @Nullable ClusterMaintenancePolicyDisruptionBudget disruptionBudget;
         private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
         private @Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow;
         public Builder() {}
         public Builder(ClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dailyMaintenanceWindow = defaults.dailyMaintenanceWindow;
+    	      this.disruptionBudget = defaults.disruptionBudget;
     	      this.maintenanceExclusions = defaults.maintenanceExclusions;
     	      this.recurringWindow = defaults.recurringWindow;
         }
@@ -99,6 +118,12 @@ public final class ClusterMaintenancePolicy {
         public Builder dailyMaintenanceWindow(@Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow) {
 
             this.dailyMaintenanceWindow = dailyMaintenanceWindow;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disruptionBudget(@Nullable ClusterMaintenancePolicyDisruptionBudget disruptionBudget) {
+
+            this.disruptionBudget = disruptionBudget;
             return this;
         }
         @CustomType.Setter
@@ -119,6 +144,7 @@ public final class ClusterMaintenancePolicy {
         public ClusterMaintenancePolicy build() {
             final var _resultValue = new ClusterMaintenancePolicy();
             _resultValue.dailyMaintenanceWindow = dailyMaintenanceWindow;
+            _resultValue.disruptionBudget = disruptionBudget;
             _resultValue.maintenanceExclusions = maintenanceExclusions;
             _resultValue.recurringWindow = recurringWindow;
             return _resultValue;

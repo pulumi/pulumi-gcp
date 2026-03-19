@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMachineTypesMachineTypeBundledLocalSsd struct {
+	// (Beta) The default disk interface if the interface is not specified.
+	DefaultInterface string `pulumi:"defaultInterface"`
+	// (Beta) The number of partitions.
+	PartitionCount int `pulumi:"partitionCount"`
+}
+
+// GetMachineTypesMachineTypeBundledLocalSsdInput is an input type that accepts GetMachineTypesMachineTypeBundledLocalSsdArgs and GetMachineTypesMachineTypeBundledLocalSsdOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeBundledLocalSsdInput` via:
+//
+//	GetMachineTypesMachineTypeBundledLocalSsdArgs{...}
+type GetMachineTypesMachineTypeBundledLocalSsdInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeBundledLocalSsdOutput() GetMachineTypesMachineTypeBundledLocalSsdOutput
+	ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(context.Context) GetMachineTypesMachineTypeBundledLocalSsdOutput
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdArgs struct {
+	// (Beta) The default disk interface if the interface is not specified.
+	DefaultInterface pulumi.StringInput `pulumi:"defaultInterface"`
+	// (Beta) The number of partitions.
+	PartitionCount pulumi.IntInput `pulumi:"partitionCount"`
+}
+
+func (GetMachineTypesMachineTypeBundledLocalSsdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArgs) ToGetMachineTypesMachineTypeBundledLocalSsdOutput() GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return i.ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArgs) ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeBundledLocalSsdOutput)
+}
+
+// GetMachineTypesMachineTypeBundledLocalSsdArrayInput is an input type that accepts GetMachineTypesMachineTypeBundledLocalSsdArray and GetMachineTypesMachineTypeBundledLocalSsdArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeBundledLocalSsdArrayInput` via:
+//
+//	GetMachineTypesMachineTypeBundledLocalSsdArray{ GetMachineTypesMachineTypeBundledLocalSsdArgs{...} }
+type GetMachineTypesMachineTypeBundledLocalSsdArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutput() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput
+	ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeBundledLocalSsdArrayOutput
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdArray []GetMachineTypesMachineTypeBundledLocalSsdInput
+
+func (GetMachineTypesMachineTypeBundledLocalSsdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArray) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutput() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return i.ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArray) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeBundledLocalSsdArrayOutput)
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeBundledLocalSsdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) ToGetMachineTypesMachineTypeBundledLocalSsdOutput() GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return o
+}
+
+// (Beta) The default disk interface if the interface is not specified.
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) DefaultInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeBundledLocalSsd) string { return v.DefaultInterface }).(pulumi.StringOutput)
+}
+
+// (Beta) The number of partitions.
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) PartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeBundledLocalSsd) int { return v.PartitionCount }).(pulumi.IntOutput)
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutput() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineTypeBundledLocalSsd {
+		return vs[0].([]GetMachineTypesMachineTypeBundledLocalSsd)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeBundledLocalSsdOutput)
+}
+
 type GetMachineTypesMachineTypeDeprecated struct {
 	// The URL of the suggested replacement for a deprecated machine type.
 	Replacement string `pulumi:"replacement"`
@@ -2325,6 +2431,8 @@ func (o GetRegionBackendServiceCustomMetricArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRegionBackendServiceDynamicForwarding struct {
+	// Dynamic Forwarding Proxy configuration.
+	ForwardProxies []GetRegionBackendServiceDynamicForwardingForwardProxy `pulumi:"forwardProxies"`
 	// IP:PORT based dynamic forwarding configuration.
 	IpPortSelections []GetRegionBackendServiceDynamicForwardingIpPortSelection `pulumi:"ipPortSelections"`
 }
@@ -2341,6 +2449,8 @@ type GetRegionBackendServiceDynamicForwardingInput interface {
 }
 
 type GetRegionBackendServiceDynamicForwardingArgs struct {
+	// Dynamic Forwarding Proxy configuration.
+	ForwardProxies GetRegionBackendServiceDynamicForwardingForwardProxyArrayInput `pulumi:"forwardProxies"`
 	// IP:PORT based dynamic forwarding configuration.
 	IpPortSelections GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput `pulumi:"ipPortSelections"`
 }
@@ -2396,6 +2506,13 @@ func (o GetRegionBackendServiceDynamicForwardingOutput) ToGetRegionBackendServic
 	return o
 }
 
+// Dynamic Forwarding Proxy configuration.
+func (o GetRegionBackendServiceDynamicForwardingOutput) ForwardProxies() GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceDynamicForwarding) []GetRegionBackendServiceDynamicForwardingForwardProxy {
+		return v.ForwardProxies
+	}).(GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput)
+}
+
 // IP:PORT based dynamic forwarding configuration.
 func (o GetRegionBackendServiceDynamicForwardingOutput) IpPortSelections() GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
 	return o.ApplyT(func(v GetRegionBackendServiceDynamicForwarding) []GetRegionBackendServiceDynamicForwardingIpPortSelection {
@@ -2421,6 +2538,112 @@ func (o GetRegionBackendServiceDynamicForwardingArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceDynamicForwarding {
 		return vs[0].([]GetRegionBackendServiceDynamicForwarding)[vs[1].(int)]
 	}).(GetRegionBackendServiceDynamicForwardingOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingForwardProxy struct {
+	// A boolean flag enabling dynamic forwarding proxy.
+	Enabled bool `pulumi:"enabled"`
+	// Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+	ProxyMode string `pulumi:"proxyMode"`
+}
+
+// GetRegionBackendServiceDynamicForwardingForwardProxyInput is an input type that accepts GetRegionBackendServiceDynamicForwardingForwardProxyArgs and GetRegionBackendServiceDynamicForwardingForwardProxyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceDynamicForwardingForwardProxyInput` via:
+//
+//	GetRegionBackendServiceDynamicForwardingForwardProxyArgs{...}
+type GetRegionBackendServiceDynamicForwardingForwardProxyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceDynamicForwardingForwardProxyOutput() GetRegionBackendServiceDynamicForwardingForwardProxyOutput
+	ToGetRegionBackendServiceDynamicForwardingForwardProxyOutputWithContext(context.Context) GetRegionBackendServiceDynamicForwardingForwardProxyOutput
+}
+
+type GetRegionBackendServiceDynamicForwardingForwardProxyArgs struct {
+	// A boolean flag enabling dynamic forwarding proxy.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+	ProxyMode pulumi.StringInput `pulumi:"proxyMode"`
+}
+
+func (GetRegionBackendServiceDynamicForwardingForwardProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceDynamicForwardingForwardProxyArgs) ToGetRegionBackendServiceDynamicForwardingForwardProxyOutput() GetRegionBackendServiceDynamicForwardingForwardProxyOutput {
+	return i.ToGetRegionBackendServiceDynamicForwardingForwardProxyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceDynamicForwardingForwardProxyArgs) ToGetRegionBackendServiceDynamicForwardingForwardProxyOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingForwardProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceDynamicForwardingForwardProxyOutput)
+}
+
+// GetRegionBackendServiceDynamicForwardingForwardProxyArrayInput is an input type that accepts GetRegionBackendServiceDynamicForwardingForwardProxyArray and GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceDynamicForwardingForwardProxyArrayInput` via:
+//
+//	GetRegionBackendServiceDynamicForwardingForwardProxyArray{ GetRegionBackendServiceDynamicForwardingForwardProxyArgs{...} }
+type GetRegionBackendServiceDynamicForwardingForwardProxyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput() GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput
+	ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(context.Context) GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput
+}
+
+type GetRegionBackendServiceDynamicForwardingForwardProxyArray []GetRegionBackendServiceDynamicForwardingForwardProxyInput
+
+func (GetRegionBackendServiceDynamicForwardingForwardProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceDynamicForwardingForwardProxyArray) ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput() GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return i.ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceDynamicForwardingForwardProxyArray) ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingForwardProxyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceDynamicForwardingForwardProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyOutput) ToGetRegionBackendServiceDynamicForwardingForwardProxyOutput() GetRegionBackendServiceDynamicForwardingForwardProxyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyOutput) ToGetRegionBackendServiceDynamicForwardingForwardProxyOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingForwardProxyOutput {
+	return o
+}
+
+// A boolean flag enabling dynamic forwarding proxy.
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceDynamicForwardingForwardProxy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyOutput) ProxyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceDynamicForwardingForwardProxy) string { return v.ProxyMode }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput) ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput() GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput) ToGetRegionBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceDynamicForwardingForwardProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceDynamicForwardingForwardProxy {
+		return vs[0].([]GetRegionBackendServiceDynamicForwardingForwardProxy)[vs[1].(int)]
+	}).(GetRegionBackendServiceDynamicForwardingForwardProxyOutput)
 }
 
 type GetRegionBackendServiceDynamicForwardingIpPortSelection struct {
@@ -19312,8 +19535,16 @@ type GetResourcePolicyWorkloadPolicy struct {
 	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
 	// and cannot be set if max topology distance is set.
 	AcceleratorTopology string `pulumi:"acceleratorTopology"`
+	// Specifies the connection mode for the accelerator topology.
+	// Supported values are:
+	//   * 'AUTO_CONNECT': The interconnected chips are pre-configured at the time of VM creation.
+	//   * 'PROVISION_ONLY': The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+	//
+	// If not specified, the default is AUTO_CONNECT.
+	// This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set. Possible values: ["AUTO_CONNECT", "PROVISION_ONLY"]
+	AcceleratorTopologyMode string `pulumi:"acceleratorTopologyMode"`
 	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-	// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+	// and cannot be set if accelerator topology or accelerator topology mode is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
 	MaxTopologyDistance string `pulumi:"maxTopologyDistance"`
 	// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
 	Type string `pulumi:"type"`
@@ -19334,8 +19565,16 @@ type GetResourcePolicyWorkloadPolicyArgs struct {
 	// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
 	// and cannot be set if max topology distance is set.
 	AcceleratorTopology pulumi.StringInput `pulumi:"acceleratorTopology"`
+	// Specifies the connection mode for the accelerator topology.
+	// Supported values are:
+	//   * 'AUTO_CONNECT': The interconnected chips are pre-configured at the time of VM creation.
+	//   * 'PROVISION_ONLY': The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+	//
+	// If not specified, the default is AUTO_CONNECT.
+	// This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set. Possible values: ["AUTO_CONNECT", "PROVISION_ONLY"]
+	AcceleratorTopologyMode pulumi.StringInput `pulumi:"acceleratorTopologyMode"`
 	// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-	// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+	// and cannot be set if accelerator topology or accelerator topology mode is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
 	MaxTopologyDistance pulumi.StringInput `pulumi:"maxTopologyDistance"`
 	// The type of workload policy. Possible values: ["HIGH_AVAILABILITY", "HIGH_THROUGHPUT"]
 	Type pulumi.StringInput `pulumi:"type"`
@@ -19398,8 +19637,19 @@ func (o GetResourcePolicyWorkloadPolicyOutput) AcceleratorTopology() pulumi.Stri
 	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.AcceleratorTopology }).(pulumi.StringOutput)
 }
 
+// Specifies the connection mode for the accelerator topology.
+// Supported values are:
+//   - 'AUTO_CONNECT': The interconnected chips are pre-configured at the time of VM creation.
+//   - 'PROVISION_ONLY': The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+//
+// If not specified, the default is AUTO_CONNECT.
+// This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set. Possible values: ["AUTO_CONNECT", "PROVISION_ONLY"]
+func (o GetResourcePolicyWorkloadPolicyOutput) AcceleratorTopologyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.AcceleratorTopologyMode }).(pulumi.StringOutput)
+}
+
 // The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-// and cannot be set if accelerator topology is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
+// and cannot be set if accelerator topology or accelerator topology mode is set. Possible values: ["BLOCK", "CLUSTER", "SUBBLOCK"]
 func (o GetResourcePolicyWorkloadPolicyOutput) MaxTopologyDistance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyWorkloadPolicy) string { return v.MaxTopologyDistance }).(pulumi.StringOutput)
 }
@@ -27670,6 +27920,8 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsdInput)(nil)).Elem(), GetMachineTypesMachineTypeBundledLocalSsdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsdArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeBundledLocalSsdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAttachmentConnectionEndpointInput)(nil)).Elem(), GetNetworkAttachmentConnectionEndpointArgs{})
@@ -27700,6 +27952,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceCustomMetricArrayInput)(nil)).Elem(), GetRegionBackendServiceCustomMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingArrayInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingForwardProxyInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingForwardProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingForwardProxyArrayInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingForwardProxyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingIpPortSelectionInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingIpPortSelectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayInput)(nil)).Elem(), GetRegionBackendServiceDynamicForwardingIpPortSelectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceFailoverPolicyInput)(nil)).Elem(), GetRegionBackendServiceFailoverPolicyArgs{})
@@ -28086,6 +28340,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeBundledLocalSsdOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeBundledLocalSsdArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAttachmentConnectionEndpointOutput{})
@@ -28116,6 +28372,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionBackendServiceCustomMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingForwardProxyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingForwardProxyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingIpPortSelectionOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceDynamicForwardingIpPortSelectionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceFailoverPolicyOutput{})

@@ -653,6 +653,336 @@ func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) IngestionLa
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataTableColumnInfo struct {
+	// Column Index. 0,1,2...
+	ColumnIndex int `pulumi:"columnIndex"`
+	// Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
+	// Possible values:
+	// STRING
+	// REGEX
+	// CIDR
+	// NUMBER
+	// Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
+	ColumnType *string `pulumi:"columnType"`
+	// Whether to include this column in the calculation of the row ID.
+	// If no columns have keyColumn = true, all columns will be included in the
+	// calculation of the row ID.
+	KeyColumn *bool `pulumi:"keyColumn"`
+	// Entity proto field path that the column is mapped to
+	MappedColumnPath *string `pulumi:"mappedColumnPath"`
+	// Original column name of the Data Table (present in the CSV header in case
+	// of creation of data tables using file uploads). It must satisfy the
+	// following requirements:
+	// - Starts with letter.
+	// - Contains only letters, numbers and underscore.
+	// - Must be unique and has length < 256
+	OriginalColumn string `pulumi:"originalColumn"`
+	// Whether the column is a repeated values column.
+	RepeatedValues *bool `pulumi:"repeatedValues"`
+}
+
+// DataTableColumnInfoInput is an input type that accepts DataTableColumnInfoArgs and DataTableColumnInfoOutput values.
+// You can construct a concrete instance of `DataTableColumnInfoInput` via:
+//
+//	DataTableColumnInfoArgs{...}
+type DataTableColumnInfoInput interface {
+	pulumi.Input
+
+	ToDataTableColumnInfoOutput() DataTableColumnInfoOutput
+	ToDataTableColumnInfoOutputWithContext(context.Context) DataTableColumnInfoOutput
+}
+
+type DataTableColumnInfoArgs struct {
+	// Column Index. 0,1,2...
+	ColumnIndex pulumi.IntInput `pulumi:"columnIndex"`
+	// Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
+	// Possible values:
+	// STRING
+	// REGEX
+	// CIDR
+	// NUMBER
+	// Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
+	ColumnType pulumi.StringPtrInput `pulumi:"columnType"`
+	// Whether to include this column in the calculation of the row ID.
+	// If no columns have keyColumn = true, all columns will be included in the
+	// calculation of the row ID.
+	KeyColumn pulumi.BoolPtrInput `pulumi:"keyColumn"`
+	// Entity proto field path that the column is mapped to
+	MappedColumnPath pulumi.StringPtrInput `pulumi:"mappedColumnPath"`
+	// Original column name of the Data Table (present in the CSV header in case
+	// of creation of data tables using file uploads). It must satisfy the
+	// following requirements:
+	// - Starts with letter.
+	// - Contains only letters, numbers and underscore.
+	// - Must be unique and has length < 256
+	OriginalColumn pulumi.StringInput `pulumi:"originalColumn"`
+	// Whether the column is a repeated values column.
+	RepeatedValues pulumi.BoolPtrInput `pulumi:"repeatedValues"`
+}
+
+func (DataTableColumnInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTableColumnInfo)(nil)).Elem()
+}
+
+func (i DataTableColumnInfoArgs) ToDataTableColumnInfoOutput() DataTableColumnInfoOutput {
+	return i.ToDataTableColumnInfoOutputWithContext(context.Background())
+}
+
+func (i DataTableColumnInfoArgs) ToDataTableColumnInfoOutputWithContext(ctx context.Context) DataTableColumnInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTableColumnInfoOutput)
+}
+
+// DataTableColumnInfoArrayInput is an input type that accepts DataTableColumnInfoArray and DataTableColumnInfoArrayOutput values.
+// You can construct a concrete instance of `DataTableColumnInfoArrayInput` via:
+//
+//	DataTableColumnInfoArray{ DataTableColumnInfoArgs{...} }
+type DataTableColumnInfoArrayInput interface {
+	pulumi.Input
+
+	ToDataTableColumnInfoArrayOutput() DataTableColumnInfoArrayOutput
+	ToDataTableColumnInfoArrayOutputWithContext(context.Context) DataTableColumnInfoArrayOutput
+}
+
+type DataTableColumnInfoArray []DataTableColumnInfoInput
+
+func (DataTableColumnInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataTableColumnInfo)(nil)).Elem()
+}
+
+func (i DataTableColumnInfoArray) ToDataTableColumnInfoArrayOutput() DataTableColumnInfoArrayOutput {
+	return i.ToDataTableColumnInfoArrayOutputWithContext(context.Background())
+}
+
+func (i DataTableColumnInfoArray) ToDataTableColumnInfoArrayOutputWithContext(ctx context.Context) DataTableColumnInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTableColumnInfoArrayOutput)
+}
+
+type DataTableColumnInfoOutput struct{ *pulumi.OutputState }
+
+func (DataTableColumnInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTableColumnInfo)(nil)).Elem()
+}
+
+func (o DataTableColumnInfoOutput) ToDataTableColumnInfoOutput() DataTableColumnInfoOutput {
+	return o
+}
+
+func (o DataTableColumnInfoOutput) ToDataTableColumnInfoOutputWithContext(ctx context.Context) DataTableColumnInfoOutput {
+	return o
+}
+
+// Column Index. 0,1,2...
+func (o DataTableColumnInfoOutput) ColumnIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v DataTableColumnInfo) int { return v.ColumnIndex }).(pulumi.IntOutput)
+}
+
+// Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
+// Possible values:
+// STRING
+// REGEX
+// CIDR
+// NUMBER
+// Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
+func (o DataTableColumnInfoOutput) ColumnType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTableColumnInfo) *string { return v.ColumnType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to include this column in the calculation of the row ID.
+// If no columns have keyColumn = true, all columns will be included in the
+// calculation of the row ID.
+func (o DataTableColumnInfoOutput) KeyColumn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataTableColumnInfo) *bool { return v.KeyColumn }).(pulumi.BoolPtrOutput)
+}
+
+// Entity proto field path that the column is mapped to
+func (o DataTableColumnInfoOutput) MappedColumnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTableColumnInfo) *string { return v.MappedColumnPath }).(pulumi.StringPtrOutput)
+}
+
+// Original column name of the Data Table (present in the CSV header in case
+// of creation of data tables using file uploads). It must satisfy the
+// following requirements:
+// - Starts with letter.
+// - Contains only letters, numbers and underscore.
+// - Must be unique and has length < 256
+func (o DataTableColumnInfoOutput) OriginalColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataTableColumnInfo) string { return v.OriginalColumn }).(pulumi.StringOutput)
+}
+
+// Whether the column is a repeated values column.
+func (o DataTableColumnInfoOutput) RepeatedValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataTableColumnInfo) *bool { return v.RepeatedValues }).(pulumi.BoolPtrOutput)
+}
+
+type DataTableColumnInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (DataTableColumnInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataTableColumnInfo)(nil)).Elem()
+}
+
+func (o DataTableColumnInfoArrayOutput) ToDataTableColumnInfoArrayOutput() DataTableColumnInfoArrayOutput {
+	return o
+}
+
+func (o DataTableColumnInfoArrayOutput) ToDataTableColumnInfoArrayOutputWithContext(ctx context.Context) DataTableColumnInfoArrayOutput {
+	return o
+}
+
+func (o DataTableColumnInfoArrayOutput) Index(i pulumi.IntInput) DataTableColumnInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataTableColumnInfo {
+		return vs[0].([]DataTableColumnInfo)[vs[1].(int)]
+	}).(DataTableColumnInfoOutput)
+}
+
+type DataTableScopeInfo struct {
+	// Contains the list of scope names of the data table. If the list is empty,
+	// the data table is treated as unscoped. The scope names should be
+	// full resource names and should be of the format:
+	// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+	DataAccessScopes []string `pulumi:"dataAccessScopes"`
+}
+
+// DataTableScopeInfoInput is an input type that accepts DataTableScopeInfoArgs and DataTableScopeInfoOutput values.
+// You can construct a concrete instance of `DataTableScopeInfoInput` via:
+//
+//	DataTableScopeInfoArgs{...}
+type DataTableScopeInfoInput interface {
+	pulumi.Input
+
+	ToDataTableScopeInfoOutput() DataTableScopeInfoOutput
+	ToDataTableScopeInfoOutputWithContext(context.Context) DataTableScopeInfoOutput
+}
+
+type DataTableScopeInfoArgs struct {
+	// Contains the list of scope names of the data table. If the list is empty,
+	// the data table is treated as unscoped. The scope names should be
+	// full resource names and should be of the format:
+	// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+	DataAccessScopes pulumi.StringArrayInput `pulumi:"dataAccessScopes"`
+}
+
+func (DataTableScopeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTableScopeInfo)(nil)).Elem()
+}
+
+func (i DataTableScopeInfoArgs) ToDataTableScopeInfoOutput() DataTableScopeInfoOutput {
+	return i.ToDataTableScopeInfoOutputWithContext(context.Background())
+}
+
+func (i DataTableScopeInfoArgs) ToDataTableScopeInfoOutputWithContext(ctx context.Context) DataTableScopeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTableScopeInfoOutput)
+}
+
+func (i DataTableScopeInfoArgs) ToDataTableScopeInfoPtrOutput() DataTableScopeInfoPtrOutput {
+	return i.ToDataTableScopeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i DataTableScopeInfoArgs) ToDataTableScopeInfoPtrOutputWithContext(ctx context.Context) DataTableScopeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTableScopeInfoOutput).ToDataTableScopeInfoPtrOutputWithContext(ctx)
+}
+
+// DataTableScopeInfoPtrInput is an input type that accepts DataTableScopeInfoArgs, DataTableScopeInfoPtr and DataTableScopeInfoPtrOutput values.
+// You can construct a concrete instance of `DataTableScopeInfoPtrInput` via:
+//
+//	        DataTableScopeInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataTableScopeInfoPtrInput interface {
+	pulumi.Input
+
+	ToDataTableScopeInfoPtrOutput() DataTableScopeInfoPtrOutput
+	ToDataTableScopeInfoPtrOutputWithContext(context.Context) DataTableScopeInfoPtrOutput
+}
+
+type dataTableScopeInfoPtrType DataTableScopeInfoArgs
+
+func DataTableScopeInfoPtr(v *DataTableScopeInfoArgs) DataTableScopeInfoPtrInput {
+	return (*dataTableScopeInfoPtrType)(v)
+}
+
+func (*dataTableScopeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTableScopeInfo)(nil)).Elem()
+}
+
+func (i *dataTableScopeInfoPtrType) ToDataTableScopeInfoPtrOutput() DataTableScopeInfoPtrOutput {
+	return i.ToDataTableScopeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTableScopeInfoPtrType) ToDataTableScopeInfoPtrOutputWithContext(ctx context.Context) DataTableScopeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTableScopeInfoPtrOutput)
+}
+
+type DataTableScopeInfoOutput struct{ *pulumi.OutputState }
+
+func (DataTableScopeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTableScopeInfo)(nil)).Elem()
+}
+
+func (o DataTableScopeInfoOutput) ToDataTableScopeInfoOutput() DataTableScopeInfoOutput {
+	return o
+}
+
+func (o DataTableScopeInfoOutput) ToDataTableScopeInfoOutputWithContext(ctx context.Context) DataTableScopeInfoOutput {
+	return o
+}
+
+func (o DataTableScopeInfoOutput) ToDataTableScopeInfoPtrOutput() DataTableScopeInfoPtrOutput {
+	return o.ToDataTableScopeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o DataTableScopeInfoOutput) ToDataTableScopeInfoPtrOutputWithContext(ctx context.Context) DataTableScopeInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTableScopeInfo) *DataTableScopeInfo {
+		return &v
+	}).(DataTableScopeInfoPtrOutput)
+}
+
+// Contains the list of scope names of the data table. If the list is empty,
+// the data table is treated as unscoped. The scope names should be
+// full resource names and should be of the format:
+// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+func (o DataTableScopeInfoOutput) DataAccessScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataTableScopeInfo) []string { return v.DataAccessScopes }).(pulumi.StringArrayOutput)
+}
+
+type DataTableScopeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (DataTableScopeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTableScopeInfo)(nil)).Elem()
+}
+
+func (o DataTableScopeInfoPtrOutput) ToDataTableScopeInfoPtrOutput() DataTableScopeInfoPtrOutput {
+	return o
+}
+
+func (o DataTableScopeInfoPtrOutput) ToDataTableScopeInfoPtrOutputWithContext(ctx context.Context) DataTableScopeInfoPtrOutput {
+	return o
+}
+
+func (o DataTableScopeInfoPtrOutput) Elem() DataTableScopeInfoOutput {
+	return o.ApplyT(func(v *DataTableScopeInfo) DataTableScopeInfo {
+		if v != nil {
+			return *v
+		}
+		var ret DataTableScopeInfo
+		return ret
+	}).(DataTableScopeInfoOutput)
+}
+
+// Contains the list of scope names of the data table. If the list is empty,
+// the data table is treated as unscoped. The scope names should be
+// full resource names and should be of the format:
+// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+func (o DataTableScopeInfoPtrOutput) DataAccessScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataTableScopeInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataAccessScopes
+	}).(pulumi.StringArrayOutput)
+}
+
 type ReferenceListEntry struct {
 	// Required. The value of the entry. Maximum length is 512 characters.
 	Value string `pulumi:"value"`
@@ -2243,6 +2573,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelArrayInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTableColumnInfoInput)(nil)).Elem(), DataTableColumnInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTableColumnInfoArrayInput)(nil)).Elem(), DataTableColumnInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTableScopeInfoInput)(nil)).Elem(), DataTableScopeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTableScopeInfoPtrInput)(nil)).Elem(), DataTableScopeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryInput)(nil)).Elem(), ReferenceListEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryArrayInput)(nil)).Elem(), ReferenceListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoInput)(nil)).Elem(), ReferenceListScopeInfoArgs{})
@@ -2275,6 +2609,10 @@ func init() {
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelArrayOutput{})
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput{})
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput{})
+	pulumi.RegisterOutputType(DataTableColumnInfoOutput{})
+	pulumi.RegisterOutputType(DataTableColumnInfoArrayOutput{})
+	pulumi.RegisterOutputType(DataTableScopeInfoOutput{})
+	pulumi.RegisterOutputType(DataTableScopeInfoPtrOutput{})
 	pulumi.RegisterOutputType(ReferenceListEntryOutput{})
 	pulumi.RegisterOutputType(ReferenceListEntryArrayOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoOutput{})

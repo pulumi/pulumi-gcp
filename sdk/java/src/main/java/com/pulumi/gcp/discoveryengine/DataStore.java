@@ -249,15 +249,15 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="contentConfig", refs={String.class}, tree="[0]")
-    private Output<String> contentConfig;
+    private Output</* @Nullable */ String> contentConfig;
 
     /**
      * @return The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      * 
      */
-    public Output<String> contentConfig() {
-        return this.contentConfig;
+    public Output<Optional<String>> contentConfig() {
+        return Codegen.optional(this.contentConfig);
     }
     /**
      * If true, an advanced data store for site search will be created. If the

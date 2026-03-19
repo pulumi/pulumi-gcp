@@ -22,6 +22,14 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("dailyMaintenanceWindow")]
         public Input<Inputs.ClusterMaintenancePolicyDailyMaintenanceWindowArgs>? DailyMaintenanceWindow { get; set; }
 
+        /// <summary>
+        /// structure documented below
+        /// 
+        /// In beta, one or the other of `RecurringWindow` and `DailyMaintenanceWindow` is required if a `MaintenancePolicy` block is supplied.
+        /// </summary>
+        [Input("disruptionBudget")]
+        public Input<Inputs.ClusterMaintenancePolicyDisruptionBudgetArgs>? DisruptionBudget { get; set; }
+
         [Input("maintenanceExclusions")]
         private InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs>? _maintenanceExclusions;
 

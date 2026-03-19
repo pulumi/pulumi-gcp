@@ -94,6 +94,8 @@ type LookupClusterResult struct {
 	RedisConfigs            map[string]string                  `pulumi:"redisConfigs"`
 	Region                  *string                            `pulumi:"region"`
 	ReplicaCount            int                                `pulumi:"replicaCount"`
+	ServerCaMode            string                             `pulumi:"serverCaMode"`
+	ServerCaPool            string                             `pulumi:"serverCaPool"`
 	ShardCount              int                                `pulumi:"shardCount"`
 	SizeGb                  int                                `pulumi:"sizeGb"`
 	State                   string                             `pulumi:"state"`
@@ -267,6 +269,14 @@ func (o LookupClusterResultOutput) Region() pulumi.StringPtrOutput {
 
 func (o LookupClusterResultOutput) ReplicaCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.ReplicaCount }).(pulumi.IntOutput)
+}
+
+func (o LookupClusterResultOutput) ServerCaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ServerCaMode }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ServerCaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ServerCaPool }).(pulumi.StringOutput)
 }
 
 func (o LookupClusterResultOutput) ShardCount() pulumi.IntOutput {

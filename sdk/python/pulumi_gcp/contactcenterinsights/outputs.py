@@ -20,6 +20,7 @@ __all__ = [
     'AnalysisRuleAnnotatorSelectorQaConfig',
     'AnalysisRuleAnnotatorSelectorQaConfigScorecardList',
     'AnalysisRuleAnnotatorSelectorSummarizationConfig',
+    'AutoLabelingRuleCondition',
 ]
 
 @pulumi.output_type
@@ -384,5 +385,40 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig(dict):
         Possible values are: `BASELINE_MODEL`, `BASELINE_MODEL_V2_0`.
         """
         return pulumi.get(self, "summarization_model")
+
+
+@pulumi.output_type
+class AutoLabelingRuleCondition(dict):
+    def __init__(__self__, *,
+                 condition: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str condition: A optional CEL expression to be evaluated as a boolean value.
+               Once evaluated as true, then we will proceed with the value evaluation.
+               An empty condition will be auto evaluated as true.
+        :param _builtins.str value: CEL expression to be evaluated as the value.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[_builtins.str]:
+        """
+        A optional CEL expression to be evaluated as a boolean value.
+        Once evaluated as true, then we will proceed with the value evaluation.
+        An empty condition will be auto evaluated as true.
+        """
+        return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        CEL expression to be evaluated as the value.
+        """
+        return pulumi.get(self, "value")
 
 

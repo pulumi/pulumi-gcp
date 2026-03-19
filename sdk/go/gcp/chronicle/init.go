@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataAccessLabel{}
 	case "gcp:chronicle/dataAccessScope:DataAccessScope":
 		r = &DataAccessScope{}
+	case "gcp:chronicle/dataTable:DataTable":
+		r = &DataTable{}
 	case "gcp:chronicle/referenceList:ReferenceList":
 		r = &ReferenceList{}
 	case "gcp:chronicle/retrohunt:Retrohunt":
@@ -56,6 +58,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/dataAccessScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/dataTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -23,6 +23,10 @@ __all__ = [
     'DataAccessScopeDeniedDataAccessLabelArgsDict',
     'DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs',
     'DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict',
+    'DataTableColumnInfoArgs',
+    'DataTableColumnInfoArgsDict',
+    'DataTableScopeInfoArgs',
+    'DataTableScopeInfoArgsDict',
     'ReferenceListEntryArgs',
     'ReferenceListEntryArgsDict',
     'ReferenceListScopeInfoArgs',
@@ -415,6 +419,209 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
     @ingestion_label_value.setter
     def ingestion_label_value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ingestion_label_value", value)
+
+
+class DataTableColumnInfoArgsDict(TypedDict):
+    column_index: pulumi.Input[_builtins.int]
+    """
+    Column Index. 0,1,2...
+    """
+    original_column: pulumi.Input[_builtins.str]
+    """
+    Original column name of the Data Table (present in the CSV header in case
+    of creation of data tables using file uploads). It must satisfy the
+    following requirements:
+    - Starts with letter.
+    - Contains only letters, numbers and underscore.
+    - Must be unique and has length < 256
+    """
+    column_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
+    Possible values:
+    STRING
+    REGEX
+    CIDR
+    NUMBER
+    Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
+    """
+    key_column: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to include this column in the calculation of the row ID.
+    If no columns have key_column = true, all columns will be included in the
+    calculation of the row ID.
+    """
+    mapped_column_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Entity proto field path that the column is mapped to
+    """
+    repeated_values: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the column is a repeated values column.
+    """
+
+@pulumi.input_type
+class DataTableColumnInfoArgs:
+    def __init__(__self__, *,
+                 column_index: pulumi.Input[_builtins.int],
+                 original_column: pulumi.Input[_builtins.str],
+                 column_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_column: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mapped_column_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeated_values: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.int] column_index: Column Index. 0,1,2...
+        :param pulumi.Input[_builtins.str] original_column: Original column name of the Data Table (present in the CSV header in case
+               of creation of data tables using file uploads). It must satisfy the
+               following requirements:
+               - Starts with letter.
+               - Contains only letters, numbers and underscore.
+               - Must be unique and has length < 256
+        :param pulumi.Input[_builtins.str] column_type: Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
+               Possible values:
+               STRING
+               REGEX
+               CIDR
+               NUMBER
+               Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
+        :param pulumi.Input[_builtins.bool] key_column: Whether to include this column in the calculation of the row ID.
+               If no columns have key_column = true, all columns will be included in the
+               calculation of the row ID.
+        :param pulumi.Input[_builtins.str] mapped_column_path: Entity proto field path that the column is mapped to
+        :param pulumi.Input[_builtins.bool] repeated_values: Whether the column is a repeated values column.
+        """
+        pulumi.set(__self__, "column_index", column_index)
+        pulumi.set(__self__, "original_column", original_column)
+        if column_type is not None:
+            pulumi.set(__self__, "column_type", column_type)
+        if key_column is not None:
+            pulumi.set(__self__, "key_column", key_column)
+        if mapped_column_path is not None:
+            pulumi.set(__self__, "mapped_column_path", mapped_column_path)
+        if repeated_values is not None:
+            pulumi.set(__self__, "repeated_values", repeated_values)
+
+    @_builtins.property
+    @pulumi.getter(name="columnIndex")
+    def column_index(self) -> pulumi.Input[_builtins.int]:
+        """
+        Column Index. 0,1,2...
+        """
+        return pulumi.get(self, "column_index")
+
+    @column_index.setter
+    def column_index(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "column_index", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originalColumn")
+    def original_column(self) -> pulumi.Input[_builtins.str]:
+        """
+        Original column name of the Data Table (present in the CSV header in case
+        of creation of data tables using file uploads). It must satisfy the
+        following requirements:
+        - Starts with letter.
+        - Contains only letters, numbers and underscore.
+        - Must be unique and has length < 256
+        """
+        return pulumi.get(self, "original_column")
+
+    @original_column.setter
+    def original_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "original_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnType")
+    def column_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
+        Possible values:
+        STRING
+        REGEX
+        CIDR
+        NUMBER
+        Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
+        """
+        return pulumi.get(self, "column_type")
+
+    @column_type.setter
+    def column_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "column_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyColumn")
+    def key_column(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to include this column in the calculation of the row ID.
+        If no columns have key_column = true, all columns will be included in the
+        calculation of the row ID.
+        """
+        return pulumi.get(self, "key_column")
+
+    @key_column.setter
+    def key_column(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "key_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mappedColumnPath")
+    def mapped_column_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Entity proto field path that the column is mapped to
+        """
+        return pulumi.get(self, "mapped_column_path")
+
+    @mapped_column_path.setter
+    def mapped_column_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mapped_column_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatedValues")
+    def repeated_values(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the column is a repeated values column.
+        """
+        return pulumi.get(self, "repeated_values")
+
+    @repeated_values.setter
+    def repeated_values(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "repeated_values", value)
+
+
+class DataTableScopeInfoArgsDict(TypedDict):
+    data_access_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Contains the list of scope names of the data table. If the list is empty,
+    the data table is treated as unscoped. The scope names should be
+    full resource names and should be of the format:
+    "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+    """
+
+@pulumi.input_type
+class DataTableScopeInfoArgs:
+    def __init__(__self__, *,
+                 data_access_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_access_scopes: Contains the list of scope names of the data table. If the list is empty,
+               the data table is treated as unscoped. The scope names should be
+               full resource names and should be of the format:
+               "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+        """
+        pulumi.set(__self__, "data_access_scopes", data_access_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="dataAccessScopes")
+    def data_access_scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Contains the list of scope names of the data table. If the list is empty,
+        the data table is treated as unscoped. The scope names should be
+        full resource names and should be of the format:
+        "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
+        """
+        return pulumi.get(self, "data_access_scopes")
+
+    @data_access_scopes.setter
+    def data_access_scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "data_access_scopes", value)
 
 
 class ReferenceListEntryArgsDict(TypedDict):

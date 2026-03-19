@@ -23,6 +23,8 @@ __all__ = [
     'AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict',
     'AnalysisRuleAnnotatorSelectorSummarizationConfigArgs',
     'AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict',
+    'AutoLabelingRuleConditionArgs',
+    'AutoLabelingRuleConditionArgsDict',
 ]
 
 class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
@@ -456,5 +458,60 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfigArgs:
     @summarization_model.setter
     def summarization_model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "summarization_model", value)
+
+
+class AutoLabelingRuleConditionArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A optional CEL expression to be evaluated as a boolean value.
+    Once evaluated as true, then we will proceed with the value evaluation.
+    An empty condition will be auto evaluated as true.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CEL expression to be evaluated as the value.
+    """
+
+@pulumi.input_type
+class AutoLabelingRuleConditionArgs:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] condition: A optional CEL expression to be evaluated as a boolean value.
+               Once evaluated as true, then we will proceed with the value evaluation.
+               An empty condition will be auto evaluated as true.
+        :param pulumi.Input[_builtins.str] value: CEL expression to be evaluated as the value.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A optional CEL expression to be evaluated as a boolean value.
+        Once evaluated as true, then we will proceed with the value evaluation.
+        An empty condition will be auto evaluated as true.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CEL expression to be evaluated as the value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 

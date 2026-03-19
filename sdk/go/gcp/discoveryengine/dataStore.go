@@ -201,7 +201,7 @@ type DataStore struct {
 	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigOutput `pulumi:"advancedSiteSearchConfig"`
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
-	ContentConfig pulumi.StringOutput `pulumi:"contentConfig"`
+	ContentConfig pulumi.StringPtrOutput `pulumi:"contentConfig"`
 	// If true, an advanced data store for site search will be created. If the
 	// data store is not configured as site search (GENERIC vertical and
 	// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
@@ -259,9 +259,6 @@ func NewDataStore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ContentConfig == nil {
-		return nil, errors.New("invalid value for required argument 'ContentConfig'")
-	}
 	if args.DataStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'DataStoreId'")
 	}
@@ -420,7 +417,7 @@ type dataStoreArgs struct {
 	AdvancedSiteSearchConfig *DataStoreAdvancedSiteSearchConfig `pulumi:"advancedSiteSearchConfig"`
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
-	ContentConfig string `pulumi:"contentConfig"`
+	ContentConfig *string `pulumi:"contentConfig"`
 	// If true, an advanced data store for site search will be created. If the
 	// data store is not configured as site search (GENERIC vertical and
 	// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
@@ -469,7 +466,7 @@ type DataStoreArgs struct {
 	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrInput
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
-	ContentConfig pulumi.StringInput
+	ContentConfig pulumi.StringPtrInput
 	// If true, an advanced data store for site search will be created. If the
 	// data store is not configured as site search (GENERIC vertical and
 	// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
@@ -606,8 +603,8 @@ func (o DataStoreOutput) AdvancedSiteSearchConfig() DataStoreAdvancedSiteSearchC
 
 // The content config of the data store.
 // Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
-func (o DataStoreOutput) ContentConfig() pulumi.StringOutput {
-	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.ContentConfig }).(pulumi.StringOutput)
+func (o DataStoreOutput) ContentConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataStore) pulumi.StringPtrOutput { return v.ContentConfig }).(pulumi.StringPtrOutput)
 }
 
 // If true, an advanced data store for site search will be created. If the

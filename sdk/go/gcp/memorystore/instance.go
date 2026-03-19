@@ -472,6 +472,137 @@ import (
 //	}
 //
 // ```
+// ### Memorystore Instance Flexible Ca
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("ca-pool"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			memorystoreP4saRequester, err := certificateauthority.NewCaPoolIamMember(ctx, "memorystore_p4sa_requester", &certificateauthority.CaPoolIamMemberArgs{
+//				CaPool: _default.ID(),
+//				Role:   pulumi.String("roles/privateca.certificateRequester"),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-memorystore.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                   _default.Name,
+//				CertificateAuthorityId: pulumi.String("ca-auth"),
+//				Location:               pulumi.String("us-central1"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("Google"),
+//							CommonName:   pulumi.String("my-memorystore-ca"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("ca-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("ca-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("ca-policy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						producerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = memorystore.NewInstance(ctx, "test-instance", &memorystore.InstanceArgs{
+//				InstanceId: pulumi.String("ca-instance"),
+//				ShardCount: pulumi.Int(3),
+//				Location:   pulumi.String("us-central1"),
+//				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
+//					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
+//						Network:   producerNet.ID(),
+//						ProjectId: pulumi.String(project.ProjectId),
+//					},
+//				},
+//				TransitEncryptionMode:     pulumi.String("SERVER_AUTHENTICATION"),
+//				ServerCaMode:              pulumi.String("CUSTOMER_MANAGED_CAS_CA"),
+//				ServerCaPool:              _default.ID(),
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultServiceConnectionPolicy,
+//				defaultAuthority,
+//				memorystoreP4saRequester,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -607,6 +738,14 @@ type Instance struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
+	// The serverCaMode for the TLS enabled Memorystore instance.
+	// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode pulumi.StringOutput `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool pulumi.StringPtrOutput `pulumi:"serverCaPool"`
 	// Required. Number of shards for the instance.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
 	// Output only. Current state of the instance.
@@ -793,6 +932,14 @@ type instanceState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount *int `pulumi:"replicaCount"`
+	// The serverCaMode for the TLS enabled Memorystore instance.
+	// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode *string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool *string `pulumi:"serverCaPool"`
 	// Required. Number of shards for the instance.
 	ShardCount *int `pulumi:"shardCount"`
 	// Output only. Current state of the instance.
@@ -936,6 +1083,14 @@ type InstanceState struct {
 	PulumiLabels pulumi.StringMapInput
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntPtrInput
+	// The serverCaMode for the TLS enabled Memorystore instance.
+	// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode pulumi.StringPtrInput
+	// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool pulumi.StringPtrInput
 	// Required. Number of shards for the instance.
 	ShardCount pulumi.IntPtrInput
 	// Output only. Current state of the instance.
@@ -1039,6 +1194,14 @@ type instanceArgs struct {
 	Project *string `pulumi:"project"`
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount *int `pulumi:"replicaCount"`
+	// The serverCaMode for the TLS enabled Memorystore instance.
+	// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode *string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool *string `pulumi:"serverCaPool"`
 	// Required. Number of shards for the instance.
 	ShardCount int `pulumi:"shardCount"`
 	// Optional. Immutable. In-transit encryption mode of the instance.
@@ -1125,6 +1288,14 @@ type InstanceArgs struct {
 	Project pulumi.StringPtrInput
 	// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 	ReplicaCount pulumi.IntPtrInput
+	// The serverCaMode for the TLS enabled Memorystore instance.
+	// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+	// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+	ServerCaMode pulumi.StringPtrInput
+	// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+	// as the server_ca_mode.
+	// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+	ServerCaPool pulumi.StringPtrInput
 	// Required. Number of shards for the instance.
 	ShardCount pulumi.IntInput
 	// Optional. Immutable. In-transit encryption mode of the instance.
@@ -1446,6 +1617,20 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 // Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
 func (o InstanceOutput) ReplicaCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ReplicaCount }).(pulumi.IntOutput)
+}
+
+// The serverCaMode for the TLS enabled Memorystore instance.
+// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+func (o InstanceOutput) ServerCaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServerCaMode }).(pulumi.StringOutput)
+}
+
+// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+// as the server_ca_mode.
+// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+func (o InstanceOutput) ServerCaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ServerCaPool }).(pulumi.StringPtrOutput)
 }
 
 // Required. Number of shards for the instance.

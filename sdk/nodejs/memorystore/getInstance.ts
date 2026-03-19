@@ -91,6 +91,8 @@ export interface GetInstanceResult {
     readonly pscAutoConnections: outputs.memorystore.GetInstancePscAutoConnection[];
     readonly pulumiLabels: {[key: string]: string};
     readonly replicaCount: number;
+    readonly serverCaMode: string;
+    readonly serverCaPool: string;
     readonly shardCount: number;
     readonly state: string;
     readonly stateInfos: outputs.memorystore.GetInstanceStateInfo[];

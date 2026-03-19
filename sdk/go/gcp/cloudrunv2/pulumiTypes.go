@@ -11508,7 +11508,7 @@ func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Instances() pulumi.Strin
 type ServiceTemplateVolumeEmptyDir struct {
 	// The different types of medium supported for EmptyDir.
 	// Default value is `MEMORY`.
-	// Possible values are: `MEMORY`.
+	// Possible values are: `MEMORY`, `DISK`.
 	Medium *string `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit *string `pulumi:"sizeLimit"`
@@ -11528,7 +11528,7 @@ type ServiceTemplateVolumeEmptyDirInput interface {
 type ServiceTemplateVolumeEmptyDirArgs struct {
 	// The different types of medium supported for EmptyDir.
 	// Default value is `MEMORY`.
-	// Possible values are: `MEMORY`.
+	// Possible values are: `MEMORY`, `DISK`.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
@@ -11613,7 +11613,7 @@ func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirPtrO
 
 // The different types of medium supported for EmptyDir.
 // Default value is `MEMORY`.
-// Possible values are: `MEMORY`.
+// Possible values are: `MEMORY`, `DISK`.
 func (o ServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
 }
@@ -11649,7 +11649,7 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) Elem() ServiceTemplateVolumeEmpt
 
 // The different types of medium supported for EmptyDir.
 // Default value is `MEMORY`.
-// Possible values are: `MEMORY`.
+// Possible values are: `MEMORY`, `DISK`.
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
 		if v == nil {
@@ -26863,7 +26863,7 @@ func (o GetServiceTemplateVolumeCloudSqlInstanceArrayOutput) Index(i pulumi.IntI
 }
 
 type GetServiceTemplateVolumeEmptyDir struct {
-	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY", "DISK"]
 	Medium string `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit string `pulumi:"sizeLimit"`
@@ -26881,7 +26881,7 @@ type GetServiceTemplateVolumeEmptyDirInput interface {
 }
 
 type GetServiceTemplateVolumeEmptyDirArgs struct {
-	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY", "DISK"]
 	Medium pulumi.StringInput `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit pulumi.StringInput `pulumi:"sizeLimit"`
@@ -26938,7 +26938,7 @@ func (o GetServiceTemplateVolumeEmptyDirOutput) ToGetServiceTemplateVolumeEmptyD
 	return o
 }
 
-// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY", "DISK"]
 func (o GetServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeEmptyDir) string { return v.Medium }).(pulumi.StringOutput)
 }

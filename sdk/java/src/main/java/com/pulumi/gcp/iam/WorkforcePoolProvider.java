@@ -918,6 +918,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * (Optional, Deprecated)
      * The configuration for OAuth 2.0 client used to get the extended group
      * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
      * type is supported. Extended groups supports a subset of Google Cloud
@@ -930,12 +931,19 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * 
+     * @deprecated
+     * `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * 
      */
+    @Deprecated /* `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead. */
     @Export(name="extendedAttributesOauth2Client", refs={WorkforcePoolProviderExtendedAttributesOauth2Client.class}, tree="[0]")
     private Output</* @Nullable */ WorkforcePoolProviderExtendedAttributesOauth2Client> extendedAttributesOauth2Client;
 
     /**
-     * @return The configuration for OAuth 2.0 client used to get the extended group
+     * @return (Optional, Deprecated)
+     * The configuration for OAuth 2.0 client used to get the extended group
      * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
      * type is supported. Extended groups supports a subset of Google Cloud
      * services. When the user accesses these services, extended group memberships
@@ -946,6 +954,8 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * active session. Each user identity in the workforce identity pool must map
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
+     * 
+     * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
      * 
      */
     public Output<Optional<WorkforcePoolProviderExtendedAttributesOauth2Client>> extendedAttributesOauth2Client() {

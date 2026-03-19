@@ -7,12 +7,32 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs Empty = new ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs();
+
+    /**
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
+     * 
+     */
+    @Import(name="scopes")
+    private @Nullable Output<List<String>> scopes;
+
+    /**
+     * @return The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
+     * 
+     */
+    public Optional<Output<List<String>>> scopes() {
+        return Optional.ofNullable(this.scopes);
+    }
 
     /**
      * The email address of the service account used for authenticatation. CES
@@ -44,6 +64,7 @@ public final class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfi
     private ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs() {}
 
     private ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs(ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs $) {
+        this.scopes = $.scopes;
         this.serviceAccount = $.serviceAccount;
     }
 
@@ -63,6 +84,40 @@ public final class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfi
 
         public Builder(ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs defaults) {
             $ = new ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param scopes The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopes(@Nullable Output<List<String>> scopes) {
+            $.scopes = scopes;
+            return this;
+        }
+
+        /**
+         * @param scopes The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopes(List<String> scopes) {
+            return scopes(Output.of(scopes));
+        }
+
+        /**
+         * @param scopes The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
         }
 
         /**

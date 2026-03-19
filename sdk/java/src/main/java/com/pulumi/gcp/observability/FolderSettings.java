@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testFolder = new Folder("testFolder", FolderArgs.builder()
- *             .displayName("tf-test-_34599")
+ *             .displayName("tf-test-_37426")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testFolder = new Folder("testFolder", FolderArgs.builder()
- *             .displayName("tf-test-_79513")
+ *             .displayName("tf-test-_67903")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

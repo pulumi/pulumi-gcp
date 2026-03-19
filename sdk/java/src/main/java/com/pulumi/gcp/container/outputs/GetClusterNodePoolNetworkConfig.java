@@ -62,7 +62,7 @@ public final class GetClusterNodePoolNetworkConfig {
      */
     private String podRange;
     /**
-     * @return The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+     * @return The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested networkConfig block (setting this attribute directly is supported for backward compatibility). Once created the node pool&#39;s subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
      * 
      */
     private String subnetwork;
@@ -132,7 +132,7 @@ public final class GetClusterNodePoolNetworkConfig {
         return this.podRange;
     }
     /**
-     * @return The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+     * @return The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested networkConfig block (setting this attribute directly is supported for backward compatibility). Once created the node pool&#39;s subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
      * 
      */
     public String subnetwork() {

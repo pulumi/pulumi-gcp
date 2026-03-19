@@ -185,7 +185,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         /// </summary>
         [Output("contentConfig")]
-        public Output<string> ContentConfig { get; private set; } = null!;
+        public Output<string?> ContentConfig { get; private set; } = null!;
 
         /// <summary>
         /// If true, an advanced data store for site search will be created. If the
@@ -344,8 +344,8 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// The content config of the data store.
         /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         /// </summary>
-        [Input("contentConfig", required: true)]
-        public Input<string> ContentConfig { get; set; } = null!;
+        [Input("contentConfig")]
+        public Input<string>? ContentConfig { get; set; }
 
         /// <summary>
         /// If true, an advanced data store for site search will be created. If the

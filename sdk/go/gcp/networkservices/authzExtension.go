@@ -132,11 +132,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewAuthzExtension(ctx, "default", &networkservices.AuthzExtensionArgs{
-//				Name:      pulumi.String("my-authz-ext"),
-//				Location:  pulumi.String("us-west1"),
-//				Authority: pulumi.String("ext11.com"),
-//				Service:   pulumi.String("iap.googleapis.com"),
-//				Timeout:   pulumi.String("0.1s"),
+//				Name:     pulumi.String("my-authz-ext"),
+//				Location: pulumi.String("us-west1"),
+//				Service:  pulumi.String("iap.googleapis.com"),
+//				Timeout:  pulumi.String("0.1s"),
 //			})
 //			if err != nil {
 //				return err
@@ -168,7 +167,7 @@ type AuthzExtension struct {
 	pulumi.CustomResourceState
 
 	// The :authority header in the gRPC request sent from Envoy to the extension service.
-	Authority pulumi.StringOutput `pulumi:"authority"`
+	Authority pulumi.StringPtrOutput `pulumi:"authority"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human-readable description of the resource.
@@ -243,9 +242,6 @@ func NewAuthzExtension(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Authority == nil {
-		return nil, errors.New("invalid value for required argument 'Authority'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -428,7 +424,7 @@ func (AuthzExtensionState) ElementType() reflect.Type {
 
 type authzExtensionArgs struct {
 	// The :authority header in the gRPC request sent from Envoy to the extension service.
-	Authority string `pulumi:"authority"`
+	Authority *string `pulumi:"authority"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Determines how the proxy behaves if the call to the extension fails or times out.
@@ -490,7 +486,7 @@ type authzExtensionArgs struct {
 // The set of arguments for constructing a AuthzExtension resource.
 type AuthzExtensionArgs struct {
 	// The :authority header in the gRPC request sent from Envoy to the extension service.
-	Authority pulumi.StringInput
+	Authority pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Determines how the proxy behaves if the call to the extension fails or times out.
@@ -637,8 +633,8 @@ func (o AuthzExtensionOutput) ToAuthzExtensionOutputWithContext(ctx context.Cont
 }
 
 // The :authority header in the gRPC request sent from Envoy to the extension service.
-func (o AuthzExtensionOutput) Authority() pulumi.StringOutput {
-	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.Authority }).(pulumi.StringOutput)
+func (o AuthzExtensionOutput) Authority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzExtension) pulumi.StringPtrOutput { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
 // The timestamp when the resource was created.

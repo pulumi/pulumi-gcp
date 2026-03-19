@@ -40,6 +40,8 @@ class ClusterArgs:
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
@@ -86,6 +88,12 @@ class ClusterArgs:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[_builtins.str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[_builtins.int] replica_count: Optional. The number of replica nodes per shard.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Redis cluster.
+               If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
                If not provided, encryption is disabled for the cluster.
                Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
@@ -130,6 +138,10 @@ class ClusterArgs:
             pulumi.set(__self__, "region", region)
         if replica_count is not None:
             pulumi.set(__self__, "replica_count", replica_count)
+        if server_ca_mode is not None:
+            pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool is not None:
+            pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if transit_encryption_mode is not None:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
         if zone_distribution_config is not None:
@@ -386,6 +398,34 @@ class ClusterArgs:
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The serverCaMode for the TLS enabled Redis cluster.
+        If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "server_ca_mode")
+
+    @server_ca_mode.setter
+    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+        as the server_ca_mode.
+        Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        """
+        return pulumi.get(self, "server_ca_pool")
+
+    @server_ca_pool.setter
+    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_pool", value)
+
+    @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -447,6 +487,8 @@ class _ClusterState:
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None,
                  size_gb: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -520,6 +562,12 @@ class _ClusterState:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[_builtins.str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[_builtins.int] replica_count: Optional. The number of replica nodes per shard.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Redis cluster.
+               If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[_builtins.int] size_gb: Output only. Redis memory size in GB for the entire cluster.
         :param pulumi.Input[_builtins.str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
@@ -593,6 +641,10 @@ class _ClusterState:
             pulumi.set(__self__, "region", region)
         if replica_count is not None:
             pulumi.set(__self__, "replica_count", replica_count)
+        if server_ca_mode is not None:
+            pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool is not None:
+            pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if shard_count is not None:
             pulumi.set(__self__, "shard_count", shard_count)
         if size_gb is not None:
@@ -1002,6 +1054,34 @@ class _ClusterState:
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The serverCaMode for the TLS enabled Redis cluster.
+        If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "server_ca_mode")
+
+    @server_ca_mode.setter
+    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+        as the server_ca_mode.
+        Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        """
+        return pulumi.get(self, "server_ca_pool")
+
+    @server_ca_pool.setter
+    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_ca_pool", value)
+
+    @_builtins.property
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -1115,6 +1195,8 @@ class Cluster(pulumi.CustomResource):
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_distribution_config: Optional[pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
@@ -1642,6 +1724,80 @@ class Cluster(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[default]))
         project = gcp.organizations.get_project()
         ```
+        ### Redis Cluster Flexible Ca
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.CaPool("default",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("default",
+            pool=default.name,
+            certificate_authority_id="ca-auth",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "Google",
+                        "common_name": "my-redis-ca",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            ignore_active_certificates_on_deletion=True,
+            deletion_protection=False,
+            skip_grace_period=True)
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="ca-network",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="ca-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=consumer_net.id)
+        default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="ca-policy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            network=consumer_net.id,
+            psc_config={
+                "subnetworks": [consumer_subnet.id],
+            })
+        test_cluster = gcp.redis.Cluster("test-cluster",
+            name="ca-cluster",
+            shard_count=3,
+            region="us-central1",
+            psc_configs=[{
+                "network": consumer_net.id,
+            }],
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+            server_ca_mode="SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+            server_ca_pool=default.id,
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    default_service_connection_policy,
+                    default_authority,
+                ]))
+        ```
 
         ## Import
 
@@ -1704,6 +1860,12 @@ class Cluster(pulumi.CustomResource):
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[_builtins.str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[_builtins.int] replica_count: Optional. The number of replica nodes per shard.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Redis cluster.
+               If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[_builtins.str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
                If not provided, encryption is disabled for the cluster.
@@ -2241,6 +2403,80 @@ class Cluster(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[default]))
         project = gcp.organizations.get_project()
         ```
+        ### Redis Cluster Flexible Ca
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.CaPool("default",
+            name="ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("default",
+            pool=default.name,
+            certificate_authority_id="ca-auth",
+            location="us-central1",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "organization": "Google",
+                        "common_name": "my-redis-ca",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            ignore_active_certificates_on_deletion=True,
+            deletion_protection=False,
+            skip_grace_period=True)
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="ca-network",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="ca-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=consumer_net.id)
+        default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="ca-policy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            network=consumer_net.id,
+            psc_config={
+                "subnetworks": [consumer_subnet.id],
+            })
+        test_cluster = gcp.redis.Cluster("test-cluster",
+            name="ca-cluster",
+            shard_count=3,
+            region="us-central1",
+            psc_configs=[{
+                "network": consumer_net.id,
+            }],
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+            server_ca_mode="SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+            server_ca_pool=default.id,
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    default_service_connection_policy,
+                    default_authority,
+                ]))
+        ```
 
         ## Import
 
@@ -2294,6 +2530,8 @@ class Cluster(pulumi.CustomResource):
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_distribution_config: Optional[pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
@@ -2324,6 +2562,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_count"] = replica_count
+            __props__.__dict__["server_ca_mode"] = server_ca_mode
+            __props__.__dict__["server_ca_pool"] = server_ca_pool
             if shard_count is None and not opts.urn:
                 raise TypeError("Missing required property 'shard_count'")
             __props__.__dict__["shard_count"] = shard_count
@@ -2387,6 +2627,8 @@ class Cluster(pulumi.CustomResource):
             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+            server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
+            server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
             shard_count: Optional[pulumi.Input[_builtins.int]] = None,
             size_gb: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2464,6 +2706,12 @@ class Cluster(pulumi.CustomResource):
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[_builtins.str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[_builtins.int] replica_count: Optional. The number of replica nodes per shard.
+        :param pulumi.Input[_builtins.str] server_ca_mode: The serverCaMode for the TLS enabled Redis cluster.
+               If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+               Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+               as the server_ca_mode.
+               Format: projects/{project}/locations/{region}/caPools/{caPoolId}
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[_builtins.int] size_gb: Output only. Redis memory size in GB for the entire cluster.
         :param pulumi.Input[_builtins.str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
@@ -2511,6 +2759,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["redis_configs"] = redis_configs
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_count"] = replica_count
+        __props__.__dict__["server_ca_mode"] = server_ca_mode
+        __props__.__dict__["server_ca_pool"] = server_ca_pool
         __props__.__dict__["shard_count"] = shard_count
         __props__.__dict__["size_gb"] = size_gb
         __props__.__dict__["state"] = state
@@ -2792,6 +3042,26 @@ class Cluster(pulumi.CustomResource):
         Optional. The number of replica nodes per shard.
         """
         return pulumi.get(self, "replica_count")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaMode")
+    def server_ca_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The serverCaMode for the TLS enabled Redis cluster.
+        If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "server_ca_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+        as the server_ca_mode.
+        Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        """
+        return pulumi.get(self, "server_ca_pool")
 
     @_builtins.property
     @pulumi.getter(name="shardCount")

@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_52865")
+ *             .shortName("tf-test_56730")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());

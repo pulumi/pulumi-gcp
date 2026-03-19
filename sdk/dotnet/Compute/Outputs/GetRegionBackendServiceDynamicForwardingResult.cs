@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetRegionBackendServiceDynamicForwardingResult
     {
         /// <summary>
+        /// Dynamic Forwarding Proxy configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingForwardProxyResult> ForwardProxies;
+        /// <summary>
         /// IP:PORT based dynamic forwarding configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingIpPortSelectionResult> IpPortSelections;
 
         [OutputConstructor]
-        private GetRegionBackendServiceDynamicForwardingResult(ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingIpPortSelectionResult> ipPortSelections)
+        private GetRegionBackendServiceDynamicForwardingResult(
+            ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingForwardProxyResult> forwardProxies,
+
+            ImmutableArray<Outputs.GetRegionBackendServiceDynamicForwardingIpPortSelectionResult> ipPortSelections)
         {
+            ForwardProxies = forwardProxies;
             IpPortSelections = ipPortSelections;
         }
     }

@@ -23,15 +23,15 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    @Import(name="authority", required=true)
-    private Output<String> authority;
+    @Import(name="authority")
+    private @Nullable Output<String> authority;
 
     /**
      * @return The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    public Output<String> authority() {
-        return this.authority;
+    public Optional<Output<String>> authority() {
+        return Optional.ofNullable(this.authority);
     }
 
     /**
@@ -320,7 +320,7 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder authority(Output<String> authority) {
+        public Builder authority(@Nullable Output<String> authority) {
             $.authority = authority;
             return this;
         }
@@ -662,9 +662,6 @@ public final class AuthzExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AuthzExtensionArgs build() {
-            if ($.authority == null) {
-                throw new MissingRequiredPropertyException("AuthzExtensionArgs", "authority");
-            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("AuthzExtensionArgs", "location");
             }

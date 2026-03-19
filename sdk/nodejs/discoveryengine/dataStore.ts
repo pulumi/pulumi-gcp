@@ -156,7 +156,7 @@ export class DataStore extends pulumi.CustomResource {
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      */
-    declare public readonly contentConfig: pulumi.Output<string>;
+    declare public readonly contentConfig: pulumi.Output<string | undefined>;
     /**
      * If true, an advanced data store for site search will be created. If the
      * data store is not configured as site search (GENERIC vertical and
@@ -262,9 +262,6 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["solutionTypes"] = state?.solutionTypes;
         } else {
             const args = argsOrState as DataStoreArgs | undefined;
-            if (args?.contentConfig === undefined && !opts.urn) {
-                throw new Error("Missing required property 'contentConfig'");
-            }
             if (args?.dataStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
@@ -401,7 +398,7 @@ export interface DataStoreArgs {
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      */
-    contentConfig: pulumi.Input<string>;
+    contentConfig?: pulumi.Input<string>;
     /**
      * If true, an advanced data store for site search will be created. If the
      * data store is not configured as site search (GENERIC vertical and

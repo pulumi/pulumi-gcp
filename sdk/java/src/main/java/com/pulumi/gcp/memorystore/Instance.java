@@ -496,6 +496,150 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Memorystore Instance Flexible Ca
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.memorystore.Instance;
+ * import com.pulumi.gcp.memorystore.InstanceArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredAutoCreatedEndpointArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
+ *             .name("ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
+ *             .build());
+ * 
+ *         var memorystoreP4saRequester = new CaPoolIamMember("memorystoreP4saRequester", CaPoolIamMemberArgs.builder()
+ *             .caPool(default_.id())
+ *             .role("roles/privateca.certificateRequester")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-memorystore.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+ *             .pool(default_.name())
+ *             .certificateAuthorityId("ca-auth")
+ *             .location("us-central1")
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization("Google")
+ *                         .commonName("my-memorystore-ca")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .build());
+ * 
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *             .name("ca-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
+ *             .name("ca-subnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
+ *             .name("ca-policy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(producerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var test_instance = new Instance("test-instance", InstanceArgs.builder()
+ *             .instanceId("ca-instance")
+ *             .shardCount(3)
+ *             .location("us-central1")
+ *             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .projectId(project.projectId())
+ *                 .build())
+ *             .transitEncryptionMode("SERVER_AUTHENTICATION")
+ *             .serverCaMode("CUSTOMER_MANAGED_CAS_CA")
+ *             .serverCaPool(default_.id())
+ *             .deletionProtectionEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     defaultServiceConnectionPolicy,
+ *                     defaultAuthority,
+ *                     memorystoreP4saRequester)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1097,6 +1241,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> replicaCount() {
         return this.replicaCount;
+    }
+    /**
+     * The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    @Export(name="serverCaMode", refs={String.class}, tree="[0]")
+    private Output<String> serverCaMode;
+
+    /**
+     * @return The serverCaMode for the TLS enabled Memorystore instance.
+     * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+     * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+     * 
+     */
+    public Output<String> serverCaMode() {
+        return this.serverCaMode;
+    }
+    /**
+     * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    @Export(name="serverCaPool", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serverCaPool;
+
+    /**
+     * @return The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
+     * as the server_ca_mode.
+     * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+     * 
+     */
+    public Output<Optional<String>> serverCaPool() {
+        return Codegen.optional(this.serverCaPool);
     }
     /**
      * Required. Number of shards for the instance.

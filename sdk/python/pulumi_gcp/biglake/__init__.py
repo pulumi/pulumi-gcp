@@ -10,6 +10,7 @@ from .catalog import *
 from .database import *
 from .get_iceberg_catalog_iam_policy import *
 from .get_iceberg_namespace_iam_policy import *
+from .get_iceberg_table_iam_policy import *
 from .iceberg_catalog import *
 from .iceberg_catalog_iam_binding import *
 from .iceberg_catalog_iam_member import *
@@ -18,6 +19,10 @@ from .iceberg_namespace import *
 from .iceberg_namespace_iam_binding import *
 from .iceberg_namespace_iam_member import *
 from .iceberg_namespace_iam_policy import *
+from .iceberg_table import *
+from .iceberg_table_iam_binding import *
+from .iceberg_table_iam_member import *
+from .iceberg_table_iam_policy import *
 from .table import *
 from ._inputs import *
 from . import outputs

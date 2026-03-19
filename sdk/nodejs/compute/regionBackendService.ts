@@ -406,6 +406,44 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     protocol: "HTTP2",
+ *     dynamicForwarding: {
+ *         forwardProxy: {
+ *             enabled: true,
+ *             proxyMode: "CLOUD_RUN",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     protocol: "HTTP2",
+ *     dynamicForwarding: {
+ *         forwardProxy: {
+ *             enabled: true,
+ *             proxyMode: "DIRECT_FORWARDING",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Region Backend Service Ha Policy
  *
  * ```typescript
@@ -700,7 +738,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
@@ -1088,7 +1126,7 @@ export interface RegionBackendServiceState {
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -1367,7 +1405,7 @@ export interface RegionBackendServiceArgs {
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**

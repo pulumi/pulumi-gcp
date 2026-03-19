@@ -3335,6 +3335,60 @@
                 "current": "gcp:biglake/icebergNamespaceIamPolicy:IcebergNamespaceIamPolicy",
                 "majorVersion": 9
             },
+            "google_biglake_iceberg_table": {
+                "current": "gcp:biglake/icebergTable:IcebergTable",
+                "majorVersion": 9,
+                "fields": {
+                    "partition_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "schema": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "fields": {
+                                    "maxItemsOne": false
+                                },
+                                "identifier_field_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_biglake_iceberg_table_iam_binding": {
+                "current": "gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_biglake_iceberg_table_iam_member": {
+                "current": "gcp:biglake/icebergTableIamMember:IcebergTableIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_biglake_iceberg_table_iam_policy": {
+                "current": "gcp:biglake/icebergTableIamPolicy:IcebergTableIamPolicy",
+                "majorVersion": 9
+            },
             "google_biglake_table": {
                 "current": "gcp:biglake/table:Table",
                 "majorVersion": 9,
@@ -5842,7 +5896,14 @@
                                                 }
                                             },
                                             "service_account_auth_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "scopes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "service_agent_id_token_auth_config": {
                                                 "maxItemsOne": true
@@ -5891,7 +5952,14 @@
                                                 }
                                             },
                                             "service_account_auth_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "scopes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "service_agent_id_token_auth_config": {
                                                 "maxItemsOne": true
@@ -5941,6 +6009,28 @@
                             "fields": {
                                 "ingestion_label": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_chronicle_data_table": {
+                "current": "gcp:chronicle/dataTable:DataTable",
+                "majorVersion": 9,
+                "fields": {
+                    "column_info": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    },
+                    "scope_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "data_access_scopes": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -11849,6 +11939,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "forward_proxy": {
+                                    "maxItemsOne": true
+                                },
                                 "ip_port_selection": {
                                     "maxItemsOne": true
                                 }
@@ -12434,6 +12527,9 @@
                                 }
                             }
                         }
+                    },
+                    "target_forwarding_rules": {
+                        "maxItemsOne": false
                     },
                     "target_secure_tags": {
                         "maxItemsOne": false
@@ -15354,6 +15450,15 @@
                     }
                 }
             },
+            "google_contact_center_insights_auto_labeling_rule": {
+                "current": "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule",
+                "majorVersion": 9,
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_contact_center_insights_view": {
                 "current": "gcp:contactcenterinsights/view:View",
                 "majorVersion": 9
@@ -16028,6 +16133,9 @@
                         "elem": {
                             "fields": {
                                 "daily_maintenance_window": {
+                                    "maxItemsOne": true
+                                },
+                                "disruption_budget": {
                                     "maxItemsOne": true
                                 },
                                 "maintenance_exclusion": {
@@ -32738,6 +32846,14 @@
                     }
                 }
             },
+            "google_network_security_ull_mirroring_collector": {
+                "current": "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector",
+                "majorVersion": 9
+            },
+            "google_network_security_ull_mirroring_engine": {
+                "current": "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine",
+                "majorVersion": 9
+            },
             "google_network_security_url_lists": {
                 "current": "gcp:networksecurity/urlList:UrlList",
                 "majorVersion": 9,
@@ -39014,6 +39130,10 @@
                     }
                 }
             },
+            "google_sql_provision_script": {
+                "current": "gcp:sql/provisionScript:ProvisionScript",
+                "majorVersion": 9
+            },
             "google_sql_source_representation_instance": {
                 "current": "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance",
                 "majorVersion": 9
@@ -42594,6 +42714,10 @@
                 "current": "gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy",
                 "majorVersion": 9
             },
+            "google_biglake_iceberg_table_iam_policy": {
+                "current": "gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy",
+                "majorVersion": 9
+            },
             "google_bigquery_analytics_hub_data_exchange_iam_policy": {
                 "current": "gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy",
                 "majorVersion": 9
@@ -45423,6 +45547,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "forward_proxy": {
+                                    "maxItemsOne": false
+                                },
                                 "ip_port_selection": {
                                     "maxItemsOne": false
                                 }
@@ -47025,6 +47152,9 @@
                         "elem": {
                             "fields": {
                                 "daily_maintenance_window": {
+                                    "maxItemsOne": false
+                                },
+                                "disruption_budget": {
                                     "maxItemsOne": false
                                 },
                                 "maintenance_exclusion": {
@@ -52914,6 +53044,14 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_network_security_ull_mirroring_collector": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_security_ull_mirroring_engine": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_network_services_agent_gateway": [
                 "effective_labels",
                 "terraform_labels"
@@ -53688,6 +53826,10 @@
             "gcp:biglake/icebergNamespaceIamBinding:IcebergNamespaceIamBinding": 0,
             "gcp:biglake/icebergNamespaceIamMember:IcebergNamespaceIamMember": 0,
             "gcp:biglake/icebergNamespaceIamPolicy:IcebergNamespaceIamPolicy": 0,
+            "gcp:biglake/icebergTable:IcebergTable": 0,
+            "gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding": 0,
+            "gcp:biglake/icebergTableIamMember:IcebergTableIamMember": 0,
+            "gcp:biglake/icebergTableIamPolicy:IcebergTableIamPolicy": 0,
             "gcp:biglake/table:Table": 0,
             "gcp:bigquery/appProfile:AppProfile": 0,
             "gcp:bigquery/biReservation:BiReservation": 0,
@@ -53781,6 +53923,7 @@
             "gcp:ces/toolset:Toolset": 0,
             "gcp:chronicle/dataAccessLabel:DataAccessLabel": 0,
             "gcp:chronicle/dataAccessScope:DataAccessScope": 0,
+            "gcp:chronicle/dataTable:DataTable": 0,
             "gcp:chronicle/referenceList:ReferenceList": 0,
             "gcp:chronicle/retrohunt:Retrohunt": 0,
             "gcp:chronicle/rule:Rule": 0,
@@ -54041,6 +54184,7 @@
             "gcp:compute/vPNTunnel:VPNTunnel": 0,
             "gcp:compute/wireGroup:WireGroup": 0,
             "gcp:contactcenterinsights/analysisRule:AnalysisRule": 0,
+            "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule": 0,
             "gcp:contactcenterinsights/view:View": 0,
             "gcp:container/attachedCluster:AttachedCluster": 0,
             "gcp:container/awsCluster:AwsCluster": 0,
@@ -54565,6 +54709,8 @@
             "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup": 0,
             "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": 0,
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": 0,
+            "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector": 0,
+            "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine": 0,
             "gcp:networksecurity/urlList:UrlList": 0,
             "gcp:networkservices/agentGateway:AgentGateway": 0,
             "gcp:networkservices/authzExtension:AuthzExtension": 0,
@@ -54780,6 +54926,7 @@
             "gcp:spanner/instancePartition:InstancePartition": 0,
             "gcp:sql/database:Database": 0,
             "gcp:sql/databaseInstance:DatabaseInstance": 0,
+            "gcp:sql/provisionScript:ProvisionScript": 0,
             "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance": 0,
             "gcp:sql/sslCert:SslCert": 0,
             "gcp:sql/user:User": 0,
@@ -54943,6 +55090,7 @@
             "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy": 0,
             "gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy": 0,
             "gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy": 0,
+            "gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy": 0,
             "gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy": 0,
             "gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy": 0,
             "gcp:bigquery/getDataset:getDataset": 0,

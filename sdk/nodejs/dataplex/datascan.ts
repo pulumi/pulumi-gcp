@@ -299,7 +299,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_2605",
+ *     name: "tf-test-bucket-name-_79169",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -325,14 +325,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_34535",
+ *     name: "tf-test-bucket-name-_56529",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
  * const tfTestConnection = new gcp.bigquery.Connection("tf_test_connection", {
- *     connectionId: "tf-test-connection-_22375",
+ *     connectionId: "tf-test-connection-_75413",
  *     location: "us-central1",
- *     friendlyName: "tf-test-connection-_29439",
+ *     friendlyName: "tf-test-connection-_55138",
  *     description: "a bigquery connection for tf test",
  *     cloudResource: {},
  * });
@@ -393,7 +393,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_87786",
+ *     name: "tf-test-bucket-name-_37559",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -421,12 +421,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__2067",
+ *     datasetId: "tf_dataplex_test_dataset_id__91980",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__40785",
+ *     tableId: "tf_dataplex_test_table_id__37118",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -501,12 +501,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__79169",
+ *     datasetId: "tf_dataplex_test_dataset_id__80332",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__56529",
+ *     tableId: "tf_dataplex_test_table_id__13293",
  *     deletionProtection: false,
  *     schema: `    [
  *     {

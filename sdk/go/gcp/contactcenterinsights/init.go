@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:contactcenterinsights/analysisRule:AnalysisRule":
 		r = &AnalysisRule{}
+	case "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule":
+		r = &AutoLabelingRule{}
 	case "gcp:contactcenterinsights/view:View":
 		r = &View{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"contactcenterinsights/analysisRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"contactcenterinsights/autoLabelingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

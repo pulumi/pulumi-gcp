@@ -34,8 +34,37 @@ public final class ResourcePolicyWorkloadPolicyArgs extends com.pulumi.resources
     }
 
     /**
+     * (Optional, Beta)
+     * Specifies the connection mode for the accelerator topology.
+     * Supported values are:
+     * * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+     * * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+     *   If not specified, the default is AUTO_CONNECT.
+     *   This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+     *   Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+     * 
+     */
+    @Import(name="acceleratorTopologyMode")
+    private @Nullable Output<String> acceleratorTopologyMode;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the connection mode for the accelerator topology.
+     * Supported values are:
+     * * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+     * * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+     *   If not specified, the default is AUTO_CONNECT.
+     *   This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+     *   Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+     * 
+     */
+    public Optional<Output<String>> acceleratorTopologyMode() {
+        return Optional.ofNullable(this.acceleratorTopologyMode);
+    }
+
+    /**
      * The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-     * and cannot be set if accelerator topology is set.
+     * and cannot be set if accelerator topology or accelerator topology mode is set.
      * Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
      * 
      */
@@ -44,7 +73,7 @@ public final class ResourcePolicyWorkloadPolicyArgs extends com.pulumi.resources
 
     /**
      * @return The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-     * and cannot be set if accelerator topology is set.
+     * and cannot be set if accelerator topology or accelerator topology mode is set.
      * Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
      * 
      */
@@ -73,6 +102,7 @@ public final class ResourcePolicyWorkloadPolicyArgs extends com.pulumi.resources
 
     private ResourcePolicyWorkloadPolicyArgs(ResourcePolicyWorkloadPolicyArgs $) {
         this.acceleratorTopology = $.acceleratorTopology;
+        this.acceleratorTopologyMode = $.acceleratorTopologyMode;
         this.maxTopologyDistance = $.maxTopologyDistance;
         this.type = $.type;
     }
@@ -119,8 +149,43 @@ public final class ResourcePolicyWorkloadPolicyArgs extends com.pulumi.resources
         }
 
         /**
+         * @param acceleratorTopologyMode (Optional, Beta)
+         * Specifies the connection mode for the accelerator topology.
+         * Supported values are:
+         * * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+         * * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+         *   If not specified, the default is AUTO_CONNECT.
+         *   This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+         *   Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorTopologyMode(@Nullable Output<String> acceleratorTopologyMode) {
+            $.acceleratorTopologyMode = acceleratorTopologyMode;
+            return this;
+        }
+
+        /**
+         * @param acceleratorTopologyMode (Optional, Beta)
+         * Specifies the connection mode for the accelerator topology.
+         * Supported values are:
+         * * `AUTO_CONNECT`: The interconnected chips are pre-configured at the time of VM creation.
+         * * `PROVISION_ONLY`: The interconnected chips are connected on demand. At the time of VM creation, the chips are not connected.
+         *   If not specified, the default is AUTO_CONNECT.
+         *   This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
+         *   Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorTopologyMode(String acceleratorTopologyMode) {
+            return acceleratorTopologyMode(Output.of(acceleratorTopologyMode));
+        }
+
+        /**
          * @param maxTopologyDistance The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-         * and cannot be set if accelerator topology is set.
+         * and cannot be set if accelerator topology or accelerator topology mode is set.
          * Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
          * 
          * @return builder
@@ -133,7 +198,7 @@ public final class ResourcePolicyWorkloadPolicyArgs extends com.pulumi.resources
 
         /**
          * @param maxTopologyDistance The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
-         * and cannot be set if accelerator topology is set.
+         * and cannot be set if accelerator topology or accelerator topology mode is set.
          * Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
          * 
          * @return builder

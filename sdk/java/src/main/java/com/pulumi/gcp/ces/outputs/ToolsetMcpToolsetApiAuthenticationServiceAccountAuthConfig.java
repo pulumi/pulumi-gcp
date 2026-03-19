@@ -6,10 +6,18 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
+    /**
+     * @return The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
+     * 
+     */
+    private @Nullable List<String> scopes;
     /**
      * @return The email address of the service account used for authenticatation. CES
      * uses this service account to exchange an access token and the access token
@@ -23,6 +31,14 @@ public final class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
     private String serviceAccount;
 
     private ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig() {}
+    /**
+     * @return The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
+     * 
+     */
+    public List<String> scopes() {
+        return this.scopes == null ? List.of() : this.scopes;
+    }
     /**
      * @return The email address of the service account used for authenticatation. CES
      * uses this service account to exchange an access token and the access token
@@ -46,13 +62,24 @@ public final class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> scopes;
         private String serviceAccount;
         public Builder() {}
         public Builder(ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.scopes = defaults.scopes;
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        @CustomType.Setter
+        public Builder scopes(@Nullable List<String> scopes) {
+
+            this.scopes = scopes;
+            return this;
+        }
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
+        }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             if (serviceAccount == null) {
@@ -63,6 +90,7 @@ public final class ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig {
         }
         public ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig build() {
             final var _resultValue = new ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig();
+            _resultValue.scopes = scopes;
             _resultValue.serviceAccount = serviceAccount;
             return _resultValue;
         }

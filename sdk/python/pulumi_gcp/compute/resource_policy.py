@@ -580,6 +580,21 @@ class ResourcePolicy(pulumi.CustomResource):
                 "accelerator_topology": "2x2",
             })
         ```
+        ### Resource Policy Workload Policy Accelerator Topology Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+                "accelerator_topology": "2x2",
+                "accelerator_topology_mode": "AUTO_CONNECT",
+            })
+        ```
         ### Resource Policy Workload Policy Max Topology Distance
 
         ```python
@@ -847,6 +862,21 @@ class ResourcePolicy(pulumi.CustomResource):
             workload_policy={
                 "type": "HIGH_THROUGHPUT",
                 "accelerator_topology": "2x2",
+            })
+        ```
+        ### Resource Policy Workload Policy Accelerator Topology Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            name="gce-policy",
+            region="europe-west1",
+            workload_policy={
+                "type": "HIGH_THROUGHPUT",
+                "accelerator_topology": "2x2",
+                "accelerator_topology_mode": "AUTO_CONNECT",
             })
         ```
         ### Resource Policy Workload Policy Max Topology Distance

@@ -511,7 +511,7 @@ import javax.annotation.Nullable;
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
- *             .password("tf-test-my-password_15222")
+ *             .password("tf-test-my-password_60302")
  *             .build());
  * 
  *         var bq_connection_cmek = new Connection("bq-connection-cmek", ConnectionArgs.builder()

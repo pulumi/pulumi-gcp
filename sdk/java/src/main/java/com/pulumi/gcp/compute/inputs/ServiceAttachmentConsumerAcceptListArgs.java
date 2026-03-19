@@ -35,7 +35,6 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
     }
 
     /**
-     * (Optional, Beta)
      * The endpoint that is allowed to connect to this service attachment.
      * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
      * 
@@ -44,8 +43,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
     private @Nullable Output<String> endpointUrl;
 
     /**
-     * @return (Optional, Beta)
-     * The endpoint that is allowed to connect to this service attachment.
+     * @return The endpoint that is allowed to connect to this service attachment.
      * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
      * 
      */
@@ -138,8 +136,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
         }
 
         /**
-         * @param endpointUrl (Optional, Beta)
-         * The endpoint that is allowed to connect to this service attachment.
+         * @param endpointUrl The endpoint that is allowed to connect to this service attachment.
          * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
          * 
          * @return builder
@@ -151,8 +148,7 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
         }
 
         /**
-         * @param endpointUrl (Optional, Beta)
-         * The endpoint that is allowed to connect to this service attachment.
+         * @param endpointUrl The endpoint that is allowed to connect to this service attachment.
          * Only one of project_id_or_num, networkUrl and endpointUrl may be set.
          * 
          * @return builder

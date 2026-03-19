@@ -158,7 +158,6 @@ import javax.annotation.Nullable;
  *         var default_ = new AuthzExtension("default", AuthzExtensionArgs.builder()
  *             .name("my-authz-ext")
  *             .location("us-west1")
- *             .authority("ext11.com")
  *             .service("iap.googleapis.com")
  *             .timeout("0.1s")
  *             .build());
@@ -194,14 +193,14 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="authority", refs={String.class}, tree="[0]")
-    private Output<String> authority;
+    private Output</* @Nullable */ String> authority;
 
     /**
      * @return The :authority header in the gRPC request sent from Envoy to the extension service.
      * 
      */
-    public Output<String> authority() {
-        return this.authority;
+    public Output<Optional<String>> authority() {
+        return Codegen.optional(this.authority);
     }
     /**
      * The timestamp when the resource was created.

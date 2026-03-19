@@ -673,6 +673,74 @@ import (
 //	}
 //
 // ```
+// ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("region-service"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				Protocol:            pulumi.String("HTTP2"),
+//				DynamicForwarding: &compute.RegionBackendServiceDynamicForwardingArgs{
+//					ForwardProxy: &compute.RegionBackendServiceDynamicForwardingForwardProxyArgs{
+//						Enabled:   pulumi.Bool(true),
+//						ProxyMode: pulumi.String("CLOUD_RUN"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("region-service"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				Protocol:            pulumi.String("HTTP2"),
+//				DynamicForwarding: &compute.RegionBackendServiceDynamicForwardingArgs{
+//					ForwardProxy: &compute.RegionBackendServiceDynamicForwardingForwardProxyArgs{
+//						Enabled:   pulumi.Bool(true),
+//						ProxyMode: pulumi.String("DIRECT_FORWARDING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Backend Service Ha Policy
 //
 // ```go
@@ -989,7 +1057,7 @@ type RegionBackendService struct {
 	// balancing cannot be used with the other(s). For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `INTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
@@ -1231,7 +1299,7 @@ type regionBackendServiceState struct {
 	// balancing cannot be used with the other(s). For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `INTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
@@ -1444,7 +1512,7 @@ type RegionBackendServiceState struct {
 	// balancing cannot be used with the other(s). For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `INTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
@@ -1654,7 +1722,7 @@ type regionBackendServiceArgs struct {
 	// balancing cannot be used with the other(s). For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `INTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
@@ -1859,7 +1927,7 @@ type RegionBackendServiceArgs struct {
 	// balancing cannot be used with the other(s). For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `INTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
@@ -2217,7 +2285,7 @@ func (o RegionBackendServiceOutput) IpAddressSelectionPolicy() pulumi.StringPtrO
 // balancing cannot be used with the other(s). For more information, refer to
 // [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 // Default value is `INTERNAL`.
-// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 func (o RegionBackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }

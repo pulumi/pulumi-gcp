@@ -85,7 +85,10 @@ import (
 //					},
 //					ApiAuthentication: &ces.ToolsetOpenApiToolsetApiAuthenticationArgs{
 //						ServiceAccountAuthConfig: &ces.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs{
-//							ServiceAccount: pulumi.String("testaccount@gmail.com"),
+//							ServiceAccount: pulumi.String("my@service-account.com"),
+//							Scopes: pulumi.StringArray{
+//								pulumi.String("scope1"),
+//							},
 //						},
 //					},
 //				},
@@ -490,6 +493,9 @@ import (
 //					ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
 //						ServiceAccountAuthConfig: &ces.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs{
 //							ServiceAccount: pulumi.String("my@service-account.com"),
+//							Scopes: pulumi.StringArray{
+//								pulumi.String("scope1"),
+//							},
 //						},
 //					},
 //				},

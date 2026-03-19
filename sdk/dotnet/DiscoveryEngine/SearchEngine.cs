@@ -95,7 +95,20 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         },
     ///         IndustryVertical = "GENERIC",
     ///         AppType = "APP_TYPE_INTRANET",
-    ///         SearchEngineConfig = null,
+    ///         SearchEngineConfig = new Gcp.DiscoveryEngine.Inputs.SearchEngineSearchEngineConfigArgs
+    ///         {
+    ///             SearchTier = "SEARCH_TIER_STANDARD",
+    ///             RequiredSubscriptionTier = "SUBSCRIPTION_TIER_ENTERPRISE",
+    ///             SearchAddOns = new[]
+    ///             {
+    ///                 "SEARCH_ADD_ON_LLM",
+    ///             },
+    ///         },
+    ///         Features = 
+    ///         {
+    ///             { "agent-sharing-without-admin-approval", "FEATURE_STATE_ON" },
+    ///             { "disable-agent-sharing", "FEATURE_STATE_OFF" },
+    ///         },
     ///         KnowledgeGraphConfig = null,
     ///     });
     /// 
@@ -175,7 +188,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// A map of the feature config for the engine to opt in or opt out of features.
         /// </summary>
         [Output("features")]
-        public Output<ImmutableDictionary<string, string>?> Features { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Features { get; private set; } = null!;
 
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
@@ -200,7 +213,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// Structure is documented below.
         /// </summary>
         [Output("knowledgeGraphConfig")]
-        public Output<Outputs.SearchEngineKnowledgeGraphConfig?> KnowledgeGraphConfig { get; private set; } = null!;
+        public Output<Outputs.SearchEngineKnowledgeGraphConfig> KnowledgeGraphConfig { get; private set; } = null!;
 
         /// <summary>
         /// Location.

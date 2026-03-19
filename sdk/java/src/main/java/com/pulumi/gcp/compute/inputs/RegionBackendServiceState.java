@@ -408,7 +408,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -420,7 +420,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -1443,7 +1443,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          * balancing cannot be used with the other(s). For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `INTERNAL`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 
@@ -1459,7 +1459,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          * balancing cannot be used with the other(s). For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `INTERNAL`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 

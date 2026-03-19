@@ -14,9 +14,6 @@ import (
 
 // A trace scope is a collection of resources whose traces are queried together
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // ## Example Usage
 //
 // ### Observability Trace Scope Basic
@@ -41,8 +38,8 @@ import (
 //				return err
 //			}
 //			project_2, err := organizations.NewProject(ctx, "project-2", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_42702"),
-//				Name:           pulumi.String("tf-test_37426"),
+//				ProjectId:      pulumi.String("tf-test_49175"),
+//				Name:           pulumi.String("tf-test_79411"),
 //				OrgId:          pulumi.String("123456789"),
 //				DeletionPolicy: pulumi.String("DELETE"),
 //			})

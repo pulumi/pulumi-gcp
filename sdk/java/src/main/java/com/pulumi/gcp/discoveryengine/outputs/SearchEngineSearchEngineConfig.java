@@ -13,6 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SearchEngineSearchEngineConfig {
     /**
+     * @return The required subscription tier of this engine.
+     * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+     * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+     * 
+     */
+    private @Nullable String requiredSubscriptionTier;
+    /**
      * @return The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
      * 
@@ -27,6 +34,15 @@ public final class SearchEngineSearchEngineConfig {
     private @Nullable String searchTier;
 
     private SearchEngineSearchEngineConfig() {}
+    /**
+     * @return The required subscription tier of this engine.
+     * They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine.
+     * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_ENTERPRISE_EMERGING`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`, `SUBSCRIPTION_TIER_EDU_EMERGING`, `SUBSCRIPTION_TIER_EDU_PRO_EMERGING`, `SUBSCRIPTION_TIER_FRONTLINE_STARTER`.
+     * 
+     */
+    public Optional<String> requiredSubscriptionTier() {
+        return Optional.ofNullable(this.requiredSubscriptionTier);
+    }
     /**
      * @return The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
@@ -54,15 +70,23 @@ public final class SearchEngineSearchEngineConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String requiredSubscriptionTier;
         private @Nullable List<String> searchAddOns;
         private @Nullable String searchTier;
         public Builder() {}
         public Builder(SearchEngineSearchEngineConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.requiredSubscriptionTier = defaults.requiredSubscriptionTier;
     	      this.searchAddOns = defaults.searchAddOns;
     	      this.searchTier = defaults.searchTier;
         }
 
+        @CustomType.Setter
+        public Builder requiredSubscriptionTier(@Nullable String requiredSubscriptionTier) {
+
+            this.requiredSubscriptionTier = requiredSubscriptionTier;
+            return this;
+        }
         @CustomType.Setter
         public Builder searchAddOns(@Nullable List<String> searchAddOns) {
 
@@ -80,6 +104,7 @@ public final class SearchEngineSearchEngineConfig {
         }
         public SearchEngineSearchEngineConfig build() {
             final var _resultValue = new SearchEngineSearchEngineConfig();
+            _resultValue.requiredSubscriptionTier = requiredSubscriptionTier;
             _resultValue.searchAddOns = searchAddOns;
             _resultValue.searchTier = searchTier;
             return _resultValue;

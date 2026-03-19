@@ -188,6 +188,7 @@ import javax.annotation.Nullable;
  *             .backupPlanId("backup-plan-csql-test")
  *             .resourceType("sqladmin.googleapis.com/Instance")
  *             .backupVault(myBackupVault.id())
+ *             .maxCustomOnDemandRetentionDays(30)
  *             .backupRules(BackupPlanBackupRuleArgs.builder()
  *                 .ruleId("rule-1")
  *                 .backupRetentionDays(5)

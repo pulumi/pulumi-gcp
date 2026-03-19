@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                     AdminPassword = "ABcde_1#234",
     ///                     DatabaseId = "mydb",
     ///                     DbName = "db",
+    ///                     DbUniqueName = "db",
     ///                 },
     ///             },
     ///         },
@@ -104,7 +105,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 Database = new Gcp.OracleDatabase.Inputs.DbSystemPropertiesDbHomeDatabaseArgs
     ///                 {
     ///                     DbName = "db",
-    ///                     DbUniqueName = "dbunique",
+    ///                     DbUniqueName = "db",
     ///                     AdminPassword = "ABcde_1#2345",
     ///                     TdeWalletPassword = "ABcde_1#2345",
     ///                     DatabaseId = "mydb",

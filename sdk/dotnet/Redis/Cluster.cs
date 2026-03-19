@@ -831,6 +831,123 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// ### Redis Cluster Flexible Ca
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+    ///     {
+    ///         Name = "ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+    ///     {
+    ///         Pool = @default.Name,
+    ///         CertificateAuthorityId = "ca-auth",
+    ///         Location = "us-central1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "Google",
+    ///                     CommonName = "my-redis-ca",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///     });
+    /// 
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
+    ///     {
+    ///         Name = "ca-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
+    ///     {
+    ///         Name = "ca-subnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = consumerNet.Id,
+    ///     });
+    /// 
+    ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "ca-policy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Network = consumerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 consumerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var test_cluster = new Gcp.Redis.Cluster("test-cluster", new()
+    ///     {
+    ///         Name = "ca-cluster",
+    ///         ShardCount = 3,
+    ///         Region = "us-central1",
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = consumerNet.Id,
+    ///             },
+    ///         },
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+    ///         ServerCaMode = "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+    ///         ServerCaPool = @default.Id,
+    ///         DeletionProtectionEnabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultServiceConnectionPolicy,
+    ///             defaultAuthority,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1065,6 +1182,22 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("replicaCount")]
         public Output<int?> ReplicaCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The serverCaMode for the TLS enabled Redis cluster.
+        /// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        /// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Output("serverCaMode")]
+        public Output<string> ServerCaMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+        /// as the server_ca_mode.
+        /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        /// </summary>
+        [Output("serverCaPool")]
+        public Output<string?> ServerCaPool { get; private set; } = null!;
 
         /// <summary>
         /// Required. Number of shards for the Redis cluster.
@@ -1311,6 +1444,22 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("replicaCount")]
         public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
+        /// The serverCaMode for the TLS enabled Redis cluster.
+        /// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        /// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Input("serverCaMode")]
+        public Input<string>? ServerCaMode { get; set; }
+
+        /// <summary>
+        /// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+        /// as the server_ca_mode.
+        /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        /// </summary>
+        [Input("serverCaPool")]
+        public Input<string>? ServerCaPool { get; set; }
 
         /// <summary>
         /// Required. Number of shards for the Redis cluster.
@@ -1628,6 +1777,22 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("replicaCount")]
         public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
+        /// The serverCaMode for the TLS enabled Redis cluster.
+        /// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+        /// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+        /// </summary>
+        [Input("serverCaMode")]
+        public Input<string>? ServerCaMode { get; set; }
+
+        /// <summary>
+        /// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+        /// as the server_ca_mode.
+        /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+        /// </summary>
+        [Input("serverCaPool")]
+        public Input<string>? ServerCaPool { get; set; }
 
         /// <summary>
         /// Required. Number of shards for the Redis cluster.

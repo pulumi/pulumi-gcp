@@ -652,7 +652,15 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[agentspace_basic.data_store_id],
             industry_vertical="GENERIC",
             app_type="APP_TYPE_INTRANET",
-            search_engine_config={},
+            search_engine_config={
+                "search_tier": "SEARCH_TIER_STANDARD",
+                "required_subscription_tier": "SUBSCRIPTION_TIER_ENTERPRISE",
+                "search_add_ons": ["SEARCH_ADD_ON_LLM"],
+            },
+            features={
+                "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
+                "disable-agent-sharing": "FEATURE_STATE_OFF",
+            },
             knowledge_graph_config={})
         ```
 
@@ -762,7 +770,15 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[agentspace_basic.data_store_id],
             industry_vertical="GENERIC",
             app_type="APP_TYPE_INTRANET",
-            search_engine_config={},
+            search_engine_config={
+                "search_tier": "SEARCH_TIER_STANDARD",
+                "required_subscription_tier": "SUBSCRIPTION_TIER_ENTERPRISE",
+                "search_add_ons": ["SEARCH_ADD_ON_LLM"],
+            },
+            features={
+                "agent-sharing-without-admin-approval": "FEATURE_STATE_ON",
+                "disable-agent-sharing": "FEATURE_STATE_OFF",
+            },
             knowledge_graph_config={})
         ```
 
@@ -1007,7 +1023,7 @@ class SearchEngine(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+    def features(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
         A map of the feature config for the engine to opt in or opt out of features.
         """
@@ -1037,7 +1053,7 @@ class SearchEngine(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="knowledgeGraphConfig")
-    def knowledge_graph_config(self) -> pulumi.Output[Optional['outputs.SearchEngineKnowledgeGraphConfig']]:
+    def knowledge_graph_config(self) -> pulumi.Output['outputs.SearchEngineKnowledgeGraphConfig']:
         """
         Configurations for the Knowledge Graph.
         Structure is documented below.

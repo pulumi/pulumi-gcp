@@ -177,6 +177,8 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly ImmutableArray<Outputs.GetInstancePscAutoConnectionResult> PscAutoConnections;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly int ReplicaCount;
+        public readonly string ServerCaMode;
+        public readonly string ServerCaPool;
         public readonly int ShardCount;
         public readonly string State;
         public readonly ImmutableArray<Outputs.GetInstanceStateInfoResult> StateInfos;
@@ -259,6 +261,10 @@ namespace Pulumi.Gcp.MemoryStore
 
             int replicaCount,
 
+            string serverCaMode,
+
+            string serverCaPool,
+
             int shardCount,
 
             string state,
@@ -309,6 +315,8 @@ namespace Pulumi.Gcp.MemoryStore
             PscAutoConnections = pscAutoConnections;
             PulumiLabels = pulumiLabels;
             ReplicaCount = replicaCount;
+            ServerCaMode = serverCaMode;
+            ServerCaPool = serverCaPool;
             ShardCount = shardCount;
             State = state;
             StateInfos = stateInfos;

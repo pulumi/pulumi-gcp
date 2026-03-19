@@ -18,9 +18,6 @@ import javax.annotation.Nullable;
 /**
  * A trace scope is a collection of resources whose traces are queried together
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * ## Example Usage
  * 
  * ### Observability Trace Scope Basic
@@ -56,8 +53,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project_2 = new Project("project-2", ProjectArgs.builder()
- *             .projectId("tf-test_42702")
- *             .name("tf-test_37426")
+ *             .projectId("tf-test_49175")
+ *             .name("tf-test_79411")
  *             .orgId("123456789")
  *             .deletionPolicy("DELETE")
  *             .build());

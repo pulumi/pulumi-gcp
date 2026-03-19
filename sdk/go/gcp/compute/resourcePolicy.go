@@ -330,6 +330,37 @@ import (
 //	}
 //
 // ```
+// ### Resource Policy Workload Policy Accelerator Topology Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("europe-west1"),
+//				WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
+//					Type:                    pulumi.String("HIGH_THROUGHPUT"),
+//					AcceleratorTopology:     pulumi.String("2x2"),
+//					AcceleratorTopologyMode: pulumi.String("AUTO_CONNECT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Resource Policy Workload Policy Max Topology Distance
 //
 // ```go

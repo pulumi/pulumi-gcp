@@ -267,6 +267,8 @@ __all__ = [
     'ClusterMaintenancePolicyArgsDict',
     'ClusterMaintenancePolicyDailyMaintenanceWindowArgs',
     'ClusterMaintenancePolicyDailyMaintenanceWindowArgsDict',
+    'ClusterMaintenancePolicyDisruptionBudgetArgs',
+    'ClusterMaintenancePolicyDisruptionBudgetArgsDict',
     'ClusterMaintenancePolicyMaintenanceExclusionArgs',
     'ClusterMaintenancePolicyMaintenanceExclusionArgsDict',
     'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs',
@@ -7837,6 +7839,12 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
 
     Examples:
     """
+    disruption_budget: NotRequired[pulumi.Input['ClusterMaintenancePolicyDisruptionBudgetArgsDict']]
+    """
+    structure documented below
+
+    In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
+    """
     maintenance_exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgsDict']]]]
     """
     Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
@@ -7876,6 +7884,7 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
 class ClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
                  daily_maintenance_window: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']] = None,
+                 disruption_budget: Optional[pulumi.Input['ClusterMaintenancePolicyDisruptionBudgetArgs']] = None,
                  maintenance_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]] = None,
                  recurring_window: Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs']] = None):
         """
@@ -7884,6 +7893,9 @@ class ClusterMaintenancePolicyArgs:
                where HH : \\[00-23\\] and MM : \\[00-59\\] GMT. For example:
                
                Examples:
+        :param pulumi.Input['ClusterMaintenancePolicyDisruptionBudgetArgs'] disruption_budget: structure documented below
+               
+               In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         :param pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs'] recurring_window: Time window for recurring maintenance operations.
                
@@ -7915,6 +7927,8 @@ class ClusterMaintenancePolicyArgs:
         """
         if daily_maintenance_window is not None:
             pulumi.set(__self__, "daily_maintenance_window", daily_maintenance_window)
+        if disruption_budget is not None:
+            pulumi.set(__self__, "disruption_budget", disruption_budget)
         if maintenance_exclusions is not None:
             pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
         if recurring_window is not None:
@@ -7935,6 +7949,20 @@ class ClusterMaintenancePolicyArgs:
     @daily_maintenance_window.setter
     def daily_maintenance_window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']]):
         pulumi.set(self, "daily_maintenance_window", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disruptionBudget")
+    def disruption_budget(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyDisruptionBudgetArgs']]:
+        """
+        structure documented below
+
+        In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
+        """
+        return pulumi.get(self, "disruption_budget")
+
+    @disruption_budget.setter
+    def disruption_budget(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyDisruptionBudgetArgs']]):
+        pulumi.set(self, "disruption_budget", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceExclusions")
@@ -8017,6 +8045,101 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "duration", value)
+
+
+class ClusterMaintenancePolicyDisruptionBudgetArgsDict(TypedDict):
+    last_disruption_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The last disruption time of the control plane.
+
+    Examples:
+    """
+    last_minor_version_disruption_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The last minor version disruption time of the control plane.
+    """
+    minor_version_disruption_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum duration between two minor version upgrades of the control plane.
+    """
+    patch_version_disruption_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The minimum duration between two patch version upgrades of the control plane.
+    """
+
+@pulumi.input_type
+class ClusterMaintenancePolicyDisruptionBudgetArgs:
+    def __init__(__self__, *,
+                 last_disruption_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 last_minor_version_disruption_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 minor_version_disruption_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 patch_version_disruption_interval: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] last_disruption_time: The last disruption time of the control plane.
+               
+               Examples:
+        :param pulumi.Input[_builtins.str] last_minor_version_disruption_time: The last minor version disruption time of the control plane.
+        :param pulumi.Input[_builtins.str] minor_version_disruption_interval: The minimum duration between two minor version upgrades of the control plane.
+        :param pulumi.Input[_builtins.str] patch_version_disruption_interval: The minimum duration between two patch version upgrades of the control plane.
+        """
+        if last_disruption_time is not None:
+            pulumi.set(__self__, "last_disruption_time", last_disruption_time)
+        if last_minor_version_disruption_time is not None:
+            pulumi.set(__self__, "last_minor_version_disruption_time", last_minor_version_disruption_time)
+        if minor_version_disruption_interval is not None:
+            pulumi.set(__self__, "minor_version_disruption_interval", minor_version_disruption_interval)
+        if patch_version_disruption_interval is not None:
+            pulumi.set(__self__, "patch_version_disruption_interval", patch_version_disruption_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="lastDisruptionTime")
+    def last_disruption_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The last disruption time of the control plane.
+
+        Examples:
+        """
+        return pulumi.get(self, "last_disruption_time")
+
+    @last_disruption_time.setter
+    def last_disruption_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_disruption_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastMinorVersionDisruptionTime")
+    def last_minor_version_disruption_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The last minor version disruption time of the control plane.
+        """
+        return pulumi.get(self, "last_minor_version_disruption_time")
+
+    @last_minor_version_disruption_time.setter
+    def last_minor_version_disruption_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_minor_version_disruption_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minorVersionDisruptionInterval")
+    def minor_version_disruption_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The minimum duration between two minor version upgrades of the control plane.
+        """
+        return pulumi.get(self, "minor_version_disruption_interval")
+
+    @minor_version_disruption_interval.setter
+    def minor_version_disruption_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "minor_version_disruption_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="patchVersionDisruptionInterval")
+    def patch_version_disruption_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The minimum duration between two patch version upgrades of the control plane.
+        """
+        return pulumi.get(self, "patch_version_disruption_interval")
+
+    @patch_version_disruption_interval.setter
+    def patch_version_disruption_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "patch_version_disruption_interval", value)
 
 
 class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):

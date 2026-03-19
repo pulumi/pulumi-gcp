@@ -97,6 +97,7 @@ import * as utilities from "../utilities";
  *     backupPlanId: "backup-plan-csql-test",
  *     resourceType: "sqladmin.googleapis.com/Instance",
  *     backupVault: myBackupVault.id,
+ *     maxCustomOnDemandRetentionDays: 30,
  *     backupRules: [{
  *         ruleId: "rule-1",
  *         backupRetentionDays: 5,

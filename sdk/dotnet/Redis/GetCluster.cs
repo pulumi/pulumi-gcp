@@ -180,6 +180,8 @@ namespace Pulumi.Gcp.Redis
         public readonly ImmutableDictionary<string, string> RedisConfigs;
         public readonly string? Region;
         public readonly int ReplicaCount;
+        public readonly string ServerCaMode;
+        public readonly string ServerCaPool;
         public readonly int ShardCount;
         public readonly int SizeGb;
         public readonly string State;
@@ -252,6 +254,10 @@ namespace Pulumi.Gcp.Redis
 
             int replicaCount,
 
+            string serverCaMode,
+
+            string serverCaPool,
+
             int shardCount,
 
             int sizeGb,
@@ -297,6 +303,8 @@ namespace Pulumi.Gcp.Redis
             RedisConfigs = redisConfigs;
             Region = region;
             ReplicaCount = replicaCount;
+            ServerCaMode = serverCaMode;
+            ServerCaPool = serverCaPool;
             ShardCount = shardCount;
             SizeGb = sizeGb;
             State = state;

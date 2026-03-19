@@ -62,7 +62,8 @@ import * as utilities from "../utilities";
  *         },
  *         apiAuthentication: {
  *             serviceAccountAuthConfig: {
- *                 serviceAccount: "testaccount@gmail.com",
+ *                 serviceAccount: "my@service-account.com",
+ *                 scopes: ["scope1"],
  *             },
  *         },
  *     },
@@ -345,6 +346,7 @@ import * as utilities from "../utilities";
  *         apiAuthentication: {
  *             serviceAccountAuthConfig: {
  *                 serviceAccount: "my@service-account.com",
+ *                 scopes: ["scope1"],
  *             },
  *         },
  *     },

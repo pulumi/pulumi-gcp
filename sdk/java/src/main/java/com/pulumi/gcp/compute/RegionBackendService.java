@@ -803,6 +803,92 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("region-service")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .protocol("HTTP2")
+ *             .dynamicForwarding(RegionBackendServiceDynamicForwardingArgs.builder()
+ *                 .forwardProxy(RegionBackendServiceDynamicForwardingForwardProxyArgs.builder()
+ *                     .enabled(true)
+ *                     .proxyMode("CLOUD_RUN")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("region-service")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .protocol("HTTP2")
+ *             .dynamicForwarding(RegionBackendServiceDynamicForwardingArgs.builder()
+ *                 .forwardProxy(RegionBackendServiceDynamicForwardingForwardProxyArgs.builder()
+ *                     .enabled(true)
+ *                     .proxyMode("DIRECT_FORWARDING")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Region Backend Service Ha Policy
  * 
  * <pre>
@@ -1408,7 +1494,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
@@ -1420,7 +1506,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * balancing cannot be used with the other(s). For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `INTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     public Output<Optional<String>> loadBalancingScheme() {

@@ -589,6 +589,62 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "region-service",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         Protocol = "HTTP2",
+    ///         DynamicForwarding = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingArgs
+    ///         {
+    ///             ForwardProxy = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 ProxyMode = "CLOUD_RUN",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "region-service",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         Protocol = "HTTP2",
+    ///         DynamicForwarding = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingArgs
+    ///         {
+    ///             ForwardProxy = new Gcp.Compute.Inputs.RegionBackendServiceDynamicForwardingForwardProxyArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 ProxyMode = "DIRECT_FORWARDING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Backend Service Ha Policy
     /// 
     /// ```csharp
@@ -959,7 +1015,7 @@ namespace Pulumi.Gcp.Compute
         /// balancing cannot be used with the other(s). For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `INTERNAL`.
-        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -1360,7 +1416,7 @@ namespace Pulumi.Gcp.Compute
         /// balancing cannot be used with the other(s). For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `INTERNAL`.
-        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -1736,7 +1792,7 @@ namespace Pulumi.Gcp.Compute
         /// balancing cannot be used with the other(s). For more information, refer to
         /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         /// Default value is `INTERNAL`.
-        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
