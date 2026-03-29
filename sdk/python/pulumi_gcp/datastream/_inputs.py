@@ -4841,7 +4841,8 @@ class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
     file_rotation_interval: NotRequired[pulumi.Input[_builtins.str]]
     """
     The maximum duration for which new events are added before a file is closed and a new file is created.
-    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+    Values within the range of 15-60 seconds are allowed.
+    A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
     file_rotation_mb: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -4868,7 +4869,8 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
         """
         :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs'] avro_file_format: AVRO file format configuration.
         :param pulumi.Input[_builtins.str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+               Values within the range of 15-60 seconds are allowed.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[_builtins.int] file_rotation_mb: The maximum file size to be saved in the bucket.
         :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs'] json_file_format: JSON file format configuration.
                Structure is documented below.
@@ -4902,7 +4904,8 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
     def file_rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The maximum duration for which new events are added before a file is closed and a new file is created.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        Values within the range of 15-60 seconds are allowed.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "file_rotation_interval")
 

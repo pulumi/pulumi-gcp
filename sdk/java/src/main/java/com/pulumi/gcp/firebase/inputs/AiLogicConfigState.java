@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.firebase.inputs.AiLogicConfigGenerativeLanguageConfigArgs;
 import com.pulumi.gcp.firebase.inputs.AiLogicConfigTelemetryConfigArgs;
+import com.pulumi.gcp.firebase.inputs.AiLogicConfigTrafficFilterArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,6 +111,23 @@ public final class AiLogicConfigState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.telemetryConfig);
     }
 
+    /**
+     * Configuration for traffic filtering.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="trafficFilter")
+    private @Nullable Output<AiLogicConfigTrafficFilterArgs> trafficFilter;
+
+    /**
+     * @return Configuration for traffic filtering.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiLogicConfigTrafficFilterArgs>> trafficFilter() {
+        return Optional.ofNullable(this.trafficFilter);
+    }
+
     private AiLogicConfigState() {}
 
     private AiLogicConfigState(AiLogicConfigState $) {
@@ -118,6 +136,7 @@ public final class AiLogicConfigState extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.project = $.project;
         this.telemetryConfig = $.telemetryConfig;
+        this.trafficFilter = $.trafficFilter;
     }
 
     public static Builder builder() {
@@ -259,6 +278,29 @@ public final class AiLogicConfigState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder telemetryConfig(AiLogicConfigTelemetryConfigArgs telemetryConfig) {
             return telemetryConfig(Output.of(telemetryConfig));
+        }
+
+        /**
+         * @param trafficFilter Configuration for traffic filtering.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficFilter(@Nullable Output<AiLogicConfigTrafficFilterArgs> trafficFilter) {
+            $.trafficFilter = trafficFilter;
+            return this;
+        }
+
+        /**
+         * @param trafficFilter Configuration for traffic filtering.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficFilter(AiLogicConfigTrafficFilterArgs trafficFilter) {
+            return trafficFilter(Output.of(trafficFilter));
         }
 
         public AiLogicConfigState build() {

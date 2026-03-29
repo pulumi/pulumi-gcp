@@ -81,6 +81,21 @@ public final class DatabaseInstancePointInTimeRestoreContextArgs extends com.pul
     }
 
     /**
+     * The region of the target instance where the datasource will be restored. For example: &#34;us-central1&#34;.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the target instance where the datasource will be restored. For example: &#34;us-central1&#34;.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The name of the target instance.
      * 
      */
@@ -102,6 +117,7 @@ public final class DatabaseInstancePointInTimeRestoreContextArgs extends com.pul
         this.datasource = $.datasource;
         this.pointInTime = $.pointInTime;
         this.preferredZone = $.preferredZone;
+        this.region = $.region;
         this.targetInstance = $.targetInstance;
     }
 
@@ -209,6 +225,27 @@ public final class DatabaseInstancePointInTimeRestoreContextArgs extends com.pul
          */
         public Builder preferredZone(String preferredZone) {
             return preferredZone(Output.of(preferredZone));
+        }
+
+        /**
+         * @param region The region of the target instance where the datasource will be restored. For example: &#34;us-central1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the target instance where the datasource will be restored. For example: &#34;us-central1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

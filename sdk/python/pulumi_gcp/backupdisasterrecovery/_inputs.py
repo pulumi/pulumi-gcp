@@ -27,6 +27,8 @@ __all__ = [
     'BackupPlanBackupRuleStandardScheduleBackupWindowArgsDict',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgsDict',
+    'BackupPlanDiskBackupPlanPropertiesArgs',
+    'BackupPlanDiskBackupPlanPropertiesArgsDict',
     'BackupVaultEncryptionConfigArgs',
     'BackupVaultEncryptionConfigArgsDict',
     'ManagementServerManagementUriArgs',
@@ -629,6 +631,43 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs:
     @week_of_month.setter
     def week_of_month(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "week_of_month", value)
+
+
+class BackupPlanDiskBackupPlanPropertiesArgsDict(TypedDict):
+    guest_flush: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether to perform a guest flush operation before taking a disk
+    backup. When set to true, the system will attempt to ensure
+    application-consistent backups. When set to false, the system will
+    create crash-consistent backups.
+    """
+
+@pulumi.input_type
+class BackupPlanDiskBackupPlanPropertiesArgs:
+    def __init__(__self__, *,
+                 guest_flush: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] guest_flush: Indicates whether to perform a guest flush operation before taking a disk
+               backup. When set to true, the system will attempt to ensure
+               application-consistent backups. When set to false, the system will
+               create crash-consistent backups.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Indicates whether to perform a guest flush operation before taking a disk
+        backup. When set to true, the system will attempt to ensure
+        application-consistent backups. When set to false, the system will
+        create crash-consistent backups.
+        """
+        return pulumi.get(self, "guest_flush")
+
+    @guest_flush.setter
+    def guest_flush(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "guest_flush", value)
 
 
 class BackupVaultEncryptionConfigArgsDict(TypedDict):

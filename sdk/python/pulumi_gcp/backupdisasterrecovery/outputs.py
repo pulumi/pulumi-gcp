@@ -22,6 +22,7 @@ __all__ = [
     'BackupPlanBackupRuleStandardSchedule',
     'BackupPlanBackupRuleStandardScheduleBackupWindow',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonth',
+    'BackupPlanDiskBackupPlanProperties',
     'BackupVaultEncryptionConfig',
     'ManagementServerManagementUri',
     'ManagementServerNetwork',
@@ -73,6 +74,7 @@ __all__ = [
     'GetBackupPlanBackupRuleStandardScheduleResult',
     'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
     'GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult',
+    'GetBackupPlanDiskBackupPlanPropertyResult',
     'GetBackupVaultEncryptionConfigResult',
     'GetDataSourceBackupConfigInfoResult',
     'GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult',
@@ -523,6 +525,47 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth(dict):
         Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class BackupPlanDiskBackupPlanProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guestFlush":
+            suggest = "guest_flush"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanDiskBackupPlanProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanDiskBackupPlanProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanDiskBackupPlanProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guest_flush: _builtins.bool):
+        """
+        :param _builtins.bool guest_flush: Indicates whether to perform a guest flush operation before taking a disk
+               backup. When set to true, the system will attempt to ensure
+               application-consistent backups. When set to false, the system will
+               create crash-consistent backups.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> _builtins.bool:
+        """
+        Indicates whether to perform a guest flush operation before taking a disk
+        backup. When set to true, the system will attempt to ensure
+        application-consistent backups. When set to false, the system will
+        create crash-consistent backups.
+        """
+        return pulumi.get(self, "guest_flush")
 
 
 @pulumi.output_type
@@ -4007,6 +4050,30 @@ class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult(dict):
         WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class GetBackupPlanDiskBackupPlanPropertyResult(dict):
+    def __init__(__self__, *,
+                 guest_flush: _builtins.bool):
+        """
+        :param _builtins.bool guest_flush: Indicates whether to perform a guest flush operation before taking a disk
+               backup. When set to true, the system will attempt to ensure
+               application-consistent backups. When set to false, the system will
+               create crash-consistent backups.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> _builtins.bool:
+        """
+        Indicates whether to perform a guest flush operation before taking a disk
+        backup. When set to true, the system will attempt to ensure
+        application-consistent backups. When set to false, the system will
+        create crash-consistent backups.
+        """
+        return pulumi.get(self, "guest_flush")
 
 
 @pulumi.output_type

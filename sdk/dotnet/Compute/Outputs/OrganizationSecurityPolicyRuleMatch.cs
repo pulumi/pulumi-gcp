@@ -17,11 +17,16 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The configuration options for matching the rule.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.OrganizationSecurityPolicyRuleMatchConfig Config;
+        public readonly Outputs.OrganizationSecurityPolicyRuleMatchConfig? Config;
         /// <summary>
         /// A description of the rule.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.OrganizationSecurityPolicyRuleMatchExpr? Expr;
         /// <summary>
         /// Preconfigured versioned expression. For organization security policy rules,
         /// the only supported type is "SRC_IPS_V1".
@@ -31,14 +36,17 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private OrganizationSecurityPolicyRuleMatch(
-            Outputs.OrganizationSecurityPolicyRuleMatchConfig config,
+            Outputs.OrganizationSecurityPolicyRuleMatchConfig? config,
 
             string? description,
+
+            Outputs.OrganizationSecurityPolicyRuleMatchExpr? expr,
 
             string? versionedExpr)
         {
             Config = config;
             Description = description;
+            Expr = expr;
             VersionedExpr = versionedExpr;
         }
     }

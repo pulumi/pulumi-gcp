@@ -21,6 +21,22 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("apiAuthentication")]
         public Input<Inputs.ToolsetMcpToolsetApiAuthenticationGetArgs>? ApiAuthentication { get; set; }
 
+        [Input("customHeaders")]
+        private InputMap<string>? _customHeaders;
+
+        /// <summary>
+        /// The custom headers to send in the request to the MCP server. The values
+        /// must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+        /// set in the session variables. See
+        /// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+        /// for more details.
+        /// </summary>
+        public InputMap<string> CustomHeaders
+        {
+            get => _customHeaders ?? (_customHeaders = new InputMap<string>());
+            set => _customHeaders = value;
+        }
+
         /// <summary>
         /// The address of the MCP server, for example, "https://example.com/mcp/". If
         /// the server is built with the MCP SDK, the url should be suffixed with

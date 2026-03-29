@@ -297,6 +297,32 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloud SQL Instance created using pointInTimeRestore using multiregion datasource
+ * > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "main-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *     },
+ *     pointInTimeRestoreContext: {
+ *         datasource: "backupdr_datasource",
+ *         targetInstance: "target_instance_name",
+ *         pointInTime: "time_stamp",
+ *         region: "region",
+ *     },
+ * });
+ * ```
+ *
  * ## Switchover
  *
  * Users can perform a switchover on a replica by following the steps below.

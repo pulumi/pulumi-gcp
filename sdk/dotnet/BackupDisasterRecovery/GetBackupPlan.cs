@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string BackupVaultServiceAccount;
         public readonly string CreateTime;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetBackupPlanDiskBackupPlanPropertyResult> DiskBackupPlanProperties;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -93,6 +94,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string description,
 
+            ImmutableArray<Outputs.GetBackupPlanDiskBackupPlanPropertyResult> diskBackupPlanProperties,
+
             string id,
 
             string location,
@@ -117,6 +120,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             BackupVaultServiceAccount = backupVaultServiceAccount;
             CreateTime = createTime;
             Description = description;
+            DiskBackupPlanProperties = diskBackupPlanProperties;
             Id = id;
             Location = location;
             LogRetentionDays = logRetentionDays;

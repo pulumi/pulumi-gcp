@@ -57,6 +57,40 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Organization Security Policy Rule Expression
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
+    ///     {
+    ///         ShortName = "tf-test_95154",
+    ///         Parent = "organizations/123456789",
+    ///         Type = "CLOUD_ARMOR",
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policy", new()
+    ///     {
+    ///         PolicyId = policy.Id,
+    ///         Action = "allow",
+    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Expr = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchExprArgs
+    ///             {
+    ///                 Expression = "request.path.contains('/folder/test/')",
+    ///             },
+    ///             VersionedExpr = "",
+    ///         },
+    ///         Priority = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Organization Security Policy Rule Firewall
     /// 
     /// ```csharp

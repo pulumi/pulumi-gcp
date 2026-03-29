@@ -83,6 +83,95 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Target Tcp Proxy Basic Beta
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.TargetTCPProxy;
+ * import com.pulumi.gcp.compute.TargetTCPProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .protocol("TCP")
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var default_ = new TargetTCPProxy("default", TargetTCPProxyArgs.builder()
+ *             .name("test-proxy")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .backendService(defaultBackendService.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Target Tcp Proxy Backendless
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.TargetTCPProxy;
+ * import com.pulumi.gcp.compute.TargetTCPProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new TargetTCPProxy("default", TargetTCPProxyArgs.builder()
+ *             .name("test-proxy")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -104,18 +193,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/targetTCPProxy:TargetTCPProxy")
 public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
-    private Output<String> backendService;
+    private Output</* @Nullable */ String> backendService;
 
     /**
-     * @return A reference to the BackendService resource.
+     * @return A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      * 
      */
-    public Output<String> backendService() {
-        return this.backendService;
+    public Output<Optional<String>> backendService() {
+        return Codegen.optional(this.backendService);
     }
     /**
      * Creation timestamp in RFC3339 text format.
@@ -144,6 +235,28 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loadBalancingScheme;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    public Output<Optional<String>> loadBalancingScheme() {
+        return Codegen.optional(this.loadBalancingScheme);
     }
     /**
      * Name of the resource. Provided by the client when the resource is
@@ -264,7 +377,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TargetTCPProxy(java.lang.String name, TargetTCPProxyArgs args) {
+    public TargetTCPProxy(java.lang.String name, @Nullable TargetTCPProxyArgs args) {
         this(name, args, null);
     }
     /**
@@ -273,7 +386,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TargetTCPProxy(java.lang.String name, TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public TargetTCPProxy(java.lang.String name, @Nullable TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -281,7 +394,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
         super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static TargetTCPProxyArgs makeArgs(TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static TargetTCPProxyArgs makeArgs(@Nullable TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -433,6 +433,31 @@ class BlockchainNodes(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        ### Blockchain Nodes Beacon Fee Recipient
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_node_beacon_fee = gcp.blockchainnodeengine.BlockchainNodes("default_node_beacon_fee",
+            location="us-central1",
+            blockchain_type="ETHEREUM",
+            blockchain_node_id="beacon_fee_node",
+            ethereum_details={
+                "api_enable_admin": True,
+                "api_enable_debug": True,
+                "validator_config": {
+                    "beacon_fee_recipient": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
+                },
+                "node_type": "ARCHIVE",
+                "consensus_client": "LIGHTHOUSE",
+                "execution_client": "ERIGON",
+                "network": "MAINNET",
+            },
+            labels={
+                "environment": "dev",
+            })
+        ```
 
         ## Import
 
@@ -537,6 +562,31 @@ class BlockchainNodes(pulumi.CustomResource):
                 "geth_details": {
                     "garbage_collection_mode": "FULL",
                 },
+            },
+            labels={
+                "environment": "dev",
+            })
+        ```
+        ### Blockchain Nodes Beacon Fee Recipient
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_node_beacon_fee = gcp.blockchainnodeengine.BlockchainNodes("default_node_beacon_fee",
+            location="us-central1",
+            blockchain_type="ETHEREUM",
+            blockchain_node_id="beacon_fee_node",
+            ethereum_details={
+                "api_enable_admin": True,
+                "api_enable_debug": True,
+                "validator_config": {
+                    "beacon_fee_recipient": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
+                },
+                "node_type": "ARCHIVE",
+                "consensus_client": "LIGHTHOUSE",
+                "execution_client": "ERIGON",
+                "network": "MAINNET",
             },
             labels={
                 "environment": "dev",

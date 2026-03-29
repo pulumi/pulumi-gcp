@@ -14,6 +14,7 @@ import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewRecognitionResultNot
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileNotificationConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileTtsConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -288,6 +289,23 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ttsConfig);
     }
 
+    /**
+     * (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     * 
+     */
+    @Import(name="useBidiStreaming")
+    private @Nullable Output<Boolean> useBidiStreaming;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     * 
+     */
+    public Optional<Output<Boolean>> useBidiStreaming() {
+        return Optional.ofNullable(this.useBidiStreaming);
+    }
+
     private ConversationProfileState() {}
 
     private ConversationProfileState(ConversationProfileState $) {
@@ -307,6 +325,7 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
         this.sttConfig = $.sttConfig;
         this.timeZone = $.timeZone;
         this.ttsConfig = $.ttsConfig;
+        this.useBidiStreaming = $.useBidiStreaming;
     }
 
     public static Builder builder() {
@@ -685,6 +704,29 @@ public final class ConversationProfileState extends com.pulumi.resources.Resourc
          */
         public Builder ttsConfig(ConversationProfileTtsConfigArgs ttsConfig) {
             return ttsConfig(Output.of(ttsConfig));
+        }
+
+        /**
+         * @param useBidiStreaming (Optional, Beta)
+         * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useBidiStreaming(@Nullable Output<Boolean> useBidiStreaming) {
+            $.useBidiStreaming = useBidiStreaming;
+            return this;
+        }
+
+        /**
+         * @param useBidiStreaming (Optional, Beta)
+         * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useBidiStreaming(Boolean useBidiStreaming) {
+            return useBidiStreaming(Output.of(useBidiStreaming));
         }
 
         public ConversationProfileState build() {

@@ -32,6 +32,24 @@ public final class AiReasoningEngineSpec {
      */
     private @Nullable AiReasoningEngineSpecDeploymentSpec deploymentSpec;
     /**
+     * @return (Output, Beta)
+     * The identity to use for the Reasoning Engine.
+     * 
+     */
+    private @Nullable String effectiveIdentity;
+    /**
+     * @return (Optional, Beta)
+     * Optional. The identity type to use for the Reasoning Engine.
+     * If not specified, the `serviceAccount` field will be used if set,
+     * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+     * Possible values:
+     * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+     * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+     *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+     * 
+     */
+    private @Nullable String identityType;
+    /**
      * @return Optional. User provided package spec of the ReasoningEngine.
      * Ignored when users directly specify a deployment image through
      * deploymentSpec.first_party_image_override, but keeping the
@@ -81,6 +99,28 @@ public final class AiReasoningEngineSpec {
         return Optional.ofNullable(this.deploymentSpec);
     }
     /**
+     * @return (Output, Beta)
+     * The identity to use for the Reasoning Engine.
+     * 
+     */
+    public Optional<String> effectiveIdentity() {
+        return Optional.ofNullable(this.effectiveIdentity);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Optional. The identity type to use for the Reasoning Engine.
+     * If not specified, the `serviceAccount` field will be used if set,
+     * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+     * Possible values:
+     * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+     * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+     *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+     * 
+     */
+    public Optional<String> identityType() {
+        return Optional.ofNullable(this.identityType);
+    }
+    /**
      * @return Optional. User provided package spec of the ReasoningEngine.
      * Ignored when users directly specify a deployment image through
      * deploymentSpec.first_party_image_override, but keeping the
@@ -123,6 +163,8 @@ public final class AiReasoningEngineSpec {
         private @Nullable String agentFramework;
         private @Nullable String classMethods;
         private @Nullable AiReasoningEngineSpecDeploymentSpec deploymentSpec;
+        private @Nullable String effectiveIdentity;
+        private @Nullable String identityType;
         private @Nullable AiReasoningEngineSpecPackageSpec packageSpec;
         private @Nullable String serviceAccount;
         private @Nullable AiReasoningEngineSpecSourceCodeSpec sourceCodeSpec;
@@ -132,6 +174,8 @@ public final class AiReasoningEngineSpec {
     	      this.agentFramework = defaults.agentFramework;
     	      this.classMethods = defaults.classMethods;
     	      this.deploymentSpec = defaults.deploymentSpec;
+    	      this.effectiveIdentity = defaults.effectiveIdentity;
+    	      this.identityType = defaults.identityType;
     	      this.packageSpec = defaults.packageSpec;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.sourceCodeSpec = defaults.sourceCodeSpec;
@@ -153,6 +197,18 @@ public final class AiReasoningEngineSpec {
         public Builder deploymentSpec(@Nullable AiReasoningEngineSpecDeploymentSpec deploymentSpec) {
 
             this.deploymentSpec = deploymentSpec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveIdentity(@Nullable String effectiveIdentity) {
+
+            this.effectiveIdentity = effectiveIdentity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identityType(@Nullable String identityType) {
+
+            this.identityType = identityType;
             return this;
         }
         @CustomType.Setter
@@ -178,6 +234,8 @@ public final class AiReasoningEngineSpec {
             _resultValue.agentFramework = agentFramework;
             _resultValue.classMethods = classMethods;
             _resultValue.deploymentSpec = deploymentSpec;
+            _resultValue.effectiveIdentity = effectiveIdentity;
+            _resultValue.identityType = identityType;
             _resultValue.packageSpec = packageSpec;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.sourceCodeSpec = sourceCodeSpec;

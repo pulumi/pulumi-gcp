@@ -88,6 +88,75 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Services Tls Route Regional Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.networkservices.TlsRoute;
+ * import com.pulumi.gcp.networkservices.TlsRouteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("backend-service-health-check")
+ *             .region("europe-west4")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("my-backend-service")
+ *             .protocol("TCP")
+ *             .timeoutSec(10)
+ *             .region("europe-west4")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
+ *             .name("my-tls-route")
+ *             .location("europe-west4")
+ *             .rules(TlsRouteRuleArgs.builder()
+ *                 .matches(TlsRouteRuleMatchArgs.builder()
+ *                     .sniHosts("example.com")
+ *                     .build())
+ *                 .action(TlsRouteRuleActionArgs.builder()
+ *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
+ *                         .serviceName(default_.selfLink())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Network Services Tls Route Mesh Basic
  * 
  * <pre>
@@ -235,21 +304,101 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Services Tls Route Region Target Tcp Proxy Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
+ * import com.pulumi.gcp.networkservices.TlsRoute;
+ * import com.pulumi.gcp.networkservices.TlsRouteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("my-health-check")
+ *             .region("europe-west4")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("my-backend-service")
+ *             .protocol("TCP")
+ *             .timeoutSec(10)
+ *             .region("europe-west4")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultRegionTargetTcpProxy = new RegionTargetTcpProxy("defaultRegionTargetTcpProxy", RegionTargetTcpProxyArgs.builder()
+ *             .name("my-target-tcp-proxy")
+ *             .region("europe-west4")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
+ *             .name("my-tls-route")
+ *             .location("europe-west4")
+ *             .targetProxies(defaultRegionTargetTcpProxy.selfLink())
+ *             .rules(TlsRouteRuleArgs.builder()
+ *                 .matches(TlsRouteRuleMatchArgs.builder()
+ *                     .sniHosts("example.com")
+ *                     .build())
+ *                 .action(TlsRouteRuleActionArgs.builder()
+ *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
+ *                         .serviceName(default_.selfLink())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
  * TlsRoute can be imported using any of these accepted formats:
  * 
+ * * `projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}`
  * * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
- * * `{{project}}/{{name}}`
- * * `{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
  * When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
  * 
  * ```sh
+ * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}
  * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
- * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
- * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+ * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{location}}/{{name}}
  * ```
  * 
  */
@@ -285,7 +434,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
     }
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
      * 
      */
     @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
@@ -293,15 +442,29 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
      * 
      */
     public Output<Optional<List<String>>> gateways() {
         return Codegen.optional(this.gateways);
     }
     /**
+     * Location (region) of the TLS Route.
+     * 
+     */
+    @Export(name="location", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> location;
+
+    /**
+     * @return Location (region) of the TLS Route.
+     * 
+     */
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
+    }
+    /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
      * The attached Mesh should be of a type SIDECAR
      * 
      */
@@ -310,7 +473,7 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
      * The attached Mesh should be of a type SIDECAR
      * 
      */
@@ -376,6 +539,22 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+     * 
+     */
+    @Export(name="targetProxies", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> targetProxies;
+
+    /**
+     * @return TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+     * 
+     */
+    public Output<Optional<List<String>>> targetProxies() {
+        return Codegen.optional(this.targetProxies);
     }
     /**
      * Time the TlsRoute was updated in UTC.

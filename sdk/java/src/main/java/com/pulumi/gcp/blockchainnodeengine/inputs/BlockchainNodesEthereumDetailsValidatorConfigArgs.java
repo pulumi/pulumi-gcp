@@ -17,6 +17,21 @@ public final class BlockchainNodesEthereumDetailsValidatorConfigArgs extends com
     public static final BlockchainNodesEthereumDetailsValidatorConfigArgs Empty = new BlockchainNodesEthereumDetailsValidatorConfigArgs();
 
     /**
+     * An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as &#34;suggested&#34;, as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+     * 
+     */
+    @Import(name="beaconFeeRecipient")
+    private @Nullable Output<String> beaconFeeRecipient;
+
+    /**
+     * @return An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as &#34;suggested&#34;, as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+     * 
+     */
+    public Optional<Output<String>> beaconFeeRecipient() {
+        return Optional.ofNullable(this.beaconFeeRecipient);
+    }
+
+    /**
      * URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
      * 
      */
@@ -34,6 +49,7 @@ public final class BlockchainNodesEthereumDetailsValidatorConfigArgs extends com
     private BlockchainNodesEthereumDetailsValidatorConfigArgs() {}
 
     private BlockchainNodesEthereumDetailsValidatorConfigArgs(BlockchainNodesEthereumDetailsValidatorConfigArgs $) {
+        this.beaconFeeRecipient = $.beaconFeeRecipient;
         this.mevRelayUrls = $.mevRelayUrls;
     }
 
@@ -53,6 +69,27 @@ public final class BlockchainNodesEthereumDetailsValidatorConfigArgs extends com
 
         public Builder(BlockchainNodesEthereumDetailsValidatorConfigArgs defaults) {
             $ = new BlockchainNodesEthereumDetailsValidatorConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param beaconFeeRecipient An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as &#34;suggested&#34;, as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder beaconFeeRecipient(@Nullable Output<String> beaconFeeRecipient) {
+            $.beaconFeeRecipient = beaconFeeRecipient;
+            return this;
+        }
+
+        /**
+         * @param beaconFeeRecipient An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as &#34;suggested&#34;, as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder beaconFeeRecipient(String beaconFeeRecipient) {
+            return beaconFeeRecipient(Output.of(beaconFeeRecipient));
         }
 
         /**

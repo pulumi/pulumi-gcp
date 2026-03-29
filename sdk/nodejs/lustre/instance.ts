@@ -149,6 +149,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     */
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.lustre.InstanceMaintenancePolicy | undefined>;
+    /**
      * Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
      */
     declare public /*out*/ readonly mountPoint: pulumi.Output<string>;
@@ -220,6 +225,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsKey"] = state?.kmsKey;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["mountPoint"] = state?.mountPoint;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
@@ -259,6 +265,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsKey"] = args?.kmsKey;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["network"] = args?.network;
             resourceInputs["perUnitStorageThroughput"] = args?.perUnitStorageThroughput;
             resourceInputs["placementPolicy"] = args?.placementPolicy;
@@ -339,6 +346,11 @@ export interface InstanceState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string>;
+    /**
+     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy>;
     /**
      * Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
      */
@@ -440,6 +452,11 @@ export interface InstanceArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
+    /**
+     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy>;
     /**
      * The full name of the VPC network to which the instance is connected.
      * Must be in the format

@@ -19,6 +19,20 @@ __all__ = [
     'InstanceAccessRulesOptionsArgsDict',
     'InstanceAccessRulesOptionsAccessRuleArgs',
     'InstanceAccessRulesOptionsAccessRuleArgsDict',
+    'InstanceMaintenancePolicyArgs',
+    'InstanceMaintenancePolicyArgsDict',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowArgs',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgsDict',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgsDict',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs',
+    'InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgsDict',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgsDict',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgsDict',
 ]
 
 class InstanceAccessRulesOptionsArgsDict(TypedDict):
@@ -197,5 +211,504 @@ class InstanceAccessRulesOptionsAccessRuleArgs:
     @squash_mode.setter
     def squash_mode(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "squash_mode", value)
+
+
+class InstanceMaintenancePolicyArgsDict(TypedDict):
+    maintenance_exclusion_window: NotRequired[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict']]
+    """
+    The exclusion windows for the instance. Currently limited to 1 window.
+    Structure is documented below.
+    """
+    weekly_maintenance_windows: NotRequired[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgsDict']]
+    """
+    The weekly maintenance windows for the instance. Currently limited to 1 window.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyArgs:
+    def __init__(__self__, *,
+                 maintenance_exclusion_window: Optional[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']] = None,
+                 weekly_maintenance_windows: Optional[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs']] = None):
+        """
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs'] maintenance_exclusion_window: The exclusion windows for the instance. Currently limited to 1 window.
+               Structure is documented below.
+        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs'] weekly_maintenance_windows: The weekly maintenance windows for the instance. Currently limited to 1 window.
+               Structure is documented below.
+        """
+        if maintenance_exclusion_window is not None:
+            pulumi.set(__self__, "maintenance_exclusion_window", maintenance_exclusion_window)
+        if weekly_maintenance_windows is not None:
+            pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceExclusionWindow")
+    def maintenance_exclusion_window(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]:
+        """
+        The exclusion windows for the instance. Currently limited to 1 window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_exclusion_window")
+
+    @maintenance_exclusion_window.setter
+    def maintenance_exclusion_window(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]):
+        pulumi.set(self, "maintenance_exclusion_window", value)
+
+    @_builtins.property
+    @pulumi.getter(name="weeklyMaintenanceWindows")
+    def weekly_maintenance_windows(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs']]:
+        """
+        The weekly maintenance windows for the instance. Currently limited to 1 window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_maintenance_windows")
+
+    @weekly_maintenance_windows.setter
+    def weekly_maintenance_windows(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs']]):
+        pulumi.set(self, "weekly_maintenance_windows", value)
+
+
+class InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict(TypedDict):
+    end_date: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgsDict']
+    """
+    End date of the exclusion period in UTC.
+    Structure is documented below.
+    """
+    start_date: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgsDict']
+    """
+    Start date of the exclusion period in UTC.
+    Structure is documented below.
+    """
+    time: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgsDict']
+    """
+    Time in UTC for the exclusion window.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs:
+    def __init__(__self__, *,
+                 end_date: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs'],
+                 start_date: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs'],
+                 time: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs']):
+        """
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs'] end_date: End date of the exclusion period in UTC.
+               Structure is documented below.
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs'] start_date: Start date of the exclusion period in UTC.
+               Structure is documented below.
+        :param pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs'] time: Time in UTC for the exclusion window.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
+
+    @_builtins.property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs']:
+        """
+        End date of the exclusion period in UTC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs']):
+        pulumi.set(self, "end_date", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs']:
+        """
+        Start date of the exclusion period in UTC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs']):
+        pulumi.set(self, "start_date", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def time(self) -> pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs']:
+        """
+        Time in UTC for the exclusion window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs']):
+        pulumi.set(self, "time", value)
+
+
+class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 for recurring.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[_builtins.int]] = None,
+                 month: Optional[pulumi.Input[_builtins.int]] = None,
+                 year: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] day: Day of a month. Must be from 1 to 31 and valid for the year and month.
+        :param pulumi.Input[_builtins.int] month: Month of a year. Must be from 1 to 12.
+        :param pulumi.Input[_builtins.int] year: Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "day", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Month of a year. Must be from 1 to 12.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "month", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "year", value)
+
+
+class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Day of a month. Must be from 1 to 31 and valid for the year and month.
+    """
+    month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Month of a year. Must be from 1 to 12.
+    """
+    year: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Year of the date. Must be from 1 to 9999, or 0 for recurring.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[_builtins.int]] = None,
+                 month: Optional[pulumi.Input[_builtins.int]] = None,
+                 year: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] day: Day of a month. Must be from 1 to 31 and valid for the year and month.
+        :param pulumi.Input[_builtins.int] month: Month of a year. Must be from 1 to 12.
+        :param pulumi.Input[_builtins.int] year: Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "day", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Month of a year. Must be from 1 to 12.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "month", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "year", value)
+
+
+class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must be from 0 to 59.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[_builtins.int]] = None,
+                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
+                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param pulumi.Input[_builtins.int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param pulumi.Input[_builtins.int] seconds: Seconds of minutes of the time. Must be from 0 to 59.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "hours", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Seconds of minutes of the time. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "seconds", value)
+
+
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    """
+    Day of the week for the maintenance window.
+    Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+    """
+    start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgsDict']
+    """
+    Start time of the maintenance window in UTC.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[_builtins.str],
+                 start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs']):
+        """
+        :param pulumi.Input[_builtins.str] day_of_week: Day of the week for the maintenance window.
+               Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs'] start_time: Start time of the maintenance window in UTC.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[_builtins.str]:
+        """
+        Day of the week for the maintenance window.
+        Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs']:
+        """
+        Start time of the maintenance window in UTC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgsDict(TypedDict):
+    hours: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Hours of day in 24 hour format. Should be from 0 to 23.
+    """
+    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minutes of hour of day. Must be from 0 to 59.
+    """
+    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    """
+    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Seconds of minutes of the time. Must be from 0 to 59.
+    """
+
+@pulumi.input_type
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[_builtins.int]] = None,
+                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
+                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param pulumi.Input[_builtins.int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param pulumi.Input[_builtins.int] seconds: Seconds of minutes of the time. Must be from 0 to 59.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "hours", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Seconds of minutes of the time. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "seconds", value)
 
 

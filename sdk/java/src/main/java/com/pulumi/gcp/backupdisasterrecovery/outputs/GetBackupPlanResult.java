@@ -6,6 +6,7 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanBackupRule;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanDiskBackupPlanProperty;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -21,6 +22,7 @@ public final class GetBackupPlanResult {
     private String backupVaultServiceAccount;
     private String createTime;
     private String description;
+    private List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -53,6 +55,9 @@ public final class GetBackupPlanResult {
     }
     public String description() {
         return this.description;
+    }
+    public List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties() {
+        return this.diskBackupPlanProperties;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -101,6 +106,7 @@ public final class GetBackupPlanResult {
         private String backupVaultServiceAccount;
         private String createTime;
         private String description;
+        private List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
         private String id;
         private String location;
         private Integer logRetentionDays;
@@ -119,6 +125,7 @@ public final class GetBackupPlanResult {
     	      this.backupVaultServiceAccount = defaults.backupVaultServiceAccount;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.diskBackupPlanProperties = defaults.diskBackupPlanProperties;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.logRetentionDays = defaults.logRetentionDays;
@@ -180,6 +187,17 @@ public final class GetBackupPlanResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder diskBackupPlanProperties(List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties) {
+            if (diskBackupPlanProperties == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "diskBackupPlanProperties");
+            }
+            this.diskBackupPlanProperties = diskBackupPlanProperties;
+            return this;
+        }
+        public Builder diskBackupPlanProperties(GetBackupPlanDiskBackupPlanProperty... diskBackupPlanProperties) {
+            return diskBackupPlanProperties(List.of(diskBackupPlanProperties));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -262,6 +280,7 @@ public final class GetBackupPlanResult {
             _resultValue.backupVaultServiceAccount = backupVaultServiceAccount;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.diskBackupPlanProperties = diskBackupPlanProperties;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.logRetentionDays = logRetentionDays;

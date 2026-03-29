@@ -407,7 +407,9 @@ class BlockchainNodesEthereumDetailsValidatorConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "mevRelayUrls":
+        if key == "beaconFeeRecipient":
+            suggest = "beacon_fee_recipient"
+        elif key == "mevRelayUrls":
             suggest = "mev_relay_urls"
 
         if suggest:
@@ -422,12 +424,24 @@ class BlockchainNodesEthereumDetailsValidatorConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 beacon_fee_recipient: Optional[_builtins.str] = None,
                  mev_relay_urls: Optional[Sequence[_builtins.str]] = None):
         """
+        :param _builtins.str beacon_fee_recipient: An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
         :param Sequence[_builtins.str] mev_relay_urls: URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
         """
+        if beacon_fee_recipient is not None:
+            pulumi.set(__self__, "beacon_fee_recipient", beacon_fee_recipient)
         if mev_relay_urls is not None:
             pulumi.set(__self__, "mev_relay_urls", mev_relay_urls)
+
+    @_builtins.property
+    @pulumi.getter(name="beaconFeeRecipient")
+    def beacon_fee_recipient(self) -> Optional[_builtins.str]:
+        """
+        An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+        """
+        return pulumi.get(self, "beacon_fee_recipient")
 
     @_builtins.property
     @pulumi.getter(name="mevRelayUrls")

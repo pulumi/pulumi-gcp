@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, update_time=None, zone=None):
+    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, update_time=None, zone=None):
         if access_rules_options and not isinstance(access_rules_options, list):
             raise TypeError("Expected argument 'access_rules_options' to be a list")
         pulumi.set(__self__, "access_rules_options", access_rules_options)
@@ -64,6 +64,9 @@ class GetInstanceResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if maintenance_policies and not isinstance(maintenance_policies, list):
+            raise TypeError("Expected argument 'maintenance_policies' to be a list")
+        pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         if mount_point and not isinstance(mount_point, str):
             raise TypeError("Expected argument 'mount_point' to be a str")
         pulumi.set(__self__, "mount_point", mount_point)
@@ -162,6 +165,11 @@ class GetInstanceResult:
         return pulumi.get(self, "location")
 
     @_builtins.property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Sequence['outputs.GetInstanceMaintenancePolicyResult']:
+        return pulumi.get(self, "maintenance_policies")
+
+    @_builtins.property
     @pulumi.getter(name="mountPoint")
     def mount_point(self) -> _builtins.str:
         return pulumi.get(self, "mount_point")
@@ -235,6 +243,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             kms_key=self.kms_key,
             labels=self.labels,
             location=self.location,
+            maintenance_policies=self.maintenance_policies,
             mount_point=self.mount_point,
             name=self.name,
             network=self.network,
@@ -282,6 +291,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
+        maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         mount_point=pulumi.get(__ret__, 'mount_point'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
@@ -326,6 +336,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
+        maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         mount_point=pulumi.get(__response__, 'mount_point'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),

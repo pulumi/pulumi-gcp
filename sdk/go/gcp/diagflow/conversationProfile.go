@@ -106,6 +106,49 @@ import (
 //	}
 //
 // ```
+// ### Dialogflow Conversation Profile Beta Bidi
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id-_44703"),
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app"),
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewConversationProfile(ctx, "bidi_profile", &diagflow.ConversationProfileArgs{
+//				DisplayName:      pulumi.String("tf-test-dialogflow-profile-bidi-_32270"),
+//				Location:         pulumi.String("global"),
+//				LanguageCode:     pulumi.String("en-US"),
+//				UseBidiStreaming: pulumi.Bool(true),
+//				AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
+//					Agent: cesAppForAgent.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -165,6 +208,9 @@ type ConversationProfile struct {
 	// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
 	// Structure is documented below.
 	TtsConfig ConversationProfileTtsConfigPtrOutput `pulumi:"ttsConfig"`
+	// (Optional, Beta)
+	// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+	UseBidiStreaming pulumi.BoolPtrOutput `pulumi:"useBidiStreaming"`
 }
 
 // NewConversationProfile registers a new resource with the given unique name, arguments, and options.
@@ -247,6 +293,9 @@ type conversationProfileState struct {
 	// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
 	// Structure is documented below.
 	TtsConfig *ConversationProfileTtsConfig `pulumi:"ttsConfig"`
+	// (Optional, Beta)
+	// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+	UseBidiStreaming *bool `pulumi:"useBidiStreaming"`
 }
 
 type ConversationProfileState struct {
@@ -294,6 +343,9 @@ type ConversationProfileState struct {
 	// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
 	// Structure is documented below.
 	TtsConfig ConversationProfileTtsConfigPtrInput
+	// (Optional, Beta)
+	// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+	UseBidiStreaming pulumi.BoolPtrInput
 }
 
 func (ConversationProfileState) ElementType() reflect.Type {
@@ -343,6 +395,9 @@ type conversationProfileArgs struct {
 	// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
 	// Structure is documented below.
 	TtsConfig *ConversationProfileTtsConfig `pulumi:"ttsConfig"`
+	// (Optional, Beta)
+	// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+	UseBidiStreaming *bool `pulumi:"useBidiStreaming"`
 }
 
 // The set of arguments for constructing a ConversationProfile resource.
@@ -389,6 +444,9 @@ type ConversationProfileArgs struct {
 	// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
 	// Structure is documented below.
 	TtsConfig ConversationProfileTtsConfigPtrInput
+	// (Optional, Beta)
+	// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+	UseBidiStreaming pulumi.BoolPtrInput
 }
 
 func (ConversationProfileArgs) ElementType() reflect.Type {
@@ -580,6 +638,12 @@ func (o ConversationProfileOutput) TimeZone() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ConversationProfileOutput) TtsConfig() ConversationProfileTtsConfigPtrOutput {
 	return o.ApplyT(func(v *ConversationProfile) ConversationProfileTtsConfigPtrOutput { return v.TtsConfig }).(ConversationProfileTtsConfigPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+func (o ConversationProfileOutput) UseBidiStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.BoolPtrOutput { return v.UseBidiStreaming }).(pulumi.BoolPtrOutput)
 }
 
 type ConversationProfileArrayOutput struct{ *pulumi.OutputState }

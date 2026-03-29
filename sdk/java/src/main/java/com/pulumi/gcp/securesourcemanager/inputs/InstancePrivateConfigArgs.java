@@ -6,6 +6,7 @@ package com.pulumi.gcp.securesourcemanager.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigCustomHostConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -30,6 +31,23 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> caPool() {
         return Optional.ofNullable(this.caPool);
+    }
+
+    /**
+     * Custom host configuration for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customHostConfig")
+    private @Nullable Output<InstancePrivateConfigCustomHostConfigArgs> customHostConfig;
+
+    /**
+     * @return Custom host configuration for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePrivateConfigCustomHostConfigArgs>> customHostConfig() {
+        return Optional.ofNullable(this.customHostConfig);
     }
 
     /**
@@ -85,6 +103,7 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
 
     private InstancePrivateConfigArgs(InstancePrivateConfigArgs $) {
         this.caPool = $.caPool;
+        this.customHostConfig = $.customHostConfig;
         this.httpServiceAttachment = $.httpServiceAttachment;
         this.isPrivate = $.isPrivate;
         this.sshServiceAttachment = $.sshServiceAttachment;
@@ -127,6 +146,29 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder caPool(String caPool) {
             return caPool(Output.of(caPool));
+        }
+
+        /**
+         * @param customHostConfig Custom host configuration for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHostConfig(@Nullable Output<InstancePrivateConfigCustomHostConfigArgs> customHostConfig) {
+            $.customHostConfig = customHostConfig;
+            return this;
+        }
+
+        /**
+         * @param customHostConfig Custom host configuration for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHostConfig(InstancePrivateConfigCustomHostConfigArgs customHostConfig) {
+            return customHostConfig(Output.of(customHostConfig));
         }
 
         /**

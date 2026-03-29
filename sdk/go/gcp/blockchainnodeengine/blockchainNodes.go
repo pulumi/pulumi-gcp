@@ -113,6 +113,47 @@ import (
 //	}
 //
 // ```
+// ### Blockchain Nodes Beacon Fee Recipient
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/blockchainnodeengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockchainnodeengine.NewBlockchainNodes(ctx, "default_node_beacon_fee", &blockchainnodeengine.BlockchainNodesArgs{
+//				Location:         pulumi.String("us-central1"),
+//				BlockchainType:   pulumi.String("ETHEREUM"),
+//				BlockchainNodeId: pulumi.String("beacon_fee_node"),
+//				EthereumDetails: &blockchainnodeengine.BlockchainNodesEthereumDetailsArgs{
+//					ApiEnableAdmin: pulumi.Bool(true),
+//					ApiEnableDebug: pulumi.Bool(true),
+//					ValidatorConfig: &blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs{
+//						BeaconFeeRecipient: pulumi.String("0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7"),
+//					},
+//					NodeType:        pulumi.String("ARCHIVE"),
+//					ConsensusClient: pulumi.String("LIGHTHOUSE"),
+//					ExecutionClient: pulumi.String("ERIGON"),
+//					Network:         pulumi.String("MAINNET"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -7,10 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class BlockchainNodesEthereumDetailsValidatorConfig {
+    /**
+     * @return An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as &#34;suggested&#34;, as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+     * 
+     */
+    private @Nullable String beaconFeeRecipient;
     /**
      * @return URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
      * 
@@ -18,6 +24,13 @@ public final class BlockchainNodesEthereumDetailsValidatorConfig {
     private @Nullable List<String> mevRelayUrls;
 
     private BlockchainNodesEthereumDetailsValidatorConfig() {}
+    /**
+     * @return An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as &#34;suggested&#34;, as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+     * 
+     */
+    public Optional<String> beaconFeeRecipient() {
+        return Optional.ofNullable(this.beaconFeeRecipient);
+    }
     /**
      * @return URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
      * 
@@ -35,13 +48,21 @@ public final class BlockchainNodesEthereumDetailsValidatorConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String beaconFeeRecipient;
         private @Nullable List<String> mevRelayUrls;
         public Builder() {}
         public Builder(BlockchainNodesEthereumDetailsValidatorConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.beaconFeeRecipient = defaults.beaconFeeRecipient;
     	      this.mevRelayUrls = defaults.mevRelayUrls;
         }
 
+        @CustomType.Setter
+        public Builder beaconFeeRecipient(@Nullable String beaconFeeRecipient) {
+
+            this.beaconFeeRecipient = beaconFeeRecipient;
+            return this;
+        }
         @CustomType.Setter
         public Builder mevRelayUrls(@Nullable List<String> mevRelayUrls) {
 
@@ -53,6 +74,7 @@ public final class BlockchainNodesEthereumDetailsValidatorConfig {
         }
         public BlockchainNodesEthereumDetailsValidatorConfig build() {
             final var _resultValue = new BlockchainNodesEthereumDetailsValidatorConfig();
+            _resultValue.beaconFeeRecipient = beaconFeeRecipient;
             _resultValue.mevRelayUrls = mevRelayUrls;
             return _resultValue;
         }

@@ -695,6 +695,7 @@ import javax.annotation.Nullable;
  *             .displayName("Basic toolset display name")
  *             .mcpToolset(ToolsetMcpToolsetArgs.builder()
  *                 .serverAddress("https://api.example.com/mcp/")
+ *                 .customHeaders(Map.of("X-Custom-Header", "$context.variables.my_variable"))
  *                 .tlsConfig(ToolsetMcpToolsetTlsConfigArgs.builder()
  *                     .caCerts(ToolsetMcpToolsetTlsConfigCaCertArgs.builder()
  *                         .displayName("example")

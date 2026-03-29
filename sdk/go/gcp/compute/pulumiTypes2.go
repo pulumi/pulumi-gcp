@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMachineTypesMachineTypeAccelerator struct {
+	// Number of accelerator cards exposed to the guest.
+	GuestAcceleratorCount int `pulumi:"guestAcceleratorCount"`
+	// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+	GuestAcceleratorType string `pulumi:"guestAcceleratorType"`
+}
+
+// GetMachineTypesMachineTypeAcceleratorInput is an input type that accepts GetMachineTypesMachineTypeAcceleratorArgs and GetMachineTypesMachineTypeAcceleratorOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeAcceleratorInput` via:
+//
+//	GetMachineTypesMachineTypeAcceleratorArgs{...}
+type GetMachineTypesMachineTypeAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeAcceleratorOutput() GetMachineTypesMachineTypeAcceleratorOutput
+	ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(context.Context) GetMachineTypesMachineTypeAcceleratorOutput
+}
+
+type GetMachineTypesMachineTypeAcceleratorArgs struct {
+	// Number of accelerator cards exposed to the guest.
+	GuestAcceleratorCount pulumi.IntInput `pulumi:"guestAcceleratorCount"`
+	// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+	GuestAcceleratorType pulumi.StringInput `pulumi:"guestAcceleratorType"`
+}
+
+func (GetMachineTypesMachineTypeAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArgs) ToGetMachineTypesMachineTypeAcceleratorOutput() GetMachineTypesMachineTypeAcceleratorOutput {
+	return i.ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArgs) ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeAcceleratorOutput)
+}
+
+// GetMachineTypesMachineTypeAcceleratorArrayInput is an input type that accepts GetMachineTypesMachineTypeAcceleratorArray and GetMachineTypesMachineTypeAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeAcceleratorArrayInput` via:
+//
+//	GetMachineTypesMachineTypeAcceleratorArray{ GetMachineTypesMachineTypeAcceleratorArgs{...} }
+type GetMachineTypesMachineTypeAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeAcceleratorArrayOutput() GetMachineTypesMachineTypeAcceleratorArrayOutput
+	ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeAcceleratorArrayOutput
+}
+
+type GetMachineTypesMachineTypeAcceleratorArray []GetMachineTypesMachineTypeAcceleratorInput
+
+func (GetMachineTypesMachineTypeAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArray) ToGetMachineTypesMachineTypeAcceleratorArrayOutput() GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return i.ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArray) ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeAcceleratorArrayOutput)
+}
+
+type GetMachineTypesMachineTypeAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorOutput) ToGetMachineTypesMachineTypeAcceleratorOutput() GetMachineTypesMachineTypeAcceleratorOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorOutput) ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorOutput {
+	return o
+}
+
+// Number of accelerator cards exposed to the guest.
+func (o GetMachineTypesMachineTypeAcceleratorOutput) GuestAcceleratorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeAccelerator) int { return v.GuestAcceleratorCount }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+func (o GetMachineTypesMachineTypeAcceleratorOutput) GuestAcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeAccelerator) string { return v.GuestAcceleratorType }).(pulumi.StringOutput)
+}
+
+type GetMachineTypesMachineTypeAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorArrayOutput) ToGetMachineTypesMachineTypeAcceleratorArrayOutput() GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorArrayOutput) ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineTypeAccelerator {
+		return vs[0].([]GetMachineTypesMachineTypeAccelerator)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeAcceleratorOutput)
+}
+
 type GetMachineTypesMachineTypeBundledLocalSsd struct {
 	// (Beta) The default disk interface if the interface is not specified.
 	DefaultInterface string `pulumi:"defaultInterface"`
@@ -356,6 +462,244 @@ func (o GetNetworkAttachmentConnectionEndpointArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAttachmentConnectionEndpoint {
 		return vs[0].([]GetNetworkAttachmentConnectionEndpoint)[vs[1].(int)]
 	}).(GetNetworkAttachmentConnectionEndpointOutput)
+}
+
+type GetNetworkEndpointGroupsNetworkEndpointGroup struct {
+	// The default port used if the port number is not specified in the
+	// network endpoint.
+	DefaultPort int `pulumi:"defaultPort"`
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
+	Description string `pulumi:"description"`
+	// The uniquely generated identifier for the resource. This identifier is defined by the server.
+	GeneratedId int `pulumi:"generatedId"`
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression 'a-z?' which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
+	Name string `pulumi:"name"`
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
+	Network string `pulumi:"network"`
+	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
+	//
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: "GCE_VM_IP_PORT" Possible values: ["GCE_VM_IP", "GCE_VM_IP_PORT", "NON_GCP_PRIVATE_IP_PORT", "INTERNET_IP_PORT", "INTERNET_FQDN_PORT", "SERVERLESS", "PRIVATE_SERVICE_CONNECT"]
+	NetworkEndpointType string `pulumi:"networkEndpointType"`
+	// The ID of the project to list Network Endpoint Groups in. If it is not provided, the provider project is used.
+	Project  string `pulumi:"project"`
+	SelfLink string `pulumi:"selfLink"`
+	// Number of network endpoints in the network endpoint group.
+	Size int `pulumi:"size"`
+	// Optional subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The zone to list Network Endpoint Groups for. If `zone` is not specified, the provider-level zone must be set and is used
+	// instead.
+	Zone string `pulumi:"zone"`
+}
+
+// GetNetworkEndpointGroupsNetworkEndpointGroupInput is an input type that accepts GetNetworkEndpointGroupsNetworkEndpointGroupArgs and GetNetworkEndpointGroupsNetworkEndpointGroupOutput values.
+// You can construct a concrete instance of `GetNetworkEndpointGroupsNetworkEndpointGroupInput` via:
+//
+//	GetNetworkEndpointGroupsNetworkEndpointGroupArgs{...}
+type GetNetworkEndpointGroupsNetworkEndpointGroupInput interface {
+	pulumi.Input
+
+	ToGetNetworkEndpointGroupsNetworkEndpointGroupOutput() GetNetworkEndpointGroupsNetworkEndpointGroupOutput
+	ToGetNetworkEndpointGroupsNetworkEndpointGroupOutputWithContext(context.Context) GetNetworkEndpointGroupsNetworkEndpointGroupOutput
+}
+
+type GetNetworkEndpointGroupsNetworkEndpointGroupArgs struct {
+	// The default port used if the port number is not specified in the
+	// network endpoint.
+	DefaultPort pulumi.IntInput `pulumi:"defaultPort"`
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The uniquely generated identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntInput `pulumi:"generatedId"`
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression 'a-z?' which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
+	//
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: "GCE_VM_IP_PORT" Possible values: ["GCE_VM_IP", "GCE_VM_IP_PORT", "NON_GCP_PRIVATE_IP_PORT", "INTERNET_IP_PORT", "INTERNET_FQDN_PORT", "SERVERLESS", "PRIVATE_SERVICE_CONNECT"]
+	NetworkEndpointType pulumi.StringInput `pulumi:"networkEndpointType"`
+	// The ID of the project to list Network Endpoint Groups in. If it is not provided, the provider project is used.
+	Project  pulumi.StringInput `pulumi:"project"`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Number of network endpoints in the network endpoint group.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Optional subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The zone to list Network Endpoint Groups for. If `zone` is not specified, the provider-level zone must be set and is used
+	// instead.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetNetworkEndpointGroupsNetworkEndpointGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkEndpointGroupsNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (i GetNetworkEndpointGroupsNetworkEndpointGroupArgs) ToGetNetworkEndpointGroupsNetworkEndpointGroupOutput() GetNetworkEndpointGroupsNetworkEndpointGroupOutput {
+	return i.ToGetNetworkEndpointGroupsNetworkEndpointGroupOutputWithContext(context.Background())
+}
+
+func (i GetNetworkEndpointGroupsNetworkEndpointGroupArgs) ToGetNetworkEndpointGroupsNetworkEndpointGroupOutputWithContext(ctx context.Context) GetNetworkEndpointGroupsNetworkEndpointGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkEndpointGroupsNetworkEndpointGroupOutput)
+}
+
+// GetNetworkEndpointGroupsNetworkEndpointGroupArrayInput is an input type that accepts GetNetworkEndpointGroupsNetworkEndpointGroupArray and GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput values.
+// You can construct a concrete instance of `GetNetworkEndpointGroupsNetworkEndpointGroupArrayInput` via:
+//
+//	GetNetworkEndpointGroupsNetworkEndpointGroupArray{ GetNetworkEndpointGroupsNetworkEndpointGroupArgs{...} }
+type GetNetworkEndpointGroupsNetworkEndpointGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput() GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput
+	ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutputWithContext(context.Context) GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput
+}
+
+type GetNetworkEndpointGroupsNetworkEndpointGroupArray []GetNetworkEndpointGroupsNetworkEndpointGroupInput
+
+func (GetNetworkEndpointGroupsNetworkEndpointGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkEndpointGroupsNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (i GetNetworkEndpointGroupsNetworkEndpointGroupArray) ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput() GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput {
+	return i.ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkEndpointGroupsNetworkEndpointGroupArray) ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput)
+}
+
+type GetNetworkEndpointGroupsNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkEndpointGroupsNetworkEndpointGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkEndpointGroupsNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) ToGetNetworkEndpointGroupsNetworkEndpointGroupOutput() GetNetworkEndpointGroupsNetworkEndpointGroupOutput {
+	return o
+}
+
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) ToGetNetworkEndpointGroupsNetworkEndpointGroupOutputWithContext(ctx context.Context) GetNetworkEndpointGroupsNetworkEndpointGroupOutput {
+	return o
+}
+
+// The default port used if the port number is not specified in the
+// network endpoint.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) DefaultPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) int { return v.DefaultPort }).(pulumi.IntOutput)
+}
+
+// An optional description of this resource. Provide this property when
+// you create the resource.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The uniquely generated identifier for the resource. This identifier is defined by the server.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) GeneratedId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) int { return v.GeneratedId }).(pulumi.IntOutput)
+}
+
+// Name of the resource; provided by the client when the resource is
+// created. The name must be 1-63 characters long, and comply with
+// RFC1035. Specifically, the name must be 1-63 characters long and match
+// the regular expression 'a-z?' which means the
+// first character must be a lowercase letter, and all following
+// characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network to which all network endpoints in the NEG belong.
+// Uses "default" project network if unspecified.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Type of network endpoints in this network endpoint group.
+// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+// CONNECTION balancing modes.
+//
+// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: "GCE_VM_IP_PORT" Possible values: ["GCE_VM_IP", "GCE_VM_IP_PORT", "NON_GCP_PRIVATE_IP_PORT", "INTERNET_IP_PORT", "INTERNET_FQDN_PORT", "SERVERLESS", "PRIVATE_SERVICE_CONNECT"]
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.NetworkEndpointType }).(pulumi.StringOutput)
+}
+
+// The ID of the project to list Network Endpoint Groups in. If it is not provided, the provider project is used.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Number of network endpoints in the network endpoint group.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Optional subnetwork to which all network endpoints in the NEG belong.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The zone to list Network Endpoint Groups for. If `zone` is not specified, the provider-level zone must be set and is used
+// instead.
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkEndpointGroupsNetworkEndpointGroup) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkEndpointGroupsNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput) ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput() GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput) ToGetNetworkEndpointGroupsNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) GetNetworkEndpointGroupsNetworkEndpointGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkEndpointGroupsNetworkEndpointGroup {
+		return vs[0].([]GetNetworkEndpointGroupsNetworkEndpointGroup)[vs[1].(int)]
+	}).(GetNetworkEndpointGroupsNetworkEndpointGroupOutput)
 }
 
 type GetRegionBackendServiceBackend struct {
@@ -27920,12 +28264,16 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeAcceleratorInput)(nil)).Elem(), GetMachineTypesMachineTypeAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeAcceleratorArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsdInput)(nil)).Elem(), GetMachineTypesMachineTypeBundledLocalSsdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsdArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeBundledLocalSsdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAttachmentConnectionEndpointInput)(nil)).Elem(), GetNetworkAttachmentConnectionEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAttachmentConnectionEndpointArrayInput)(nil)).Elem(), GetNetworkAttachmentConnectionEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkEndpointGroupsNetworkEndpointGroupInput)(nil)).Elem(), GetNetworkEndpointGroupsNetworkEndpointGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkEndpointGroupsNetworkEndpointGroupArrayInput)(nil)).Elem(), GetNetworkEndpointGroupsNetworkEndpointGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendInput)(nil)).Elem(), GetRegionBackendServiceBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendArrayInput)(nil)).Elem(), GetRegionBackendServiceBackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceBackendCustomMetricInput)(nil)).Elem(), GetRegionBackendServiceBackendCustomMetricArgs{})
@@ -28340,12 +28688,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeBundledLocalSsdOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeBundledLocalSsdArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAttachmentConnectionEndpointOutput{})
 	pulumi.RegisterOutputType(GetNetworkAttachmentConnectionEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkEndpointGroupsNetworkEndpointGroupOutput{})
+	pulumi.RegisterOutputType(GetNetworkEndpointGroupsNetworkEndpointGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceBackendCustomMetricOutput{})

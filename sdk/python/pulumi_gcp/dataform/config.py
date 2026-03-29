@@ -179,19 +179,21 @@ class Config(pulumi.CustomResource):
         dataform_api = gcp.projects.Service("dataform_api",
             project=project.project_id,
             service="dataform.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts = pulumi.ResourceOptions(depends_on=[cloudkms_api]))
         # Add a sleep to wait for IAM propagation after API enablement
         wait_for_dataform_api = time.Sleep("wait_for_dataform_api", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[dataform_api]))
         # Retrieve the Dataform service identity
         dataform_sa = gcp.projects.ServiceIdentity("dataform_sa",
             project=project.project_id,
-            service="dataform.googleapis.com")
+            service="dataform.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_dataform_api]))
         keyring = gcp.kms.KeyRing("keyring",
             project=project.project_id,
             name="example-key-ring",
             location="us-central1",
-            opts = pulumi.ResourceOptions(depends_on=[cloudkms_api]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_dataform_api]))
         example_key = gcp.kms.CryptoKey("example_key",
             name="example-crypto-key-name",
             key_ring=keyring.id)
@@ -205,10 +207,7 @@ class Config(pulumi.CustomResource):
             region="us-central1",
             default_kms_key_name=example_key.id,
             project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[
-                    crypto_key_binding,
-                    wait_for_dataform_api,
-                ]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Dataform Config Without Kms Key
 
@@ -304,19 +303,21 @@ class Config(pulumi.CustomResource):
         dataform_api = gcp.projects.Service("dataform_api",
             project=project.project_id,
             service="dataform.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts = pulumi.ResourceOptions(depends_on=[cloudkms_api]))
         # Add a sleep to wait for IAM propagation after API enablement
         wait_for_dataform_api = time.Sleep("wait_for_dataform_api", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[dataform_api]))
         # Retrieve the Dataform service identity
         dataform_sa = gcp.projects.ServiceIdentity("dataform_sa",
             project=project.project_id,
-            service="dataform.googleapis.com")
+            service="dataform.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_dataform_api]))
         keyring = gcp.kms.KeyRing("keyring",
             project=project.project_id,
             name="example-key-ring",
             location="us-central1",
-            opts = pulumi.ResourceOptions(depends_on=[cloudkms_api]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_dataform_api]))
         example_key = gcp.kms.CryptoKey("example_key",
             name="example-crypto-key-name",
             key_ring=keyring.id)
@@ -330,10 +331,7 @@ class Config(pulumi.CustomResource):
             region="us-central1",
             default_kms_key_name=example_key.id,
             project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[
-                    crypto_key_binding,
-                    wait_for_dataform_api,
-                ]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Dataform Config Without Kms Key
 

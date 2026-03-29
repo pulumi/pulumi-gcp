@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'HookPushOption',
@@ -20,6 +21,7 @@ __all__ = [
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
     'InstancePrivateConfig',
+    'InstancePrivateConfigCustomHostConfig',
     'InstanceWorkforceIdentityFederationConfig',
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
@@ -214,6 +216,8 @@ class InstancePrivateConfig(dict):
             suggest = "is_private"
         elif key == "caPool":
             suggest = "ca_pool"
+        elif key == "customHostConfig":
+            suggest = "custom_host_config"
         elif key == "httpServiceAttachment":
             suggest = "http_service_attachment"
         elif key == "sshServiceAttachment":
@@ -233,11 +237,14 @@ class InstancePrivateConfig(dict):
     def __init__(__self__, *,
                  is_private: _builtins.bool,
                  ca_pool: Optional[_builtins.str] = None,
+                 custom_host_config: Optional['outputs.InstancePrivateConfigCustomHostConfig'] = None,
                  http_service_attachment: Optional[_builtins.str] = None,
                  ssh_service_attachment: Optional[_builtins.str] = None):
         """
         :param _builtins.bool is_private: 'Indicate if it's private instance.'
         :param _builtins.str ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        :param 'InstancePrivateConfigCustomHostConfigArgs' custom_host_config: Custom host configuration for the instance.
+               Structure is documented below.
         :param _builtins.str http_service_attachment: (Output)
                Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         :param _builtins.str ssh_service_attachment: (Output)
@@ -246,6 +253,8 @@ class InstancePrivateConfig(dict):
         pulumi.set(__self__, "is_private", is_private)
         if ca_pool is not None:
             pulumi.set(__self__, "ca_pool", ca_pool)
+        if custom_host_config is not None:
+            pulumi.set(__self__, "custom_host_config", custom_host_config)
         if http_service_attachment is not None:
             pulumi.set(__self__, "http_service_attachment", http_service_attachment)
         if ssh_service_attachment is not None:
@@ -268,6 +277,15 @@ class InstancePrivateConfig(dict):
         return pulumi.get(self, "ca_pool")
 
     @_builtins.property
+    @pulumi.getter(name="customHostConfig")
+    def custom_host_config(self) -> Optional['outputs.InstancePrivateConfigCustomHostConfig']:
+        """
+        Custom host configuration for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_host_config")
+
+    @_builtins.property
     @pulumi.getter(name="httpServiceAttachment")
     def http_service_attachment(self) -> Optional[_builtins.str]:
         """
@@ -284,6 +302,76 @@ class InstancePrivateConfig(dict):
         Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         """
         return pulumi.get(self, "ssh_service_attachment")
+
+
+@pulumi.output_type
+class InstancePrivateConfigCustomHostConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gitHttp":
+            suggest = "git_http"
+        elif key == "gitSsh":
+            suggest = "git_ssh"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePrivateConfigCustomHostConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePrivateConfigCustomHostConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePrivateConfigCustomHostConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api: _builtins.str,
+                 git_http: _builtins.str,
+                 git_ssh: _builtins.str,
+                 html: _builtins.str):
+        """
+        :param _builtins.str api: API hostname.
+        :param _builtins.str git_http: Git HTTP hostname.
+        :param _builtins.str git_ssh: Git SSH hostname.
+        :param _builtins.str html: HTML hostname.
+        """
+        pulumi.set(__self__, "api", api)
+        pulumi.set(__self__, "git_http", git_http)
+        pulumi.set(__self__, "git_ssh", git_ssh)
+        pulumi.set(__self__, "html", html)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> _builtins.str:
+        """
+        API hostname.
+        """
+        return pulumi.get(self, "api")
+
+    @_builtins.property
+    @pulumi.getter(name="gitHttp")
+    def git_http(self) -> _builtins.str:
+        """
+        Git HTTP hostname.
+        """
+        return pulumi.get(self, "git_http")
+
+    @_builtins.property
+    @pulumi.getter(name="gitSsh")
+    def git_ssh(self) -> _builtins.str:
+        """
+        Git SSH hostname.
+        """
+        return pulumi.get(self, "git_ssh")
+
+    @_builtins.property
+    @pulumi.getter
+    def html(self) -> _builtins.str:
+        """
+        HTML hostname.
+        """
+        return pulumi.get(self, "html")
 
 
 @pulumi.output_type

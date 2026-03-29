@@ -65,6 +65,47 @@ import (
 //	}
 //
 // ```
+// ### Organization Security Policy Rule Expression
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
+//				ShortName: pulumi.String("tf-test_95154"),
+//				Parent:    pulumi.String("organizations/123456789"),
+//				Type:      pulumi.String("CLOUD_ARMOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
+//				PolicyId: policy.ID(),
+//				Action:   pulumi.String("allow"),
+//				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
+//					Expr: &compute.OrganizationSecurityPolicyRuleMatchExprArgs{
+//						Expression: pulumi.String("request.path.contains('/folder/test/')"),
+//					},
+//					VersionedExpr: pulumi.String(""),
+//				},
+//				Priority: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Organization Security Policy Rule Firewall
 //
 // ```go

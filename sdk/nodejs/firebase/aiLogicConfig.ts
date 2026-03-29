@@ -112,6 +112,9 @@ import * as utilities from "../utilities";
  *         mode: "ALL",
  *         samplingRate: 1,
  *     },
+ *     trafficFilter: {
+ *         templateOnly: true,
+ *     },
  * }, {
  *     dependsOn: [wait30s],
  * });
@@ -190,6 +193,11 @@ export class AiLogicConfig extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly telemetryConfig: pulumi.Output<outputs.firebase.AiLogicConfigTelemetryConfig | undefined>;
+    /**
+     * Configuration for traffic filtering.
+     * Structure is documented below.
+     */
+    declare public readonly trafficFilter: pulumi.Output<outputs.firebase.AiLogicConfigTrafficFilter | undefined>;
 
     /**
      * Create a AiLogicConfig resource with the given unique name, arguments, and options.
@@ -209,12 +217,14 @@ export class AiLogicConfig extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["telemetryConfig"] = state?.telemetryConfig;
+            resourceInputs["trafficFilter"] = state?.trafficFilter;
         } else {
             const args = argsOrState as AiLogicConfigArgs | undefined;
             resourceInputs["generativeLanguageConfig"] = args?.generativeLanguageConfig;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["telemetryConfig"] = args?.telemetryConfig;
+            resourceInputs["trafficFilter"] = args?.trafficFilter;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -255,6 +265,11 @@ export interface AiLogicConfigState {
      * Structure is documented below.
      */
     telemetryConfig?: pulumi.Input<inputs.firebase.AiLogicConfigTelemetryConfig>;
+    /**
+     * Configuration for traffic filtering.
+     * Structure is documented below.
+     */
+    trafficFilter?: pulumi.Input<inputs.firebase.AiLogicConfigTrafficFilter>;
 }
 
 /**
@@ -285,4 +300,9 @@ export interface AiLogicConfigArgs {
      * Structure is documented below.
      */
     telemetryConfig?: pulumi.Input<inputs.firebase.AiLogicConfigTelemetryConfig>;
+    /**
+     * Configuration for traffic filtering.
+     * Structure is documented below.
+     */
+    trafficFilter?: pulumi.Input<inputs.firebase.AiLogicConfigTrafficFilter>;
 }

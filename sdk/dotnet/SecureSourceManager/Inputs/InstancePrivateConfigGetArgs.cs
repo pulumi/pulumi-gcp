@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.SecureSourceManager.Inputs
         public Input<string>? CaPool { get; set; }
 
         /// <summary>
+        /// Custom host configuration for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customHostConfig")]
+        public Input<Inputs.InstancePrivateConfigCustomHostConfigGetArgs>? CustomHostConfig { get; set; }
+
+        /// <summary>
         /// (Output)
         /// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         /// </summary>

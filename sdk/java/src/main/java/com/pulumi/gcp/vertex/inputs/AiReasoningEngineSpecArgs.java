@@ -68,6 +68,52 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output, Beta)
+     * The identity to use for the Reasoning Engine.
+     * 
+     */
+    @Import(name="effectiveIdentity")
+    private @Nullable Output<String> effectiveIdentity;
+
+    /**
+     * @return (Output, Beta)
+     * The identity to use for the Reasoning Engine.
+     * 
+     */
+    public Optional<Output<String>> effectiveIdentity() {
+        return Optional.ofNullable(this.effectiveIdentity);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Optional. The identity type to use for the Reasoning Engine.
+     * If not specified, the `serviceAccount` field will be used if set,
+     * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+     * Possible values:
+     * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+     * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+     *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+     * 
+     */
+    @Import(name="identityType")
+    private @Nullable Output<String> identityType;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. The identity type to use for the Reasoning Engine.
+     * If not specified, the `serviceAccount` field will be used if set,
+     * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+     * Possible values:
+     * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+     * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+     *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+     * 
+     */
+    public Optional<Output<String>> identityType() {
+        return Optional.ofNullable(this.identityType);
+    }
+
+    /**
      * Optional. User provided package spec of the ReasoningEngine.
      * Ignored when users directly specify a deployment image through
      * deploymentSpec.first_party_image_override, but keeping the
@@ -136,6 +182,8 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         this.agentFramework = $.agentFramework;
         this.classMethods = $.classMethods;
         this.deploymentSpec = $.deploymentSpec;
+        this.effectiveIdentity = $.effectiveIdentity;
+        this.identityType = $.identityType;
         this.packageSpec = $.packageSpec;
         this.serviceAccount = $.serviceAccount;
         this.sourceCodeSpec = $.sourceCodeSpec;
@@ -224,6 +272,64 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
          */
         public Builder deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs deploymentSpec) {
             return deploymentSpec(Output.of(deploymentSpec));
+        }
+
+        /**
+         * @param effectiveIdentity (Output, Beta)
+         * The identity to use for the Reasoning Engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveIdentity(@Nullable Output<String> effectiveIdentity) {
+            $.effectiveIdentity = effectiveIdentity;
+            return this;
+        }
+
+        /**
+         * @param effectiveIdentity (Output, Beta)
+         * The identity to use for the Reasoning Engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveIdentity(String effectiveIdentity) {
+            return effectiveIdentity(Output.of(effectiveIdentity));
+        }
+
+        /**
+         * @param identityType (Optional, Beta)
+         * Optional. The identity type to use for the Reasoning Engine.
+         * If not specified, the `serviceAccount` field will be used if set,
+         * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+         * Possible values:
+         * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+         * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+         *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityType(@Nullable Output<String> identityType) {
+            $.identityType = identityType;
+            return this;
+        }
+
+        /**
+         * @param identityType (Optional, Beta)
+         * Optional. The identity type to use for the Reasoning Engine.
+         * If not specified, the `serviceAccount` field will be used if set,
+         * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+         * Possible values:
+         * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+         * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+         *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityType(String identityType) {
+            return identityType(Output.of(identityType));
         }
 
         /**

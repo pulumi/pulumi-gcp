@@ -604,6 +604,54 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
+    ///     {
+    ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
+    ///     {
+    ///         WorkforcePoolId = pool.WorkforcePoolId,
+    ///         Location = pool.Location,
+    ///         ProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://accounts.thirdparty.com",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    ///             },
+    ///         },
+    ///         DetailedAuditLogging = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -686,6 +734,12 @@ namespace Pulumi.Gcp.Iam
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        /// </summary>
+        [Output("detailedAuditLogging")]
+        public Output<bool?> DetailedAuditLogging { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
         /// However, existing tokens still grant access.
         /// </summary>
@@ -712,7 +766,7 @@ namespace Pulumi.Gcp.Iam
         /// to a unique Microsoft Entra ID user.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.
         /// </summary>
         [Output("extendedAttributesOauth2Client")]
         public Output<Outputs.WorkforcePoolProviderExtendedAttributesOauth2Client?> ExtendedAttributesOauth2Client { get; private set; } = null!;
@@ -913,6 +967,12 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        /// </summary>
+        [Input("detailedAuditLogging")]
+        public Input<bool>? DetailedAuditLogging { get; set; }
+
+        /// <summary>
         /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
         /// However, existing tokens still grant access.
         /// </summary>
@@ -939,7 +999,7 @@ namespace Pulumi.Gcp.Iam
         /// to a unique Microsoft Entra ID user.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.
         /// </summary>
         [Input("extendedAttributesOauth2Client")]
         public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>? ExtendedAttributesOauth2Client { get; set; }
@@ -1084,6 +1144,12 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        /// </summary>
+        [Input("detailedAuditLogging")]
+        public Input<bool>? DetailedAuditLogging { get; set; }
+
+        /// <summary>
         /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
         /// However, existing tokens still grant access.
         /// </summary>
@@ -1110,7 +1176,7 @@ namespace Pulumi.Gcp.Iam
         /// to a unique Microsoft Entra ID user.
         /// Structure is documented below.
         /// 
-        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+        /// &gt; **Warning:** `ExtendedAttributesOauth2Client` is deprecated. Use SCIM instead.
         /// </summary>
         [Input("extendedAttributesOauth2Client")]
         public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientGetArgs>? ExtendedAttributesOauth2Client { get; set; }

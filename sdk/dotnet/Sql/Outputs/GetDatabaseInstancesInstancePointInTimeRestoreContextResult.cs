@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string PreferredZone;
         /// <summary>
+        /// To filter out the Cloud SQL instances which are located in the specified region.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// The name of the target instance to restore to.
         /// </summary>
         public readonly string TargetInstance;
@@ -44,12 +48,15 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string preferredZone,
 
+            string region,
+
             string targetInstance)
         {
             AllocatedIpRange = allocatedIpRange;
             Datasource = datasource;
             PointInTime = pointInTime;
             PreferredZone = preferredZone;
+            Region = region;
             TargetInstance = targetInstance;
         }
     }

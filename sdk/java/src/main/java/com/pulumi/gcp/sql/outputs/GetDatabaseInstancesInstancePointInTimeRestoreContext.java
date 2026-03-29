@@ -31,6 +31,11 @@ public final class GetDatabaseInstancesInstancePointInTimeRestoreContext {
      */
     private String preferredZone;
     /**
+     * @return To filter out the Cloud SQL instances which are located in the specified region.
+     * 
+     */
+    private String region;
+    /**
      * @return The name of the target instance to restore to.
      * 
      */
@@ -66,6 +71,13 @@ public final class GetDatabaseInstancesInstancePointInTimeRestoreContext {
         return this.preferredZone;
     }
     /**
+     * @return To filter out the Cloud SQL instances which are located in the specified region.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
      * @return The name of the target instance to restore to.
      * 
      */
@@ -86,6 +98,7 @@ public final class GetDatabaseInstancesInstancePointInTimeRestoreContext {
         private String datasource;
         private String pointInTime;
         private String preferredZone;
+        private String region;
         private String targetInstance;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstancePointInTimeRestoreContext defaults) {
@@ -94,6 +107,7 @@ public final class GetDatabaseInstancesInstancePointInTimeRestoreContext {
     	      this.datasource = defaults.datasource;
     	      this.pointInTime = defaults.pointInTime;
     	      this.preferredZone = defaults.preferredZone;
+    	      this.region = defaults.region;
     	      this.targetInstance = defaults.targetInstance;
         }
 
@@ -130,6 +144,14 @@ public final class GetDatabaseInstancesInstancePointInTimeRestoreContext {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstancePointInTimeRestoreContext", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetInstance(String targetInstance) {
             if (targetInstance == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstancePointInTimeRestoreContext", "targetInstance");
@@ -143,6 +165,7 @@ public final class GetDatabaseInstancesInstancePointInTimeRestoreContext {
             _resultValue.datasource = datasource;
             _resultValue.pointInTime = pointInTime;
             _resultValue.preferredZone = preferredZone;
+            _resultValue.region = region;
             _resultValue.targetInstance = targetInstance;
             return _resultValue;
         }

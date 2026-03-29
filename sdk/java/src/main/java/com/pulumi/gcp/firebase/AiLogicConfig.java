@@ -12,6 +12,7 @@ import com.pulumi.gcp.firebase.AiLogicConfigArgs;
 import com.pulumi.gcp.firebase.inputs.AiLogicConfigState;
 import com.pulumi.gcp.firebase.outputs.AiLogicConfigGenerativeLanguageConfig;
 import com.pulumi.gcp.firebase.outputs.AiLogicConfigTelemetryConfig;
+import com.pulumi.gcp.firebase.outputs.AiLogicConfigTrafficFilter;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -125,6 +126,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.AiLogicConfigArgs;
  * import com.pulumi.gcp.firebase.inputs.AiLogicConfigGenerativeLanguageConfigArgs;
  * import com.pulumi.gcp.firebase.inputs.AiLogicConfigTelemetryConfigArgs;
+ * import com.pulumi.gcp.firebase.inputs.AiLogicConfigTrafficFilterArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -191,6 +193,9 @@ import javax.annotation.Nullable;
  *             .telemetryConfig(AiLogicConfigTelemetryConfigArgs.builder()
  *                 .mode("ALL")
  *                 .samplingRate(1.0)
+ *                 .build())
+ *             .trafficFilter(AiLogicConfigTrafficFilterArgs.builder()
+ *                 .templateOnly(true)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait30s)
@@ -307,6 +312,22 @@ public class AiLogicConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AiLogicConfigTelemetryConfig>> telemetryConfig() {
         return Codegen.optional(this.telemetryConfig);
+    }
+    /**
+     * Configuration for traffic filtering.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="trafficFilter", refs={AiLogicConfigTrafficFilter.class}, tree="[0]")
+    private Output</* @Nullable */ AiLogicConfigTrafficFilter> trafficFilter;
+
+    /**
+     * @return Configuration for traffic filtering.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiLogicConfigTrafficFilter>> trafficFilter() {
+        return Codegen.optional(this.trafficFilter);
     }
 
     /**

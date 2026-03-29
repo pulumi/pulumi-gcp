@@ -79,6 +79,56 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Organization Security Policy Rule Expression
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchExprArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("tf-test_95154")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()
+ *             .policyId(policy.id())
+ *             .action("allow")
+ *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
+ *                 .expr(OrganizationSecurityPolicyRuleMatchExprArgs.builder()
+ *                     .expression("request.path.contains('/folder/test/')")
+ *                     .build())
+ *                 .versionedExpr("")
+ *                 .build())
+ *             .priority(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Organization Security Policy Rule Firewall
  * 
  * <pre>

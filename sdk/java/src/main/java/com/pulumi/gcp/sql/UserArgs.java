@@ -27,6 +27,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      * 
      */
     @Import(name="databaseRoles")
@@ -40,6 +41,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      * 
      */
     public Optional<Output<List<String>>> databaseRoles() {
@@ -272,6 +274,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * you can assign them. You can create roles using the CREATE ROLE
          * statement for both MySQL and PostgreSQL.
          * **Note**: This property is write-only and will not be read from the API.
+         * **Caution**: Existing database roles will be overwriten with new values from this field.
          * 
          * @return builder
          * 
@@ -289,6 +292,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * you can assign them. You can create roles using the CREATE ROLE
          * statement for both MySQL and PostgreSQL.
          * **Note**: This property is write-only and will not be read from the API.
+         * **Caution**: Existing database roles will be overwriten with new values from this field.
          * 
          * @return builder
          * 
@@ -305,6 +309,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * you can assign them. You can create roles using the CREATE ROLE
          * statement for both MySQL and PostgreSQL.
          * **Note**: This property is write-only and will not be read from the API.
+         * **Caution**: Existing database roles will be overwriten with new values from this field.
          * 
          * @return builder
          * 

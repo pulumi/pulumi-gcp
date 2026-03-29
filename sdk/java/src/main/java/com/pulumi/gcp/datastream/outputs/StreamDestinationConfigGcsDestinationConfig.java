@@ -21,7 +21,8 @@ public final class StreamDestinationConfigGcsDestinationConfig {
     private @Nullable StreamDestinationConfigGcsDestinationConfigAvroFileFormat avroFileFormat;
     /**
      * @return The maximum duration for which new events are added before a file is closed and a new file is created.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
+     * Values within the range of 15-60 seconds are allowed.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     private @Nullable String fileRotationInterval;
@@ -52,7 +53,8 @@ public final class StreamDestinationConfigGcsDestinationConfig {
     }
     /**
      * @return The maximum duration for which new events are added before a file is closed and a new file is created.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
+     * Values within the range of 15-60 seconds are allowed.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     public Optional<String> fileRotationInterval() {

@@ -80,6 +80,8 @@ import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPlainArgs;
@@ -191,6 +193,7 @@ import com.pulumi.gcp.compute.outputs.GetMachineTypesResult;
 import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkAttachmentResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
+import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupsResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNetworksResult;
@@ -10886,6 +10889,300 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetNetworkEndpointGroupResult> getNetworkEndpointGroupPlain(GetNetworkEndpointGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", TypeShape.of(GetNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroups() {
+        return getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsPlain() {
+        return getNetworkEndpointGroupsPlain(GetNetworkEndpointGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs args) {
+        return getNetworkEndpointGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsPlain(GetNetworkEndpointGroupsPlainArgs args) {
+        return getNetworkEndpointGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups", TypeShape.of(GetNetworkEndpointGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups", TypeShape.of(GetNetworkEndpointGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to fetch a list of Network Endpoint Groups available in a
+     * project and zone.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var negs = ComputeFunctions.getNetworkEndpointGroups(GetNetworkEndpointGroupsArgs.builder()
+     *             .zone("us-central1-a")
+     *             .filter("networkEdpointType=GCE_VM_IP_PORT")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsPlain(GetNetworkEndpointGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups", TypeShape.of(GetNetworkEndpointGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information of a specified compute network peering. For more information see

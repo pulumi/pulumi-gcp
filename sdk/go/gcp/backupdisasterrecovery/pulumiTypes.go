@@ -848,6 +848,155 @@ func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) WeekOfMonth
 	}).(pulumi.StringPtrOutput)
 }
 
+type BackupPlanDiskBackupPlanProperties struct {
+	// Indicates whether to perform a guest flush operation before taking a disk
+	// backup. When set to true, the system will attempt to ensure
+	// application-consistent backups. When set to false, the system will
+	// create crash-consistent backups.
+	GuestFlush bool `pulumi:"guestFlush"`
+}
+
+// BackupPlanDiskBackupPlanPropertiesInput is an input type that accepts BackupPlanDiskBackupPlanPropertiesArgs and BackupPlanDiskBackupPlanPropertiesOutput values.
+// You can construct a concrete instance of `BackupPlanDiskBackupPlanPropertiesInput` via:
+//
+//	BackupPlanDiskBackupPlanPropertiesArgs{...}
+type BackupPlanDiskBackupPlanPropertiesInput interface {
+	pulumi.Input
+
+	ToBackupPlanDiskBackupPlanPropertiesOutput() BackupPlanDiskBackupPlanPropertiesOutput
+	ToBackupPlanDiskBackupPlanPropertiesOutputWithContext(context.Context) BackupPlanDiskBackupPlanPropertiesOutput
+}
+
+type BackupPlanDiskBackupPlanPropertiesArgs struct {
+	// Indicates whether to perform a guest flush operation before taking a disk
+	// backup. When set to true, the system will attempt to ensure
+	// application-consistent backups. When set to false, the system will
+	// create crash-consistent backups.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+}
+
+func (BackupPlanDiskBackupPlanPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanDiskBackupPlanProperties)(nil)).Elem()
+}
+
+func (i BackupPlanDiskBackupPlanPropertiesArgs) ToBackupPlanDiskBackupPlanPropertiesOutput() BackupPlanDiskBackupPlanPropertiesOutput {
+	return i.ToBackupPlanDiskBackupPlanPropertiesOutputWithContext(context.Background())
+}
+
+func (i BackupPlanDiskBackupPlanPropertiesArgs) ToBackupPlanDiskBackupPlanPropertiesOutputWithContext(ctx context.Context) BackupPlanDiskBackupPlanPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanDiskBackupPlanPropertiesOutput)
+}
+
+func (i BackupPlanDiskBackupPlanPropertiesArgs) ToBackupPlanDiskBackupPlanPropertiesPtrOutput() BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return i.ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanDiskBackupPlanPropertiesArgs) ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanDiskBackupPlanPropertiesOutput).ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(ctx)
+}
+
+// BackupPlanDiskBackupPlanPropertiesPtrInput is an input type that accepts BackupPlanDiskBackupPlanPropertiesArgs, BackupPlanDiskBackupPlanPropertiesPtr and BackupPlanDiskBackupPlanPropertiesPtrOutput values.
+// You can construct a concrete instance of `BackupPlanDiskBackupPlanPropertiesPtrInput` via:
+//
+//	        BackupPlanDiskBackupPlanPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanDiskBackupPlanPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanDiskBackupPlanPropertiesPtrOutput() BackupPlanDiskBackupPlanPropertiesPtrOutput
+	ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(context.Context) BackupPlanDiskBackupPlanPropertiesPtrOutput
+}
+
+type backupPlanDiskBackupPlanPropertiesPtrType BackupPlanDiskBackupPlanPropertiesArgs
+
+func BackupPlanDiskBackupPlanPropertiesPtr(v *BackupPlanDiskBackupPlanPropertiesArgs) BackupPlanDiskBackupPlanPropertiesPtrInput {
+	return (*backupPlanDiskBackupPlanPropertiesPtrType)(v)
+}
+
+func (*backupPlanDiskBackupPlanPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanDiskBackupPlanProperties)(nil)).Elem()
+}
+
+func (i *backupPlanDiskBackupPlanPropertiesPtrType) ToBackupPlanDiskBackupPlanPropertiesPtrOutput() BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return i.ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanDiskBackupPlanPropertiesPtrType) ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanDiskBackupPlanPropertiesPtrOutput)
+}
+
+type BackupPlanDiskBackupPlanPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanDiskBackupPlanPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanDiskBackupPlanProperties)(nil)).Elem()
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesOutput) ToBackupPlanDiskBackupPlanPropertiesOutput() BackupPlanDiskBackupPlanPropertiesOutput {
+	return o
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesOutput) ToBackupPlanDiskBackupPlanPropertiesOutputWithContext(ctx context.Context) BackupPlanDiskBackupPlanPropertiesOutput {
+	return o
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesOutput) ToBackupPlanDiskBackupPlanPropertiesPtrOutput() BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return o.ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesOutput) ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanDiskBackupPlanProperties) *BackupPlanDiskBackupPlanProperties {
+		return &v
+	}).(BackupPlanDiskBackupPlanPropertiesPtrOutput)
+}
+
+// Indicates whether to perform a guest flush operation before taking a disk
+// backup. When set to true, the system will attempt to ensure
+// application-consistent backups. When set to false, the system will
+// create crash-consistent backups.
+func (o BackupPlanDiskBackupPlanPropertiesOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackupPlanDiskBackupPlanProperties) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+type BackupPlanDiskBackupPlanPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanDiskBackupPlanPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanDiskBackupPlanProperties)(nil)).Elem()
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesPtrOutput) ToBackupPlanDiskBackupPlanPropertiesPtrOutput() BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return o
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesPtrOutput) ToBackupPlanDiskBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanDiskBackupPlanPropertiesPtrOutput {
+	return o
+}
+
+func (o BackupPlanDiskBackupPlanPropertiesPtrOutput) Elem() BackupPlanDiskBackupPlanPropertiesOutput {
+	return o.ApplyT(func(v *BackupPlanDiskBackupPlanProperties) BackupPlanDiskBackupPlanProperties {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanDiskBackupPlanProperties
+		return ret
+	}).(BackupPlanDiskBackupPlanPropertiesOutput)
+}
+
+// Indicates whether to perform a guest flush operation before taking a disk
+// backup. When set to true, the system will attempt to ensure
+// application-consistent backups. When set to false, the system will
+// create crash-consistent backups.
+func (o BackupPlanDiskBackupPlanPropertiesPtrOutput) GuestFlush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupPlanDiskBackupPlanProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.GuestFlush
+	}).(pulumi.BoolPtrOutput)
+}
+
 type BackupVaultEncryptionConfig struct {
 	// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -9202,6 +9351,112 @@ func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) Index(
 	}).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
 }
 
+type GetBackupPlanDiskBackupPlanProperty struct {
+	// Indicates whether to perform a guest flush operation before taking a disk
+	// backup. When set to true, the system will attempt to ensure
+	// application-consistent backups. When set to false, the system will
+	// create crash-consistent backups.
+	GuestFlush bool `pulumi:"guestFlush"`
+}
+
+// GetBackupPlanDiskBackupPlanPropertyInput is an input type that accepts GetBackupPlanDiskBackupPlanPropertyArgs and GetBackupPlanDiskBackupPlanPropertyOutput values.
+// You can construct a concrete instance of `GetBackupPlanDiskBackupPlanPropertyInput` via:
+//
+//	GetBackupPlanDiskBackupPlanPropertyArgs{...}
+type GetBackupPlanDiskBackupPlanPropertyInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanDiskBackupPlanPropertyOutput() GetBackupPlanDiskBackupPlanPropertyOutput
+	ToGetBackupPlanDiskBackupPlanPropertyOutputWithContext(context.Context) GetBackupPlanDiskBackupPlanPropertyOutput
+}
+
+type GetBackupPlanDiskBackupPlanPropertyArgs struct {
+	// Indicates whether to perform a guest flush operation before taking a disk
+	// backup. When set to true, the system will attempt to ensure
+	// application-consistent backups. When set to false, the system will
+	// create crash-consistent backups.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+}
+
+func (GetBackupPlanDiskBackupPlanPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanDiskBackupPlanProperty)(nil)).Elem()
+}
+
+func (i GetBackupPlanDiskBackupPlanPropertyArgs) ToGetBackupPlanDiskBackupPlanPropertyOutput() GetBackupPlanDiskBackupPlanPropertyOutput {
+	return i.ToGetBackupPlanDiskBackupPlanPropertyOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanDiskBackupPlanPropertyArgs) ToGetBackupPlanDiskBackupPlanPropertyOutputWithContext(ctx context.Context) GetBackupPlanDiskBackupPlanPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanDiskBackupPlanPropertyOutput)
+}
+
+// GetBackupPlanDiskBackupPlanPropertyArrayInput is an input type that accepts GetBackupPlanDiskBackupPlanPropertyArray and GetBackupPlanDiskBackupPlanPropertyArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanDiskBackupPlanPropertyArrayInput` via:
+//
+//	GetBackupPlanDiskBackupPlanPropertyArray{ GetBackupPlanDiskBackupPlanPropertyArgs{...} }
+type GetBackupPlanDiskBackupPlanPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanDiskBackupPlanPropertyArrayOutput() GetBackupPlanDiskBackupPlanPropertyArrayOutput
+	ToGetBackupPlanDiskBackupPlanPropertyArrayOutputWithContext(context.Context) GetBackupPlanDiskBackupPlanPropertyArrayOutput
+}
+
+type GetBackupPlanDiskBackupPlanPropertyArray []GetBackupPlanDiskBackupPlanPropertyInput
+
+func (GetBackupPlanDiskBackupPlanPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanDiskBackupPlanProperty)(nil)).Elem()
+}
+
+func (i GetBackupPlanDiskBackupPlanPropertyArray) ToGetBackupPlanDiskBackupPlanPropertyArrayOutput() GetBackupPlanDiskBackupPlanPropertyArrayOutput {
+	return i.ToGetBackupPlanDiskBackupPlanPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanDiskBackupPlanPropertyArray) ToGetBackupPlanDiskBackupPlanPropertyArrayOutputWithContext(ctx context.Context) GetBackupPlanDiskBackupPlanPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanDiskBackupPlanPropertyArrayOutput)
+}
+
+type GetBackupPlanDiskBackupPlanPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanDiskBackupPlanPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanDiskBackupPlanProperty)(nil)).Elem()
+}
+
+func (o GetBackupPlanDiskBackupPlanPropertyOutput) ToGetBackupPlanDiskBackupPlanPropertyOutput() GetBackupPlanDiskBackupPlanPropertyOutput {
+	return o
+}
+
+func (o GetBackupPlanDiskBackupPlanPropertyOutput) ToGetBackupPlanDiskBackupPlanPropertyOutputWithContext(ctx context.Context) GetBackupPlanDiskBackupPlanPropertyOutput {
+	return o
+}
+
+// Indicates whether to perform a guest flush operation before taking a disk
+// backup. When set to true, the system will attempt to ensure
+// application-consistent backups. When set to false, the system will
+// create crash-consistent backups.
+func (o GetBackupPlanDiskBackupPlanPropertyOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackupPlanDiskBackupPlanProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+type GetBackupPlanDiskBackupPlanPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanDiskBackupPlanPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanDiskBackupPlanProperty)(nil)).Elem()
+}
+
+func (o GetBackupPlanDiskBackupPlanPropertyArrayOutput) ToGetBackupPlanDiskBackupPlanPropertyArrayOutput() GetBackupPlanDiskBackupPlanPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanDiskBackupPlanPropertyArrayOutput) ToGetBackupPlanDiskBackupPlanPropertyArrayOutputWithContext(ctx context.Context) GetBackupPlanDiskBackupPlanPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanDiskBackupPlanPropertyArrayOutput) Index(i pulumi.IntInput) GetBackupPlanDiskBackupPlanPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanDiskBackupPlanProperty {
+		return vs[0].([]GetBackupPlanDiskBackupPlanProperty)[vs[1].(int)]
+	}).(GetBackupPlanDiskBackupPlanPropertyOutput)
+}
+
 type GetBackupVaultEncryptionConfig struct {
 	// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -11554,6 +11809,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleBackupWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanDiskBackupPlanPropertiesInput)(nil)).Elem(), BackupPlanDiskBackupPlanPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanDiskBackupPlanPropertiesPtrInput)(nil)).Elem(), BackupPlanDiskBackupPlanPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultEncryptionConfigInput)(nil)).Elem(), BackupVaultEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultEncryptionConfigPtrInput)(nil)).Elem(), BackupVaultEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriInput)(nil)).Elem(), ManagementServerManagementUriArgs{})
@@ -11656,6 +11913,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleBackupWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanDiskBackupPlanPropertyInput)(nil)).Elem(), GetBackupPlanDiskBackupPlanPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanDiskBackupPlanPropertyArrayInput)(nil)).Elem(), GetBackupPlanDiskBackupPlanPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupVaultEncryptionConfigInput)(nil)).Elem(), GetBackupVaultEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupVaultEncryptionConfigArrayInput)(nil)).Elem(), GetBackupVaultEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoInput)(nil)).Elem(), GetDataSourceBackupConfigInfoArgs{})
@@ -11701,6 +11960,8 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanDiskBackupPlanPropertiesOutput{})
+	pulumi.RegisterOutputType(BackupPlanDiskBackupPlanPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BackupVaultEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(BackupVaultEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriOutput{})
@@ -11803,6 +12064,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanDiskBackupPlanPropertyOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanDiskBackupPlanPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupVaultEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(GetBackupVaultEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoOutput{})

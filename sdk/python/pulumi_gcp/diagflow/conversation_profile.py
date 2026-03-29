@@ -35,7 +35,8 @@ class ConversationProfileArgs:
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
                  stt_config: Optional[pulumi.Input['ConversationProfileSttConfigArgs']] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tts_config: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']] = None):
+                 tts_config: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']] = None,
+                 use_bidi_streaming: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ConversationProfile resource.
 
@@ -66,6 +67,8 @@ class ConversationProfileArgs:
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
         :param pulumi.Input['ConversationProfileTtsConfigArgs'] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] use_bidi_streaming: (Optional, Beta)
+               Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
@@ -95,6 +98,8 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "time_zone", time_zone)
         if tts_config is not None:
             pulumi.set(__self__, "tts_config", tts_config)
+        if use_bidi_streaming is not None:
+            pulumi.set(__self__, "use_bidi_streaming", use_bidi_streaming)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -288,6 +293,19 @@ class ConversationProfileArgs:
     def tts_config(self, value: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']]):
         pulumi.set(self, "tts_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="useBidiStreaming")
+    def use_bidi_streaming(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+        """
+        return pulumi.get(self, "use_bidi_streaming")
+
+    @use_bidi_streaming.setter
+    def use_bidi_streaming(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_bidi_streaming", value)
+
 
 @pulumi.input_type
 class _ConversationProfileState:
@@ -307,7 +325,8 @@ class _ConversationProfileState:
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
                  stt_config: Optional[pulumi.Input['ConversationProfileSttConfigArgs']] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tts_config: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']] = None):
+                 tts_config: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']] = None,
+                 use_bidi_streaming: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ConversationProfile resources.
 
@@ -339,6 +358,8 @@ class _ConversationProfileState:
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
         :param pulumi.Input['ConversationProfileTtsConfigArgs'] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] use_bidi_streaming: (Optional, Beta)
+               Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
         """
         if automated_agent_config is not None:
             pulumi.set(__self__, "automated_agent_config", automated_agent_config)
@@ -372,6 +393,8 @@ class _ConversationProfileState:
             pulumi.set(__self__, "time_zone", time_zone)
         if tts_config is not None:
             pulumi.set(__self__, "tts_config", tts_config)
+        if use_bidi_streaming is not None:
+            pulumi.set(__self__, "use_bidi_streaming", use_bidi_streaming)
 
     @_builtins.property
     @pulumi.getter(name="automatedAgentConfig")
@@ -577,6 +600,19 @@ class _ConversationProfileState:
     def tts_config(self, value: Optional[pulumi.Input['ConversationProfileTtsConfigArgs']]):
         pulumi.set(self, "tts_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="useBidiStreaming")
+    def use_bidi_streaming(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+        """
+        return pulumi.get(self, "use_bidi_streaming")
+
+    @use_bidi_streaming.setter
+    def use_bidi_streaming(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_bidi_streaming", value)
+
 
 @pulumi.type_token("gcp:diagflow/conversationProfile:ConversationProfile")
 class ConversationProfile(pulumi.CustomResource):
@@ -599,6 +635,7 @@ class ConversationProfile(pulumi.CustomResource):
                  stt_config: Optional[pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  tts_config: Optional[pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
+                 use_bidi_streaming: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         A conversation profile configures a set of parameters that control the suggestions made to an agent. These parameters control the suggestions that are surfaced during runtime. Each profile configures either a Dialogflow virtual agent or a human agent for a conversation.
@@ -649,6 +686,28 @@ class ConversationProfile(pulumi.CustomResource):
                 "message_format": "JSON",
             })
         ```
+        ### Dialogflow Conversation Profile Beta Bidi
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+            app_id="app-id-_44703",
+            location="us",
+            display_name="my-app",
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
+            display_name="tf-test-dialogflow-profile-bidi-_32270",
+            location="global",
+            language_code="en-US",
+            use_bidi_streaming=True,
+            automated_agent_config={
+                "agent": ces_app_for_agent.id,
+            })
+        ```
 
         ## Import
 
@@ -692,6 +751,8 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
         :param pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] use_bidi_streaming: (Optional, Beta)
+               Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
         """
         ...
     @overload
@@ -748,6 +809,28 @@ class ConversationProfile(pulumi.CustomResource):
                 "message_format": "JSON",
             })
         ```
+        ### Dialogflow Conversation Profile Beta Bidi
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+            app_id="app-id-_44703",
+            location="us",
+            display_name="my-app",
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
+            display_name="tf-test-dialogflow-profile-bidi-_32270",
+            location="global",
+            language_code="en-US",
+            use_bidi_streaming=True,
+            automated_agent_config={
+                "agent": ces_app_for_agent.id,
+            })
+        ```
 
         ## Import
 
@@ -792,6 +875,7 @@ class ConversationProfile(pulumi.CustomResource):
                  stt_config: Optional[pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  tts_config: Optional[pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
+                 use_bidi_streaming: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -820,6 +904,7 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["stt_config"] = stt_config
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["tts_config"] = tts_config
+            __props__.__dict__["use_bidi_streaming"] = use_bidi_streaming
             __props__.__dict__["name"] = None
         super(ConversationProfile, __self__).__init__(
             'gcp:diagflow/conversationProfile:ConversationProfile',
@@ -846,7 +931,8 @@ class ConversationProfile(pulumi.CustomResource):
             security_settings: Optional[pulumi.Input[_builtins.str]] = None,
             stt_config: Optional[pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
             time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            tts_config: Optional[pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None) -> 'ConversationProfile':
+            tts_config: Optional[pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
+            use_bidi_streaming: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ConversationProfile':
         """
         Get an existing ConversationProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -882,6 +968,8 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
         :param pulumi.Input[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']] tts_config: Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] use_bidi_streaming: (Optional, Beta)
+               Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -903,6 +991,7 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["stt_config"] = stt_config
         __props__.__dict__["time_zone"] = time_zone
         __props__.__dict__["tts_config"] = tts_config
+        __props__.__dict__["use_bidi_streaming"] = use_bidi_streaming
         return ConversationProfile(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1044,4 +1133,13 @@ class ConversationProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "tts_config")
+
+    @_builtins.property
+    @pulumi.getter(name="useBidiStreaming")
+    def use_bidi_streaming(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+        """
+        return pulumi.get(self, "use_bidi_streaming")
 

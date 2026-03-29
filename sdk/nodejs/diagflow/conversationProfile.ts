@@ -58,6 +58,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dialogflow Conversation Profile Beta Bidi
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
+ *     appId: "app-id-_44703",
+ *     location: "us",
+ *     displayName: "my-app",
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const bidiProfile = new gcp.diagflow.ConversationProfile("bidi_profile", {
+ *     displayName: "tf-test-dialogflow-profile-bidi-_32270",
+ *     location: "global",
+ *     languageCode: "en-US",
+ *     useBidiStreaming: true,
+ *     automatedAgentConfig: {
+ *         agent: cesAppForAgent.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -175,6 +199,11 @@ export class ConversationProfile extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly ttsConfig: pulumi.Output<outputs.diagflow.ConversationProfileTtsConfig | undefined>;
+    /**
+     * (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     */
+    declare public readonly useBidiStreaming: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConversationProfile resource with the given unique name, arguments, and options.
@@ -205,6 +234,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["sttConfig"] = state?.sttConfig;
             resourceInputs["timeZone"] = state?.timeZone;
             resourceInputs["ttsConfig"] = state?.ttsConfig;
+            resourceInputs["useBidiStreaming"] = state?.useBidiStreaming;
         } else {
             const args = argsOrState as ConversationProfileArgs | undefined;
             if (args?.displayName === undefined && !opts.urn) {
@@ -228,6 +258,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["sttConfig"] = args?.sttConfig;
             resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["ttsConfig"] = args?.ttsConfig;
+            resourceInputs["useBidiStreaming"] = args?.useBidiStreaming;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -315,6 +346,11 @@ export interface ConversationProfileState {
      * Structure is documented below.
      */
     ttsConfig?: pulumi.Input<inputs.diagflow.ConversationProfileTtsConfig>;
+    /**
+     * (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     */
+    useBidiStreaming?: pulumi.Input<boolean>;
 }
 
 /**
@@ -393,4 +429,9 @@ export interface ConversationProfileArgs {
      * Structure is documented below.
      */
     ttsConfig?: pulumi.Input<inputs.diagflow.ConversationProfileTtsConfig>;
+    /**
+     * (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     */
+    useBidiStreaming?: pulumi.Input<boolean>;
 }

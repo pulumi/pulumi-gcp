@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.BlockchainNodeEngine.Inputs
 
     public sealed class BlockchainNodesEthereumDetailsValidatorConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+        /// </summary>
+        [Input("beaconFeeRecipient")]
+        public Input<string>? BeaconFeeRecipient { get; set; }
+
         [Input("mevRelayUrls")]
         private InputList<string>? _mevRelayUrls;
 

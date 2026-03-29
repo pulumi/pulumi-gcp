@@ -20,7 +20,8 @@ __all__ = ['AutokeyConfigArgs', 'AutokeyConfig']
 class AutokeyConfigArgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[_builtins.str],
-                 key_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutokeyConfig resource.
 
@@ -28,10 +29,14 @@ class AutokeyConfigArgs:
         :param pulumi.Input[_builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
+        :param pulumi.Input[_builtins.str] key_project_resolution_mode: How Autokey determines which project to use when provisioning CMEK keys.
+               Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
         """
         pulumi.set(__self__, "folder", folder)
         if key_project is not None:
             pulumi.set(__self__, "key_project", key_project)
+        if key_project_resolution_mode is not None:
+            pulumi.set(__self__, "key_project_resolution_mode", key_project_resolution_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -59,13 +64,27 @@ class AutokeyConfigArgs:
     def key_project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "key_project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="keyProjectResolutionMode")
+    def key_project_resolution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How Autokey determines which project to use when provisioning CMEK keys.
+        Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+        """
+        return pulumi.get(self, "key_project_resolution_mode")
+
+    @key_project_resolution_mode.setter
+    def key_project_resolution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_project_resolution_mode", value)
+
 
 @pulumi.input_type
 class _AutokeyConfigState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutokeyConfig resources.
 
@@ -74,6 +93,8 @@ class _AutokeyConfigState:
         :param pulumi.Input[_builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
+        :param pulumi.Input[_builtins.str] key_project_resolution_mode: How Autokey determines which project to use when provisioning CMEK keys.
+               Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -81,6 +102,8 @@ class _AutokeyConfigState:
             pulumi.set(__self__, "folder", folder)
         if key_project is not None:
             pulumi.set(__self__, "key_project", key_project)
+        if key_project_resolution_mode is not None:
+            pulumi.set(__self__, "key_project_resolution_mode", key_project_resolution_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -120,6 +143,19 @@ class _AutokeyConfigState:
     def key_project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "key_project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="keyProjectResolutionMode")
+    def key_project_resolution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How Autokey determines which project to use when provisioning CMEK keys.
+        Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+        """
+        return pulumi.get(self, "key_project_resolution_mode")
+
+    @key_project_resolution_mode.setter
+    def key_project_resolution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_project_resolution_mode", value)
+
 
 @pulumi.type_token("gcp:kms/autokeyConfig:AutokeyConfig")
 class AutokeyConfig(pulumi.CustomResource):
@@ -129,6 +165,7 @@ class AutokeyConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder: Optional[pulumi.Input[_builtins.str]] = None,
                  key_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         `AutokeyConfig` is a singleton resource used to configure the auto-provisioning
@@ -195,6 +232,7 @@ class AutokeyConfig(pulumi.CustomResource):
         example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
             folder=autokms_folder.id,
             key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            key_project_resolution_mode="DEDICATED_KEY_PROJECT",
             opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
         # Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
         # because setting the config takes a little to fully propagate.
@@ -223,6 +261,8 @@ class AutokeyConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
+        :param pulumi.Input[_builtins.str] key_project_resolution_mode: How Autokey determines which project to use when provisioning CMEK keys.
+               Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
         """
         ...
     @overload
@@ -295,6 +335,7 @@ class AutokeyConfig(pulumi.CustomResource):
         example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
             folder=autokms_folder.id,
             key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            key_project_resolution_mode="DEDICATED_KEY_PROJECT",
             opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
         # Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
         # because setting the config takes a little to fully propagate.
@@ -334,6 +375,7 @@ class AutokeyConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder: Optional[pulumi.Input[_builtins.str]] = None,
                  key_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,6 +389,7 @@ class AutokeyConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'folder'")
             __props__.__dict__["folder"] = folder
             __props__.__dict__["key_project"] = key_project
+            __props__.__dict__["key_project_resolution_mode"] = key_project_resolution_mode
             __props__.__dict__["etag"] = None
         super(AutokeyConfig, __self__).__init__(
             'gcp:kms/autokeyConfig:AutokeyConfig',
@@ -360,7 +403,8 @@ class AutokeyConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             folder: Optional[pulumi.Input[_builtins.str]] = None,
-            key_project: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutokeyConfig':
+            key_project: Optional[pulumi.Input[_builtins.str]] = None,
+            key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutokeyConfig':
         """
         Get an existing AutokeyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -373,6 +417,8 @@ class AutokeyConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
+        :param pulumi.Input[_builtins.str] key_project_resolution_mode: How Autokey determines which project to use when provisioning CMEK keys.
+               Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -381,6 +427,7 @@ class AutokeyConfig(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["folder"] = folder
         __props__.__dict__["key_project"] = key_project
+        __props__.__dict__["key_project_resolution_mode"] = key_project_resolution_mode
         return AutokeyConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -408,4 +455,13 @@ class AutokeyConfig(pulumi.CustomResource):
         `projects/<project_id_or_number>`.
         """
         return pulumi.get(self, "key_project")
+
+    @_builtins.property
+    @pulumi.getter(name="keyProjectResolutionMode")
+    def key_project_resolution_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        How Autokey determines which project to use when provisioning CMEK keys.
+        Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+        """
+        return pulumi.get(self, "key_project_resolution_mode")
 

@@ -81,6 +81,72 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Tls Route Regional Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "backend-service-health-check",
+    ///         Region = "europe-west4",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "my-backend-service",
+    ///         Protocol = "TCP",
+    ///         TimeoutSec = 10,
+    ///         Region = "europe-west4",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultTlsRoute = new Gcp.NetworkServices.TlsRoute("default", new()
+    ///     {
+    ///         Name = "my-tls-route",
+    ///         Location = "europe-west4",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.TlsRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.TlsRouteRuleMatchArgs
+    ///                     {
+    ///                         SniHosts = new[]
+    ///                         {
+    ///                             "example.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.TlsRouteRuleActionArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         new Gcp.NetworkServices.Inputs.TlsRouteRuleActionDestinationArgs
+    ///                         {
+    ///                             ServiceName = @default.SelfLink,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Network Services Tls Route Mesh Basic
     /// 
     /// ```csharp
@@ -241,21 +307,100 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Tls Route Region Target Tcp Proxy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "my-health-check",
+    ///         Region = "europe-west4",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "my-backend-service",
+    ///         Protocol = "TCP",
+    ///         TimeoutSec = 10,
+    ///         Region = "europe-west4",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultRegionTargetTcpProxy = new Gcp.Compute.RegionTargetTcpProxy("default", new()
+    ///     {
+    ///         Name = "my-target-tcp-proxy",
+    ///         Region = "europe-west4",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultTlsRoute = new Gcp.NetworkServices.TlsRoute("default", new()
+    ///     {
+    ///         Name = "my-tls-route",
+    ///         Location = "europe-west4",
+    ///         TargetProxies = new[]
+    ///         {
+    ///             defaultRegionTargetTcpProxy.SelfLink,
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.TlsRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.TlsRouteRuleMatchArgs
+    ///                     {
+    ///                         SniHosts = new[]
+    ///                         {
+    ///                             "example.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.TlsRouteRuleActionArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         new Gcp.NetworkServices.Inputs.TlsRouteRuleActionDestinationArgs
+    ///                         {
+    ///                             ServiceName = @default.SelfLink,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// TlsRoute can be imported using any of these accepted formats:
     /// 
+    /// * `projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}`
     /// * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
-    /// * `{{project}}/{{name}}`
-    /// * `{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
     /// When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
     /// 
     /// ```sh
+    /// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}
     /// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
-    /// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
-    /// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+    /// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{location}}/{{name}}
+    /// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkservices/tlsRoute:TlsRoute")]
@@ -275,14 +420,20 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Each gateway reference should match the pattern: projects/*/locations/*/gateways/&lt;gateway_name&gt;
         /// </summary>
         [Output("gateways")]
         public Output<ImmutableArray<string>> Gateways { get; private set; } = null!;
 
         /// <summary>
+        /// Location (region) of the TLS Route.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
+
+        /// <summary>
         /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
+        /// Each mesh reference should match the pattern: projects/*/locations/*/meshes/&lt;mesh_name&gt;
         /// The attached Mesh should be of a type SIDECAR
         /// </summary>
         [Output("meshes")]
@@ -313,6 +464,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+        /// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+        /// </summary>
+        [Output("targetProxies")]
+        public Output<ImmutableArray<string>> TargetProxies { get; private set; } = null!;
 
         /// <summary>
         /// Time the TlsRoute was updated in UTC.
@@ -377,7 +535,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Each gateway reference should match the pattern: projects/*/locations/*/gateways/&lt;gateway_name&gt;
         /// </summary>
         public InputList<string> Gateways
         {
@@ -385,12 +543,18 @@ namespace Pulumi.Gcp.NetworkServices
             set => _gateways = value;
         }
 
+        /// <summary>
+        /// Location (region) of the TLS Route.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
         [Input("meshes")]
         private InputList<string>? _meshes;
 
         /// <summary>
         /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
+        /// Each mesh reference should match the pattern: projects/*/locations/*/meshes/&lt;mesh_name&gt;
         /// The attached Mesh should be of a type SIDECAR
         /// </summary>
         public InputList<string> Meshes
@@ -425,6 +589,19 @@ namespace Pulumi.Gcp.NetworkServices
             set => _rules = value;
         }
 
+        [Input("targetProxies")]
+        private InputList<string>? _targetProxies;
+
+        /// <summary>
+        /// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+        /// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+        /// </summary>
+        public InputList<string> TargetProxies
+        {
+            get => _targetProxies ?? (_targetProxies = new InputList<string>());
+            set => _targetProxies = value;
+        }
+
         public TlsRouteArgs()
         {
         }
@@ -450,7 +627,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Each gateway reference should match the pattern: projects/*/locations/*/gateways/&lt;gateway_name&gt;
         /// </summary>
         public InputList<string> Gateways
         {
@@ -458,12 +635,18 @@ namespace Pulumi.Gcp.NetworkServices
             set => _gateways = value;
         }
 
+        /// <summary>
+        /// Location (region) of the TLS Route.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
         [Input("meshes")]
         private InputList<string>? _meshes;
 
         /// <summary>
         /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
+        /// Each mesh reference should match the pattern: projects/*/locations/*/meshes/&lt;mesh_name&gt;
         /// The attached Mesh should be of a type SIDECAR
         /// </summary>
         public InputList<string> Meshes
@@ -503,6 +686,19 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("targetProxies")]
+        private InputList<string>? _targetProxies;
+
+        /// <summary>
+        /// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+        /// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+        /// </summary>
+        public InputList<string> TargetProxies
+        {
+            get => _targetProxies ?? (_targetProxies = new InputList<string>());
+            set => _targetProxies = value;
+        }
 
         /// <summary>
         /// Time the TlsRoute was updated in UTC.

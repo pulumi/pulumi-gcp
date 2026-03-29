@@ -127,6 +127,86 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Secure Source Manager Instance Private Custom Host
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
+ *     name: "ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ * });
+ * const rootCa = new gcp.certificateauthority.Authority("root_ca", {
+ *     pool: caPool.name,
+ *     certificateAuthorityId: "root-ca",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "google",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     skipGracePeriod: true,
+ * });
+ * const caPoolBinding = new gcp.certificateauthority.CaPoolIamBinding("ca_pool_binding", {
+ *     caPool: caPool.id,
+ *     role: "roles/privateca.certificateRequester",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
+ * });
+ * // ca pool IAM permissions can take time to propagate
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [caPoolBinding],
+ * });
+ * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     instanceId: "my-instance",
+ *     location: "us-central1",
+ *     privateConfig: {
+ *         isPrivate: true,
+ *         caPool: caPool.id,
+ *         customHostConfig: {
+ *             api: "api.example.com",
+ *             gitHttp: "git-http.example.com",
+ *             gitSsh: "git-ssh.example.com",
+ *             html: "html.example.com",
+ *         },
+ *     },
+ *     deletionPolicy: "PREVENT",
+ * }, {
+ *     dependsOn: [
+ *         rootCa,
+ *         wait120Seconds,
+ *     ],
+ * });
+ * ```
  * ### Secure Source Manager Instance Private Psc Backend
  *
  * ```typescript

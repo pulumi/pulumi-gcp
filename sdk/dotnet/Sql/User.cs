@@ -241,6 +241,7 @@ namespace Pulumi.Gcp.Sql
         /// you can assign them. You can create roles using the CREATE ROLE
         /// statement for both MySQL and PostgreSQL.
         /// **Note**: This property is write-only and will not be read from the API.
+        /// **Caution**: Existing database roles will be overwriten with new values from this field.
         /// </summary>
         [Output("databaseRoles")]
         public Output<ImmutableArray<string>> DatabaseRoles { get; private set; } = null!;
@@ -394,6 +395,7 @@ namespace Pulumi.Gcp.Sql
         /// you can assign them. You can create roles using the CREATE ROLE
         /// statement for both MySQL and PostgreSQL.
         /// **Note**: This property is write-only and will not be read from the API.
+        /// **Caution**: Existing database roles will be overwriten with new values from this field.
         /// </summary>
         public InputList<string> DatabaseRoles
         {
@@ -518,6 +520,7 @@ namespace Pulumi.Gcp.Sql
         /// you can assign them. You can create roles using the CREATE ROLE
         /// statement for both MySQL and PostgreSQL.
         /// **Note**: This property is write-only and will not be read from the API.
+        /// **Caution**: Existing database roles will be overwriten with new values from this field.
         /// </summary>
         public InputList<string> DatabaseRoles
         {

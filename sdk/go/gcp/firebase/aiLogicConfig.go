@@ -182,6 +182,9 @@ import (
 //					Mode:         pulumi.String("ALL"),
 //					SamplingRate: pulumi.Float64(1),
 //				},
+//				TrafficFilter: &firebase.AiLogicConfigTrafficFilterArgs{
+//					TemplateOnly: pulumi.Bool(true),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				wait30s,
 //			}))
@@ -231,6 +234,9 @@ type AiLogicConfig struct {
 	// Firebase AI Logic backend.
 	// Structure is documented below.
 	TelemetryConfig AiLogicConfigTelemetryConfigPtrOutput `pulumi:"telemetryConfig"`
+	// Configuration for traffic filtering.
+	// Structure is documented below.
+	TrafficFilter AiLogicConfigTrafficFilterPtrOutput `pulumi:"trafficFilter"`
 }
 
 // NewAiLogicConfig registers a new resource with the given unique name, arguments, and options.
@@ -282,6 +288,9 @@ type aiLogicConfigState struct {
 	// Firebase AI Logic backend.
 	// Structure is documented below.
 	TelemetryConfig *AiLogicConfigTelemetryConfig `pulumi:"telemetryConfig"`
+	// Configuration for traffic filtering.
+	// Structure is documented below.
+	TrafficFilter *AiLogicConfigTrafficFilter `pulumi:"trafficFilter"`
 }
 
 type AiLogicConfigState struct {
@@ -304,6 +313,9 @@ type AiLogicConfigState struct {
 	// Firebase AI Logic backend.
 	// Structure is documented below.
 	TelemetryConfig AiLogicConfigTelemetryConfigPtrInput
+	// Configuration for traffic filtering.
+	// Structure is documented below.
+	TrafficFilter AiLogicConfigTrafficFilterPtrInput
 }
 
 func (AiLogicConfigState) ElementType() reflect.Type {
@@ -327,6 +339,9 @@ type aiLogicConfigArgs struct {
 	// Firebase AI Logic backend.
 	// Structure is documented below.
 	TelemetryConfig *AiLogicConfigTelemetryConfig `pulumi:"telemetryConfig"`
+	// Configuration for traffic filtering.
+	// Structure is documented below.
+	TrafficFilter *AiLogicConfigTrafficFilter `pulumi:"trafficFilter"`
 }
 
 // The set of arguments for constructing a AiLogicConfig resource.
@@ -347,6 +362,9 @@ type AiLogicConfigArgs struct {
 	// Firebase AI Logic backend.
 	// Structure is documented below.
 	TelemetryConfig AiLogicConfigTelemetryConfigPtrInput
+	// Configuration for traffic filtering.
+	// Structure is documented below.
+	TrafficFilter AiLogicConfigTrafficFilterPtrInput
 }
 
 func (AiLogicConfigArgs) ElementType() reflect.Type {
@@ -470,6 +488,12 @@ func (o AiLogicConfigOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o AiLogicConfigOutput) TelemetryConfig() AiLogicConfigTelemetryConfigPtrOutput {
 	return o.ApplyT(func(v *AiLogicConfig) AiLogicConfigTelemetryConfigPtrOutput { return v.TelemetryConfig }).(AiLogicConfigTelemetryConfigPtrOutput)
+}
+
+// Configuration for traffic filtering.
+// Structure is documented below.
+func (o AiLogicConfigOutput) TrafficFilter() AiLogicConfigTrafficFilterPtrOutput {
+	return o.ApplyT(func(v *AiLogicConfig) AiLogicConfigTrafficFilterPtrOutput { return v.TrafficFilter }).(AiLogicConfigTrafficFilterPtrOutput)
 }
 
 type AiLogicConfigArrayOutput struct{ *pulumi.OutputState }
