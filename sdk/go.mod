@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gcp/sdk/v9
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

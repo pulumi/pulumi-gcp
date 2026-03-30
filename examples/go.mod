@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gcp/examples/v8
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/pulumi/providertest v0.6.0
