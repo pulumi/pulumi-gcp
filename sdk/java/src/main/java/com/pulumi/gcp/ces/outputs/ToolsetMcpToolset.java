@@ -9,6 +9,7 @@ import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetApiAuthentication;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetServiceDirectoryConfig;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetTlsConfig;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,6 +24,15 @@ public final class ToolsetMcpToolset {
      * 
      */
     private @Nullable ToolsetMcpToolsetApiAuthentication apiAuthentication;
+    /**
+     * @return The custom headers to send in the request to the MCP server. The values
+     * must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+     * set in the session variables. See
+     * https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+     * for more details.
+     * 
+     */
+    private @Nullable Map<String,String> customHeaders;
     /**
      * @return The address of the MCP server, for example, &#34;https://example.com/mcp/&#34;. If
      * the server is built with the MCP SDK, the url should be suffixed with
@@ -57,6 +67,17 @@ public final class ToolsetMcpToolset {
      */
     public Optional<ToolsetMcpToolsetApiAuthentication> apiAuthentication() {
         return Optional.ofNullable(this.apiAuthentication);
+    }
+    /**
+     * @return The custom headers to send in the request to the MCP server. The values
+     * must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+     * set in the session variables. See
+     * https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+     * for more details.
+     * 
+     */
+    public Map<String,String> customHeaders() {
+        return this.customHeaders == null ? Map.of() : this.customHeaders;
     }
     /**
      * @return The address of the MCP server, for example, &#34;https://example.com/mcp/&#34;. If
@@ -98,6 +119,7 @@ public final class ToolsetMcpToolset {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ToolsetMcpToolsetApiAuthentication apiAuthentication;
+        private @Nullable Map<String,String> customHeaders;
         private String serverAddress;
         private @Nullable ToolsetMcpToolsetServiceDirectoryConfig serviceDirectoryConfig;
         private @Nullable ToolsetMcpToolsetTlsConfig tlsConfig;
@@ -105,6 +127,7 @@ public final class ToolsetMcpToolset {
         public Builder(ToolsetMcpToolset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiAuthentication = defaults.apiAuthentication;
+    	      this.customHeaders = defaults.customHeaders;
     	      this.serverAddress = defaults.serverAddress;
     	      this.serviceDirectoryConfig = defaults.serviceDirectoryConfig;
     	      this.tlsConfig = defaults.tlsConfig;
@@ -114,6 +137,12 @@ public final class ToolsetMcpToolset {
         public Builder apiAuthentication(@Nullable ToolsetMcpToolsetApiAuthentication apiAuthentication) {
 
             this.apiAuthentication = apiAuthentication;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customHeaders(@Nullable Map<String,String> customHeaders) {
+
+            this.customHeaders = customHeaders;
             return this;
         }
         @CustomType.Setter
@@ -139,6 +168,7 @@ public final class ToolsetMcpToolset {
         public ToolsetMcpToolset build() {
             final var _resultValue = new ToolsetMcpToolset();
             _resultValue.apiAuthentication = apiAuthentication;
+            _resultValue.customHeaders = customHeaders;
             _resultValue.serverAddress = serverAddress;
             _resultValue.serviceDirectoryConfig = serviceDirectoryConfig;
             _resultValue.tlsConfig = tlsConfig;

@@ -44,6 +44,7 @@ class UserArgs:
                you can assign them. You can create roles using the CREATE ROLE
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
+               **Caution**: Existing database roles will be overwriten with new values from this field.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -119,6 +120,7 @@ class UserArgs:
         you can assign them. You can create roles using the CREATE ROLE
         statement for both MySQL and PostgreSQL.
         **Note**: This property is write-only and will not be read from the API.
+        **Caution**: Existing database roles will be overwriten with new values from this field.
         """
         return pulumi.get(self, "database_roles")
 
@@ -278,6 +280,7 @@ class _UserState:
                you can assign them. You can create roles using the CREATE ROLE
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
+               **Caution**: Existing database roles will be overwriten with new values from this field.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -348,6 +351,7 @@ class _UserState:
         you can assign them. You can create roles using the CREATE ROLE
         statement for both MySQL and PostgreSQL.
         **Note**: This property is write-only and will not be read from the API.
+        **Caution**: Existing database roles will be overwriten with new values from this field.
         """
         return pulumi.get(self, "database_roles")
 
@@ -683,6 +687,7 @@ class User(pulumi.CustomResource):
                you can assign them. You can create roles using the CREATE ROLE
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
+               **Caution**: Existing database roles will be overwriten with new values from this field.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -950,6 +955,7 @@ class User(pulumi.CustomResource):
                you can assign them. You can create roles using the CREATE ROLE
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
+               **Caution**: Existing database roles will be overwriten with new values from this field.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -1012,6 +1018,7 @@ class User(pulumi.CustomResource):
         you can assign them. You can create roles using the CREATE ROLE
         statement for both MySQL and PostgreSQL.
         **Note**: This property is write-only and will not be read from the API.
+        **Caution**: Existing database roles will be overwriten with new values from this field.
         """
         return pulumi.get(self, "database_roles")
 

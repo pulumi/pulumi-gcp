@@ -141,6 +141,7 @@ namespace Pulumi.Gcp.Kms
     ///     {
     ///         Folder = autokmsFolder.Id,
     ///         KeyProject = keyProject.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
+    ///         KeyProjectResolutionMode = "DEDICATED_KEY_PROJECT",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -202,6 +203,13 @@ namespace Pulumi.Gcp.Kms
         [Output("keyProject")]
         public Output<string?> KeyProject { get; private set; } = null!;
 
+        /// <summary>
+        /// How Autokey determines which project to use when provisioning CMEK keys.
+        /// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+        /// </summary>
+        [Output("keyProjectResolutionMode")]
+        public Output<string?> KeyProjectResolutionMode { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AutokeyConfig resource with the given unique name, arguments, and options.
@@ -262,6 +270,13 @@ namespace Pulumi.Gcp.Kms
         [Input("keyProject")]
         public Input<string>? KeyProject { get; set; }
 
+        /// <summary>
+        /// How Autokey determines which project to use when provisioning CMEK keys.
+        /// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+        /// </summary>
+        [Input("keyProjectResolutionMode")]
+        public Input<string>? KeyProjectResolutionMode { get; set; }
+
         public AutokeyConfigArgs()
         {
         }
@@ -289,6 +304,13 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("keyProject")]
         public Input<string>? KeyProject { get; set; }
+
+        /// <summary>
+        /// How Autokey determines which project to use when provisioning CMEK keys.
+        /// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+        /// </summary>
+        [Input("keyProjectResolutionMode")]
+        public Input<string>? KeyProjectResolutionMode { get; set; }
 
         public AutokeyConfigState()
         {

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.lustre.InstanceArgs;
 import com.pulumi.gcp.lustre.inputs.InstanceState;
 import com.pulumi.gcp.lustre.outputs.InstanceAccessRulesOptions;
+import com.pulumi.gcp.lustre.outputs.InstanceMaintenancePolicy;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -279,6 +280,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenancePolicy", refs={InstanceMaintenancePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceMaintenancePolicy> maintenancePolicy;
+
+    /**
+     * @return The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceMaintenancePolicy>> maintenancePolicy() {
+        return Codegen.optional(this.maintenancePolicy);
     }
     /**
      * Mount point of the instance in the format `IP_ADDRESS{@literal @}tcp:/FILESYSTEM`.

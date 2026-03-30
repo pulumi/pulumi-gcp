@@ -352,6 +352,1271 @@ func (o InstanceAccessRulesOptionsAccessRuleArrayOutput) Index(i pulumi.IntInput
 	}).(InstanceAccessRulesOptionsAccessRuleOutput)
 }
 
+type InstanceMaintenancePolicy struct {
+	// The exclusion windows for the instance. Currently limited to 1 window.
+	// Structure is documented below.
+	MaintenanceExclusionWindow *InstanceMaintenancePolicyMaintenanceExclusionWindow `pulumi:"maintenanceExclusionWindow"`
+	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	// Structure is documented below.
+	WeeklyMaintenanceWindows *InstanceMaintenancePolicyWeeklyMaintenanceWindows `pulumi:"weeklyMaintenanceWindows"`
+}
+
+// InstanceMaintenancePolicyInput is an input type that accepts InstanceMaintenancePolicyArgs and InstanceMaintenancePolicyOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyInput` via:
+//
+//	InstanceMaintenancePolicyArgs{...}
+type InstanceMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput
+	ToInstanceMaintenancePolicyOutputWithContext(context.Context) InstanceMaintenancePolicyOutput
+}
+
+type InstanceMaintenancePolicyArgs struct {
+	// The exclusion windows for the instance. Currently limited to 1 window.
+	// Structure is documented below.
+	MaintenanceExclusionWindow InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput `pulumi:"maintenanceExclusionWindow"`
+	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	// Structure is documented below.
+	WeeklyMaintenanceWindows InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput `pulumi:"weeklyMaintenanceWindows"`
+}
+
+func (InstanceMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput {
+	return i.ToInstanceMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyOutputWithContext(ctx context.Context) InstanceMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyOutput)
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return i.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyOutput).ToInstanceMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyPtrInput is an input type that accepts InstanceMaintenancePolicyArgs, InstanceMaintenancePolicyPtr and InstanceMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyPtrInput` via:
+//
+//	        InstanceMaintenancePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput
+	ToInstanceMaintenancePolicyPtrOutputWithContext(context.Context) InstanceMaintenancePolicyPtrOutput
+}
+
+type instanceMaintenancePolicyPtrType InstanceMaintenancePolicyArgs
+
+func InstanceMaintenancePolicyPtr(v *InstanceMaintenancePolicyArgs) InstanceMaintenancePolicyPtrInput {
+	return (*instanceMaintenancePolicyPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyPtrType) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return i.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyPtrType) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyPtrOutput)
+}
+
+type InstanceMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyOutputWithContext(ctx context.Context) InstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return o.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicy) *InstanceMaintenancePolicy {
+		return &v
+	}).(InstanceMaintenancePolicyPtrOutput)
+}
+
+// The exclusion windows for the instance. Currently limited to 1 window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyOutput) MaintenanceExclusionWindow() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) *InstanceMaintenancePolicyMaintenanceExclusionWindow {
+		return v.MaintenanceExclusionWindow
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+// The weekly maintenance windows for the instance. Currently limited to 1 window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) *InstanceMaintenancePolicyWeeklyMaintenanceWindows {
+		return v.WeeklyMaintenanceWindows
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
+}
+
+type InstanceMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) Elem() InstanceMaintenancePolicyOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) InstanceMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicy
+		return ret
+	}).(InstanceMaintenancePolicyOutput)
+}
+
+// The exclusion windows for the instance. Currently limited to 1 window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyPtrOutput) MaintenanceExclusionWindow() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) *InstanceMaintenancePolicyMaintenanceExclusionWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceExclusionWindow
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+// The weekly maintenance windows for the instance. Currently limited to 1 window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyPtrOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) *InstanceMaintenancePolicyWeeklyMaintenanceWindows {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyMaintenanceWindows
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindow struct {
+	// End date of the exclusion period in UTC.
+	// Structure is documented below.
+	EndDate InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate `pulumi:"endDate"`
+	// Start date of the exclusion period in UTC.
+	// Structure is documented below.
+	StartDate InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate `pulumi:"startDate"`
+	// Time in UTC for the exclusion window.
+	// Structure is documented below.
+	Time InstanceMaintenancePolicyMaintenanceExclusionWindowTime `pulumi:"time"`
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowArgs and InstanceMaintenancePolicyMaintenanceExclusionWindowOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceExclusionWindowArgs{...}
+type InstanceMaintenancePolicyMaintenanceExclusionWindowInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowArgs struct {
+	// End date of the exclusion period in UTC.
+	// Structure is documented below.
+	EndDate InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput `pulumi:"endDate"`
+	// Start date of the exclusion period in UTC.
+	// Structure is documented below.
+	StartDate InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput `pulumi:"startDate"`
+	// Time in UTC for the exclusion window.
+	// Structure is documented below.
+	Time InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput `pulumi:"time"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowOutput).ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowArgs, InstanceMaintenancePolicyMaintenanceExclusionWindowPtr and InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceExclusionWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceExclusionWindowPtrType InstanceMaintenancePolicyMaintenanceExclusionWindowArgs
+
+func InstanceMaintenancePolicyMaintenanceExclusionWindowPtr(v *InstanceMaintenancePolicyMaintenanceExclusionWindowArgs) InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput {
+	return (*instanceMaintenancePolicyMaintenanceExclusionWindowPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceExclusionWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowPtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowPtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindow {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+// End date of the exclusion period in UTC.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) EndDate() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
+		return v.EndDate
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
+}
+
+// Start date of the exclusion period in UTC.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) StartDate() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
+		return v.StartDate
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
+}
+
+// Time in UTC for the exclusion window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) Time() InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindowTime {
+		return v.Time
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) Elem() InstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindow {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceExclusionWindow
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowOutput)
+}
+
+// End date of the exclusion period in UTC.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) EndDate() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
+		if v == nil {
+			return nil
+		}
+		return &v.EndDate
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput)
+}
+
+// Start date of the exclusion period in UTC.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) StartDate() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
+		if v == nil {
+			return nil
+		}
+		return &v.StartDate
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput)
+}
+
+// Time in UTC for the exclusion window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) Time() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindowTime {
+		if v == nil {
+			return nil
+		}
+		return &v.Time
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year *int `pulumi:"year"`
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs and InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{...}
+type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput).ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs, InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtr and InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrType InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs
+
+func InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtr(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrInput {
+	return (*instanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Elem() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year *int `pulumi:"year"`
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs and InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{...}
+type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput).ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs, InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtr and InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrType InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs
+
+func InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtr(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrInput {
+	return (*instanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Elem() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs and InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{...}
+type InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput).ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs, InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtr and InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput
+	ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceExclusionWindowTimePtrType InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs
+
+func InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtr(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrInput {
+	return (*instanceMaintenancePolicyMaintenanceExclusionWindowTimePtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceExclusionWindowTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowTimePtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceExclusionWindowTimePtrType) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *InstanceMaintenancePolicyMaintenanceExclusionWindowTime {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) ToInstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Elem() InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) InstanceMaintenancePolicyMaintenanceExclusionWindowTime {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceExclusionWindowTime
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindows struct {
+	// Day of the week for the maintenance window.
+	// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Start time of the maintenance window in UTC.
+	// Structure is documented below.
+	StartTime InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime `pulumi:"startTime"`
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowsInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs and InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowsInput` via:
+//
+//	InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs{...}
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs struct {
+	// Day of the week for the maintenance window.
+	// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// Start time of the maintenance window in UTC.
+	// Structure is documented below.
+	StartTime InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput `pulumi:"startTime"`
+}
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindows)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput)
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput).ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs, InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtr and InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput` via:
+//
+//	        InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput
+}
+
+type instanceMaintenancePolicyWeeklyMaintenanceWindowsPtrType InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs
+
+func InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtr(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs) InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput {
+	return (*instanceMaintenancePolicyWeeklyMaintenanceWindowsPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyWeeklyMaintenanceWindowsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyWeeklyMaintenanceWindows)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyWeeklyMaintenanceWindowsPtrType) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyWeeklyMaintenanceWindowsPtrType) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindows)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return o.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyWeeklyMaintenanceWindows) *InstanceMaintenancePolicyWeeklyMaintenanceWindows {
+		return &v
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
+}
+
+// Day of the week for the maintenance window.
+// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindows) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// Start time of the maintenance window in UTC.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) StartTime() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindows) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime {
+		return v.StartTime
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyWeeklyMaintenanceWindows)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) Elem() InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindows) InstanceMaintenancePolicyWeeklyMaintenanceWindows {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyWeeklyMaintenanceWindows
+		return ret
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput)
+}
+
+// Day of the week for the maintenance window.
+// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindows) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of the maintenance window in UTC.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) StartTime() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindows) *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs and InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput` via:
+//
+//	InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs{...}
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput)
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput).ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs, InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtr and InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrInput` via:
+//
+//	        InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput
+}
+
+type instanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrType InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs
+
+func InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtr(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrInput {
+	return (*instanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrType)(v)
+}
+
+func (*instanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrType) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrType) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return o.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime {
+		return &v
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Elem() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime
+		return ret
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetInstanceAccessRulesOption struct {
 	// An array of access rule exceptions. Each rule defines IP address ranges
 	// that should have different squash behavior than the default.
@@ -606,21 +1871,894 @@ func (o GetInstanceAccessRulesOptionAccessRuleArrayOutput) Index(i pulumi.IntInp
 	}).(GetInstanceAccessRulesOptionAccessRuleOutput)
 }
 
+type GetInstanceMaintenancePolicy struct {
+	// The exclusion windows for the instance. Currently limited to 1 window.
+	MaintenanceExclusionWindows []GetInstanceMaintenancePolicyMaintenanceExclusionWindow `pulumi:"maintenanceExclusionWindows"`
+	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	WeeklyMaintenanceWindows []GetInstanceMaintenancePolicyWeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindows"`
+}
+
+// GetInstanceMaintenancePolicyInput is an input type that accepts GetInstanceMaintenancePolicyArgs and GetInstanceMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyInput` via:
+//
+//	GetInstanceMaintenancePolicyArgs{...}
+type GetInstanceMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyOutput() GetInstanceMaintenancePolicyOutput
+	ToGetInstanceMaintenancePolicyOutputWithContext(context.Context) GetInstanceMaintenancePolicyOutput
+}
+
+type GetInstanceMaintenancePolicyArgs struct {
+	// The exclusion windows for the instance. Currently limited to 1 window.
+	MaintenanceExclusionWindows GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayInput `pulumi:"maintenanceExclusionWindows"`
+	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	WeeklyMaintenanceWindows GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindows"`
+}
+
+func (GetInstanceMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyArgs) ToGetInstanceMaintenancePolicyOutput() GetInstanceMaintenancePolicyOutput {
+	return i.ToGetInstanceMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyArgs) ToGetInstanceMaintenancePolicyOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyOutput)
+}
+
+// GetInstanceMaintenancePolicyArrayInput is an input type that accepts GetInstanceMaintenancePolicyArray and GetInstanceMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyArray{ GetInstanceMaintenancePolicyArgs{...} }
+type GetInstanceMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyArrayOutput() GetInstanceMaintenancePolicyArrayOutput
+	ToGetInstanceMaintenancePolicyArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyArrayOutput
+}
+
+type GetInstanceMaintenancePolicyArray []GetInstanceMaintenancePolicyInput
+
+func (GetInstanceMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyArray) ToGetInstanceMaintenancePolicyArrayOutput() GetInstanceMaintenancePolicyArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyArray) ToGetInstanceMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyOutput) ToGetInstanceMaintenancePolicyOutput() GetInstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyOutput) ToGetInstanceMaintenancePolicyOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyOutput {
+	return o
+}
+
+// The exclusion windows for the instance. Currently limited to 1 window.
+func (o GetInstanceMaintenancePolicyOutput) MaintenanceExclusionWindows() GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicy) []GetInstanceMaintenancePolicyMaintenanceExclusionWindow {
+		return v.MaintenanceExclusionWindows
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput)
+}
+
+// The weekly maintenance windows for the instance. Currently limited to 1 window.
+func (o GetInstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicy) []GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
+		return v.WeeklyMaintenanceWindows
+	}).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyArrayOutput) ToGetInstanceMaintenancePolicyArrayOutput() GetInstanceMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyArrayOutput) ToGetInstanceMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicy {
+		return vs[0].([]GetInstanceMaintenancePolicy)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindow struct {
+	// End date of the exclusion period in UTC.
+	EndDates []GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate `pulumi:"endDates"`
+	// Start date of the exclusion period in UTC.
+	StartDates []GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate `pulumi:"startDates"`
+	// Time in UTC for the exclusion window.
+	Times []GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime `pulumi:"times"`
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs and GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs{...}
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs struct {
+	// End date of the exclusion period in UTC.
+	EndDates GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayInput `pulumi:"endDates"`
+	// Start date of the exclusion period in UTC.
+	StartDates GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayInput `pulumi:"startDates"`
+	// Time in UTC for the exclusion window.
+	Times GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayInput `pulumi:"times"`
+}
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput)
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray and GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray{ GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs{...} }
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray []GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o
+}
+
+// End date of the exclusion period in UTC.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) EndDates() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindow) []GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
+		return v.EndDates
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput)
+}
+
+// Start date of the exclusion period in UTC.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) StartDates() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindow) []GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
+		return v.StartDates
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput)
+}
+
+// Time in UTC for the exclusion window.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) Times() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindow) []GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime {
+		return v.Times
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicyMaintenanceExclusionWindow {
+		return vs[0].([]GetInstanceMaintenancePolicyMaintenanceExclusionWindow)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year int `pulumi:"year"`
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs and GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{...}
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray and GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray{ GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{...} }
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray []GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
+		return vs[0].([]GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year int `pulumi:"year"`
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs and GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{...}
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray and GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray{ GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{...} }
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray []GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
+		return vs[0].([]GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs and GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{...}
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput)
+}
+
+// GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayInput is an input type that accepts GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray and GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray{ GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{...} }
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput
+	ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray []GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Must be from 0 to 59.
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput) ToGetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime {
+		return vs[0].([]GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput)
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
+	// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Start time of the maintenance window in UTC.
+	StartTimes []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime `pulumi:"startTimes"`
+}
+
+// GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput` via:
+//
+//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
+	// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// Start time of the maintenance window in UTC.
+	StartTimes GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput `pulumi:"startTimes"`
+}
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return i.ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput)
+}
+
+// GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray{ GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return o
+}
+
+// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// Start time of the maintenance window in UTC.
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) StartTimes() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+		return v.StartTimes
+	}).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
+		return vs[0].([]GetInstanceMaintenancePolicyWeeklyMaintenanceWindow)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput)
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput` via:
+//
+//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must be from 0 to 59.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return i.ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
+}
+
+// GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput` via:
+//
+//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray{ GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...} }
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput
+	ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutputWithContext(context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
+	return i.ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput)
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Must be from 0 to 59.
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput) ToGetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutputWithContext(ctx context.Context) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
+	return o
+}
+
+func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput) Index(i pulumi.IntInput) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+		return vs[0].([]GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)[vs[1].(int)]
+	}).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsInput)(nil)).Elem(), InstanceAccessRulesOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsPtrInput)(nil)).Elem(), InstanceAccessRulesOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsAccessRuleInput)(nil)).Elem(), InstanceAccessRulesOptionsAccessRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsAccessRuleArrayInput)(nil)).Elem(), InstanceAccessRulesOptionsAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionInput)(nil)).Elem(), GetInstanceAccessRulesOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionArrayInput)(nil)).Elem(), GetInstanceAccessRulesOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionAccessRuleInput)(nil)).Elem(), GetInstanceAccessRulesOptionAccessRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionAccessRuleArrayInput)(nil)).Elem(), GetInstanceAccessRulesOptionAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyInput)(nil)).Elem(), GetInstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsOutput{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsAccessRuleOutput{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionAccessRuleOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput{})
 }

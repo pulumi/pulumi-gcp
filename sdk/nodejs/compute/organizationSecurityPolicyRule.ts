@@ -40,6 +40,29 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ * ### Organization Security Policy Rule Expression
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
+ *     shortName: "tf-test_95154",
+ *     parent: "organizations/123456789",
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policy", {
+ *     policyId: policy.id,
+ *     action: "allow",
+ *     match: {
+ *         expr: {
+ *             expression: "request.path.contains('/folder/test/')",
+ *         },
+ *         versionedExpr: "",
+ *     },
+ *     priority: 100,
+ * });
+ * ```
  * ### Organization Security Policy Rule Firewall
  *
  * ```typescript

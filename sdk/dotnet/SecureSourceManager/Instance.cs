@@ -190,6 +190,125 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// ### Secure Source Manager Instance Private Custom Host
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var caPool = new Gcp.CertificateAuthority.CaPool("ca_pool", new()
+    ///     {
+    ///         Name = "ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var rootCa = new Gcp.CertificateAuthority.Authority("root_ca", new()
+    ///     {
+    ///         Pool = caPool.Name,
+    ///         CertificateAuthorityId = "root-ca",
+    ///         Location = "us-central1",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "google",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         DeletionProtection = false,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         SkipGracePeriod = true,
+    ///     });
+    /// 
+    ///     var caPoolBinding = new Gcp.CertificateAuthority.CaPoolIamBinding("ca_pool_binding", new()
+    ///     {
+    ///         CaPool = caPool.Id,
+    ///         Role = "roles/privateca.certificateRequester",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     // ca pool IAM permissions can take time to propagate
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             caPoolBinding,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+    ///     {
+    ///         InstanceId = "my-instance",
+    ///         Location = "us-central1",
+    ///         PrivateConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigArgs
+    ///         {
+    ///             IsPrivate = true,
+    ///             CaPool = caPool.Id,
+    ///             CustomHostConfig = new Gcp.SecureSourceManager.Inputs.InstancePrivateConfigCustomHostConfigArgs
+    ///             {
+    ///                 Api = "api.example.com",
+    ///                 GitHttp = "git-http.example.com",
+    ///                 GitSsh = "git-ssh.example.com",
+    ///                 Html = "html.example.com",
+    ///             },
+    ///         },
+    ///         DeletionPolicy = "PREVENT",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             rootCa,
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Secure Source Manager Instance Private Psc Backend
     /// 
     /// ```csharp

@@ -6,6 +6,7 @@ package com.pulumi.gcp.lustre.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.lustre.outputs.GetInstanceAccessRulesOption;
+import com.pulumi.gcp.lustre.outputs.GetInstanceMaintenancePolicy;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -32,6 +33,7 @@ public final class GetInstanceResult {
     private String kmsKey;
     private Map<String,String> labels;
     private String location;
+    private List<GetInstanceMaintenancePolicy> maintenancePolicies;
     private String mountPoint;
     private String name;
     private String network;
@@ -84,6 +86,9 @@ public final class GetInstanceResult {
     }
     public String location() {
         return this.location;
+    }
+    public List<GetInstanceMaintenancePolicy> maintenancePolicies() {
+        return this.maintenancePolicies;
     }
     public String mountPoint() {
         return this.mountPoint;
@@ -140,6 +145,7 @@ public final class GetInstanceResult {
         private String kmsKey;
         private Map<String,String> labels;
         private String location;
+        private List<GetInstanceMaintenancePolicy> maintenancePolicies;
         private String mountPoint;
         private String name;
         private String network;
@@ -166,6 +172,7 @@ public final class GetInstanceResult {
     	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
+    	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.mountPoint = defaults.mountPoint;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
@@ -279,6 +286,17 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maintenancePolicies(List<GetInstanceMaintenancePolicy> maintenancePolicies) {
+            if (maintenancePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "maintenancePolicies");
+            }
+            this.maintenancePolicies = maintenancePolicies;
+            return this;
+        }
+        public Builder maintenancePolicies(GetInstanceMaintenancePolicy... maintenancePolicies) {
+            return maintenancePolicies(List.of(maintenancePolicies));
+        }
+        @CustomType.Setter
         public Builder mountPoint(String mountPoint) {
             if (mountPoint == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "mountPoint");
@@ -376,6 +394,7 @@ public final class GetInstanceResult {
             _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.location = location;
+            _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.mountPoint = mountPoint;
             _resultValue.name = name;
             _resultValue.network = network;

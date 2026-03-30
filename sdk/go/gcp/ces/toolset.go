@@ -624,6 +624,9 @@ import (
 //				DisplayName: pulumi.String("Basic toolset display name"),
 //				McpToolset: &ces.ToolsetMcpToolsetArgs{
 //					ServerAddress: pulumi.String("https://api.example.com/mcp/"),
+//					CustomHeaders: pulumi.StringMap{
+//						"X-Custom-Header": pulumi.String("$context.variables.my_variable"),
+//					},
 //					TlsConfig: &ces.ToolsetMcpToolsetTlsConfigArgs{
 //						CaCerts: ces.ToolsetMcpToolsetTlsConfigCaCertArray{
 //							&ces.ToolsetMcpToolsetTlsConfigCaCertArgs{

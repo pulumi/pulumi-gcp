@@ -33,6 +33,26 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<Inputs.AiReasoningEngineSpecDeploymentSpecGetArgs>? DeploymentSpec { get; set; }
 
         /// <summary>
+        /// (Output, Beta)
+        /// The identity to use for the Reasoning Engine.
+        /// </summary>
+        [Input("effectiveIdentity")]
+        public Input<string>? EffectiveIdentity { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. The identity type to use for the Reasoning Engine.
+        /// If not specified, the `ServiceAccount` field will be used if set,
+        /// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+        /// Possible values:
+        /// * `SERVICE_ACCOUNT`: Use a custom service account if the `ServiceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+        /// * `AGENT_IDENTITY`: Use Agent Identity. The `ServiceAccount` field must not be set.
+        /// Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+        /// </summary>
+        [Input("identityType")]
+        public Input<string>? IdentityType { get; set; }
+
+        /// <summary>
         /// Optional. User provided package spec of the ReasoningEngine.
         /// Ignored when users directly specify a deployment image through
         /// deploymentSpec.first_party_image_override, but keeping the

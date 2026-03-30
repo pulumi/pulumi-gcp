@@ -25,6 +25,8 @@ __all__ = [
     'InstanceIamMemberConditionArgsDict',
     'InstancePrivateConfigArgs',
     'InstancePrivateConfigArgsDict',
+    'InstancePrivateConfigCustomHostConfigArgs',
+    'InstancePrivateConfigCustomHostConfigArgsDict',
     'InstanceWorkforceIdentityFederationConfigArgs',
     'InstanceWorkforceIdentityFederationConfigArgsDict',
     'RepositoryIamBindingConditionArgs',
@@ -273,6 +275,11 @@ class InstancePrivateConfigArgsDict(TypedDict):
     """
     CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
     """
+    custom_host_config: NotRequired[pulumi.Input['InstancePrivateConfigCustomHostConfigArgsDict']]
+    """
+    Custom host configuration for the instance.
+    Structure is documented below.
+    """
     http_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
     """
     (Output)
@@ -289,11 +296,14 @@ class InstancePrivateConfigArgs:
     def __init__(__self__, *,
                  is_private: pulumi.Input[_builtins.bool],
                  ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_host_config: Optional[pulumi.Input['InstancePrivateConfigCustomHostConfigArgs']] = None,
                  http_service_attachment: Optional[pulumi.Input[_builtins.str]] = None,
                  ssh_service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] is_private: 'Indicate if it's private instance.'
         :param pulumi.Input[_builtins.str] ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        :param pulumi.Input['InstancePrivateConfigCustomHostConfigArgs'] custom_host_config: Custom host configuration for the instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] http_service_attachment: (Output)
                Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         :param pulumi.Input[_builtins.str] ssh_service_attachment: (Output)
@@ -302,6 +312,8 @@ class InstancePrivateConfigArgs:
         pulumi.set(__self__, "is_private", is_private)
         if ca_pool is not None:
             pulumi.set(__self__, "ca_pool", ca_pool)
+        if custom_host_config is not None:
+            pulumi.set(__self__, "custom_host_config", custom_host_config)
         if http_service_attachment is not None:
             pulumi.set(__self__, "http_service_attachment", http_service_attachment)
         if ssh_service_attachment is not None:
@@ -332,6 +344,19 @@ class InstancePrivateConfigArgs:
         pulumi.set(self, "ca_pool", value)
 
     @_builtins.property
+    @pulumi.getter(name="customHostConfig")
+    def custom_host_config(self) -> Optional[pulumi.Input['InstancePrivateConfigCustomHostConfigArgs']]:
+        """
+        Custom host configuration for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_host_config")
+
+    @custom_host_config.setter
+    def custom_host_config(self, value: Optional[pulumi.Input['InstancePrivateConfigCustomHostConfigArgs']]):
+        pulumi.set(self, "custom_host_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="httpServiceAttachment")
     def http_service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -356,6 +381,91 @@ class InstancePrivateConfigArgs:
     @ssh_service_attachment.setter
     def ssh_service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ssh_service_attachment", value)
+
+
+class InstancePrivateConfigCustomHostConfigArgsDict(TypedDict):
+    api: pulumi.Input[_builtins.str]
+    """
+    API hostname.
+    """
+    git_http: pulumi.Input[_builtins.str]
+    """
+    Git HTTP hostname.
+    """
+    git_ssh: pulumi.Input[_builtins.str]
+    """
+    Git SSH hostname.
+    """
+    html: pulumi.Input[_builtins.str]
+    """
+    HTML hostname.
+    """
+
+@pulumi.input_type
+class InstancePrivateConfigCustomHostConfigArgs:
+    def __init__(__self__, *,
+                 api: pulumi.Input[_builtins.str],
+                 git_http: pulumi.Input[_builtins.str],
+                 git_ssh: pulumi.Input[_builtins.str],
+                 html: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] api: API hostname.
+        :param pulumi.Input[_builtins.str] git_http: Git HTTP hostname.
+        :param pulumi.Input[_builtins.str] git_ssh: Git SSH hostname.
+        :param pulumi.Input[_builtins.str] html: HTML hostname.
+        """
+        pulumi.set(__self__, "api", api)
+        pulumi.set(__self__, "git_http", git_http)
+        pulumi.set(__self__, "git_ssh", git_ssh)
+        pulumi.set(__self__, "html", html)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Input[_builtins.str]:
+        """
+        API hostname.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitHttp")
+    def git_http(self) -> pulumi.Input[_builtins.str]:
+        """
+        Git HTTP hostname.
+        """
+        return pulumi.get(self, "git_http")
+
+    @git_http.setter
+    def git_http(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "git_http", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitSsh")
+    def git_ssh(self) -> pulumi.Input[_builtins.str]:
+        """
+        Git SSH hostname.
+        """
+        return pulumi.get(self, "git_ssh")
+
+    @git_ssh.setter
+    def git_ssh(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "git_ssh", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def html(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTML hostname.
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "html", value)
 
 
 class InstanceWorkforceIdentityFederationConfigArgsDict(TypedDict):

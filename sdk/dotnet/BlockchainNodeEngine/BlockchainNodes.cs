@@ -104,6 +104,42 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
+    /// ### Blockchain Nodes Beacon Fee Recipient
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNodeBeaconFee = new Gcp.BlockchainNodeEngine.BlockchainNodes("default_node_beacon_fee", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         BlockchainType = "ETHEREUM",
+    ///         BlockchainNodeId = "beacon_fee_node",
+    ///         EthereumDetails = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsArgs
+    ///         {
+    ///             ApiEnableAdmin = true,
+    ///             ApiEnableDebug = true,
+    ///             ValidatorConfig = new Gcp.BlockchainNodeEngine.Inputs.BlockchainNodesEthereumDetailsValidatorConfigArgs
+    ///             {
+    ///                 BeaconFeeRecipient = "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
+    ///             },
+    ///             NodeType = "ARCHIVE",
+    ///             ConsensusClient = "LIGHTHOUSE",
+    ///             ExecutionClient = "ERIGON",
+    ///             Network = "MAINNET",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "dev" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

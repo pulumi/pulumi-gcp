@@ -19,6 +19,8 @@ __all__ = [
     'AiLogicConfigGenerativeLanguageConfigArgsDict',
     'AiLogicConfigTelemetryConfigArgs',
     'AiLogicConfigTelemetryConfigArgsDict',
+    'AiLogicConfigTrafficFilterArgs',
+    'AiLogicConfigTrafficFilterArgsDict',
     'AppHostingBackendCodebaseArgs',
     'AppHostingBackendCodebaseArgsDict',
     'AppHostingBackendManagedResourceArgs',
@@ -290,6 +292,38 @@ class AiLogicConfigTelemetryConfigArgs:
     @sampling_rate.setter
     def sampling_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "sampling_rate", value)
+
+
+class AiLogicConfigTrafficFilterArgsDict(TypedDict):
+    template_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Only allows users to use AI Logic via prompt templates for this project.
+    If true, only calls using server templates are permitted.
+    """
+
+@pulumi.input_type
+class AiLogicConfigTrafficFilterArgs:
+    def __init__(__self__, *,
+                 template_only: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] template_only: Only allows users to use AI Logic via prompt templates for this project.
+               If true, only calls using server templates are permitted.
+        """
+        if template_only is not None:
+            pulumi.set(__self__, "template_only", template_only)
+
+    @_builtins.property
+    @pulumi.getter(name="templateOnly")
+    def template_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only allows users to use AI Logic via prompt templates for this project.
+        If true, only calls using server templates are permitted.
+        """
+        return pulumi.get(self, "template_only")
+
+    @template_only.setter
+    def template_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "template_only", value)
 
 
 class AppHostingBackendCodebaseArgsDict(TypedDict):

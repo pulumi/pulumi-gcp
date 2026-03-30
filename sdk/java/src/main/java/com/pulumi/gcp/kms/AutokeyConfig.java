@@ -135,6 +135,7 @@ import javax.annotation.Nullable;
  *         var example_autokeyconfig = new AutokeyConfig("example-autokeyconfig", AutokeyConfigArgs.builder()
  *             .folder(autokmsFolder.id())
  *             .keyProject(keyProject.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
+ *             .keyProjectResolutionMode("DEDICATED_KEY_PROJECT")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(waitSrvAccPermissions)
  *                 .build());
@@ -214,6 +215,22 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> keyProject() {
         return Codegen.optional(this.keyProject);
+    }
+    /**
+     * How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     * 
+     */
+    @Export(name="keyProjectResolutionMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyProjectResolutionMode;
+
+    /**
+     * @return How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     * 
+     */
+    public Output<Optional<String>> keyProjectResolutionMode() {
+        return Codegen.optional(this.keyProjectResolutionMode);
     }
 
     /**

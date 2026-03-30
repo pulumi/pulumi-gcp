@@ -175,6 +175,11 @@ export type OrganizationKajPolicyConfig = import("./organizationKajPolicyConfig"
 export const OrganizationKajPolicyConfig: typeof import("./organizationKajPolicyConfig").OrganizationKajPolicyConfig = null as any;
 utilities.lazyLoad(exports, ["OrganizationKajPolicyConfig"], () => require("./organizationKajPolicyConfig"));
 
+export { ProjectAutokeyConfigArgs, ProjectAutokeyConfigState } from "./projectAutokeyConfig";
+export type ProjectAutokeyConfig = import("./projectAutokeyConfig").ProjectAutokeyConfig;
+export const ProjectAutokeyConfig: typeof import("./projectAutokeyConfig").ProjectAutokeyConfig = null as any;
+utilities.lazyLoad(exports, ["ProjectAutokeyConfig"], () => require("./projectAutokeyConfig"));
+
 export { ProjectKajPolicyConfigArgs, ProjectKajPolicyConfigState } from "./projectKajPolicyConfig";
 export type ProjectKajPolicyConfig = import("./projectKajPolicyConfig").ProjectKajPolicyConfig;
 export const ProjectKajPolicyConfig: typeof import("./projectKajPolicyConfig").ProjectKajPolicyConfig = null as any;
@@ -226,6 +231,8 @@ const _module = {
                 return new KeyRingImportJob(name, <any>undefined, { urn })
             case "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig":
                 return new OrganizationKajPolicyConfig(name, <any>undefined, { urn })
+            case "gcp:kms/projectAutokeyConfig:ProjectAutokeyConfig":
+                return new ProjectAutokeyConfig(name, <any>undefined, { urn })
             case "gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig":
                 return new ProjectKajPolicyConfig(name, <any>undefined, { urn })
             case "gcp:kms/secretCiphertext:SecretCiphertext":
@@ -253,5 +260,6 @@ pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingImportJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/organizationKajPolicyConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/projectAutokeyConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/projectKajPolicyConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/secretCiphertext", _module)

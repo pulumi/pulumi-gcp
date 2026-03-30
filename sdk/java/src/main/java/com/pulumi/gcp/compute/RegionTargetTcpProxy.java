@@ -87,6 +87,177 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Target Tcp Proxy Basic Beta
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .region("europe-west4")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .protocol("TCP")
+ *             .timeoutSec(10)
+ *             .region("europe-west4")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
+ *             .name("test-proxy")
+ *             .region("europe-west4")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .backendService(defaultRegionBackendService.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Target Tcp Proxy Backendless
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
+ *             .name("test-proxy")
+ *             .region("europe-west4")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Target Tcp Proxy Tls Route
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.networkservices.TlsRoute;
+ * import com.pulumi.gcp.networkservices.TlsRouteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
+ *             .name("test-proxy")
+ *             .region("europe-west4")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .region("europe-west4")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .protocol("TCP")
+ *             .timeoutSec(10)
+ *             .region("europe-west4")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
+ *             .name("tls-route-check")
+ *             .location("europe-west4")
+ *             .targetProxies(default_.selfLink())
+ *             .rules(TlsRouteRuleArgs.builder()
+ *                 .matches(TlsRouteRuleMatchArgs.builder()
+ *                     .sniHosts("example.com")
+ *                     .build())
+ *                 .action(TlsRouteRuleActionArgs.builder()
+ *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
+ *                         .serviceName(defaultRegionBackendService.selfLink())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -110,18 +281,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy")
 public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is specified.
      * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
-    private Output<String> backendService;
+    private Output</* @Nullable */ String> backendService;
 
     /**
-     * @return A reference to the BackendService resource.
+     * @return A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is specified.
      * 
      */
-    public Output<String> backendService() {
-        return this.backendService;
+    public Output<Optional<String>> backendService() {
+        return Codegen.optional(this.backendService);
     }
     /**
      * Creation timestamp in RFC3339 text format.
@@ -150,6 +323,28 @@ public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loadBalancingScheme;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    public Output<Optional<String>> loadBalancingScheme() {
+        return Codegen.optional(this.loadBalancingScheme);
     }
     /**
      * Name of the resource. Provided by the client when the resource is
@@ -286,7 +481,7 @@ public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionTargetTcpProxy(java.lang.String name, RegionTargetTcpProxyArgs args) {
+    public RegionTargetTcpProxy(java.lang.String name, @Nullable RegionTargetTcpProxyArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,7 +490,7 @@ public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionTargetTcpProxy(java.lang.String name, RegionTargetTcpProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public RegionTargetTcpProxy(java.lang.String name, @Nullable RegionTargetTcpProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -303,7 +498,7 @@ public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
         super("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static RegionTargetTcpProxyArgs makeArgs(RegionTargetTcpProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static RegionTargetTcpProxyArgs makeArgs(@Nullable RegionTargetTcpProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

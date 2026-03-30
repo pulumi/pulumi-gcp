@@ -100,6 +100,11 @@ export type EntityType = import("./entityType").EntityType;
 export const EntityType: typeof import("./entityType").EntityType = null as any;
 utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
 
+export { EnvironmentArgs, EnvironmentState } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+
 export { FulfillmentArgs, FulfillmentState } from "./fulfillment";
 export type Fulfillment = import("./fulfillment").Fulfillment;
 export const Fulfillment: typeof import("./fulfillment").Fulfillment = null as any;
@@ -163,6 +168,8 @@ const _module = {
                 return new EncryptionSpec(name, <any>undefined, { urn })
             case "gcp:diagflow/entityType:EntityType":
                 return new EntityType(name, <any>undefined, { urn })
+            case "gcp:diagflow/environment:Environment":
+                return new Environment(name, <any>undefined, { urn })
             case "gcp:diagflow/fulfillment:Fulfillment":
                 return new Fulfillment(name, <any>undefined, { urn })
             case "gcp:diagflow/generator:Generator":
@@ -195,6 +202,7 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxWebhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/encryptionSpec", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/entityType", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/fulfillment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/generator", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/intent", _module)

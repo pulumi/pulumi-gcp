@@ -50,11 +50,29 @@ public final class AutokeyConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.keyProject);
     }
 
+    /**
+     * How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     * 
+     */
+    @Import(name="keyProjectResolutionMode")
+    private @Nullable Output<String> keyProjectResolutionMode;
+
+    /**
+     * @return How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> keyProjectResolutionMode() {
+        return Optional.ofNullable(this.keyProjectResolutionMode);
+    }
+
     private AutokeyConfigArgs() {}
 
     private AutokeyConfigArgs(AutokeyConfigArgs $) {
         this.folder = $.folder;
         this.keyProject = $.keyProject;
+        this.keyProjectResolutionMode = $.keyProjectResolutionMode;
     }
 
     public static Builder builder() {
@@ -119,6 +137,29 @@ public final class AutokeyConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder keyProject(String keyProject) {
             return keyProject(Output.of(keyProject));
+        }
+
+        /**
+         * @param keyProjectResolutionMode How Autokey determines which project to use when provisioning CMEK keys.
+         * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyProjectResolutionMode(@Nullable Output<String> keyProjectResolutionMode) {
+            $.keyProjectResolutionMode = keyProjectResolutionMode;
+            return this;
+        }
+
+        /**
+         * @param keyProjectResolutionMode How Autokey determines which project to use when provisioning CMEK keys.
+         * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyProjectResolutionMode(String keyProjectResolutionMode) {
+            return keyProjectResolutionMode(Output.of(keyProjectResolutionMode));
         }
 
         public AutokeyConfigArgs build() {

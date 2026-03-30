@@ -10,6 +10,7 @@ import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +39,29 @@ public final class ToolsetMcpToolsetArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ToolsetMcpToolsetApiAuthenticationArgs>> apiAuthentication() {
         return Optional.ofNullable(this.apiAuthentication);
+    }
+
+    /**
+     * The custom headers to send in the request to the MCP server. The values
+     * must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+     * set in the session variables. See
+     * https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+     * for more details.
+     * 
+     */
+    @Import(name="customHeaders")
+    private @Nullable Output<Map<String,String>> customHeaders;
+
+    /**
+     * @return The custom headers to send in the request to the MCP server. The values
+     * must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+     * set in the session variables. See
+     * https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+     * for more details.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> customHeaders() {
+        return Optional.ofNullable(this.customHeaders);
     }
 
     /**
@@ -105,6 +129,7 @@ public final class ToolsetMcpToolsetArgs extends com.pulumi.resources.ResourceAr
 
     private ToolsetMcpToolsetArgs(ToolsetMcpToolsetArgs $) {
         this.apiAuthentication = $.apiAuthentication;
+        this.customHeaders = $.customHeaders;
         this.serverAddress = $.serverAddress;
         this.serviceDirectoryConfig = $.serviceDirectoryConfig;
         this.tlsConfig = $.tlsConfig;
@@ -153,6 +178,35 @@ public final class ToolsetMcpToolsetArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder apiAuthentication(ToolsetMcpToolsetApiAuthenticationArgs apiAuthentication) {
             return apiAuthentication(Output.of(apiAuthentication));
+        }
+
+        /**
+         * @param customHeaders The custom headers to send in the request to the MCP server. The values
+         * must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+         * set in the session variables. See
+         * https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+         * for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(@Nullable Output<Map<String,String>> customHeaders) {
+            $.customHeaders = customHeaders;
+            return this;
+        }
+
+        /**
+         * @param customHeaders The custom headers to send in the request to the MCP server. The values
+         * must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+         * set in the session variables. See
+         * https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+         * for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customHeaders(Map<String,String> customHeaders) {
+            return customHeaders(Output.of(customHeaders));
         }
 
         /**

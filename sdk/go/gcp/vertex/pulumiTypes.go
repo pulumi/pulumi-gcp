@@ -19040,6 +19040,18 @@ type AiReasoningEngineSpec struct {
 	// Optional. The specification of a Reasoning Engine deployment.
 	// Structure is documented below.
 	DeploymentSpec *AiReasoningEngineSpecDeploymentSpec `pulumi:"deploymentSpec"`
+	// (Output, Beta)
+	// The identity to use for the Reasoning Engine.
+	EffectiveIdentity *string `pulumi:"effectiveIdentity"`
+	// (Optional, Beta)
+	// Optional. The identity type to use for the Reasoning Engine.
+	// If not specified, the `serviceAccount` field will be used if set,
+	// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+	// Possible values:
+	// * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+	// * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+	//   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+	IdentityType *string `pulumi:"identityType"`
 	// Optional. User provided package spec of the ReasoningEngine.
 	// Ignored when users directly specify a deployment image through
 	// deploymentSpec.first_party_image_override, but keeping the
@@ -19077,6 +19089,18 @@ type AiReasoningEngineSpecArgs struct {
 	// Optional. The specification of a Reasoning Engine deployment.
 	// Structure is documented below.
 	DeploymentSpec AiReasoningEngineSpecDeploymentSpecPtrInput `pulumi:"deploymentSpec"`
+	// (Output, Beta)
+	// The identity to use for the Reasoning Engine.
+	EffectiveIdentity pulumi.StringPtrInput `pulumi:"effectiveIdentity"`
+	// (Optional, Beta)
+	// Optional. The identity type to use for the Reasoning Engine.
+	// If not specified, the `serviceAccount` field will be used if set,
+	// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+	// Possible values:
+	// * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+	// * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+	//   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// Optional. User provided package spec of the ReasoningEngine.
 	// Ignored when users directly specify a deployment image through
 	// deploymentSpec.first_party_image_override, but keeping the
@@ -19188,6 +19212,24 @@ func (o AiReasoningEngineSpecOutput) DeploymentSpec() AiReasoningEngineSpecDeplo
 	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecDeploymentSpec { return v.DeploymentSpec }).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
 }
 
+// (Output, Beta)
+// The identity to use for the Reasoning Engine.
+func (o AiReasoningEngineSpecOutput) EffectiveIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.EffectiveIdentity }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. The identity type to use for the Reasoning Engine.
+// If not specified, the `serviceAccount` field will be used if set,
+// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+// Possible values:
+//   - `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+//   - `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+//     Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+func (o AiReasoningEngineSpecOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
 // Optional. User provided package spec of the ReasoningEngine.
 // Ignored when users directly specify a deployment image through
 // deploymentSpec.first_party_image_override, but keeping the
@@ -19266,6 +19308,34 @@ func (o AiReasoningEngineSpecPtrOutput) DeploymentSpec() AiReasoningEngineSpecDe
 		}
 		return v.DeploymentSpec
 	}).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
+}
+
+// (Output, Beta)
+// The identity to use for the Reasoning Engine.
+func (o AiReasoningEngineSpecPtrOutput) EffectiveIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. The identity type to use for the Reasoning Engine.
+// If not specified, the `serviceAccount` field will be used if set,
+// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+// Possible values:
+//   - `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+//   - `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
+//     Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+func (o AiReasoningEngineSpecPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. User provided package spec of the ReasoningEngine.

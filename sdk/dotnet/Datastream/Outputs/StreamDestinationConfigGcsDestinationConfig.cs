@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
         public readonly Outputs.StreamDestinationConfigGcsDestinationConfigAvroFileFormat? AvroFileFormat;
         /// <summary>
         /// The maximum duration for which new events are added before a file is closed and a new file is created.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        /// Values within the range of 15-60 seconds are allowed.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         public readonly string? FileRotationInterval;
         /// <summary>

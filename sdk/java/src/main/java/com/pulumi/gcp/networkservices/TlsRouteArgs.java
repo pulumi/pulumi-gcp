@@ -35,7 +35,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
      * 
      */
     @Import(name="gateways")
@@ -43,7 +43,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
      * 
      */
     public Optional<Output<List<String>>> gateways() {
@@ -51,8 +51,23 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Location (region) of the TLS Route.
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Location (region) of the TLS Route.
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
+    /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
      * The attached Mesh should be of a type SIDECAR
      * 
      */
@@ -61,7 +76,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
      * The attached Mesh should be of a type SIDECAR
      * 
      */
@@ -118,15 +133,34 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
         return this.rules;
     }
 
+    /**
+     * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+     * 
+     */
+    @Import(name="targetProxies")
+    private @Nullable Output<List<String>> targetProxies;
+
+    /**
+     * @return TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+     * 
+     */
+    public Optional<Output<List<String>>> targetProxies() {
+        return Optional.ofNullable(this.targetProxies);
+    }
+
     private TlsRouteArgs() {}
 
     private TlsRouteArgs(TlsRouteArgs $) {
         this.description = $.description;
         this.gateways = $.gateways;
+        this.location = $.location;
         this.meshes = $.meshes;
         this.name = $.name;
         this.project = $.project;
         this.rules = $.rules;
+        this.targetProxies = $.targetProxies;
     }
 
     public static Builder builder() {
@@ -170,7 +204,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gateways Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-         * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+         * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -182,7 +216,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gateways Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-         * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+         * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -193,7 +227,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gateways Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-         * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+         * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/&lt;gateway_name&gt;
          * 
          * @return builder
          * 
@@ -203,8 +237,29 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param location Location (region) of the TLS Route.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Location (region) of the TLS Route.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
+        }
+
+        /**
          * @param meshes Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-         * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+         * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
          * The attached Mesh should be of a type SIDECAR
          * 
          * @return builder
@@ -217,7 +272,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param meshes Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-         * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+         * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
          * The attached Mesh should be of a type SIDECAR
          * 
          * @return builder
@@ -229,7 +284,7 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param meshes Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-         * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+         * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/&lt;mesh_name&gt;
          * The attached Mesh should be of a type SIDECAR
          * 
          * @return builder
@@ -315,6 +370,40 @@ public final class TlsRouteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rules(TlsRouteRuleArgs... rules) {
             return rules(List.of(rules));
+        }
+
+        /**
+         * @param targetProxies TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+         * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProxies(@Nullable Output<List<String>> targetProxies) {
+            $.targetProxies = targetProxies;
+            return this;
+        }
+
+        /**
+         * @param targetProxies TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+         * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProxies(List<String> targetProxies) {
+            return targetProxies(Output.of(targetProxies));
+        }
+
+        /**
+         * @param targetProxies TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+         * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetProxies(String... targetProxies) {
+            return targetProxies(List.of(targetProxies));
         }
 
         public TlsRouteArgs build() {

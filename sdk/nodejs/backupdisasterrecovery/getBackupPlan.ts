@@ -34,6 +34,7 @@ export interface GetBackupPlanResult {
     readonly backupVaultServiceAccount: string;
     readonly createTime: string;
     readonly description: string;
+    readonly diskBackupPlanProperties: outputs.backupdisasterrecovery.GetBackupPlanDiskBackupPlanProperty[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

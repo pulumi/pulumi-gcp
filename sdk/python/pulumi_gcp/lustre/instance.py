@@ -32,6 +32,7 @@ class InstanceArgs:
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -63,6 +64,8 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -84,6 +87,8 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if placement_policy is not None:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
@@ -237,6 +242,19 @@ class InstanceArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="placementPolicy")
     def placement_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -277,6 +295,7 @@ class _InstanceState:
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  mount_point: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -313,6 +332,8 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the instance.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
@@ -353,6 +374,8 @@ class _InstanceState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if mount_point is not None:
             pulumi.set(__self__, "mount_point", mount_point)
         if name is not None:
@@ -519,6 +542,19 @@ class _InstanceState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="mountPoint")
     def mount_point(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -661,6 +697,7 @@ class Instance(pulumi.CustomResource):
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
                  placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -745,6 +782,8 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
@@ -841,6 +880,7 @@ class Instance(pulumi.CustomResource):
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
                  placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -871,6 +911,7 @@ class Instance(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
@@ -910,6 +951,7 @@ class Instance(pulumi.CustomResource):
             kms_key: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
             mount_point: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -950,6 +992,8 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the instance.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
@@ -983,6 +1027,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["mount_point"] = mount_point
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -1094,6 +1139,15 @@ class Instance(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
+        """
+        The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
 
     @_builtins.property
     @pulumi.getter(name="mountPoint")

@@ -78,6 +78,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Blockchain Nodes Beacon Fee Recipient
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNodeBeaconFee = new gcp.blockchainnodeengine.BlockchainNodes("default_node_beacon_fee", {
+ *     location: "us-central1",
+ *     blockchainType: "ETHEREUM",
+ *     blockchainNodeId: "beacon_fee_node",
+ *     ethereumDetails: {
+ *         apiEnableAdmin: true,
+ *         apiEnableDebug: true,
+ *         validatorConfig: {
+ *             beaconFeeRecipient: "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
+ *         },
+ *         nodeType: "ARCHIVE",
+ *         consensusClient: "LIGHTHOUSE",
+ *         executionClient: "ERIGON",
+ *         network: "MAINNET",
+ *     },
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

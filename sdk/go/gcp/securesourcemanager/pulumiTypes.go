@@ -627,6 +627,9 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type InstancePrivateConfig struct {
 	// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
 	CaPool *string `pulumi:"caPool"`
+	// Custom host configuration for the instance.
+	// Structure is documented below.
+	CustomHostConfig *InstancePrivateConfigCustomHostConfig `pulumi:"customHostConfig"`
 	// (Output)
 	// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 	HttpServiceAttachment *string `pulumi:"httpServiceAttachment"`
@@ -651,6 +654,9 @@ type InstancePrivateConfigInput interface {
 type InstancePrivateConfigArgs struct {
 	// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
 	CaPool pulumi.StringPtrInput `pulumi:"caPool"`
+	// Custom host configuration for the instance.
+	// Structure is documented below.
+	CustomHostConfig InstancePrivateConfigCustomHostConfigPtrInput `pulumi:"customHostConfig"`
 	// (Output)
 	// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 	HttpServiceAttachment pulumi.StringPtrInput `pulumi:"httpServiceAttachment"`
@@ -743,6 +749,12 @@ func (o InstancePrivateConfigOutput) CaPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePrivateConfig) *string { return v.CaPool }).(pulumi.StringPtrOutput)
 }
 
+// Custom host configuration for the instance.
+// Structure is documented below.
+func (o InstancePrivateConfigOutput) CustomHostConfig() InstancePrivateConfigCustomHostConfigPtrOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) *InstancePrivateConfigCustomHostConfig { return v.CustomHostConfig }).(InstancePrivateConfigCustomHostConfigPtrOutput)
+}
+
 // (Output)
 // Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 func (o InstancePrivateConfigOutput) HttpServiceAttachment() pulumi.StringPtrOutput {
@@ -794,6 +806,17 @@ func (o InstancePrivateConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom host configuration for the instance.
+// Structure is documented below.
+func (o InstancePrivateConfigPtrOutput) CustomHostConfig() InstancePrivateConfigCustomHostConfigPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) *InstancePrivateConfigCustomHostConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomHostConfig
+	}).(InstancePrivateConfigCustomHostConfigPtrOutput)
+}
+
 // (Output)
 // Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 func (o InstancePrivateConfigPtrOutput) HttpServiceAttachment() pulumi.StringPtrOutput {
@@ -823,6 +846,200 @@ func (o InstancePrivateConfigPtrOutput) SshServiceAttachment() pulumi.StringPtrO
 			return nil
 		}
 		return v.SshServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstancePrivateConfigCustomHostConfig struct {
+	// API hostname.
+	Api string `pulumi:"api"`
+	// Git HTTP hostname.
+	GitHttp string `pulumi:"gitHttp"`
+	// Git SSH hostname.
+	GitSsh string `pulumi:"gitSsh"`
+	// HTML hostname.
+	Html string `pulumi:"html"`
+}
+
+// InstancePrivateConfigCustomHostConfigInput is an input type that accepts InstancePrivateConfigCustomHostConfigArgs and InstancePrivateConfigCustomHostConfigOutput values.
+// You can construct a concrete instance of `InstancePrivateConfigCustomHostConfigInput` via:
+//
+//	InstancePrivateConfigCustomHostConfigArgs{...}
+type InstancePrivateConfigCustomHostConfigInput interface {
+	pulumi.Input
+
+	ToInstancePrivateConfigCustomHostConfigOutput() InstancePrivateConfigCustomHostConfigOutput
+	ToInstancePrivateConfigCustomHostConfigOutputWithContext(context.Context) InstancePrivateConfigCustomHostConfigOutput
+}
+
+type InstancePrivateConfigCustomHostConfigArgs struct {
+	// API hostname.
+	Api pulumi.StringInput `pulumi:"api"`
+	// Git HTTP hostname.
+	GitHttp pulumi.StringInput `pulumi:"gitHttp"`
+	// Git SSH hostname.
+	GitSsh pulumi.StringInput `pulumi:"gitSsh"`
+	// HTML hostname.
+	Html pulumi.StringInput `pulumi:"html"`
+}
+
+func (InstancePrivateConfigCustomHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePrivateConfigCustomHostConfig)(nil)).Elem()
+}
+
+func (i InstancePrivateConfigCustomHostConfigArgs) ToInstancePrivateConfigCustomHostConfigOutput() InstancePrivateConfigCustomHostConfigOutput {
+	return i.ToInstancePrivateConfigCustomHostConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePrivateConfigCustomHostConfigArgs) ToInstancePrivateConfigCustomHostConfigOutputWithContext(ctx context.Context) InstancePrivateConfigCustomHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePrivateConfigCustomHostConfigOutput)
+}
+
+func (i InstancePrivateConfigCustomHostConfigArgs) ToInstancePrivateConfigCustomHostConfigPtrOutput() InstancePrivateConfigCustomHostConfigPtrOutput {
+	return i.ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePrivateConfigCustomHostConfigArgs) ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigCustomHostConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePrivateConfigCustomHostConfigOutput).ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePrivateConfigCustomHostConfigPtrInput is an input type that accepts InstancePrivateConfigCustomHostConfigArgs, InstancePrivateConfigCustomHostConfigPtr and InstancePrivateConfigCustomHostConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePrivateConfigCustomHostConfigPtrInput` via:
+//
+//	        InstancePrivateConfigCustomHostConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePrivateConfigCustomHostConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePrivateConfigCustomHostConfigPtrOutput() InstancePrivateConfigCustomHostConfigPtrOutput
+	ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(context.Context) InstancePrivateConfigCustomHostConfigPtrOutput
+}
+
+type instancePrivateConfigCustomHostConfigPtrType InstancePrivateConfigCustomHostConfigArgs
+
+func InstancePrivateConfigCustomHostConfigPtr(v *InstancePrivateConfigCustomHostConfigArgs) InstancePrivateConfigCustomHostConfigPtrInput {
+	return (*instancePrivateConfigCustomHostConfigPtrType)(v)
+}
+
+func (*instancePrivateConfigCustomHostConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePrivateConfigCustomHostConfig)(nil)).Elem()
+}
+
+func (i *instancePrivateConfigCustomHostConfigPtrType) ToInstancePrivateConfigCustomHostConfigPtrOutput() InstancePrivateConfigCustomHostConfigPtrOutput {
+	return i.ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePrivateConfigCustomHostConfigPtrType) ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigCustomHostConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePrivateConfigCustomHostConfigPtrOutput)
+}
+
+type InstancePrivateConfigCustomHostConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePrivateConfigCustomHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePrivateConfigCustomHostConfig)(nil)).Elem()
+}
+
+func (o InstancePrivateConfigCustomHostConfigOutput) ToInstancePrivateConfigCustomHostConfigOutput() InstancePrivateConfigCustomHostConfigOutput {
+	return o
+}
+
+func (o InstancePrivateConfigCustomHostConfigOutput) ToInstancePrivateConfigCustomHostConfigOutputWithContext(ctx context.Context) InstancePrivateConfigCustomHostConfigOutput {
+	return o
+}
+
+func (o InstancePrivateConfigCustomHostConfigOutput) ToInstancePrivateConfigCustomHostConfigPtrOutput() InstancePrivateConfigCustomHostConfigPtrOutput {
+	return o.ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePrivateConfigCustomHostConfigOutput) ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigCustomHostConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePrivateConfigCustomHostConfig) *InstancePrivateConfigCustomHostConfig {
+		return &v
+	}).(InstancePrivateConfigCustomHostConfigPtrOutput)
+}
+
+// API hostname.
+func (o InstancePrivateConfigCustomHostConfigOutput) Api() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePrivateConfigCustomHostConfig) string { return v.Api }).(pulumi.StringOutput)
+}
+
+// Git HTTP hostname.
+func (o InstancePrivateConfigCustomHostConfigOutput) GitHttp() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePrivateConfigCustomHostConfig) string { return v.GitHttp }).(pulumi.StringOutput)
+}
+
+// Git SSH hostname.
+func (o InstancePrivateConfigCustomHostConfigOutput) GitSsh() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePrivateConfigCustomHostConfig) string { return v.GitSsh }).(pulumi.StringOutput)
+}
+
+// HTML hostname.
+func (o InstancePrivateConfigCustomHostConfigOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePrivateConfigCustomHostConfig) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type InstancePrivateConfigCustomHostConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePrivateConfigCustomHostConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePrivateConfigCustomHostConfig)(nil)).Elem()
+}
+
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) ToInstancePrivateConfigCustomHostConfigPtrOutput() InstancePrivateConfigCustomHostConfigPtrOutput {
+	return o
+}
+
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) ToInstancePrivateConfigCustomHostConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigCustomHostConfigPtrOutput {
+	return o
+}
+
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) Elem() InstancePrivateConfigCustomHostConfigOutput {
+	return o.ApplyT(func(v *InstancePrivateConfigCustomHostConfig) InstancePrivateConfigCustomHostConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePrivateConfigCustomHostConfig
+		return ret
+	}).(InstancePrivateConfigCustomHostConfigOutput)
+}
+
+// API hostname.
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfigCustomHostConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Api
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git HTTP hostname.
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) GitHttp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfigCustomHostConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GitHttp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git SSH hostname.
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) GitSsh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfigCustomHostConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GitSsh
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTML hostname.
+func (o InstancePrivateConfigCustomHostConfigPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfigCustomHostConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1630,6 +1847,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigInput)(nil)).Elem(), InstancePrivateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigPtrInput)(nil)).Elem(), InstancePrivateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigCustomHostConfigInput)(nil)).Elem(), InstancePrivateConfigCustomHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigCustomHostConfigPtrInput)(nil)).Elem(), InstancePrivateConfigCustomHostConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWorkforceIdentityFederationConfigInput)(nil)).Elem(), InstanceWorkforceIdentityFederationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWorkforceIdentityFederationConfigPtrInput)(nil)).Elem(), InstanceWorkforceIdentityFederationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
@@ -1650,6 +1869,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstancePrivateConfigOutput{})
 	pulumi.RegisterOutputType(InstancePrivateConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePrivateConfigCustomHostConfigOutput{})
+	pulumi.RegisterOutputType(InstancePrivateConfigCustomHostConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceWorkforceIdentityFederationConfigOutput{})
 	pulumi.RegisterOutputType(InstanceWorkforceIdentityFederationConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})

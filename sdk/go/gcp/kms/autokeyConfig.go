@@ -134,6 +134,7 @@ import (
 //				KeyProject: keyProject.ProjectId.ApplyT(func(projectId string) (string, error) {
 //					return fmt.Sprintf("projects/%v", projectId), nil
 //				}).(pulumi.StringOutput),
+//				KeyProjectResolutionMode: pulumi.String("DEDICATED_KEY_PROJECT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				waitSrvAccPermissions,
 //			}))
@@ -180,6 +181,9 @@ type AutokeyConfig struct {
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
 	// `projects/<project_id_or_number>`.
 	KeyProject pulumi.StringPtrOutput `pulumi:"keyProject"`
+	// How Autokey determines which project to use when provisioning CMEK keys.
+	// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+	KeyProjectResolutionMode pulumi.StringPtrOutput `pulumi:"keyProjectResolutionMode"`
 }
 
 // NewAutokeyConfig registers a new resource with the given unique name, arguments, and options.
@@ -223,6 +227,9 @@ type autokeyConfigState struct {
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
 	// `projects/<project_id_or_number>`.
 	KeyProject *string `pulumi:"keyProject"`
+	// How Autokey determines which project to use when provisioning CMEK keys.
+	// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+	KeyProjectResolutionMode *string `pulumi:"keyProjectResolutionMode"`
 }
 
 type AutokeyConfigState struct {
@@ -234,6 +241,9 @@ type AutokeyConfigState struct {
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
 	// `projects/<project_id_or_number>`.
 	KeyProject pulumi.StringPtrInput
+	// How Autokey determines which project to use when provisioning CMEK keys.
+	// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+	KeyProjectResolutionMode pulumi.StringPtrInput
 }
 
 func (AutokeyConfigState) ElementType() reflect.Type {
@@ -247,6 +257,9 @@ type autokeyConfigArgs struct {
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
 	// `projects/<project_id_or_number>`.
 	KeyProject *string `pulumi:"keyProject"`
+	// How Autokey determines which project to use when provisioning CMEK keys.
+	// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+	KeyProjectResolutionMode *string `pulumi:"keyProjectResolutionMode"`
 }
 
 // The set of arguments for constructing a AutokeyConfig resource.
@@ -257,6 +270,9 @@ type AutokeyConfigArgs struct {
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
 	// `projects/<project_id_or_number>`.
 	KeyProject pulumi.StringPtrInput
+	// How Autokey determines which project to use when provisioning CMEK keys.
+	// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+	KeyProjectResolutionMode pulumi.StringPtrInput
 }
 
 func (AutokeyConfigArgs) ElementType() reflect.Type {
@@ -361,6 +377,12 @@ func (o AutokeyConfigOutput) Folder() pulumi.StringOutput {
 // `projects/<project_id_or_number>`.
 func (o AutokeyConfigOutput) KeyProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutokeyConfig) pulumi.StringPtrOutput { return v.KeyProject }).(pulumi.StringPtrOutput)
+}
+
+// How Autokey determines which project to use when provisioning CMEK keys.
+// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+func (o AutokeyConfigOutput) KeyProjectResolutionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutokeyConfig) pulumi.StringPtrOutput { return v.KeyProjectResolutionMode }).(pulumi.StringPtrOutput)
 }
 
 type AutokeyConfigArrayOutput struct{ *pulumi.OutputState }

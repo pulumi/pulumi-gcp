@@ -5,8 +5,8 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
+import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchExprArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,16 +22,16 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
      * Structure is documented below.
      * 
      */
-    @Import(name="config", required=true)
-    private Output<OrganizationSecurityPolicyRuleMatchConfigArgs> config;
+    @Import(name="config")
+    private @Nullable Output<OrganizationSecurityPolicyRuleMatchConfigArgs> config;
 
     /**
      * @return The configuration options for matching the rule.
      * Structure is documented below.
      * 
      */
-    public Output<OrganizationSecurityPolicyRuleMatchConfigArgs> config() {
-        return this.config;
+    public Optional<Output<OrganizationSecurityPolicyRuleMatchConfigArgs>> config() {
+        return Optional.ofNullable(this.config);
     }
 
     /**
@@ -47,6 +47,23 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="expr")
+    private @Nullable Output<OrganizationSecurityPolicyRuleMatchExprArgs> expr;
+
+    /**
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationSecurityPolicyRuleMatchExprArgs>> expr() {
+        return Optional.ofNullable(this.expr);
     }
 
     /**
@@ -73,6 +90,7 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
     private OrganizationSecurityPolicyRuleMatchArgs(OrganizationSecurityPolicyRuleMatchArgs $) {
         this.config = $.config;
         this.description = $.description;
+        this.expr = $.expr;
         this.versionedExpr = $.versionedExpr;
     }
 
@@ -101,7 +119,7 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder config(Output<OrganizationSecurityPolicyRuleMatchConfigArgs> config) {
+        public Builder config(@Nullable Output<OrganizationSecurityPolicyRuleMatchConfigArgs> config) {
             $.config = config;
             return this;
         }
@@ -139,6 +157,29 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
         }
 
         /**
+         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expr(@Nullable Output<OrganizationSecurityPolicyRuleMatchExprArgs> expr) {
+            $.expr = expr;
+            return this;
+        }
+
+        /**
+         * @param expr User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expr(OrganizationSecurityPolicyRuleMatchExprArgs expr) {
+            return expr(Output.of(expr));
+        }
+
+        /**
          * @param versionedExpr Preconfigured versioned expression. For organization security policy rules,
          * the only supported type is &#34;SRC_IPS_V1&#34;.
          * **NOTE** : &#39;FIREWALL&#39; type is deprecated. Please use &#39;google_compute_firewall_policy_rule&#39; resource instead.
@@ -164,9 +205,6 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
         }
 
         public OrganizationSecurityPolicyRuleMatchArgs build() {
-            if ($.config == null) {
-                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatchArgs", "config");
-            }
             return $;
         }
     }

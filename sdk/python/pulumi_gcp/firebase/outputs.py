@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'AiLogicConfigGenerativeLanguageConfig',
     'AiLogicConfigTelemetryConfig',
+    'AiLogicConfigTrafficFilter',
     'AppHostingBackendCodebase',
     'AppHostingBackendManagedResource',
     'AppHostingBackendManagedResourceRunService',
@@ -216,6 +217,44 @@ class AiLogicConfigTelemetryConfig(dict):
         the specified value if the system is overloaded. Default is 1.0.
         """
         return pulumi.get(self, "sampling_rate")
+
+
+@pulumi.output_type
+class AiLogicConfigTrafficFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateOnly":
+            suggest = "template_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiLogicConfigTrafficFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiLogicConfigTrafficFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiLogicConfigTrafficFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 template_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool template_only: Only allows users to use AI Logic via prompt templates for this project.
+               If true, only calls using server templates are permitted.
+        """
+        if template_only is not None:
+            pulumi.set(__self__, "template_only", template_only)
+
+    @_builtins.property
+    @pulumi.getter(name="templateOnly")
+    def template_only(self) -> Optional[_builtins.bool]:
+        """
+        Only allows users to use AI Logic via prompt templates for this project.
+        If true, only calls using server templates are permitted.
+        """
+        return pulumi.get(self, "template_only")
 
 
 @pulumi.output_type

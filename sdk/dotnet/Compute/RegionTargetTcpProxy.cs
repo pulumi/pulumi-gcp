@@ -63,6 +63,144 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Target Tcp Proxy Basic Beta
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         Region = "europe-west4",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         Protocol = "TCP",
+    ///         TimeoutSec = 10,
+    ///         Region = "europe-west4",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
+    ///     {
+    ///         Name = "test-proxy",
+    ///         Region = "europe-west4",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         BackendService = defaultRegionBackendService.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Target Tcp Proxy Backendless
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
+    ///     {
+    ///         Name = "test-proxy",
+    ///         Region = "europe-west4",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Target Tcp Proxy Tls Route
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
+    ///     {
+    ///         Name = "test-proxy",
+    ///         Region = "europe-west4",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         Region = "europe-west4",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         Protocol = "TCP",
+    ///         TimeoutSec = 10,
+    ///         Region = "europe-west4",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultTlsRoute = new Gcp.NetworkServices.TlsRoute("default", new()
+    ///     {
+    ///         Name = "tls-route-check",
+    ///         Location = "europe-west4",
+    ///         TargetProxies = new[]
+    ///         {
+    ///             @default.SelfLink,
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.TlsRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.TlsRouteRuleMatchArgs
+    ///                     {
+    ///                         SniHosts = new[]
+    ///                         {
+    ///                             "example.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.TlsRouteRuleActionArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         new Gcp.NetworkServices.Inputs.TlsRouteRuleActionDestinationArgs
+    ///                         {
+    ///                             ServiceName = defaultRegionBackendService.SelfLink,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -86,10 +224,11 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionTargetTcpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A reference to the BackendService resource.
+        /// A reference to the BackendService resource. This field is optional when
+        /// the loadBalancingScheme (available in beta) is specified.
         /// </summary>
         [Output("backendService")]
-        public Output<string> BackendService { get; private set; } = null!;
+        public Output<string?> BackendService { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -102,6 +241,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the load balancer type. A target TCP proxy created for one type
+        /// of load balancer cannot be used with another. For more information, refer
+        /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+        /// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+        /// </summary>
+        [Output("loadBalancingScheme")]
+        public Output<string?> LoadBalancingScheme { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -165,7 +314,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public RegionTargetTcpProxy(string name, RegionTargetTcpProxyArgs args, CustomResourceOptions? options = null)
+        public RegionTargetTcpProxy(string name, RegionTargetTcpProxyArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, args ?? new RegionTargetTcpProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -204,16 +353,27 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionTargetTcpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A reference to the BackendService resource.
+        /// A reference to the BackendService resource. This field is optional when
+        /// the loadBalancingScheme (available in beta) is specified.
         /// </summary>
-        [Input("backendService", required: true)]
-        public Input<string> BackendService { get; set; } = null!;
+        [Input("backendService")]
+        public Input<string>? BackendService { get; set; }
 
         /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the load balancer type. A target TCP proxy created for one type
+        /// of load balancer cannot be used with another. For more information, refer
+        /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+        /// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+        /// </summary>
+        [Input("loadBalancingScheme")]
+        public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -266,7 +426,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionTargetTcpProxyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A reference to the BackendService resource.
+        /// A reference to the BackendService resource. This field is optional when
+        /// the loadBalancingScheme (available in beta) is specified.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
@@ -282,6 +443,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the load balancer type. A target TCP proxy created for one type
+        /// of load balancer cannot be used with another. For more information, refer
+        /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+        /// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+        /// </summary>
+        [Input("loadBalancingScheme")]
+        public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

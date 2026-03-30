@@ -42,6 +42,44 @@ import * as utilities from "../utilities";
  *     backendService: defaultBackendService.id,
  * });
  * ```
+ * ### Target Tcp Proxy Basic Beta
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const _default = new gcp.compute.TargetTCPProxy("default", {
+ *     name: "test-proxy",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     backendService: defaultBackendService.id,
+ * });
+ * ```
+ * ### Target Tcp Proxy Backendless
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.TargetTCPProxy("default", {
+ *     name: "test-proxy",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -88,9 +126,10 @@ export class TargetTCPProxy extends pulumi.CustomResource {
     }
 
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      */
-    declare public readonly backendService: pulumi.Output<string>;
+    declare public readonly backendService: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -99,6 +138,14 @@ export class TargetTCPProxy extends pulumi.CustomResource {
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     */
+    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -142,7 +189,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TargetTCPProxyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: TargetTCPProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetTCPProxyArgs | TargetTCPProxyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -151,6 +198,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             resourceInputs["backendService"] = state?.backendService;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["description"] = state?.description;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["proxyBind"] = state?.proxyBind;
@@ -159,11 +207,9 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as TargetTCPProxyArgs | undefined;
-            if (args?.backendService === undefined && !opts.urn) {
-                throw new Error("Missing required property 'backendService'");
-            }
             resourceInputs["backendService"] = args?.backendService;
             resourceInputs["description"] = args?.description;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["proxyBind"] = args?.proxyBind;
@@ -182,7 +228,8 @@ export class TargetTCPProxy extends pulumi.CustomResource {
  */
 export interface TargetTCPProxyState {
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -193,6 +240,14 @@ export interface TargetTCPProxyState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     */
+    loadBalancingScheme?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -235,13 +290,22 @@ export interface TargetTCPProxyState {
  */
 export interface TargetTCPProxyArgs {
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      */
-    backendService: pulumi.Input<string>;
+    backendService?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     */
+    loadBalancingScheme?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

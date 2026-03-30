@@ -85,6 +85,74 @@ import (
 //	}
 //
 // ```
+// ### Network Services Tls Route Regional Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:             pulumi.String("backend-service-health-check"),
+//				Region:           pulumi.String("europe-west4"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("my-backend-service"),
+//				Protocol:            pulumi.String("TCP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				Region:              pulumi.String("europe-west4"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name:     pulumi.String("my-tls-route"),
+//				Location: pulumi.String("europe-west4"),
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: _default.SelfLink,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Network Services Tls Route Mesh Basic
 //
 // ```go
@@ -246,21 +314,102 @@ import (
 //	}
 //
 // ```
+// ### Network Services Tls Route Region Target Tcp Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:             pulumi.String("my-health-check"),
+//				Region:           pulumi.String("europe-west4"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("my-backend-service"),
+//				Protocol:            pulumi.String("TCP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				Region:              pulumi.String("europe-west4"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionTargetTcpProxy, err := compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
+//				Name:                pulumi.String("my-target-tcp-proxy"),
+//				Region:              pulumi.String("europe-west4"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name:     pulumi.String("my-tls-route"),
+//				Location: pulumi.String("europe-west4"),
+//				TargetProxies: pulumi.StringArray{
+//					defaultRegionTargetTcpProxy.SelfLink,
+//				},
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: _default.SelfLink,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // TlsRoute can be imported using any of these accepted formats:
 //
+// * `projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}`
 // * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
-// * `{{project}}/{{name}}`
-// * `{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
 // When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
 //
 // ```sh
+// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}
 // $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
-// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
-// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{location}}/{{name}}
+// $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{location}}/{{name}}
 // ```
 type TlsRoute struct {
 	pulumi.CustomResourceState
@@ -270,10 +419,12 @@ type TlsRoute struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+	// Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
+	// Location (region) of the TLS Route.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
 	// The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the TlsRoute resource.
@@ -286,6 +437,9 @@ type TlsRoute struct {
 	Rules TlsRouteRuleArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+	// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+	TargetProxies pulumi.StringArrayOutput `pulumi:"targetProxies"`
 	// Time the TlsRoute was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -328,10 +482,12 @@ type tlsRouteState struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+	// Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
+	// Location (region) of the TLS Route.
+	Location *string `pulumi:"location"`
 	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
 	// The attached Mesh should be of a type SIDECAR
 	Meshes []string `pulumi:"meshes"`
 	// Name of the TlsRoute resource.
@@ -344,6 +500,9 @@ type tlsRouteState struct {
 	Rules []TlsRouteRule `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+	// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+	TargetProxies []string `pulumi:"targetProxies"`
 	// Time the TlsRoute was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -354,10 +513,12 @@ type TlsRouteState struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+	// Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
+	// Location (region) of the TLS Route.
+	Location pulumi.StringPtrInput
 	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
 	// The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayInput
 	// Name of the TlsRoute resource.
@@ -370,6 +531,9 @@ type TlsRouteState struct {
 	Rules TlsRouteRuleArrayInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
+	// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+	// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+	TargetProxies pulumi.StringArrayInput
 	// Time the TlsRoute was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -382,10 +546,12 @@ type tlsRouteArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+	// Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
+	// Location (region) of the TLS Route.
+	Location *string `pulumi:"location"`
 	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
 	// The attached Mesh should be of a type SIDECAR
 	Meshes []string `pulumi:"meshes"`
 	// Name of the TlsRoute resource.
@@ -396,6 +562,9 @@ type tlsRouteArgs struct {
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
 	Rules []TlsRouteRule `pulumi:"rules"`
+	// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+	// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+	TargetProxies []string `pulumi:"targetProxies"`
 }
 
 // The set of arguments for constructing a TlsRoute resource.
@@ -403,10 +572,12 @@ type TlsRouteArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+	// Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
+	// Location (region) of the TLS Route.
+	Location pulumi.StringPtrInput
 	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
 	// The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayInput
 	// Name of the TlsRoute resource.
@@ -417,6 +588,9 @@ type TlsRouteArgs struct {
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
 	Rules TlsRouteRuleArrayInput
+	// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+	// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+	TargetProxies pulumi.StringArrayInput
 }
 
 func (TlsRouteArgs) ElementType() reflect.Type {
@@ -517,13 +691,18 @@ func (o TlsRouteOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+// Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
 func (o TlsRouteOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
 }
 
+// Location (region) of the TLS Route.
+func (o TlsRouteOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
 // Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+// Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
 // The attached Mesh should be of a type SIDECAR
 func (o TlsRouteOutput) Meshes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
@@ -549,6 +728,12 @@ func (o TlsRouteOutput) Rules() TlsRouteRuleArrayOutput {
 // Server-defined URL of this resource.
 func (o TlsRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+func (o TlsRouteOutput) TargetProxies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.TargetProxies }).(pulumi.StringArrayOutput)
 }
 
 // Time the TlsRoute was updated in UTC.

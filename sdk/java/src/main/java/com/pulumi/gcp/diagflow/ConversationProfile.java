@@ -19,6 +19,7 @@ import com.pulumi.gcp.diagflow.outputs.ConversationProfileNewRecognitionResultNo
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileNotificationConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileSttConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileTtsConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -124,6 +125,57 @@ import javax.annotation.Nullable;
  *             .newRecognitionResultNotificationConfig(ConversationProfileNewRecognitionResultNotificationConfigArgs.builder()
  *                 .topic(recognitionResultNotificationProfileTopic.id())
  *                 .messageFormat("JSON")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Dialogflow Conversation Profile Beta Bidi
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.diagflow.ConversationProfile;
+ * import com.pulumi.gcp.diagflow.ConversationProfileArgs;
+ * import com.pulumi.gcp.diagflow.inputs.ConversationProfileAutomatedAgentConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
+ *             .appId("app-id-_44703")
+ *             .location("us")
+ *             .displayName("my-app")
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var bidiProfile = new ConversationProfile("bidiProfile", ConversationProfileArgs.builder()
+ *             .displayName("tf-test-dialogflow-profile-bidi-_32270")
+ *             .location("global")
+ *             .languageCode("en-US")
+ *             .useBidiStreaming(true)
+ *             .automatedAgentConfig(ConversationProfileAutomatedAgentConfigArgs.builder()
+ *                 .agent(cesAppForAgent.id())
  *                 .build())
  *             .build());
  * 
@@ -394,6 +446,22 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConversationProfileTtsConfig>> ttsConfig() {
         return Codegen.optional(this.ttsConfig);
+    }
+    /**
+     * (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     * 
+     */
+    @Export(name="useBidiStreaming", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useBidiStreaming;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+     * 
+     */
+    public Output<Optional<Boolean>> useBidiStreaming() {
+        return Codegen.optional(this.useBidiStreaming);
     }
 
     /**

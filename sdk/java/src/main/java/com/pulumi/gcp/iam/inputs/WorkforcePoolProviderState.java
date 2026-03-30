@@ -151,6 +151,21 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
     }
 
     /**
+     * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     * 
+     */
+    @Import(name="detailedAuditLogging")
+    private @Nullable Output<Boolean> detailedAuditLogging;
+
+    /**
+     * @return If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     * 
+     */
+    public Optional<Output<Boolean>> detailedAuditLogging() {
+        return Optional.ofNullable(this.detailedAuditLogging);
+    }
+
+    /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      * 
@@ -196,13 +211,13 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      * @deprecated
-     * `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      */
-    @Deprecated /* `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead. */
+    @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
     @Import(name="extendedAttributesOauth2Client")
     private @Nullable Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs> extendedAttributesOauth2Client;
 
@@ -220,13 +235,13 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      * @deprecated
-     * `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      */
-    @Deprecated /* `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead. */
+    @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
     public Optional<Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>> extendedAttributesOauth2Client() {
         return Optional.ofNullable(this.extendedAttributesOauth2Client);
     }
@@ -424,6 +439,7 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
         this.attributeCondition = $.attributeCondition;
         this.attributeMapping = $.attributeMapping;
         this.description = $.description;
+        this.detailedAuditLogging = $.detailedAuditLogging;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
         this.extendedAttributesOauth2Client = $.extendedAttributesOauth2Client;
@@ -604,6 +620,27 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param detailedAuditLogging If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detailedAuditLogging(@Nullable Output<Boolean> detailedAuditLogging) {
+            $.detailedAuditLogging = detailedAuditLogging;
+            return this;
+        }
+
+        /**
+         * @param detailedAuditLogging If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detailedAuditLogging(Boolean detailedAuditLogging) {
+            return detailedAuditLogging(Output.of(detailedAuditLogging));
+        }
+
+        /**
          * @param disabled Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
          * However, existing tokens still grant access.
          * 
@@ -661,15 +698,15 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
          * to a unique Microsoft Entra ID user.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+         * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+         * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
          * 
          */
-        @Deprecated /* `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead. */
+        @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
         public Builder extendedAttributesOauth2Client(@Nullable Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs> extendedAttributesOauth2Client) {
             $.extendedAttributesOauth2Client = extendedAttributesOauth2Client;
             return this;
@@ -689,15 +726,15 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
          * to a unique Microsoft Entra ID user.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+         * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+         * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
          * 
          */
-        @Deprecated /* `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead. */
+        @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
         public Builder extendedAttributesOauth2Client(WorkforcePoolProviderExtendedAttributesOauth2ClientArgs extendedAttributesOauth2Client) {
             return extendedAttributesOauth2Client(Output.of(extendedAttributesOauth2Client));
         }

@@ -24,7 +24,8 @@ class AiLogicConfigArgs:
                  generative_language_config: Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None):
+                 telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None,
+                 traffic_filter: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']] = None):
         """
         The set of arguments for constructing a AiLogicConfig resource.
 
@@ -40,6 +41,8 @@ class AiLogicConfigArgs:
                Telemetry is the collection of metrics, logs, and traces recorded by the
                Firebase AI Logic backend.
                Structure is documented below.
+        :param pulumi.Input['AiLogicConfigTrafficFilterArgs'] traffic_filter: Configuration for traffic filtering.
+               Structure is documented below.
         """
         if generative_language_config is not None:
             pulumi.set(__self__, "generative_language_config", generative_language_config)
@@ -49,6 +52,8 @@ class AiLogicConfigArgs:
             pulumi.set(__self__, "project", project)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
+        if traffic_filter is not None:
+            pulumi.set(__self__, "traffic_filter", traffic_filter)
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
@@ -106,6 +111,19 @@ class AiLogicConfigArgs:
     def telemetry_config(self, value: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trafficFilter")
+    def traffic_filter(self) -> Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]:
+        """
+        Configuration for traffic filtering.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_filter")
+
+    @traffic_filter.setter
+    def traffic_filter(self, value: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]):
+        pulumi.set(self, "traffic_filter", value)
+
 
 @pulumi.input_type
 class _AiLogicConfigState:
@@ -114,7 +132,8 @@ class _AiLogicConfigState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None):
+                 telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None,
+                 traffic_filter: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']] = None):
         """
         Input properties used for looking up and filtering AiLogicConfig resources.
 
@@ -132,6 +151,8 @@ class _AiLogicConfigState:
                Telemetry is the collection of metrics, logs, and traces recorded by the
                Firebase AI Logic backend.
                Structure is documented below.
+        :param pulumi.Input['AiLogicConfigTrafficFilterArgs'] traffic_filter: Configuration for traffic filtering.
+               Structure is documented below.
         """
         if generative_language_config is not None:
             pulumi.set(__self__, "generative_language_config", generative_language_config)
@@ -143,6 +164,8 @@ class _AiLogicConfigState:
             pulumi.set(__self__, "project", project)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
+        if traffic_filter is not None:
+            pulumi.set(__self__, "traffic_filter", traffic_filter)
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
@@ -213,6 +236,19 @@ class _AiLogicConfigState:
     def telemetry_config(self, value: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trafficFilter")
+    def traffic_filter(self) -> Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]:
+        """
+        Configuration for traffic filtering.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_filter")
+
+    @traffic_filter.setter
+    def traffic_filter(self, value: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]):
+        pulumi.set(self, "traffic_filter", value)
+
 
 @pulumi.type_token("gcp:firebase/aiLogicConfig:AiLogicConfig")
 class AiLogicConfig(pulumi.CustomResource):
@@ -224,6 +260,7 @@ class AiLogicConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
+                 traffic_filter: Optional[pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None,
                  __props__=None):
         """
         Configuration for Firebase AI Logic.
@@ -320,6 +357,9 @@ class AiLogicConfig(pulumi.CustomResource):
                 "mode": "ALL",
                 "sampling_rate": 1,
             },
+            traffic_filter={
+                "template_only": True,
+            },
             opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
@@ -353,6 +393,8 @@ class AiLogicConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']] telemetry_config: Configuration for telemetry.
                Telemetry is the collection of metrics, logs, and traces recorded by the
                Firebase AI Logic backend.
+               Structure is documented below.
+        :param pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']] traffic_filter: Configuration for traffic filtering.
                Structure is documented below.
         """
         ...
@@ -456,6 +498,9 @@ class AiLogicConfig(pulumi.CustomResource):
                 "mode": "ALL",
                 "sampling_rate": 1,
             },
+            traffic_filter={
+                "template_only": True,
+            },
             opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
@@ -495,6 +540,7 @@ class AiLogicConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
+                 traffic_filter: Optional[pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -508,6 +554,7 @@ class AiLogicConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["telemetry_config"] = telemetry_config
+            __props__.__dict__["traffic_filter"] = traffic_filter
             __props__.__dict__["name"] = None
         super(AiLogicConfig, __self__).__init__(
             'gcp:firebase/aiLogicConfig:AiLogicConfig',
@@ -523,7 +570,8 @@ class AiLogicConfig(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
-            telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None) -> 'AiLogicConfig':
+            telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
+            traffic_filter: Optional[pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None) -> 'AiLogicConfig':
         """
         Get an existing AiLogicConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -545,6 +593,8 @@ class AiLogicConfig(pulumi.CustomResource):
                Telemetry is the collection of metrics, logs, and traces recorded by the
                Firebase AI Logic backend.
                Structure is documented below.
+        :param pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']] traffic_filter: Configuration for traffic filtering.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -555,6 +605,7 @@ class AiLogicConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["telemetry_config"] = telemetry_config
+        __props__.__dict__["traffic_filter"] = traffic_filter
         return AiLogicConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -605,4 +656,13 @@ class AiLogicConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "telemetry_config")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficFilter")
+    def traffic_filter(self) -> pulumi.Output[Optional['outputs.AiLogicConfigTrafficFilter']]:
+        """
+        Configuration for traffic filtering.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_filter")
 

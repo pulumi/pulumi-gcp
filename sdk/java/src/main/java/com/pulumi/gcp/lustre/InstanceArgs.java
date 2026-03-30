@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.lustre.inputs.InstanceAccessRulesOptionsArgs;
+import com.pulumi.gcp.lustre.inputs.InstanceMaintenancePolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -179,6 +180,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
      * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
@@ -260,6 +278,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
+        this.maintenancePolicy = $.maintenancePolicy;
         this.network = $.network;
         this.perUnitStorageThroughput = $.perUnitStorageThroughput;
         this.placementPolicy = $.placementPolicy;
@@ -495,6 +514,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maintenancePolicy The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
         }
 
         /**

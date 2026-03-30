@@ -21,6 +21,14 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.ToolsetMcpToolsetApiAuthentication? ApiAuthentication;
         /// <summary>
+        /// The custom headers to send in the request to the MCP server. The values
+        /// must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
+        /// set in the session variables. See
+        /// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+        /// for more details.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? CustomHeaders;
+        /// <summary>
         /// The address of the MCP server, for example, "https://example.com/mcp/". If
         /// the server is built with the MCP SDK, the url should be suffixed with
         /// "/mcp/". Only Streamable HTTP transport based servers are supported. See
@@ -45,6 +53,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         private ToolsetMcpToolset(
             Outputs.ToolsetMcpToolsetApiAuthentication? apiAuthentication,
 
+            ImmutableDictionary<string, string>? customHeaders,
+
             string serverAddress,
 
             Outputs.ToolsetMcpToolsetServiceDirectoryConfig? serviceDirectoryConfig,
@@ -52,6 +62,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             Outputs.ToolsetMcpToolsetTlsConfig? tlsConfig)
         {
             ApiAuthentication = apiAuthentication;
+            CustomHeaders = customHeaders;
             ServerAddress = serverAddress;
             ServiceDirectoryConfig = serviceDirectoryConfig;
             TlsConfig = tlsConfig;

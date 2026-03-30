@@ -193,6 +193,7 @@ export class User extends pulumi.CustomResource {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      */
     declare public readonly databaseRoles: pulumi.Output<string[] | undefined>;
     /**
@@ -323,6 +324,7 @@ export interface UserState {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      */
     databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -402,6 +404,7 @@ export interface UserArgs {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      */
     databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

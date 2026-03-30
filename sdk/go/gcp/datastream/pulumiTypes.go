@@ -9968,7 +9968,8 @@ type StreamDestinationConfigGcsDestinationConfig struct {
 	// AVRO file format configuration.
 	AvroFileFormat *StreamDestinationConfigGcsDestinationConfigAvroFileFormat `pulumi:"avroFileFormat"`
 	// The maximum duration for which new events are added before a file is closed and a new file is created.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	// Values within the range of 15-60 seconds are allowed.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	FileRotationInterval *string `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb *int `pulumi:"fileRotationMb"`
@@ -9994,7 +9995,8 @@ type StreamDestinationConfigGcsDestinationConfigArgs struct {
 	// AVRO file format configuration.
 	AvroFileFormat StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput `pulumi:"avroFileFormat"`
 	// The maximum duration for which new events are added before a file is closed and a new file is created.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	// Values within the range of 15-60 seconds are allowed.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	FileRotationInterval pulumi.StringPtrInput `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb pulumi.IntPtrInput `pulumi:"fileRotationMb"`
@@ -10090,7 +10092,8 @@ func (o StreamDestinationConfigGcsDestinationConfigOutput) AvroFileFormat() Stre
 }
 
 // The maximum duration for which new events are added before a file is closed and a new file is created.
-// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+// Values within the range of 15-60 seconds are allowed.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o StreamDestinationConfigGcsDestinationConfigOutput) FileRotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfig) *string { return v.FileRotationInterval }).(pulumi.StringPtrOutput)
 }
@@ -10148,7 +10151,8 @@ func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) AvroFileFormat() S
 }
 
 // The maximum duration for which new events are added before a file is closed and a new file is created.
-// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+// Values within the range of 15-60 seconds are allowed.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) FileRotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) *string {
 		if v == nil {

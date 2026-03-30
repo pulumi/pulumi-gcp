@@ -172,6 +172,10 @@ namespace Pulumi.Gcp.Firebase
     ///             Mode = "ALL",
     ///             SamplingRate = 1,
     ///         },
+    ///         TrafficFilter = new Gcp.Firebase.Inputs.AiLogicConfigTrafficFilterArgs
+    ///         {
+    ///             TemplateOnly = true,
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -240,6 +244,13 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Output("telemetryConfig")]
         public Output<Outputs.AiLogicConfigTelemetryConfig?> TelemetryConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for traffic filtering.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("trafficFilter")]
+        public Output<Outputs.AiLogicConfigTrafficFilter?> TrafficFilter { get; private set; } = null!;
 
 
         /// <summary>
@@ -319,6 +330,13 @@ namespace Pulumi.Gcp.Firebase
         [Input("telemetryConfig")]
         public Input<Inputs.AiLogicConfigTelemetryConfigArgs>? TelemetryConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for traffic filtering.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("trafficFilter")]
+        public Input<Inputs.AiLogicConfigTrafficFilterArgs>? TrafficFilter { get; set; }
+
         public AiLogicConfigArgs()
         {
         }
@@ -365,6 +383,13 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("telemetryConfig")]
         public Input<Inputs.AiLogicConfigTelemetryConfigGetArgs>? TelemetryConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for traffic filtering.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("trafficFilter")]
+        public Input<Inputs.AiLogicConfigTrafficFilterGetArgs>? TrafficFilter { get; set; }
 
         public AiLogicConfigState()
         {

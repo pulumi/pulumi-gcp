@@ -487,6 +487,12 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the ReasoningEngine.
         /// </summary>
         [Output("description")]
@@ -532,7 +538,7 @@ namespace Pulumi.Gcp.Vertex
         /// Structure is documented below.
         /// </summary>
         [Output("spec")]
-        public Output<Outputs.AiReasoningEngineSpec?> Spec { get; private set; } = null!;
+        public Output<Outputs.AiReasoningEngineSpec> Spec { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
@@ -588,6 +594,12 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiReasoningEngineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The description of the ReasoningEngine.
         /// </summary>
         [Input("description")]
@@ -642,6 +654,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The description of the ReasoningEngine.

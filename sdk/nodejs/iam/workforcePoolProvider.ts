@@ -437,6 +437,40 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://accounts.thirdparty.com",
+ *         clientId: "client-id",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         webSsoConfig: {
+ *             responseType: "CODE",
+ *             assertionClaimsBehavior: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+ *         },
+ *     },
+ *     detailedAuditLogging: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -538,6 +572,10 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     */
+    declare public readonly detailedAuditLogging: pulumi.Output<boolean | undefined>;
+    /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
@@ -560,9 +598,9 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      *
-     * > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      *
-     * @deprecated `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      */
     declare public readonly extendedAttributesOauth2Client: pulumi.Output<outputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client | undefined>;
     /**
@@ -644,6 +682,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["attributeCondition"] = state?.attributeCondition;
             resourceInputs["attributeMapping"] = state?.attributeMapping;
             resourceInputs["description"] = state?.description;
+            resourceInputs["detailedAuditLogging"] = state?.detailedAuditLogging;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["extendedAttributesOauth2Client"] = state?.extendedAttributesOauth2Client;
@@ -670,6 +709,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["attributeCondition"] = args?.attributeCondition;
             resourceInputs["attributeMapping"] = args?.attributeMapping;
             resourceInputs["description"] = args?.description;
+            resourceInputs["detailedAuditLogging"] = args?.detailedAuditLogging;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["extendedAttributesOauth2Client"] = args?.extendedAttributesOauth2Client;
@@ -750,6 +790,10 @@ export interface WorkforcePoolProviderState {
      */
     description?: pulumi.Input<string>;
     /**
+     * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     */
+    detailedAuditLogging?: pulumi.Input<boolean>;
+    /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
@@ -772,9 +816,9 @@ export interface WorkforcePoolProviderState {
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      *
-     * > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      *
-     * @deprecated `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      */
     extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client>;
     /**
@@ -903,6 +947,10 @@ export interface WorkforcePoolProviderArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     */
+    detailedAuditLogging?: pulumi.Input<boolean>;
+    /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
@@ -925,9 +973,9 @@ export interface WorkforcePoolProviderArgs {
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      *
-     * > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      *
-     * @deprecated `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      */
     extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client>;
     /**

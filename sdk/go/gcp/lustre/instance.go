@@ -124,6 +124,9 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 	MountPoint pulumi.StringOutput `pulumi:"mountPoint"`
 	// Identifier. The name of the instance.
@@ -240,6 +243,9 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 	MountPoint *string `pulumi:"mountPoint"`
 	// Identifier. The name of the instance.
@@ -304,6 +310,9 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
 	MountPoint pulumi.StringPtrInput
 	// Identifier. The name of the instance.
@@ -368,6 +377,9 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
@@ -415,6 +427,9 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// The full name of the VPC network to which the instance is connected.
 	// Must be in the format
 	// `projects/{project_id}/global/networks/{network_name}`.
@@ -582,6 +597,12 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+// Structure is documented below.
+func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(InstanceMaintenancePolicyPtrOutput)
 }
 
 // Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.

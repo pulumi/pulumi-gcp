@@ -27,6 +27,7 @@ class WorkforcePoolProviderArgs:
                  attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 detailed_audit_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  extended_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']] = None,
@@ -93,6 +94,7 @@ class WorkforcePoolProviderArgs:
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
+        :param pulumi.Input[_builtins.bool] detailed_audit_logging: If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
@@ -109,7 +111,7 @@ class WorkforcePoolProviderArgs:
                to a unique Microsoft Entra ID user.
                Structure is documented below.
                
-               > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+               > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs'] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -139,13 +141,15 @@ class WorkforcePoolProviderArgs:
             pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if detailed_audit_logging is not None:
+            pulumi.set(__self__, "detailed_audit_logging", detailed_audit_logging)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if extended_attributes_oauth2_client is not None:
-            warnings.warn("""`extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""", DeprecationWarning)
-            pulumi.log.warn("""extended_attributes_oauth2_client is deprecated: `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""")
+            warnings.warn("""`extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""", DeprecationWarning)
+            pulumi.log.warn("""extended_attributes_oauth2_client is deprecated: `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""")
         if extended_attributes_oauth2_client is not None:
             pulumi.set(__self__, "extended_attributes_oauth2_client", extended_attributes_oauth2_client)
         if extra_attributes_oauth2_client is not None:
@@ -280,6 +284,18 @@ class WorkforcePoolProviderArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="detailedAuditLogging")
+    def detailed_audit_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        """
+        return pulumi.get(self, "detailed_audit_logging")
+
+    @detailed_audit_logging.setter
+    def detailed_audit_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "detailed_audit_logging", value)
+
+    @_builtins.property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -306,7 +322,7 @@ class WorkforcePoolProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="extendedAttributesOauth2Client")
-    @_utilities.deprecated("""`extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""")
+    @_utilities.deprecated("""`extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""")
     def extended_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']]:
         """
         (Optional, Deprecated)
@@ -322,7 +338,7 @@ class WorkforcePoolProviderArgs:
         to a unique Microsoft Entra ID user.
         Structure is documented below.
 
-        > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+        > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         """
         return pulumi.get(self, "extended_attributes_oauth2_client")
 
@@ -400,6 +416,7 @@ class _WorkforcePoolProviderState:
                  attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 detailed_audit_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  extended_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']] = None,
@@ -463,6 +480,7 @@ class _WorkforcePoolProviderState:
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
+        :param pulumi.Input[_builtins.bool] detailed_audit_logging: If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
@@ -479,7 +497,7 @@ class _WorkforcePoolProviderState:
                to a unique Microsoft Entra ID user.
                Structure is documented below.
                
-               > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+               > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs'] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -522,13 +540,15 @@ class _WorkforcePoolProviderState:
             pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if detailed_audit_logging is not None:
+            pulumi.set(__self__, "detailed_audit_logging", detailed_audit_logging)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if extended_attributes_oauth2_client is not None:
-            warnings.warn("""`extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""", DeprecationWarning)
-            pulumi.log.warn("""extended_attributes_oauth2_client is deprecated: `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""")
+            warnings.warn("""`extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""", DeprecationWarning)
+            pulumi.log.warn("""extended_attributes_oauth2_client is deprecated: `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""")
         if extended_attributes_oauth2_client is not None:
             pulumi.set(__self__, "extended_attributes_oauth2_client", extended_attributes_oauth2_client)
         if extra_attributes_oauth2_client is not None:
@@ -632,6 +652,18 @@ class _WorkforcePoolProviderState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="detailedAuditLogging")
+    def detailed_audit_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        """
+        return pulumi.get(self, "detailed_audit_logging")
+
+    @detailed_audit_logging.setter
+    def detailed_audit_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "detailed_audit_logging", value)
+
+    @_builtins.property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -658,7 +690,7 @@ class _WorkforcePoolProviderState:
 
     @_builtins.property
     @pulumi.getter(name="extendedAttributesOauth2Client")
-    @_utilities.deprecated("""`extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""")
+    @_utilities.deprecated("""`extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""")
     def extended_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']]:
         """
         (Optional, Deprecated)
@@ -674,7 +706,7 @@ class _WorkforcePoolProviderState:
         to a unique Microsoft Entra ID user.
         Structure is documented below.
 
-        > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+        > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         """
         return pulumi.get(self, "extended_attributes_oauth2_client")
 
@@ -826,6 +858,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 detailed_audit_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  extended_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
@@ -1248,6 +1281,38 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://accounts.thirdparty.com",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+            },
+            detailed_audit_logging=True)
+        ```
 
         ## Import
 
@@ -1314,6 +1379,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
+        :param pulumi.Input[_builtins.bool] detailed_audit_logging: If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
@@ -1330,7 +1396,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                to a unique Microsoft Entra ID user.
                Structure is documented below.
                
-               > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+               > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -1776,6 +1842,38 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://accounts.thirdparty.com",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+            },
+            detailed_audit_logging=True)
+        ```
 
         ## Import
 
@@ -1810,6 +1908,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
                  attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 detailed_audit_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  extended_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
@@ -1832,6 +1931,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             __props__.__dict__["attribute_condition"] = attribute_condition
             __props__.__dict__["attribute_mapping"] = attribute_mapping
             __props__.__dict__["description"] = description
+            __props__.__dict__["detailed_audit_logging"] = detailed_audit_logging
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["extended_attributes_oauth2_client"] = extended_attributes_oauth2_client
@@ -1863,6 +1963,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
             attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            detailed_audit_logging: Optional[pulumi.Input[_builtins.bool]] = None,
             disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             extended_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
@@ -1930,6 +2031,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                An object containing a list of `"key": value` pairs.
                Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
+        :param pulumi.Input[_builtins.bool] detailed_audit_logging: If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
@@ -1946,7 +2048,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                to a unique Microsoft Entra ID user.
                Structure is documented below.
                
-               > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+               > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -1990,6 +2092,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         __props__.__dict__["attribute_condition"] = attribute_condition
         __props__.__dict__["attribute_mapping"] = attribute_mapping
         __props__.__dict__["description"] = description
+        __props__.__dict__["detailed_audit_logging"] = detailed_audit_logging
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["extended_attributes_oauth2_client"] = extended_attributes_oauth2_client
@@ -2074,6 +2177,14 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="detailedAuditLogging")
+    def detailed_audit_logging(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+        """
+        return pulumi.get(self, "detailed_audit_logging")
+
+    @_builtins.property
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -2092,7 +2203,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="extendedAttributesOauth2Client")
-    @_utilities.deprecated("""`extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.""")
+    @_utilities.deprecated("""`extended_attributes_oauth2_client` is deprecated. Use SCIM instead.""")
     def extended_attributes_oauth2_client(self) -> pulumi.Output[Optional['outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']]:
         """
         (Optional, Deprecated)
@@ -2108,7 +2219,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         to a unique Microsoft Entra ID user.
         Structure is documented below.
 
-        > **Warning:** `extended_attributes_oauth2_client` is restricted. We suggest use SCIM instead.
+        > **Warning:** `extended_attributes_oauth2_client` is deprecated. Use SCIM instead.
         """
         return pulumi.get(self, "extended_attributes_oauth2_client")
 

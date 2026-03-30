@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EncryptionSpec{}
 	case "gcp:diagflow/entityType:EntityType":
 		r = &EntityType{}
+	case "gcp:diagflow/environment:Environment":
+		r = &Environment{}
 	case "gcp:diagflow/fulfillment:Fulfillment":
 		r = &Fulfillment{}
 	case "gcp:diagflow/generator:Generator":
@@ -173,6 +175,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/entityType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/environment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

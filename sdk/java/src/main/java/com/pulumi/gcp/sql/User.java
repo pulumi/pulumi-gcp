@@ -302,6 +302,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      * 
      */
     @Export(name="databaseRoles", refs={List.class,String.class}, tree="[0,1]")
@@ -315,6 +316,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * you can assign them. You can create roles using the CREATE ROLE
      * statement for both MySQL and PostgreSQL.
      * **Note**: This property is write-only and will not be read from the API.
+     * **Caution**: Existing database roles will be overwriten with new values from this field.
      * 
      */
     public Output<Optional<List<String>>> databaseRoles() {

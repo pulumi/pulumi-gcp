@@ -133,6 +133,54 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Blockchain Nodes Beacon Fee Recipient
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.blockchainnodeengine.BlockchainNodes;
+ * import com.pulumi.gcp.blockchainnodeengine.BlockchainNodesArgs;
+ * import com.pulumi.gcp.blockchainnodeengine.inputs.BlockchainNodesEthereumDetailsArgs;
+ * import com.pulumi.gcp.blockchainnodeengine.inputs.BlockchainNodesEthereumDetailsValidatorConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNodeBeaconFee = new BlockchainNodes("defaultNodeBeaconFee", BlockchainNodesArgs.builder()
+ *             .location("us-central1")
+ *             .blockchainType("ETHEREUM")
+ *             .blockchainNodeId("beacon_fee_node")
+ *             .ethereumDetails(BlockchainNodesEthereumDetailsArgs.builder()
+ *                 .apiEnableAdmin(true)
+ *                 .apiEnableDebug(true)
+ *                 .validatorConfig(BlockchainNodesEthereumDetailsValidatorConfigArgs.builder()
+ *                     .beaconFeeRecipient("0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7")
+ *                     .build())
+ *                 .nodeType("ARCHIVE")
+ *                 .consensusClient("LIGHTHOUSE")
+ *                 .executionClient("ERIGON")
+ *                 .network("MAINNET")
+ *                 .build())
+ *             .labels(Map.of("environment", "dev"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

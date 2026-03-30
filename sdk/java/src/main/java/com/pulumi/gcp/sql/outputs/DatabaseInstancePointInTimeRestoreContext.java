@@ -35,6 +35,11 @@ public final class DatabaseInstancePointInTimeRestoreContext {
      */
     private @Nullable String preferredZone;
     /**
+     * @return The region of the target instance where the datasource will be restored. For example: &#34;us-central1&#34;.
+     * 
+     */
+    private @Nullable String region;
+    /**
      * @return The name of the target instance.
      * 
      */
@@ -72,6 +77,13 @@ public final class DatabaseInstancePointInTimeRestoreContext {
         return Optional.ofNullable(this.preferredZone);
     }
     /**
+     * @return The region of the target instance where the datasource will be restored. For example: &#34;us-central1&#34;.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+    /**
      * @return The name of the target instance.
      * 
      */
@@ -92,6 +104,7 @@ public final class DatabaseInstancePointInTimeRestoreContext {
         private String datasource;
         private @Nullable String pointInTime;
         private @Nullable String preferredZone;
+        private @Nullable String region;
         private @Nullable String targetInstance;
         public Builder() {}
         public Builder(DatabaseInstancePointInTimeRestoreContext defaults) {
@@ -100,6 +113,7 @@ public final class DatabaseInstancePointInTimeRestoreContext {
     	      this.datasource = defaults.datasource;
     	      this.pointInTime = defaults.pointInTime;
     	      this.preferredZone = defaults.preferredZone;
+    	      this.region = defaults.region;
     	      this.targetInstance = defaults.targetInstance;
         }
 
@@ -130,6 +144,12 @@ public final class DatabaseInstancePointInTimeRestoreContext {
             return this;
         }
         @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetInstance(@Nullable String targetInstance) {
 
             this.targetInstance = targetInstance;
@@ -141,6 +161,7 @@ public final class DatabaseInstancePointInTimeRestoreContext {
             _resultValue.datasource = datasource;
             _resultValue.pointInTime = pointInTime;
             _resultValue.preferredZone = preferredZone;
+            _resultValue.region = region;
             _resultValue.targetInstance = targetInstance;
             return _resultValue;
         }

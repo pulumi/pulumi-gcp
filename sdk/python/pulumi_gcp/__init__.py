@@ -5584,6 +5584,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/environment",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/fulfillment",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -7716,6 +7724,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig": "OrganizationKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/projectAutokeyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/projectAutokeyConfig:ProjectAutokeyConfig": "ProjectAutokeyConfig"
   }
  },
  {

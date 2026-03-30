@@ -344,6 +344,10 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    /**
      * The description of the ReasoningEngine.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -376,7 +380,7 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      * Optional. Configurations of the ReasoningEngine.
      * Structure is documented below.
      */
-    declare public readonly spec: pulumi.Output<outputs.vertex.AiReasoningEngineSpec | undefined>;
+    declare public readonly spec: pulumi.Output<outputs.vertex.AiReasoningEngineSpec>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
      * format, with nanosecond resolution and up to nine fractional digits.
@@ -397,6 +401,7 @@ export class AiReasoningEngine extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiReasoningEngineState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["encryptionSpec"] = state?.encryptionSpec;
@@ -410,6 +415,7 @@ export class AiReasoningEngine extends pulumi.CustomResource {
             if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["encryptionSpec"] = args?.encryptionSpec;
@@ -434,6 +440,10 @@ export interface AiReasoningEngineState {
      * with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The description of the ReasoningEngine.
      */
@@ -479,6 +489,10 @@ export interface AiReasoningEngineState {
  * The set of arguments for constructing a AiReasoningEngine resource.
  */
 export interface AiReasoningEngineArgs {
+    /**
+     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The description of the ReasoningEngine.
      */

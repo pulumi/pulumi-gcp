@@ -18,14 +18,16 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
     public static final RegionTargetTcpProxyState Empty = new RegionTargetTcpProxyState();
 
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is specified.
      * 
      */
     @Import(name="backendService")
     private @Nullable Output<String> backendService;
 
     /**
-     * @return A reference to the BackendService resource.
+     * @return A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is specified.
      * 
      */
     public Optional<Output<String>> backendService() {
@@ -60,6 +62,29 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    @Import(name="loadBalancingScheme")
+    private @Nullable Output<String> loadBalancingScheme;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    public Optional<Output<String>> loadBalancingScheme() {
+        return Optional.ofNullable(this.loadBalancingScheme);
     }
 
     /**
@@ -197,6 +222,7 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
         this.backendService = $.backendService;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.loadBalancingScheme = $.loadBalancingScheme;
         this.name = $.name;
         this.project = $.project;
         this.proxyBind = $.proxyBind;
@@ -225,7 +251,8 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param backendService A reference to the BackendService resource.
+         * @param backendService A reference to the BackendService resource. This field is optional when
+         * the loadBalancingScheme (available in beta) is specified.
          * 
          * @return builder
          * 
@@ -236,7 +263,8 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param backendService A reference to the BackendService resource.
+         * @param backendService A reference to the BackendService resource. This field is optional when
+         * the loadBalancingScheme (available in beta) is specified.
          * 
          * @return builder
          * 
@@ -285,6 +313,35 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param loadBalancingScheme (Optional, Beta)
+         * Specifies the load balancer type. A target TCP proxy created for one type
+         * of load balancer cannot be used with another. For more information, refer
+         * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+         * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancingScheme(@Nullable Output<String> loadBalancingScheme) {
+            $.loadBalancingScheme = loadBalancingScheme;
+            return this;
+        }
+
+        /**
+         * @param loadBalancingScheme (Optional, Beta)
+         * Specifies the load balancer type. A target TCP proxy created for one type
+         * of load balancer cannot be used with another. For more information, refer
+         * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+         * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancingScheme(String loadBalancingScheme) {
+            return loadBalancingScheme(Output.of(loadBalancingScheme));
         }
 
         /**
