@@ -50,7 +50,7 @@ import (
 //				Project:              pulumi.String("my-project"),
 //				Database:             pulumi.String("mydatabase"),
 //				AdminPassword:        pulumi.String("123Abpassword"),
-//				Network:              pulumi.String(_default.Id),
+//				Network:              pulumi.String(pulumi.String(_default.Id)),
 //				Cidr:                 pulumi.String("10.5.0.0/24"),
 //				Properties: &oracledatabase.AutonomousDatabasePropertiesArgs{
 //					ComputeCount:      pulumi.Float64(2),
@@ -98,7 +98,7 @@ import (
 //				DisplayName:          pulumi.String("autonomousDatabase displayname"),
 //				Database:             pulumi.String("mydatabase"),
 //				AdminPassword:        pulumi.String("123Abpassword"),
-//				Network:              pulumi.String(_default.Id),
+//				Network:              pulumi.String(pulumi.String(_default.Id)),
 //				Cidr:                 pulumi.String("10.5.0.0/24"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),

@@ -408,7 +408,7 @@ import (
 //			}
 //			// this is required to allow the transcoder service identity to access the secret
 //			transcoder, err := projects.NewServiceIdentity(ctx, "transcoder", &projects.ServiceIdentityArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
 //				Service: pulumi.String("transcoder.googleapis.com"),
 //			})
 //			if err != nil {

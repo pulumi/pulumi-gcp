@@ -105,7 +105,7 @@ import (
 //				Name:     pulumi.String("me"),
 //				Instance: main.Name,
 //				Host:     pulumi.String("me.com"),
-//				Password: pulumi.String(sqlUserPassword.Plaintext),
+//				Password: pulumi.String(pulumi.String(sqlUserPassword.Plaintext)),
 //			})
 //			if err != nil {
 //				return err

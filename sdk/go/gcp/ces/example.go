@@ -208,7 +208,7 @@ import (
 //							},
 //							&ces.ExampleMessageChunkArgs{
 //								ToolCall: &ces.ExampleMessageChunkToolCallArgs{
-//									Args: pulumi.String(json0),
+//									Args: pulumi.String(pulumi.String(json0)),
 //									Id:   pulumi.String("tool_call_id"),
 //									Tool: pulumi.All(my_app.Project, my_app.AppId, cesTool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
 //										project := _args[0].(string)
@@ -220,7 +220,7 @@ import (
 //							},
 //							&ces.ExampleMessageChunkArgs{
 //								ToolCall: &ces.ExampleMessageChunkToolCallArgs{
-//									Args: pulumi.String(json1),
+//									Args: pulumi.String(pulumi.String(json1)),
 //									Id:   pulumi.String("tool_call_id2"),
 //									ToolsetTool: &ces.ExampleMessageChunkToolCallToolsetToolArgs{
 //										Toolset: pulumi.All(my_app.Project, my_app.AppId, cesToolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
@@ -236,7 +236,7 @@ import (
 //							&ces.ExampleMessageChunkArgs{
 //								ToolResponse: &ces.ExampleMessageChunkToolResponseArgs{
 //									Id:       pulumi.String("tool_call_id"),
-//									Response: pulumi.String(json2),
+//									Response: pulumi.String(pulumi.String(json2)),
 //									Tool: pulumi.All(my_app.Project, my_app.AppId, cesTool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
 //										project := _args[0].(string)
 //										appId := _args[1].(string)
@@ -248,7 +248,7 @@ import (
 //							&ces.ExampleMessageChunkArgs{
 //								ToolResponse: &ces.ExampleMessageChunkToolResponseArgs{
 //									Id:       pulumi.String("tool_call_id2"),
-//									Response: pulumi.String(json3),
+//									Response: pulumi.String(pulumi.String(json3)),
 //									ToolsetTool: &ces.ExampleMessageChunkToolResponseToolsetToolArgs{
 //										Toolset: pulumi.All(my_app.Project, my_app.AppId, cesToolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
 //											project := _args[0].(string)
@@ -261,7 +261,7 @@ import (
 //								},
 //							},
 //							&ces.ExampleMessageChunkArgs{
-//								UpdatedVariables: pulumi.String(json4),
+//								UpdatedVariables: pulumi.String(pulumi.String(json4)),
 //							},
 //						},
 //						Role: pulumi.String("agent"),

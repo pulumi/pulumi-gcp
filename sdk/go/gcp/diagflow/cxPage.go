@@ -500,16 +500,16 @@ import (
 //						},
 //						&diagflow.CxPageEntryFulfillmentSetParameterActionArgs{
 //							Parameter: pulumi.String("another-param"),
-//							Value:     pulumi.String(json0),
+//							Value:     pulumi.String(pulumi.String(json0)),
 //						},
 //						&diagflow.CxPageEntryFulfillmentSetParameterActionArgs{
 //							Parameter: pulumi.String("other-param"),
-//							Value:     pulumi.String(json1),
+//							Value:     pulumi.String(pulumi.String(json1)),
 //						},
 //					},
 //					ConditionalCases: diagflow.CxPageEntryFulfillmentConditionalCaseArray{
 //						&diagflow.CxPageEntryFulfillmentConditionalCaseArgs{
-//							Cases: pulumi.String(json2),
+//							Cases: pulumi.String(pulumi.String(json2)),
 //						},
 //					},
 //				},
@@ -568,16 +568,16 @@ import (
 //								},
 //								&diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("another-param"),
-//									Value:     pulumi.String(json3),
+//									Value:     pulumi.String(pulumi.String(json3)),
 //								},
 //								&diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("other-param"),
-//									Value:     pulumi.String(json4),
+//									Value:     pulumi.String(pulumi.String(json4)),
 //								},
 //							},
 //							ConditionalCases: diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCaseArray{
 //								&diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs{
-//									Cases: pulumi.String(json5),
+//									Cases: pulumi.String(pulumi.String(json5)),
 //								},
 //							},
 //						},
@@ -588,7 +588,7 @@ import (
 //						&diagflow.CxPageFormParameterArgs{
 //							DisplayName:  pulumi.String("param1"),
 //							EntityType:   pulumi.String("projects/-/locations/-/agents/-/entityTypes/sys.date"),
-//							DefaultValue: pulumi.String(json6),
+//							DefaultValue: pulumi.String(pulumi.String(json6)),
 //							FillBehavior: &diagflow.CxPageFormParameterFillBehaviorArgs{
 //								InitialPromptFulfillment: &diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{
 //									Messages: diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray{
@@ -641,16 +641,16 @@ import (
 //										},
 //										&diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs{
 //											Parameter: pulumi.String("another-param"),
-//											Value:     pulumi.String(json7),
+//											Value:     pulumi.String(pulumi.String(json7)),
 //										},
 //										&diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs{
 //											Parameter: pulumi.String("other-param"),
-//											Value:     pulumi.String(json8),
+//											Value:     pulumi.String(pulumi.String(json8)),
 //										},
 //									},
 //									ConditionalCases: diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray{
 //										&diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs{
-//											Cases: pulumi.String(json9),
+//											Cases: pulumi.String(pulumi.String(json9)),
 //										},
 //									},
 //								},
@@ -711,16 +711,16 @@ import (
 //												},
 //												&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs{
 //													Parameter: pulumi.String("another-param"),
-//													Value:     pulumi.String(json10),
+//													Value:     pulumi.String(pulumi.String(json10)),
 //												},
 //												&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs{
 //													Parameter: pulumi.String("other-param"),
-//													Value:     pulumi.String(json11),
+//													Value:     pulumi.String(pulumi.String(json11)),
 //												},
 //											},
 //											ConditionalCases: diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray{
 //												&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs{
-//													Cases: pulumi.String(json12),
+//													Cases: pulumi.String(pulumi.String(json12)),
 //												},
 //											},
 //										},
@@ -801,16 +801,16 @@ import (
 //								},
 //								&diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("another-param"),
-//									Value:     pulumi.String(json13),
+//									Value:     pulumi.String(pulumi.String(json13)),
 //								},
 //								&diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{
 //									Parameter: pulumi.String("other-param"),
-//									Value:     pulumi.String(json14),
+//									Value:     pulumi.String(pulumi.String(json14)),
 //								},
 //							},
 //							ConditionalCases: diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray{
 //								&diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs{
-//									Cases: pulumi.String(json15),
+//									Cases: pulumi.String(pulumi.String(json15)),
 //								},
 //							},
 //						},
@@ -885,7 +885,7 @@ import (
 //						},
 //						ConditionalCases: diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{
 //							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{
-//								Cases: pulumi.String(json16),
+//								Cases: pulumi.String(pulumi.String(json16)),
 //							},
 //						},
 //						AdvancedSettings: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{

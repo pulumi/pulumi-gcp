@@ -259,10 +259,10 @@ import (
 //					&bigquery.RoutineArgumentArgs{
 //						Name:         pulumi.String("value"),
 //						ArgumentKind: pulumi.String("FIXED_TYPE"),
-//						DataType:     pulumi.String(json0),
+//						DataType:     pulumi.String(pulumi.String(json0)),
 //					},
 //				},
-//				ReturnTableType: pulumi.String(json1),
+//				ReturnTableType: pulumi.String(pulumi.String(json1)),
 //			})
 //			if err != nil {
 //				return err

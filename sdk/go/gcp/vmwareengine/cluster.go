@@ -440,7 +440,7 @@ import (
 //				Location:     pulumi.String("us-west1"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(npNetwork.Id),
+//				Network:      pulumi.String(pulumi.String(npNetwork.Id)),
 //			})
 //			if err != nil {
 //				return err

@@ -57,7 +57,7 @@ import (
 //				Description:              pulumi.String("test lustre instance"),
 //				Filesystem:               pulumi.String("testfs"),
 //				CapacityGib:              pulumi.String("18000"),
-//				Network:                  pulumi.String(lustre_network.Id),
+//				Network:                  pulumi.String(pulumi.String(lustre_network.Id)),
 //				PerUnitStorageThroughput: pulumi.String("1000"),
 //				Labels: pulumi.StringMap{
 //					"test": pulumi.String("value"),

@@ -59,7 +59,7 @@ import (
 //			_, err = iap.NewWebForwardingRuleServiceIamPolicy(ctx, "policy", &iap.WebForwardingRuleServiceIamPolicyArgs{
 //				Project:                   pulumi.Any(_default.Project),
 //				ForwardingRuleServiceName: pulumi.Any(_default.Name),
-//				PolicyData:                pulumi.String(admin.PolicyData),
+//				PolicyData:                pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //			_, err = iap.NewWebForwardingRuleServiceIamPolicy(ctx, "policy", &iap.WebForwardingRuleServiceIamPolicyArgs{
 //				Project:                   pulumi.Any(_default.Project),
 //				ForwardingRuleServiceName: pulumi.Any(_default.Name),
-//				PolicyData:                pulumi.String(admin.PolicyData),
+//				PolicyData:                pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -298,7 +298,7 @@ import (
 //			_, err = iap.NewWebForwardingRuleServiceIamPolicy(ctx, "policy", &iap.WebForwardingRuleServiceIamPolicyArgs{
 //				Project:                   pulumi.Any(_default.Project),
 //				ForwardingRuleServiceName: pulumi.Any(_default.Name),
-//				PolicyData:                pulumi.String(admin.PolicyData),
+//				PolicyData:                pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -345,7 +345,7 @@ import (
 //			_, err = iap.NewWebForwardingRuleServiceIamPolicy(ctx, "policy", &iap.WebForwardingRuleServiceIamPolicyArgs{
 //				Project:                   pulumi.Any(_default.Project),
 //				ForwardingRuleServiceName: pulumi.Any(_default.Name),
-//				PolicyData:                pulumi.String(admin.PolicyData),
+//				PolicyData:                pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

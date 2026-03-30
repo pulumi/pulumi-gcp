@@ -58,7 +58,7 @@ import (
 //				},
 //				Setting: &cloudidentity.PolicySettingArgs{
 //					Type:      pulumi.String("something.googleapis.com/SettingType"),
-//					ValueJson: pulumi.String(json0),
+//					ValueJson: pulumi.String(pulumi.String(json0)),
 //				},
 //			})
 //			if err != nil {

@@ -39,7 +39,7 @@ import (
 //			}
 //			addressGroup1, err := networksecurity.NewAddressGroup(ctx, "address_group_1", &networksecurity.AddressGroupArgs{
 //				Name:        pulumi.String("address-group"),
-//				Parent:      pulumi.String(project.Id),
+//				Parent:      pulumi.String(pulumi.String(project.Id)),
 //				Description: pulumi.String("Regional address group"),
 //				Location:    pulumi.String("us-west2"),
 //				Items: pulumi.StringArray{
@@ -53,7 +53,7 @@ import (
 //			}
 //			secureTagKey1, err := tags.NewTagKey(ctx, "secure_tag_key_1", &tags.TagKeyArgs{
 //				Description: pulumi.String("Tag key"),
-//				Parent:      pulumi.String(project.Id),
+//				Parent:      pulumi.String(pulumi.String(project.Id)),
 //				Purpose:     pulumi.String("GCE_FIREWALL"),
 //				ShortName:   pulumi.String("tag-key"),
 //				PurposeData: pulumi.StringMap{

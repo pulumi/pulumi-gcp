@@ -62,7 +62,7 @@ import (
 //			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
 //				Project:                pulumi.Any(example.Project),
 //				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
-//				PolicyData:             pulumi.String(admin.PolicyData),
+//				PolicyData:             pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +109,7 @@ import (
 //			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
 //				Project:                pulumi.Any(example.Project),
 //				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
-//				PolicyData:             pulumi.String(admin.PolicyData),
+//				PolicyData:             pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -304,7 +304,7 @@ import (
 //			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
 //				Project:                pulumi.Any(example.Project),
 //				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
-//				PolicyData:             pulumi.String(admin.PolicyData),
+//				PolicyData:             pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -351,7 +351,7 @@ import (
 //			_, err = iam.NewWorkloadIdentityPoolIamPolicy(ctx, "policy", &iam.WorkloadIdentityPoolIamPolicyArgs{
 //				Project:                pulumi.Any(example.Project),
 //				WorkloadIdentityPoolId: pulumi.Any(example.WorkloadIdentityPoolId),
-//				PolicyData:             pulumi.String(admin.PolicyData),
+//				PolicyData:             pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

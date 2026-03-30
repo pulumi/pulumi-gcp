@@ -60,7 +60,7 @@ import (
 //			_, err = runtimeconfig.NewConfigIamPolicy(ctx, "policy", &runtimeconfig.ConfigIamPolicyArgs{
 //				Project:    pulumi.Any(config.Project),
 //				Config:     pulumi.Any(config.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //			_, err = runtimeconfig.NewConfigIamPolicy(ctx, "policy", &runtimeconfig.ConfigIamPolicyArgs{
 //				Project:    pulumi.Any(config.Project),
 //				Config:     pulumi.Any(config.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

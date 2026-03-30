@@ -93,15 +93,15 @@ import (
 //				Entities: discoveryengine.DataConnectorEntityArray{
 //					&discoveryengine.DataConnectorEntityArgs{
 //						EntityName: pulumi.String("catalog"),
-//						Params:     pulumi.String(json0),
+//						Params:     pulumi.String(pulumi.String(json0)),
 //					},
 //					&discoveryengine.DataConnectorEntityArgs{
 //						EntityName: pulumi.String("incident"),
-//						Params:     pulumi.String(json1),
+//						Params:     pulumi.String(pulumi.String(json1)),
 //					},
 //					&discoveryengine.DataConnectorEntityArgs{
 //						EntityName: pulumi.String("knowledge_base"),
-//						Params:     pulumi.String(json2),
+//						Params:     pulumi.String(pulumi.String(json2)),
 //					},
 //				},
 //				StaticIpEnabled: pulumi.Bool(false),

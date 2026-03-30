@@ -65,7 +65,7 @@ import (
 //				Location:              pulumi.String("us-east4"),
 //				Project:               pulumi.String("my-project"),
 //				ExadataInfrastructure: cloudExadataInfrastructures.ID(),
-//				Network:               pulumi.String(_default.Id),
+//				Network:               pulumi.String(pulumi.String(_default.Id)),
 //				Cidr:                  pulumi.String("10.5.0.0/24"),
 //				BackupSubnetCidr:      pulumi.String("10.6.0.0/24"),
 //				Properties: &oracledatabase.CloudVmClusterPropertiesArgs{
@@ -192,7 +192,7 @@ import (
 //				Location:              pulumi.String("us-east4"),
 //				Project:               pulumi.String("my-project"),
 //				ExadataInfrastructure: cloudExadataInfrastructures.ID(),
-//				Network:               pulumi.String(_default.Id),
+//				Network:               pulumi.String(pulumi.String(_default.Id)),
 //				Cidr:                  pulumi.String("10.5.0.0/24"),
 //				BackupSubnetCidr:      pulumi.String("10.6.0.0/24"),
 //				Labels: pulumi.StringMap{

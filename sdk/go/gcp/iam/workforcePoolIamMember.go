@@ -57,7 +57,7 @@ import (
 //			_, err = iam.NewWorkforcePoolIamPolicy(ctx, "policy", &iam.WorkforcePoolIamPolicyArgs{
 //				Location:        pulumi.Any(example.Location),
 //				WorkforcePoolId: pulumi.Any(example.WorkforcePoolId),
-//				PolicyData:      pulumi.String(admin.PolicyData),
+//				PolicyData:      pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -180,7 +180,7 @@ import (
 //			_, err = iam.NewWorkforcePoolIamPolicy(ctx, "policy", &iam.WorkforcePoolIamPolicyArgs{
 //				Location:        pulumi.Any(example.Location),
 //				WorkforcePoolId: pulumi.Any(example.WorkforcePoolId),
-//				PolicyData:      pulumi.String(admin.PolicyData),
+//				PolicyData:      pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

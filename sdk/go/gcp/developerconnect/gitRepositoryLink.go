@@ -76,7 +76,7 @@ import (
 //			}
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   github_token_secret.SecretId,
-//				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(p4sa_secretAccessor.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

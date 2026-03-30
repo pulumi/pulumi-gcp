@@ -367,7 +367,7 @@ import (
 //			internalSubnetwork, err := compute.NewSubnetwork(ctx, "internal", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("my-subnetwork"),
 //				Network:               internal.ID(),
-//				IpCidrRange:           pulumi.String(subnetworkCidr),
+//				IpCidrRange:           pulumi.String(pulumi.String(subnetworkCidr)),
 //				Region:                pulumi.String("us-central1"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})

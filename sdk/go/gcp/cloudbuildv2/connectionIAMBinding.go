@@ -58,7 +58,7 @@ import (
 //				Project:    pulumi.Any(my_connection.Project),
 //				Location:   pulumi.Any(my_connection.Location),
 //				Name:       pulumi.Any(my_connection.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -183,7 +183,7 @@ import (
 //				Project:    pulumi.Any(my_connection.Project),
 //				Location:   pulumi.Any(my_connection.Location),
 //				Name:       pulumi.Any(my_connection.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

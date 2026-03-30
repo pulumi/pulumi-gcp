@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			mkcSecondarySubnet, err := compute.NewSubnetwork(ctx, "mkc_secondary_subnet", &compute.SubnetworkArgs{
-//				Project:     pulumi.String(project.ProjectId),
+//				Project:     pulumi.String(pulumi.String(project.ProjectId)),
 //				Name:        pulumi.String("my-secondary-subnetwork"),
 //				IpCidrRange: pulumi.String("10.3.0.0/16"),
 //				Region:      pulumi.String("us-central1"),

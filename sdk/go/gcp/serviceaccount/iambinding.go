@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = serviceaccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceaccount.IAMPolicyArgs{
 //				ServiceAccountId: sa.Name,
-//				PolicyData:       pulumi.String(admin.PolicyData),
+//				PolicyData:       pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -191,7 +191,7 @@ import (
 //			}
 //			// Allow SA service account use the default GCE account
 //			_, err = serviceaccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceaccount.IAMMemberArgs{
-//				ServiceAccountId: pulumi.String(_default.Name),
+//				ServiceAccountId: pulumi.String(pulumi.String(_default.Name)),
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: sa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -285,7 +285,7 @@ import (
 //			}
 //			_, err = serviceaccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceaccount.IAMPolicyArgs{
 //				ServiceAccountId: sa.Name,
-//				PolicyData:       pulumi.String(admin.PolicyData),
+//				PolicyData:       pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -413,7 +413,7 @@ import (
 //			}
 //			// Allow SA service account use the default GCE account
 //			_, err = serviceaccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceaccount.IAMMemberArgs{
-//				ServiceAccountId: pulumi.String(_default.Name),
+//				ServiceAccountId: pulumi.String(pulumi.String(_default.Name)),
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: sa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil

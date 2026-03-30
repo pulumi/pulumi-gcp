@@ -58,7 +58,7 @@ import (
 //				Name:        pulumi.String("www.example.com."),
 //				Type:        pulumi.String("TXT"),
 //				Rrdatas: pulumi.StringArray{
-//					pulumi.String(token.Token),
+//					pulumi.String(pulumi.String(token.Token)),
 //				},
 //				Ttl: pulumi.Int(86400),
 //			})
@@ -70,7 +70,7 @@ import (
 //					Type:       pulumi.String(token.Type),
 //					Identifier: pulumi.String(token.Identifier),
 //				},
-//				VerificationMethod: pulumi.String(token.VerificationMethod),
+//				VerificationMethod: pulumi.String(pulumi.String(token.VerificationMethod)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				example,
 //			}))
