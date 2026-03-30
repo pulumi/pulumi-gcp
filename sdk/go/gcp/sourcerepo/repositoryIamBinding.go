@@ -57,7 +57,7 @@ import (
 //			_, err = sourcerepo.NewRepositoryIamPolicy(ctx, "policy", &sourcerepo.RepositoryIamPolicyArgs{
 //				Project:    pulumi.Any(my_repo.Project),
 //				Repository: pulumi.Any(my_repo.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +179,7 @@ import (
 //			_, err = sourcerepo.NewRepositoryIamPolicy(ctx, "policy", &sourcerepo.RepositoryIamPolicyArgs{
 //				Project:    pulumi.Any(my_repo.Project),
 //				Repository: pulumi.Any(my_repo.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

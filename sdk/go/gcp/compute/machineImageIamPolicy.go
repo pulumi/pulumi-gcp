@@ -62,7 +62,7 @@ import (
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
 //				Project:      pulumi.Any(image.Project),
 //				MachineImage: pulumi.Any(image.Name),
-//				PolicyData:   pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +109,7 @@ import (
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
 //				Project:      pulumi.Any(image.Project),
 //				MachineImage: pulumi.Any(image.Name),
-//				PolicyData:   pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -304,7 +304,7 @@ import (
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
 //				Project:      pulumi.Any(image.Project),
 //				MachineImage: pulumi.Any(image.Name),
-//				PolicyData:   pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -351,7 +351,7 @@ import (
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
 //				Project:      pulumi.Any(image.Project),
 //				MachineImage: pulumi.Any(image.Name),
-//				PolicyData:   pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

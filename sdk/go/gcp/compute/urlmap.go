@@ -1790,7 +1790,7 @@ import (
 //									&compute.URLMapPathMatcherRouteRuleHttpFilterConfigArgs{
 //										FilterName:    pulumi.String("envoy.wasm"),
 //										ConfigTypeUrl: pulumi.String("type.googleapis.com/google.protobuf.Struct"),
-//										Config:        pulumi.String(json0),
+//										Config:        pulumi.String(pulumi.String(json0)),
 //									},
 //								},
 //							},
@@ -1932,7 +1932,7 @@ import (
 //									&compute.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs{
 //										FilterName:    pulumi.String("envoy.wasm"),
 //										ConfigTypeUrl: pulumi.String("type.googleapis.com/google.protobuf.Struct"),
-//										Config:        pulumi.String(json0),
+//										Config:        pulumi.String(pulumi.String(json0)),
 //									},
 //								},
 //							},
@@ -1949,7 +1949,7 @@ import (
 //									&compute.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs{
 //										FilterName:    pulumi.String("envoy.rate_limit"),
 //										ConfigTypeUrl: pulumi.String("type.googleapis.com/google.protobuf.Struct"),
-//										Config:        pulumi.String(json1),
+//										Config:        pulumi.String(pulumi.String(json1)),
 //									},
 //								},
 //							},

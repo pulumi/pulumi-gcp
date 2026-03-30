@@ -95,7 +95,7 @@ import (
 //				PerformanceProvisioningType: pulumi.String("STANDARD"),
 //				PoolProvisionedIops:         pulumi.String("10000"),
 //				PoolProvisionedThroughput:   pulumi.String("1024"),
-//				StoragePoolType:             pulumi.String(balanced.SelfLink),
+//				StoragePoolType:             pulumi.String(pulumi.String(balanced.SelfLink)),
 //				Labels: pulumi.StringMap{
 //					"environment": pulumi.String("test"),
 //					"purpose":     pulumi.String("storage-pool-testing"),

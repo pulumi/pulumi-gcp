@@ -325,7 +325,7 @@ import (
 //					Rules: orgpolicy.PolicySpecRuleArray{
 //						&orgpolicy.PolicySpecRuleArgs{
 //							Enforce:    pulumi.String("TRUE"),
-//							Parameters: pulumi.String(json0),
+//							Parameters: pulumi.String(pulumi.String(json0)),
 //						},
 //					},
 //				},

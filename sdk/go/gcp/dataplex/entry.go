@@ -359,7 +359,7 @@ import (
 //				DatasetId:          example_dataset.DatasetId,
 //				TableId:            pulumi.String("table-basic"),
 //				DeletionProtection: pulumi.Bool(false),
-//				Schema:             pulumi.String(json0),
+//				Schema:             pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

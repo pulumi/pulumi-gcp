@@ -87,7 +87,7 @@ import (
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-json-format", &parametermanager.ParameterVersionArgs{
 //				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
-//				ParameterData:      pulumi.String(json0),
+//				ParameterData:      pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

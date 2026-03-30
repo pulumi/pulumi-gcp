@@ -51,7 +51,7 @@ import (
 //			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				Description:       pulumi.String("Terraform-provisioned basic Apigee Org without VPC Peering."),
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(pulumi.String(current.Project)),
 //				DisableVpcPeering: pulumi.Bool(true),
 //			})
 //			if err != nil {

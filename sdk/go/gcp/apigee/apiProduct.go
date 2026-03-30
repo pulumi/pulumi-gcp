@@ -71,7 +71,7 @@ import (
 //			}
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(pulumi.String(current.Project)),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
@@ -153,7 +153,7 @@ import (
 //			}
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(pulumi.String(current.Project)),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,

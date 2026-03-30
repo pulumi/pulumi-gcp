@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = datacatalog.NewPolicyTagIamPolicy(ctx, "policy", &datacatalog.PolicyTagIamPolicyArgs{
 //				PolicyTag:  pulumi.Any(basicPolicyTag.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -176,7 +176,7 @@ import (
 //			}
 //			_, err = datacatalog.NewPolicyTagIamPolicy(ctx, "policy", &datacatalog.PolicyTagIamPolicyArgs{
 //				PolicyTag:  pulumi.Any(basicPolicyTag.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

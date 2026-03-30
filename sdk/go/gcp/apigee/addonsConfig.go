@@ -78,21 +78,21 @@ import (
 //				return err
 //			}
 //			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
-//				Project: pulumi.String(current.Project),
+//				Project: pulumi.String(pulumi.String(current.Project)),
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
-//				Project: pulumi.String(current.Project),
+//				Project: pulumi.String(pulumi.String(current.Project)),
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
-//				Project: pulumi.String(current.Project),
+//				Project: pulumi.String(pulumi.String(current.Project)),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //			})
 //			if err != nil {
@@ -100,7 +100,7 @@ import (
 //			}
 //			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
 //				Name:    pulumi.String("apigee-network"),
-//				Project: pulumi.String(current.Project),
+//				Project: pulumi.String(pulumi.String(current.Project)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				compute,
 //			}))
@@ -113,7 +113,7 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
 //				Network:      apigeeNetwork.ID(),
-//				Project:      pulumi.String(current.Project),
+//				Project:      pulumi.String(pulumi.String(current.Project)),
 //			})
 //			if err != nil {
 //				return err
@@ -130,7 +130,7 @@ import (
 //			}
 //			org, err := apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(pulumi.String(current.Project)),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //				BillingType:       pulumi.String("EVALUATION"),
 //			}, pulumi.DependsOn([]pulumi.Resource{

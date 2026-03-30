@@ -89,7 +89,7 @@ import (
 //				},
 //				Metadata: pulumi.StringMap{
 //					"serial-port-logging-enable": pulumi.String("TRUE"),
-//					"windows-keys":               pulumi.String(json0),
+//					"windows-keys":               pulumi.String(pulumi.String(json0)),
 //				},
 //				ServiceAccount: &compute.InstanceServiceAccountArgs{
 //					Scopes: pulumi.StringArray{

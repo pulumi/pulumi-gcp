@@ -175,7 +175,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewServiceIdentity(ctx, "kafka_service_identity", &projects.ServiceIdentityArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
 //				Service: pulumi.String("managedkafka.googleapis.com"),
 //			})
 //			if err != nil {

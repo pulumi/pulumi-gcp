@@ -80,7 +80,7 @@ import (
 //					Steps: diagflow.CxPlaybookInstructionStepArray{
 //						&diagflow.CxPlaybookInstructionStepArgs{
 //							Text:  pulumi.String("step 1"),
-//							Steps: pulumi.String(json0),
+//							Steps: pulumi.String(pulumi.String(json0)),
 //						},
 //						&diagflow.CxPlaybookInstructionStepArgs{
 //							Text: pulumi.String("step 2"),
@@ -201,7 +201,7 @@ import (
 //					Steps: diagflow.CxPlaybookInstructionStepArray{
 //						&diagflow.CxPlaybookInstructionStepArgs{
 //							Text:  pulumi.String("step 1"),
-//							Steps: pulumi.String(json0),
+//							Steps: pulumi.String(pulumi.String(json0)),
 //						},
 //						&diagflow.CxPlaybookInstructionStepArgs{
 //							Text: pulumi.String("step 2"),

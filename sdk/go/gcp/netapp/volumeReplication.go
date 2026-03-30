@@ -60,7 +60,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(_default.Id),
+//				Network:      pulumi.String(pulumi.String(_default.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //				Location:         pulumi.String("us-west2"),
 //				ServiceLevel:     pulumi.String("PREMIUM"),
 //				CapacityGib:      pulumi.String("2048"),
-//				Network:          pulumi.String(_default.Id),
+//				Network:          pulumi.String(pulumi.String(_default.Id)),
 //				AllowAutoTiering: pulumi.Bool(true),
 //			})
 //			if err != nil {

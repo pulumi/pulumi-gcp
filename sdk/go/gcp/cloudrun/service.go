@@ -328,7 +328,7 @@ import (
 //				Location:   _default.Location,
 //				Project:    _default.Project,
 //				Service:    _default.Name,
-//				PolicyData: pulumi.String(noauth.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(noauth.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -479,7 +479,7 @@ import (
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
 //						Annotations: pulumi.StringMap{
-//							"run.googleapis.com/container-dependencies": pulumi.String(json0),
+//							"run.googleapis.com/container-dependencies": pulumi.String(pulumi.String(json0)),
 //						},
 //					},
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{

@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
 //				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number),
 //			})
@@ -109,7 +109,7 @@ import (
 //				return err
 //			}
 //			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
 //				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number),
 //			})

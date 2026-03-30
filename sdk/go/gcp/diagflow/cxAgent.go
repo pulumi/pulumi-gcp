@@ -120,7 +120,7 @@ import (
 //					},
 //				},
 //				TextToSpeechSettings: &diagflow.CxAgentTextToSpeechSettingsArgs{
-//					SynthesizeSpeechConfigs: pulumi.String(json0),
+//					SynthesizeSpeechConfigs: pulumi.String(pulumi.String(json0)),
 //				},
 //				GenAppBuilderSettings: &diagflow.CxAgentGenAppBuilderSettingsArgs{
 //					Engine: pulumi.String("projects/-/locations/-/collections/-/engines/-"),

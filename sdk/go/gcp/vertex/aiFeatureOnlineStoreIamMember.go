@@ -60,7 +60,7 @@ import (
 //			_, err = vertex.NewAiFeatureOnlineStoreIamPolicy(ctx, "policy", &vertex.AiFeatureOnlineStoreIamPolicyArgs{
 //				Region:             pulumi.Any(featureOnlineStore.Region),
 //				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
-//				PolicyData:         pulumi.String(admin.PolicyData),
+//				PolicyData:         pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //			_, err = vertex.NewAiFeatureOnlineStoreIamPolicy(ctx, "policy", &vertex.AiFeatureOnlineStoreIamPolicyArgs{
 //				Region:             pulumi.Any(featureOnlineStore.Region),
 //				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
-//				PolicyData:         pulumi.String(admin.PolicyData),
+//				PolicyData:         pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

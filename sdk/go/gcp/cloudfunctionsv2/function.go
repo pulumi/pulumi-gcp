@@ -795,7 +795,7 @@ import (
 //					SecretEnvironmentVariables: cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariableArray{
 //						&cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariableArgs{
 //							Key:       pulumi.String("TEST"),
-//							ProjectId: pulumi.String(project),
+//							ProjectId: pulumi.String(pulumi.String(project)),
 //							Secret:    secret.SecretId,
 //							Version:   pulumi.String("latest"),
 //						},
@@ -889,7 +889,7 @@ import (
 //					SecretVolumes: cloudfunctionsv2.FunctionServiceConfigSecretVolumeArray{
 //						&cloudfunctionsv2.FunctionServiceConfigSecretVolumeArgs{
 //							MountPath: pulumi.String("/etc/secrets"),
-//							ProjectId: pulumi.String(project),
+//							ProjectId: pulumi.String(pulumi.String(project)),
 //							Secret:    secret.SecretId,
 //						},
 //					},
@@ -1020,7 +1020,7 @@ import (
 //				return err
 //			}
 //			eaSa, err := projects.NewServiceIdentity(ctx, "ea_sa", &projects.ServiceIdentityArgs{
-//				Project: pulumi.String(projectGetProject.ProjectId),
+//				Project: pulumi.String(pulumi.String(projectGetProject.ProjectId)),
 //				Service: pulumi.String("eventarc.googleapis.com"),
 //			})
 //			if err != nil {

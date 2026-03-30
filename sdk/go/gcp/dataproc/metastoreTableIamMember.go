@@ -60,7 +60,7 @@ import (
 //				ServiceId:  pulumi.Any(dpmsService.ServiceId),
 //				DatabaseId: pulumi.Any(hive.HiveConfig[0].Properties.Database),
 //				Table:      pulumi.Any(hive.HiveConfig[0].Properties.Table),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -191,7 +191,7 @@ import (
 //				ServiceId:  pulumi.Any(dpmsService.ServiceId),
 //				DatabaseId: pulumi.Any(hive.HiveConfig[0].Properties.Database),
 //				Table:      pulumi.Any(hive.HiveConfig[0].Properties.Table),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

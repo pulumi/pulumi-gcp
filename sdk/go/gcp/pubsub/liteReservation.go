@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = pubsub.NewLiteReservation(ctx, "example", &pubsub.LiteReservationArgs{
 //				Name:               pulumi.String("example-reservation"),
-//				Project:            pulumi.String(project.Number),
+//				Project:            pulumi.String(pulumi.String(project.Number)),
 //				ThroughputCapacity: pulumi.Int(2),
 //			})
 //			if err != nil {

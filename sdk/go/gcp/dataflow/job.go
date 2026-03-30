@@ -159,7 +159,7 @@ import (
 //				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
 //				SkipWaitOnJobTermination: pulumi.Bool(true),
 //				Parameters: pulumi.StringMap{
-//					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
+//					"inputSubscription": pulumi.String(pulumi.String(bigDataJobSubscriptionId)),
 //				},
 //			})
 //			if err != nil {

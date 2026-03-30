@@ -58,7 +58,7 @@ import (
 //				Project:    pulumi.Any(regiondisk.Project),
 //				Region:     pulumi.Any(regiondisk.Region),
 //				Name:       pulumi.Any(regiondisk.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err
@@ -183,7 +183,7 @@ import (
 //				Project:    pulumi.Any(regiondisk.Project),
 //				Region:     pulumi.Any(regiondisk.Region),
 //				Name:       pulumi.Any(regiondisk.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(pulumi.String(admin.PolicyData)),
 //			})
 //			if err != nil {
 //				return err

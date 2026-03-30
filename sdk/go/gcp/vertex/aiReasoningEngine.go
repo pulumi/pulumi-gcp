@@ -333,7 +333,7 @@ import (
 //			}
 //			saIamObjectViewer, err := projects.NewIAMMember(ctx, "sa_iam_object_viewer", &projects.IAMMemberArgs{
 //				Role:    pulumi.String("roles/storage.objectViewer"),
-//				Project: pulumi.String(project.Id),
+//				Project: pulumi.String(pulumi.String(project.Id)),
 //				Member:  serviceAccount.Member,
 //			})
 //			if err != nil {
@@ -341,7 +341,7 @@ import (
 //			}
 //			saIamAiPlatformUser, err := projects.NewIAMMember(ctx, "sa_iam_ai_platform_user", &projects.IAMMemberArgs{
 //				Role:    pulumi.String("roles/aiplatform.user"),
-//				Project: pulumi.String(project.Id),
+//				Project: pulumi.String(pulumi.String(project.Id)),
 //				Member:  serviceAccount.Member,
 //			})
 //			if err != nil {
@@ -349,7 +349,7 @@ import (
 //			}
 //			saIamViewer, err := projects.NewIAMMember(ctx, "sa_iam_viewer", &projects.IAMMemberArgs{
 //				Role:    pulumi.String("roles/viewer"),
-//				Project: pulumi.String(project.Id),
+//				Project: pulumi.String(pulumi.String(project.Id)),
 //				Member:  serviceAccount.Member,
 //			})
 //			if err != nil {
@@ -415,7 +415,7 @@ import (
 //				},
 //				Spec: &vertex.AiReasoningEngineSpecArgs{
 //					AgentFramework: pulumi.String("google-adk"),
-//					ClassMethods:   pulumi.String(json0),
+//					ClassMethods:   pulumi.String(pulumi.String(json0)),
 //					ServiceAccount: serviceAccount.Email,
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 //						MinInstances:         pulumi.Int(1),

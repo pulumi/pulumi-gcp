@@ -34,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstAvailableVersion", versions.ValidVersions[0])
+//			ctx.Export("firstAvailableVersion", pulumi.Any(versions.ValidVersions[0]))
 //			return nil
 //		})
 //	}
