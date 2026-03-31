@@ -38,6 +38,22 @@ func getProject() string {
 	return proj
 }
 
+func getRegion() string {
+	region := os.Getenv("GOOGLE_REGION")
+	if region == "" {
+		region = "us-central1"
+	}
+	return region
+}
+
+func getZone() string {
+	zone := os.Getenv("GOOGLE_ZONE")
+	if zone == "" {
+		zone = "us-central1-a"
+	}
+	return zone
+}
+
 func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }

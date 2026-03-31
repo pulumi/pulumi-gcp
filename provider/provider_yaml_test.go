@@ -101,6 +101,29 @@ func skipIfNotCI(t *testing.T) {
 	}
 }
 
+func TestComputeInstanceMaxItemsRegress3666(t *testing.T) {
+	pt := pulumiTest(t, filepath.Join("test-programs", "compute-instance-maxitems-3666"))
+
+	pt.SetConfig(t, "gcpProj", getProject())
+	pt.SetConfig(t, "gcpRegion", getRegion())
+	pt.SetConfig(t, "gcpZone", getZone())
+	pt.SetConfig(t, "instanceDescription", "pulumi maxitems test repro instance description 1")
+
+	pt.Up(t)
+
+	pt.SetConfig(t, "instanceDescription", "pulumi maxitems test repro instance description 2")
+
+	previewResult := pt.Preview(t)
+	assertpreview.HasNoReplacements(t, previewResult)
+	assertpreview.HasNoDeletes(t, previewResult)
+
+	upResult := pt.Up(t)
+	require.NotEmpty(t, upResult.Outputs["bootDiskName"].Value)
+	require.NotEmpty(t, upResult.Outputs["instanceName"].Value)
+
+	pt.Preview(t, optpreview.ExpectNoChanges())
+}
+
 func TestIamBinding(t *testing.T) {
 	t.Skip("TODO[https://github.com/pulumi/pulumi-gcp/issues/2725]: Flaky")
 	skipIfNotCI(t)

@@ -1,0 +1,84 @@
+name: compute-instance-maxitems-3666
+runtime: yaml
+description: Regression test for pulumi/pulumi-gcp#3666
+config:
+  gcpProj: string
+  gcpRegion: string
+  gcpZone: string
+  instanceDescription: string
+resources:
+  boot-disk:
+    type: gcp:compute:Disk
+    properties:
+      project: ${gcpProj}
+      zone: ${gcpZone}
+      image: projects/ubuntu-os-cloud/global/images/family/ubuntu-minimal-2404-lts-amd64
+      size: 10
+      type: projects/${gcpProj}/zones/${gcpZone}/diskTypes/pd-balanced
+
+  repro-instance:
+    type: gcp:compute:Instance
+    properties:
+      project: ${gcpProj}
+      zone: ${gcpZone}
+      machineType: e2-micro
+      description: ${instanceDescription}
+      bootDisk:
+        autoDelete: false
+        source: ${boot-disk.id}
+      networkInterfaces:
+        - network: default
+          subnetwork: projects/${gcpProj}/regions/${gcpRegion}/subnetworks/default
+      metadata:
+        enable-oslogin: "FALSE"
+    options:
+      deleteBeforeReplace: true
+      ignoreChanges:
+        - bootDisk
+
+  daily-policy:
+    type: gcp:compute:ResourcePolicy
+    properties:
+      project: ${gcpProj}
+      region: ${gcpRegion}
+      snapshotSchedulePolicy:
+        schedule:
+          dailySchedule:
+            daysInCycle: 1
+            startTime: "04:00"
+        retentionPolicy:
+          maxRetentionDays: 7
+          onSourceDiskDelete: KEEP_AUTO_SNAPSHOTS
+
+  weekly-policy:
+    type: gcp:compute:ResourcePolicy
+    properties:
+      project: ${gcpProj}
+      region: ${gcpRegion}
+      snapshotSchedulePolicy:
+        schedule:
+          weeklySchedule:
+            dayOfWeeks:
+              - day: MONDAY
+                startTime: "05:00"
+        retentionPolicy:
+          maxRetentionDays: 30
+          onSourceDiskDelete: KEEP_AUTO_SNAPSHOTS
+
+  daily-attachment:
+    type: gcp:compute:DiskResourcePolicyAttachment
+    properties:
+      disk: ${boot-disk.name}
+      name: ${daily-policy.name}
+      zone: ${gcpZone}
+
+  weekly-attachment:
+    type: gcp:compute:DiskResourcePolicyAttachment
+    properties:
+      disk: ${boot-disk.name}
+      name: ${weekly-policy.name}
+      zone: ${gcpZone}
+
+outputs:
+  bootDiskName: ${boot-disk.name}
+  instanceName: ${repro-instance.name}
