@@ -430,6 +430,47 @@ import (
 //
 // ```
 //
+// ### Cloud SQL Instance created using pointInTimeRestore using multiregion datasource
+// > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("main-instance"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//				},
+//				PointInTimeRestoreContext: &sql.DatabaseInstancePointInTimeRestoreContextArgs{
+//					Datasource:     pulumi.String("backupdr_datasource"),
+//					TargetInstance: pulumi.String("target_instance_name"),
+//					PointInTime:    pulumi.String("time_stamp"),
+//					Region:         pulumi.String("region"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Switchover
 //
 // Users can perform a switchover on a replica by following the steps below.

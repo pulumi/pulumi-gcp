@@ -44,22 +44,23 @@ type LookupInstanceResult struct {
 	Filesystem         string                         `pulumi:"filesystem"`
 	GkeSupportEnabled  bool                           `pulumi:"gkeSupportEnabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string            `pulumi:"id"`
-	InstanceId               string            `pulumi:"instanceId"`
-	KmsKey                   string            `pulumi:"kmsKey"`
-	Labels                   map[string]string `pulumi:"labels"`
-	Location                 string            `pulumi:"location"`
-	MountPoint               string            `pulumi:"mountPoint"`
-	Name                     string            `pulumi:"name"`
-	Network                  string            `pulumi:"network"`
-	PerUnitStorageThroughput string            `pulumi:"perUnitStorageThroughput"`
-	PlacementPolicy          string            `pulumi:"placementPolicy"`
-	Project                  *string           `pulumi:"project"`
-	PulumiLabels             map[string]string `pulumi:"pulumiLabels"`
-	State                    string            `pulumi:"state"`
-	StateReason              string            `pulumi:"stateReason"`
-	UpdateTime               string            `pulumi:"updateTime"`
-	Zone                     *string           `pulumi:"zone"`
+	Id                       string                         `pulumi:"id"`
+	InstanceId               string                         `pulumi:"instanceId"`
+	KmsKey                   string                         `pulumi:"kmsKey"`
+	Labels                   map[string]string              `pulumi:"labels"`
+	Location                 string                         `pulumi:"location"`
+	MaintenancePolicies      []GetInstanceMaintenancePolicy `pulumi:"maintenancePolicies"`
+	MountPoint               string                         `pulumi:"mountPoint"`
+	Name                     string                         `pulumi:"name"`
+	Network                  string                         `pulumi:"network"`
+	PerUnitStorageThroughput string                         `pulumi:"perUnitStorageThroughput"`
+	PlacementPolicy          string                         `pulumi:"placementPolicy"`
+	Project                  *string                        `pulumi:"project"`
+	PulumiLabels             map[string]string              `pulumi:"pulumiLabels"`
+	State                    string                         `pulumi:"state"`
+	StateReason              string                         `pulumi:"stateReason"`
+	UpdateTime               string                         `pulumi:"updateTime"`
+	Zone                     *string                        `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -147,6 +148,10 @@ func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupInstanceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenancePolicies() GetInstanceMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenancePolicy { return v.MaintenancePolicies }).(GetInstanceMaintenancePolicyArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) MountPoint() pulumi.StringOutput {

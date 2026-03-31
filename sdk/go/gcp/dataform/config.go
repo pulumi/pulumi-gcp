@@ -67,7 +67,9 @@ import (
 //				Project:          project.ProjectId,
 //				Service:          pulumi.String("dataform.googleapis.com"),
 //				DisableOnDestroy: pulumi.Bool(false),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cloudkmsApi,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -84,7 +86,9 @@ import (
 //			dataformSa, err := projects.NewServiceIdentity(ctx, "dataform_sa", &projects.ServiceIdentityArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("dataform.googleapis.com"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForDataformApi,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -93,7 +97,7 @@ import (
 //				Name:     pulumi.String("example-key-ring"),
 //				Location: pulumi.String("us-central1"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				cloudkmsApi,
+//				waitForDataformApi,
 //			}))
 //			if err != nil {
 //				return err
@@ -121,7 +125,6 @@ import (
 //				Project:           project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyBinding,
-//				waitForDataformApi,
 //			}))
 //			if err != nil {
 //				return err

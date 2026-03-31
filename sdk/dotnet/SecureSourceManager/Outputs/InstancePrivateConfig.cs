@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
         /// </summary>
         public readonly string? CaPool;
         /// <summary>
+        /// Custom host configuration for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstancePrivateConfigCustomHostConfig? CustomHostConfig;
+        /// <summary>
         /// (Output)
         /// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         /// </summary>
@@ -36,6 +41,8 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
         private InstancePrivateConfig(
             string? caPool,
 
+            Outputs.InstancePrivateConfigCustomHostConfig? customHostConfig,
+
             string? httpServiceAttachment,
 
             bool isPrivate,
@@ -43,6 +50,7 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
             string? sshServiceAttachment)
         {
             CaPool = caPool;
+            CustomHostConfig = customHostConfig;
             HttpServiceAttachment = httpServiceAttachment;
             IsPrivate = isPrivate;
             SshServiceAttachment = sshServiceAttachment;

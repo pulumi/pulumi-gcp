@@ -19,8 +19,9 @@ __all__ = ['RegionTargetTcpProxyArgs', 'RegionTargetTcpProxy']
 @pulumi.input_type
 class RegionTargetTcpProxyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[_builtins.str],
+                 backend_service: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -29,8 +30,14 @@ class RegionTargetTcpProxyArgs:
         """
         The set of arguments for constructing a RegionTargetTcpProxy resource.
 
-        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
+        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
+               the loadBalancingScheme (available in beta) is specified.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
+               Specifies the load balancer type. A target TCP proxy created for one type
+               of load balancer cannot be used with another. For more information, refer
+               to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+               Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -49,9 +56,12 @@ class RegionTargetTcpProxyArgs:
         :param pulumi.Input[_builtins.str] region: The Region in which the created target TCP proxy should reside.
                If it is not provided, the provider region is used.
         """
-        pulumi.set(__self__, "backend_service", backend_service)
+        if backend_service is not None:
+            pulumi.set(__self__, "backend_service", backend_service)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if load_balancing_scheme is not None:
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -65,14 +75,15 @@ class RegionTargetTcpProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendService")
-    def backend_service(self) -> pulumi.Input[_builtins.str]:
+    def backend_service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A reference to the BackendService resource.
+        A reference to the BackendService resource. This field is optional when
+        the loadBalancingScheme (available in beta) is specified.
         """
         return pulumi.get(self, "backend_service")
 
     @backend_service.setter
-    def backend_service(self, value: pulumi.Input[_builtins.str]):
+    def backend_service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "backend_service", value)
 
     @_builtins.property
@@ -86,6 +97,22 @@ class RegionTargetTcpProxyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Specifies the load balancer type. A target TCP proxy created for one type
+        of load balancer cannot be used with another. For more information, refer
+        to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+        Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
+
+    @load_balancing_scheme.setter
+    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
@@ -166,6 +193,7 @@ class _RegionTargetTcpProxyState:
                  backend_service: Optional[pulumi.Input[_builtins.str]] = None,
                  creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -176,9 +204,15 @@ class _RegionTargetTcpProxyState:
         """
         Input properties used for looking up and filtering RegionTargetTcpProxy resources.
 
-        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
+        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
+               the loadBalancingScheme (available in beta) is specified.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
+               Specifies the load balancer type. A target TCP proxy created for one type
+               of load balancer cannot be used with another. For more information, refer
+               to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+               Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -205,6 +239,8 @@ class _RegionTargetTcpProxyState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if load_balancing_scheme is not None:
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -224,7 +260,8 @@ class _RegionTargetTcpProxyState:
     @pulumi.getter(name="backendService")
     def backend_service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A reference to the BackendService resource.
+        A reference to the BackendService resource. This field is optional when
+        the loadBalancingScheme (available in beta) is specified.
         """
         return pulumi.get(self, "backend_service")
 
@@ -255,6 +292,22 @@ class _RegionTargetTcpProxyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Specifies the load balancer type. A target TCP proxy created for one type
+        of load balancer cannot be used with another. For more information, refer
+        to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+        Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
+
+    @load_balancing_scheme.setter
+    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
@@ -361,6 +414,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_service: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -406,6 +460,84 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             backend_service=default_region_backend_service.id)
         ```
+        ### Region Target Tcp Proxy Basic Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backend_service=default_region_backend_service.id)
+        ```
+        ### Region Target Tcp Proxy Backendless
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            load_balancing_scheme="INTERNAL_MANAGED")
+        ```
+        ### Region Target Tcp Proxy Tls Route
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="tls-route-check",
+            location="europe-west4",
+            target_proxies=[default.self_link],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default_region_backend_service.self_link,
+                    }],
+                },
+            }])
+        ```
 
         ## Import
 
@@ -428,8 +560,14 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
+        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
+               the loadBalancingScheme (available in beta) is specified.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
+               Specifies the load balancer type. A target TCP proxy created for one type
+               of load balancer cannot be used with another. For more information, refer
+               to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+               Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -452,7 +590,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionTargetTcpProxyArgs,
+                 args: Optional[RegionTargetTcpProxyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a RegionTargetTcpProxy resource, which is used by one or more
@@ -493,6 +631,84 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             backend_service=default_region_backend_service.id)
         ```
+        ### Region Target Tcp Proxy Basic Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backend_service=default_region_backend_service.id)
+        ```
+        ### Region Target Tcp Proxy Backendless
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            load_balancing_scheme="INTERNAL_MANAGED")
+        ```
+        ### Region Target Tcp Proxy Tls Route
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionTargetTcpProxy("default",
+            name="test-proxy",
+            region="europe-west4",
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="tls-route-check",
+            location="europe-west4",
+            target_proxies=[default.self_link],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default_region_backend_service.self_link,
+                    }],
+                },
+            }])
+        ```
 
         ## Import
 
@@ -530,6 +746,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_service: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -544,10 +761,9 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionTargetTcpProxyArgs.__new__(RegionTargetTcpProxyArgs)
 
-            if backend_service is None and not opts.urn:
-                raise TypeError("Missing required property 'backend_service'")
             __props__.__dict__["backend_service"] = backend_service
             __props__.__dict__["description"] = description
+            __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
@@ -569,6 +785,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             backend_service: Optional[pulumi.Input[_builtins.str]] = None,
             creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -583,9 +800,15 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource.
+        :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
+               the loadBalancingScheme (available in beta) is specified.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
+               Specifies the load balancer type. A target TCP proxy created for one type
+               of load balancer cannot be used with another. For more information, refer
+               to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+               Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -613,6 +836,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         __props__.__dict__["backend_service"] = backend_service
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_bind"] = proxy_bind
@@ -624,9 +848,10 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="backendService")
-    def backend_service(self) -> pulumi.Output[_builtins.str]:
+    def backend_service(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A reference to the BackendService resource.
+        A reference to the BackendService resource. This field is optional when
+        the loadBalancingScheme (available in beta) is specified.
         """
         return pulumi.get(self, "backend_service")
 
@@ -645,6 +870,18 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Specifies the load balancer type. A target TCP proxy created for one type
+        of load balancer cannot be used with another. For more information, refer
+        to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+        Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
 
     @_builtins.property
     @pulumi.getter

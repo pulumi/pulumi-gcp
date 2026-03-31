@@ -5,6 +5,7 @@ package com.pulumi.gcp.securesourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.securesourcemanager.outputs.InstancePrivateConfigCustomHostConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -18,6 +19,12 @@ public final class InstancePrivateConfig {
      * 
      */
     private @Nullable String caPool;
+    /**
+     * @return Custom host configuration for the instance.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstancePrivateConfigCustomHostConfig customHostConfig;
     /**
      * @return (Output)
      * Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -43,6 +50,14 @@ public final class InstancePrivateConfig {
      */
     public Optional<String> caPool() {
         return Optional.ofNullable(this.caPool);
+    }
+    /**
+     * @return Custom host configuration for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstancePrivateConfigCustomHostConfig> customHostConfig() {
+        return Optional.ofNullable(this.customHostConfig);
     }
     /**
      * @return (Output)
@@ -78,6 +93,7 @@ public final class InstancePrivateConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String caPool;
+        private @Nullable InstancePrivateConfigCustomHostConfig customHostConfig;
         private @Nullable String httpServiceAttachment;
         private Boolean isPrivate;
         private @Nullable String sshServiceAttachment;
@@ -85,6 +101,7 @@ public final class InstancePrivateConfig {
         public Builder(InstancePrivateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caPool = defaults.caPool;
+    	      this.customHostConfig = defaults.customHostConfig;
     	      this.httpServiceAttachment = defaults.httpServiceAttachment;
     	      this.isPrivate = defaults.isPrivate;
     	      this.sshServiceAttachment = defaults.sshServiceAttachment;
@@ -94,6 +111,12 @@ public final class InstancePrivateConfig {
         public Builder caPool(@Nullable String caPool) {
 
             this.caPool = caPool;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customHostConfig(@Nullable InstancePrivateConfigCustomHostConfig customHostConfig) {
+
+            this.customHostConfig = customHostConfig;
             return this;
         }
         @CustomType.Setter
@@ -119,6 +142,7 @@ public final class InstancePrivateConfig {
         public InstancePrivateConfig build() {
             final var _resultValue = new InstancePrivateConfig();
             _resultValue.caPool = caPool;
+            _resultValue.customHostConfig = customHostConfig;
             _resultValue.httpServiceAttachment = httpServiceAttachment;
             _resultValue.isPrivate = isPrivate;
             _resultValue.sshServiceAttachment = sshServiceAttachment;

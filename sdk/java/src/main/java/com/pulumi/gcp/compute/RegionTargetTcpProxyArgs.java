@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -18,18 +17,20 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
     public static final RegionTargetTcpProxyArgs Empty = new RegionTargetTcpProxyArgs();
 
     /**
-     * A reference to the BackendService resource.
+     * A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is specified.
      * 
      */
-    @Import(name="backendService", required=true)
-    private Output<String> backendService;
+    @Import(name="backendService")
+    private @Nullable Output<String> backendService;
 
     /**
-     * @return A reference to the BackendService resource.
+     * @return A reference to the BackendService resource. This field is optional when
+     * the loadBalancingScheme (available in beta) is specified.
      * 
      */
-    public Output<String> backendService() {
-        return this.backendService;
+    public Optional<Output<String>> backendService() {
+        return Optional.ofNullable(this.backendService);
     }
 
     /**
@@ -45,6 +46,29 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    @Import(name="loadBalancingScheme")
+    private @Nullable Output<String> loadBalancingScheme;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the load balancer type. A target TCP proxy created for one type
+     * of load balancer cannot be used with another. For more information, refer
+     * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+     * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+     * 
+     */
+    public Optional<Output<String>> loadBalancingScheme() {
+        return Optional.ofNullable(this.loadBalancingScheme);
     }
 
     /**
@@ -151,6 +175,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
     private RegionTargetTcpProxyArgs(RegionTargetTcpProxyArgs $) {
         this.backendService = $.backendService;
         this.description = $.description;
+        this.loadBalancingScheme = $.loadBalancingScheme;
         this.name = $.name;
         this.project = $.project;
         this.proxyBind = $.proxyBind;
@@ -177,18 +202,20 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backendService A reference to the BackendService resource.
+         * @param backendService A reference to the BackendService resource. This field is optional when
+         * the loadBalancingScheme (available in beta) is specified.
          * 
          * @return builder
          * 
          */
-        public Builder backendService(Output<String> backendService) {
+        public Builder backendService(@Nullable Output<String> backendService) {
             $.backendService = backendService;
             return this;
         }
 
         /**
-         * @param backendService A reference to the BackendService resource.
+         * @param backendService A reference to the BackendService resource. This field is optional when
+         * the loadBalancingScheme (available in beta) is specified.
          * 
          * @return builder
          * 
@@ -216,6 +243,35 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param loadBalancingScheme (Optional, Beta)
+         * Specifies the load balancer type. A target TCP proxy created for one type
+         * of load balancer cannot be used with another. For more information, refer
+         * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+         * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancingScheme(@Nullable Output<String> loadBalancingScheme) {
+            $.loadBalancingScheme = loadBalancingScheme;
+            return this;
+        }
+
+        /**
+         * @param loadBalancingScheme (Optional, Beta)
+         * Specifies the load balancer type. A target TCP proxy created for one type
+         * of load balancer cannot be used with another. For more information, refer
+         * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+         * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancingScheme(String loadBalancingScheme) {
+            return loadBalancingScheme(Output.of(loadBalancingScheme));
         }
 
         /**
@@ -348,9 +404,6 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
         }
 
         public RegionTargetTcpProxyArgs build() {
-            if ($.backendService == null) {
-                throw new MissingRequiredPropertyException("RegionTargetTcpProxyArgs", "backendService");
-            }
             return $;
         }
     }

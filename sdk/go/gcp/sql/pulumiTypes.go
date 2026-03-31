@@ -533,6 +533,8 @@ type DatabaseInstancePointInTimeRestoreContext struct {
 	PointInTime *string `pulumi:"pointInTime"`
 	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 	PreferredZone *string `pulumi:"preferredZone"`
+	// The region of the target instance where the datasource will be restored. For example: "us-central1".
+	Region *string `pulumi:"region"`
 	// The name of the target instance.
 	TargetInstance *string `pulumi:"targetInstance"`
 }
@@ -559,6 +561,8 @@ type DatabaseInstancePointInTimeRestoreContextArgs struct {
 	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
 	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 	PreferredZone pulumi.StringPtrInput `pulumi:"preferredZone"`
+	// The region of the target instance where the datasource will be restored. For example: "us-central1".
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The name of the target instance.
 	TargetInstance pulumi.StringPtrInput `pulumi:"targetInstance"`
 }
@@ -662,6 +666,11 @@ func (o DatabaseInstancePointInTimeRestoreContextOutput) PreferredZone() pulumi.
 	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.PreferredZone }).(pulumi.StringPtrOutput)
 }
 
+// The region of the target instance where the datasource will be restored. For example: "us-central1".
+func (o DatabaseInstancePointInTimeRestoreContextOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
 // The name of the target instance.
 func (o DatabaseInstancePointInTimeRestoreContextOutput) TargetInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.TargetInstance }).(pulumi.StringPtrOutput)
@@ -730,6 +739,16 @@ func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) PreferredZone() pulu
 			return nil
 		}
 		return v.PreferredZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the target instance where the datasource will be restored. For example: "us-central1".
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7056,6 +7075,8 @@ type GetDatabaseInstancePointInTimeRestoreContext struct {
 	PointInTime string `pulumi:"pointInTime"`
 	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 	PreferredZone string `pulumi:"preferredZone"`
+	// The region of the target instance to restore to.
+	Region string `pulumi:"region"`
 	// The name of the target instance to restore to.
 	TargetInstance string `pulumi:"targetInstance"`
 }
@@ -7080,6 +7101,8 @@ type GetDatabaseInstancePointInTimeRestoreContextArgs struct {
 	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
 	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The region of the target instance to restore to.
+	Region pulumi.StringInput `pulumi:"region"`
 	// The name of the target instance to restore to.
 	TargetInstance pulumi.StringInput `pulumi:"targetInstance"`
 }
@@ -7153,6 +7176,11 @@ func (o GetDatabaseInstancePointInTimeRestoreContextOutput) PointInTime() pulumi
 // Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 func (o GetDatabaseInstancePointInTimeRestoreContextOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The region of the target instance to restore to.
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The name of the target instance to restore to.
@@ -11509,6 +11537,8 @@ type GetDatabaseInstancesInstancePointInTimeRestoreContext struct {
 	PointInTime string `pulumi:"pointInTime"`
 	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 	PreferredZone string `pulumi:"preferredZone"`
+	// To filter out the Cloud SQL instances which are located in the specified region.
+	Region string `pulumi:"region"`
 	// The name of the target instance to restore to.
 	TargetInstance string `pulumi:"targetInstance"`
 }
@@ -11533,6 +11563,8 @@ type GetDatabaseInstancesInstancePointInTimeRestoreContextArgs struct {
 	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
 	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// To filter out the Cloud SQL instances which are located in the specified region.
+	Region pulumi.StringInput `pulumi:"region"`
 	// The name of the target instance to restore to.
 	TargetInstance pulumi.StringInput `pulumi:"targetInstance"`
 }
@@ -11606,6 +11638,11 @@ func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) PointInTime
 // Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
 func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// To filter out the Cloud SQL instances which are located in the specified region.
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The name of the target instance to restore to.

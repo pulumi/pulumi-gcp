@@ -470,6 +470,42 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ### Cloud SQL Instance created using PointInTimeRestore using multiregion datasource
+    /// &gt; **NOTE:** Replace `BackupdrDatasource` with the full datasource path, `TimeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `Region` with the target instance region.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "main-instance",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 BinaryLogEnabled = true,
+    ///             },
+    ///         },
+    ///         PointInTimeRestoreContext = new Gcp.Sql.Inputs.DatabaseInstancePointInTimeRestoreContextArgs
+    ///         {
+    ///             Datasource = "backupdr_datasource",
+    ///             TargetInstance = "target_instance_name",
+    ///             PointInTime = "time_stamp",
+    ///             Region = "region",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Switchover
     /// 
     /// Users can perform a switchover on a replica by following the steps below.

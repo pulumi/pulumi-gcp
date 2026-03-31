@@ -607,6 +607,10 @@ namespace Pulumi.Gcp.Ces
     ///         McpToolset = new Gcp.Ces.Inputs.ToolsetMcpToolsetArgs
     ///         {
     ///             ServerAddress = "https://api.example.com/mcp/",
+    ///             CustomHeaders = 
+    ///             {
+    ///                 { "X-Custom-Header", "$context.variables.my_variable" },
+    ///             },
     ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetMcpToolsetTlsConfigArgs
     ///             {
     ///                 CaCerts = new[]

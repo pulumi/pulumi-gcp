@@ -27,7 +27,7 @@ class GetBackupPlanResult:
     """
     A collection of values returned by getBackupPlan.
     """
-    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, id=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
+    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, disk_backup_plan_properties=None, id=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
         if backup_plan_id and not isinstance(backup_plan_id, str):
             raise TypeError("Expected argument 'backup_plan_id' to be a str")
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
@@ -46,6 +46,9 @@ class GetBackupPlanResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disk_backup_plan_properties and not isinstance(disk_backup_plan_properties, list):
+            raise TypeError("Expected argument 'disk_backup_plan_properties' to be a list")
+        pulumi.set(__self__, "disk_backup_plan_properties", disk_backup_plan_properties)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -103,6 +106,11 @@ class GetBackupPlanResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="diskBackupPlanProperties")
+    def disk_backup_plan_properties(self) -> Sequence['outputs.GetBackupPlanDiskBackupPlanPropertyResult']:
+        return pulumi.get(self, "disk_backup_plan_properties")
 
     @_builtins.property
     @pulumi.getter
@@ -165,6 +173,7 @@ class AwaitableGetBackupPlanResult(GetBackupPlanResult):
             backup_vault_service_account=self.backup_vault_service_account,
             create_time=self.create_time,
             description=self.description,
+            disk_backup_plan_properties=self.disk_backup_plan_properties,
             id=self.id,
             location=self.location,
             log_retention_days=self.log_retention_days,
@@ -197,6 +206,7 @@ def get_backup_plan(backup_plan_id: Optional[_builtins.str] = None,
         backup_vault_service_account=pulumi.get(__ret__, 'backup_vault_service_account'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        disk_backup_plan_properties=pulumi.get(__ret__, 'disk_backup_plan_properties'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         log_retention_days=pulumi.get(__ret__, 'log_retention_days'),
@@ -226,6 +236,7 @@ def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[_builtins.str]]
         backup_vault_service_account=pulumi.get(__response__, 'backup_vault_service_account'),
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
+        disk_backup_plan_properties=pulumi.get(__response__, 'disk_backup_plan_properties'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         log_retention_days=pulumi.get(__response__, 'log_retention_days'),

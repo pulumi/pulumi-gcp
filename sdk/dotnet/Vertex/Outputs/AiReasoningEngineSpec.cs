@@ -28,6 +28,22 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecDeploymentSpec? DeploymentSpec;
         /// <summary>
+        /// (Output, Beta)
+        /// The identity to use for the Reasoning Engine.
+        /// </summary>
+        public readonly string? EffectiveIdentity;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. The identity type to use for the Reasoning Engine.
+        /// If not specified, the `ServiceAccount` field will be used if set,
+        /// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+        /// Possible values:
+        /// * `SERVICE_ACCOUNT`: Use a custom service account if the `ServiceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+        /// * `AGENT_IDENTITY`: Use Agent Identity. The `ServiceAccount` field must not be set.
+        /// Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+        /// </summary>
+        public readonly string? IdentityType;
+        /// <summary>
         /// Optional. User provided package spec of the ReasoningEngine.
         /// Ignored when users directly specify a deployment image through
         /// deploymentSpec.first_party_image_override, but keeping the
@@ -57,6 +73,10 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             Outputs.AiReasoningEngineSpecDeploymentSpec? deploymentSpec,
 
+            string? effectiveIdentity,
+
+            string? identityType,
+
             Outputs.AiReasoningEngineSpecPackageSpec? packageSpec,
 
             string? serviceAccount,
@@ -66,6 +86,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
             AgentFramework = agentFramework;
             ClassMethods = classMethods;
             DeploymentSpec = deploymentSpec;
+            EffectiveIdentity = effectiveIdentity;
+            IdentityType = identityType;
             PackageSpec = packageSpec;
             ServiceAccount = serviceAccount;
             SourceCodeSpec = sourceCodeSpec;

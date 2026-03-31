@@ -48,6 +48,44 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Network Services Tls Route Regional Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "backend-service-health-check",
+ *     region: "europe-west4",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "my-backend-service",
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ *     region: "europe-west4",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "my-tls-route",
+ *     location: "europe-west4",
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.selfLink,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  * ### Network Services Tls Route Mesh Basic
  *
  * ```typescript
@@ -133,21 +171,67 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Network Services Tls Route Region Target Tcp Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "my-health-check",
+ *     region: "europe-west4",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "my-backend-service",
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ *     region: "europe-west4",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * const defaultRegionTargetTcpProxy = new gcp.compute.RegionTargetTcpProxy("default", {
+ *     name: "my-target-tcp-proxy",
+ *     region: "europe-west4",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "my-tls-route",
+ *     location: "europe-west4",
+ *     targetProxies: [defaultRegionTargetTcpProxy.selfLink],
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.selfLink,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
  * TlsRoute can be imported using any of these accepted formats:
  *
+ * * `projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}`
  * * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
- * * `{{project}}/{{name}}`
- * * `{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
  * When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
  *
  * ```sh
+ * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}
  * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
- * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
- * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+ * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{location}}/{{name}}
  * ```
  */
 export class TlsRoute extends pulumi.CustomResource {
@@ -188,12 +272,16 @@ export class TlsRoute extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/<gateway_name>
      */
     declare public readonly gateways: pulumi.Output<string[] | undefined>;
     /**
+     * Location (region) of the TLS Route.
+     */
+    declare public readonly location: pulumi.Output<string | undefined>;
+    /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/<mesh_name>
      * The attached Mesh should be of a type SIDECAR
      */
     declare public readonly meshes: pulumi.Output<string[] | undefined>;
@@ -216,6 +304,11 @@ export class TlsRoute extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
+     * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/<target_tcp_proxy_name>
+     */
+    declare public readonly targetProxies: pulumi.Output<string[] | undefined>;
+    /**
      * Time the TlsRoute was updated in UTC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -236,11 +329,13 @@ export class TlsRoute extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["gateways"] = state?.gateways;
+            resourceInputs["location"] = state?.location;
             resourceInputs["meshes"] = state?.meshes;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["rules"] = state?.rules;
             resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["targetProxies"] = state?.targetProxies;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TlsRouteArgs | undefined;
@@ -249,10 +344,12 @@ export class TlsRoute extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["gateways"] = args?.gateways;
+            resourceInputs["location"] = args?.location;
             resourceInputs["meshes"] = args?.meshes;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["rules"] = args?.rules;
+            resourceInputs["targetProxies"] = args?.targetProxies;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -276,12 +373,16 @@ export interface TlsRouteState {
     description?: pulumi.Input<string>;
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/<gateway_name>
      */
     gateways?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Location (region) of the TLS Route.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/<mesh_name>
      * The attached Mesh should be of a type SIDECAR
      */
     meshes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -304,6 +405,11 @@ export interface TlsRouteState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/<target_tcp_proxy_name>
+     */
+    targetProxies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Time the TlsRoute was updated in UTC.
      */
     updateTime?: pulumi.Input<string>;
@@ -319,12 +425,16 @@ export interface TlsRouteArgs {
     description?: pulumi.Input<string>;
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
+     * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/<gateway_name>
      */
     gateways?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Location (region) of the TLS Route.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
+     * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/<mesh_name>
      * The attached Mesh should be of a type SIDECAR
      */
     meshes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -342,4 +452,9 @@ export interface TlsRouteArgs {
      * Structure is documented below.
      */
     rules: pulumi.Input<pulumi.Input<inputs.networkservices.TlsRouteRule>[]>;
+    /**
+     * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+     * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/<target_tcp_proxy_name>
+     */
+    targetProxies?: pulumi.Input<pulumi.Input<string>[]>;
 }

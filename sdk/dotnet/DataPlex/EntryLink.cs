@@ -33,13 +33,13 @@ namespace Pulumi.Gcp.DataPlex
     ///     var entry_group_basic = new Gcp.DataPlex.EntryGroup("entry-group-basic", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "tf-test-entry-group_40289",
+    ///         EntryGroupId = "tf-test-entry-group_33395",
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var entry_type_basic = new Gcp.DataPlex.EntryType("entry-type-basic", new()
     ///     {
-    ///         EntryTypeId = "tf-test-entry-type_76044",
+    ///         EntryTypeId = "tf-test-entry-type_69391",
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryId = "tf-test-source-entry_33395",
+    ///         EntryId = "tf-test-source-entry_76044",
     ///         EntryType = entry_type_basic.Name,
     ///         Project = "1111111111111",
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryId = "tf-test-target-entry_69391",
+    ///         EntryId = "tf-test-target-entry_8270",
     ///         EntryType = entry_type_basic.Name,
     ///         Project = "1111111111111",
     ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Project = "1111111111111",
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryLinkId = "tf-test-entry-link_8270",
+    ///         EntryLinkId = "tf-test-entry-link_41150",
     ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/related",
     ///         EntryReferences = new[]
     ///         {
@@ -97,13 +97,13 @@ namespace Pulumi.Gcp.DataPlex
     ///     var entry_group_full = new Gcp.DataPlex.EntryGroup("entry-group-full", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "tf-test-entry-group_41150",
+    ///         EntryGroupId = "tf-test-entry-group_89313",
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var entry_type_full = new Gcp.DataPlex.EntryType("entry-type-full", new()
     ///     {
-    ///         EntryTypeId = "tf-test-entry-type_60646",
+    ///         EntryTypeId = "tf-test-entry-type_9394",
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///     });
@@ -112,14 +112,14 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_full.EntryGroupId,
-    ///         EntryId = "tf-test-source-entry_89313",
+    ///         EntryId = "tf-test-source-entry_60646",
     ///         EntryType = entry_type_full.Name,
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_9394",
+    ///         GlossaryId = "tf-test-glossary_11380",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestIdFull.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-full_11380",
+    ///         TermId = "tf-test-term-full_35305",
     ///         Labels = 
     ///         {
     ///             { "tag", "test-tf" },
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Project = "1111111111111",
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_full.EntryGroupId,
-    ///         EntryLinkId = "tf-test-entry-link_35305",
+    ///         EntryLinkId = "tf-test-entry-link_62793",
     ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/definition",
     ///         EntryReferences = new[]
     ///         {

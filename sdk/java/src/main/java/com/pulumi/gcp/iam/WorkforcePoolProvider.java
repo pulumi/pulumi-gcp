@@ -743,6 +743,67 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkforcePool;
+ * import com.pulumi.gcp.iam.WorkforcePoolArgs;
+ * import com.pulumi.gcp.iam.WorkforcePoolProvider;
+ * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretValueArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkforcePool("pool", WorkforcePoolArgs.builder()
+ *             .workforcePoolId("example-pool")
+ *             .parent("organizations/123456789")
+ *             .location("global")
+ *             .build());
+ * 
+ *         var example = new WorkforcePoolProvider("example", WorkforcePoolProviderArgs.builder()
+ *             .workforcePoolId(pool.workforcePoolId())
+ *             .location(pool.location())
+ *             .providerId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.sub"))
+ *             .oidc(WorkforcePoolProviderOidcArgs.builder()
+ *                 .issuerUri("https://accounts.thirdparty.com")
+ *                 .clientId("client-id")
+ *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
+ *                         .plainText("client-secret")
+ *                         .build())
+ *                     .build())
+ *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
+ *                     .responseType("CODE")
+ *                     .assertionClaimsBehavior("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS")
+ *                     .build())
+ *                 .build())
+ *             .detailedAuditLogging(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -888,6 +949,20 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     * 
+     */
+    @Export(name="detailedAuditLogging", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> detailedAuditLogging;
+
+    /**
+     * @return If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+     * 
+     */
+    public Output<Optional<Boolean>> detailedAuditLogging() {
+        return Codegen.optional(this.detailedAuditLogging);
+    }
+    /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      * 
@@ -931,13 +1006,13 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      * @deprecated
-     * `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      */
-    @Deprecated /* `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead. */
+    @Deprecated /* `extendedAttributesOauth2Client` is deprecated. Use SCIM instead. */
     @Export(name="extendedAttributesOauth2Client", refs={WorkforcePoolProviderExtendedAttributesOauth2Client.class}, tree="[0]")
     private Output</* @Nullable */ WorkforcePoolProviderExtendedAttributesOauth2Client> extendedAttributesOauth2Client;
 
@@ -955,7 +1030,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * to a unique Microsoft Entra ID user.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+     * &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      * 
      */
     public Output<Optional<WorkforcePoolProviderExtendedAttributesOauth2Client>> extendedAttributesOauth2Client() {

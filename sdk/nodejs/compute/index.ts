@@ -335,6 +335,11 @@ export const getNetworkEndpointGroup: typeof import("./getNetworkEndpointGroup")
 export const getNetworkEndpointGroupOutput: typeof import("./getNetworkEndpointGroup").getNetworkEndpointGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkEndpointGroup","getNetworkEndpointGroupOutput"], () => require("./getNetworkEndpointGroup"));
 
+export { GetNetworkEndpointGroupsArgs, GetNetworkEndpointGroupsResult, GetNetworkEndpointGroupsOutputArgs } from "./getNetworkEndpointGroups";
+export const getNetworkEndpointGroups: typeof import("./getNetworkEndpointGroups").getNetworkEndpointGroups = null as any;
+export const getNetworkEndpointGroupsOutput: typeof import("./getNetworkEndpointGroups").getNetworkEndpointGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkEndpointGroups","getNetworkEndpointGroupsOutput"], () => require("./getNetworkEndpointGroups"));
+
 export { GetNetworkPeeringArgs, GetNetworkPeeringResult, GetNetworkPeeringOutputArgs } from "./getNetworkPeering";
 export const getNetworkPeering: typeof import("./getNetworkPeering").getNetworkPeering = null as any;
 export const getNetworkPeeringOutput: typeof import("./getNetworkPeering").getNetworkPeeringOutput = null as any;

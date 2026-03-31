@@ -81,6 +81,7 @@ import * as utilities from "../utilities";
  * const example_autokeyconfig = new gcp.kms.AutokeyConfig("example-autokeyconfig", {
  *     folder: autokmsFolder.id,
  *     keyProject: pulumi.interpolate`projects/${keyProject.projectId}`,
+ *     keyProjectResolutionMode: "DEDICATED_KEY_PROJECT",
  * }, {
  *     dependsOn: [waitSrvAccPermissions],
  * });
@@ -147,6 +148,11 @@ export class AutokeyConfig extends pulumi.CustomResource {
      * `projects/<project_id_or_number>`.
      */
     declare public readonly keyProject: pulumi.Output<string | undefined>;
+    /**
+     * How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     */
+    declare public readonly keyProjectResolutionMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a AutokeyConfig resource with the given unique name, arguments, and options.
@@ -164,6 +170,7 @@ export class AutokeyConfig extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["folder"] = state?.folder;
             resourceInputs["keyProject"] = state?.keyProject;
+            resourceInputs["keyProjectResolutionMode"] = state?.keyProjectResolutionMode;
         } else {
             const args = argsOrState as AutokeyConfigArgs | undefined;
             if (args?.folder === undefined && !opts.urn) {
@@ -171,6 +178,7 @@ export class AutokeyConfig extends pulumi.CustomResource {
             }
             resourceInputs["folder"] = args?.folder;
             resourceInputs["keyProject"] = args?.keyProject;
+            resourceInputs["keyProjectResolutionMode"] = args?.keyProjectResolutionMode;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -196,6 +204,11 @@ export interface AutokeyConfigState {
      * `projects/<project_id_or_number>`.
      */
     keyProject?: pulumi.Input<string>;
+    /**
+     * How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     */
+    keyProjectResolutionMode?: pulumi.Input<string>;
 }
 
 /**
@@ -212,4 +225,9 @@ export interface AutokeyConfigArgs {
      * `projects/<project_id_or_number>`.
      */
     keyProject?: pulumi.Input<string>;
+    /**
+     * How Autokey determines which project to use when provisioning CMEK keys.
+     * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
+     */
+    keyProjectResolutionMode?: pulumi.Input<string>;
 }

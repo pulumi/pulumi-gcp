@@ -26,7 +26,7 @@ class GetAutokeyConfigResult:
     """
     A collection of values returned by getAutokeyConfig.
     """
-    def __init__(__self__, etag=None, folder=None, id=None, key_project=None):
+    def __init__(__self__, etag=None, folder=None, id=None, key_project=None, key_project_resolution_mode=None):
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -39,6 +39,9 @@ class GetAutokeyConfigResult:
         if key_project and not isinstance(key_project, str):
             raise TypeError("Expected argument 'key_project' to be a str")
         pulumi.set(__self__, "key_project", key_project)
+        if key_project_resolution_mode and not isinstance(key_project_resolution_mode, str):
+            raise TypeError("Expected argument 'key_project_resolution_mode' to be a str")
+        pulumi.set(__self__, "key_project_resolution_mode", key_project_resolution_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -66,6 +69,11 @@ class GetAutokeyConfigResult:
         """
         return pulumi.get(self, "key_project")
 
+    @_builtins.property
+    @pulumi.getter(name="keyProjectResolutionMode")
+    def key_project_resolution_mode(self) -> _builtins.str:
+        return pulumi.get(self, "key_project_resolution_mode")
+
 
 class AwaitableGetAutokeyConfigResult(GetAutokeyConfigResult):
     # pylint: disable=using-constant-test
@@ -76,7 +84,8 @@ class AwaitableGetAutokeyConfigResult(GetAutokeyConfigResult):
             etag=self.etag,
             folder=self.folder,
             id=self.id,
-            key_project=self.key_project)
+            key_project=self.key_project,
+            key_project_resolution_mode=self.key_project_resolution_mode)
 
 
 def get_autokey_config(folder: Optional[_builtins.str] = None,
@@ -111,7 +120,8 @@ def get_autokey_config(folder: Optional[_builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         folder=pulumi.get(__ret__, 'folder'),
         id=pulumi.get(__ret__, 'id'),
-        key_project=pulumi.get(__ret__, 'key_project'))
+        key_project=pulumi.get(__ret__, 'key_project'),
+        key_project_resolution_mode=pulumi.get(__ret__, 'key_project_resolution_mode'))
 def get_autokey_config_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutokeyConfigResult]:
     """
@@ -143,4 +153,5 @@ def get_autokey_config_output(folder: Optional[pulumi.Input[_builtins.str]] = No
         etag=pulumi.get(__response__, 'etag'),
         folder=pulumi.get(__response__, 'folder'),
         id=pulumi.get(__response__, 'id'),
-        key_project=pulumi.get(__response__, 'key_project')))
+        key_project=pulumi.get(__response__, 'key_project'),
+        key_project_resolution_mode=pulumi.get(__response__, 'key_project_resolution_mode')))

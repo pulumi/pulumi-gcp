@@ -6704,6 +6704,10 @@ class AiReasoningEngineSpec(dict):
             suggest = "class_methods"
         elif key == "deploymentSpec":
             suggest = "deployment_spec"
+        elif key == "effectiveIdentity":
+            suggest = "effective_identity"
+        elif key == "identityType":
+            suggest = "identity_type"
         elif key == "packageSpec":
             suggest = "package_spec"
         elif key == "serviceAccount":
@@ -6726,6 +6730,8 @@ class AiReasoningEngineSpec(dict):
                  agent_framework: Optional[_builtins.str] = None,
                  class_methods: Optional[_builtins.str] = None,
                  deployment_spec: Optional['outputs.AiReasoningEngineSpecDeploymentSpec'] = None,
+                 effective_identity: Optional[_builtins.str] = None,
+                 identity_type: Optional[_builtins.str] = None,
                  package_spec: Optional['outputs.AiReasoningEngineSpecPackageSpec'] = None,
                  service_account: Optional[_builtins.str] = None,
                  source_code_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpec'] = None):
@@ -6735,6 +6741,16 @@ class AiReasoningEngineSpec(dict):
                specification format.
         :param 'AiReasoningEngineSpecDeploymentSpecArgs' deployment_spec: Optional. The specification of a Reasoning Engine deployment.
                Structure is documented below.
+        :param _builtins.str effective_identity: (Output, Beta)
+               The identity to use for the Reasoning Engine.
+        :param _builtins.str identity_type: (Optional, Beta)
+               Optional. The identity type to use for the Reasoning Engine.
+               If not specified, the `service_account` field will be used if set,
+               otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+               Possible values:
+               * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+               * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
+               Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
         :param 'AiReasoningEngineSpecPackageSpecArgs' package_spec: Optional. User provided package spec of the ReasoningEngine.
                Ignored when users directly specify a deployment image through
                deploymentSpec.first_party_image_override, but keeping the
@@ -6754,6 +6770,10 @@ class AiReasoningEngineSpec(dict):
             pulumi.set(__self__, "class_methods", class_methods)
         if deployment_spec is not None:
             pulumi.set(__self__, "deployment_spec", deployment_spec)
+        if effective_identity is not None:
+            pulumi.set(__self__, "effective_identity", effective_identity)
+        if identity_type is not None:
+            pulumi.set(__self__, "identity_type", identity_type)
         if package_spec is not None:
             pulumi.set(__self__, "package_spec", package_spec)
         if service_account is not None:
@@ -6786,6 +6806,30 @@ class AiReasoningEngineSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "deployment_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveIdentity")
+    def effective_identity(self) -> Optional[_builtins.str]:
+        """
+        (Output, Beta)
+        The identity to use for the Reasoning Engine.
+        """
+        return pulumi.get(self, "effective_identity")
+
+    @_builtins.property
+    @pulumi.getter(name="identityType")
+    def identity_type(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Beta)
+        Optional. The identity type to use for the Reasoning Engine.
+        If not specified, the `service_account` field will be used if set,
+        otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
+        Possible values:
+        * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+        * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
+        Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+        """
+        return pulumi.get(self, "identity_type")
 
     @_builtins.property
     @pulumi.getter(name="packageSpec")

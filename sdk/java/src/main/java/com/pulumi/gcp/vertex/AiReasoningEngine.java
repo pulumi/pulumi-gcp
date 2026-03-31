@@ -542,6 +542,20 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
+    }
+    /**
      * The description of the ReasoningEngine.
      * 
      */
@@ -641,15 +655,15 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="spec", refs={AiReasoningEngineSpec.class}, tree="[0]")
-    private Output</* @Nullable */ AiReasoningEngineSpec> spec;
+    private Output<AiReasoningEngineSpec> spec;
 
     /**
      * @return Optional. Configurations of the ReasoningEngine.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<AiReasoningEngineSpec>> spec() {
-        return Codegen.optional(this.spec);
+    public Output<AiReasoningEngineSpec> spec() {
+        return this.spec;
     }
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;

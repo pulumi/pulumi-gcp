@@ -159,6 +159,13 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.InstanceMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         /// </summary>
         [Output("mountPoint")]
@@ -349,6 +356,13 @@ namespace Pulumi.Gcp.Lustre
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// The full name of the VPC network to which the instance is connected.
         /// Must be in the format
         /// `projects/{project_id}/global/networks/{network_name}`.
@@ -478,6 +492,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.

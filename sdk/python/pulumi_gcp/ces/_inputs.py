@@ -21399,6 +21399,14 @@ class ToolsetMcpToolsetArgsDict(TypedDict):
     the request header; sending it via query parameters is not supported.
     Structure is documented below.
     """
+    custom_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The custom headers to send in the request to the MCP server. The values
+    must be in the format `$context.variables.<name_of_variable>` and can be
+    set in the session variables. See
+    https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+    for more details.
+    """
     service_directory_config: NotRequired[pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgsDict']]
     """
     Service Directory configuration for VPC-SC, used to resolve service names
@@ -21417,6 +21425,7 @@ class ToolsetMcpToolsetArgs:
     def __init__(__self__, *,
                  server_address: pulumi.Input[_builtins.str],
                  api_authentication: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgs']] = None,
+                 custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  service_directory_config: Optional[pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgs']] = None,
                  tls_config: Optional[pulumi.Input['ToolsetMcpToolsetTlsConfigArgs']] = None):
         """
@@ -21429,6 +21438,11 @@ class ToolsetMcpToolsetArgs:
                against the MCP server. For API key auth, the API key can only be sent in
                the request header; sending it via query parameters is not supported.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_headers: The custom headers to send in the request to the MCP server. The values
+               must be in the format `$context.variables.<name_of_variable>` and can be
+               set in the session variables. See
+               https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+               for more details.
         :param pulumi.Input['ToolsetMcpToolsetServiceDirectoryConfigArgs'] service_directory_config: Service Directory configuration for VPC-SC, used to resolve service names
                within a perimeter.
                Structure is documented below.
@@ -21439,6 +21453,8 @@ class ToolsetMcpToolsetArgs:
         pulumi.set(__self__, "server_address", server_address)
         if api_authentication is not None:
             pulumi.set(__self__, "api_authentication", api_authentication)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if service_directory_config is not None:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if tls_config is not None:
@@ -21474,6 +21490,22 @@ class ToolsetMcpToolsetArgs:
     @api_authentication.setter
     def api_authentication(self, value: Optional[pulumi.Input['ToolsetMcpToolsetApiAuthenticationArgs']]):
         pulumi.set(self, "api_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The custom headers to send in the request to the MCP server. The values
+        must be in the format `$context.variables.<name_of_variable>` and can be
+        set in the session variables. See
+        https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+        for more details.
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")

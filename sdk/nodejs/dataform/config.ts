@@ -43,6 +43,8 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  *     service: "dataform.googleapis.com",
  *     disableOnDestroy: false,
+ * }, {
+ *     dependsOn: [cloudkmsApi],
  * });
  * // Add a sleep to wait for IAM propagation after API enablement
  * const waitForDataformApi = new time.Sleep("wait_for_dataform_api", {createDuration: "30s"}, {
@@ -52,13 +54,15 @@ import * as utilities from "../utilities";
  * const dataformSa = new gcp.projects.ServiceIdentity("dataform_sa", {
  *     project: project.projectId,
  *     service: "dataform.googleapis.com",
+ * }, {
+ *     dependsOn: [waitForDataformApi],
  * });
  * const keyring = new gcp.kms.KeyRing("keyring", {
  *     project: project.projectId,
  *     name: "example-key-ring",
  *     location: "us-central1",
  * }, {
- *     dependsOn: [cloudkmsApi],
+ *     dependsOn: [waitForDataformApi],
  * });
  * const exampleKey = new gcp.kms.CryptoKey("example_key", {
  *     name: "example-crypto-key-name",
@@ -76,10 +80,7 @@ import * as utilities from "../utilities";
  *     defaultKmsKeyName: exampleKey.id,
  *     project: project.projectId,
  * }, {
- *     dependsOn: [
- *         cryptoKeyBinding,
- *         waitForDataformApi,
- *     ],
+ *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
  * ### Dataform Config Without Kms Key

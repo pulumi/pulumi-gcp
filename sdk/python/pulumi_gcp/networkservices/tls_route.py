@@ -24,9 +24,11 @@ class TlsRouteArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: Optional[pulumi.Input[_builtins.str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TlsRoute resource.
 
@@ -34,25 +36,32 @@ class TlsRouteArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+               Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
+        :param pulumi.Input[_builtins.str] location: Location (region) of the TLS Route.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[_builtins.str] name: Name of the TlsRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_proxies: TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+               Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
         """
         pulumi.set(__self__, "rules", rules)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if gateways is not None:
             pulumi.set(__self__, "gateways", gateways)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if meshes is not None:
             pulumi.set(__self__, "meshes", meshes)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if target_proxies is not None:
+            pulumi.set(__self__, "target_proxies", target_proxies)
 
     @_builtins.property
     @pulumi.getter
@@ -84,7 +93,7 @@ class TlsRouteArgs:
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -94,10 +103,22 @@ class TlsRouteArgs:
 
     @_builtins.property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Location (region) of the TLS Route.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+        Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
         The attached Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
@@ -131,6 +152,19 @@ class TlsRouteArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="targetProxies")
+    def target_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+        Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+        """
+        return pulumi.get(self, "target_proxies")
+
+    @target_proxies.setter
+    def target_proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "target_proxies", value)
+
 
 @pulumi.input_type
 class _TlsRouteState:
@@ -138,11 +172,13 @@ class _TlsRouteState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: Optional[pulumi.Input[_builtins.str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TlsRoute resources.
@@ -150,9 +186,10 @@ class _TlsRouteState:
         :param pulumi.Input[_builtins.str] create_time: Time the TlsRoute was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+               Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
+        :param pulumi.Input[_builtins.str] location: Location (region) of the TLS Route.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[_builtins.str] name: Name of the TlsRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -160,6 +197,8 @@ class _TlsRouteState:
         :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_proxies: TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+               Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
         :param pulumi.Input[_builtins.str] update_time: Time the TlsRoute was updated in UTC.
         """
         if create_time is not None:
@@ -168,6 +207,8 @@ class _TlsRouteState:
             pulumi.set(__self__, "description", description)
         if gateways is not None:
             pulumi.set(__self__, "gateways", gateways)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if meshes is not None:
             pulumi.set(__self__, "meshes", meshes)
         if name is not None:
@@ -178,6 +219,8 @@ class _TlsRouteState:
             pulumi.set(__self__, "rules", rules)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if target_proxies is not None:
+            pulumi.set(__self__, "target_proxies", target_proxies)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -210,7 +253,7 @@ class _TlsRouteState:
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -220,10 +263,22 @@ class _TlsRouteState:
 
     @_builtins.property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Location (region) of the TLS Route.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+        Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
         The attached Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
@@ -283,6 +338,19 @@ class _TlsRouteState:
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetProxies")
+    def target_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+        Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+        """
+        return pulumi.get(self, "target_proxies")
+
+    @target_proxies.setter
+    def target_proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "target_proxies", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -303,10 +371,12 @@ class TlsRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: Optional[pulumi.Input[_builtins.str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
+                 target_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         TlsRoute defines how traffic should be routed based on SNI and other matching L3 attributes.
@@ -343,6 +413,41 @@ class TlsRoute(pulumi.CustomResource):
                     "destinations": [{
                         "service_name": default.id,
                         "weight": 1,
+                    }],
+                },
+            }])
+        ```
+        ### Network Services Tls Route Regional Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="backend-service-health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            name="my-backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="my-tls-route",
+            location="europe-west4",
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default.self_link,
                     }],
                 },
             }])
@@ -424,21 +529,63 @@ class TlsRoute(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Network Services Tls Route Region Target Tcp Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="my-health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            name="my-backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_region_target_tcp_proxy = gcp.compute.RegionTargetTcpProxy("default",
+            name="my-target-tcp-proxy",
+            region="europe-west4",
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="my-tls-route",
+            location="europe-west4",
+            target_proxies=[default_region_target_tcp_proxy.self_link],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default.self_link,
+                    }],
+                },
+            }])
+        ```
 
         ## Import
 
         TlsRoute can be imported using any of these accepted formats:
 
+        * `projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}`
         * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
-        * `{{project}}/{{name}}`
-        * `{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
 
         ```sh
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}
         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
-        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
-        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{location}}/{{name}}
         ```
 
 
@@ -446,15 +593,18 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+               Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
+        :param pulumi.Input[_builtins.str] location: Location (region) of the TLS Route.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[_builtins.str] name: Name of the TlsRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_proxies: TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+               Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
         """
         ...
     @overload
@@ -501,6 +651,41 @@ class TlsRoute(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Network Services Tls Route Regional Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="backend-service-health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            name="my-backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="my-tls-route",
+            location="europe-west4",
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default.self_link,
+                    }],
+                },
+            }])
+        ```
         ### Network Services Tls Route Mesh Basic
 
         ```python
@@ -578,21 +763,63 @@ class TlsRoute(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Network Services Tls Route Region Target Tcp Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="my-health-check",
+            region="europe-west4",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            name="my-backend-service",
+            protocol="TCP",
+            timeout_sec=10,
+            region="europe-west4",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_region_target_tcp_proxy = gcp.compute.RegionTargetTcpProxy("default",
+            name="my-target-tcp-proxy",
+            region="europe-west4",
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="my-tls-route",
+            location="europe-west4",
+            target_proxies=[default_region_target_tcp_proxy.self_link],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default.self_link,
+                    }],
+                },
+            }])
+        ```
 
         ## Import
 
         TlsRoute can be imported using any of these accepted formats:
 
+        * `projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}`
         * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
-        * `{{project}}/{{name}}`
-        * `{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
         When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
 
         ```sh
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/{{location}}/tlsRoutes/{{name}}
         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
-        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
-        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{location}}/{{name}}
         ```
 
 
@@ -613,10 +840,12 @@ class TlsRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: Optional[pulumi.Input[_builtins.str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
+                 target_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -628,12 +857,14 @@ class TlsRoute(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["gateways"] = gateways
+            __props__.__dict__["location"] = location
             __props__.__dict__["meshes"] = meshes
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
+            __props__.__dict__["target_proxies"] = target_proxies
             __props__.__dict__["create_time"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["update_time"] = None
@@ -650,11 +881,13 @@ class TlsRoute(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             gateways: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: Optional[pulumi.Input[_builtins.str]] = None,
             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
+            target_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'TlsRoute':
         """
         Get an existing TlsRoute resource's state with the given name, id, and optional extra
@@ -666,9 +899,10 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Time the TlsRoute was created in UTC.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+               Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
+        :param pulumi.Input[_builtins.str] location: Location (region) of the TLS Route.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] meshes: Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[_builtins.str] name: Name of the TlsRoute resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -676,6 +910,8 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TlsRouteRuleArgs', 'TlsRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_proxies: TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+               Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
         :param pulumi.Input[_builtins.str] update_time: Time the TlsRoute was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -685,11 +921,13 @@ class TlsRoute(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["gateways"] = gateways
+        __props__.__dict__["location"] = location
         __props__.__dict__["meshes"] = meshes
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["target_proxies"] = target_proxies
         __props__.__dict__["update_time"] = update_time
         return TlsRoute(resource_name, opts=opts, __props__=__props__)
 
@@ -714,16 +952,24 @@ class TlsRoute(pulumi.CustomResource):
     def gateways(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        Each gateway reference should match the pattern: projects/*/locations/*/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Location (region) of the TLS Route.
+        """
+        return pulumi.get(self, "location")
 
     @_builtins.property
     @pulumi.getter
     def meshes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+        Each mesh reference should match the pattern: projects/*/locations/*/meshes/<mesh_name>
         The attached Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
@@ -761,6 +1007,15 @@ class TlsRoute(pulumi.CustomResource):
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="targetProxies")
+    def target_proxies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
+        Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/<target_tcp_proxy_name>
+        """
+        return pulumi.get(self, "target_proxies")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

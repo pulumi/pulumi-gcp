@@ -420,6 +420,147 @@ func (o AiLogicConfigTelemetryConfigPtrOutput) SamplingRate() pulumi.Float64PtrO
 	}).(pulumi.Float64PtrOutput)
 }
 
+type AiLogicConfigTrafficFilter struct {
+	// Only allows users to use AI Logic via prompt templates for this project.
+	// If true, only calls using server templates are permitted.
+	TemplateOnly *bool `pulumi:"templateOnly"`
+}
+
+// AiLogicConfigTrafficFilterInput is an input type that accepts AiLogicConfigTrafficFilterArgs and AiLogicConfigTrafficFilterOutput values.
+// You can construct a concrete instance of `AiLogicConfigTrafficFilterInput` via:
+//
+//	AiLogicConfigTrafficFilterArgs{...}
+type AiLogicConfigTrafficFilterInput interface {
+	pulumi.Input
+
+	ToAiLogicConfigTrafficFilterOutput() AiLogicConfigTrafficFilterOutput
+	ToAiLogicConfigTrafficFilterOutputWithContext(context.Context) AiLogicConfigTrafficFilterOutput
+}
+
+type AiLogicConfigTrafficFilterArgs struct {
+	// Only allows users to use AI Logic via prompt templates for this project.
+	// If true, only calls using server templates are permitted.
+	TemplateOnly pulumi.BoolPtrInput `pulumi:"templateOnly"`
+}
+
+func (AiLogicConfigTrafficFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiLogicConfigTrafficFilter)(nil)).Elem()
+}
+
+func (i AiLogicConfigTrafficFilterArgs) ToAiLogicConfigTrafficFilterOutput() AiLogicConfigTrafficFilterOutput {
+	return i.ToAiLogicConfigTrafficFilterOutputWithContext(context.Background())
+}
+
+func (i AiLogicConfigTrafficFilterArgs) ToAiLogicConfigTrafficFilterOutputWithContext(ctx context.Context) AiLogicConfigTrafficFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigTrafficFilterOutput)
+}
+
+func (i AiLogicConfigTrafficFilterArgs) ToAiLogicConfigTrafficFilterPtrOutput() AiLogicConfigTrafficFilterPtrOutput {
+	return i.ToAiLogicConfigTrafficFilterPtrOutputWithContext(context.Background())
+}
+
+func (i AiLogicConfigTrafficFilterArgs) ToAiLogicConfigTrafficFilterPtrOutputWithContext(ctx context.Context) AiLogicConfigTrafficFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigTrafficFilterOutput).ToAiLogicConfigTrafficFilterPtrOutputWithContext(ctx)
+}
+
+// AiLogicConfigTrafficFilterPtrInput is an input type that accepts AiLogicConfigTrafficFilterArgs, AiLogicConfigTrafficFilterPtr and AiLogicConfigTrafficFilterPtrOutput values.
+// You can construct a concrete instance of `AiLogicConfigTrafficFilterPtrInput` via:
+//
+//	        AiLogicConfigTrafficFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiLogicConfigTrafficFilterPtrInput interface {
+	pulumi.Input
+
+	ToAiLogicConfigTrafficFilterPtrOutput() AiLogicConfigTrafficFilterPtrOutput
+	ToAiLogicConfigTrafficFilterPtrOutputWithContext(context.Context) AiLogicConfigTrafficFilterPtrOutput
+}
+
+type aiLogicConfigTrafficFilterPtrType AiLogicConfigTrafficFilterArgs
+
+func AiLogicConfigTrafficFilterPtr(v *AiLogicConfigTrafficFilterArgs) AiLogicConfigTrafficFilterPtrInput {
+	return (*aiLogicConfigTrafficFilterPtrType)(v)
+}
+
+func (*aiLogicConfigTrafficFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiLogicConfigTrafficFilter)(nil)).Elem()
+}
+
+func (i *aiLogicConfigTrafficFilterPtrType) ToAiLogicConfigTrafficFilterPtrOutput() AiLogicConfigTrafficFilterPtrOutput {
+	return i.ToAiLogicConfigTrafficFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *aiLogicConfigTrafficFilterPtrType) ToAiLogicConfigTrafficFilterPtrOutputWithContext(ctx context.Context) AiLogicConfigTrafficFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigTrafficFilterPtrOutput)
+}
+
+type AiLogicConfigTrafficFilterOutput struct{ *pulumi.OutputState }
+
+func (AiLogicConfigTrafficFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiLogicConfigTrafficFilter)(nil)).Elem()
+}
+
+func (o AiLogicConfigTrafficFilterOutput) ToAiLogicConfigTrafficFilterOutput() AiLogicConfigTrafficFilterOutput {
+	return o
+}
+
+func (o AiLogicConfigTrafficFilterOutput) ToAiLogicConfigTrafficFilterOutputWithContext(ctx context.Context) AiLogicConfigTrafficFilterOutput {
+	return o
+}
+
+func (o AiLogicConfigTrafficFilterOutput) ToAiLogicConfigTrafficFilterPtrOutput() AiLogicConfigTrafficFilterPtrOutput {
+	return o.ToAiLogicConfigTrafficFilterPtrOutputWithContext(context.Background())
+}
+
+func (o AiLogicConfigTrafficFilterOutput) ToAiLogicConfigTrafficFilterPtrOutputWithContext(ctx context.Context) AiLogicConfigTrafficFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiLogicConfigTrafficFilter) *AiLogicConfigTrafficFilter {
+		return &v
+	}).(AiLogicConfigTrafficFilterPtrOutput)
+}
+
+// Only allows users to use AI Logic via prompt templates for this project.
+// If true, only calls using server templates are permitted.
+func (o AiLogicConfigTrafficFilterOutput) TemplateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiLogicConfigTrafficFilter) *bool { return v.TemplateOnly }).(pulumi.BoolPtrOutput)
+}
+
+type AiLogicConfigTrafficFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (AiLogicConfigTrafficFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiLogicConfigTrafficFilter)(nil)).Elem()
+}
+
+func (o AiLogicConfigTrafficFilterPtrOutput) ToAiLogicConfigTrafficFilterPtrOutput() AiLogicConfigTrafficFilterPtrOutput {
+	return o
+}
+
+func (o AiLogicConfigTrafficFilterPtrOutput) ToAiLogicConfigTrafficFilterPtrOutputWithContext(ctx context.Context) AiLogicConfigTrafficFilterPtrOutput {
+	return o
+}
+
+func (o AiLogicConfigTrafficFilterPtrOutput) Elem() AiLogicConfigTrafficFilterOutput {
+	return o.ApplyT(func(v *AiLogicConfigTrafficFilter) AiLogicConfigTrafficFilter {
+		if v != nil {
+			return *v
+		}
+		var ret AiLogicConfigTrafficFilter
+		return ret
+	}).(AiLogicConfigTrafficFilterOutput)
+}
+
+// Only allows users to use AI Logic via prompt templates for this project.
+// If true, only calls using server templates are permitted.
+func (o AiLogicConfigTrafficFilterPtrOutput) TemplateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiLogicConfigTrafficFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AppHostingBackendCodebase struct {
 	// The resource name for the Developer Connect
 	// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
@@ -7709,6 +7850,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfigPtrInput)(nil)).Elem(), AiLogicConfigGenerativeLanguageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigTelemetryConfigInput)(nil)).Elem(), AiLogicConfigTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigTelemetryConfigPtrInput)(nil)).Elem(), AiLogicConfigTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigTrafficFilterInput)(nil)).Elem(), AiLogicConfigTrafficFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigTrafficFilterPtrInput)(nil)).Elem(), AiLogicConfigTrafficFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendCodebaseInput)(nil)).Elem(), AppHostingBackendCodebaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendCodebasePtrInput)(nil)).Elem(), AppHostingBackendCodebaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceInput)(nil)).Elem(), AppHostingBackendManagedResourceArgs{})
@@ -7809,6 +7952,8 @@ func init() {
 	pulumi.RegisterOutputType(AiLogicConfigGenerativeLanguageConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiLogicConfigTelemetryConfigOutput{})
 	pulumi.RegisterOutputType(AiLogicConfigTelemetryConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiLogicConfigTrafficFilterOutput{})
+	pulumi.RegisterOutputType(AiLogicConfigTrafficFilterPtrOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendCodebaseOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendCodebasePtrOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendManagedResourceOutput{})

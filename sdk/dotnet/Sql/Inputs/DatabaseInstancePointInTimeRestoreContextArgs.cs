@@ -39,6 +39,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? PreferredZone { get; set; }
 
         /// <summary>
+        /// The region of the target instance where the datasource will be restored. For example: "us-central1".
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The name of the target instance.
         /// </summary>
         [Input("targetInstance")]

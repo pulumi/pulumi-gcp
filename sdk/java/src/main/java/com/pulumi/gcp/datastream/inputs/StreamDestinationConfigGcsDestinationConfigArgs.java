@@ -35,7 +35,8 @@ public final class StreamDestinationConfigGcsDestinationConfigArgs extends com.p
 
     /**
      * The maximum duration for which new events are added before a file is closed and a new file is created.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
+     * Values within the range of 15-60 seconds are allowed.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     @Import(name="fileRotationInterval")
@@ -43,7 +44,8 @@ public final class StreamDestinationConfigGcsDestinationConfigArgs extends com.p
 
     /**
      * @return The maximum duration for which new events are added before a file is closed and a new file is created.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
+     * Values within the range of 15-60 seconds are allowed.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     public Optional<Output<String>> fileRotationInterval() {
@@ -148,7 +150,8 @@ public final class StreamDestinationConfigGcsDestinationConfigArgs extends com.p
 
         /**
          * @param fileRotationInterval The maximum duration for which new events are added before a file is closed and a new file is created.
-         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
+         * Values within the range of 15-60 seconds are allowed.
+         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
          * @return builder
          * 
@@ -160,7 +163,8 @@ public final class StreamDestinationConfigGcsDestinationConfigArgs extends com.p
 
         /**
          * @param fileRotationInterval The maximum duration for which new events are added before a file is closed and a new file is created.
-         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
+         * Values within the range of 15-60 seconds are allowed.
+         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
          * @return builder
          * 

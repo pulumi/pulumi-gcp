@@ -46110,6 +46110,1021 @@ func (o EntityTypeEntityArrayOutput) Index(i pulumi.IntInput) EntityTypeEntityOu
 	}).(EntityTypeEntityOutput)
 }
 
+type EnvironmentFulfillment struct {
+	// The human-readable name of the fulfillment, unique within the agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The field defines whether the fulfillment is enabled for certain features.
+	// Structure is documented below.
+	Features []EnvironmentFulfillmentFeature `pulumi:"features"`
+	// Represents configuration for a generic web service.
+	// Structure is documented below.
+	GenericWebService *EnvironmentFulfillmentGenericWebService `pulumi:"genericWebService"`
+	// The unique identifier of the fulfillment. Supports the following formats:
+	// - projects/<Project ID>/agent/fulfillment
+	// - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+	Name *string `pulumi:"name"`
+}
+
+// EnvironmentFulfillmentInput is an input type that accepts EnvironmentFulfillmentArgs and EnvironmentFulfillmentOutput values.
+// You can construct a concrete instance of `EnvironmentFulfillmentInput` via:
+//
+//	EnvironmentFulfillmentArgs{...}
+type EnvironmentFulfillmentInput interface {
+	pulumi.Input
+
+	ToEnvironmentFulfillmentOutput() EnvironmentFulfillmentOutput
+	ToEnvironmentFulfillmentOutputWithContext(context.Context) EnvironmentFulfillmentOutput
+}
+
+type EnvironmentFulfillmentArgs struct {
+	// The human-readable name of the fulfillment, unique within the agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The field defines whether the fulfillment is enabled for certain features.
+	// Structure is documented below.
+	Features EnvironmentFulfillmentFeatureArrayInput `pulumi:"features"`
+	// Represents configuration for a generic web service.
+	// Structure is documented below.
+	GenericWebService EnvironmentFulfillmentGenericWebServicePtrInput `pulumi:"genericWebService"`
+	// The unique identifier of the fulfillment. Supports the following formats:
+	// - projects/<Project ID>/agent/fulfillment
+	// - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (EnvironmentFulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentFulfillment)(nil)).Elem()
+}
+
+func (i EnvironmentFulfillmentArgs) ToEnvironmentFulfillmentOutput() EnvironmentFulfillmentOutput {
+	return i.ToEnvironmentFulfillmentOutputWithContext(context.Background())
+}
+
+func (i EnvironmentFulfillmentArgs) ToEnvironmentFulfillmentOutputWithContext(ctx context.Context) EnvironmentFulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentOutput)
+}
+
+func (i EnvironmentFulfillmentArgs) ToEnvironmentFulfillmentPtrOutput() EnvironmentFulfillmentPtrOutput {
+	return i.ToEnvironmentFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentFulfillmentArgs) ToEnvironmentFulfillmentPtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentOutput).ToEnvironmentFulfillmentPtrOutputWithContext(ctx)
+}
+
+// EnvironmentFulfillmentPtrInput is an input type that accepts EnvironmentFulfillmentArgs, EnvironmentFulfillmentPtr and EnvironmentFulfillmentPtrOutput values.
+// You can construct a concrete instance of `EnvironmentFulfillmentPtrInput` via:
+//
+//	        EnvironmentFulfillmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentFulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentFulfillmentPtrOutput() EnvironmentFulfillmentPtrOutput
+	ToEnvironmentFulfillmentPtrOutputWithContext(context.Context) EnvironmentFulfillmentPtrOutput
+}
+
+type environmentFulfillmentPtrType EnvironmentFulfillmentArgs
+
+func EnvironmentFulfillmentPtr(v *EnvironmentFulfillmentArgs) EnvironmentFulfillmentPtrInput {
+	return (*environmentFulfillmentPtrType)(v)
+}
+
+func (*environmentFulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentFulfillment)(nil)).Elem()
+}
+
+func (i *environmentFulfillmentPtrType) ToEnvironmentFulfillmentPtrOutput() EnvironmentFulfillmentPtrOutput {
+	return i.ToEnvironmentFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentFulfillmentPtrType) ToEnvironmentFulfillmentPtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentPtrOutput)
+}
+
+type EnvironmentFulfillmentOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentFulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentFulfillment)(nil)).Elem()
+}
+
+func (o EnvironmentFulfillmentOutput) ToEnvironmentFulfillmentOutput() EnvironmentFulfillmentOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentOutput) ToEnvironmentFulfillmentOutputWithContext(ctx context.Context) EnvironmentFulfillmentOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentOutput) ToEnvironmentFulfillmentPtrOutput() EnvironmentFulfillmentPtrOutput {
+	return o.ToEnvironmentFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentFulfillmentOutput) ToEnvironmentFulfillmentPtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentFulfillment) *EnvironmentFulfillment {
+		return &v
+	}).(EnvironmentFulfillmentPtrOutput)
+}
+
+// The human-readable name of the fulfillment, unique within the agent.
+func (o EnvironmentFulfillmentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentFulfillment) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The field defines whether the fulfillment is enabled for certain features.
+// Structure is documented below.
+func (o EnvironmentFulfillmentOutput) Features() EnvironmentFulfillmentFeatureArrayOutput {
+	return o.ApplyT(func(v EnvironmentFulfillment) []EnvironmentFulfillmentFeature { return v.Features }).(EnvironmentFulfillmentFeatureArrayOutput)
+}
+
+// Represents configuration for a generic web service.
+// Structure is documented below.
+func (o EnvironmentFulfillmentOutput) GenericWebService() EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return o.ApplyT(func(v EnvironmentFulfillment) *EnvironmentFulfillmentGenericWebService { return v.GenericWebService }).(EnvironmentFulfillmentGenericWebServicePtrOutput)
+}
+
+// The unique identifier of the fulfillment. Supports the following formats:
+// - projects/<Project ID>/agent/fulfillment
+// - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+func (o EnvironmentFulfillmentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentFulfillment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentFulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentFulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentFulfillment)(nil)).Elem()
+}
+
+func (o EnvironmentFulfillmentPtrOutput) ToEnvironmentFulfillmentPtrOutput() EnvironmentFulfillmentPtrOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentPtrOutput) ToEnvironmentFulfillmentPtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentPtrOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentPtrOutput) Elem() EnvironmentFulfillmentOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillment) EnvironmentFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentFulfillment
+		return ret
+	}).(EnvironmentFulfillmentOutput)
+}
+
+// The human-readable name of the fulfillment, unique within the agent.
+func (o EnvironmentFulfillmentPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The field defines whether the fulfillment is enabled for certain features.
+// Structure is documented below.
+func (o EnvironmentFulfillmentPtrOutput) Features() EnvironmentFulfillmentFeatureArrayOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillment) []EnvironmentFulfillmentFeature {
+		if v == nil {
+			return nil
+		}
+		return v.Features
+	}).(EnvironmentFulfillmentFeatureArrayOutput)
+}
+
+// Represents configuration for a generic web service.
+// Structure is documented below.
+func (o EnvironmentFulfillmentPtrOutput) GenericWebService() EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillment) *EnvironmentFulfillmentGenericWebService {
+		if v == nil {
+			return nil
+		}
+		return v.GenericWebService
+	}).(EnvironmentFulfillmentGenericWebServicePtrOutput)
+}
+
+// The unique identifier of the fulfillment. Supports the following formats:
+// - projects/<Project ID>/agent/fulfillment
+// - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+func (o EnvironmentFulfillmentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentFulfillmentFeature struct {
+	// The type of the feature that enabled for fulfillment.
+	// Possible values are: `TYPE_UNSPECIFIED`, `SMALLTALK`.
+	Type string `pulumi:"type"`
+}
+
+// EnvironmentFulfillmentFeatureInput is an input type that accepts EnvironmentFulfillmentFeatureArgs and EnvironmentFulfillmentFeatureOutput values.
+// You can construct a concrete instance of `EnvironmentFulfillmentFeatureInput` via:
+//
+//	EnvironmentFulfillmentFeatureArgs{...}
+type EnvironmentFulfillmentFeatureInput interface {
+	pulumi.Input
+
+	ToEnvironmentFulfillmentFeatureOutput() EnvironmentFulfillmentFeatureOutput
+	ToEnvironmentFulfillmentFeatureOutputWithContext(context.Context) EnvironmentFulfillmentFeatureOutput
+}
+
+type EnvironmentFulfillmentFeatureArgs struct {
+	// The type of the feature that enabled for fulfillment.
+	// Possible values are: `TYPE_UNSPECIFIED`, `SMALLTALK`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (EnvironmentFulfillmentFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentFulfillmentFeature)(nil)).Elem()
+}
+
+func (i EnvironmentFulfillmentFeatureArgs) ToEnvironmentFulfillmentFeatureOutput() EnvironmentFulfillmentFeatureOutput {
+	return i.ToEnvironmentFulfillmentFeatureOutputWithContext(context.Background())
+}
+
+func (i EnvironmentFulfillmentFeatureArgs) ToEnvironmentFulfillmentFeatureOutputWithContext(ctx context.Context) EnvironmentFulfillmentFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentFeatureOutput)
+}
+
+// EnvironmentFulfillmentFeatureArrayInput is an input type that accepts EnvironmentFulfillmentFeatureArray and EnvironmentFulfillmentFeatureArrayOutput values.
+// You can construct a concrete instance of `EnvironmentFulfillmentFeatureArrayInput` via:
+//
+//	EnvironmentFulfillmentFeatureArray{ EnvironmentFulfillmentFeatureArgs{...} }
+type EnvironmentFulfillmentFeatureArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentFulfillmentFeatureArrayOutput() EnvironmentFulfillmentFeatureArrayOutput
+	ToEnvironmentFulfillmentFeatureArrayOutputWithContext(context.Context) EnvironmentFulfillmentFeatureArrayOutput
+}
+
+type EnvironmentFulfillmentFeatureArray []EnvironmentFulfillmentFeatureInput
+
+func (EnvironmentFulfillmentFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentFulfillmentFeature)(nil)).Elem()
+}
+
+func (i EnvironmentFulfillmentFeatureArray) ToEnvironmentFulfillmentFeatureArrayOutput() EnvironmentFulfillmentFeatureArrayOutput {
+	return i.ToEnvironmentFulfillmentFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentFulfillmentFeatureArray) ToEnvironmentFulfillmentFeatureArrayOutputWithContext(ctx context.Context) EnvironmentFulfillmentFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentFeatureArrayOutput)
+}
+
+type EnvironmentFulfillmentFeatureOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentFulfillmentFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentFulfillmentFeature)(nil)).Elem()
+}
+
+func (o EnvironmentFulfillmentFeatureOutput) ToEnvironmentFulfillmentFeatureOutput() EnvironmentFulfillmentFeatureOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentFeatureOutput) ToEnvironmentFulfillmentFeatureOutputWithContext(ctx context.Context) EnvironmentFulfillmentFeatureOutput {
+	return o
+}
+
+// The type of the feature that enabled for fulfillment.
+// Possible values are: `TYPE_UNSPECIFIED`, `SMALLTALK`.
+func (o EnvironmentFulfillmentFeatureOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentFulfillmentFeature) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type EnvironmentFulfillmentFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentFulfillmentFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentFulfillmentFeature)(nil)).Elem()
+}
+
+func (o EnvironmentFulfillmentFeatureArrayOutput) ToEnvironmentFulfillmentFeatureArrayOutput() EnvironmentFulfillmentFeatureArrayOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentFeatureArrayOutput) ToEnvironmentFulfillmentFeatureArrayOutputWithContext(ctx context.Context) EnvironmentFulfillmentFeatureArrayOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentFeatureArrayOutput) Index(i pulumi.IntInput) EnvironmentFulfillmentFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentFulfillmentFeature {
+		return vs[0].([]EnvironmentFulfillmentFeature)[vs[1].(int)]
+	}).(EnvironmentFulfillmentFeatureOutput)
+}
+
+type EnvironmentFulfillmentGenericWebService struct {
+	// The password for HTTP Basic authentication.
+	Password *string `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri string `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username *string `pulumi:"username"`
+}
+
+// EnvironmentFulfillmentGenericWebServiceInput is an input type that accepts EnvironmentFulfillmentGenericWebServiceArgs and EnvironmentFulfillmentGenericWebServiceOutput values.
+// You can construct a concrete instance of `EnvironmentFulfillmentGenericWebServiceInput` via:
+//
+//	EnvironmentFulfillmentGenericWebServiceArgs{...}
+type EnvironmentFulfillmentGenericWebServiceInput interface {
+	pulumi.Input
+
+	ToEnvironmentFulfillmentGenericWebServiceOutput() EnvironmentFulfillmentGenericWebServiceOutput
+	ToEnvironmentFulfillmentGenericWebServiceOutputWithContext(context.Context) EnvironmentFulfillmentGenericWebServiceOutput
+}
+
+type EnvironmentFulfillmentGenericWebServiceArgs struct {
+	// The password for HTTP Basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (EnvironmentFulfillmentGenericWebServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentFulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (i EnvironmentFulfillmentGenericWebServiceArgs) ToEnvironmentFulfillmentGenericWebServiceOutput() EnvironmentFulfillmentGenericWebServiceOutput {
+	return i.ToEnvironmentFulfillmentGenericWebServiceOutputWithContext(context.Background())
+}
+
+func (i EnvironmentFulfillmentGenericWebServiceArgs) ToEnvironmentFulfillmentGenericWebServiceOutputWithContext(ctx context.Context) EnvironmentFulfillmentGenericWebServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentGenericWebServiceOutput)
+}
+
+func (i EnvironmentFulfillmentGenericWebServiceArgs) ToEnvironmentFulfillmentGenericWebServicePtrOutput() EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return i.ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentFulfillmentGenericWebServiceArgs) ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentGenericWebServiceOutput).ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(ctx)
+}
+
+// EnvironmentFulfillmentGenericWebServicePtrInput is an input type that accepts EnvironmentFulfillmentGenericWebServiceArgs, EnvironmentFulfillmentGenericWebServicePtr and EnvironmentFulfillmentGenericWebServicePtrOutput values.
+// You can construct a concrete instance of `EnvironmentFulfillmentGenericWebServicePtrInput` via:
+//
+//	        EnvironmentFulfillmentGenericWebServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentFulfillmentGenericWebServicePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentFulfillmentGenericWebServicePtrOutput() EnvironmentFulfillmentGenericWebServicePtrOutput
+	ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(context.Context) EnvironmentFulfillmentGenericWebServicePtrOutput
+}
+
+type environmentFulfillmentGenericWebServicePtrType EnvironmentFulfillmentGenericWebServiceArgs
+
+func EnvironmentFulfillmentGenericWebServicePtr(v *EnvironmentFulfillmentGenericWebServiceArgs) EnvironmentFulfillmentGenericWebServicePtrInput {
+	return (*environmentFulfillmentGenericWebServicePtrType)(v)
+}
+
+func (*environmentFulfillmentGenericWebServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentFulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (i *environmentFulfillmentGenericWebServicePtrType) ToEnvironmentFulfillmentGenericWebServicePtrOutput() EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return i.ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i *environmentFulfillmentGenericWebServicePtrType) ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentFulfillmentGenericWebServicePtrOutput)
+}
+
+type EnvironmentFulfillmentGenericWebServiceOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentFulfillmentGenericWebServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentFulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (o EnvironmentFulfillmentGenericWebServiceOutput) ToEnvironmentFulfillmentGenericWebServiceOutput() EnvironmentFulfillmentGenericWebServiceOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentGenericWebServiceOutput) ToEnvironmentFulfillmentGenericWebServiceOutputWithContext(ctx context.Context) EnvironmentFulfillmentGenericWebServiceOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentGenericWebServiceOutput) ToEnvironmentFulfillmentGenericWebServicePtrOutput() EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return o.ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentFulfillmentGenericWebServiceOutput) ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentFulfillmentGenericWebService) *EnvironmentFulfillmentGenericWebService {
+		return &v
+	}).(EnvironmentFulfillmentGenericWebServicePtrOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o EnvironmentFulfillmentGenericWebServiceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentFulfillmentGenericWebService) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests
+func (o EnvironmentFulfillmentGenericWebServiceOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EnvironmentFulfillmentGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
+}
+
+// The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o EnvironmentFulfillmentGenericWebServiceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentFulfillmentGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o EnvironmentFulfillmentGenericWebServiceOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentFulfillmentGenericWebService) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentFulfillmentGenericWebServicePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentFulfillmentGenericWebServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentFulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) ToEnvironmentFulfillmentGenericWebServicePtrOutput() EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) ToEnvironmentFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) EnvironmentFulfillmentGenericWebServicePtrOutput {
+	return o
+}
+
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) Elem() EnvironmentFulfillmentGenericWebServiceOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillmentGenericWebService) EnvironmentFulfillmentGenericWebService {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentFulfillmentGenericWebService
+		return ret
+	}).(EnvironmentFulfillmentGenericWebServiceOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillmentGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o EnvironmentFulfillmentGenericWebServicePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentFulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentTextToSpeechSettings struct {
+	// Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+	EnableTextToSpeech *bool `pulumi:"enableTextToSpeech"`
+	// Audio encoding of the synthesized audio content.
+	// Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+	OutputAudioEncoding *string `pulumi:"outputAudioEncoding"`
+	// The synthesis sample rate (in hertz) for this audio.
+	SampleRateHertz *int `pulumi:"sampleRateHertz"`
+	// Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+	// Structure is documented below.
+	SynthesizeSpeechConfigs []EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
+}
+
+// EnvironmentTextToSpeechSettingsInput is an input type that accepts EnvironmentTextToSpeechSettingsArgs and EnvironmentTextToSpeechSettingsOutput values.
+// You can construct a concrete instance of `EnvironmentTextToSpeechSettingsInput` via:
+//
+//	EnvironmentTextToSpeechSettingsArgs{...}
+type EnvironmentTextToSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToEnvironmentTextToSpeechSettingsOutput() EnvironmentTextToSpeechSettingsOutput
+	ToEnvironmentTextToSpeechSettingsOutputWithContext(context.Context) EnvironmentTextToSpeechSettingsOutput
+}
+
+type EnvironmentTextToSpeechSettingsArgs struct {
+	// Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+	EnableTextToSpeech pulumi.BoolPtrInput `pulumi:"enableTextToSpeech"`
+	// Audio encoding of the synthesized audio content.
+	// Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+	OutputAudioEncoding pulumi.StringPtrInput `pulumi:"outputAudioEncoding"`
+	// The synthesis sample rate (in hertz) for this audio.
+	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
+	// Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+	// Structure is documented below.
+	SynthesizeSpeechConfigs EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayInput `pulumi:"synthesizeSpeechConfigs"`
+}
+
+func (EnvironmentTextToSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (i EnvironmentTextToSpeechSettingsArgs) ToEnvironmentTextToSpeechSettingsOutput() EnvironmentTextToSpeechSettingsOutput {
+	return i.ToEnvironmentTextToSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i EnvironmentTextToSpeechSettingsArgs) ToEnvironmentTextToSpeechSettingsOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsOutput)
+}
+
+func (i EnvironmentTextToSpeechSettingsArgs) ToEnvironmentTextToSpeechSettingsPtrOutput() EnvironmentTextToSpeechSettingsPtrOutput {
+	return i.ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentTextToSpeechSettingsArgs) ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsOutput).ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// EnvironmentTextToSpeechSettingsPtrInput is an input type that accepts EnvironmentTextToSpeechSettingsArgs, EnvironmentTextToSpeechSettingsPtr and EnvironmentTextToSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `EnvironmentTextToSpeechSettingsPtrInput` via:
+//
+//	        EnvironmentTextToSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentTextToSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentTextToSpeechSettingsPtrOutput() EnvironmentTextToSpeechSettingsPtrOutput
+	ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(context.Context) EnvironmentTextToSpeechSettingsPtrOutput
+}
+
+type environmentTextToSpeechSettingsPtrType EnvironmentTextToSpeechSettingsArgs
+
+func EnvironmentTextToSpeechSettingsPtr(v *EnvironmentTextToSpeechSettingsArgs) EnvironmentTextToSpeechSettingsPtrInput {
+	return (*environmentTextToSpeechSettingsPtrType)(v)
+}
+
+func (*environmentTextToSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (i *environmentTextToSpeechSettingsPtrType) ToEnvironmentTextToSpeechSettingsPtrOutput() EnvironmentTextToSpeechSettingsPtrOutput {
+	return i.ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentTextToSpeechSettingsPtrType) ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsPtrOutput)
+}
+
+type EnvironmentTextToSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTextToSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (o EnvironmentTextToSpeechSettingsOutput) ToEnvironmentTextToSpeechSettingsOutput() EnvironmentTextToSpeechSettingsOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsOutput) ToEnvironmentTextToSpeechSettingsOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsOutput) ToEnvironmentTextToSpeechSettingsPtrOutput() EnvironmentTextToSpeechSettingsPtrOutput {
+	return o.ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentTextToSpeechSettingsOutput) ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentTextToSpeechSettings) *EnvironmentTextToSpeechSettings {
+		return &v
+	}).(EnvironmentTextToSpeechSettingsPtrOutput)
+}
+
+// Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+func (o EnvironmentTextToSpeechSettingsOutput) EnableTextToSpeech() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettings) *bool { return v.EnableTextToSpeech }).(pulumi.BoolPtrOutput)
+}
+
+// Audio encoding of the synthesized audio content.
+// Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+func (o EnvironmentTextToSpeechSettingsOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettings) *string { return v.OutputAudioEncoding }).(pulumi.StringPtrOutput)
+}
+
+// The synthesis sample rate (in hertz) for this audio.
+func (o EnvironmentTextToSpeechSettingsOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettings) *int { return v.SampleRateHertz }).(pulumi.IntPtrOutput)
+}
+
+// Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+// Structure is documented below.
+func (o EnvironmentTextToSpeechSettingsOutput) SynthesizeSpeechConfigs() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettings) []EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig {
+		return v.SynthesizeSpeechConfigs
+	}).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput)
+}
+
+type EnvironmentTextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTextToSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (o EnvironmentTextToSpeechSettingsPtrOutput) ToEnvironmentTextToSpeechSettingsPtrOutput() EnvironmentTextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsPtrOutput) ToEnvironmentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsPtrOutput) Elem() EnvironmentTextToSpeechSettingsOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettings) EnvironmentTextToSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentTextToSpeechSettings
+		return ret
+	}).(EnvironmentTextToSpeechSettingsOutput)
+}
+
+// Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+func (o EnvironmentTextToSpeechSettingsPtrOutput) EnableTextToSpeech() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTextToSpeech
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Audio encoding of the synthesized audio content.
+// Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+func (o EnvironmentTextToSpeechSettingsPtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputAudioEncoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// The synthesis sample rate (in hertz) for this audio.
+func (o EnvironmentTextToSpeechSettingsPtrOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SampleRateHertz
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+// Structure is documented below.
+func (o EnvironmentTextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettings) []EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SynthesizeSpeechConfigs
+	}).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput)
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig struct {
+	// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileIds []string `pulumi:"effectsProfileIds"`
+	// The identifier for this object. Format specified above.
+	Language string `pulumi:"language"`
+	// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch *float64 `pulumi:"pitch"`
+	// Speaking rate/speed, in the range [0.25, 4.0].
+	SpeakingRate *float64 `pulumi:"speakingRate"`
+	// The desired voice of the synthesized audio.
+	// Structure is documented below.
+	Voice *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice `pulumi:"voice"`
+	// Volume gain (in dB) of the normal native volume supported by the specific voice.
+	VolumeGainDb *float64 `pulumi:"volumeGainDb"`
+}
+
+// EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigInput is an input type that accepts EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs and EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput values.
+// You can construct a concrete instance of `EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigInput` via:
+//
+//	EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs{...}
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutputWithContext(context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs struct {
+	// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileIds pulumi.StringArrayInput `pulumi:"effectsProfileIds"`
+	// The identifier for this object. Format specified above.
+	Language pulumi.StringInput `pulumi:"language"`
+	// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch pulumi.Float64PtrInput `pulumi:"pitch"`
+	// Speaking rate/speed, in the range [0.25, 4.0].
+	SpeakingRate pulumi.Float64PtrInput `pulumi:"speakingRate"`
+	// The desired voice of the synthesized audio.
+	// Structure is documented below.
+	Voice EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrInput `pulumi:"voice"`
+	// Volume gain (in dB) of the normal native volume supported by the specific voice.
+	VolumeGainDb pulumi.Float64PtrInput `pulumi:"volumeGainDb"`
+}
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput {
+	return i.ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput)
+}
+
+// EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayInput is an input type that accepts EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray and EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput values.
+// You can construct a concrete instance of `EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayInput` via:
+//
+//	EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray{ EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs{...} }
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutputWithContext(context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray []EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigInput
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput {
+	return i.ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput)
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput {
+	return o
+}
+
+// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) EffectsProfileIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig) []string { return v.EffectsProfileIds }).(pulumi.StringArrayOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) Language() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig) string { return v.Language }).(pulumi.StringOutput)
+}
+
+// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) Pitch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig) *float64 { return v.Pitch }).(pulumi.Float64PtrOutput)
+}
+
+// Speaking rate/speed, in the range [0.25, 4.0].
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) SpeakingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig) *float64 { return v.SpeakingRate }).(pulumi.Float64PtrOutput)
+}
+
+// The desired voice of the synthesized audio.
+// Structure is documented below.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) Voice() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig) *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice {
+		return v.Voice
+	}).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput)
+}
+
+// Volume gain (in dB) of the normal native volume supported by the specific voice.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput) VolumeGainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig) *float64 { return v.VolumeGainDb }).(pulumi.Float64PtrOutput)
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput) Index(i pulumi.IntInput) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig {
+		return vs[0].([]EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig)[vs[1].(int)]
+	}).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput)
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice struct {
+	// The name of the voice.
+	Name *string `pulumi:"name"`
+	// The preferred gender of the voice.
+	// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+	SsmlGender *string `pulumi:"ssmlGender"`
+}
+
+// EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceInput is an input type that accepts EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs and EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput values.
+// You can construct a concrete instance of `EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceInput` via:
+//
+//	EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs{...}
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceInput interface {
+	pulumi.Input
+
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutputWithContext(context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs struct {
+	// The name of the voice.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The preferred gender of the voice.
+	// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+	SsmlGender pulumi.StringPtrInput `pulumi:"ssmlGender"`
+}
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice)(nil)).Elem()
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput {
+	return i.ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutputWithContext(context.Background())
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput)
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return i.ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput).ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(ctx)
+}
+
+// EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrInput is an input type that accepts EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs, EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtr and EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput values.
+// You can construct a concrete instance of `EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrInput` via:
+//
+//	        EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput
+	ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput
+}
+
+type environmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrType EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs
+
+func EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtr(v *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrInput {
+	return (*environmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrType)(v)
+}
+
+func (*environmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice)(nil)).Elem()
+}
+
+func (i *environmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrType) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return i.ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(context.Background())
+}
+
+func (i *environmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrType) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput)
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice)(nil)).Elem()
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return o.ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice) *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice {
+		return &v
+	}).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput)
+}
+
+// The name of the voice.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The preferred gender of the voice.
+// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput) SsmlGender() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice) *string { return v.SsmlGender }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice)(nil)).Elem()
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput) ToEnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutputWithContext(ctx context.Context) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput {
+	return o
+}
+
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput) Elem() EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice) EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice
+		return ret
+	}).(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput)
+}
+
+// The name of the voice.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preferred gender of the voice.
+// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+func (o EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput) SsmlGender() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SsmlGender
+	}).(pulumi.StringPtrOutput)
+}
+
 type FulfillmentFeature struct {
 	// The type of the feature that enabled for fulfillment.
 	// * SMALLTALK: Fulfillment is enabled for SmallTalk.
@@ -48580,6 +49595,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionSpecEncryptionSpecPtrInput)(nil)).Elem(), EncryptionSpecEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityInput)(nil)).Elem(), EntityTypeEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityArrayInput)(nil)).Elem(), EntityTypeEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFulfillmentInput)(nil)).Elem(), EnvironmentFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFulfillmentPtrInput)(nil)).Elem(), EnvironmentFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFulfillmentFeatureInput)(nil)).Elem(), EnvironmentFulfillmentFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFulfillmentFeatureArrayInput)(nil)).Elem(), EnvironmentFulfillmentFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFulfillmentGenericWebServiceInput)(nil)).Elem(), EnvironmentFulfillmentGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentFulfillmentGenericWebServicePtrInput)(nil)).Elem(), EnvironmentFulfillmentGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTextToSpeechSettingsInput)(nil)).Elem(), EnvironmentTextToSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTextToSpeechSettingsPtrInput)(nil)).Elem(), EnvironmentTextToSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigInput)(nil)).Elem(), EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayInput)(nil)).Elem(), EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceInput)(nil)).Elem(), EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrInput)(nil)).Elem(), EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentFeatureInput)(nil)).Elem(), FulfillmentFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentFeatureArrayInput)(nil)).Elem(), FulfillmentFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServiceInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
@@ -49155,6 +50182,18 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionSpecEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentFulfillmentOutput{})
+	pulumi.RegisterOutputType(EnvironmentFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentFulfillmentFeatureOutput{})
+	pulumi.RegisterOutputType(EnvironmentFulfillmentFeatureArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentFulfillmentGenericWebServiceOutput{})
+	pulumi.RegisterOutputType(EnvironmentFulfillmentGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentTextToSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(EnvironmentTextToSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceOutput{})
+	pulumi.RegisterOutputType(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoicePtrOutput{})
 	pulumi.RegisterOutputType(FulfillmentFeatureOutput{})
 	pulumi.RegisterOutputType(FulfillmentFeatureArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentGenericWebServiceOutput{})

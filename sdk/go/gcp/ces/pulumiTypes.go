@@ -34136,6 +34136,12 @@ type ToolsetMcpToolset struct {
 	// the request header; sending it via query parameters is not supported.
 	// Structure is documented below.
 	ApiAuthentication *ToolsetMcpToolsetApiAuthentication `pulumi:"apiAuthentication"`
+	// The custom headers to send in the request to the MCP server. The values
+	// must be in the format `$context.variables.<name_of_variable>` and can be
+	// set in the session variables. See
+	// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+	// for more details.
+	CustomHeaders map[string]string `pulumi:"customHeaders"`
 	// The address of the MCP server, for example, "https://example.com/mcp/". If
 	// the server is built with the MCP SDK, the url should be suffixed with
 	// "/mcp/". Only Streamable HTTP transport based servers are supported. See
@@ -34169,6 +34175,12 @@ type ToolsetMcpToolsetArgs struct {
 	// the request header; sending it via query parameters is not supported.
 	// Structure is documented below.
 	ApiAuthentication ToolsetMcpToolsetApiAuthenticationPtrInput `pulumi:"apiAuthentication"`
+	// The custom headers to send in the request to the MCP server. The values
+	// must be in the format `$context.variables.<name_of_variable>` and can be
+	// set in the session variables. See
+	// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+	// for more details.
+	CustomHeaders pulumi.StringMapInput `pulumi:"customHeaders"`
 	// The address of the MCP server, for example, "https://example.com/mcp/". If
 	// the server is built with the MCP SDK, the url should be suffixed with
 	// "/mcp/". Only Streamable HTTP transport based servers are supported. See
@@ -34270,6 +34282,15 @@ func (o ToolsetMcpToolsetOutput) ApiAuthentication() ToolsetMcpToolsetApiAuthent
 	return o.ApplyT(func(v ToolsetMcpToolset) *ToolsetMcpToolsetApiAuthentication { return v.ApiAuthentication }).(ToolsetMcpToolsetApiAuthenticationPtrOutput)
 }
 
+// The custom headers to send in the request to the MCP server. The values
+// must be in the format `$context.variables.<name_of_variable>` and can be
+// set in the session variables. See
+// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+// for more details.
+func (o ToolsetMcpToolsetOutput) CustomHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ToolsetMcpToolset) map[string]string { return v.CustomHeaders }).(pulumi.StringMapOutput)
+}
+
 // The address of the MCP server, for example, "https://example.com/mcp/". If
 // the server is built with the MCP SDK, the url should be suffixed with
 // "/mcp/". Only Streamable HTTP transport based servers are supported. See
@@ -34328,6 +34349,20 @@ func (o ToolsetMcpToolsetPtrOutput) ApiAuthentication() ToolsetMcpToolsetApiAuth
 		}
 		return v.ApiAuthentication
 	}).(ToolsetMcpToolsetApiAuthenticationPtrOutput)
+}
+
+// The custom headers to send in the request to the MCP server. The values
+// must be in the format `$context.variables.<name_of_variable>` and can be
+// set in the session variables. See
+// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+// for more details.
+func (o ToolsetMcpToolsetPtrOutput) CustomHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ToolsetMcpToolset) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomHeaders
+	}).(pulumi.StringMapOutput)
 }
 
 // The address of the MCP server, for example, "https://example.com/mcp/". If

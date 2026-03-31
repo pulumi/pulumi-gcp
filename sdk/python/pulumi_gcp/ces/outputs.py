@@ -16587,6 +16587,8 @@ class ToolsetMcpToolset(dict):
             suggest = "server_address"
         elif key == "apiAuthentication":
             suggest = "api_authentication"
+        elif key == "customHeaders":
+            suggest = "custom_headers"
         elif key == "serviceDirectoryConfig":
             suggest = "service_directory_config"
         elif key == "tlsConfig":
@@ -16606,6 +16608,7 @@ class ToolsetMcpToolset(dict):
     def __init__(__self__, *,
                  server_address: _builtins.str,
                  api_authentication: Optional['outputs.ToolsetMcpToolsetApiAuthentication'] = None,
+                 custom_headers: Optional[Mapping[str, _builtins.str]] = None,
                  service_directory_config: Optional['outputs.ToolsetMcpToolsetServiceDirectoryConfig'] = None,
                  tls_config: Optional['outputs.ToolsetMcpToolsetTlsConfig'] = None):
         """
@@ -16618,6 +16621,11 @@ class ToolsetMcpToolset(dict):
                against the MCP server. For API key auth, the API key can only be sent in
                the request header; sending it via query parameters is not supported.
                Structure is documented below.
+        :param Mapping[str, _builtins.str] custom_headers: The custom headers to send in the request to the MCP server. The values
+               must be in the format `$context.variables.<name_of_variable>` and can be
+               set in the session variables. See
+               https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+               for more details.
         :param 'ToolsetMcpToolsetServiceDirectoryConfigArgs' service_directory_config: Service Directory configuration for VPC-SC, used to resolve service names
                within a perimeter.
                Structure is documented below.
@@ -16628,6 +16636,8 @@ class ToolsetMcpToolset(dict):
         pulumi.set(__self__, "server_address", server_address)
         if api_authentication is not None:
             pulumi.set(__self__, "api_authentication", api_authentication)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if service_directory_config is not None:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if tls_config is not None:
@@ -16655,6 +16665,18 @@ class ToolsetMcpToolset(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "api_authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The custom headers to send in the request to the MCP server. The values
+        must be in the format `$context.variables.<name_of_variable>` and can be
+        set in the session variables. See
+        https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
+        for more details.
+        """
+        return pulumi.get(self, "custom_headers")
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")

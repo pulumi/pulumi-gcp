@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -74,6 +73,163 @@ import (
 //	}
 //
 // ```
+// ### Region Target Tcp Proxy Basic Beta
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				Region:           pulumi.String("europe-west4"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				Protocol:            pulumi.String("TCP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				Region:              pulumi.String("europe-west4"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
+//				Name:                pulumi.String("test-proxy"),
+//				Region:              pulumi.String("europe-west4"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				BackendService:      defaultRegionBackendService.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Target Tcp Proxy Backendless
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
+//				Name:                pulumi.String("test-proxy"),
+//				Region:              pulumi.String("europe-west4"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Target Tcp Proxy Tls Route
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
+//				Name:                pulumi.String("test-proxy"),
+//				Region:              pulumi.String("europe-west4"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:             pulumi.String("health-check"),
+//				Region:           pulumi.String("europe-west4"),
+//				TimeoutSec:       pulumi.Int(1),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				Protocol:            pulumi.String("TCP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				Region:              pulumi.String("europe-west4"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name:     pulumi.String("tls-route-check"),
+//				Location: pulumi.String("europe-west4"),
+//				TargetProxies: pulumi.StringArray{
+//					_default.SelfLink,
+//				},
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: defaultRegionBackendService.SelfLink,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -95,12 +251,19 @@ import (
 type RegionTargetTcpProxy struct {
 	pulumi.CustomResourceState
 
-	// A reference to the BackendService resource.
-	BackendService pulumi.StringOutput `pulumi:"backendService"`
+	// A reference to the BackendService resource. This field is optional when
+	// the loadBalancingScheme (available in beta) is specified.
+	BackendService pulumi.StringPtrOutput `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Optional, Beta)
+	// Specifies the load balancer type. A target TCP proxy created for one type
+	// of load balancer cannot be used with another. For more information, refer
+	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+	// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -133,12 +296,9 @@ type RegionTargetTcpProxy struct {
 func NewRegionTargetTcpProxy(ctx *pulumi.Context,
 	name string, args *RegionTargetTcpProxyArgs, opts ...pulumi.ResourceOption) (*RegionTargetTcpProxy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RegionTargetTcpProxyArgs{}
 	}
 
-	if args.BackendService == nil {
-		return nil, errors.New("invalid value for required argument 'BackendService'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionTargetTcpProxy
 	err := ctx.RegisterResource("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, args, &resource, opts...)
@@ -162,12 +322,19 @@ func GetRegionTargetTcpProxy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionTargetTcpProxy resources.
 type regionTargetTcpProxyState struct {
-	// A reference to the BackendService resource.
+	// A reference to the BackendService resource. This field is optional when
+	// the loadBalancingScheme (available in beta) is specified.
 	BackendService *string `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
+	// Specifies the load balancer type. A target TCP proxy created for one type
+	// of load balancer cannot be used with another. For more information, refer
+	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+	// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -197,12 +364,19 @@ type regionTargetTcpProxyState struct {
 }
 
 type RegionTargetTcpProxyState struct {
-	// A reference to the BackendService resource.
+	// A reference to the BackendService resource. This field is optional when
+	// the loadBalancingScheme (available in beta) is specified.
 	BackendService pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Specifies the load balancer type. A target TCP proxy created for one type
+	// of load balancer cannot be used with another. For more information, refer
+	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+	// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -236,10 +410,17 @@ func (RegionTargetTcpProxyState) ElementType() reflect.Type {
 }
 
 type regionTargetTcpProxyArgs struct {
-	// A reference to the BackendService resource.
-	BackendService string `pulumi:"backendService"`
+	// A reference to the BackendService resource. This field is optional when
+	// the loadBalancingScheme (available in beta) is specified.
+	BackendService *string `pulumi:"backendService"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
+	// Specifies the load balancer type. A target TCP proxy created for one type
+	// of load balancer cannot be used with another. For more information, refer
+	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+	// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -266,10 +447,17 @@ type regionTargetTcpProxyArgs struct {
 
 // The set of arguments for constructing a RegionTargetTcpProxy resource.
 type RegionTargetTcpProxyArgs struct {
-	// A reference to the BackendService resource.
-	BackendService pulumi.StringInput
+	// A reference to the BackendService resource. This field is optional when
+	// the loadBalancingScheme (available in beta) is specified.
+	BackendService pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Specifies the load balancer type. A target TCP proxy created for one type
+	// of load balancer cannot be used with another. For more information, refer
+	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+	// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -381,9 +569,10 @@ func (o RegionTargetTcpProxyOutput) ToRegionTargetTcpProxyOutputWithContext(ctx 
 	return o
 }
 
-// A reference to the BackendService resource.
-func (o RegionTargetTcpProxyOutput) BackendService() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
+// A reference to the BackendService resource. This field is optional when
+// the loadBalancingScheme (available in beta) is specified.
+func (o RegionTargetTcpProxyOutput) BackendService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringPtrOutput { return v.BackendService }).(pulumi.StringPtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -394,6 +583,15 @@ func (o RegionTargetTcpProxyOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource.
 func (o RegionTargetTcpProxyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the load balancer type. A target TCP proxy created for one type
+// of load balancer cannot be used with another. For more information, refer
+// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+// Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
+func (o RegionTargetTcpProxyOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is

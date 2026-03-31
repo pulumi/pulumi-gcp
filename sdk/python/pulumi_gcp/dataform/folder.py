@@ -233,7 +233,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_74391")
+            display_name="Basic Folder-_16511")
         ```
         ### Dataform Folder Full
 
@@ -308,7 +308,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_74391")
+            display_name="Basic Folder-_16511")
         ```
         ### Dataform Folder Full
 

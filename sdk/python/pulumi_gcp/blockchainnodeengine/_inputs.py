@@ -463,6 +463,10 @@ class BlockchainNodesEthereumDetailsGethDetailsArgs:
 
 
 class BlockchainNodesEthereumDetailsValidatorConfigArgsDict(TypedDict):
+    beacon_fee_recipient: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+    """
     mev_relay_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
     """
     URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
@@ -471,12 +475,28 @@ class BlockchainNodesEthereumDetailsValidatorConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsValidatorConfigArgs:
     def __init__(__self__, *,
+                 beacon_fee_recipient: Optional[pulumi.Input[_builtins.str]] = None,
                  mev_relay_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[_builtins.str] beacon_fee_recipient: An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mev_relay_urls: URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
         """
+        if beacon_fee_recipient is not None:
+            pulumi.set(__self__, "beacon_fee_recipient", beacon_fee_recipient)
         if mev_relay_urls is not None:
             pulumi.set(__self__, "mev_relay_urls", mev_relay_urls)
+
+    @_builtins.property
+    @pulumi.getter(name="beaconFeeRecipient")
+    def beacon_fee_recipient(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+        """
+        return pulumi.get(self, "beacon_fee_recipient")
+
+    @beacon_fee_recipient.setter
+    def beacon_fee_recipient(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "beacon_fee_recipient", value)
 
     @_builtins.property
     @pulumi.getter(name="mevRelayUrls")

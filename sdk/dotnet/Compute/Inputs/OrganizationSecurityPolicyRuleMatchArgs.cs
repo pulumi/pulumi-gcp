@@ -16,14 +16,21 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The configuration options for matching the rule.
         /// Structure is documented below.
         /// </summary>
-        [Input("config", required: true)]
-        public Input<Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs>? Config { get; set; }
 
         /// <summary>
         /// A description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("expr")]
+        public Input<Inputs.OrganizationSecurityPolicyRuleMatchExprArgs>? Expr { get; set; }
 
         /// <summary>
         /// Preconfigured versioned expression. For organization security policy rules,

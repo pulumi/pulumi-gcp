@@ -57,6 +57,7 @@ export interface GetInstanceResult {
     readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly location: string;
+    readonly maintenancePolicies: outputs.lustre.GetInstanceMaintenancePolicy[];
     readonly mountPoint: string;
     readonly name: string;
     readonly network: string;

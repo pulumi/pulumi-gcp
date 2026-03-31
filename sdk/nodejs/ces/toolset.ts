@@ -435,6 +435,9 @@ import * as utilities from "../utilities";
  *     displayName: "Basic toolset display name",
  *     mcpToolset: {
  *         serverAddress: "https://api.example.com/mcp/",
+ *         customHeaders: {
+ *             "X-Custom-Header": "$context.variables.my_variable",
+ *         },
  *         tlsConfig: {
  *             caCerts: [{
  *                 displayName: "example",

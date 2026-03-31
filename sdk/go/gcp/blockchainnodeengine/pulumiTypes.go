@@ -838,6 +838,8 @@ func (o BlockchainNodesEthereumDetailsGethDetailsPtrOutput) GarbageCollectionMod
 }
 
 type BlockchainNodesEthereumDetailsValidatorConfig struct {
+	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+	BeaconFeeRecipient *string `pulumi:"beaconFeeRecipient"`
 	// URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
 	MevRelayUrls []string `pulumi:"mevRelayUrls"`
 }
@@ -854,6 +856,8 @@ type BlockchainNodesEthereumDetailsValidatorConfigInput interface {
 }
 
 type BlockchainNodesEthereumDetailsValidatorConfigArgs struct {
+	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+	BeaconFeeRecipient pulumi.StringPtrInput `pulumi:"beaconFeeRecipient"`
 	// URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
 	MevRelayUrls pulumi.StringArrayInput `pulumi:"mevRelayUrls"`
 }
@@ -935,6 +939,11 @@ func (o BlockchainNodesEthereumDetailsValidatorConfigOutput) ToBlockchainNodesEt
 	}).(BlockchainNodesEthereumDetailsValidatorConfigPtrOutput)
 }
 
+// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+func (o BlockchainNodesEthereumDetailsValidatorConfigOutput) BeaconFeeRecipient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlockchainNodesEthereumDetailsValidatorConfig) *string { return v.BeaconFeeRecipient }).(pulumi.StringPtrOutput)
+}
+
 // URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
 func (o BlockchainNodesEthereumDetailsValidatorConfigOutput) MevRelayUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlockchainNodesEthereumDetailsValidatorConfig) []string { return v.MevRelayUrls }).(pulumi.StringArrayOutput)
@@ -962,6 +971,16 @@ func (o BlockchainNodesEthereumDetailsValidatorConfigPtrOutput) Elem() Blockchai
 		var ret BlockchainNodesEthereumDetailsValidatorConfig
 		return ret
 	}).(BlockchainNodesEthereumDetailsValidatorConfigOutput)
+}
+
+// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+func (o BlockchainNodesEthereumDetailsValidatorConfigPtrOutput) BeaconFeeRecipient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlockchainNodesEthereumDetailsValidatorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BeaconFeeRecipient
+	}).(pulumi.StringPtrOutput)
 }
 
 // URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.

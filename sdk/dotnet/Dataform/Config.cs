@@ -57,6 +57,12 @@ namespace Pulumi.Gcp.Dataform
     ///         Project = project.ProjectId,
     ///         ServiceName = "dataform.googleapis.com",
     ///         DisableOnDestroy = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cloudkmsApi,
+    ///         },
     ///     });
     /// 
     ///     // Add a sleep to wait for IAM propagation after API enablement
@@ -76,6 +82,12 @@ namespace Pulumi.Gcp.Dataform
     ///     {
     ///         Project = project.ProjectId,
     ///         Service = "dataform.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForDataformApi,
+    ///         },
     ///     });
     /// 
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
@@ -87,7 +99,7 @@ namespace Pulumi.Gcp.Dataform
     ///     {
     ///         DependsOn =
     ///         {
-    ///             cloudkmsApi,
+    ///             waitForDataformApi,
     ///         },
     ///     });
     /// 
@@ -116,7 +128,6 @@ namespace Pulumi.Gcp.Dataform
     ///         DependsOn =
     ///         {
     ///             cryptoKeyBinding,
-    ///             waitForDataformApi,
     ///         },
     ///     });
     /// 

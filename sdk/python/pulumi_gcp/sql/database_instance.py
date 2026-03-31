@@ -1362,6 +1362,31 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Cloud SQL Instance created using point_in_time_restore using multiregion datasource
+        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="main-instance",
+            database_version="MYSQL_8_0",
+            settings={
+                "tier": "db-f1-micro",
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+            },
+            point_in_time_restore_context={
+                "datasource": "backupdr_datasource",
+                "target_instance": "target_instance_name",
+                "point_in_time": "time_stamp",
+                "region": "region",
+            })
+        ```
+
         ## Switchover
 
         Users can perform a switchover on a replica by following the steps below.
@@ -1726,6 +1751,31 @@ class DatabaseInstance(pulumi.CustomResource):
                 "datasource": "backupdr_datasource",
                 "target_instance": "target_instance_name",
                 "point_in_time": "time_stamp",
+            })
+        ```
+
+        ### Cloud SQL Instance created using point_in_time_restore using multiregion datasource
+        > **NOTE:** Replace `backupdr_datasource` with the full datasource path, `time_stamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="main-instance",
+            database_version="MYSQL_8_0",
+            settings={
+                "tier": "db-f1-micro",
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+            },
+            point_in_time_restore_context={
+                "datasource": "backupdr_datasource",
+                "target_instance": "target_instance_name",
+                "point_in_time": "time_stamp",
+                "region": "region",
             })
         ```
 

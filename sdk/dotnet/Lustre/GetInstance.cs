@@ -108,6 +108,7 @@ namespace Pulumi.Gcp.Lustre
         public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
+        public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
         public readonly string MountPoint;
         public readonly string Name;
         public readonly string Network;
@@ -146,6 +147,8 @@ namespace Pulumi.Gcp.Lustre
 
             string location,
 
+            ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> maintenancePolicies,
+
             string mountPoint,
 
             string name,
@@ -180,6 +183,7 @@ namespace Pulumi.Gcp.Lustre
             KmsKey = kmsKey;
             Labels = labels;
             Location = location;
+            MaintenancePolicies = maintenancePolicies;
             MountPoint = mountPoint;
             Name = name;
             Network = network;

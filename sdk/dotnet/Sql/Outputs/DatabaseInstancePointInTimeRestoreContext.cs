@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? PreferredZone;
         /// <summary>
+        /// The region of the target instance where the datasource will be restored. For example: "us-central1".
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// The name of the target instance.
         /// </summary>
         public readonly string? TargetInstance;
@@ -46,12 +50,15 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? preferredZone,
 
+            string? region,
+
             string? targetInstance)
         {
             AllocatedIpRange = allocatedIpRange;
             Datasource = datasource;
             PointInTime = pointInTime;
             PreferredZone = preferredZone;
+            Region = region;
             TargetInstance = targetInstance;
         }
     }

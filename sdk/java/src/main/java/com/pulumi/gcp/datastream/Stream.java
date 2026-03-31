@@ -1341,8 +1341,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
- *             .projectId("tf-test_21563")
- *             .name("tf-test_25141")
+ *             .projectId("tf-test_25141")
+ *             .name("tf-test_30827")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

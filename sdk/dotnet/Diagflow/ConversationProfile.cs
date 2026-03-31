@@ -85,6 +85,41 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// ### Dialogflow Conversation Profile Beta Bidi
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
+    ///     {
+    ///         AppId = "app-id-_44703",
+    ///         Location = "us",
+    ///         DisplayName = "my-app",
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var bidiProfile = new Gcp.Diagflow.ConversationProfile("bidi_profile", new()
+    ///     {
+    ///         DisplayName = "tf-test-dialogflow-profile-bidi-_32270",
+    ///         Location = "global",
+    ///         LanguageCode = "en-US",
+    ///         UseBidiStreaming = true,
+    ///         AutomatedAgentConfig = new Gcp.Diagflow.Inputs.ConversationProfileAutomatedAgentConfigArgs
+    ///         {
+    ///             Agent = cesAppForAgent.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -208,6 +243,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("ttsConfig")]
         public Output<Outputs.ConversationProfileTtsConfig?> TtsConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+        /// </summary>
+        [Output("useBidiStreaming")]
+        public Output<bool?> UseBidiStreaming { get; private set; } = null!;
 
 
         /// <summary>
@@ -357,6 +399,13 @@ namespace Pulumi.Gcp.Diagflow
         [Input("ttsConfig")]
         public Input<Inputs.ConversationProfileTtsConfigArgs>? TtsConfig { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+        /// </summary>
+        [Input("useBidiStreaming")]
+        public Input<bool>? UseBidiStreaming { get; set; }
+
         public ConversationProfileArgs()
         {
         }
@@ -472,6 +521,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("ttsConfig")]
         public Input<Inputs.ConversationProfileTtsConfigGetArgs>? TtsConfig { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
+        /// </summary>
+        [Input("useBidiStreaming")]
+        public Input<bool>? UseBidiStreaming { get; set; }
 
         public ConversationProfileState()
         {

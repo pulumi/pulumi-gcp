@@ -563,6 +563,18 @@ __all__ = [
     'EncryptionSpecEncryptionSpecArgsDict',
     'EntityTypeEntityArgs',
     'EntityTypeEntityArgsDict',
+    'EnvironmentFulfillmentArgs',
+    'EnvironmentFulfillmentArgsDict',
+    'EnvironmentFulfillmentFeatureArgs',
+    'EnvironmentFulfillmentFeatureArgsDict',
+    'EnvironmentFulfillmentGenericWebServiceArgs',
+    'EnvironmentFulfillmentGenericWebServiceArgsDict',
+    'EnvironmentTextToSpeechSettingsArgs',
+    'EnvironmentTextToSpeechSettingsArgsDict',
+    'EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs',
+    'EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgsDict',
+    'EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs',
+    'EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgsDict',
     'FulfillmentFeatureArgs',
     'FulfillmentFeatureArgsDict',
     'FulfillmentGenericWebServiceArgs',
@@ -20806,6 +20818,504 @@ class EntityTypeEntityArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class EnvironmentFulfillmentArgsDict(TypedDict):
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The human-readable name of the fulfillment, unique within the agent.
+    """
+    features: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentFulfillmentFeatureArgsDict']]]]
+    """
+    The field defines whether the fulfillment is enabled for certain features.
+    Structure is documented below.
+    """
+    generic_web_service: NotRequired[pulumi.Input['EnvironmentFulfillmentGenericWebServiceArgsDict']]
+    """
+    Represents configuration for a generic web service.
+    Structure is documented below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the fulfillment. Supports the following formats:
+    - projects/<Project ID>/agent/fulfillment
+    - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+    """
+
+@pulumi.input_type
+class EnvironmentFulfillmentArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentFulfillmentFeatureArgs']]]] = None,
+                 generic_web_service: Optional[pulumi.Input['EnvironmentFulfillmentGenericWebServiceArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] display_name: The human-readable name of the fulfillment, unique within the agent.
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentFulfillmentFeatureArgs']]] features: The field defines whether the fulfillment is enabled for certain features.
+               Structure is documented below.
+        :param pulumi.Input['EnvironmentFulfillmentGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The unique identifier of the fulfillment. Supports the following formats:
+               - projects/<Project ID>/agent/fulfillment
+               - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
+        if generic_web_service is not None:
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The human-readable name of the fulfillment, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentFulfillmentFeatureArgs']]]]:
+        """
+        The field defines whether the fulfillment is enabled for certain features.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentFulfillmentFeatureArgs']]]]):
+        pulumi.set(self, "features", value)
+
+    @_builtins.property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> Optional[pulumi.Input['EnvironmentFulfillmentGenericWebServiceArgs']]:
+        """
+        Represents configuration for a generic web service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @generic_web_service.setter
+    def generic_web_service(self, value: Optional[pulumi.Input['EnvironmentFulfillmentGenericWebServiceArgs']]):
+        pulumi.set(self, "generic_web_service", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the fulfillment. Supports the following formats:
+        - projects/<Project ID>/agent/fulfillment
+        - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class EnvironmentFulfillmentFeatureArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the feature that enabled for fulfillment.
+    Possible values are: `TYPE_UNSPECIFIED`, `SMALLTALK`.
+    """
+
+@pulumi.input_type
+class EnvironmentFulfillmentFeatureArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] type: The type of the feature that enabled for fulfillment.
+               Possible values are: `TYPE_UNSPECIFIED`, `SMALLTALK`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the feature that enabled for fulfillment.
+        Possible values are: `TYPE_UNSPECIFIED`, `SMALLTALK`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+class EnvironmentFulfillmentGenericWebServiceArgsDict(TypedDict):
+    uri: pulumi.Input[_builtins.str]
+    """
+    The fulfillment URI for receiving POST requests. It must use https protocol.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password for HTTP Basic authentication.
+    """
+    request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP request headers to send together with fulfillment requests
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user name for HTTP Basic authentication.
+    """
+
+@pulumi.input_type
+class EnvironmentFulfillmentGenericWebServiceArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[_builtins.str],
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] uri: The fulfillment URI for receiving POST requests. It must use https protocol.
+        :param pulumi.Input[_builtins.str] password: The password for HTTP Basic authentication.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_headers: The HTTP request headers to send together with fulfillment requests
+        :param pulumi.Input[_builtins.str] username: The user name for HTTP Basic authentication.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The fulfillment URI for receiving POST requests. It must use https protocol.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "uri", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The HTTP request headers to send together with fulfillment requests
+        """
+        return pulumi.get(self, "request_headers")
+
+    @request_headers.setter
+    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "request_headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user name for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+class EnvironmentTextToSpeechSettingsArgsDict(TypedDict):
+    enable_text_to_speech: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+    """
+    output_audio_encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Audio encoding of the synthesized audio content.
+    Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+    """
+    sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The synthesis sample rate (in hertz) for this audio.
+    """
+    synthesize_speech_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgsDict']]]]
+    """
+    Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class EnvironmentTextToSpeechSettingsArgs:
+    def __init__(__self__, *,
+                 enable_text_to_speech: Optional[pulumi.Input[_builtins.bool]] = None,
+                 output_audio_encoding: Optional[pulumi.Input[_builtins.str]] = None,
+                 sample_rate_hertz: Optional[pulumi.Input[_builtins.int]] = None,
+                 synthesize_speech_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_text_to_speech: Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+        :param pulumi.Input[_builtins.str] output_audio_encoding: Audio encoding of the synthesized audio content.
+               Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+        :param pulumi.Input[_builtins.int] sample_rate_hertz: The synthesis sample rate (in hertz) for this audio.
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs']]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+               Structure is documented below.
+        """
+        if enable_text_to_speech is not None:
+            pulumi.set(__self__, "enable_text_to_speech", enable_text_to_speech)
+        if output_audio_encoding is not None:
+            pulumi.set(__self__, "output_audio_encoding", output_audio_encoding)
+        if sample_rate_hertz is not None:
+            pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
+        if synthesize_speech_configs is not None:
+            pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTextToSpeech")
+    def enable_text_to_speech(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+        """
+        return pulumi.get(self, "enable_text_to_speech")
+
+    @enable_text_to_speech.setter
+    def enable_text_to_speech(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_text_to_speech", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputAudioEncoding")
+    def output_audio_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Audio encoding of the synthesized audio content.
+        Possible values are: `OUTPUT_AUDIO_ENCODING_UNSPECIFIED`, `OUTPUT_AUDIO_ENCODING_LINEAR_16`, `OUTPUT_AUDIO_ENCODING_MP3`, `OUTPUT_AUDIO_ENCODING_MP3_64_KBPS`, `OUTPUT_AUDIO_ENCODING_OGG_OPUS`, `OUTPUT_AUDIO_ENCODING_MULAW`, `OUTPUT_AUDIO_ENCODING_ALAW`.
+        """
+        return pulumi.get(self, "output_audio_encoding")
+
+    @output_audio_encoding.setter
+    def output_audio_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "output_audio_encoding", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleRateHertz")
+    def sample_rate_hertz(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The synthesis sample rate (in hertz) for this audio.
+        """
+        return pulumi.get(self, "sample_rate_hertz")
+
+    @sample_rate_hertz.setter
+    def sample_rate_hertz(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sample_rate_hertz", value)
+
+    @_builtins.property
+    @pulumi.getter(name="synthesizeSpeechConfigs")
+    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs']]]]:
+        """
+        Configuration of how speech should be synthesized, mapping from language to SynthesizeSpeechConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "synthesize_speech_configs")
+
+    @synthesize_speech_configs.setter
+    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs']]]]):
+        pulumi.set(self, "synthesize_speech_configs", value)
+
+
+class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgsDict(TypedDict):
+    language: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    effects_profile_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+    """
+    pitch: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+    """
+    speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Speaking rate/speed, in the range [0.25, 4.0].
+    """
+    voice: NotRequired[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgsDict']]
+    """
+    The desired voice of the synthesized audio.
+    Structure is documented below.
+    """
+    volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Volume gain (in dB) of the normal native volume supported by the specific voice.
+    """
+
+@pulumi.input_type
+class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigArgs:
+    def __init__(__self__, *,
+                 language: pulumi.Input[_builtins.str],
+                 effects_profile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pitch: Optional[pulumi.Input[_builtins.float]] = None,
+                 speaking_rate: Optional[pulumi.Input[_builtins.float]] = None,
+                 voice: Optional[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs']] = None,
+                 volume_gain_db: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] language: The identifier for this object. Format specified above.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effects_profile_ids: An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        :param pulumi.Input[_builtins.float] pitch: Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        :param pulumi.Input[_builtins.float] speaking_rate: Speaking rate/speed, in the range [0.25, 4.0].
+        :param pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs'] voice: The desired voice of the synthesized audio.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.float] volume_gain_db: Volume gain (in dB) of the normal native volume supported by the specific voice.
+        """
+        pulumi.set(__self__, "language", language)
+        if effects_profile_ids is not None:
+            pulumi.set(__self__, "effects_profile_ids", effects_profile_ids)
+        if pitch is not None:
+            pulumi.set(__self__, "pitch", pitch)
+        if speaking_rate is not None:
+            pulumi.set(__self__, "speaking_rate", speaking_rate)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+        if volume_gain_db is not None:
+            pulumi.set(__self__, "volume_gain_db", volume_gain_db)
+
+    @_builtins.property
+    @pulumi.getter
+    def language(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "language")
+
+    @language.setter
+    def language(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "language", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectsProfileIds")
+    def effects_profile_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        """
+        return pulumi.get(self, "effects_profile_ids")
+
+    @effects_profile_ids.setter
+    def effects_profile_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effects_profile_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pitch(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        """
+        return pulumi.get(self, "pitch")
+
+    @pitch.setter
+    def pitch(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "pitch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="speakingRate")
+    def speaking_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Speaking rate/speed, in the range [0.25, 4.0].
+        """
+        return pulumi.get(self, "speaking_rate")
+
+    @speaking_rate.setter
+    def speaking_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "speaking_rate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> Optional[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs']]:
+        """
+        The desired voice of the synthesized audio.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "voice")
+
+    @voice.setter
+    def voice(self, value: Optional[pulumi.Input['EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs']]):
+        pulumi.set(self, "voice", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeGainDb")
+    def volume_gain_db(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Volume gain (in dB) of the normal native volume supported by the specific voice.
+        """
+        return pulumi.get(self, "volume_gain_db")
+
+    @volume_gain_db.setter
+    def volume_gain_db(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "volume_gain_db", value)
+
+
+class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the voice.
+    """
+    ssml_gender: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The preferred gender of the voice.
+    Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+    """
+
+@pulumi.input_type
+class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoiceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssml_gender: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the voice.
+        :param pulumi.Input[_builtins.str] ssml_gender: The preferred gender of the voice.
+               Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ssml_gender is not None:
+            pulumi.set(__self__, "ssml_gender", ssml_gender)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the voice.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ssmlGender")
+    def ssml_gender(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The preferred gender of the voice.
+        Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+        """
+        return pulumi.get(self, "ssml_gender")
+
+    @ssml_gender.setter
+    def ssml_gender(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssml_gender", value)
 
 
 class FulfillmentFeatureArgsDict(TypedDict):

@@ -4,8 +4,8 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleMatchConfig;
+import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleMatchExpr;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,12 +18,18 @@ public final class OrganizationSecurityPolicyRuleMatch {
      * Structure is documented below.
      * 
      */
-    private OrganizationSecurityPolicyRuleMatchConfig config;
+    private @Nullable OrganizationSecurityPolicyRuleMatchConfig config;
     /**
      * @return A description of the rule.
      * 
      */
     private @Nullable String description;
+    /**
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable OrganizationSecurityPolicyRuleMatchExpr expr;
     /**
      * @return Preconfigured versioned expression. For organization security policy rules,
      * the only supported type is &#34;SRC_IPS_V1&#34;.
@@ -38,8 +44,8 @@ public final class OrganizationSecurityPolicyRuleMatch {
      * Structure is documented below.
      * 
      */
-    public OrganizationSecurityPolicyRuleMatchConfig config() {
-        return this.config;
+    public Optional<OrganizationSecurityPolicyRuleMatchConfig> config() {
+        return Optional.ofNullable(this.config);
     }
     /**
      * @return A description of the rule.
@@ -47,6 +53,14 @@ public final class OrganizationSecurityPolicyRuleMatch {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<OrganizationSecurityPolicyRuleMatchExpr> expr() {
+        return Optional.ofNullable(this.expr);
     }
     /**
      * @return Preconfigured versioned expression. For organization security policy rules,
@@ -67,22 +81,22 @@ public final class OrganizationSecurityPolicyRuleMatch {
     }
     @CustomType.Builder
     public static final class Builder {
-        private OrganizationSecurityPolicyRuleMatchConfig config;
+        private @Nullable OrganizationSecurityPolicyRuleMatchConfig config;
         private @Nullable String description;
+        private @Nullable OrganizationSecurityPolicyRuleMatchExpr expr;
         private @Nullable String versionedExpr;
         public Builder() {}
         public Builder(OrganizationSecurityPolicyRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.description = defaults.description;
+    	      this.expr = defaults.expr;
     	      this.versionedExpr = defaults.versionedExpr;
         }
 
         @CustomType.Setter
-        public Builder config(OrganizationSecurityPolicyRuleMatchConfig config) {
-            if (config == null) {
-              throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatch", "config");
-            }
+        public Builder config(@Nullable OrganizationSecurityPolicyRuleMatchConfig config) {
+
             this.config = config;
             return this;
         }
@@ -90,6 +104,12 @@ public final class OrganizationSecurityPolicyRuleMatch {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expr(@Nullable OrganizationSecurityPolicyRuleMatchExpr expr) {
+
+            this.expr = expr;
             return this;
         }
         @CustomType.Setter
@@ -102,6 +122,7 @@ public final class OrganizationSecurityPolicyRuleMatch {
             final var _resultValue = new OrganizationSecurityPolicyRuleMatch();
             _resultValue.config = config;
             _resultValue.description = description;
+            _resultValue.expr = expr;
             _resultValue.versionedExpr = versionedExpr;
             return _resultValue;
         }

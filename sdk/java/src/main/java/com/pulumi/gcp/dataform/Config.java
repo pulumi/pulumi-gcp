@@ -87,7 +87,9 @@ import javax.annotation.Nullable;
  *             .project(project.projectId())
  *             .service("dataform.googleapis.com")
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cloudkmsApi)
+ *                 .build());
  * 
  *         // Add a sleep to wait for IAM propagation after API enablement
  *         var waitForDataformApi = new Sleep("waitForDataformApi", SleepArgs.builder()
@@ -100,14 +102,16 @@ import javax.annotation.Nullable;
  *         var dataformSa = new ServiceIdentity("dataformSa", ServiceIdentityArgs.builder()
  *             .project(project.projectId())
  *             .service("dataform.googleapis.com")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForDataformApi)
+ *                 .build());
  * 
  *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
  *             .project(project.projectId())
  *             .name("example-key-ring")
  *             .location("us-central1")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cloudkmsApi)
+ *                 .dependsOn(waitForDataformApi)
  *                 .build());
  * 
  *         var exampleKey = new CryptoKey("exampleKey", CryptoKeyArgs.builder()
@@ -128,9 +132,7 @@ import javax.annotation.Nullable;
  *             .defaultKmsKeyName(exampleKey.id())
  *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     cryptoKeyBinding,
- *                     waitForDataformApi)
+ *                 .dependsOn(cryptoKeyBinding)
  *                 .build());
  * 
  *     }

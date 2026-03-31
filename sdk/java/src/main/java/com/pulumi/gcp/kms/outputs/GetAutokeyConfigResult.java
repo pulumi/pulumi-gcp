@@ -22,6 +22,7 @@ public final class GetAutokeyConfigResult {
      * 
      */
     private String keyProject;
+    private String keyProjectResolutionMode;
 
     private GetAutokeyConfigResult() {}
     public String etag() {
@@ -44,6 +45,9 @@ public final class GetAutokeyConfigResult {
     public String keyProject() {
         return this.keyProject;
     }
+    public String keyProjectResolutionMode() {
+        return this.keyProjectResolutionMode;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -58,6 +62,7 @@ public final class GetAutokeyConfigResult {
         private String folder;
         private String id;
         private String keyProject;
+        private String keyProjectResolutionMode;
         public Builder() {}
         public Builder(GetAutokeyConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,6 +70,7 @@ public final class GetAutokeyConfigResult {
     	      this.folder = defaults.folder;
     	      this.id = defaults.id;
     	      this.keyProject = defaults.keyProject;
+    	      this.keyProjectResolutionMode = defaults.keyProjectResolutionMode;
         }
 
         @CustomType.Setter
@@ -99,12 +105,21 @@ public final class GetAutokeyConfigResult {
             this.keyProject = keyProject;
             return this;
         }
+        @CustomType.Setter
+        public Builder keyProjectResolutionMode(String keyProjectResolutionMode) {
+            if (keyProjectResolutionMode == null) {
+              throw new MissingRequiredPropertyException("GetAutokeyConfigResult", "keyProjectResolutionMode");
+            }
+            this.keyProjectResolutionMode = keyProjectResolutionMode;
+            return this;
+        }
         public GetAutokeyConfigResult build() {
             final var _resultValue = new GetAutokeyConfigResult();
             _resultValue.etag = etag;
             _resultValue.folder = folder;
             _resultValue.id = id;
             _resultValue.keyProject = keyProject;
+            _resultValue.keyProjectResolutionMode = keyProjectResolutionMode;
             return _resultValue;
         }
     }

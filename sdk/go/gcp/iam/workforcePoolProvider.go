@@ -622,6 +622,58 @@ import (
 //	}
 //
 // ```
+// ### Iam Workforce Pool Provider Oidc Detailed Audit Logging
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
+//				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
+//				WorkforcePoolId: pool.WorkforcePoolId,
+//				Location:        pool.Location,
+//				ProviderId:      pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
+//					ClientId:  pulumi.String("client-id"),
+//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("CODE"),
+//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
+//					},
+//				},
+//				DetailedAuditLogging: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -687,6 +739,8 @@ type WorkforcePoolProvider struct {
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+	DetailedAuditLogging pulumi.BoolPtrOutput `pulumi:"detailedAuditLogging"`
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 	// However, existing tokens still grant access.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
@@ -705,9 +759,9 @@ type WorkforcePoolProvider struct {
 	// to a unique Microsoft Entra ID user.
 	// Structure is documented below.
 	//
-	// > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	//
-	// Deprecated: `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// Deprecated: `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	ExtendedAttributesOauth2Client WorkforcePoolProviderExtendedAttributesOauth2ClientPtrOutput `pulumi:"extendedAttributesOauth2Client"`
 	// The configuration for OAuth 2.0 client used to get the additional user
 	// attributes. This should be used when users can't get the desired claims
@@ -842,6 +896,8 @@ type workforcePoolProviderState struct {
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
+	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+	DetailedAuditLogging *bool `pulumi:"detailedAuditLogging"`
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 	// However, existing tokens still grant access.
 	Disabled *bool `pulumi:"disabled"`
@@ -860,9 +916,9 @@ type workforcePoolProviderState struct {
 	// to a unique Microsoft Entra ID user.
 	// Structure is documented below.
 	//
-	// > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	//
-	// Deprecated: `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// Deprecated: `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	ExtendedAttributesOauth2Client *WorkforcePoolProviderExtendedAttributesOauth2Client `pulumi:"extendedAttributesOauth2Client"`
 	// The configuration for OAuth 2.0 client used to get the additional user
 	// attributes. This should be used when users can't get the desired claims
@@ -959,6 +1015,8 @@ type WorkforcePoolProviderState struct {
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
+	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+	DetailedAuditLogging pulumi.BoolPtrInput
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 	// However, existing tokens still grant access.
 	Disabled pulumi.BoolPtrInput
@@ -977,9 +1035,9 @@ type WorkforcePoolProviderState struct {
 	// to a unique Microsoft Entra ID user.
 	// Structure is documented below.
 	//
-	// > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	//
-	// Deprecated: `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// Deprecated: `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	ExtendedAttributesOauth2Client WorkforcePoolProviderExtendedAttributesOauth2ClientPtrInput
 	// The configuration for OAuth 2.0 client used to get the additional user
 	// attributes. This should be used when users can't get the desired claims
@@ -1080,6 +1138,8 @@ type workforcePoolProviderArgs struct {
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
+	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+	DetailedAuditLogging *bool `pulumi:"detailedAuditLogging"`
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 	// However, existing tokens still grant access.
 	Disabled *bool `pulumi:"disabled"`
@@ -1098,9 +1158,9 @@ type workforcePoolProviderArgs struct {
 	// to a unique Microsoft Entra ID user.
 	// Structure is documented below.
 	//
-	// > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	//
-	// Deprecated: `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// Deprecated: `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	ExtendedAttributesOauth2Client *WorkforcePoolProviderExtendedAttributesOauth2Client `pulumi:"extendedAttributesOauth2Client"`
 	// The configuration for OAuth 2.0 client used to get the additional user
 	// attributes. This should be used when users can't get the desired claims
@@ -1188,6 +1248,8 @@ type WorkforcePoolProviderArgs struct {
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
+	// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+	DetailedAuditLogging pulumi.BoolPtrInput
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 	// However, existing tokens still grant access.
 	Disabled pulumi.BoolPtrInput
@@ -1206,9 +1268,9 @@ type WorkforcePoolProviderArgs struct {
 	// to a unique Microsoft Entra ID user.
 	// Structure is documented below.
 	//
-	// > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	//
-	// Deprecated: `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+	// Deprecated: `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 	ExtendedAttributesOauth2Client WorkforcePoolProviderExtendedAttributesOauth2ClientPtrInput
 	// The configuration for OAuth 2.0 client used to get the additional user
 	// attributes. This should be used when users can't get the desired claims
@@ -1391,6 +1453,11 @@ func (o WorkforcePoolProviderOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
+func (o WorkforcePoolProviderOutput) DetailedAuditLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.BoolPtrOutput { return v.DetailedAuditLogging }).(pulumi.BoolPtrOutput)
+}
+
 // Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
 // However, existing tokens still grant access.
 func (o WorkforcePoolProviderOutput) Disabled() pulumi.BoolPtrOutput {
@@ -1415,9 +1482,9 @@ func (o WorkforcePoolProviderOutput) DisplayName() pulumi.StringPtrOutput {
 // to a unique Microsoft Entra ID user.
 // Structure is documented below.
 //
-// > **Warning:** `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+// > **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 //
-// Deprecated: `extendedAttributesOauth2Client` is restricted. We suggest use SCIM instead.
+// Deprecated: `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
 func (o WorkforcePoolProviderOutput) ExtendedAttributesOauth2Client() WorkforcePoolProviderExtendedAttributesOauth2ClientPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) WorkforcePoolProviderExtendedAttributesOauth2ClientPtrOutput {
 		return v.ExtendedAttributesOauth2Client

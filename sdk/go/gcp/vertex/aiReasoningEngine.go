@@ -506,6 +506,8 @@ type AiReasoningEngine struct {
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The description of the ReasoningEngine.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the ReasoningEngine.
@@ -525,7 +527,7 @@ type AiReasoningEngine struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
-	Spec AiReasoningEngineSpecPtrOutput `pulumi:"spec"`
+	Spec AiReasoningEngineSpecOutput `pulumi:"spec"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
 	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -567,6 +569,8 @@ type aiReasoningEngineState struct {
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the ReasoningEngine.
 	Description *string `pulumi:"description"`
 	// The display name of the ReasoningEngine.
@@ -596,6 +600,8 @@ type AiReasoningEngineState struct {
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the ReasoningEngine.
 	Description pulumi.StringPtrInput
 	// The display name of the ReasoningEngine.
@@ -626,6 +632,8 @@ func (AiReasoningEngineState) ElementType() reflect.Type {
 }
 
 type aiReasoningEngineArgs struct {
+	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the ReasoningEngine.
 	Description *string `pulumi:"description"`
 	// The display name of the ReasoningEngine.
@@ -647,6 +655,8 @@ type aiReasoningEngineArgs struct {
 
 // The set of arguments for constructing a AiReasoningEngine resource.
 type AiReasoningEngineArgs struct {
+	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the ReasoningEngine.
 	Description pulumi.StringPtrInput
 	// The display name of the ReasoningEngine.
@@ -759,6 +769,11 @@ func (o AiReasoningEngineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+func (o AiReasoningEngineOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+}
+
 // The description of the ReasoningEngine.
 func (o AiReasoningEngineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -796,8 +811,8 @@ func (o AiReasoningEngineOutput) Region() pulumi.StringPtrOutput {
 
 // Optional. Configurations of the ReasoningEngine.
 // Structure is documented below.
-func (o AiReasoningEngineOutput) Spec() AiReasoningEngineSpecPtrOutput {
-	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineSpecPtrOutput { return v.Spec }).(AiReasoningEngineSpecPtrOutput)
+func (o AiReasoningEngineOutput) Spec() AiReasoningEngineSpecOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineSpecOutput { return v.Spec }).(AiReasoningEngineSpecOutput)
 }
 
 // The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"

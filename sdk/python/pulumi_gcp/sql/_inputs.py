@@ -412,6 +412,10 @@ class DatabaseInstancePointInTimeRestoreContextArgsDict(TypedDict):
     """
     Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
     """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the target instance where the datasource will be restored. For example: "us-central1".
+    """
     target_instance: NotRequired[pulumi.Input[_builtins.str]]
     """
     The name of the target instance.
@@ -424,6 +428,7 @@ class DatabaseInstancePointInTimeRestoreContextArgs:
                  allocated_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
                  point_in_time: Optional[pulumi.Input[_builtins.str]] = None,
                  preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  target_instance: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] datasource: The Google Cloud Backup and Disaster Recovery Datasource URI.
@@ -432,6 +437,7 @@ class DatabaseInstancePointInTimeRestoreContextArgs:
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] preferred_zone: Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        :param pulumi.Input[_builtins.str] region: The region of the target instance where the datasource will be restored. For example: "us-central1".
         :param pulumi.Input[_builtins.str] target_instance: The name of the target instance.
         """
         pulumi.set(__self__, "datasource", datasource)
@@ -441,6 +447,8 @@ class DatabaseInstancePointInTimeRestoreContextArgs:
             pulumi.set(__self__, "point_in_time", point_in_time)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if target_instance is not None:
             pulumi.set(__self__, "target_instance", target_instance)
 
@@ -493,6 +501,18 @@ class DatabaseInstancePointInTimeRestoreContextArgs:
     @preferred_zone.setter
     def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region of the target instance where the datasource will be restored. For example: "us-central1".
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstance")

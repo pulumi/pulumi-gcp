@@ -30,12 +30,13 @@ type LookupBackupPlanArgs struct {
 
 // A collection of values returned by getBackupPlan.
 type LookupBackupPlanResult struct {
-	BackupPlanId              string                    `pulumi:"backupPlanId"`
-	BackupRules               []GetBackupPlanBackupRule `pulumi:"backupRules"`
-	BackupVault               string                    `pulumi:"backupVault"`
-	BackupVaultServiceAccount string                    `pulumi:"backupVaultServiceAccount"`
-	CreateTime                string                    `pulumi:"createTime"`
-	Description               string                    `pulumi:"description"`
+	BackupPlanId              string                                `pulumi:"backupPlanId"`
+	BackupRules               []GetBackupPlanBackupRule             `pulumi:"backupRules"`
+	BackupVault               string                                `pulumi:"backupVault"`
+	BackupVaultServiceAccount string                                `pulumi:"backupVaultServiceAccount"`
+	CreateTime                string                                `pulumi:"createTime"`
+	Description               string                                `pulumi:"description"`
+	DiskBackupPlanProperties  []GetBackupPlanDiskBackupPlanProperty `pulumi:"diskBackupPlanProperties"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                             string   `pulumi:"id"`
 	Location                       string   `pulumi:"location"`
@@ -105,6 +106,12 @@ func (o LookupBackupPlanResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupBackupPlanResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupPlanResultOutput) DiskBackupPlanProperties() GetBackupPlanDiskBackupPlanPropertyArrayOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) []GetBackupPlanDiskBackupPlanProperty {
+		return v.DiskBackupPlanProperties
+	}).(GetBackupPlanDiskBackupPlanPropertyArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
