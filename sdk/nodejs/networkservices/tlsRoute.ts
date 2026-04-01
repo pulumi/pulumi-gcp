@@ -21,15 +21,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "backend-service-health-check",
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
+ *     httpsHealthCheck: {
+ *         port: 443,
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "my-backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
  * });
  * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
  *     name: "my-tls-route",
@@ -92,15 +93,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "backend-service-health-check",
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
+ *     httpsHealthCheck: {
+ *         port: 443,
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "my-backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
  * });
  * const defaultMesh = new gcp.networkservices.Mesh("default", {
  *     name: "my-tls-route",
@@ -133,15 +135,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
  *     name: "backend-service-health-check",
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
+ *     httpsHealthCheck: {
+ *         port: 443,
+ *     },
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     name: "my-backend-service",
- *     healthChecks: defaultHttpHealthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
  * });
  * const defaultGateway = new gcp.networkservices.Gateway("default", {
  *     name: "my-tls-route",
@@ -166,6 +169,43 @@ import * as utilities from "../utilities";
  *             destinations: [{
  *                 serviceName: _default.id,
  *                 weight: 1,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Network Services Tls Route Target Tcp Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "my-health-check",
+ *     httpsHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "my-backend-service",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     protocol: "TCP",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("default", {
+ *     name: "my-target-tcp-proxy",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "my-tls-route",
+ *     targetProxies: [defaultTargetTCPProxy.id],
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: _default.id,
  *             }],
  *         },
  *     }],

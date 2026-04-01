@@ -105,8 +105,7 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
-               'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -423,7 +422,6 @@ class SubnetworkArgs:
     @pulumi.getter(name="resolveSubnetMask")
     def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         """
@@ -603,8 +601,7 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
-               'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1013,7 +1010,6 @@ class _SubnetworkState:
     @pulumi.getter(name="resolveSubnetMask")
     def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         """
@@ -1465,8 +1461,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
-               'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1937,8 +1932,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
-               'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -2231,7 +2225,6 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="resolveSubnetMask")
     def resolve_subnet_mask(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         """

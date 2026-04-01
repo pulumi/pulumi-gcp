@@ -6,6 +6,8 @@ package com.pulumi.gcp.spanner.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +18,32 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
      * 
      */
     private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit> autoscalingLimits;
+    /**
+     * @return The target high priority cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    private Integer autoscalingTargetHighPriorityCpuUtilizationPercent;
+    /**
+     * @return The target total cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    private Integer autoscalingTargetTotalCpuUtilizationPercent;
+    /**
+     * @return If true, disables high priority CPU autoscaling for this replica and ignores
+     * highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    private Boolean disableHighPriorityCpuAutoscaling;
+    /**
+     * @return If true, disables total CPU autoscaling for this replica and ignores
+     * totalCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    private Boolean disableTotalCpuAutoscaling;
 
     private GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride() {}
     /**
@@ -24,6 +52,40 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
      */
     public List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit> autoscalingLimits() {
         return this.autoscalingLimits;
+    }
+    /**
+     * @return The target high priority cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    public Integer autoscalingTargetHighPriorityCpuUtilizationPercent() {
+        return this.autoscalingTargetHighPriorityCpuUtilizationPercent;
+    }
+    /**
+     * @return The target total cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    public Integer autoscalingTargetTotalCpuUtilizationPercent() {
+        return this.autoscalingTargetTotalCpuUtilizationPercent;
+    }
+    /**
+     * @return If true, disables high priority CPU autoscaling for this replica and ignores
+     * highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    public Boolean disableHighPriorityCpuAutoscaling() {
+        return this.disableHighPriorityCpuAutoscaling;
+    }
+    /**
+     * @return If true, disables total CPU autoscaling for this replica and ignores
+     * totalCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    public Boolean disableTotalCpuAutoscaling() {
+        return this.disableTotalCpuAutoscaling;
     }
 
     public static Builder builder() {
@@ -36,10 +98,18 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
     @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit> autoscalingLimits;
+        private Integer autoscalingTargetHighPriorityCpuUtilizationPercent;
+        private Integer autoscalingTargetTotalCpuUtilizationPercent;
+        private Boolean disableHighPriorityCpuAutoscaling;
+        private Boolean disableTotalCpuAutoscaling;
         public Builder() {}
         public Builder(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingLimits = defaults.autoscalingLimits;
+    	      this.autoscalingTargetHighPriorityCpuUtilizationPercent = defaults.autoscalingTargetHighPriorityCpuUtilizationPercent;
+    	      this.autoscalingTargetTotalCpuUtilizationPercent = defaults.autoscalingTargetTotalCpuUtilizationPercent;
+    	      this.disableHighPriorityCpuAutoscaling = defaults.disableHighPriorityCpuAutoscaling;
+    	      this.disableTotalCpuAutoscaling = defaults.disableTotalCpuAutoscaling;
         }
 
         @CustomType.Setter
@@ -53,9 +123,45 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
         public Builder autoscalingLimits(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit... autoscalingLimits) {
             return autoscalingLimits(List.of(autoscalingLimits));
         }
+        @CustomType.Setter
+        public Builder autoscalingTargetHighPriorityCpuUtilizationPercent(Integer autoscalingTargetHighPriorityCpuUtilizationPercent) {
+            if (autoscalingTargetHighPriorityCpuUtilizationPercent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride", "autoscalingTargetHighPriorityCpuUtilizationPercent");
+            }
+            this.autoscalingTargetHighPriorityCpuUtilizationPercent = autoscalingTargetHighPriorityCpuUtilizationPercent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingTargetTotalCpuUtilizationPercent(Integer autoscalingTargetTotalCpuUtilizationPercent) {
+            if (autoscalingTargetTotalCpuUtilizationPercent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride", "autoscalingTargetTotalCpuUtilizationPercent");
+            }
+            this.autoscalingTargetTotalCpuUtilizationPercent = autoscalingTargetTotalCpuUtilizationPercent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableHighPriorityCpuAutoscaling(Boolean disableHighPriorityCpuAutoscaling) {
+            if (disableHighPriorityCpuAutoscaling == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride", "disableHighPriorityCpuAutoscaling");
+            }
+            this.disableHighPriorityCpuAutoscaling = disableHighPriorityCpuAutoscaling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableTotalCpuAutoscaling(Boolean disableTotalCpuAutoscaling) {
+            if (disableTotalCpuAutoscaling == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride", "disableTotalCpuAutoscaling");
+            }
+            this.disableTotalCpuAutoscaling = disableTotalCpuAutoscaling;
+            return this;
+        }
         public GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride build() {
             final var _resultValue = new GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride();
             _resultValue.autoscalingLimits = autoscalingLimits;
+            _resultValue.autoscalingTargetHighPriorityCpuUtilizationPercent = autoscalingTargetHighPriorityCpuUtilizationPercent;
+            _resultValue.autoscalingTargetTotalCpuUtilizationPercent = autoscalingTargetTotalCpuUtilizationPercent;
+            _resultValue.disableHighPriorityCpuAutoscaling = disableHighPriorityCpuAutoscaling;
+            _resultValue.disableTotalCpuAutoscaling = disableTotalCpuAutoscaling;
             return _resultValue;
         }
     }

@@ -16,10 +16,23 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
      */
     private Integer maxNodes;
     /**
+     * @return The maximum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000 and be greater than or equal to
+     * min_processing_units.
+     * 
+     */
+    private Integer maxProcessingUnits;
+    /**
      * @return The minimum number of nodes for this specific replica.
      * 
      */
     private Integer minNodes;
+    /**
+     * @return The minimum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000.
+     * 
+     */
+    private Integer minProcessingUnits;
 
     private GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit() {}
     /**
@@ -30,11 +43,28 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
         return this.maxNodes;
     }
     /**
+     * @return The maximum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000 and be greater than or equal to
+     * min_processing_units.
+     * 
+     */
+    public Integer maxProcessingUnits() {
+        return this.maxProcessingUnits;
+    }
+    /**
      * @return The minimum number of nodes for this specific replica.
      * 
      */
     public Integer minNodes() {
         return this.minNodes;
+    }
+    /**
+     * @return The minimum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000.
+     * 
+     */
+    public Integer minProcessingUnits() {
+        return this.minProcessingUnits;
     }
 
     public static Builder builder() {
@@ -47,12 +77,16 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
     @CustomType.Builder
     public static final class Builder {
         private Integer maxNodes;
+        private Integer maxProcessingUnits;
         private Integer minNodes;
+        private Integer minProcessingUnits;
         public Builder() {}
         public Builder(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxNodes = defaults.maxNodes;
+    	      this.maxProcessingUnits = defaults.maxProcessingUnits;
     	      this.minNodes = defaults.minNodes;
+    	      this.minProcessingUnits = defaults.minProcessingUnits;
         }
 
         @CustomType.Setter
@@ -64,6 +98,14 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
             return this;
         }
         @CustomType.Setter
+        public Builder maxProcessingUnits(Integer maxProcessingUnits) {
+            if (maxProcessingUnits == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit", "maxProcessingUnits");
+            }
+            this.maxProcessingUnits = maxProcessingUnits;
+            return this;
+        }
+        @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
             if (minNodes == null) {
               throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit", "minNodes");
@@ -71,10 +113,20 @@ public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverri
             this.minNodes = minNodes;
             return this;
         }
+        @CustomType.Setter
+        public Builder minProcessingUnits(Integer minProcessingUnits) {
+            if (minProcessingUnits == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit", "minProcessingUnits");
+            }
+            this.minProcessingUnits = minProcessingUnits;
+            return this;
+        }
         public GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit build() {
             final var _resultValue = new GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit();
             _resultValue.maxNodes = maxNodes;
+            _resultValue.maxProcessingUnits = maxProcessingUnits;
             _resultValue.minNodes = minNodes;
+            _resultValue.minProcessingUnits = minProcessingUnits;
             return _resultValue;
         }
     }

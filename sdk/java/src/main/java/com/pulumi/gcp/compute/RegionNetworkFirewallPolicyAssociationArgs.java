@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,6 +63,23 @@ public final class RegionNetworkFirewallPolicyAssociationArgs extends com.pulumi
     }
 
     /**
+     * (Optional, Beta)
+     * An integer indicating the priority of an association.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Integer> priority;
+
+    /**
+     * @return (Optional, Beta)
+     * An integer indicating the priority of an association.
+     * 
+     */
+    public Optional<Output<Integer>> priority() {
+        return Optional.ofNullable(this.priority);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -99,6 +117,7 @@ public final class RegionNetworkFirewallPolicyAssociationArgs extends com.pulumi
         this.attachmentTarget = $.attachmentTarget;
         this.firewallPolicy = $.firewallPolicy;
         this.name = $.name;
+        this.priority = $.priority;
         this.project = $.project;
         this.region = $.region;
     }
@@ -182,6 +201,29 @@ public final class RegionNetworkFirewallPolicyAssociationArgs extends com.pulumi
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param priority (Optional, Beta)
+         * An integer indicating the priority of an association.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Integer> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority (Optional, Beta)
+         * An integer indicating the priority of an association.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Integer priority) {
+            return priority(Output.of(priority));
         }
 
         /**

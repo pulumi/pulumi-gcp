@@ -10,6 +10,11 @@ export type AnalysisRule = import("./analysisRule").AnalysisRule;
 export const AnalysisRule: typeof import("./analysisRule").AnalysisRule = null as any;
 utilities.lazyLoad(exports, ["AnalysisRule"], () => require("./analysisRule"));
 
+export { AssessmentRuleArgs, AssessmentRuleState } from "./assessmentRule";
+export type AssessmentRule = import("./assessmentRule").AssessmentRule;
+export const AssessmentRule: typeof import("./assessmentRule").AssessmentRule = null as any;
+utilities.lazyLoad(exports, ["AssessmentRule"], () => require("./assessmentRule"));
+
 export { AutoLabelingRuleArgs, AutoLabelingRuleState } from "./autoLabelingRule";
 export type AutoLabelingRule = import("./autoLabelingRule").AutoLabelingRule;
 export const AutoLabelingRule: typeof import("./autoLabelingRule").AutoLabelingRule = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "gcp:contactcenterinsights/analysisRule:AnalysisRule":
                 return new AnalysisRule(name, <any>undefined, { urn })
+            case "gcp:contactcenterinsights/assessmentRule:AssessmentRule":
+                return new AssessmentRule(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule":
                 return new AutoLabelingRule(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/view:View":
@@ -37,5 +44,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/analysisRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/assessmentRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/autoLabelingRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/view", _module)

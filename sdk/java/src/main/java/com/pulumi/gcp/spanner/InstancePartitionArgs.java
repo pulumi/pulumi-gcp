@@ -6,6 +6,7 @@ package com.pulumi.gcp.spanner;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.spanner.inputs.InstancePartitionAutoscalingConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +17,31 @@ import javax.annotation.Nullable;
 public final class InstancePartitionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstancePartitionArgs Empty = new InstancePartitionArgs();
+
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoscalingConfig")
+    private @Nullable Output<InstancePartitionAutoscalingConfigArgs> autoscalingConfig;
+
+    /**
+     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePartitionAutoscalingConfigArgs>> autoscalingConfig() {
+        return Optional.ofNullable(this.autoscalingConfig);
+    }
 
     /**
      * The name of the instance partition&#39;s configuration (similar to a region) which
@@ -87,8 +113,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      * 
      */
     @Import(name="nodeCount")
@@ -96,8 +122,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -106,7 +132,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      * 
      */
     @Import(name="processingUnits")
@@ -114,7 +141,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      * 
      */
     public Optional<Output<Integer>> processingUnits() {
@@ -141,6 +169,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
     private InstancePartitionArgs() {}
 
     private InstancePartitionArgs(InstancePartitionArgs $) {
+        this.autoscalingConfig = $.autoscalingConfig;
         this.config = $.config;
         this.displayName = $.displayName;
         this.instance = $.instance;
@@ -166,6 +195,37 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(InstancePartitionArgs defaults) {
             $ = new InstancePartitionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
+         * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+         * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+         * instance partition.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingConfig(@Nullable Output<InstancePartitionAutoscalingConfigArgs> autoscalingConfig) {
+            $.autoscalingConfig = autoscalingConfig;
+            return this;
+        }
+
+        /**
+         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
+         * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+         * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+         * instance partition.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingConfig(InstancePartitionAutoscalingConfigArgs autoscalingConfig) {
+            return autoscalingConfig(Output.of(autoscalingConfig));
         }
 
         /**
@@ -262,8 +322,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeCount The number of nodes allocated to this instance partition. One node equals
-         * 1000 processing units. Exactly one of either nodeCount or processingUnits
-         * must be present.
+         * 1000 processing units. Exactly one of either node_count, processing_units,
+         * or autoscalingConfig must be present.
          * 
          * @return builder
          * 
@@ -275,8 +335,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeCount The number of nodes allocated to this instance partition. One node equals
-         * 1000 processing units. Exactly one of either nodeCount or processingUnits
-         * must be present.
+         * 1000 processing units. Exactly one of either node_count, processing_units,
+         * or autoscalingConfig must be present.
          * 
          * @return builder
          * 
@@ -287,7 +347,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param processingUnits The number of processing units allocated to this instance partition.
-         * Exactly one of either nodeCount or processingUnits must be present.
+         * Exactly one of either node_count, processing_units, or autoscalingConfig
+         * must be present.
          * 
          * @return builder
          * 
@@ -299,7 +360,8 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param processingUnits The number of processing units allocated to this instance partition.
-         * Exactly one of either nodeCount or processingUnits must be present.
+         * Exactly one of either node_count, processing_units, or autoscalingConfig
+         * must be present.
          * 
          * @return builder
          * 

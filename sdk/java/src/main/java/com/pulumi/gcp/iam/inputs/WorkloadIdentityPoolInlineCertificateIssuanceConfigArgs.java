@@ -5,7 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -29,8 +29,8 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
      *   same region. Also the CA pool region (in value) must match the workload&#39;s region (key).
      * 
      */
-    @Import(name="caPools", required=true)
-    private Output<Map<String,String>> caPools;
+    @Import(name="caPools")
+    private @Nullable Output<Map<String,String>> caPools;
 
     /**
      * @return A required mapping of a cloud region to the CA pool resource located in that region used
@@ -43,8 +43,8 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
      *   same region. Also the CA pool region (in value) must match the workload&#39;s region (key).
      * 
      */
-    public Output<Map<String,String>> caPools() {
-        return this.caPools;
+    public Optional<Output<Map<String,String>>> caPools() {
+        return Optional.ofNullable(this.caPools);
     }
 
     /**
@@ -116,6 +116,33 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
         return Optional.ofNullable(this.rotationWindowPercentage);
     }
 
+    /**
+     * If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+     * CA in the same region as the workload will be selected to issue the certificate. Enabling
+     * this will clear any existing `caPools` configuration to provision the certificates.
+     * 
+     * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+     * certificates will be automatically provisioned from the default shared CAs. This flag should
+     * not be set if you want to use your own CA pools to provision the certificates.
+     * 
+     */
+    @Import(name="useDefaultSharedCa")
+    private @Nullable Output<Boolean> useDefaultSharedCa;
+
+    /**
+     * @return If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+     * CA in the same region as the workload will be selected to issue the certificate. Enabling
+     * this will clear any existing `caPools` configuration to provision the certificates.
+     * 
+     * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+     * certificates will be automatically provisioned from the default shared CAs. This flag should
+     * not be set if you want to use your own CA pools to provision the certificates.
+     * 
+     */
+    public Optional<Output<Boolean>> useDefaultSharedCa() {
+        return Optional.ofNullable(this.useDefaultSharedCa);
+    }
+
     private WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs() {}
 
     private WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs(WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs $) {
@@ -123,6 +150,7 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
         this.keyAlgorithm = $.keyAlgorithm;
         this.lifetime = $.lifetime;
         this.rotationWindowPercentage = $.rotationWindowPercentage;
+        this.useDefaultSharedCa = $.useDefaultSharedCa;
     }
 
     public static Builder builder() {
@@ -156,7 +184,7 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
          * @return builder
          * 
          */
-        public Builder caPools(Output<Map<String,String>> caPools) {
+        public Builder caPools(@Nullable Output<Map<String,String>> caPools) {
             $.caPools = caPools;
             return this;
         }
@@ -265,10 +293,40 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs exten
             return rotationWindowPercentage(Output.of(rotationWindowPercentage));
         }
 
+        /**
+         * @param useDefaultSharedCa If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+         * CA in the same region as the workload will be selected to issue the certificate. Enabling
+         * this will clear any existing `caPools` configuration to provision the certificates.
+         * 
+         * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+         * certificates will be automatically provisioned from the default shared CAs. This flag should
+         * not be set if you want to use your own CA pools to provision the certificates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useDefaultSharedCa(@Nullable Output<Boolean> useDefaultSharedCa) {
+            $.useDefaultSharedCa = useDefaultSharedCa;
+            return this;
+        }
+
+        /**
+         * @param useDefaultSharedCa If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+         * CA in the same region as the workload will be selected to issue the certificate. Enabling
+         * this will clear any existing `caPools` configuration to provision the certificates.
+         * 
+         * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+         * certificates will be automatically provisioned from the default shared CAs. This flag should
+         * not be set if you want to use your own CA pools to provision the certificates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useDefaultSharedCa(Boolean useDefaultSharedCa) {
+            return useDefaultSharedCa(Output.of(useDefaultSharedCa));
+        }
+
         public WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs build() {
-            if ($.caPools == null) {
-                throw new MissingRequiredPropertyException("WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs", "caPools");
-            }
             return $;
         }
     }

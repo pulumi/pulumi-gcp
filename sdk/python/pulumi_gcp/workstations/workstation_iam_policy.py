@@ -294,9 +294,6 @@ class WorkstationIamPolicy(pulumi.CustomResource):
 
         > **Note:** `workstations.WorkstationIamBinding` resources **can be** used in conjunction with `workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## workstations.WorkstationIamPolicy
 
         ```python
@@ -367,9 +364,6 @@ class WorkstationIamPolicy(pulumi.CustomResource):
         > **Note:** `workstations.WorkstationIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationIamBinding` and `workstations.WorkstationIamMember` or they will fight over what your policy should be.
 
         > **Note:** `workstations.WorkstationIamBinding` resources **can be** used in conjunction with `workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## workstations.WorkstationIamPolicy
 
@@ -491,9 +485,6 @@ class WorkstationIamPolicy(pulumi.CustomResource):
 
         > **Note:** `workstations.WorkstationIamBinding` resources **can be** used in conjunction with `workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## workstations.WorkstationIamPolicy
 
         ```python
@@ -564,9 +555,6 @@ class WorkstationIamPolicy(pulumi.CustomResource):
         > **Note:** `workstations.WorkstationIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationIamBinding` and `workstations.WorkstationIamMember` or they will fight over what your policy should be.
 
         > **Note:** `workstations.WorkstationIamBinding` resources **can be** used in conjunction with `workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## workstations.WorkstationIamPolicy
 

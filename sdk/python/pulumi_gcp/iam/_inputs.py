@@ -2589,7 +2589,7 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
 
 
 class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
-    ca_pools: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    ca_pools: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
     A required mapping of a cloud region to the CA pool resource located in that region used
     for certificate issuance, adhering to these constraints:
@@ -2624,14 +2624,25 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
     on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
     to `50`.
     """
+    use_default_shared_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+    CA in the same region as the workload will be selected to issue the certificate. Enabling
+    this will clear any existing `ca_pools` configuration to provision the certificates.
+
+    > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
+    certificates will be automatically provisioned from the default shared CAs. This flag should
+    not be set if you want to use your own CA pools to provision the certificates.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
     def __init__(__self__, *,
-                 ca_pools: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
+                 ca_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None):
+                 rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None,
+                 use_default_shared_ca: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
                for certificate issuance, adhering to these constraints:
@@ -2656,18 +2667,28 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         :param pulumi.Input[_builtins.int] rotation_window_percentage: Rotation window percentage indicating when certificate rotation should be initiated based
                on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
                to `50`.
+        :param pulumi.Input[_builtins.bool] use_default_shared_ca: If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+               CA in the same region as the workload will be selected to issue the certificate. Enabling
+               this will clear any existing `ca_pools` configuration to provision the certificates.
+               
+               > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
+               certificates will be automatically provisioned from the default shared CAs. This flag should
+               not be set if you want to use your own CA pools to provision the certificates.
         """
-        pulumi.set(__self__, "ca_pools", ca_pools)
+        if ca_pools is not None:
+            pulumi.set(__self__, "ca_pools", ca_pools)
         if key_algorithm is not None:
             pulumi.set(__self__, "key_algorithm", key_algorithm)
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
         if rotation_window_percentage is not None:
             pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+        if use_default_shared_ca is not None:
+            pulumi.set(__self__, "use_default_shared_ca", use_default_shared_ca)
 
     @_builtins.property
     @pulumi.getter(name="caPools")
-    def ca_pools(self) -> pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]:
+    def ca_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A required mapping of a cloud region to the CA pool resource located in that region used
         for certificate issuance, adhering to these constraints:
@@ -2681,7 +2702,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         return pulumi.get(self, "ca_pools")
 
     @ca_pools.setter
-    def ca_pools(self, value: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]):
+    def ca_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ca_pools", value)
 
     @_builtins.property
@@ -2731,6 +2752,24 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
     @rotation_window_percentage.setter
     def rotation_window_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "rotation_window_percentage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useDefaultSharedCa")
+    def use_default_shared_ca(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+        CA in the same region as the workload will be selected to issue the certificate. Enabling
+        this will clear any existing `ca_pools` configuration to provision the certificates.
+
+        > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
+        certificates will be automatically provisioned from the default shared CAs. This flag should
+        not be set if you want to use your own CA pools to provision the certificates.
+        """
+        return pulumi.get(self, "use_default_shared_ca")
+
+    @use_default_shared_ca.setter
+    def use_default_shared_ca(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_default_shared_ca", value)
 
 
 class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):

@@ -53,6 +53,42 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Network Firewall Policy Association Priority
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.RegionNetworkFirewallPolicy("policy", new()
+    ///     {
+    ///         Name = "my-policy",
+    ///         Project = "my-project-name",
+    ///         Description = "Sample global network firewall policy",
+    ///         Region = "us-west1",
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var association = new Gcp.Compute.RegionNetworkFirewallPolicyAssociation("association", new()
+    ///     {
+    ///         Name = "my-association",
+    ///         Project = "my-project-name",
+    ///         AttachmentTarget = network.Id,
+    ///         FirewallPolicy = policy.Id,
+    ///         Region = "us-west1",
+    ///         Priority = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -94,6 +130,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// An integer indicating the priority of an association.
+        /// </summary>
+        [Output("priority")]
+        public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -179,6 +222,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// An integer indicating the priority of an association.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -216,6 +266,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// An integer indicating the priority of an association.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

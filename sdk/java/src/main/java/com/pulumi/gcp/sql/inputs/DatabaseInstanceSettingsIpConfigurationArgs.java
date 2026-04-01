@@ -159,6 +159,21 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
+     * Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+     * 
+     */
+    @Import(name="serverCertificateRotationMode")
+    private @Nullable Output<String> serverCertificateRotationMode;
+
+    /**
+     * @return Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+     * 
+     */
+    public Optional<Output<String>> serverCertificateRotationMode() {
+        return Optional.ofNullable(this.serverCertificateRotationMode);
+    }
+
+    /**
      * Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
@@ -185,6 +200,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         this.pscConfigs = $.pscConfigs;
         this.serverCaMode = $.serverCaMode;
         this.serverCaPool = $.serverCaPool;
+        this.serverCertificateRotationMode = $.serverCertificateRotationMode;
         this.sslMode = $.sslMode;
     }
 
@@ -417,6 +433,27 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
          */
         public Builder serverCaPool(String serverCaPool) {
             return serverCaPool(Output.of(serverCaPool));
+        }
+
+        /**
+         * @param serverCertificateRotationMode Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCertificateRotationMode(@Nullable Output<String> serverCertificateRotationMode) {
+            $.serverCertificateRotationMode = serverCertificateRotationMode;
+            return this;
+        }
+
+        /**
+         * @param serverCertificateRotationMode Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCertificateRotationMode(String serverCertificateRotationMode) {
+            return serverCertificateRotationMode(Output.of(serverCertificateRotationMode));
         }
 
         /**

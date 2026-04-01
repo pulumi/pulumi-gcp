@@ -699,6 +699,7 @@ class Entry(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         example_glossary = gcp.dataplex.Glossary("example-glossary",
             glossary_id="glossary-basic",
@@ -708,6 +709,9 @@ class Entry(pulumi.CustomResource):
             glossary_id=example_glossary.glossary_id,
             location="us-central1",
             term_id="glossary-term")
+        # Introduce a 45-second wait after the glossary resource creation
+        wait_for_sync = time.Sleep("wait-for-sync", create_duration="45s",
+        opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
         tf_test_glossary_term = gcp.dataplex.Entry("tf_test_glossary_term",
             entry_group_id="@dataplex",
             project="1111111111111",
@@ -725,7 +729,7 @@ class Entry(pulumi.CustomResource):
                     "data": "           {\\\\\\"content\\\\\\": \\\\\\"Term Content\\\\\\"    }\\n",
                 },
             }],
-            opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
         ```
 
         ## Import
@@ -1063,6 +1067,7 @@ class Entry(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         example_glossary = gcp.dataplex.Glossary("example-glossary",
             glossary_id="glossary-basic",
@@ -1072,6 +1077,9 @@ class Entry(pulumi.CustomResource):
             glossary_id=example_glossary.glossary_id,
             location="us-central1",
             term_id="glossary-term")
+        # Introduce a 45-second wait after the glossary resource creation
+        wait_for_sync = time.Sleep("wait-for-sync", create_duration="45s",
+        opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
         tf_test_glossary_term = gcp.dataplex.Entry("tf_test_glossary_term",
             entry_group_id="@dataplex",
             project="1111111111111",
@@ -1089,7 +1097,7 @@ class Entry(pulumi.CustomResource):
                     "data": "           {\\\\\\"content\\\\\\": \\\\\\"Term Content\\\\\\"    }\\n",
                 },
             }],
-            opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
         ```
 
         ## Import

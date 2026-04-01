@@ -983,6 +983,616 @@ func (o DataTableScopeInfoPtrOutput) DataAccessScopes() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+type NativeDashboardChart struct {
+	// The visual layout parameters of this chart within the dashboard.
+	// Structure is documented below.
+	ChartLayout *NativeDashboardChartChartLayout `pulumi:"chartLayout"`
+	// The resource name of the associated DashboardChart.
+	DashboardChart *string `pulumi:"dashboardChart"`
+	// List of dashboard filter IDs applied to this chart.
+	FiltersIds []string `pulumi:"filtersIds"`
+}
+
+// NativeDashboardChartInput is an input type that accepts NativeDashboardChartArgs and NativeDashboardChartOutput values.
+// You can construct a concrete instance of `NativeDashboardChartInput` via:
+//
+//	NativeDashboardChartArgs{...}
+type NativeDashboardChartInput interface {
+	pulumi.Input
+
+	ToNativeDashboardChartOutput() NativeDashboardChartOutput
+	ToNativeDashboardChartOutputWithContext(context.Context) NativeDashboardChartOutput
+}
+
+type NativeDashboardChartArgs struct {
+	// The visual layout parameters of this chart within the dashboard.
+	// Structure is documented below.
+	ChartLayout NativeDashboardChartChartLayoutPtrInput `pulumi:"chartLayout"`
+	// The resource name of the associated DashboardChart.
+	DashboardChart pulumi.StringPtrInput `pulumi:"dashboardChart"`
+	// List of dashboard filter IDs applied to this chart.
+	FiltersIds pulumi.StringArrayInput `pulumi:"filtersIds"`
+}
+
+func (NativeDashboardChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardChart)(nil)).Elem()
+}
+
+func (i NativeDashboardChartArgs) ToNativeDashboardChartOutput() NativeDashboardChartOutput {
+	return i.ToNativeDashboardChartOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardChartArgs) ToNativeDashboardChartOutputWithContext(ctx context.Context) NativeDashboardChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardChartOutput)
+}
+
+// NativeDashboardChartArrayInput is an input type that accepts NativeDashboardChartArray and NativeDashboardChartArrayOutput values.
+// You can construct a concrete instance of `NativeDashboardChartArrayInput` via:
+//
+//	NativeDashboardChartArray{ NativeDashboardChartArgs{...} }
+type NativeDashboardChartArrayInput interface {
+	pulumi.Input
+
+	ToNativeDashboardChartArrayOutput() NativeDashboardChartArrayOutput
+	ToNativeDashboardChartArrayOutputWithContext(context.Context) NativeDashboardChartArrayOutput
+}
+
+type NativeDashboardChartArray []NativeDashboardChartInput
+
+func (NativeDashboardChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NativeDashboardChart)(nil)).Elem()
+}
+
+func (i NativeDashboardChartArray) ToNativeDashboardChartArrayOutput() NativeDashboardChartArrayOutput {
+	return i.ToNativeDashboardChartArrayOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardChartArray) ToNativeDashboardChartArrayOutputWithContext(ctx context.Context) NativeDashboardChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardChartArrayOutput)
+}
+
+type NativeDashboardChartOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardChart)(nil)).Elem()
+}
+
+func (o NativeDashboardChartOutput) ToNativeDashboardChartOutput() NativeDashboardChartOutput {
+	return o
+}
+
+func (o NativeDashboardChartOutput) ToNativeDashboardChartOutputWithContext(ctx context.Context) NativeDashboardChartOutput {
+	return o
+}
+
+// The visual layout parameters of this chart within the dashboard.
+// Structure is documented below.
+func (o NativeDashboardChartOutput) ChartLayout() NativeDashboardChartChartLayoutPtrOutput {
+	return o.ApplyT(func(v NativeDashboardChart) *NativeDashboardChartChartLayout { return v.ChartLayout }).(NativeDashboardChartChartLayoutPtrOutput)
+}
+
+// The resource name of the associated DashboardChart.
+func (o NativeDashboardChartOutput) DashboardChart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NativeDashboardChart) *string { return v.DashboardChart }).(pulumi.StringPtrOutput)
+}
+
+// List of dashboard filter IDs applied to this chart.
+func (o NativeDashboardChartOutput) FiltersIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NativeDashboardChart) []string { return v.FiltersIds }).(pulumi.StringArrayOutput)
+}
+
+type NativeDashboardChartArrayOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NativeDashboardChart)(nil)).Elem()
+}
+
+func (o NativeDashboardChartArrayOutput) ToNativeDashboardChartArrayOutput() NativeDashboardChartArrayOutput {
+	return o
+}
+
+func (o NativeDashboardChartArrayOutput) ToNativeDashboardChartArrayOutputWithContext(ctx context.Context) NativeDashboardChartArrayOutput {
+	return o
+}
+
+func (o NativeDashboardChartArrayOutput) Index(i pulumi.IntInput) NativeDashboardChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NativeDashboardChart {
+		return vs[0].([]NativeDashboardChart)[vs[1].(int)]
+	}).(NativeDashboardChartOutput)
+}
+
+type NativeDashboardChartChartLayout struct {
+	// The number of columns the chart spans.
+	SpanX int `pulumi:"spanX"`
+	// The number of rows the chart spans.
+	SpanY int `pulumi:"spanY"`
+	// The starting X coordinate.
+	StartX *int `pulumi:"startX"`
+	// The starting Y coordinate.
+	StartY *int `pulumi:"startY"`
+}
+
+// NativeDashboardChartChartLayoutInput is an input type that accepts NativeDashboardChartChartLayoutArgs and NativeDashboardChartChartLayoutOutput values.
+// You can construct a concrete instance of `NativeDashboardChartChartLayoutInput` via:
+//
+//	NativeDashboardChartChartLayoutArgs{...}
+type NativeDashboardChartChartLayoutInput interface {
+	pulumi.Input
+
+	ToNativeDashboardChartChartLayoutOutput() NativeDashboardChartChartLayoutOutput
+	ToNativeDashboardChartChartLayoutOutputWithContext(context.Context) NativeDashboardChartChartLayoutOutput
+}
+
+type NativeDashboardChartChartLayoutArgs struct {
+	// The number of columns the chart spans.
+	SpanX pulumi.IntInput `pulumi:"spanX"`
+	// The number of rows the chart spans.
+	SpanY pulumi.IntInput `pulumi:"spanY"`
+	// The starting X coordinate.
+	StartX pulumi.IntPtrInput `pulumi:"startX"`
+	// The starting Y coordinate.
+	StartY pulumi.IntPtrInput `pulumi:"startY"`
+}
+
+func (NativeDashboardChartChartLayoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardChartChartLayout)(nil)).Elem()
+}
+
+func (i NativeDashboardChartChartLayoutArgs) ToNativeDashboardChartChartLayoutOutput() NativeDashboardChartChartLayoutOutput {
+	return i.ToNativeDashboardChartChartLayoutOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardChartChartLayoutArgs) ToNativeDashboardChartChartLayoutOutputWithContext(ctx context.Context) NativeDashboardChartChartLayoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardChartChartLayoutOutput)
+}
+
+func (i NativeDashboardChartChartLayoutArgs) ToNativeDashboardChartChartLayoutPtrOutput() NativeDashboardChartChartLayoutPtrOutput {
+	return i.ToNativeDashboardChartChartLayoutPtrOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardChartChartLayoutArgs) ToNativeDashboardChartChartLayoutPtrOutputWithContext(ctx context.Context) NativeDashboardChartChartLayoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardChartChartLayoutOutput).ToNativeDashboardChartChartLayoutPtrOutputWithContext(ctx)
+}
+
+// NativeDashboardChartChartLayoutPtrInput is an input type that accepts NativeDashboardChartChartLayoutArgs, NativeDashboardChartChartLayoutPtr and NativeDashboardChartChartLayoutPtrOutput values.
+// You can construct a concrete instance of `NativeDashboardChartChartLayoutPtrInput` via:
+//
+//	        NativeDashboardChartChartLayoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type NativeDashboardChartChartLayoutPtrInput interface {
+	pulumi.Input
+
+	ToNativeDashboardChartChartLayoutPtrOutput() NativeDashboardChartChartLayoutPtrOutput
+	ToNativeDashboardChartChartLayoutPtrOutputWithContext(context.Context) NativeDashboardChartChartLayoutPtrOutput
+}
+
+type nativeDashboardChartChartLayoutPtrType NativeDashboardChartChartLayoutArgs
+
+func NativeDashboardChartChartLayoutPtr(v *NativeDashboardChartChartLayoutArgs) NativeDashboardChartChartLayoutPtrInput {
+	return (*nativeDashboardChartChartLayoutPtrType)(v)
+}
+
+func (*nativeDashboardChartChartLayoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NativeDashboardChartChartLayout)(nil)).Elem()
+}
+
+func (i *nativeDashboardChartChartLayoutPtrType) ToNativeDashboardChartChartLayoutPtrOutput() NativeDashboardChartChartLayoutPtrOutput {
+	return i.ToNativeDashboardChartChartLayoutPtrOutputWithContext(context.Background())
+}
+
+func (i *nativeDashboardChartChartLayoutPtrType) ToNativeDashboardChartChartLayoutPtrOutputWithContext(ctx context.Context) NativeDashboardChartChartLayoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardChartChartLayoutPtrOutput)
+}
+
+type NativeDashboardChartChartLayoutOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardChartChartLayoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardChartChartLayout)(nil)).Elem()
+}
+
+func (o NativeDashboardChartChartLayoutOutput) ToNativeDashboardChartChartLayoutOutput() NativeDashboardChartChartLayoutOutput {
+	return o
+}
+
+func (o NativeDashboardChartChartLayoutOutput) ToNativeDashboardChartChartLayoutOutputWithContext(ctx context.Context) NativeDashboardChartChartLayoutOutput {
+	return o
+}
+
+func (o NativeDashboardChartChartLayoutOutput) ToNativeDashboardChartChartLayoutPtrOutput() NativeDashboardChartChartLayoutPtrOutput {
+	return o.ToNativeDashboardChartChartLayoutPtrOutputWithContext(context.Background())
+}
+
+func (o NativeDashboardChartChartLayoutOutput) ToNativeDashboardChartChartLayoutPtrOutputWithContext(ctx context.Context) NativeDashboardChartChartLayoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NativeDashboardChartChartLayout) *NativeDashboardChartChartLayout {
+		return &v
+	}).(NativeDashboardChartChartLayoutPtrOutput)
+}
+
+// The number of columns the chart spans.
+func (o NativeDashboardChartChartLayoutOutput) SpanX() pulumi.IntOutput {
+	return o.ApplyT(func(v NativeDashboardChartChartLayout) int { return v.SpanX }).(pulumi.IntOutput)
+}
+
+// The number of rows the chart spans.
+func (o NativeDashboardChartChartLayoutOutput) SpanY() pulumi.IntOutput {
+	return o.ApplyT(func(v NativeDashboardChartChartLayout) int { return v.SpanY }).(pulumi.IntOutput)
+}
+
+// The starting X coordinate.
+func (o NativeDashboardChartChartLayoutOutput) StartX() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NativeDashboardChartChartLayout) *int { return v.StartX }).(pulumi.IntPtrOutput)
+}
+
+// The starting Y coordinate.
+func (o NativeDashboardChartChartLayoutOutput) StartY() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NativeDashboardChartChartLayout) *int { return v.StartY }).(pulumi.IntPtrOutput)
+}
+
+type NativeDashboardChartChartLayoutPtrOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardChartChartLayoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NativeDashboardChartChartLayout)(nil)).Elem()
+}
+
+func (o NativeDashboardChartChartLayoutPtrOutput) ToNativeDashboardChartChartLayoutPtrOutput() NativeDashboardChartChartLayoutPtrOutput {
+	return o
+}
+
+func (o NativeDashboardChartChartLayoutPtrOutput) ToNativeDashboardChartChartLayoutPtrOutputWithContext(ctx context.Context) NativeDashboardChartChartLayoutPtrOutput {
+	return o
+}
+
+func (o NativeDashboardChartChartLayoutPtrOutput) Elem() NativeDashboardChartChartLayoutOutput {
+	return o.ApplyT(func(v *NativeDashboardChartChartLayout) NativeDashboardChartChartLayout {
+		if v != nil {
+			return *v
+		}
+		var ret NativeDashboardChartChartLayout
+		return ret
+	}).(NativeDashboardChartChartLayoutOutput)
+}
+
+// The number of columns the chart spans.
+func (o NativeDashboardChartChartLayoutPtrOutput) SpanX() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NativeDashboardChartChartLayout) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SpanX
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of rows the chart spans.
+func (o NativeDashboardChartChartLayoutPtrOutput) SpanY() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NativeDashboardChartChartLayout) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SpanY
+	}).(pulumi.IntPtrOutput)
+}
+
+// The starting X coordinate.
+func (o NativeDashboardChartChartLayoutPtrOutput) StartX() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NativeDashboardChartChartLayout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartX
+	}).(pulumi.IntPtrOutput)
+}
+
+// The starting Y coordinate.
+func (o NativeDashboardChartChartLayoutPtrOutput) StartY() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NativeDashboardChartChartLayout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartY
+	}).(pulumi.IntPtrOutput)
+}
+
+type NativeDashboardFilter struct {
+	// The IDs of charts that this filter applies to.
+	ChartIds []string `pulumi:"chartIds"`
+	// The data source for the filter.
+	// Possible values:
+	// UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+	// IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+	// DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+	DataSource *string `pulumi:"dataSource"`
+	// The display name of the filter.
+	DisplayName *string `pulumi:"displayName"`
+	// The UDM field path being filtered.
+	FieldPath *string `pulumi:"fieldPath"`
+	// The specific operator and value set for the filter.
+	// Structure is documented below.
+	FilterOperatorAndFieldValues []NativeDashboardFilterFilterOperatorAndFieldValue `pulumi:"filterOperatorAndFieldValues"`
+	// The unique ID of the filter.
+	Id *string `pulumi:"id"`
+	// Whether the filter is mandatory for the dashboard consumer.
+	IsMandatory *bool `pulumi:"isMandatory"`
+	// Whether the filter is a standard time range filter.
+	IsStandardTimeRangeFilter *bool `pulumi:"isStandardTimeRangeFilter"`
+	// Whether the standard time range filter is currently enabled.
+	IsStandardTimeRangeFilterEnabled *bool `pulumi:"isStandardTimeRangeFilterEnabled"`
+}
+
+// NativeDashboardFilterInput is an input type that accepts NativeDashboardFilterArgs and NativeDashboardFilterOutput values.
+// You can construct a concrete instance of `NativeDashboardFilterInput` via:
+//
+//	NativeDashboardFilterArgs{...}
+type NativeDashboardFilterInput interface {
+	pulumi.Input
+
+	ToNativeDashboardFilterOutput() NativeDashboardFilterOutput
+	ToNativeDashboardFilterOutputWithContext(context.Context) NativeDashboardFilterOutput
+}
+
+type NativeDashboardFilterArgs struct {
+	// The IDs of charts that this filter applies to.
+	ChartIds pulumi.StringArrayInput `pulumi:"chartIds"`
+	// The data source for the filter.
+	// Possible values:
+	// UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+	// IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+	// DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
+	// The display name of the filter.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The UDM field path being filtered.
+	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
+	// The specific operator and value set for the filter.
+	// Structure is documented below.
+	FilterOperatorAndFieldValues NativeDashboardFilterFilterOperatorAndFieldValueArrayInput `pulumi:"filterOperatorAndFieldValues"`
+	// The unique ID of the filter.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether the filter is mandatory for the dashboard consumer.
+	IsMandatory pulumi.BoolPtrInput `pulumi:"isMandatory"`
+	// Whether the filter is a standard time range filter.
+	IsStandardTimeRangeFilter pulumi.BoolPtrInput `pulumi:"isStandardTimeRangeFilter"`
+	// Whether the standard time range filter is currently enabled.
+	IsStandardTimeRangeFilterEnabled pulumi.BoolPtrInput `pulumi:"isStandardTimeRangeFilterEnabled"`
+}
+
+func (NativeDashboardFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardFilter)(nil)).Elem()
+}
+
+func (i NativeDashboardFilterArgs) ToNativeDashboardFilterOutput() NativeDashboardFilterOutput {
+	return i.ToNativeDashboardFilterOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardFilterArgs) ToNativeDashboardFilterOutputWithContext(ctx context.Context) NativeDashboardFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardFilterOutput)
+}
+
+// NativeDashboardFilterArrayInput is an input type that accepts NativeDashboardFilterArray and NativeDashboardFilterArrayOutput values.
+// You can construct a concrete instance of `NativeDashboardFilterArrayInput` via:
+//
+//	NativeDashboardFilterArray{ NativeDashboardFilterArgs{...} }
+type NativeDashboardFilterArrayInput interface {
+	pulumi.Input
+
+	ToNativeDashboardFilterArrayOutput() NativeDashboardFilterArrayOutput
+	ToNativeDashboardFilterArrayOutputWithContext(context.Context) NativeDashboardFilterArrayOutput
+}
+
+type NativeDashboardFilterArray []NativeDashboardFilterInput
+
+func (NativeDashboardFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NativeDashboardFilter)(nil)).Elem()
+}
+
+func (i NativeDashboardFilterArray) ToNativeDashboardFilterArrayOutput() NativeDashboardFilterArrayOutput {
+	return i.ToNativeDashboardFilterArrayOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardFilterArray) ToNativeDashboardFilterArrayOutputWithContext(ctx context.Context) NativeDashboardFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardFilterArrayOutput)
+}
+
+type NativeDashboardFilterOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardFilter)(nil)).Elem()
+}
+
+func (o NativeDashboardFilterOutput) ToNativeDashboardFilterOutput() NativeDashboardFilterOutput {
+	return o
+}
+
+func (o NativeDashboardFilterOutput) ToNativeDashboardFilterOutputWithContext(ctx context.Context) NativeDashboardFilterOutput {
+	return o
+}
+
+// The IDs of charts that this filter applies to.
+func (o NativeDashboardFilterOutput) ChartIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
+}
+
+// The data source for the filter.
+// Possible values:
+// UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+// IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+// DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+func (o NativeDashboardFilterOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the filter.
+func (o NativeDashboardFilterOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The UDM field path being filtered.
+func (o NativeDashboardFilterOutput) FieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+}
+
+// The specific operator and value set for the filter.
+// Structure is documented below.
+func (o NativeDashboardFilterOutput) FilterOperatorAndFieldValues() NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) []NativeDashboardFilterFilterOperatorAndFieldValue {
+		return v.FilterOperatorAndFieldValues
+	}).(NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput)
+}
+
+// The unique ID of the filter.
+func (o NativeDashboardFilterOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Whether the filter is mandatory for the dashboard consumer.
+func (o NativeDashboardFilterOutput) IsMandatory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *bool { return v.IsMandatory }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the filter is a standard time range filter.
+func (o NativeDashboardFilterOutput) IsStandardTimeRangeFilter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *bool { return v.IsStandardTimeRangeFilter }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the standard time range filter is currently enabled.
+func (o NativeDashboardFilterOutput) IsStandardTimeRangeFilterEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilter) *bool { return v.IsStandardTimeRangeFilterEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type NativeDashboardFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NativeDashboardFilter)(nil)).Elem()
+}
+
+func (o NativeDashboardFilterArrayOutput) ToNativeDashboardFilterArrayOutput() NativeDashboardFilterArrayOutput {
+	return o
+}
+
+func (o NativeDashboardFilterArrayOutput) ToNativeDashboardFilterArrayOutputWithContext(ctx context.Context) NativeDashboardFilterArrayOutput {
+	return o
+}
+
+func (o NativeDashboardFilterArrayOutput) Index(i pulumi.IntInput) NativeDashboardFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NativeDashboardFilter {
+		return vs[0].([]NativeDashboardFilter)[vs[1].(int)]
+	}).(NativeDashboardFilterOutput)
+}
+
+type NativeDashboardFilterFilterOperatorAndFieldValue struct {
+	// The values for the modifier. All operators should have a single
+	// value other than 'IN' and 'BETWEEN'.
+	FieldValues []string `pulumi:"fieldValues"`
+	// The operator to apply to the field.
+	// Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+	FilterOperator *string `pulumi:"filterOperator"`
+}
+
+// NativeDashboardFilterFilterOperatorAndFieldValueInput is an input type that accepts NativeDashboardFilterFilterOperatorAndFieldValueArgs and NativeDashboardFilterFilterOperatorAndFieldValueOutput values.
+// You can construct a concrete instance of `NativeDashboardFilterFilterOperatorAndFieldValueInput` via:
+//
+//	NativeDashboardFilterFilterOperatorAndFieldValueArgs{...}
+type NativeDashboardFilterFilterOperatorAndFieldValueInput interface {
+	pulumi.Input
+
+	ToNativeDashboardFilterFilterOperatorAndFieldValueOutput() NativeDashboardFilterFilterOperatorAndFieldValueOutput
+	ToNativeDashboardFilterFilterOperatorAndFieldValueOutputWithContext(context.Context) NativeDashboardFilterFilterOperatorAndFieldValueOutput
+}
+
+type NativeDashboardFilterFilterOperatorAndFieldValueArgs struct {
+	// The values for the modifier. All operators should have a single
+	// value other than 'IN' and 'BETWEEN'.
+	FieldValues pulumi.StringArrayInput `pulumi:"fieldValues"`
+	// The operator to apply to the field.
+	// Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+	FilterOperator pulumi.StringPtrInput `pulumi:"filterOperator"`
+}
+
+func (NativeDashboardFilterFilterOperatorAndFieldValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardFilterFilterOperatorAndFieldValue)(nil)).Elem()
+}
+
+func (i NativeDashboardFilterFilterOperatorAndFieldValueArgs) ToNativeDashboardFilterFilterOperatorAndFieldValueOutput() NativeDashboardFilterFilterOperatorAndFieldValueOutput {
+	return i.ToNativeDashboardFilterFilterOperatorAndFieldValueOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardFilterFilterOperatorAndFieldValueArgs) ToNativeDashboardFilterFilterOperatorAndFieldValueOutputWithContext(ctx context.Context) NativeDashboardFilterFilterOperatorAndFieldValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardFilterFilterOperatorAndFieldValueOutput)
+}
+
+// NativeDashboardFilterFilterOperatorAndFieldValueArrayInput is an input type that accepts NativeDashboardFilterFilterOperatorAndFieldValueArray and NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput values.
+// You can construct a concrete instance of `NativeDashboardFilterFilterOperatorAndFieldValueArrayInput` via:
+//
+//	NativeDashboardFilterFilterOperatorAndFieldValueArray{ NativeDashboardFilterFilterOperatorAndFieldValueArgs{...} }
+type NativeDashboardFilterFilterOperatorAndFieldValueArrayInput interface {
+	pulumi.Input
+
+	ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutput() NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput
+	ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutputWithContext(context.Context) NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput
+}
+
+type NativeDashboardFilterFilterOperatorAndFieldValueArray []NativeDashboardFilterFilterOperatorAndFieldValueInput
+
+func (NativeDashboardFilterFilterOperatorAndFieldValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NativeDashboardFilterFilterOperatorAndFieldValue)(nil)).Elem()
+}
+
+func (i NativeDashboardFilterFilterOperatorAndFieldValueArray) ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutput() NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput {
+	return i.ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutputWithContext(context.Background())
+}
+
+func (i NativeDashboardFilterFilterOperatorAndFieldValueArray) ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutputWithContext(ctx context.Context) NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput)
+}
+
+type NativeDashboardFilterFilterOperatorAndFieldValueOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardFilterFilterOperatorAndFieldValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativeDashboardFilterFilterOperatorAndFieldValue)(nil)).Elem()
+}
+
+func (o NativeDashboardFilterFilterOperatorAndFieldValueOutput) ToNativeDashboardFilterFilterOperatorAndFieldValueOutput() NativeDashboardFilterFilterOperatorAndFieldValueOutput {
+	return o
+}
+
+func (o NativeDashboardFilterFilterOperatorAndFieldValueOutput) ToNativeDashboardFilterFilterOperatorAndFieldValueOutputWithContext(ctx context.Context) NativeDashboardFilterFilterOperatorAndFieldValueOutput {
+	return o
+}
+
+// The values for the modifier. All operators should have a single
+// value other than 'IN' and 'BETWEEN'.
+func (o NativeDashboardFilterFilterOperatorAndFieldValueOutput) FieldValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NativeDashboardFilterFilterOperatorAndFieldValue) []string { return v.FieldValues }).(pulumi.StringArrayOutput)
+}
+
+// The operator to apply to the field.
+// Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+func (o NativeDashboardFilterFilterOperatorAndFieldValueOutput) FilterOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NativeDashboardFilterFilterOperatorAndFieldValue) *string { return v.FilterOperator }).(pulumi.StringPtrOutput)
+}
+
+type NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput struct{ *pulumi.OutputState }
+
+func (NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NativeDashboardFilterFilterOperatorAndFieldValue)(nil)).Elem()
+}
+
+func (o NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput) ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutput() NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput {
+	return o
+}
+
+func (o NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput) ToNativeDashboardFilterFilterOperatorAndFieldValueArrayOutputWithContext(ctx context.Context) NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput {
+	return o
+}
+
+func (o NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput) Index(i pulumi.IntInput) NativeDashboardFilterFilterOperatorAndFieldValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NativeDashboardFilterFilterOperatorAndFieldValue {
+		return vs[0].([]NativeDashboardFilterFilterOperatorAndFieldValue)[vs[1].(int)]
+	}).(NativeDashboardFilterFilterOperatorAndFieldValueOutput)
+}
+
 type ReferenceListEntry struct {
 	// Required. The value of the entry. Maximum length is 512 characters.
 	Value string `pulumi:"value"`
@@ -2577,6 +3187,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTableColumnInfoArrayInput)(nil)).Elem(), DataTableColumnInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTableScopeInfoInput)(nil)).Elem(), DataTableScopeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTableScopeInfoPtrInput)(nil)).Elem(), DataTableScopeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartInput)(nil)).Elem(), NativeDashboardChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartArrayInput)(nil)).Elem(), NativeDashboardChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartChartLayoutInput)(nil)).Elem(), NativeDashboardChartChartLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartChartLayoutPtrInput)(nil)).Elem(), NativeDashboardChartChartLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterInput)(nil)).Elem(), NativeDashboardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterArrayInput)(nil)).Elem(), NativeDashboardFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterFilterOperatorAndFieldValueInput)(nil)).Elem(), NativeDashboardFilterFilterOperatorAndFieldValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardFilterFilterOperatorAndFieldValueArrayInput)(nil)).Elem(), NativeDashboardFilterFilterOperatorAndFieldValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryInput)(nil)).Elem(), ReferenceListEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryArrayInput)(nil)).Elem(), ReferenceListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoInput)(nil)).Elem(), ReferenceListScopeInfoArgs{})
@@ -2613,6 +3231,14 @@ func init() {
 	pulumi.RegisterOutputType(DataTableColumnInfoArrayOutput{})
 	pulumi.RegisterOutputType(DataTableScopeInfoOutput{})
 	pulumi.RegisterOutputType(DataTableScopeInfoPtrOutput{})
+	pulumi.RegisterOutputType(NativeDashboardChartOutput{})
+	pulumi.RegisterOutputType(NativeDashboardChartArrayOutput{})
+	pulumi.RegisterOutputType(NativeDashboardChartChartLayoutOutput{})
+	pulumi.RegisterOutputType(NativeDashboardChartChartLayoutPtrOutput{})
+	pulumi.RegisterOutputType(NativeDashboardFilterOutput{})
+	pulumi.RegisterOutputType(NativeDashboardFilterArrayOutput{})
+	pulumi.RegisterOutputType(NativeDashboardFilterFilterOperatorAndFieldValueOutput{})
+	pulumi.RegisterOutputType(NativeDashboardFilterFilterOperatorAndFieldValueArrayOutput{})
 	pulumi.RegisterOutputType(ReferenceListEntryOutput{})
 	pulumi.RegisterOutputType(ReferenceListEntryArrayOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoOutput{})

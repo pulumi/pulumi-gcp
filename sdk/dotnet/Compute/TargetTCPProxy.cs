@@ -116,6 +116,76 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Target Tcp Proxy Tls Route
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.TargetTCPProxy("default", new()
+    ///     {
+    ///         Name = "test-proxy",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
+    ///         {
+    ///             Port = 443,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Protocol = "TCP",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultTlsRoute = new Gcp.NetworkServices.TlsRoute("default", new()
+    ///     {
+    ///         Name = "tls-route-check",
+    ///         TargetProxies = new[]
+    ///         {
+    ///             @default.Id,
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.TlsRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.TlsRouteRuleMatchArgs
+    ///                     {
+    ///                         SniHosts = new[]
+    ///                         {
+    ///                             "example.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.TlsRouteRuleActionArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         new Gcp.NetworkServices.Inputs.TlsRouteRuleActionDestinationArgs
+    ///                         {
+    ///                             ServiceName = defaultBackendService.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

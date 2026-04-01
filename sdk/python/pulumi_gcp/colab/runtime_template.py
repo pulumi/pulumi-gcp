@@ -658,7 +658,8 @@ class RuntimeTemplate(pulumi.CustomResource):
             },
             network_spec={
                 "enable_internet_access": True,
-            })
+            },
+            software_config={})
         ```
         ### Colab Runtime Template Full
 
@@ -721,6 +722,9 @@ class RuntimeTemplate(pulumi.CustomResource):
                     "post_startup_script": "echo 'hello world'",
                     "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
                     "post_startup_script_behavior": "RUN_ONCE",
+                },
+                "colab_image": {
+                    "release_name": "py312",
                 },
             })
         ```
@@ -821,7 +825,8 @@ class RuntimeTemplate(pulumi.CustomResource):
             },
             network_spec={
                 "enable_internet_access": True,
-            })
+            },
+            software_config={})
         ```
         ### Colab Runtime Template Full
 
@@ -884,6 +889,9 @@ class RuntimeTemplate(pulumi.CustomResource):
                     "post_startup_script": "echo 'hello world'",
                     "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
                     "post_startup_script_behavior": "RUN_ONCE",
+                },
+                "colab_image": {
+                    "release_name": "py312",
                 },
             })
         ```

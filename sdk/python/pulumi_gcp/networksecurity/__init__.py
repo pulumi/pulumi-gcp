@@ -20,6 +20,7 @@ from .firewall_endpoint_association import *
 from .gateway_security_policy import *
 from .gateway_security_policy_rule import *
 from .get_address_group_iam_policy import *
+from .get_address_groups import *
 from .intercept_deployment import *
 from .intercept_deployment_group import *
 from .intercept_endpoint_group import *

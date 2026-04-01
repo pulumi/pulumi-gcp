@@ -14,12 +14,9 @@ import (
 
 // A grouping of workstation configurations and the associated workstations in that region.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about WorkstationCluster, see:
 //
-// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
+// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters/create)
 // * How-to Guides
 //   - [Workstations](https://cloud.google.com/workstations/docs/)
 //

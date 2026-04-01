@@ -56,6 +56,11 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
      */
     private String serverCaPool;
     /**
+     * @return Settings for how the server certificate gets rotated.
+     * 
+     */
+    private String serverCertificateRotationMode;
+    /**
      * @return Specify how SSL connection should be enforced in DB connections.
      * 
      */
@@ -122,6 +127,13 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         return this.serverCaPool;
     }
     /**
+     * @return Settings for how the server certificate gets rotated.
+     * 
+     */
+    public String serverCertificateRotationMode() {
+        return this.serverCertificateRotationMode;
+    }
+    /**
      * @return Specify how SSL connection should be enforced in DB connections.
      * 
      */
@@ -147,6 +159,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs;
         private String serverCaMode;
         private String serverCaPool;
+        private String serverCertificateRotationMode;
         private String sslMode;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingIpConfiguration defaults) {
@@ -160,6 +173,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.serverCaMode = defaults.serverCaMode;
     	      this.serverCaPool = defaults.serverCaPool;
+    	      this.serverCertificateRotationMode = defaults.serverCertificateRotationMode;
     	      this.sslMode = defaults.sslMode;
         }
 
@@ -245,6 +259,14 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCertificateRotationMode(String serverCertificateRotationMode) {
+            if (serverCertificateRotationMode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfiguration", "serverCertificateRotationMode");
+            }
+            this.serverCertificateRotationMode = serverCertificateRotationMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslMode(String sslMode) {
             if (sslMode == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfiguration", "sslMode");
@@ -263,6 +285,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             _resultValue.pscConfigs = pscConfigs;
             _resultValue.serverCaMode = serverCaMode;
             _resultValue.serverCaPool = serverCaPool;
+            _resultValue.serverCertificateRotationMode = serverCertificateRotationMode;
             _resultValue.sslMode = sslMode;
             return _resultValue;
         }

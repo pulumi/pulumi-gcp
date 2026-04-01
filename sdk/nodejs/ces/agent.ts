@@ -206,6 +206,53 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Ces Agent Remote Dialogflow Agent Interruption
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Agent example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesAgentRemoteDialogflowAgentInterruption = new gcp.ces.Agent("ces_agent_remote_dialogflow_agent_interruption", {
+ *     agentId: "agent-id",
+ *     location: "us",
+ *     app: cesAppForAgent.appId,
+ *     displayName: "my-agent",
+ *     modelSettings: {
+ *         model: "gemini-1.5-flash",
+ *         temperature: 0.5,
+ *     },
+ *     remoteDialogflowAgent: {
+ *         agent: "projects/example/locations/us/agents/fake-agent",
+ *         flowId: "fake-flow",
+ *         environmentId: "fake-env",
+ *         respectResponseInterruptionSettings: true,
+ *         inputVariableMapping: {
+ *             example: "1",
+ *         },
+ *         outputVariableMapping: {
+ *             example: "1",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

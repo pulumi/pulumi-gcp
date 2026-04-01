@@ -2574,6 +2574,10 @@ class DatabaseInstanceSettingsIpConfigurationArgsDict(TypedDict):
     """
     The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
     """
+    server_certificate_rotation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+    """
     ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
     """
     Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
@@ -2591,6 +2595,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
                  server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_certificate_rotation_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -2607,6 +2612,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]] psc_configs: PSC settings for a Cloud SQL instance.
         :param pulumi.Input[_builtins.str] server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
         :param pulumi.Input[_builtins.str] server_ca_pool: The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        :param pulumi.Input[_builtins.str] server_certificate_rotation_mode: Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         :param pulumi.Input[_builtins.str] ssl_mode: Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         if allocated_ip_range is not None:
@@ -2627,6 +2633,8 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
             pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         if server_ca_pool is not None:
             pulumi.set(__self__, "server_ca_pool", server_ca_pool)
+        if server_certificate_rotation_mode is not None:
+            pulumi.set(__self__, "server_certificate_rotation_mode", server_certificate_rotation_mode)
         if ssl_mode is not None:
             pulumi.set(__self__, "ssl_mode", ssl_mode)
 
@@ -2740,6 +2748,18 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @server_ca_pool.setter
     def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "server_ca_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverCertificateRotationMode")
+    def server_certificate_rotation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+        """
+        return pulumi.get(self, "server_certificate_rotation_mode")
+
+    @server_certificate_rotation_mode.setter
+    def server_certificate_rotation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_certificate_rotation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sslMode")

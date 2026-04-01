@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -35,6 +37,36 @@ import * as utilities from "../utilities";
  *     config: "nam8",
  *     displayName: "test-spanner-partition",
  *     nodeCount: 1,
+ * });
+ * ```
+ * ### Spanner Instance Partition Autoscaling
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const main = new gcp.spanner.Instance("main", {
+ *     name: "test-instance",
+ *     config: "nam6",
+ *     displayName: "main-instance",
+ *     numNodes: 1,
+ *     edition: "ENTERPRISE_PLUS",
+ * });
+ * const partition = new gcp.spanner.InstancePartition("partition", {
+ *     name: "test-partition",
+ *     instance: main.name,
+ *     config: "nam8",
+ *     displayName: "test-spanner-partition",
+ *     autoscalingConfig: {
+ *         autoscalingLimits: {
+ *             minProcessingUnits: 1000,
+ *             maxProcessingUnits: 2000,
+ *         },
+ *         autoscalingTargets: {
+ *             highPriorityCpuUtilizationPercent: 65,
+ *             storageUtilizationPercent: 95,
+ *         },
+ *     },
  * });
  * ```
  *
@@ -83,6 +115,15 @@ export class InstancePartition extends pulumi.CustomResource {
     }
 
     /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     */
+    declare public readonly autoscalingConfig: pulumi.Output<outputs.spanner.InstancePartitionAutoscalingConfig | undefined>;
+    /**
      * The name of the instance partition's configuration (similar to a region) which
      * defines the geographic placement and replication of data in this instance partition.
      */
@@ -104,15 +145,16 @@ export class InstancePartition extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      */
-    declare public readonly nodeCount: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      */
-    declare public readonly processingUnits: pulumi.Output<number | undefined>;
+    declare public readonly processingUnits: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -139,6 +181,7 @@ export class InstancePartition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstancePartitionState | undefined;
+            resourceInputs["autoscalingConfig"] = state?.autoscalingConfig;
             resourceInputs["config"] = state?.config;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["instance"] = state?.instance;
@@ -158,6 +201,7 @@ export class InstancePartition extends pulumi.CustomResource {
             if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
+            resourceInputs["autoscalingConfig"] = args?.autoscalingConfig;
             resourceInputs["config"] = args?.config;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["instance"] = args?.instance;
@@ -176,6 +220,15 @@ export class InstancePartition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstancePartition resources.
  */
 export interface InstancePartitionState {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     */
+    autoscalingConfig?: pulumi.Input<inputs.spanner.InstancePartitionAutoscalingConfig>;
     /**
      * The name of the instance partition's configuration (similar to a region) which
      * defines the geographic placement and replication of data in this instance partition.
@@ -198,13 +251,14 @@ export interface InstancePartitionState {
     name?: pulumi.Input<string>;
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      */
     nodeCount?: pulumi.Input<number>;
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      */
     processingUnits?: pulumi.Input<number>;
     /**
@@ -225,6 +279,15 @@ export interface InstancePartitionState {
  * The set of arguments for constructing a InstancePartition resource.
  */
 export interface InstancePartitionArgs {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     */
+    autoscalingConfig?: pulumi.Input<inputs.spanner.InstancePartitionAutoscalingConfig>;
     /**
      * The name of the instance partition's configuration (similar to a region) which
      * defines the geographic placement and replication of data in this instance partition.
@@ -247,13 +310,14 @@ export interface InstancePartitionArgs {
     name?: pulumi.Input<string>;
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      */
     nodeCount?: pulumi.Input<number>;
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      */
     processingUnits?: pulumi.Input<number>;
     /**

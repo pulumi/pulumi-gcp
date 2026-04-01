@@ -1644,7 +1644,21 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) Index(i
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides struct {
 	// A nested object resource.
 	// Structure is documented below.
-	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits `pulumi:"autoscalingLimits"`
+	AutoscalingLimits *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits `pulumi:"autoscalingLimits"`
+	// The target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetHighPriorityCpuUtilizationPercent *int `pulumi:"autoscalingTargetHighPriorityCpuUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetTotalCpuUtilizationPercent *int `pulumi:"autoscalingTargetTotalCpuUtilizationPercent"`
+	// If true, disables high priority CPU autoscaling for this replica and ignores
+	// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableHighPriorityCpuAutoscaling *bool `pulumi:"disableHighPriorityCpuAutoscaling"`
+	// If true, disables total CPU autoscaling for this replica and ignores
+	// totalCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableTotalCpuAutoscaling *bool `pulumi:"disableTotalCpuAutoscaling"`
 }
 
 // InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs and InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput values.
@@ -1661,7 +1675,21 @@ type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput interfac
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
-	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput `pulumi:"autoscalingLimits"`
+	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrInput `pulumi:"autoscalingLimits"`
+	// The target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetHighPriorityCpuUtilizationPercent pulumi.IntPtrInput `pulumi:"autoscalingTargetHighPriorityCpuUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetTotalCpuUtilizationPercent pulumi.IntPtrInput `pulumi:"autoscalingTargetTotalCpuUtilizationPercent"`
+	// If true, disables high priority CPU autoscaling for this replica and ignores
+	// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableHighPriorityCpuAutoscaling pulumi.BoolPtrInput `pulumi:"disableHighPriorityCpuAutoscaling"`
+	// If true, disables total CPU autoscaling for this replica and ignores
+	// totalCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableTotalCpuAutoscaling pulumi.BoolPtrInput `pulumi:"disableTotalCpuAutoscaling"`
 }
 
 func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs) ElementType() reflect.Type {
@@ -1692,17 +1720,58 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) ToI
 
 // A nested object resource.
 // Structure is documented below.
-func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) AutoscalingLimits() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
-	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) AutoscalingLimits() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
 		return v.AutoscalingLimits
-	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput)
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput)
+}
+
+// The target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for this replica.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) AutoscalingTargetHighPriorityCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) *int {
+		return v.AutoscalingTargetHighPriorityCpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target total cpu utilization percentage that the autoscaler
+// should be trying to achieve for this replica.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) AutoscalingTargetTotalCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) *int {
+		return v.AutoscalingTargetTotalCpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, disables high priority CPU autoscaling for this replica and ignores
+// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) DisableHighPriorityCpuAutoscaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) *bool {
+		return v.DisableHighPriorityCpuAutoscaling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, disables total CPU autoscaling for this replica and ignores
+// totalCpuUtilizationPercent in the top-level autoscaling configuration.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) DisableTotalCpuAutoscaling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) *bool {
+		return v.DisableTotalCpuAutoscaling
+	}).(pulumi.BoolPtrOutput)
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits struct {
 	// The maximum number of nodes for this specific replica.
-	MaxNodes int `pulumi:"maxNodes"`
+	MaxNodes *int `pulumi:"maxNodes"`
+	// The maximum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits *int `pulumi:"maxProcessingUnits"`
 	// The minimum number of nodes for this specific replica.
-	MinNodes int `pulumi:"minNodes"`
+	MinNodes *int `pulumi:"minNodes"`
+	// The minimum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits *int `pulumi:"minProcessingUnits"`
 }
 
 // InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs and InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput values.
@@ -1718,9 +1787,16 @@ type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLim
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs struct {
 	// The maximum number of nodes for this specific replica.
-	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
+	// The maximum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits pulumi.IntPtrInput `pulumi:"maxProcessingUnits"`
 	// The minimum number of nodes for this specific replica.
-	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
+	// The minimum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits pulumi.IntPtrInput `pulumi:"minProcessingUnits"`
 }
 
 func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ElementType() reflect.Type {
@@ -1733,6 +1809,47 @@ func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscaling
 
 func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput)
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput).ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(ctx)
+}
+
+// InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs, InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtr and InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrInput` via:
+//
+//	        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput
+}
+
+type instanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrType InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs
+
+func InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtr(v *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrInput {
+	return (*instanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrType)(v)
+}
+
+func (*instanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits)(nil)).Elem()
+}
+
+func (i *instanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrType) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrType) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput)
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput struct{ *pulumi.OutputState }
@@ -1749,18 +1866,112 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscaling
 	return o
 }
 
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return o.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
+		return &v
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput)
+}
+
 // The maximum number of nodes for this specific replica.
-func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MaxNodes() pulumi.IntOutput {
-	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) int {
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
 		return v.MaxNodes
-	}).(pulumi.IntOutput)
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of processing units for this specific replica.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
+		return v.MaxProcessingUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 // The minimum number of nodes for this specific replica.
-func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MinNodes() pulumi.IntOutput {
-	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) int {
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
 		return v.MinNodes
-	}).(pulumi.IntOutput)
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of processing units for this specific replica.
+// If set, this number should be multiples of 1000.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MinProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
+		return v.MinProcessingUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) Elem() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits
+		return ret
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput)
+}
+
+// The maximum number of nodes for this specific replica.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of processing units for this specific replica.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProcessingUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes for this specific replica.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of processing units for this specific replica.
+// If set, this number should be multiples of 1000.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput) MinProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProcessingUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection struct {
@@ -1818,13 +2029,13 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutp
 type InstanceAutoscalingConfigAutoscalingLimits struct {
 	// The maximum number of nodes for this specific replica.
 	MaxNodes *int `pulumi:"maxNodes"`
-	// Specifies maximum number of processing units allocated to the instance.
+	// The maximum number of processing units for this specific replica.
 	// If set, this number should be multiples of 1000 and be greater than or equal to
 	// min_processing_units.
 	MaxProcessingUnits *int `pulumi:"maxProcessingUnits"`
 	// The minimum number of nodes for this specific replica.
 	MinNodes *int `pulumi:"minNodes"`
-	// Specifies minimum number of processing units allocated to the instance.
+	// The minimum number of processing units for this specific replica.
 	// If set, this number should be multiples of 1000.
 	MinProcessingUnits *int `pulumi:"minProcessingUnits"`
 }
@@ -1843,13 +2054,13 @@ type InstanceAutoscalingConfigAutoscalingLimitsInput interface {
 type InstanceAutoscalingConfigAutoscalingLimitsArgs struct {
 	// The maximum number of nodes for this specific replica.
 	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
-	// Specifies maximum number of processing units allocated to the instance.
+	// The maximum number of processing units for this specific replica.
 	// If set, this number should be multiples of 1000 and be greater than or equal to
 	// min_processing_units.
 	MaxProcessingUnits pulumi.IntPtrInput `pulumi:"maxProcessingUnits"`
 	// The minimum number of nodes for this specific replica.
 	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
-	// Specifies minimum number of processing units allocated to the instance.
+	// The minimum number of processing units for this specific replica.
 	// If set, this number should be multiples of 1000.
 	MinProcessingUnits pulumi.IntPtrInput `pulumi:"minProcessingUnits"`
 }
@@ -1936,7 +2147,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MaxNodes() pulumi.IntP
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
 }
 
-// Specifies maximum number of processing units allocated to the instance.
+// The maximum number of processing units for this specific replica.
 // If set, this number should be multiples of 1000 and be greater than or equal to
 // min_processing_units.
 func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
@@ -1948,7 +2159,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MinNodes() pulumi.IntP
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
 }
 
-// Specifies minimum number of processing units allocated to the instance.
+// The minimum number of processing units for this specific replica.
 // If set, this number should be multiples of 1000.
 func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MinProcessingUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MinProcessingUnits }).(pulumi.IntPtrOutput)
@@ -1988,7 +2199,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MaxNodes() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies maximum number of processing units allocated to the instance.
+// The maximum number of processing units for this specific replica.
 // If set, this number should be multiples of 1000 and be greater than or equal to
 // min_processing_units.
 func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
@@ -2010,7 +2221,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MinNodes() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies minimum number of processing units allocated to the instance.
+// The minimum number of processing units for this specific replica.
 // If set, this number should be multiples of 1000.
 func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MinProcessingUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingLimits) *int {
@@ -2677,6 +2888,621 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstancePartitionAutoscalingConfig struct {
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events. Users can define the minimum and
+	// maximum compute capacity allocated to the instance partition, and the autoscaler will
+	// only scale within that range. Users can either use nodes or processing
+	// units to specify the limits, but should use the same unit to set both the
+	// minLimit and max_limit.
+	// Structure is documented below.
+	AutoscalingLimits *InstancePartitionAutoscalingConfigAutoscalingLimits `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
+	AutoscalingTargets *InstancePartitionAutoscalingConfigAutoscalingTargets `pulumi:"autoscalingTargets"`
+}
+
+// InstancePartitionAutoscalingConfigInput is an input type that accepts InstancePartitionAutoscalingConfigArgs and InstancePartitionAutoscalingConfigOutput values.
+// You can construct a concrete instance of `InstancePartitionAutoscalingConfigInput` via:
+//
+//	InstancePartitionAutoscalingConfigArgs{...}
+type InstancePartitionAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToInstancePartitionAutoscalingConfigOutput() InstancePartitionAutoscalingConfigOutput
+	ToInstancePartitionAutoscalingConfigOutputWithContext(context.Context) InstancePartitionAutoscalingConfigOutput
+}
+
+type InstancePartitionAutoscalingConfigArgs struct {
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events. Users can define the minimum and
+	// maximum compute capacity allocated to the instance partition, and the autoscaler will
+	// only scale within that range. Users can either use nodes or processing
+	// units to specify the limits, but should use the same unit to set both the
+	// minLimit and max_limit.
+	// Structure is documented below.
+	AutoscalingLimits InstancePartitionAutoscalingConfigAutoscalingLimitsPtrInput `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
+	AutoscalingTargets InstancePartitionAutoscalingConfigAutoscalingTargetsPtrInput `pulumi:"autoscalingTargets"`
+}
+
+func (InstancePartitionAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePartitionAutoscalingConfig)(nil)).Elem()
+}
+
+func (i InstancePartitionAutoscalingConfigArgs) ToInstancePartitionAutoscalingConfigOutput() InstancePartitionAutoscalingConfigOutput {
+	return i.ToInstancePartitionAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePartitionAutoscalingConfigArgs) ToInstancePartitionAutoscalingConfigOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigOutput)
+}
+
+func (i InstancePartitionAutoscalingConfigArgs) ToInstancePartitionAutoscalingConfigPtrOutput() InstancePartitionAutoscalingConfigPtrOutput {
+	return i.ToInstancePartitionAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePartitionAutoscalingConfigArgs) ToInstancePartitionAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigOutput).ToInstancePartitionAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePartitionAutoscalingConfigPtrInput is an input type that accepts InstancePartitionAutoscalingConfigArgs, InstancePartitionAutoscalingConfigPtr and InstancePartitionAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePartitionAutoscalingConfigPtrInput` via:
+//
+//	        InstancePartitionAutoscalingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePartitionAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePartitionAutoscalingConfigPtrOutput() InstancePartitionAutoscalingConfigPtrOutput
+	ToInstancePartitionAutoscalingConfigPtrOutputWithContext(context.Context) InstancePartitionAutoscalingConfigPtrOutput
+}
+
+type instancePartitionAutoscalingConfigPtrType InstancePartitionAutoscalingConfigArgs
+
+func InstancePartitionAutoscalingConfigPtr(v *InstancePartitionAutoscalingConfigArgs) InstancePartitionAutoscalingConfigPtrInput {
+	return (*instancePartitionAutoscalingConfigPtrType)(v)
+}
+
+func (*instancePartitionAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePartitionAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *instancePartitionAutoscalingConfigPtrType) ToInstancePartitionAutoscalingConfigPtrOutput() InstancePartitionAutoscalingConfigPtrOutput {
+	return i.ToInstancePartitionAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePartitionAutoscalingConfigPtrType) ToInstancePartitionAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePartitionAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePartitionAutoscalingConfig)(nil)).Elem()
+}
+
+func (o InstancePartitionAutoscalingConfigOutput) ToInstancePartitionAutoscalingConfigOutput() InstancePartitionAutoscalingConfigOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigOutput) ToInstancePartitionAutoscalingConfigOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigOutput) ToInstancePartitionAutoscalingConfigPtrOutput() InstancePartitionAutoscalingConfigPtrOutput {
+	return o.ToInstancePartitionAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePartitionAutoscalingConfigOutput) ToInstancePartitionAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePartitionAutoscalingConfig) *InstancePartitionAutoscalingConfig {
+		return &v
+	}).(InstancePartitionAutoscalingConfigPtrOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events. Users can define the minimum and
+// maximum compute capacity allocated to the instance partition, and the autoscaler will
+// only scale within that range. Users can either use nodes or processing
+// units to specify the limits, but should use the same unit to set both the
+// minLimit and max_limit.
+// Structure is documented below.
+func (o InstancePartitionAutoscalingConfigOutput) AutoscalingLimits() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfig) *InstancePartitionAutoscalingConfigAutoscalingLimits {
+		return v.AutoscalingLimits
+	}).(InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
+func (o InstancePartitionAutoscalingConfigOutput) AutoscalingTargets() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfig) *InstancePartitionAutoscalingConfigAutoscalingTargets {
+		return v.AutoscalingTargets
+	}).(InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePartitionAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePartitionAutoscalingConfig)(nil)).Elem()
+}
+
+func (o InstancePartitionAutoscalingConfigPtrOutput) ToInstancePartitionAutoscalingConfigPtrOutput() InstancePartitionAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigPtrOutput) ToInstancePartitionAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigPtrOutput) Elem() InstancePartitionAutoscalingConfigOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfig) InstancePartitionAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePartitionAutoscalingConfig
+		return ret
+	}).(InstancePartitionAutoscalingConfigOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events. Users can define the minimum and
+// maximum compute capacity allocated to the instance partition, and the autoscaler will
+// only scale within that range. Users can either use nodes or processing
+// units to specify the limits, but should use the same unit to set both the
+// minLimit and max_limit.
+// Structure is documented below.
+func (o InstancePartitionAutoscalingConfigPtrOutput) AutoscalingLimits() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfig) *InstancePartitionAutoscalingConfigAutoscalingLimits {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingLimits
+	}).(InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
+func (o InstancePartitionAutoscalingConfigPtrOutput) AutoscalingTargets() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfig) *InstancePartitionAutoscalingConfigAutoscalingTargets {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingTargets
+	}).(InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingLimits struct {
+	// Specifies maximum number of nodes allocated to the instance partition. If set, this number
+	// should be greater than or equal to min_nodes.
+	MaxNodes *int `pulumi:"maxNodes"`
+	// Specifies maximum number of processing units allocated to the instance partition.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits *int `pulumi:"maxProcessingUnits"`
+	// Specifies number of nodes allocated to the instance partition. If set, this number
+	// should be greater than or equal to 1.
+	MinNodes *int `pulumi:"minNodes"`
+	// Specifies minimum number of processing units allocated to the instance partition.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits *int `pulumi:"minProcessingUnits"`
+}
+
+// InstancePartitionAutoscalingConfigAutoscalingLimitsInput is an input type that accepts InstancePartitionAutoscalingConfigAutoscalingLimitsArgs and InstancePartitionAutoscalingConfigAutoscalingLimitsOutput values.
+// You can construct a concrete instance of `InstancePartitionAutoscalingConfigAutoscalingLimitsInput` via:
+//
+//	InstancePartitionAutoscalingConfigAutoscalingLimitsArgs{...}
+type InstancePartitionAutoscalingConfigAutoscalingLimitsInput interface {
+	pulumi.Input
+
+	ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsOutput
+	ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutputWithContext(context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsOutput
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingLimitsArgs struct {
+	// Specifies maximum number of nodes allocated to the instance partition. If set, this number
+	// should be greater than or equal to min_nodes.
+	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
+	// Specifies maximum number of processing units allocated to the instance partition.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits pulumi.IntPtrInput `pulumi:"maxProcessingUnits"`
+	// Specifies number of nodes allocated to the instance partition. If set, this number
+	// should be greater than or equal to 1.
+	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
+	// Specifies minimum number of processing units allocated to the instance partition.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits pulumi.IntPtrInput `pulumi:"minProcessingUnits"`
+}
+
+func (InstancePartitionAutoscalingConfigAutoscalingLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingLimitsArgs) ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsOutput {
+	return i.ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutputWithContext(context.Background())
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingLimitsArgs) ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigAutoscalingLimitsOutput)
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingLimitsArgs) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return i.ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingLimitsArgs) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigAutoscalingLimitsOutput).ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx)
+}
+
+// InstancePartitionAutoscalingConfigAutoscalingLimitsPtrInput is an input type that accepts InstancePartitionAutoscalingConfigAutoscalingLimitsArgs, InstancePartitionAutoscalingConfigAutoscalingLimitsPtr and InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput values.
+// You can construct a concrete instance of `InstancePartitionAutoscalingConfigAutoscalingLimitsPtrInput` via:
+//
+//	        InstancePartitionAutoscalingConfigAutoscalingLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePartitionAutoscalingConfigAutoscalingLimitsPtrInput interface {
+	pulumi.Input
+
+	ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput
+	ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput
+}
+
+type instancePartitionAutoscalingConfigAutoscalingLimitsPtrType InstancePartitionAutoscalingConfigAutoscalingLimitsArgs
+
+func InstancePartitionAutoscalingConfigAutoscalingLimitsPtr(v *InstancePartitionAutoscalingConfigAutoscalingLimitsArgs) InstancePartitionAutoscalingConfigAutoscalingLimitsPtrInput {
+	return (*instancePartitionAutoscalingConfigAutoscalingLimitsPtrType)(v)
+}
+
+func (*instancePartitionAutoscalingConfigAutoscalingLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePartitionAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (i *instancePartitionAutoscalingConfigAutoscalingLimitsPtrType) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return i.ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePartitionAutoscalingConfigAutoscalingLimitsPtrType) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingLimitsOutput struct{ *pulumi.OutputState }
+
+func (InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) ToInstancePartitionAutoscalingConfigAutoscalingLimitsOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePartitionAutoscalingConfigAutoscalingLimits) *InstancePartitionAutoscalingConfigAutoscalingLimits {
+		return &v
+	}).(InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+// Specifies maximum number of nodes allocated to the instance partition. If set, this number
+// should be greater than or equal to min_nodes.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingLimits) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+}
+
+// Specifies maximum number of processing units allocated to the instance partition.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingLimits) *int { return v.MaxProcessingUnits }).(pulumi.IntPtrOutput)
+}
+
+// Specifies number of nodes allocated to the instance partition. If set, this number
+// should be greater than or equal to 1.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingLimits) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
+}
+
+// Specifies minimum number of processing units allocated to the instance partition.
+// If set, this number should be multiples of 1000.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsOutput) MinProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingLimits) *int { return v.MinProcessingUnits }).(pulumi.IntPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePartitionAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) ToInstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) Elem() InstancePartitionAutoscalingConfigAutoscalingLimitsOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingLimits) InstancePartitionAutoscalingConfigAutoscalingLimits {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePartitionAutoscalingConfigAutoscalingLimits
+		return ret
+	}).(InstancePartitionAutoscalingConfigAutoscalingLimitsOutput)
+}
+
+// Specifies maximum number of nodes allocated to the instance partition. If set, this number
+// should be greater than or equal to min_nodes.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies maximum number of processing units allocated to the instance partition.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProcessingUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies number of nodes allocated to the instance partition. If set, this number
+// should be greater than or equal to 1.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies minimum number of processing units allocated to the instance partition.
+// If set, this number should be multiples of 1000.
+func (o InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput) MinProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProcessingUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingTargets struct {
+	// Specifies the target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance partition.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	HighPriorityCpuUtilizationPercent *int `pulumi:"highPriorityCpuUtilizationPercent"`
+	// Specifies the target storage utilization percentage that the autoscaler
+	// should be trying to achieve for the instance partition.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	StorageUtilizationPercent *int `pulumi:"storageUtilizationPercent"`
+	// Specifies the target total cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance partition.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+	// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+	// The value should be higher than highPriorityCpuUtilizationPercent if present.
+	TotalCpuUtilizationPercent *int `pulumi:"totalCpuUtilizationPercent"`
+}
+
+// InstancePartitionAutoscalingConfigAutoscalingTargetsInput is an input type that accepts InstancePartitionAutoscalingConfigAutoscalingTargetsArgs and InstancePartitionAutoscalingConfigAutoscalingTargetsOutput values.
+// You can construct a concrete instance of `InstancePartitionAutoscalingConfigAutoscalingTargetsInput` via:
+//
+//	InstancePartitionAutoscalingConfigAutoscalingTargetsArgs{...}
+type InstancePartitionAutoscalingConfigAutoscalingTargetsInput interface {
+	pulumi.Input
+
+	ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsOutput
+	ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutputWithContext(context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsOutput
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingTargetsArgs struct {
+	// Specifies the target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance partition.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	HighPriorityCpuUtilizationPercent pulumi.IntPtrInput `pulumi:"highPriorityCpuUtilizationPercent"`
+	// Specifies the target storage utilization percentage that the autoscaler
+	// should be trying to achieve for the instance partition.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	StorageUtilizationPercent pulumi.IntPtrInput `pulumi:"storageUtilizationPercent"`
+	// Specifies the target total cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance partition.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+	// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+	// The value should be higher than highPriorityCpuUtilizationPercent if present.
+	TotalCpuUtilizationPercent pulumi.IntPtrInput `pulumi:"totalCpuUtilizationPercent"`
+}
+
+func (InstancePartitionAutoscalingConfigAutoscalingTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingTargetsArgs) ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsOutput {
+	return i.ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutputWithContext(context.Background())
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingTargetsArgs) ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigAutoscalingTargetsOutput)
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingTargetsArgs) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return i.ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePartitionAutoscalingConfigAutoscalingTargetsArgs) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigAutoscalingTargetsOutput).ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx)
+}
+
+// InstancePartitionAutoscalingConfigAutoscalingTargetsPtrInput is an input type that accepts InstancePartitionAutoscalingConfigAutoscalingTargetsArgs, InstancePartitionAutoscalingConfigAutoscalingTargetsPtr and InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput values.
+// You can construct a concrete instance of `InstancePartitionAutoscalingConfigAutoscalingTargetsPtrInput` via:
+//
+//	        InstancePartitionAutoscalingConfigAutoscalingTargetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePartitionAutoscalingConfigAutoscalingTargetsPtrInput interface {
+	pulumi.Input
+
+	ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput
+	ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput
+}
+
+type instancePartitionAutoscalingConfigAutoscalingTargetsPtrType InstancePartitionAutoscalingConfigAutoscalingTargetsArgs
+
+func InstancePartitionAutoscalingConfigAutoscalingTargetsPtr(v *InstancePartitionAutoscalingConfigAutoscalingTargetsArgs) InstancePartitionAutoscalingConfigAutoscalingTargetsPtrInput {
+	return (*instancePartitionAutoscalingConfigAutoscalingTargetsPtrType)(v)
+}
+
+func (*instancePartitionAutoscalingConfigAutoscalingTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePartitionAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (i *instancePartitionAutoscalingConfigAutoscalingTargetsPtrType) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return i.ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePartitionAutoscalingConfigAutoscalingTargetsPtrType) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingTargetsOutput struct{ *pulumi.OutputState }
+
+func (InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) ToInstancePartitionAutoscalingConfigAutoscalingTargetsOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePartitionAutoscalingConfigAutoscalingTargets) *InstancePartitionAutoscalingConfigAutoscalingTargets {
+		return &v
+	}).(InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+// Specifies the target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance partition.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) HighPriorityCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingTargets) *int {
+		return v.HighPriorityCpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the target storage utilization percentage that the autoscaler
+// should be trying to achieve for the instance partition.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) StorageUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingTargets) *int { return v.StorageUtilizationPercent }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the target total cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance partition.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+// The value should be higher than highPriorityCpuUtilizationPercent if present.
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsOutput) TotalCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePartitionAutoscalingConfigAutoscalingTargets) *int { return v.TotalCpuUtilizationPercent }).(pulumi.IntPtrOutput)
+}
+
+type InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePartitionAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput() InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) ToInstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o
+}
+
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) Elem() InstancePartitionAutoscalingConfigAutoscalingTargetsOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingTargets) InstancePartitionAutoscalingConfigAutoscalingTargets {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePartitionAutoscalingConfigAutoscalingTargets
+		return ret
+	}).(InstancePartitionAutoscalingConfigAutoscalingTargetsOutput)
+}
+
+// Specifies the target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance partition.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) HighPriorityCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HighPriorityCpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the target storage utilization percentage that the autoscaler
+// should be trying to achieve for the instance partition.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) StorageUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StorageUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the target total cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance partition.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+// The value should be higher than highPriorityCpuUtilizationPercent if present.
+func (o InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput) TotalCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePartitionAutoscalingConfigAutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalCpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetDatabaseEncryptionConfig struct {
 	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 	// in the same location as the Spanner Database.
@@ -3041,6 +3867,20 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) Inde
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride struct {
 	// A nested object resource.
 	AutoscalingLimits []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit `pulumi:"autoscalingLimits"`
+	// The target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetHighPriorityCpuUtilizationPercent int `pulumi:"autoscalingTargetHighPriorityCpuUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetTotalCpuUtilizationPercent int `pulumi:"autoscalingTargetTotalCpuUtilizationPercent"`
+	// If true, disables high priority CPU autoscaling for this replica and ignores
+	// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableHighPriorityCpuAutoscaling bool `pulumi:"disableHighPriorityCpuAutoscaling"`
+	// If true, disables total CPU autoscaling for this replica and ignores
+	// totalCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableTotalCpuAutoscaling bool `pulumi:"disableTotalCpuAutoscaling"`
 }
 
 // GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput values.
@@ -3057,6 +3897,20 @@ type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput interf
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs struct {
 	// A nested object resource.
 	AutoscalingLimits GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput `pulumi:"autoscalingLimits"`
+	// The target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetHighPriorityCpuUtilizationPercent pulumi.IntInput `pulumi:"autoscalingTargetHighPriorityCpuUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler
+	// should be trying to achieve for this replica.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	AutoscalingTargetTotalCpuUtilizationPercent pulumi.IntInput `pulumi:"autoscalingTargetTotalCpuUtilizationPercent"`
+	// If true, disables high priority CPU autoscaling for this replica and ignores
+	// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableHighPriorityCpuAutoscaling pulumi.BoolInput `pulumi:"disableHighPriorityCpuAutoscaling"`
+	// If true, disables total CPU autoscaling for this replica and ignores
+	// totalCpuUtilizationPercent in the top-level autoscaling configuration.
+	DisableTotalCpuAutoscaling pulumi.BoolInput `pulumi:"disableTotalCpuAutoscaling"`
 }
 
 func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs) ElementType() reflect.Type {
@@ -3117,6 +3971,40 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) A
 	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput)
 }
 
+// The target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for this replica.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) AutoscalingTargetHighPriorityCpuUtilizationPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride) int {
+		return v.AutoscalingTargetHighPriorityCpuUtilizationPercent
+	}).(pulumi.IntOutput)
+}
+
+// The target total cpu utilization percentage that the autoscaler
+// should be trying to achieve for this replica.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) AutoscalingTargetTotalCpuUtilizationPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride) int {
+		return v.AutoscalingTargetTotalCpuUtilizationPercent
+	}).(pulumi.IntOutput)
+}
+
+// If true, disables high priority CPU autoscaling for this replica and ignores
+// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) DisableHighPriorityCpuAutoscaling() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride) bool {
+		return v.DisableHighPriorityCpuAutoscaling
+	}).(pulumi.BoolOutput)
+}
+
+// If true, disables total CPU autoscaling for this replica and ignores
+// totalCpuUtilizationPercent in the top-level autoscaling configuration.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) DisableTotalCpuAutoscaling() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride) bool {
+		return v.DisableTotalCpuAutoscaling
+	}).(pulumi.BoolOutput)
+}
+
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput) ElementType() reflect.Type {
@@ -3140,8 +4028,15 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutp
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit struct {
 	// The maximum number of nodes for this specific replica.
 	MaxNodes int `pulumi:"maxNodes"`
+	// The maximum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits int `pulumi:"maxProcessingUnits"`
 	// The minimum number of nodes for this specific replica.
 	MinNodes int `pulumi:"minNodes"`
+	// The minimum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits int `pulumi:"minProcessingUnits"`
 }
 
 // GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput values.
@@ -3158,8 +4053,15 @@ type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingL
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs struct {
 	// The maximum number of nodes for this specific replica.
 	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	// The maximum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits pulumi.IntInput `pulumi:"maxProcessingUnits"`
 	// The minimum number of nodes for this specific replica.
 	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+	// The minimum number of processing units for this specific replica.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits pulumi.IntInput `pulumi:"minProcessingUnits"`
 }
 
 func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs) ElementType() reflect.Type {
@@ -3220,10 +4122,27 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscali
 	}).(pulumi.IntOutput)
 }
 
+// The maximum number of processing units for this specific replica.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) MaxProcessingUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit) int {
+		return v.MaxProcessingUnits
+	}).(pulumi.IntOutput)
+}
+
 // The minimum number of nodes for this specific replica.
 func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) MinNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit) int {
 		return v.MinNodes
+	}).(pulumi.IntOutput)
+}
+
+// The minimum number of processing units for this specific replica.
+// If set, this number should be multiples of 1000.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) MinProcessingUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit) int {
+		return v.MinProcessingUnits
 	}).(pulumi.IntOutput)
 }
 
@@ -3644,6 +4563,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
@@ -3655,6 +4575,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionPtrInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionPtrInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePartitionAutoscalingConfigInput)(nil)).Elem(), InstancePartitionAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePartitionAutoscalingConfigPtrInput)(nil)).Elem(), InstancePartitionAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingLimitsInput)(nil)).Elem(), InstancePartitionAutoscalingConfigAutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingLimitsPtrInput)(nil)).Elem(), InstancePartitionAutoscalingConfigAutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingTargetsInput)(nil)).Elem(), InstancePartitionAutoscalingConfigAutoscalingTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePartitionAutoscalingConfigAutoscalingTargetsPtrInput)(nil)).Elem(), InstancePartitionAutoscalingConfigAutoscalingTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEncryptionConfigInput)(nil)).Elem(), GetDatabaseEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEncryptionConfigArrayInput)(nil)).Elem(), GetDatabaseEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigInput)(nil)).Elem(), GetInstanceAutoscalingConfigArgs{})
@@ -3693,6 +4619,7 @@ func init() {
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput{})
@@ -3704,6 +4631,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstancePartitionAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(InstancePartitionAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePartitionAutoscalingConfigAutoscalingLimitsOutput{})
+	pulumi.RegisterOutputType(InstancePartitionAutoscalingConfigAutoscalingLimitsPtrOutput{})
+	pulumi.RegisterOutputType(InstancePartitionAutoscalingConfigAutoscalingTargetsOutput{})
+	pulumi.RegisterOutputType(InstancePartitionAutoscalingConfigAutoscalingTargetsPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigOutput{})

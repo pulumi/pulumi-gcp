@@ -587,7 +587,6 @@ type Subnetwork struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrOutput `pulumi:"reservedInternalRange"`
-	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask pulumi.StringPtrOutput `pulumi:"resolveSubnetMask"`
@@ -752,7 +751,6 @@ type subnetworkState struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
-	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
@@ -885,7 +883,6 @@ type SubnetworkState struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
-	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask pulumi.StringPtrInput
@@ -1005,7 +1002,6 @@ type subnetworkArgs struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
-	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
@@ -1113,7 +1109,6 @@ type SubnetworkArgs struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
-	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask pulumi.StringPtrInput
@@ -1389,7 +1384,6 @@ func (o SubnetworkOutput) ReservedInternalRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // 'Configures subnet mask resolution for this subnetwork.'
 // Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 func (o SubnetworkOutput) ResolveSubnetMask() pulumi.StringPtrOutput {

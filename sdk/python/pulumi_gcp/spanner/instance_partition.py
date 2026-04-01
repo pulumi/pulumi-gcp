@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstancePartitionArgs', 'InstancePartition']
 
@@ -22,6 +24,7 @@ class InstancePartitionArgs:
                  config: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
                  instance: pulumi.Input[_builtins.str],
+                 autoscaling_config: Optional[pulumi.Input['InstancePartitionAutoscalingConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  processing_units: Optional[pulumi.Input[_builtins.int]] = None,
@@ -34,20 +37,29 @@ class InstancePartitionArgs:
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
                Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[_builtins.str] instance: The instance to create the instance partition in.
+        :param pulumi.Input['InstancePartitionAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either node_count, processing_units, or autoscaling_config must be
+               present. When autoscaling is enabled, node_count and processing_units are treated as
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+               instance partition.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: A unique identifier for the instance partition, which cannot be changed after
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
         :param pulumi.Input[_builtins.int] node_count: The number of nodes allocated to this instance partition. One node equals
-               1000 processing units. Exactly one of either node_count or processing_units
-               must be present.
+               1000 processing units. Exactly one of either node_count, processing_units,
+               or autoscaling_config must be present.
         :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance partition.
-               Exactly one of either node_count or processing_units must be present.
+               Exactly one of either node_count, processing_units, or autoscaling_config
+               must be present.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance", instance)
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_count is not None:
@@ -96,6 +108,23 @@ class InstancePartitionArgs:
         pulumi.set(self, "instance", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['InstancePartitionAutoscalingConfigArgs']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        Exactly one of either node_count, processing_units, or autoscaling_config must be
+        present. When autoscaling is enabled, node_count and processing_units are treated as
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+        instance partition.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['InstancePartitionAutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -114,8 +143,8 @@ class InstancePartitionArgs:
     def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The number of nodes allocated to this instance partition. One node equals
-        1000 processing units. Exactly one of either node_count or processing_units
-        must be present.
+        1000 processing units. Exactly one of either node_count, processing_units,
+        or autoscaling_config must be present.
         """
         return pulumi.get(self, "node_count")
 
@@ -128,7 +157,8 @@ class InstancePartitionArgs:
     def processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The number of processing units allocated to this instance partition.
-        Exactly one of either node_count or processing_units must be present.
+        Exactly one of either node_count, processing_units, or autoscaling_config
+        must be present.
         """
         return pulumi.get(self, "processing_units")
 
@@ -153,6 +183,7 @@ class InstancePartitionArgs:
 @pulumi.input_type
 class _InstancePartitionState:
     def __init__(__self__, *,
+                 autoscaling_config: Optional[pulumi.Input['InstancePartitionAutoscalingConfigArgs']] = None,
                  config: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -164,6 +195,12 @@ class _InstancePartitionState:
         """
         Input properties used for looking up and filtering InstancePartition resources.
 
+        :param pulumi.Input['InstancePartitionAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either node_count, processing_units, or autoscaling_config must be
+               present. When autoscaling is enabled, node_count and processing_units are treated as
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+               instance partition.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] config: The name of the instance partition's configuration (similar to a region) which
                defines the geographic placement and replication of data in this instance partition.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
@@ -173,10 +210,11 @@ class _InstancePartitionState:
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
         :param pulumi.Input[_builtins.int] node_count: The number of nodes allocated to this instance partition. One node equals
-               1000 processing units. Exactly one of either node_count or processing_units
-               must be present.
+               1000 processing units. Exactly one of either node_count, processing_units,
+               or autoscaling_config must be present.
         :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance partition.
-               Exactly one of either node_count or processing_units must be present.
+               Exactly one of either node_count, processing_units, or autoscaling_config
+               must be present.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: The current instance partition state. Possible values are:
@@ -184,6 +222,8 @@ class _InstancePartitionState:
                allocated for the instance partition.
                READY: The instance partition has been allocated resources and is ready for use.
         """
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if display_name is not None:
@@ -200,6 +240,23 @@ class _InstancePartitionState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['InstancePartitionAutoscalingConfigArgs']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        Exactly one of either node_count, processing_units, or autoscaling_config must be
+        present. When autoscaling is enabled, node_count and processing_units are treated as
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+        instance partition.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['InstancePartitionAutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -258,8 +315,8 @@ class _InstancePartitionState:
     def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The number of nodes allocated to this instance partition. One node equals
-        1000 processing units. Exactly one of either node_count or processing_units
-        must be present.
+        1000 processing units. Exactly one of either node_count, processing_units,
+        or autoscaling_config must be present.
         """
         return pulumi.get(self, "node_count")
 
@@ -272,7 +329,8 @@ class _InstancePartitionState:
     def processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The number of processing units allocated to this instance partition.
-        Exactly one of either node_count or processing_units must be present.
+        Exactly one of either node_count, processing_units, or autoscaling_config
+        must be present.
         """
         return pulumi.get(self, "processing_units")
 
@@ -315,6 +373,7 @@ class InstancePartition(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_config: Optional[pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -354,6 +413,34 @@ class InstancePartition(pulumi.CustomResource):
             display_name="test-spanner-partition",
             node_count=1)
         ```
+        ### Spanner Instance Partition Autoscaling
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.spanner.Instance("main",
+            name="test-instance",
+            config="nam6",
+            display_name="main-instance",
+            num_nodes=1,
+            edition="ENTERPRISE_PLUS")
+        partition = gcp.spanner.InstancePartition("partition",
+            name="test-partition",
+            instance=main.name,
+            config="nam8",
+            display_name="test-spanner-partition",
+            autoscaling_config={
+                "autoscaling_limits": {
+                    "min_processing_units": 1000,
+                    "max_processing_units": 2000,
+                },
+                "autoscaling_targets": {
+                    "high_priority_cpu_utilization_percent": 65,
+                    "storage_utilization_percent": 95,
+                },
+            })
+        ```
 
         ## Import
 
@@ -374,6 +461,12 @@ class InstancePartition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either node_count, processing_units, or autoscaling_config must be
+               present. When autoscaling is enabled, node_count and processing_units are treated as
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+               instance partition.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] config: The name of the instance partition's configuration (similar to a region) which
                defines the geographic placement and replication of data in this instance partition.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
@@ -383,10 +476,11 @@ class InstancePartition(pulumi.CustomResource):
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
         :param pulumi.Input[_builtins.int] node_count: The number of nodes allocated to this instance partition. One node equals
-               1000 processing units. Exactly one of either node_count or processing_units
-               must be present.
+               1000 processing units. Exactly one of either node_count, processing_units,
+               or autoscaling_config must be present.
         :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance partition.
-               Exactly one of either node_count or processing_units must be present.
+               Exactly one of either node_count, processing_units, or autoscaling_config
+               must be present.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -427,6 +521,34 @@ class InstancePartition(pulumi.CustomResource):
             display_name="test-spanner-partition",
             node_count=1)
         ```
+        ### Spanner Instance Partition Autoscaling
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.spanner.Instance("main",
+            name="test-instance",
+            config="nam6",
+            display_name="main-instance",
+            num_nodes=1,
+            edition="ENTERPRISE_PLUS")
+        partition = gcp.spanner.InstancePartition("partition",
+            name="test-partition",
+            instance=main.name,
+            config="nam8",
+            display_name="test-spanner-partition",
+            autoscaling_config={
+                "autoscaling_limits": {
+                    "min_processing_units": 1000,
+                    "max_processing_units": 2000,
+                },
+                "autoscaling_targets": {
+                    "high_priority_cpu_utilization_percent": 65,
+                    "storage_utilization_percent": 95,
+                },
+            })
+        ```
 
         ## Import
 
@@ -460,6 +582,7 @@ class InstancePartition(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_config: Optional[pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -476,6 +599,7 @@ class InstancePartition(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstancePartitionArgs.__new__(InstancePartitionArgs)
 
+            __props__.__dict__["autoscaling_config"] = autoscaling_config
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -500,6 +624,7 @@ class InstancePartition(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling_config: Optional[pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']]] = None,
             config: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -515,6 +640,12 @@ class InstancePartition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstancePartitionAutoscalingConfigArgs', 'InstancePartitionAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               Exactly one of either node_count, processing_units, or autoscaling_config must be
+               present. When autoscaling is enabled, node_count and processing_units are treated as
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+               instance partition.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] config: The name of the instance partition's configuration (similar to a region) which
                defines the geographic placement and replication of data in this instance partition.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
@@ -524,10 +655,11 @@ class InstancePartition(pulumi.CustomResource):
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
         :param pulumi.Input[_builtins.int] node_count: The number of nodes allocated to this instance partition. One node equals
-               1000 processing units. Exactly one of either node_count or processing_units
-               must be present.
+               1000 processing units. Exactly one of either node_count, processing_units,
+               or autoscaling_config must be present.
         :param pulumi.Input[_builtins.int] processing_units: The number of processing units allocated to this instance partition.
-               Exactly one of either node_count or processing_units must be present.
+               Exactly one of either node_count, processing_units, or autoscaling_config
+               must be present.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: The current instance partition state. Possible values are:
@@ -539,6 +671,7 @@ class InstancePartition(pulumi.CustomResource):
 
         __props__ = _InstancePartitionState.__new__(_InstancePartitionState)
 
+        __props__.__dict__["autoscaling_config"] = autoscaling_config
         __props__.__dict__["config"] = config
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["instance"] = instance
@@ -548,6 +681,19 @@ class InstancePartition(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         return InstancePartition(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> pulumi.Output[Optional['outputs.InstancePartitionAutoscalingConfig']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        Exactly one of either node_count, processing_units, or autoscaling_config must be
+        present. When autoscaling is enabled, node_count and processing_units are treated as
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+        instance partition.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
 
     @_builtins.property
     @pulumi.getter
@@ -587,20 +733,21 @@ class InstancePartition(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def node_count(self) -> pulumi.Output[_builtins.int]:
         """
         The number of nodes allocated to this instance partition. One node equals
-        1000 processing units. Exactly one of either node_count or processing_units
-        must be present.
+        1000 processing units. Exactly one of either node_count, processing_units,
+        or autoscaling_config must be present.
         """
         return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter(name="processingUnits")
-    def processing_units(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def processing_units(self) -> pulumi.Output[_builtins.int]:
         """
         The number of processing units allocated to this instance partition.
-        Exactly one of either node_count or processing_units must be present.
+        Exactly one of either node_count, processing_units, or autoscaling_config
+        must be present.
         """
         return pulumi.get(self, "processing_units")
 

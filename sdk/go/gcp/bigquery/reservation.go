@@ -142,6 +142,8 @@ type Reservation struct {
 	// operations on the reservation have succeeded.
 	// Structure is documented below.
 	ReplicationStatuses ReservationReplicationStatusArrayOutput `pulumi:"replicationStatuses"`
+	// The reservation group that this reservation belongs to.
+	ReservationGroup pulumi.StringPtrOutput `pulumi:"reservationGroup"`
 	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -288,6 +290,8 @@ type reservationState struct {
 	// operations on the reservation have succeeded.
 	// Structure is documented below.
 	ReplicationStatuses []ReservationReplicationStatus `pulumi:"replicationStatuses"`
+	// The reservation group that this reservation belongs to.
+	ReservationGroup *string `pulumi:"reservationGroup"`
 	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -402,6 +406,8 @@ type ReservationState struct {
 	// operations on the reservation have succeeded.
 	// Structure is documented below.
 	ReplicationStatuses ReservationReplicationStatusArrayInput
+	// The reservation group that this reservation belongs to.
+	ReservationGroup pulumi.StringPtrInput
 	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -505,6 +511,8 @@ type reservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The reservation group that this reservation belongs to.
+	ReservationGroup *string `pulumi:"reservationGroup"`
 	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -605,6 +613,8 @@ type ReservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The reservation group that this reservation belongs to.
+	ReservationGroup pulumi.StringPtrInput
 	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -836,6 +846,11 @@ func (o ReservationOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o ReservationOutput) ReplicationStatuses() ReservationReplicationStatusArrayOutput {
 	return o.ApplyT(func(v *Reservation) ReservationReplicationStatusArrayOutput { return v.ReplicationStatuses }).(ReservationReplicationStatusArrayOutput)
+}
+
+// The reservation group that this reservation belongs to.
+func (o ReservationOutput) ReservationGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.ReservationGroup }).(pulumi.StringPtrOutput)
 }
 
 // (Optional, Beta)

@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketEncryption
     {
         /// <summary>
+        /// If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        /// </summary>
+        public readonly Outputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfig? CustomerManagedEncryptionEnforcementConfig;
+        /// <summary>
+        /// If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        /// </summary>
+        public readonly Outputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig? CustomerSuppliedEncryptionEnforcementConfig;
+        /// <summary>
         /// The `Id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
         /// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
         /// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -29,12 +37,26 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// state of the project.
         /// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         /// </summary>
-        public readonly string DefaultKmsKeyName;
+        public readonly string? DefaultKmsKeyName;
+        /// <summary>
+        /// If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        /// </summary>
+        public readonly Outputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfig? GoogleManagedEncryptionEnforcementConfig;
 
         [OutputConstructor]
-        private BucketEncryption(string defaultKmsKeyName)
+        private BucketEncryption(
+            Outputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfig? customerManagedEncryptionEnforcementConfig,
+
+            Outputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig? customerSuppliedEncryptionEnforcementConfig,
+
+            string? defaultKmsKeyName,
+
+            Outputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfig? googleManagedEncryptionEnforcementConfig)
         {
+            CustomerManagedEncryptionEnforcementConfig = customerManagedEncryptionEnforcementConfig;
+            CustomerSuppliedEncryptionEnforcementConfig = customerSuppliedEncryptionEnforcementConfig;
             DefaultKmsKeyName = defaultKmsKeyName;
+            GoogleManagedEncryptionEnforcementConfig = googleManagedEncryptionEnforcementConfig;
         }
     }
 }

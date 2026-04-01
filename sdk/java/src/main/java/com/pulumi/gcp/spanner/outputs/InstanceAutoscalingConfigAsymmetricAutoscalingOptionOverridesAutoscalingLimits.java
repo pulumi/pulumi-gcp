@@ -4,9 +4,10 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
@@ -14,27 +15,57 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
      * @return The maximum number of nodes for this specific replica.
      * 
      */
-    private Integer maxNodes;
+    private @Nullable Integer maxNodes;
+    /**
+     * @return The maximum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000 and be greater than or equal to
+     * min_processing_units.
+     * 
+     */
+    private @Nullable Integer maxProcessingUnits;
     /**
      * @return The minimum number of nodes for this specific replica.
      * 
      */
-    private Integer minNodes;
+    private @Nullable Integer minNodes;
+    /**
+     * @return The minimum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000.
+     * 
+     */
+    private @Nullable Integer minProcessingUnits;
 
     private InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits() {}
     /**
      * @return The maximum number of nodes for this specific replica.
      * 
      */
-    public Integer maxNodes() {
-        return this.maxNodes;
+    public Optional<Integer> maxNodes() {
+        return Optional.ofNullable(this.maxNodes);
+    }
+    /**
+     * @return The maximum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000 and be greater than or equal to
+     * min_processing_units.
+     * 
+     */
+    public Optional<Integer> maxProcessingUnits() {
+        return Optional.ofNullable(this.maxProcessingUnits);
     }
     /**
      * @return The minimum number of nodes for this specific replica.
      * 
      */
-    public Integer minNodes() {
-        return this.minNodes;
+    public Optional<Integer> minNodes() {
+        return Optional.ofNullable(this.minNodes);
+    }
+    /**
+     * @return The minimum number of processing units for this specific replica.
+     * If set, this number should be multiples of 1000.
+     * 
+     */
+    public Optional<Integer> minProcessingUnits() {
+        return Optional.ofNullable(this.minProcessingUnits);
     }
 
     public static Builder builder() {
@@ -46,35 +77,49 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer maxNodes;
-        private Integer minNodes;
+        private @Nullable Integer maxNodes;
+        private @Nullable Integer maxProcessingUnits;
+        private @Nullable Integer minNodes;
+        private @Nullable Integer minProcessingUnits;
         public Builder() {}
         public Builder(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxNodes = defaults.maxNodes;
+    	      this.maxProcessingUnits = defaults.maxProcessingUnits;
     	      this.minNodes = defaults.minNodes;
+    	      this.minProcessingUnits = defaults.minProcessingUnits;
         }
 
         @CustomType.Setter
-        public Builder maxNodes(Integer maxNodes) {
-            if (maxNodes == null) {
-              throw new MissingRequiredPropertyException("InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits", "maxNodes");
-            }
+        public Builder maxNodes(@Nullable Integer maxNodes) {
+
             this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
-        public Builder minNodes(Integer minNodes) {
-            if (minNodes == null) {
-              throw new MissingRequiredPropertyException("InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits", "minNodes");
-            }
+        public Builder maxProcessingUnits(@Nullable Integer maxProcessingUnits) {
+
+            this.maxProcessingUnits = maxProcessingUnits;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minNodes(@Nullable Integer minNodes) {
+
             this.minNodes = minNodes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minProcessingUnits(@Nullable Integer minProcessingUnits) {
+
+            this.minProcessingUnits = minProcessingUnits;
             return this;
         }
         public InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits build() {
             final var _resultValue = new InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits();
             _resultValue.maxNodes = maxNodes;
+            _resultValue.maxProcessingUnits = maxProcessingUnits;
             _resultValue.minNodes = minNodes;
+            _resultValue.minProcessingUnits = minProcessingUnits;
             return _resultValue;
         }
     }

@@ -1599,7 +1599,7 @@ type WorkstationConfigHostGceInstance struct {
 	// Whether to disable SSH access to the VM.
 	DisableSsh *bool `pulumi:"disableSsh"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The name of a Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
@@ -1650,7 +1650,7 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	// Whether to disable SSH access to the VM.
 	DisableSsh pulumi.BoolPtrInput `pulumi:"disableSsh"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The name of a Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
@@ -1790,7 +1790,7 @@ func (o WorkstationConfigHostGceInstanceOutput) DisableSsh() pulumi.BoolPtrOutpu
 }
 
 // Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 func (o WorkstationConfigHostGceInstanceOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
@@ -1925,7 +1925,7 @@ func (o WorkstationConfigHostGceInstancePtrOutput) DisableSsh() pulumi.BoolPtrOu
 }
 
 // Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 func (o WorkstationConfigHostGceInstancePtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *bool {
 		if v == nil {
@@ -2123,7 +2123,7 @@ type WorkstationConfigHostGceInstanceBoostConfig struct {
 	// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The id to be used for the boost config.
 	Id string `pulumi:"id"`
@@ -2151,7 +2151,7 @@ type WorkstationConfigHostGceInstanceBoostConfigArgs struct {
 	// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The id to be used for the boost config.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -2226,7 +2226,7 @@ func (o WorkstationConfigHostGceInstanceBoostConfigOutput) BootDiskSizeGb() pulu
 }
 
 // Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 func (o WorkstationConfigHostGceInstanceBoostConfigOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstanceBoostConfig) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }

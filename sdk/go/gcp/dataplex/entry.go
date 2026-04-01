@@ -419,6 +419,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -439,6 +440,15 @@ import (
 //				Location:   pulumi.String("us-central1"),
 //				TermId:     pulumi.String("glossary-term"),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			// Introduce a 45-second wait after the glossary resource creation
+//			wait_for_sync, err := time.NewSleep(ctx, "wait-for-sync", &time.SleepArgs{
+//				CreateDuration: pulumi.String("45s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example_glossary_term,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -464,7 +474,7 @@ import (
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				example_glossary_term,
+//				wait_for_sync,
 //			}))
 //			if err != nil {
 //				return err

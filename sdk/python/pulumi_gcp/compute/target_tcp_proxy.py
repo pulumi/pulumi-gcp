@@ -453,6 +453,39 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             load_balancing_scheme="INTERNAL_MANAGED")
         ```
+        ### Target Tcp Proxy Tls Route
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.TargetTCPProxy("default",
+            name="test-proxy",
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            https_health_check={
+                "port": 443,
+            })
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="TCP",
+            health_checks=default_health_check.id)
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="tls-route-check",
+            target_proxies=[default.id],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default_backend_service.id,
+                    }],
+                },
+            }])
+        ```
 
         ## Import
 
@@ -571,6 +604,39 @@ class TargetTCPProxy(pulumi.CustomResource):
         default = gcp.compute.TargetTCPProxy("default",
             name="test-proxy",
             load_balancing_scheme="INTERNAL_MANAGED")
+        ```
+        ### Target Tcp Proxy Tls Route
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.TargetTCPProxy("default",
+            name="test-proxy",
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            https_health_check={
+                "port": 443,
+            })
+        default_backend_service = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="TCP",
+            health_checks=default_health_check.id)
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="tls-route-check",
+            target_proxies=[default.id],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default_backend_service.id,
+                    }],
+                },
+            }])
         ```
 
         ## Import

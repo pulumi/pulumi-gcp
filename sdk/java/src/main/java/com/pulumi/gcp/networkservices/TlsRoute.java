@@ -34,8 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpsHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.TlsRoute;
@@ -55,16 +56,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
@@ -166,8 +168,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpsHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.Mesh;
@@ -189,16 +192,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()
@@ -238,8 +242,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpsHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.Gateway;
@@ -261,16 +266,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
@@ -295,6 +301,77 @@ import javax.annotation.Nullable;
  *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
  *                         .serviceName(default_.id())
  *                         .weight(1)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Network Services Tls Route Target Tcp Proxy Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpsHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.TargetTCPProxy;
+ * import com.pulumi.gcp.compute.TargetTCPProxyArgs;
+ * import com.pulumi.gcp.networkservices.TlsRoute;
+ * import com.pulumi.gcp.networkservices.TlsRouteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("my-health-check")
+ *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("my-backend-service")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .protocol("TCP")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultTargetTCPProxy = new TargetTCPProxy("defaultTargetTCPProxy", TargetTCPProxyArgs.builder()
+ *             .name("my-target-tcp-proxy")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
+ *             .name("my-tls-route")
+ *             .targetProxies(defaultTargetTCPProxy.id())
+ *             .rules(TlsRouteRuleArgs.builder()
+ *                 .matches(TlsRouteRuleMatchArgs.builder()
+ *                     .sniHosts("example.com")
+ *                     .build())
+ *                 .action(TlsRouteRuleActionArgs.builder()
+ *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
+ *                         .serviceName(default_.id())
  *                         .build())
  *                     .build())
  *                 .build())

@@ -1714,6 +1714,10 @@ func (o BucketCustomPlacementConfigPtrOutput) DataLocations() pulumi.StringArray
 }
 
 type BucketEncryption struct {
+	// If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+	CustomerManagedEncryptionEnforcementConfig *BucketEncryptionCustomerManagedEncryptionEnforcementConfig `pulumi:"customerManagedEncryptionEnforcementConfig"`
+	// If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+	CustomerSuppliedEncryptionEnforcementConfig *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig `pulumi:"customerSuppliedEncryptionEnforcementConfig"`
 	// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 	// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 	// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -1728,7 +1732,9 @@ type BucketEncryption struct {
 	// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
 	// state of the project.
 	// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
-	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
+	DefaultKmsKeyName *string `pulumi:"defaultKmsKeyName"`
+	// If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+	GoogleManagedEncryptionEnforcementConfig *BucketEncryptionGoogleManagedEncryptionEnforcementConfig `pulumi:"googleManagedEncryptionEnforcementConfig"`
 }
 
 // BucketEncryptionInput is an input type that accepts BucketEncryptionArgs and BucketEncryptionOutput values.
@@ -1743,6 +1749,10 @@ type BucketEncryptionInput interface {
 }
 
 type BucketEncryptionArgs struct {
+	// If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+	CustomerManagedEncryptionEnforcementConfig BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrInput `pulumi:"customerManagedEncryptionEnforcementConfig"`
+	// If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+	CustomerSuppliedEncryptionEnforcementConfig BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrInput `pulumi:"customerSuppliedEncryptionEnforcementConfig"`
 	// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 	// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 	// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -1757,7 +1767,9 @@ type BucketEncryptionArgs struct {
 	// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
 	// state of the project.
 	// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
-	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
+	DefaultKmsKeyName pulumi.StringPtrInput `pulumi:"defaultKmsKeyName"`
+	// If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+	GoogleManagedEncryptionEnforcementConfig BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrInput `pulumi:"googleManagedEncryptionEnforcementConfig"`
 }
 
 func (BucketEncryptionArgs) ElementType() reflect.Type {
@@ -1837,6 +1849,20 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx conte
 	}).(BucketEncryptionPtrOutput)
 }
 
+// If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+func (o BucketEncryptionOutput) CustomerManagedEncryptionEnforcementConfig() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyT(func(v BucketEncryption) *BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+		return v.CustomerManagedEncryptionEnforcementConfig
+	}).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+// If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+func (o BucketEncryptionOutput) CustomerSuppliedEncryptionEnforcementConfig() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyT(func(v BucketEncryption) *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+		return v.CustomerSuppliedEncryptionEnforcementConfig
+	}).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput)
+}
+
 // The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 // You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 // See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -1851,8 +1877,15 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx conte
 // This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
 // state of the project.
 // You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
-func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketEncryption) *string { return v.DefaultKmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+func (o BucketEncryptionOutput) GoogleManagedEncryptionEnforcementConfig() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyT(func(v BucketEncryption) *BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+		return v.GoogleManagedEncryptionEnforcementConfig
+	}).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput)
 }
 
 type BucketEncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -1879,6 +1912,26 @@ func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
 	}).(BucketEncryptionOutput)
 }
 
+// If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+func (o BucketEncryptionPtrOutput) CustomerManagedEncryptionEnforcementConfig() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyT(func(v *BucketEncryption) *BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedEncryptionEnforcementConfig
+	}).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+// If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+func (o BucketEncryptionPtrOutput) CustomerSuppliedEncryptionEnforcementConfig() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyT(func(v *BucketEncryption) *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerSuppliedEncryptionEnforcementConfig
+	}).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput)
+}
+
 // The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 // You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 // See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -1898,7 +1951,485 @@ func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.DefaultKmsKeyName
+		return v.DefaultKmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+func (o BucketEncryptionPtrOutput) GoogleManagedEncryptionEnforcementConfig() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyT(func(v *BucketEncryption) *BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleManagedEncryptionEnforcementConfig
+	}).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+type BucketEncryptionCustomerManagedEncryptionEnforcementConfig struct {
+	// Time from which the config was effective.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+	RestrictionMode string `pulumi:"restrictionMode"`
+}
+
+// BucketEncryptionCustomerManagedEncryptionEnforcementConfigInput is an input type that accepts BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs and BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput values.
+// You can construct a concrete instance of `BucketEncryptionCustomerManagedEncryptionEnforcementConfigInput` via:
+//
+//	BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{...}
+type BucketEncryptionCustomerManagedEncryptionEnforcementConfigInput interface {
+	pulumi.Input
+
+	ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput
+	ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput
+}
+
+type BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs struct {
+	// Time from which the config was effective.
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
+}
+
+func (BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return i.ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(context.Background())
+}
+
+func (i BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput)
+}
+
+func (i BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return i.ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput).ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx)
+}
+
+// BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrInput is an input type that accepts BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs, BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtr and BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput values.
+// You can construct a concrete instance of `BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrInput` via:
+//
+//	        BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrInput interface {
+	pulumi.Input
+
+	ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput
+	ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput
+}
+
+type bucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrType BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs
+
+func BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtr(v *BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrInput {
+	return (*bucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrType)(v)
+}
+
+func (*bucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i *bucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrType) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return i.ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrType) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+type BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput struct{ *pulumi.OutputState }
+
+func (BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryptionCustomerManagedEncryptionEnforcementConfig) *BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+		return &v
+	}).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+// Time from which the config was effective.
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketEncryptionCustomerManagedEncryptionEnforcementConfig) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) RestrictionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketEncryptionCustomerManagedEncryptionEnforcementConfig) string { return v.RestrictionMode }).(pulumi.StringOutput)
+}
+
+type BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput) ToBucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput) Elem() BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return o.ApplyT(func(v *BucketEncryptionCustomerManagedEncryptionEnforcementConfig) BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BucketEncryptionCustomerManagedEncryptionEnforcementConfig
+		return ret
+	}).(BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput)
+}
+
+// Time from which the config was effective.
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryptionCustomerManagedEncryptionEnforcementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+func (o BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput) RestrictionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryptionCustomerManagedEncryptionEnforcementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RestrictionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig struct {
+	// Time from which the config was effective.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+	RestrictionMode string `pulumi:"restrictionMode"`
+}
+
+// BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput is an input type that accepts BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs and BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput values.
+// You can construct a concrete instance of `BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput` via:
+//
+//	BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{...}
+type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput interface {
+	pulumi.Input
+
+	ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput
+	ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput
+}
+
+type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs struct {
+	// Time from which the config was effective.
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
+}
+
+func (BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return i.ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(context.Background())
+}
+
+func (i BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput)
+}
+
+func (i BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return i.ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput).ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(ctx)
+}
+
+// BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrInput is an input type that accepts BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs, BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtr and BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput values.
+// You can construct a concrete instance of `BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrInput` via:
+//
+//	        BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrInput interface {
+	pulumi.Input
+
+	ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput
+	ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput
+}
+
+type bucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrType BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs
+
+func BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtr(v *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrInput {
+	return (*bucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrType)(v)
+}
+
+func (*bucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i *bucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrType) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return i.ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrType) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput)
+}
+
+type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput struct{ *pulumi.OutputState }
+
+func (BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return o.ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+		return &v
+	}).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput)
+}
+
+// Time from which the config was effective.
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) RestrictionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) string { return v.RestrictionMode }).(pulumi.StringOutput)
+}
+
+type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput) ToBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput {
+	return o
+}
+
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput) Elem() BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return o.ApplyT(func(v *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig
+		return ret
+	}).(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput)
+}
+
+// Time from which the config was effective.
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+func (o BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput) RestrictionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RestrictionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketEncryptionGoogleManagedEncryptionEnforcementConfig struct {
+	// Time from which the config was effective.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+	RestrictionMode string `pulumi:"restrictionMode"`
+}
+
+// BucketEncryptionGoogleManagedEncryptionEnforcementConfigInput is an input type that accepts BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs and BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput values.
+// You can construct a concrete instance of `BucketEncryptionGoogleManagedEncryptionEnforcementConfigInput` via:
+//
+//	BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{...}
+type BucketEncryptionGoogleManagedEncryptionEnforcementConfigInput interface {
+	pulumi.Input
+
+	ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput
+	ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput
+}
+
+type BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs struct {
+	// Time from which the config was effective.
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
+}
+
+func (BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return i.ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(context.Background())
+}
+
+func (i BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput)
+}
+
+func (i BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return i.ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput).ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx)
+}
+
+// BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrInput is an input type that accepts BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs, BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtr and BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput values.
+// You can construct a concrete instance of `BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrInput` via:
+//
+//	        BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrInput interface {
+	pulumi.Input
+
+	ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput
+	ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput
+}
+
+type bucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrType BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs
+
+func BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtr(v *BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrInput {
+	return (*bucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrType)(v)
+}
+
+func (*bucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i *bucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrType) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return i.ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrType) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+type BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput struct{ *pulumi.OutputState }
+
+func (BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryptionGoogleManagedEncryptionEnforcementConfig) *BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+		return &v
+	}).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput)
+}
+
+// Time from which the config was effective.
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketEncryptionGoogleManagedEncryptionEnforcementConfig) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) RestrictionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketEncryptionGoogleManagedEncryptionEnforcementConfig) string { return v.RestrictionMode }).(pulumi.StringOutput)
+}
+
+type BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput() BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return o
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput) ToBucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutputWithContext(ctx context.Context) BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput {
+	return o
+}
+
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput) Elem() BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return o.ApplyT(func(v *BucketEncryptionGoogleManagedEncryptionEnforcementConfig) BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BucketEncryptionGoogleManagedEncryptionEnforcementConfig
+		return ret
+	}).(BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput)
+}
+
+// Time from which the config was effective.
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryptionGoogleManagedEncryptionEnforcementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+func (o BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput) RestrictionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryptionGoogleManagedEncryptionEnforcementConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RestrictionMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17294,8 +17825,14 @@ func (o GetBucketCustomPlacementConfigArrayOutput) Index(i pulumi.IntInput) GetB
 }
 
 type GetBucketEncryption struct {
+	// If omitted, then new objects with CMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+	CustomerManagedEncryptionEnforcementConfigs []GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig `pulumi:"customerManagedEncryptionEnforcementConfigs"`
+	// If omitted, then new objects with CSEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+	CustomerSuppliedEncryptionEnforcementConfigs []GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig `pulumi:"customerSuppliedEncryptionEnforcementConfigs"`
 	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
 	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
+	// If omitted, then new objects with GMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+	GoogleManagedEncryptionEnforcementConfigs []GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig `pulumi:"googleManagedEncryptionEnforcementConfigs"`
 }
 
 // GetBucketEncryptionInput is an input type that accepts GetBucketEncryptionArgs and GetBucketEncryptionOutput values.
@@ -17310,8 +17847,14 @@ type GetBucketEncryptionInput interface {
 }
 
 type GetBucketEncryptionArgs struct {
+	// If omitted, then new objects with CMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+	CustomerManagedEncryptionEnforcementConfigs GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayInput `pulumi:"customerManagedEncryptionEnforcementConfigs"`
+	// If omitted, then new objects with CSEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+	CustomerSuppliedEncryptionEnforcementConfigs GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayInput `pulumi:"customerSuppliedEncryptionEnforcementConfigs"`
 	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
 	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
+	// If omitted, then new objects with GMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+	GoogleManagedEncryptionEnforcementConfigs GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayInput `pulumi:"googleManagedEncryptionEnforcementConfigs"`
 }
 
 func (GetBucketEncryptionArgs) ElementType() reflect.Type {
@@ -17365,9 +17908,30 @@ func (o GetBucketEncryptionOutput) ToGetBucketEncryptionOutputWithContext(ctx co
 	return o
 }
 
+// If omitted, then new objects with CMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+func (o GetBucketEncryptionOutput) CustomerManagedEncryptionEnforcementConfigs() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput {
+	return o.ApplyT(func(v GetBucketEncryption) []GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+		return v.CustomerManagedEncryptionEnforcementConfigs
+	}).(GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput)
+}
+
+// If omitted, then new objects with CSEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+func (o GetBucketEncryptionOutput) CustomerSuppliedEncryptionEnforcementConfigs() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput {
+	return o.ApplyT(func(v GetBucketEncryption) []GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+		return v.CustomerSuppliedEncryptionEnforcementConfigs
+	}).(GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput)
+}
+
 // A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
 func (o GetBucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+}
+
+// If omitted, then new objects with GMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+func (o GetBucketEncryptionOutput) GoogleManagedEncryptionEnforcementConfigs() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput {
+	return o.ApplyT(func(v GetBucketEncryption) []GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+		return v.GoogleManagedEncryptionEnforcementConfigs
+	}).(GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput)
 }
 
 type GetBucketEncryptionArrayOutput struct{ *pulumi.OutputState }
@@ -17388,6 +17952,326 @@ func (o GetBucketEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketEncryp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketEncryption {
 		return vs[0].([]GetBucketEncryption)[vs[1].(int)]
 	}).(GetBucketEncryptionOutput)
+}
+
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig struct {
+	// Time from which the config was effective. This is service-provided.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// Whether CMEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+	RestrictionMode string `pulumi:"restrictionMode"`
+}
+
+// GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigInput is an input type that accepts GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs and GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigInput` via:
+//
+//	GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{...}
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput
+	ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(context.Context) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput
+}
+
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs struct {
+	// Time from which the config was effective. This is service-provided.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// Whether CMEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
+}
+
+func (GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return i.ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput)
+}
+
+// GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayInput is an input type that accepts GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray and GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayInput` via:
+//
+//	GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray{ GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{...} }
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput
+	ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutputWithContext(context.Context) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput
+}
+
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray []GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigInput
+
+func (GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput {
+	return i.ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput)
+}
+
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+// Time from which the config was effective. This is service-provided.
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// Whether CMEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput) RestrictionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig) string { return v.RestrictionMode }).(pulumi.StringOutput)
+}
+
+type GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput) ToGetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput) Index(i pulumi.IntInput) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+		return vs[0].([]GetBucketEncryptionCustomerManagedEncryptionEnforcementConfig)[vs[1].(int)]
+	}).(GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput)
+}
+
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig struct {
+	// Time from which the config was effective. This is service-provided.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// Whether CSEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+	RestrictionMode string `pulumi:"restrictionMode"`
+}
+
+// GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput is an input type that accepts GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs and GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput` via:
+//
+//	GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{...}
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput
+	ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(context.Context) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput
+}
+
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs struct {
+	// Time from which the config was effective. This is service-provided.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// Whether CSEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
+}
+
+func (GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return i.ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput)
+}
+
+// GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayInput is an input type that accepts GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray and GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayInput` via:
+//
+//	GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray{ GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{...} }
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput
+	ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutputWithContext(context.Context) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput
+}
+
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray []GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput
+
+func (GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput {
+	return i.ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput)
+}
+
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+// Time from which the config was effective. This is service-provided.
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// Whether CSEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput) RestrictionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig) string {
+		return v.RestrictionMode
+	}).(pulumi.StringOutput)
+}
+
+type GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput) ToGetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutputWithContext(ctx context.Context) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput) Index(i pulumi.IntInput) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+		return vs[0].([]GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig)[vs[1].(int)]
+	}).(GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput)
+}
+
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig struct {
+	// Time from which the config was effective. This is service-provided.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// Whether GMEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+	RestrictionMode string `pulumi:"restrictionMode"`
+}
+
+// GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigInput is an input type that accepts GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs and GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigInput` via:
+//
+//	GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{...}
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput
+	ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(context.Context) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput
+}
+
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs struct {
+	// Time from which the config was effective. This is service-provided.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// Whether GMEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+	RestrictionMode pulumi.StringInput `pulumi:"restrictionMode"`
+}
+
+func (GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return i.ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput)
+}
+
+// GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayInput is an input type that accepts GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray and GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput values.
+// You can construct a concrete instance of `GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayInput` via:
+//
+//	GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray{ GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{...} }
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput
+	ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutputWithContext(context.Context) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput
+}
+
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray []GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigInput
+
+func (GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (i GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput {
+	return i.ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutputWithContext(ctx context.Context) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput)
+}
+
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutputWithContext(ctx context.Context) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return o
+}
+
+// Time from which the config was effective. This is service-provided.
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// Whether GMEK is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput) RestrictionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig) string { return v.RestrictionMode }).(pulumi.StringOutput)
+}
+
+type GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig)(nil)).Elem()
+}
+
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput() GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput) ToGetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutputWithContext(ctx context.Context) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput {
+	return o
+}
+
+func (o GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput) Index(i pulumi.IntInput) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+		return vs[0].([]GetBucketEncryptionGoogleManagedEncryptionEnforcementConfig)[vs[1].(int)]
+	}).(GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput)
 }
 
 type GetBucketHierarchicalNamespace struct {
@@ -23344,6 +24228,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigPtrInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionPtrInput)(nil)).Elem(), BucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionCustomerManagedEncryptionEnforcementConfigInput)(nil)).Elem(), BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrInput)(nil)).Elem(), BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput)(nil)).Elem(), BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrInput)(nil)).Elem(), BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionGoogleManagedEncryptionEnforcementConfigInput)(nil)).Elem(), BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrInput)(nil)).Elem(), BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketHierarchicalNamespaceInput)(nil)).Elem(), BucketHierarchicalNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketHierarchicalNamespacePtrInput)(nil)).Elem(), BucketHierarchicalNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingConditionInput)(nil)).Elem(), BucketIAMBindingConditionArgs{})
@@ -23536,6 +24426,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCustomPlacementConfigArrayInput)(nil)).Elem(), GetBucketCustomPlacementConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionInput)(nil)).Elem(), GetBucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionArrayInput)(nil)).Elem(), GetBucketEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigInput)(nil)).Elem(), GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayInput)(nil)).Elem(), GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigInput)(nil)).Elem(), GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayInput)(nil)).Elem(), GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigInput)(nil)).Elem(), GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayInput)(nil)).Elem(), GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketHierarchicalNamespaceInput)(nil)).Elem(), GetBucketHierarchicalNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketHierarchicalNamespaceArrayInput)(nil)).Elem(), GetBucketHierarchicalNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketIpFilterInput)(nil)).Elem(), GetBucketIpFilterArgs{})
@@ -23668,6 +24564,12 @@ func init() {
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(BucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput{})
+	pulumi.RegisterOutputType(BucketEncryptionCustomerManagedEncryptionEnforcementConfigPtrOutput{})
+	pulumi.RegisterOutputType(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput{})
+	pulumi.RegisterOutputType(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigPtrOutput{})
+	pulumi.RegisterOutputType(BucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput{})
+	pulumi.RegisterOutputType(BucketEncryptionGoogleManagedEncryptionEnforcementConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketHierarchicalNamespaceOutput{})
 	pulumi.RegisterOutputType(BucketHierarchicalNamespacePtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMBindingConditionOutput{})
@@ -23860,6 +24762,12 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketCustomPlacementConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketEncryptionOutput{})
 	pulumi.RegisterOutputType(GetBucketEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigOutput{})
+	pulumi.RegisterOutputType(GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketHierarchicalNamespaceOutput{})
 	pulumi.RegisterOutputType(GetBucketHierarchicalNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketIpFilterOutput{})

@@ -39,6 +39,12 @@ __all__ = [
     'BucketCustomPlacementConfigArgsDict',
     'BucketEncryptionArgs',
     'BucketEncryptionArgsDict',
+    'BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs',
+    'BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict',
+    'BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs',
+    'BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict',
+    'BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs',
+    'BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict',
     'BucketHierarchicalNamespaceArgs',
     'BucketHierarchicalNamespaceArgsDict',
     'BucketIAMBindingConditionArgs',
@@ -810,7 +816,15 @@ class BucketCustomPlacementConfigArgs:
 
 
 class BucketEncryptionArgsDict(TypedDict):
-    default_kms_key_name: pulumi.Input[_builtins.str]
+    customer_managed_encryption_enforcement_config: NotRequired[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict']]
+    """
+    If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+    """
+    customer_supplied_encryption_enforcement_config: NotRequired[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict']]
+    """
+    If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+    """
+    default_kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
     """
     The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
     You must pay attention to whether the crypto key is available in the location that this bucket is created in.
@@ -827,12 +841,21 @@ class BucketEncryptionArgsDict(TypedDict):
     state of the project.
     You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
     """
+    google_managed_encryption_enforcement_config: NotRequired[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict']]
+    """
+    If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+    """
 
 @pulumi.input_type
 class BucketEncryptionArgs:
     def __init__(__self__, *,
-                 default_kms_key_name: pulumi.Input[_builtins.str]):
+                 customer_managed_encryption_enforcement_config: Optional[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']] = None,
+                 customer_supplied_encryption_enforcement_config: Optional[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']] = None,
+                 default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 google_managed_encryption_enforcement_config: Optional[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']] = None):
         """
+        :param pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs'] customer_managed_encryption_enforcement_config: If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        :param pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs'] customer_supplied_encryption_enforcement_config: If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
         :param pulumi.Input[_builtins.str] default_kms_key_name: The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
                You must pay attention to whether the crypto key is available in the location that this bucket is created in.
                See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -847,12 +870,44 @@ class BucketEncryptionArgs:
                This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
                state of the project.
                You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        :param pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs'] google_managed_encryption_enforcement_config: If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
         """
-        pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
+        if customer_managed_encryption_enforcement_config is not None:
+            pulumi.set(__self__, "customer_managed_encryption_enforcement_config", customer_managed_encryption_enforcement_config)
+        if customer_supplied_encryption_enforcement_config is not None:
+            pulumi.set(__self__, "customer_supplied_encryption_enforcement_config", customer_supplied_encryption_enforcement_config)
+        if default_kms_key_name is not None:
+            pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
+        if google_managed_encryption_enforcement_config is not None:
+            pulumi.set(__self__, "google_managed_encryption_enforcement_config", google_managed_encryption_enforcement_config)
+
+    @_builtins.property
+    @pulumi.getter(name="customerManagedEncryptionEnforcementConfig")
+    def customer_managed_encryption_enforcement_config(self) -> Optional[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]:
+        """
+        If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryption_enforcement_config")
+
+    @customer_managed_encryption_enforcement_config.setter
+    def customer_managed_encryption_enforcement_config(self, value: Optional[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]):
+        pulumi.set(self, "customer_managed_encryption_enforcement_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customerSuppliedEncryptionEnforcementConfig")
+    def customer_supplied_encryption_enforcement_config(self) -> Optional[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]:
+        """
+        If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        """
+        return pulumi.get(self, "customer_supplied_encryption_enforcement_config")
+
+    @customer_supplied_encryption_enforcement_config.setter
+    def customer_supplied_encryption_enforcement_config(self, value: Optional[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]):
+        pulumi.set(self, "customer_supplied_encryption_enforcement_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultKmsKeyName")
-    def default_kms_key_name(self) -> pulumi.Input[_builtins.str]:
+    def default_kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
         You must pay attention to whether the crypto key is available in the location that this bucket is created in.
@@ -872,8 +927,164 @@ class BucketEncryptionArgs:
         return pulumi.get(self, "default_kms_key_name")
 
     @default_kms_key_name.setter
-    def default_kms_key_name(self, value: pulumi.Input[_builtins.str]):
+    def default_kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "default_kms_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleManagedEncryptionEnforcementConfig")
+    def google_managed_encryption_enforcement_config(self) -> Optional[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]:
+        """
+        If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+        """
+        return pulumi.get(self, "google_managed_encryption_enforcement_config")
+
+    @google_managed_encryption_enforcement_config.setter
+    def google_managed_encryption_enforcement_config(self, value: Optional[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]):
+        pulumi.set(self, "google_managed_encryption_enforcement_config", value)
+
+
+class BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict(TypedDict):
+    restriction_mode: pulumi.Input[_builtins.str]
+    """
+    Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+    """
+    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time from which the config was effective.
+    """
+
+@pulumi.input_type
+class BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs:
+    def __init__(__self__, *,
+                 restriction_mode: pulumi.Input[_builtins.str],
+                 effective_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] restriction_mode: Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+        :param pulumi.Input[_builtins.str] effective_time: Time from which the config was effective.
+        """
+        pulumi.set(__self__, "restriction_mode", restriction_mode)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+
+    @_builtins.property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "restriction_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time from which the config was effective.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_time", value)
+
+
+class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict(TypedDict):
+    restriction_mode: pulumi.Input[_builtins.str]
+    """
+    Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+    """
+    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time from which the config was effective.
+    """
+
+@pulumi.input_type
+class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs:
+    def __init__(__self__, *,
+                 restriction_mode: pulumi.Input[_builtins.str],
+                 effective_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] restriction_mode: Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+        :param pulumi.Input[_builtins.str] effective_time: Time from which the config was effective.
+        """
+        pulumi.set(__self__, "restriction_mode", restriction_mode)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+
+    @_builtins.property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "restriction_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time from which the config was effective.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_time", value)
+
+
+class BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict(TypedDict):
+    restriction_mode: pulumi.Input[_builtins.str]
+    """
+    Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+    """
+    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time from which the config was effective.
+    """
+
+@pulumi.input_type
+class BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs:
+    def __init__(__self__, *,
+                 restriction_mode: pulumi.Input[_builtins.str],
+                 effective_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] restriction_mode: Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+        :param pulumi.Input[_builtins.str] effective_time: Time from which the config was effective.
+        """
+        pulumi.set(__self__, "restriction_mode", restriction_mode)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+
+    @_builtins.property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "restriction_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time from which the config was effective.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_time", value)
 
 
 class BucketHierarchicalNamespaceArgsDict(TypedDict):

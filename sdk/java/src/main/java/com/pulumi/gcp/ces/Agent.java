@@ -312,6 +312,77 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Agent Remote Dialogflow Agent Interruption
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Agent;
+ * import com.pulumi.gcp.ces.AgentArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentModelSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteDialogflowAgentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Agent example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesAgentRemoteDialogflowAgentInterruption = new Agent("cesAgentRemoteDialogflowAgentInterruption", AgentArgs.builder()
+ *             .agentId("agent-id")
+ *             .location("us")
+ *             .app(cesAppForAgent.appId())
+ *             .displayName("my-agent")
+ *             .modelSettings(AgentModelSettingsArgs.builder()
+ *                 .model("gemini-1.5-flash")
+ *                 .temperature(0.5)
+ *                 .build())
+ *             .remoteDialogflowAgent(AgentRemoteDialogflowAgentArgs.builder()
+ *                 .agent("projects/example/locations/us/agents/fake-agent")
+ *                 .flowId("fake-flow")
+ *                 .environmentId("fake-env")
+ *                 .respectResponseInterruptionSettings(true)
+ *                 .inputVariableMapping(Map.of("example", "1"))
+ *                 .outputVariableMapping(Map.of("example", "1"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

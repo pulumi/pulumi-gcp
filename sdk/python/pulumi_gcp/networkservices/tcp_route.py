@@ -404,14 +404,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_tcp_route = gcp.networkservices.TcpRoute("default",
             name="my-tcp-route",
             labels={
@@ -438,14 +439,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_tcp_route = gcp.networkservices.TcpRoute("default",
             name="my-tcp-route",
             labels={
@@ -469,14 +471,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_mesh = gcp.networkservices.Mesh("default",
             name="my-tcp-route",
             labels={
@@ -510,14 +513,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_gateway = gcp.networkservices.Gateway("default",
             name="my-tcp-route",
             labels={
@@ -607,14 +611,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_tcp_route = gcp.networkservices.TcpRoute("default",
             name="my-tcp-route",
             labels={
@@ -641,14 +646,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_tcp_route = gcp.networkservices.TcpRoute("default",
             name="my-tcp-route",
             labels={
@@ -672,14 +678,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_mesh = gcp.networkservices.Mesh("default",
             name="my-tcp-route",
             labels={
@@ -713,14 +720,15 @@ class TcpRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            tcp_health_check={
+                "port": 80,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_gateway = gcp.networkservices.Gateway("default",
             name="my-tcp-route",
             labels={

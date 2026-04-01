@@ -9,9 +9,6 @@ import * as utilities from "../utilities";
  * the health destination resource to which the aggregated health result from
  * the health source resources is delivered.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about RegionCompositeHealthCheck, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCompositeHealthChecks)

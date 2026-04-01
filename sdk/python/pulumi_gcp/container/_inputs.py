@@ -4615,7 +4615,9 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     """
     slice_controller_config: NotRequired[pulumi.Input['ClusterAddonsConfigSliceControllerConfigArgsDict']]
     """
-    The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+    . 
+    The status of the slice controller addon.
+    It is disabled by default. Set `enabled = true` to enable.
     """
     stateful_ha_config: NotRequired[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgsDict']]
     """
@@ -4715,7 +4717,9 @@ class ClusterAddonsConfigArgs:
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
-        :param pulumi.Input['ClusterAddonsConfigSliceControllerConfigArgs'] slice_controller_config: The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        :param pulumi.Input['ClusterAddonsConfigSliceControllerConfigArgs'] slice_controller_config: . 
+               The status of the slice controller addon.
+               It is disabled by default. Set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -5006,7 +5010,9 @@ class ClusterAddonsConfigArgs:
     @pulumi.getter(name="sliceControllerConfig")
     def slice_controller_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigSliceControllerConfigArgs']]:
         """
-        The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        . 
+        The status of the slice controller addon.
+        It is disabled by default. Set `enabled = true` to enable.
         """
         return pulumi.get(self, "slice_controller_config")
 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -106,6 +107,21 @@ public final class AgentRemoteDialogflowAgentArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.outputVariableMapping);
     }
 
+    /**
+     * Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+     * 
+     */
+    @Import(name="respectResponseInterruptionSettings")
+    private @Nullable Output<Boolean> respectResponseInterruptionSettings;
+
+    /**
+     * @return Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+     * 
+     */
+    public Optional<Output<Boolean>> respectResponseInterruptionSettings() {
+        return Optional.ofNullable(this.respectResponseInterruptionSettings);
+    }
+
     private AgentRemoteDialogflowAgentArgs() {}
 
     private AgentRemoteDialogflowAgentArgs(AgentRemoteDialogflowAgentArgs $) {
@@ -114,6 +130,7 @@ public final class AgentRemoteDialogflowAgentArgs extends com.pulumi.resources.R
         this.flowId = $.flowId;
         this.inputVariableMapping = $.inputVariableMapping;
         this.outputVariableMapping = $.outputVariableMapping;
+        this.respectResponseInterruptionSettings = $.respectResponseInterruptionSettings;
     }
 
     public static Builder builder() {
@@ -251,6 +268,27 @@ public final class AgentRemoteDialogflowAgentArgs extends com.pulumi.resources.R
          */
         public Builder outputVariableMapping(Map<String,String> outputVariableMapping) {
             return outputVariableMapping(Output.of(outputVariableMapping));
+        }
+
+        /**
+         * @param respectResponseInterruptionSettings Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder respectResponseInterruptionSettings(@Nullable Output<Boolean> respectResponseInterruptionSettings) {
+            $.respectResponseInterruptionSettings = respectResponseInterruptionSettings;
+            return this;
+        }
+
+        /**
+         * @param respectResponseInterruptionSettings Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder respectResponseInterruptionSettings(Boolean respectResponseInterruptionSettings) {
+            return respectResponseInterruptionSettings(Output.of(respectResponseInterruptionSettings));
         }
 
         public AgentRemoteDialogflowAgentArgs build() {

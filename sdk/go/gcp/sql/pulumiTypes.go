@@ -4323,6 +4323,8 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	ServerCaMode *string `pulumi:"serverCaMode"`
 	// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
 	ServerCaPool *string `pulumi:"serverCaPool"`
+	// Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+	ServerCertificateRotationMode *string `pulumi:"serverCertificateRotationMode"`
 	// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 	SslMode *string `pulumi:"sslMode"`
 }
@@ -4362,6 +4364,8 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	ServerCaMode pulumi.StringPtrInput `pulumi:"serverCaMode"`
 	// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
 	ServerCaPool pulumi.StringPtrInput `pulumi:"serverCaPool"`
+	// Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+	ServerCertificateRotationMode pulumi.StringPtrInput `pulumi:"serverCertificateRotationMode"`
 	// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
 }
@@ -4499,6 +4503,11 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ServerCaPool() pulumi.Str
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.ServerCaPool }).(pulumi.StringPtrOutput)
 }
 
+// Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+func (o DatabaseInstanceSettingsIpConfigurationOutput) ServerCertificateRotationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.ServerCertificateRotationMode }).(pulumi.StringPtrOutput)
+}
+
 // Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.SslMode }).(pulumi.StringPtrOutput)
@@ -4620,6 +4629,16 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ServerCaPool() pulumi.
 			return nil
 		}
 		return v.ServerCaPool
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ServerCertificateRotationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerCertificateRotationMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9486,6 +9505,8 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 	ServerCaMode string `pulumi:"serverCaMode"`
 	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
 	ServerCaPool string `pulumi:"serverCaPool"`
+	// Settings for how the server certificate gets rotated.
+	ServerCertificateRotationMode string `pulumi:"serverCertificateRotationMode"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode string `pulumi:"sslMode"`
 }
@@ -9519,6 +9540,8 @@ type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	ServerCaMode pulumi.StringInput `pulumi:"serverCaMode"`
 	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
 	ServerCaPool pulumi.StringInput `pulumi:"serverCaPool"`
+	// Settings for how the server certificate gets rotated.
+	ServerCertificateRotationMode pulumi.StringInput `pulumi:"serverCertificateRotationMode"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
@@ -9622,6 +9645,11 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) ServerCaMode() pulumi.S
 // The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) ServerCaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.ServerCaPool }).(pulumi.StringOutput)
+}
+
+// Settings for how the server certificate gets rotated.
+func (o GetDatabaseInstanceSettingIpConfigurationOutput) ServerCertificateRotationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.ServerCertificateRotationMode }).(pulumi.StringOutput)
 }
 
 // Specify how SSL connection should be enforced in DB connections.
@@ -13956,6 +13984,8 @@ type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
 	ServerCaMode string `pulumi:"serverCaMode"`
 	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
 	ServerCaPool string `pulumi:"serverCaPool"`
+	// Settings for how the server certificate gets rotated.
+	ServerCertificateRotationMode string `pulumi:"serverCertificateRotationMode"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode string `pulumi:"sslMode"`
 }
@@ -13989,6 +14019,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
 	ServerCaMode pulumi.StringInput `pulumi:"serverCaMode"`
 	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
 	ServerCaPool pulumi.StringInput `pulumi:"serverCaPool"`
+	// Settings for how the server certificate gets rotated.
+	ServerCertificateRotationMode pulumi.StringInput `pulumi:"serverCertificateRotationMode"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
@@ -14094,6 +14126,13 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ServerCaMode()
 // The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ServerCaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.ServerCaPool }).(pulumi.StringOutput)
+}
+
+// Settings for how the server certificate gets rotated.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ServerCertificateRotationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string {
+		return v.ServerCertificateRotationMode
+	}).(pulumi.StringOutput)
 }
 
 // Specify how SSL connection should be enforced in DB connections.

@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     networkSpec: {
  *         enableInternetAccess: true,
  *     },
+ *     softwareConfig: {},
  * });
  * ```
  * ### Colab Runtime Template Full
@@ -117,6 +118,9 @@ import * as utilities from "../utilities";
  *             postStartupScript: "echo 'hello world'",
  *             postStartupScriptUrl: "gs://colab-enterprise-pss-secure/secure_pss.sh",
  *             postStartupScriptBehavior: "RUN_ONCE",
+ *         },
+ *         colabImage: {
+ *             releaseName: "py312",
  *         },
  *     },
  * });

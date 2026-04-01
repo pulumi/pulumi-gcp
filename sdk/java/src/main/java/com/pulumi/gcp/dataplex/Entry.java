@@ -442,6 +442,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.GlossaryArgs;
  * import com.pulumi.gcp.dataplex.GlossaryTerm;
  * import com.pulumi.gcp.dataplex.GlossaryTermArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.dataplex.Entry;
  * import com.pulumi.gcp.dataplex.EntryArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
@@ -472,6 +474,13 @@ import javax.annotation.Nullable;
  *             .termId("glossary-term")
  *             .build());
  * 
+ *         // Introduce a 45-second wait after the glossary resource creation
+ *         var wait_for_sync = new Sleep("wait-for-sync", SleepArgs.builder()
+ *             .createDuration("45s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(example_glossary_term)
+ *                 .build());
+ * 
  *         var tfTestGlossaryTerm = new Entry("tfTestGlossaryTerm", EntryArgs.builder()
  *             .entryGroupId("}{@literal @}{@code dataplex")
  *             .project("1111111111111")
@@ -492,7 +501,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(example_glossary_term)
+ *                 .dependsOn(wait_for_sync)
  *                 .build());
  * 
  *     }}{@code

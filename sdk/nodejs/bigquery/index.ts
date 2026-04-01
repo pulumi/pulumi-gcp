@@ -165,6 +165,11 @@ export type ReservationAssignment = import("./reservationAssignment").Reservatio
 export const ReservationAssignment: typeof import("./reservationAssignment").ReservationAssignment = null as any;
 utilities.lazyLoad(exports, ["ReservationAssignment"], () => require("./reservationAssignment"));
 
+export { ReservationGroupArgs, ReservationGroupState } from "./reservationGroup";
+export type ReservationGroup = import("./reservationGroup").ReservationGroup;
+export const ReservationGroup: typeof import("./reservationGroup").ReservationGroup = null as any;
+utilities.lazyLoad(exports, ["ReservationGroup"], () => require("./reservationGroup"));
+
 export { RoutineArgs, RoutineState } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
@@ -231,6 +236,8 @@ const _module = {
                 return new Reservation(name, <any>undefined, { urn })
             case "gcp:bigquery/reservationAssignment:ReservationAssignment":
                 return new ReservationAssignment(name, <any>undefined, { urn })
+            case "gcp:bigquery/reservationGroup:ReservationGroup":
+                return new ReservationGroup(name, <any>undefined, { urn })
             case "gcp:bigquery/routine:Routine":
                 return new Routine(name, <any>undefined, { urn })
             case "gcp:bigquery/rowAccessPolicy:RowAccessPolicy":
@@ -265,6 +272,7 @@ pulumi.runtime.registerResourceModule("gcp", "bigquery/iamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservationAssignment", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/reservationGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/routine", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/rowAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/table", _module)

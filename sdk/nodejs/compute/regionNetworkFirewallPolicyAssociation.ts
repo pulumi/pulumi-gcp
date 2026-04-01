@@ -37,6 +37,31 @@ import * as utilities from "../utilities";
  *     region: "us-west1",
  * });
  * ```
+ * ### Region Network Firewall Policy Association Priority
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.RegionNetworkFirewallPolicy("policy", {
+ *     name: "my-policy",
+ *     project: "my-project-name",
+ *     description: "Sample global network firewall policy",
+ *     region: "us-west1",
+ * });
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const association = new gcp.compute.RegionNetworkFirewallPolicyAssociation("association", {
+ *     name: "my-association",
+ *     project: "my-project-name",
+ *     attachmentTarget: network.id,
+ *     firewallPolicy: policy.id,
+ *     region: "us-west1",
+ *     priority: 1,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -99,6 +124,11 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
+     * An integer indicating the priority of an association.
+     */
+    declare public readonly priority: pulumi.Output<number>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -128,6 +158,7 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
             resourceInputs["attachmentTarget"] = state?.attachmentTarget;
             resourceInputs["firewallPolicy"] = state?.firewallPolicy;
             resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
             resourceInputs["shortName"] = state?.shortName;
@@ -142,6 +173,7 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
             resourceInputs["attachmentTarget"] = args?.attachmentTarget;
             resourceInputs["firewallPolicy"] = args?.firewallPolicy;
             resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["shortName"] = undefined /*out*/;
@@ -167,6 +199,11 @@ export interface RegionNetworkFirewallPolicyAssociationState {
      * The name for an association.
      */
     name?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * An integer indicating the priority of an association.
+     */
+    priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -198,6 +235,11 @@ export interface RegionNetworkFirewallPolicyAssociationArgs {
      * The name for an association.
      */
     name?: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * An integer indicating the priority of an association.
+     */
+    priority?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

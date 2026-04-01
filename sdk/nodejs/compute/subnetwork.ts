@@ -442,7 +442,6 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     declare public readonly reservedInternalRange: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * 'Configures subnet mask resolution for this subnetwork.'
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      */
@@ -721,7 +720,6 @@ export interface SubnetworkState {
      */
     reservedInternalRange?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * 'Configures subnet mask resolution for this subnetwork.'
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      */
@@ -890,7 +888,6 @@ export interface SubnetworkArgs {
      */
     reservedInternalRange?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * 'Configures subnet mask resolution for this subnetwork.'
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      */

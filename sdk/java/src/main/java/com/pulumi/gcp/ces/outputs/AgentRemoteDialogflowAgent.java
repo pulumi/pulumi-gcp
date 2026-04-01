@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -45,6 +46,11 @@ public final class AgentRemoteDialogflowAgent {
      * 
      */
     private @Nullable Map<String,String> outputVariableMapping;
+    /**
+     * @return Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+     * 
+     */
+    private @Nullable Boolean respectResponseInterruptionSettings;
 
     private AgentRemoteDialogflowAgent() {}
     /**
@@ -89,6 +95,13 @@ public final class AgentRemoteDialogflowAgent {
     public Map<String,String> outputVariableMapping() {
         return this.outputVariableMapping == null ? Map.of() : this.outputVariableMapping;
     }
+    /**
+     * @return Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+     * 
+     */
+    public Optional<Boolean> respectResponseInterruptionSettings() {
+        return Optional.ofNullable(this.respectResponseInterruptionSettings);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -104,6 +117,7 @@ public final class AgentRemoteDialogflowAgent {
         private String flowId;
         private @Nullable Map<String,String> inputVariableMapping;
         private @Nullable Map<String,String> outputVariableMapping;
+        private @Nullable Boolean respectResponseInterruptionSettings;
         public Builder() {}
         public Builder(AgentRemoteDialogflowAgent defaults) {
     	      Objects.requireNonNull(defaults);
@@ -112,6 +126,7 @@ public final class AgentRemoteDialogflowAgent {
     	      this.flowId = defaults.flowId;
     	      this.inputVariableMapping = defaults.inputVariableMapping;
     	      this.outputVariableMapping = defaults.outputVariableMapping;
+    	      this.respectResponseInterruptionSettings = defaults.respectResponseInterruptionSettings;
         }
 
         @CustomType.Setter
@@ -148,6 +163,12 @@ public final class AgentRemoteDialogflowAgent {
             this.outputVariableMapping = outputVariableMapping;
             return this;
         }
+        @CustomType.Setter
+        public Builder respectResponseInterruptionSettings(@Nullable Boolean respectResponseInterruptionSettings) {
+
+            this.respectResponseInterruptionSettings = respectResponseInterruptionSettings;
+            return this;
+        }
         public AgentRemoteDialogflowAgent build() {
             final var _resultValue = new AgentRemoteDialogflowAgent();
             _resultValue.agent = agent;
@@ -155,6 +176,7 @@ public final class AgentRemoteDialogflowAgent {
             _resultValue.flowId = flowId;
             _resultValue.inputVariableMapping = inputVariableMapping;
             _resultValue.outputVariableMapping = outputVariableMapping;
+            _resultValue.respectResponseInterruptionSettings = respectResponseInterruptionSettings;
             return _resultValue;
         }
     }

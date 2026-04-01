@@ -54,7 +54,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
 
     /**
      * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     @Import(name="enableNestedVirtualization")
@@ -62,7 +62,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
 
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     public Optional<Output<Boolean>> enableNestedVirtualization() {
@@ -200,7 +200,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
 
         /**
          * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfigArgs extends com.p
 
         /**
          * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
          * 
          * @return builder
          * 

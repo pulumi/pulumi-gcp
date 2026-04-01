@@ -396,6 +396,7 @@ namespace Pulumi.Gcp.DataPlex
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -411,6 +412,18 @@ namespace Pulumi.Gcp.DataPlex
     ///         GlossaryId = example_glossary.GlossaryId,
     ///         Location = "us-central1",
     ///         TermId = "glossary-term",
+    ///     });
+    /// 
+    ///     // Introduce a 45-second wait after the glossary resource creation
+    ///     var wait_for_sync = new Time.Sleep("wait-for-sync", new()
+    ///     {
+    ///         CreateDuration = "45s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example_glossary_term,
+    ///         },
     ///     });
     /// 
     ///     var tfTestGlossaryTerm = new Gcp.DataPlex.Entry("tf_test_glossary_term", new()
@@ -442,7 +455,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         DependsOn =
     ///         {
-    ///             example_glossary_term,
+    ///             wait_for_sync,
     ///         },
     ///     });
     /// 

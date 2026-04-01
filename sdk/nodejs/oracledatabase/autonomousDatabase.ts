@@ -138,6 +138,40 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ * ### Oracledatabase Autonomous Database Disaster Recovery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const adb_dr = new gcp.oracledatabase.AutonomousDatabase("adb-dr", {
+ *     autonomousDatabaseId: "my-instance",
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     database: "mydatabase",
+ *     adminPassword: "123Abpassword",
+ *     properties: {
+ *         computeCount: 2,
+ *         dataStorageSizeGb: 20,
+ *         dbVersion: "19c",
+ *         dbWorkload: "OLTP",
+ *         licenseType: "LICENSE_INCLUDED",
+ *         mtlsConnectionRequired: true,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const myADB = new gcp.oracledatabase.AutonomousDatabase("myADB", {
+ *     autonomousDatabaseId: "my-instance",
+ *     location: "my-location",
+ *     project: "my-project",
+ *     sourceConfig: {
+ *         autonomousDatabase: adb_dr.name,
+ *         automaticBackupsReplicationEnabled: false,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * AutonomousDatabase can be imported using any of these accepted formats:

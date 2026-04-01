@@ -803,7 +803,7 @@ class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
     enable_nested_virtualization: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-    See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+    See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
     """
     machine_type: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -867,7 +867,7 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input[_builtins.bool] disable_public_ip_addresses: Whether instances have no public IP address.
         :param pulumi.Input[_builtins.bool] disable_ssh: Whether to disable SSH access to the VM.
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-               See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+               See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param pulumi.Input[_builtins.str] machine_type: The name of a Compute Engine machine type.
         :param pulumi.Input[_builtins.int] pool_size: Number of instances to pool for faster workstation startup.
         :param pulumi.Input[_builtins.str] service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -990,7 +990,7 @@ class WorkstationConfigHostGceInstanceArgs:
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         """
         return pulumi.get(self, "enable_nested_virtualization")
 
@@ -1152,7 +1152,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
     enable_nested_virtualization: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-    See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+    See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
     """
     machine_type: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -1178,7 +1178,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-               See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+               See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param pulumi.Input[_builtins.str] machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
         :param pulumi.Input[_builtins.int] pool_size: Number of instances to pool for faster workstation boosting.
         """
@@ -1236,7 +1236,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         """
         return pulumi.get(self, "enable_nested_virtualization")
 

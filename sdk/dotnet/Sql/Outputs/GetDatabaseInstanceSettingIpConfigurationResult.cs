@@ -47,6 +47,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string ServerCaPool;
         /// <summary>
+        /// Settings for how the server certificate gets rotated.
+        /// </summary>
+        public readonly string ServerCertificateRotationMode;
+        /// <summary>
         /// Specify how SSL connection should be enforced in DB connections.
         /// </summary>
         public readonly string SslMode;
@@ -71,6 +75,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string serverCaPool,
 
+            string serverCertificateRotationMode,
+
             string sslMode)
         {
             AllocatedIpRange = allocatedIpRange;
@@ -82,6 +88,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PscConfigs = pscConfigs;
             ServerCaMode = serverCaMode;
             ServerCaPool = serverCaPool;
+            ServerCertificateRotationMode = serverCertificateRotationMode;
             SslMode = sslMode;
         }
     }

@@ -16,20 +16,37 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// <summary>
         /// The maximum number of nodes for this specific replica.
         /// </summary>
-        public readonly int MaxNodes;
+        public readonly int? MaxNodes;
+        /// <summary>
+        /// The maximum number of processing units for this specific replica.
+        /// If set, this number should be multiples of 1000 and be greater than or equal to
+        /// min_processing_units.
+        /// </summary>
+        public readonly int? MaxProcessingUnits;
         /// <summary>
         /// The minimum number of nodes for this specific replica.
         /// </summary>
-        public readonly int MinNodes;
+        public readonly int? MinNodes;
+        /// <summary>
+        /// The minimum number of processing units for this specific replica.
+        /// If set, this number should be multiples of 1000.
+        /// </summary>
+        public readonly int? MinProcessingUnits;
 
         [OutputConstructor]
         private InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits(
-            int maxNodes,
+            int? maxNodes,
 
-            int minNodes)
+            int? maxProcessingUnits,
+
+            int? minNodes,
+
+            int? minProcessingUnits)
         {
             MaxNodes = maxNodes;
+            MaxProcessingUnits = maxProcessingUnits;
             MinNodes = minNodes;
+            MinProcessingUnits = minProcessingUnits;
         }
     }
 }

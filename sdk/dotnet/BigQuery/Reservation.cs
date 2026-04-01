@@ -179,6 +179,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableArray<Outputs.ReservationReplicationStatus>> ReplicationStatuses { get; private set; } = null!;
 
         /// <summary>
+        /// The reservation group that this reservation belongs to.
+        /// </summary>
+        [Output("reservationGroup")]
+        public Output<string?> ReservationGroup { get; private set; } = null!;
+
+        /// <summary>
         /// (Optional, Beta)
         /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
         /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -365,6 +371,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The reservation group that this reservation belongs to.
+        /// </summary>
+        [Input("reservationGroup")]
+        public Input<string>? ReservationGroup { get; set; }
+
+        /// <summary>
         /// (Optional, Beta)
         /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
         /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -544,6 +556,12 @@ namespace Pulumi.Gcp.BigQuery
             get => _replicationStatuses ?? (_replicationStatuses = new InputList<Inputs.ReservationReplicationStatusGetArgs>());
             set => _replicationStatuses = value;
         }
+
+        /// <summary>
+        /// The reservation group that this reservation belongs to.
+        /// </summary>
+        [Input("reservationGroup")]
+        public Input<string>? ReservationGroup { get; set; }
 
         /// <summary>
         /// (Optional, Beta)

@@ -2679,6 +2679,9 @@ func (o RuntimeTemplateShieldedVmConfigPtrOutput) EnableSecureBoot() pulumi.Bool
 }
 
 type RuntimeTemplateSoftwareConfig struct {
+	// Colab Image Configuration.
+	// Structure is documented below.
+	ColabImage *RuntimeTemplateSoftwareConfigColabImage `pulumi:"colabImage"`
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs []RuntimeTemplateSoftwareConfigEnv `pulumi:"envs"`
@@ -2699,6 +2702,9 @@ type RuntimeTemplateSoftwareConfigInput interface {
 }
 
 type RuntimeTemplateSoftwareConfigArgs struct {
+	// Colab Image Configuration.
+	// Structure is documented below.
+	ColabImage RuntimeTemplateSoftwareConfigColabImagePtrInput `pulumi:"colabImage"`
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs RuntimeTemplateSoftwareConfigEnvArrayInput `pulumi:"envs"`
@@ -2784,6 +2790,12 @@ func (o RuntimeTemplateSoftwareConfigOutput) ToRuntimeTemplateSoftwareConfigPtrO
 	}).(RuntimeTemplateSoftwareConfigPtrOutput)
 }
 
+// Colab Image Configuration.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigOutput) ColabImage() RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigColabImage { return v.ColabImage }).(RuntimeTemplateSoftwareConfigColabImagePtrOutput)
+}
+
 // Environment variables to be passed to the container.
 // Structure is documented below.
 func (o RuntimeTemplateSoftwareConfigOutput) Envs() RuntimeTemplateSoftwareConfigEnvArrayOutput {
@@ -2822,6 +2834,17 @@ func (o RuntimeTemplateSoftwareConfigPtrOutput) Elem() RuntimeTemplateSoftwareCo
 	}).(RuntimeTemplateSoftwareConfigOutput)
 }
 
+// Colab Image Configuration.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigPtrOutput) ColabImage() RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigColabImage {
+		if v == nil {
+			return nil
+		}
+		return v.ColabImage
+	}).(RuntimeTemplateSoftwareConfigColabImagePtrOutput)
+}
+
 // Environment variables to be passed to the container.
 // Structure is documented below.
 func (o RuntimeTemplateSoftwareConfigPtrOutput) Envs() RuntimeTemplateSoftwareConfigEnvArrayOutput {
@@ -2842,6 +2865,143 @@ func (o RuntimeTemplateSoftwareConfigPtrOutput) PostStartupScriptConfig() Runtim
 		}
 		return v.PostStartupScriptConfig
 	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigColabImage struct {
+	// The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
+	ReleaseName *string `pulumi:"releaseName"`
+}
+
+// RuntimeTemplateSoftwareConfigColabImageInput is an input type that accepts RuntimeTemplateSoftwareConfigColabImageArgs and RuntimeTemplateSoftwareConfigColabImageOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigColabImageInput` via:
+//
+//	RuntimeTemplateSoftwareConfigColabImageArgs{...}
+type RuntimeTemplateSoftwareConfigColabImageInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigColabImageOutput() RuntimeTemplateSoftwareConfigColabImageOutput
+	ToRuntimeTemplateSoftwareConfigColabImageOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigColabImageOutput
+}
+
+type RuntimeTemplateSoftwareConfigColabImageArgs struct {
+	// The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+}
+
+func (RuntimeTemplateSoftwareConfigColabImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigColabImage)(nil)).Elem()
+}
+
+func (i RuntimeTemplateSoftwareConfigColabImageArgs) ToRuntimeTemplateSoftwareConfigColabImageOutput() RuntimeTemplateSoftwareConfigColabImageOutput {
+	return i.ToRuntimeTemplateSoftwareConfigColabImageOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigColabImageArgs) ToRuntimeTemplateSoftwareConfigColabImageOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigColabImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigColabImageOutput)
+}
+
+func (i RuntimeTemplateSoftwareConfigColabImageArgs) ToRuntimeTemplateSoftwareConfigColabImagePtrOutput() RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigColabImageArgs) ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigColabImageOutput).ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(ctx)
+}
+
+// RuntimeTemplateSoftwareConfigColabImagePtrInput is an input type that accepts RuntimeTemplateSoftwareConfigColabImageArgs, RuntimeTemplateSoftwareConfigColabImagePtr and RuntimeTemplateSoftwareConfigColabImagePtrOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigColabImagePtrInput` via:
+//
+//	        RuntimeTemplateSoftwareConfigColabImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeTemplateSoftwareConfigColabImagePtrInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigColabImagePtrOutput() RuntimeTemplateSoftwareConfigColabImagePtrOutput
+	ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigColabImagePtrOutput
+}
+
+type runtimeTemplateSoftwareConfigColabImagePtrType RuntimeTemplateSoftwareConfigColabImageArgs
+
+func RuntimeTemplateSoftwareConfigColabImagePtr(v *RuntimeTemplateSoftwareConfigColabImageArgs) RuntimeTemplateSoftwareConfigColabImagePtrInput {
+	return (*runtimeTemplateSoftwareConfigColabImagePtrType)(v)
+}
+
+func (*runtimeTemplateSoftwareConfigColabImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigColabImage)(nil)).Elem()
+}
+
+func (i *runtimeTemplateSoftwareConfigColabImagePtrType) ToRuntimeTemplateSoftwareConfigColabImagePtrOutput() RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeTemplateSoftwareConfigColabImagePtrType) ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigColabImagePtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigColabImageOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigColabImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigColabImage)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImageOutput) ToRuntimeTemplateSoftwareConfigColabImageOutput() RuntimeTemplateSoftwareConfigColabImageOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImageOutput) ToRuntimeTemplateSoftwareConfigColabImageOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigColabImageOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImageOutput) ToRuntimeTemplateSoftwareConfigColabImagePtrOutput() RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return o.ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImageOutput) ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeTemplateSoftwareConfigColabImage) *RuntimeTemplateSoftwareConfigColabImage {
+		return &v
+	}).(RuntimeTemplateSoftwareConfigColabImagePtrOutput)
+}
+
+// The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
+func (o RuntimeTemplateSoftwareConfigColabImageOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigColabImage) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigColabImagePtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigColabImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigColabImage)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImagePtrOutput) ToRuntimeTemplateSoftwareConfigColabImagePtrOutput() RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImagePtrOutput) ToRuntimeTemplateSoftwareConfigColabImagePtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigColabImagePtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigColabImagePtrOutput) Elem() RuntimeTemplateSoftwareConfigColabImageOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigColabImage) RuntimeTemplateSoftwareConfigColabImage {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeTemplateSoftwareConfigColabImage
+		return ret
+	}).(RuntimeTemplateSoftwareConfigColabImageOutput)
+}
+
+// The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
+func (o RuntimeTemplateSoftwareConfigColabImagePtrOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigColabImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
 }
 
 type RuntimeTemplateSoftwareConfigEnv struct {
@@ -3917,6 +4077,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateShieldedVmConfigPtrInput)(nil)).Elem(), RuntimeTemplateShieldedVmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigColabImageInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigColabImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigColabImagePtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigColabImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvArrayInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
@@ -3965,6 +4127,8 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeTemplateShieldedVmConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigColabImageOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigColabImagePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput{})

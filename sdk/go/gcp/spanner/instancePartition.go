@@ -62,6 +62,54 @@ import (
 //	}
 //
 // ```
+// ### Spanner Instance Partition Autoscaling
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
+//				Name:        pulumi.String("test-instance"),
+//				Config:      pulumi.String("nam6"),
+//				DisplayName: pulumi.String("main-instance"),
+//				NumNodes:    pulumi.Int(1),
+//				Edition:     pulumi.String("ENTERPRISE_PLUS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = spanner.NewInstancePartition(ctx, "partition", &spanner.InstancePartitionArgs{
+//				Name:        pulumi.String("test-partition"),
+//				Instance:    main.Name,
+//				Config:      pulumi.String("nam8"),
+//				DisplayName: pulumi.String("test-spanner-partition"),
+//				AutoscalingConfig: &spanner.InstancePartitionAutoscalingConfigArgs{
+//					AutoscalingLimits: &spanner.InstancePartitionAutoscalingConfigAutoscalingLimitsArgs{
+//						MinProcessingUnits: pulumi.Int(1000),
+//						MaxProcessingUnits: pulumi.Int(2000),
+//					},
+//					AutoscalingTargets: &spanner.InstancePartitionAutoscalingConfigAutoscalingTargetsArgs{
+//						HighPriorityCpuUtilizationPercent: pulumi.Int(65),
+//						StorageUtilizationPercent:         pulumi.Int(95),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -81,6 +129,13 @@ import (
 type InstancePartition struct {
 	pulumi.CustomResourceState
 
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig must be
+	// present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+	// instance partition.
+	// Structure is documented below.
+	AutoscalingConfig InstancePartitionAutoscalingConfigPtrOutput `pulumi:"autoscalingConfig"`
 	// The name of the instance partition's configuration (similar to a region) which
 	// defines the geographic placement and replication of data in this instance partition.
 	Config pulumi.StringOutput `pulumi:"config"`
@@ -94,12 +149,13 @@ type InstancePartition struct {
 	// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes allocated to this instance partition. One node equals
-	// 1000 processing units. Exactly one of either nodeCount or processingUnits
-	// must be present.
-	NodeCount pulumi.IntPtrOutput `pulumi:"nodeCount"`
+	// 1000 processing units. Exactly one of either node_count, processing_units,
+	// or autoscalingConfig must be present.
+	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// The number of processing units allocated to this instance partition.
-	// Exactly one of either nodeCount or processingUnits must be present.
-	ProcessingUnits pulumi.IntPtrOutput `pulumi:"processingUnits"`
+	// Exactly one of either node_count, processing_units, or autoscalingConfig
+	// must be present.
+	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -149,6 +205,13 @@ func GetInstancePartition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstancePartition resources.
 type instancePartitionState struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig must be
+	// present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+	// instance partition.
+	// Structure is documented below.
+	AutoscalingConfig *InstancePartitionAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance partition's configuration (similar to a region) which
 	// defines the geographic placement and replication of data in this instance partition.
 	Config *string `pulumi:"config"`
@@ -162,11 +225,12 @@ type instancePartitionState struct {
 	// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance partition. One node equals
-	// 1000 processing units. Exactly one of either nodeCount or processingUnits
-	// must be present.
+	// 1000 processing units. Exactly one of either node_count, processing_units,
+	// or autoscalingConfig must be present.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The number of processing units allocated to this instance partition.
-	// Exactly one of either nodeCount or processingUnits must be present.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig
+	// must be present.
 	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -179,6 +243,13 @@ type instancePartitionState struct {
 }
 
 type InstancePartitionState struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig must be
+	// present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+	// instance partition.
+	// Structure is documented below.
+	AutoscalingConfig InstancePartitionAutoscalingConfigPtrInput
 	// The name of the instance partition's configuration (similar to a region) which
 	// defines the geographic placement and replication of data in this instance partition.
 	Config pulumi.StringPtrInput
@@ -192,11 +263,12 @@ type InstancePartitionState struct {
 	// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance partition. One node equals
-	// 1000 processing units. Exactly one of either nodeCount or processingUnits
-	// must be present.
+	// 1000 processing units. Exactly one of either node_count, processing_units,
+	// or autoscalingConfig must be present.
 	NodeCount pulumi.IntPtrInput
 	// The number of processing units allocated to this instance partition.
-	// Exactly one of either nodeCount or processingUnits must be present.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig
+	// must be present.
 	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -213,6 +285,13 @@ func (InstancePartitionState) ElementType() reflect.Type {
 }
 
 type instancePartitionArgs struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig must be
+	// present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+	// instance partition.
+	// Structure is documented below.
+	AutoscalingConfig *InstancePartitionAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance partition's configuration (similar to a region) which
 	// defines the geographic placement and replication of data in this instance partition.
 	Config string `pulumi:"config"`
@@ -226,11 +305,12 @@ type instancePartitionArgs struct {
 	// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance partition. One node equals
-	// 1000 processing units. Exactly one of either nodeCount or processingUnits
-	// must be present.
+	// 1000 processing units. Exactly one of either node_count, processing_units,
+	// or autoscalingConfig must be present.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The number of processing units allocated to this instance partition.
-	// Exactly one of either nodeCount or processingUnits must be present.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig
+	// must be present.
 	ProcessingUnits *int `pulumi:"processingUnits"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -239,6 +319,13 @@ type instancePartitionArgs struct {
 
 // The set of arguments for constructing a InstancePartition resource.
 type InstancePartitionArgs struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig must be
+	// present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+	// instance partition.
+	// Structure is documented below.
+	AutoscalingConfig InstancePartitionAutoscalingConfigPtrInput
 	// The name of the instance partition's configuration (similar to a region) which
 	// defines the geographic placement and replication of data in this instance partition.
 	Config pulumi.StringInput
@@ -252,11 +339,12 @@ type InstancePartitionArgs struct {
 	// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance partition. One node equals
-	// 1000 processing units. Exactly one of either nodeCount or processingUnits
-	// must be present.
+	// 1000 processing units. Exactly one of either node_count, processing_units,
+	// or autoscalingConfig must be present.
 	NodeCount pulumi.IntPtrInput
 	// The number of processing units allocated to this instance partition.
-	// Exactly one of either nodeCount or processingUnits must be present.
+	// Exactly one of either node_count, processing_units, or autoscalingConfig
+	// must be present.
 	ProcessingUnits pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -350,6 +438,16 @@ func (o InstancePartitionOutput) ToInstancePartitionOutputWithContext(ctx contex
 	return o
 }
 
+// The autoscaling configuration. Autoscaling is enabled if this field is set.
+// Exactly one of either node_count, processing_units, or autoscalingConfig must be
+// present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+// instance partition.
+// Structure is documented below.
+func (o InstancePartitionOutput) AutoscalingConfig() InstancePartitionAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *InstancePartition) InstancePartitionAutoscalingConfigPtrOutput { return v.AutoscalingConfig }).(InstancePartitionAutoscalingConfigPtrOutput)
+}
+
 // The name of the instance partition's configuration (similar to a region) which
 // defines the geographic placement and replication of data in this instance partition.
 func (o InstancePartitionOutput) Config() pulumi.StringOutput {
@@ -375,16 +473,17 @@ func (o InstancePartitionOutput) Name() pulumi.StringOutput {
 }
 
 // The number of nodes allocated to this instance partition. One node equals
-// 1000 processing units. Exactly one of either nodeCount or processingUnits
-// must be present.
-func (o InstancePartitionOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstancePartition) pulumi.IntPtrOutput { return v.NodeCount }).(pulumi.IntPtrOutput)
+// 1000 processing units. Exactly one of either node_count, processing_units,
+// or autoscalingConfig must be present.
+func (o InstancePartitionOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstancePartition) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 // The number of processing units allocated to this instance partition.
-// Exactly one of either nodeCount or processingUnits must be present.
-func (o InstancePartitionOutput) ProcessingUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstancePartition) pulumi.IntPtrOutput { return v.ProcessingUnits }).(pulumi.IntPtrOutput)
+// Exactly one of either node_count, processing_units, or autoscalingConfig
+// must be present.
+func (o InstancePartitionOutput) ProcessingUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstancePartition) pulumi.IntOutput { return v.ProcessingUnits }).(pulumi.IntOutput)
 }
 
 // The ID of the project in which the resource belongs.

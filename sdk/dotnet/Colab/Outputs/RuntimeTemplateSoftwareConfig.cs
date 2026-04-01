@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Colab.Outputs
     public sealed class RuntimeTemplateSoftwareConfig
     {
         /// <summary>
+        /// Colab Image Configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RuntimeTemplateSoftwareConfigColabImage? ColabImage;
+        /// <summary>
         /// Environment variables to be passed to the container.
         /// Structure is documented below.
         /// </summary>
@@ -26,10 +31,13 @@ namespace Pulumi.Gcp.Colab.Outputs
 
         [OutputConstructor]
         private RuntimeTemplateSoftwareConfig(
+            Outputs.RuntimeTemplateSoftwareConfigColabImage? colabImage,
+
             ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> envs,
 
             Outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig? postStartupScriptConfig)
         {
+            ColabImage = colabImage;
             Envs = envs;
             PostStartupScriptConfig = postStartupScriptConfig;
         }

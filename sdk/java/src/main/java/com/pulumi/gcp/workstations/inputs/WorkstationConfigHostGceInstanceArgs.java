@@ -121,7 +121,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
     /**
      * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     @Import(name="enableNestedVirtualization")
@@ -129,7 +129,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     public Optional<Output<Boolean>> enableNestedVirtualization() {
@@ -444,7 +444,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
         /**
          * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
         /**
          * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
          * 
          * @return builder
          * 

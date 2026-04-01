@@ -313,6 +313,69 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Agent Remote Dialogflow Agent Interruption
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Agent example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesAgentRemoteDialogflowAgentInterruption = new Gcp.Ces.Agent("ces_agent_remote_dialogflow_agent_interruption", new()
+    ///     {
+    ///         AgentId = "agent-id",
+    ///         Location = "us",
+    ///         App = cesAppForAgent.AppId,
+    ///         DisplayName = "my-agent",
+    ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
+    ///         {
+    ///             Model = "gemini-1.5-flash",
+    ///             Temperature = 0.5,
+    ///         },
+    ///         RemoteDialogflowAgent = new Gcp.Ces.Inputs.AgentRemoteDialogflowAgentArgs
+    ///         {
+    ///             Agent = "projects/example/locations/us/agents/fake-agent",
+    ///             FlowId = "fake-flow",
+    ///             EnvironmentId = "fake-env",
+    ///             RespectResponseInterruptionSettings = true,
+    ///             InputVariableMapping = 
+    ///             {
+    ///                 { "example", "1" },
+    ///             },
+    ///             OutputVariableMapping = 
+    ///             {
+    ///                 { "example", "1" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

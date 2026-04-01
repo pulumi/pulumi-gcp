@@ -40,6 +40,10 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// agent execution ends.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? OutputVariableMapping;
+        /// <summary>
+        /// Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`AllowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+        /// </summary>
+        public readonly bool? RespectResponseInterruptionSettings;
 
         [OutputConstructor]
         private AgentRemoteDialogflowAgent(
@@ -51,13 +55,16 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             ImmutableDictionary<string, string>? inputVariableMapping,
 
-            ImmutableDictionary<string, string>? outputVariableMapping)
+            ImmutableDictionary<string, string>? outputVariableMapping,
+
+            bool? respectResponseInterruptionSettings)
         {
             Agent = agent;
             EnvironmentId = environmentId;
             FlowId = flowId;
             InputVariableMapping = inputVariableMapping;
             OutputVariableMapping = outputVariableMapping;
+            RespectResponseInterruptionSettings = respectResponseInterruptionSettings;
         }
     }
 }

@@ -817,6 +817,38 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Autonomous Database Disaster Recovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        adb_dr = gcp.oracledatabase.AutonomousDatabase("adb-dr",
+            autonomous_database_id="my-instance",
+            location="us-east4",
+            project="my-project",
+            database="mydatabase",
+            admin_password="123Abpassword",
+            properties={
+                "compute_count": 2,
+                "data_storage_size_gb": 20,
+                "db_version": "19c",
+                "db_workload": "OLTP",
+                "license_type": "LICENSE_INCLUDED",
+                "mtls_connection_required": True,
+            },
+            deletion_protection=True)
+        my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+            autonomous_database_id="my-instance",
+            location="my-location",
+            project="my-project",
+            source_config={
+                "autonomous_database": adb_dr.name,
+                "automatic_backups_replication_enabled": False,
+            },
+            deletion_protection=True)
+        ```
+
         ## Import
 
         AutonomousDatabase can be imported using any of these accepted formats:
@@ -999,6 +1031,38 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Autonomous Database Disaster Recovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        adb_dr = gcp.oracledatabase.AutonomousDatabase("adb-dr",
+            autonomous_database_id="my-instance",
+            location="us-east4",
+            project="my-project",
+            database="mydatabase",
+            admin_password="123Abpassword",
+            properties={
+                "compute_count": 2,
+                "data_storage_size_gb": 20,
+                "db_version": "19c",
+                "db_workload": "OLTP",
+                "license_type": "LICENSE_INCLUDED",
+                "mtls_connection_required": True,
+            },
+            deletion_protection=True)
+        my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+            autonomous_database_id="my-instance",
+            location="my-location",
+            project="my-project",
+            source_config={
+                "autonomous_database": adb_dr.name,
+                "automatic_backups_replication_enabled": False,
+            },
+            deletion_protection=True)
+        ```
+
         ## Import
 
         AutonomousDatabase can be imported using any of these accepted formats:

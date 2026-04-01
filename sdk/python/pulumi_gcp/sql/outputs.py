@@ -2078,6 +2078,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             suggest = "server_ca_mode"
         elif key == "serverCaPool":
             suggest = "server_ca_pool"
+        elif key == "serverCertificateRotationMode":
+            suggest = "server_certificate_rotation_mode"
         elif key == "sslMode":
             suggest = "ssl_mode"
 
@@ -2102,6 +2104,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                  psc_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']] = None,
                  server_ca_mode: Optional[_builtins.str] = None,
                  server_ca_pool: Optional[_builtins.str] = None,
+                 server_certificate_rotation_mode: Optional[_builtins.str] = None,
                  ssl_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -2118,6 +2121,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param _builtins.str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
         :param _builtins.str server_ca_pool: The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        :param _builtins.str server_certificate_rotation_mode: Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         :param _builtins.str ssl_mode: Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         if allocated_ip_range is not None:
@@ -2138,6 +2142,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         if server_ca_pool is not None:
             pulumi.set(__self__, "server_ca_pool", server_ca_pool)
+        if server_certificate_rotation_mode is not None:
+            pulumi.set(__self__, "server_certificate_rotation_mode", server_certificate_rotation_mode)
         if ssl_mode is not None:
             pulumi.set(__self__, "ssl_mode", ssl_mode)
 
@@ -2215,6 +2221,14 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         """
         return pulumi.get(self, "server_ca_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCertificateRotationMode")
+    def server_certificate_rotation_mode(self) -> Optional[_builtins.str]:
+        """
+        Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+        """
+        return pulumi.get(self, "server_certificate_rotation_mode")
 
     @_builtins.property
     @pulumi.getter(name="sslMode")
@@ -4476,6 +4490,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
                  server_ca_mode: _builtins.str,
                  server_ca_pool: _builtins.str,
+                 server_certificate_rotation_mode: _builtins.str,
                  ssl_mode: _builtins.str):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -4486,6 +4501,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param _builtins.str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted.
         :param _builtins.str server_ca_pool: The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        :param _builtins.str server_certificate_rotation_mode: Settings for how the server certificate gets rotated.
         :param _builtins.str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -4497,6 +4513,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         pulumi.set(__self__, "server_ca_pool", server_ca_pool)
+        pulumi.set(__self__, "server_certificate_rotation_mode", server_certificate_rotation_mode)
         pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @_builtins.property
@@ -4567,6 +4584,14 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
         """
         return pulumi.get(self, "server_ca_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCertificateRotationMode")
+    def server_certificate_rotation_mode(self) -> _builtins.str:
+        """
+        Settings for how the server certificate gets rotated.
+        """
+        return pulumi.get(self, "server_certificate_rotation_mode")
 
     @_builtins.property
     @pulumi.getter(name="sslMode")
@@ -6707,6 +6732,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
                  psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
                  server_ca_mode: _builtins.str,
                  server_ca_pool: _builtins.str,
+                 server_certificate_rotation_mode: _builtins.str,
                  ssl_mode: _builtins.str):
         """
         :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -6717,6 +6743,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param _builtins.str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted.
         :param _builtins.str server_ca_pool: The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        :param _builtins.str server_certificate_rotation_mode: Settings for how the server certificate gets rotated.
         :param _builtins.str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -6728,6 +6755,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "server_ca_mode", server_ca_mode)
         pulumi.set(__self__, "server_ca_pool", server_ca_pool)
+        pulumi.set(__self__, "server_certificate_rotation_mode", server_certificate_rotation_mode)
         pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @_builtins.property
@@ -6798,6 +6826,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
         """
         return pulumi.get(self, "server_ca_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCertificateRotationMode")
+    def server_certificate_rotation_mode(self) -> _builtins.str:
+        """
+        Settings for how the server certificate gets rotated.
+        """
+        return pulumi.get(self, "server_certificate_rotation_mode")
 
     @_builtins.property
     @pulumi.getter(name="sslMode")

@@ -16,8 +16,38 @@ namespace Pulumi.Gcp.Spanner.Inputs
         /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
-        [Input("autoscalingLimits", required: true)]
-        public Input<Inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsGetArgs> AutoscalingLimits { get; set; } = null!;
+        [Input("autoscalingLimits")]
+        public Input<Inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsGetArgs>? AutoscalingLimits { get; set; }
+
+        /// <summary>
+        /// The target high priority cpu utilization percentage that the autoscaler
+        /// should be trying to achieve for this replica.
+        /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        /// </summary>
+        [Input("autoscalingTargetHighPriorityCpuUtilizationPercent")]
+        public Input<int>? AutoscalingTargetHighPriorityCpuUtilizationPercent { get; set; }
+
+        /// <summary>
+        /// The target total cpu utilization percentage that the autoscaler
+        /// should be trying to achieve for this replica.
+        /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        /// </summary>
+        [Input("autoscalingTargetTotalCpuUtilizationPercent")]
+        public Input<int>? AutoscalingTargetTotalCpuUtilizationPercent { get; set; }
+
+        /// <summary>
+        /// If true, disables high priority CPU autoscaling for this replica and ignores
+        /// HighPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+        /// </summary>
+        [Input("disableHighPriorityCpuAutoscaling")]
+        public Input<bool>? DisableHighPriorityCpuAutoscaling { get; set; }
+
+        /// <summary>
+        /// If true, disables total CPU autoscaling for this replica and ignores
+        /// TotalCpuUtilizationPercent in the top-level autoscaling configuration.
+        /// </summary>
+        [Input("disableTotalCpuAutoscaling")]
+        public Input<bool>? DisableTotalCpuAutoscaling { get; set; }
 
         public InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesGetArgs()
         {

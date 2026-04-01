@@ -12,12 +12,9 @@ namespace Pulumi.Gcp.Workstations
     /// <summary>
     /// A single instance of a developer workstation with its own persistent storage.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about Workstation, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+    /// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs.workstations)
     /// * How-to Guides
     ///     * [Workstations](https://cloud.google.com/workstations/docs/)
     /// 

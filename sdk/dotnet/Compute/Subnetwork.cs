@@ -576,7 +576,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ReservedInternalRange { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// 'Configures subnet mask resolution for this subnetwork.'
         /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         /// </summary>
@@ -835,7 +834,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// 'Configures subnet mask resolution for this subnetwork.'
         /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         /// </summary>
@@ -1076,7 +1074,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// 'Configures subnet mask resolution for this subnetwork.'
         /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         /// </summary>

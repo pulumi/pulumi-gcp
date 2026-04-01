@@ -53,6 +53,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? ServerCaPool;
         /// <summary>
+        /// Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `ServerCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+        /// </summary>
+        public readonly string? ServerCertificateRotationMode;
+        /// <summary>
         /// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         /// </summary>
         public readonly string? SslMode;
@@ -77,6 +81,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? serverCaPool,
 
+            string? serverCertificateRotationMode,
+
             string? sslMode)
         {
             AllocatedIpRange = allocatedIpRange;
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PscConfigs = pscConfigs;
             ServerCaMode = serverCaMode;
             ServerCaPool = serverCaPool;
+            ServerCertificateRotationMode = serverCertificateRotationMode;
             SslMode = sslMode;
         }
     }

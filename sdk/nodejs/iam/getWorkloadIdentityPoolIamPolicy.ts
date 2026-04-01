@@ -6,8 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for workloadidentitypool
- * > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
  *
  * ## Example Usage
  *
@@ -66,8 +64,6 @@ export interface GetWorkloadIdentityPoolIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for workloadidentitypool
- * > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
  *
  * ## Example Usage
  *

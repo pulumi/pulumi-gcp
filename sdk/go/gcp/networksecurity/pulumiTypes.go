@@ -12130,6 +12130,124 @@ func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) TargetUri() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAddressGroupsAddressGroup struct {
+	Capacity int      `pulumi:"capacity"`
+	Items    []string `pulumi:"items"`
+	// The location of the Address Group.
+	Location string `pulumi:"location"`
+	// The name of the Address Group.
+	Name string `pulumi:"name"`
+}
+
+// GetAddressGroupsAddressGroupInput is an input type that accepts GetAddressGroupsAddressGroupArgs and GetAddressGroupsAddressGroupOutput values.
+// You can construct a concrete instance of `GetAddressGroupsAddressGroupInput` via:
+//
+//	GetAddressGroupsAddressGroupArgs{...}
+type GetAddressGroupsAddressGroupInput interface {
+	pulumi.Input
+
+	ToGetAddressGroupsAddressGroupOutput() GetAddressGroupsAddressGroupOutput
+	ToGetAddressGroupsAddressGroupOutputWithContext(context.Context) GetAddressGroupsAddressGroupOutput
+}
+
+type GetAddressGroupsAddressGroupArgs struct {
+	Capacity pulumi.IntInput         `pulumi:"capacity"`
+	Items    pulumi.StringArrayInput `pulumi:"items"`
+	// The location of the Address Group.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The name of the Address Group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAddressGroupsAddressGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressGroupsAddressGroup)(nil)).Elem()
+}
+
+func (i GetAddressGroupsAddressGroupArgs) ToGetAddressGroupsAddressGroupOutput() GetAddressGroupsAddressGroupOutput {
+	return i.ToGetAddressGroupsAddressGroupOutputWithContext(context.Background())
+}
+
+func (i GetAddressGroupsAddressGroupArgs) ToGetAddressGroupsAddressGroupOutputWithContext(ctx context.Context) GetAddressGroupsAddressGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressGroupsAddressGroupOutput)
+}
+
+// GetAddressGroupsAddressGroupArrayInput is an input type that accepts GetAddressGroupsAddressGroupArray and GetAddressGroupsAddressGroupArrayOutput values.
+// You can construct a concrete instance of `GetAddressGroupsAddressGroupArrayInput` via:
+//
+//	GetAddressGroupsAddressGroupArray{ GetAddressGroupsAddressGroupArgs{...} }
+type GetAddressGroupsAddressGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressGroupsAddressGroupArrayOutput() GetAddressGroupsAddressGroupArrayOutput
+	ToGetAddressGroupsAddressGroupArrayOutputWithContext(context.Context) GetAddressGroupsAddressGroupArrayOutput
+}
+
+type GetAddressGroupsAddressGroupArray []GetAddressGroupsAddressGroupInput
+
+func (GetAddressGroupsAddressGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressGroupsAddressGroup)(nil)).Elem()
+}
+
+func (i GetAddressGroupsAddressGroupArray) ToGetAddressGroupsAddressGroupArrayOutput() GetAddressGroupsAddressGroupArrayOutput {
+	return i.ToGetAddressGroupsAddressGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressGroupsAddressGroupArray) ToGetAddressGroupsAddressGroupArrayOutputWithContext(ctx context.Context) GetAddressGroupsAddressGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressGroupsAddressGroupArrayOutput)
+}
+
+type GetAddressGroupsAddressGroupOutput struct{ *pulumi.OutputState }
+
+func (GetAddressGroupsAddressGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressGroupsAddressGroup)(nil)).Elem()
+}
+
+func (o GetAddressGroupsAddressGroupOutput) ToGetAddressGroupsAddressGroupOutput() GetAddressGroupsAddressGroupOutput {
+	return o
+}
+
+func (o GetAddressGroupsAddressGroupOutput) ToGetAddressGroupsAddressGroupOutputWithContext(ctx context.Context) GetAddressGroupsAddressGroupOutput {
+	return o
+}
+
+func (o GetAddressGroupsAddressGroupOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddressGroupsAddressGroup) int { return v.Capacity }).(pulumi.IntOutput)
+}
+
+func (o GetAddressGroupsAddressGroupOutput) Items() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAddressGroupsAddressGroup) []string { return v.Items }).(pulumi.StringArrayOutput)
+}
+
+// The location of the Address Group.
+func (o GetAddressGroupsAddressGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the Address Group.
+func (o GetAddressGroupsAddressGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAddressGroupsAddressGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressGroupsAddressGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressGroupsAddressGroup)(nil)).Elem()
+}
+
+func (o GetAddressGroupsAddressGroupArrayOutput) ToGetAddressGroupsAddressGroupArrayOutput() GetAddressGroupsAddressGroupArrayOutput {
+	return o
+}
+
+func (o GetAddressGroupsAddressGroupArrayOutput) ToGetAddressGroupsAddressGroupArrayOutputWithContext(ctx context.Context) GetAddressGroupsAddressGroupArrayOutput {
+	return o
+}
+
+func (o GetAddressGroupsAddressGroupArrayOutput) Index(i pulumi.IntInput) GetAddressGroupsAddressGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressGroupsAddressGroup {
+		return vs[0].([]GetAddressGroupsAddressGroup)[vs[1].(int)]
+	}).(GetAddressGroupsAddressGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupIamBindingConditionInput)(nil)).Elem(), AddressGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupIamBindingConditionPtrInput)(nil)).Elem(), AddressGroupIamBindingConditionArgs{})
@@ -12293,6 +12411,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointPtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressGroupsAddressGroupInput)(nil)).Elem(), GetAddressGroupsAddressGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressGroupsAddressGroupArrayInput)(nil)).Elem(), GetAddressGroupsAddressGroupArray{})
 	pulumi.RegisterOutputType(AddressGroupIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(AddressGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AddressGroupIamMemberConditionOutput{})
@@ -12455,4 +12575,6 @@ func init() {
 	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateGrpcEndpointOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(GetAddressGroupsAddressGroupOutput{})
+	pulumi.RegisterOutputType(GetAddressGroupsAddressGroupArrayOutput{})
 }

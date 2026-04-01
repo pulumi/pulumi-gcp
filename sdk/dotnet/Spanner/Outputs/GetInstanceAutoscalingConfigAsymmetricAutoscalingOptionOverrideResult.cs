@@ -17,11 +17,46 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// A nested object resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult> AutoscalingLimits;
+        /// <summary>
+        /// The target high priority cpu utilization percentage that the autoscaler
+        /// should be trying to achieve for this replica.
+        /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        /// </summary>
+        public readonly int AutoscalingTargetHighPriorityCpuUtilizationPercent;
+        /// <summary>
+        /// The target total cpu utilization percentage that the autoscaler
+        /// should be trying to achieve for this replica.
+        /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        /// </summary>
+        public readonly int AutoscalingTargetTotalCpuUtilizationPercent;
+        /// <summary>
+        /// If true, disables high priority CPU autoscaling for this replica and ignores
+        /// HighPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+        /// </summary>
+        public readonly bool DisableHighPriorityCpuAutoscaling;
+        /// <summary>
+        /// If true, disables total CPU autoscaling for this replica and ignores
+        /// TotalCpuUtilizationPercent in the top-level autoscaling configuration.
+        /// </summary>
+        public readonly bool DisableTotalCpuAutoscaling;
 
         [OutputConstructor]
-        private GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult(ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult> autoscalingLimits)
+        private GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult(
+            ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult> autoscalingLimits,
+
+            int autoscalingTargetHighPriorityCpuUtilizationPercent,
+
+            int autoscalingTargetTotalCpuUtilizationPercent,
+
+            bool disableHighPriorityCpuAutoscaling,
+
+            bool disableTotalCpuAutoscaling)
         {
             AutoscalingLimits = autoscalingLimits;
+            AutoscalingTargetHighPriorityCpuUtilizationPercent = autoscalingTargetHighPriorityCpuUtilizationPercent;
+            AutoscalingTargetTotalCpuUtilizationPercent = autoscalingTargetTotalCpuUtilizationPercent;
+            DisableHighPriorityCpuAutoscaling = disableHighPriorityCpuAutoscaling;
+            DisableTotalCpuAutoscaling = disableTotalCpuAutoscaling;
         }
     }
 }

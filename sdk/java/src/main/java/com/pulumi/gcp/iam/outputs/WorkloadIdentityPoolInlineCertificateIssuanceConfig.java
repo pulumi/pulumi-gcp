@@ -4,7 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -25,7 +25,7 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
      *   same region. Also the CA pool region (in value) must match the workload&#39;s region (key).
      * 
      */
-    private Map<String,String> caPools;
+    private @Nullable Map<String,String> caPools;
     /**
      * @return Key algorithm to use when generating the key pair. This key pair will be used to create
      * the certificate. If unspecified, this will default to `ECDSA_P256`.
@@ -53,6 +53,17 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
      * 
      */
     private @Nullable Integer rotationWindowPercentage;
+    /**
+     * @return If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+     * CA in the same region as the workload will be selected to issue the certificate. Enabling
+     * this will clear any existing `caPools` configuration to provision the certificates.
+     * 
+     * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+     * certificates will be automatically provisioned from the default shared CAs. This flag should
+     * not be set if you want to use your own CA pools to provision the certificates.
+     * 
+     */
+    private @Nullable Boolean useDefaultSharedCa;
 
     private WorkloadIdentityPoolInlineCertificateIssuanceConfig() {}
     /**
@@ -67,7 +78,7 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
      * 
      */
     public Map<String,String> caPools() {
-        return this.caPools;
+        return this.caPools == null ? Map.of() : this.caPools;
     }
     /**
      * @return Key algorithm to use when generating the key pair. This key pair will be used to create
@@ -102,6 +113,19 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
     public Optional<Integer> rotationWindowPercentage() {
         return Optional.ofNullable(this.rotationWindowPercentage);
     }
+    /**
+     * @return If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+     * CA in the same region as the workload will be selected to issue the certificate. Enabling
+     * this will clear any existing `caPools` configuration to provision the certificates.
+     * 
+     * &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+     * certificates will be automatically provisioned from the default shared CAs. This flag should
+     * not be set if you want to use your own CA pools to provision the certificates.
+     * 
+     */
+    public Optional<Boolean> useDefaultSharedCa() {
+        return Optional.ofNullable(this.useDefaultSharedCa);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -112,10 +136,11 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> caPools;
+        private @Nullable Map<String,String> caPools;
         private @Nullable String keyAlgorithm;
         private @Nullable String lifetime;
         private @Nullable Integer rotationWindowPercentage;
+        private @Nullable Boolean useDefaultSharedCa;
         public Builder() {}
         public Builder(WorkloadIdentityPoolInlineCertificateIssuanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -123,13 +148,12 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
     	      this.keyAlgorithm = defaults.keyAlgorithm;
     	      this.lifetime = defaults.lifetime;
     	      this.rotationWindowPercentage = defaults.rotationWindowPercentage;
+    	      this.useDefaultSharedCa = defaults.useDefaultSharedCa;
         }
 
         @CustomType.Setter
-        public Builder caPools(Map<String,String> caPools) {
-            if (caPools == null) {
-              throw new MissingRequiredPropertyException("WorkloadIdentityPoolInlineCertificateIssuanceConfig", "caPools");
-            }
+        public Builder caPools(@Nullable Map<String,String> caPools) {
+
             this.caPools = caPools;
             return this;
         }
@@ -151,12 +175,19 @@ public final class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
             this.rotationWindowPercentage = rotationWindowPercentage;
             return this;
         }
+        @CustomType.Setter
+        public Builder useDefaultSharedCa(@Nullable Boolean useDefaultSharedCa) {
+
+            this.useDefaultSharedCa = useDefaultSharedCa;
+            return this;
+        }
         public WorkloadIdentityPoolInlineCertificateIssuanceConfig build() {
             final var _resultValue = new WorkloadIdentityPoolInlineCertificateIssuanceConfig();
             _resultValue.caPools = caPools;
             _resultValue.keyAlgorithm = keyAlgorithm;
             _resultValue.lifetime = lifetime;
             _resultValue.rotationWindowPercentage = rotationWindowPercentage;
+            _resultValue.useDefaultSharedCa = useDefaultSharedCa;
             return _resultValue;
         }
     }

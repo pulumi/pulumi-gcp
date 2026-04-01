@@ -55,8 +55,7 @@ import (
 //						PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
 //							EntrypointModule: pulumi.String("simple_agent"),
 //							EntrypointObject: pulumi.String("fixed_name_generator"),
-//							RequirementsFile: pulumi.String("./test-fixtures/requirements.txt"),
-//							Version:          pulumi.String("3.11"),
+//							Version:          pulumi.String("3.14"),
 //						},
 //					},
 //				},

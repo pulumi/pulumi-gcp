@@ -38,6 +38,7 @@ from .iam_policy import *
 from .job import *
 from .reservation import *
 from .reservation_assignment import *
+from .reservation_group import *
 from .routine import *
 from .row_access_policy import *
 from .table import *

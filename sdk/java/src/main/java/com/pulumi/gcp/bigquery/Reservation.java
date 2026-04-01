@@ -338,6 +338,20 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.replicationStatuses;
     }
     /**
+     * The reservation group that this reservation belongs to.
+     * 
+     */
+    @Export(name="reservationGroup", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> reservationGroup;
+
+    /**
+     * @return The reservation group that this reservation belongs to.
+     * 
+     */
+    public Output<Optional<String>> reservationGroup() {
+        return Codegen.optional(this.reservationGroup);
+    }
+    /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.

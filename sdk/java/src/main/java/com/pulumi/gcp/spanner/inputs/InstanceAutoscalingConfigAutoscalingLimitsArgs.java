@@ -31,7 +31,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     }
 
     /**
-     * Specifies maximum number of processing units allocated to the instance.
+     * The maximum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
      * 
@@ -40,7 +40,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     private @Nullable Output<Integer> maxProcessingUnits;
 
     /**
-     * @return Specifies maximum number of processing units allocated to the instance.
+     * @return The maximum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
      * 
@@ -65,7 +65,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     }
 
     /**
-     * Specifies minimum number of processing units allocated to the instance.
+     * The minimum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000.
      * 
      */
@@ -73,7 +73,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     private @Nullable Output<Integer> minProcessingUnits;
 
     /**
-     * @return Specifies minimum number of processing units allocated to the instance.
+     * @return The minimum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000.
      * 
      */
@@ -130,7 +130,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param maxProcessingUnits Specifies maximum number of processing units allocated to the instance.
+         * @param maxProcessingUnits The maximum number of processing units for this specific replica.
          * If set, this number should be multiples of 1000 and be greater than or equal to
          * min_processing_units.
          * 
@@ -143,7 +143,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param maxProcessingUnits Specifies maximum number of processing units allocated to the instance.
+         * @param maxProcessingUnits The maximum number of processing units for this specific replica.
          * If set, this number should be multiples of 1000 and be greater than or equal to
          * min_processing_units.
          * 
@@ -176,7 +176,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param minProcessingUnits Specifies minimum number of processing units allocated to the instance.
+         * @param minProcessingUnits The minimum number of processing units for this specific replica.
          * If set, this number should be multiples of 1000.
          * 
          * @return builder
@@ -188,7 +188,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param minProcessingUnits Specifies minimum number of processing units allocated to the instance.
+         * @param minProcessingUnits The minimum number of processing units for this specific replica.
          * If set, this number should be multiples of 1000.
          * 
          * @return builder

@@ -247,6 +247,65 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Oracledatabase Autonomous Database Disaster Recovery
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
+ * import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabaseSourceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var adb_dr = new AutonomousDatabase("adb-dr", AutonomousDatabaseArgs.builder()
+ *             .autonomousDatabaseId("my-instance")
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .database("mydatabase")
+ *             .adminPassword("123Abpassword")
+ *             .properties(AutonomousDatabasePropertiesArgs.builder()
+ *                 .computeCount(2.0)
+ *                 .dataStorageSizeGb(20)
+ *                 .dbVersion("19c")
+ *                 .dbWorkload("OLTP")
+ *                 .licenseType("LICENSE_INCLUDED")
+ *                 .mtlsConnectionRequired(true)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var myADB = new AutonomousDatabase("myADB", AutonomousDatabaseArgs.builder()
+ *             .autonomousDatabaseId("my-instance")
+ *             .location("my-location")
+ *             .project("my-project")
+ *             .sourceConfig(AutonomousDatabaseSourceConfigArgs.builder()
+ *                 .autonomousDatabase(adb_dr.name())
+ *                 .automaticBackupsReplicationEnabled(false)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * AutonomousDatabase can be imported using any of these accepted formats:

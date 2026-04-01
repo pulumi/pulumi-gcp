@@ -191,6 +191,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Enabling Encryption Enforcement Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hns_enabled = new gcp.storage.Bucket("hns-enabled", {
+ *     name: "hns-enabled-bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     encryption: {
+ *         googleManagedEncryptionEnforcementConfig: {
+ *             restrictionMode: "FullyRestricted",
+ *         },
+ *         customerManagedEncryptionEnforcementConfig: {
+ *             restrictionMode: "FullyRestricted",
+ *         },
+ *         customerSuppliedEncryptionEnforcementConfig: {
+ *             restrictionMode: "NotRestricted",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

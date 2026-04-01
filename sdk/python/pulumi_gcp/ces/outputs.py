@@ -669,6 +669,8 @@ class AgentRemoteDialogflowAgent(dict):
             suggest = "input_variable_mapping"
         elif key == "outputVariableMapping":
             suggest = "output_variable_mapping"
+        elif key == "respectResponseInterruptionSettings":
+            suggest = "respect_response_interruption_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AgentRemoteDialogflowAgent. Access the value via the '{suggest}' property getter instead.")
@@ -686,7 +688,8 @@ class AgentRemoteDialogflowAgent(dict):
                  flow_id: _builtins.str,
                  environment_id: Optional[_builtins.str] = None,
                  input_variable_mapping: Optional[Mapping[str, _builtins.str]] = None,
-                 output_variable_mapping: Optional[Mapping[str, _builtins.str]] = None):
+                 output_variable_mapping: Optional[Mapping[str, _builtins.str]] = None,
+                 respect_response_interruption_settings: Optional[_builtins.bool] = None):
         """
         :param _builtins.str agent: The
                [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
@@ -700,6 +703,7 @@ class AgentRemoteDialogflowAgent(dict):
         :param Mapping[str, _builtins.str] output_variable_mapping: The mapping of the Dialogflow session parameters names to the app
                variables names to be sent back to the CES agent after the Dialogflow
                agent execution ends.
+        :param _builtins.bool respect_response_interruption_settings: Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allow_playback_interruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
         """
         pulumi.set(__self__, "agent", agent)
         pulumi.set(__self__, "flow_id", flow_id)
@@ -709,6 +713,8 @@ class AgentRemoteDialogflowAgent(dict):
             pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
         if output_variable_mapping is not None:
             pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
+        if respect_response_interruption_settings is not None:
+            pulumi.set(__self__, "respect_response_interruption_settings", respect_response_interruption_settings)
 
     @_builtins.property
     @pulumi.getter
@@ -756,6 +762,14 @@ class AgentRemoteDialogflowAgent(dict):
         agent execution ends.
         """
         return pulumi.get(self, "output_variable_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="respectResponseInterruptionSettings")
+    def respect_response_interruption_settings(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allow_playback_interruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+        """
+        return pulumi.get(self, "respect_response_interruption_settings")
 
 
 @pulumi.output_type

@@ -308,6 +308,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
  * const example_glossary = new gcp.dataplex.Glossary("example-glossary", {
  *     glossaryId: "glossary-basic",
@@ -318,6 +319,10 @@ import * as utilities from "../utilities";
  *     glossaryId: example_glossary.glossaryId,
  *     location: "us-central1",
  *     termId: "glossary-term",
+ * });
+ * // Introduce a 45-second wait after the glossary resource creation
+ * const wait_for_sync = new time.Sleep("wait-for-sync", {createDuration: "45s"}, {
+ *     dependsOn: [example_glossary_term],
  * });
  * const tfTestGlossaryTerm = new gcp.dataplex.Entry("tf_test_glossary_term", {
  *     entryGroupId: "@dataplex",
@@ -333,7 +338,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * }, {
- *     dependsOn: [example_glossary_term],
+ *     dependsOn: [wait_for_sync],
  * });
  * ```
  *

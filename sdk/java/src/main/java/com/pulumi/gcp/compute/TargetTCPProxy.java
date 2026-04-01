@@ -172,6 +172,77 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Target Tcp Proxy Tls Route
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.TargetTCPProxy;
+ * import com.pulumi.gcp.compute.TargetTCPProxyArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpsHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.networkservices.TlsRoute;
+ * import com.pulumi.gcp.networkservices.TlsRouteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleArgs;
+ * import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new TargetTCPProxy("default", TargetTCPProxyArgs.builder()
+ *             .name("test-proxy")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .protocol("TCP")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultTlsRoute = new TlsRoute("defaultTlsRoute", TlsRouteArgs.builder()
+ *             .name("tls-route-check")
+ *             .targetProxies(default_.id())
+ *             .rules(TlsRouteRuleArgs.builder()
+ *                 .matches(TlsRouteRuleMatchArgs.builder()
+ *                     .sniHosts("example.com")
+ *                     .build())
+ *                 .action(TlsRouteRuleActionArgs.builder()
+ *                     .destinations(TlsRouteRuleActionDestinationArgs.builder()
+ *                         .serviceName(defaultBackendService.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

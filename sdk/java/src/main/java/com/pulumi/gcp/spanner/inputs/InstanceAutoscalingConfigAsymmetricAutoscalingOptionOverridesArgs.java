@@ -5,9 +5,12 @@ package com.pulumi.gcp.spanner.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,22 +22,98 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
      * Structure is documented below.
      * 
      */
-    @Import(name="autoscalingLimits", required=true)
-    private Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs> autoscalingLimits;
+    @Import(name="autoscalingLimits")
+    private @Nullable Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs> autoscalingLimits;
 
     /**
      * @return A nested object resource.
      * Structure is documented below.
      * 
      */
-    public Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs> autoscalingLimits() {
-        return this.autoscalingLimits;
+    public Optional<Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs>> autoscalingLimits() {
+        return Optional.ofNullable(this.autoscalingLimits);
+    }
+
+    /**
+     * The target high priority cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    @Import(name="autoscalingTargetHighPriorityCpuUtilizationPercent")
+    private @Nullable Output<Integer> autoscalingTargetHighPriorityCpuUtilizationPercent;
+
+    /**
+     * @return The target high priority cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    public Optional<Output<Integer>> autoscalingTargetHighPriorityCpuUtilizationPercent() {
+        return Optional.ofNullable(this.autoscalingTargetHighPriorityCpuUtilizationPercent);
+    }
+
+    /**
+     * The target total cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    @Import(name="autoscalingTargetTotalCpuUtilizationPercent")
+    private @Nullable Output<Integer> autoscalingTargetTotalCpuUtilizationPercent;
+
+    /**
+     * @return The target total cpu utilization percentage that the autoscaler
+     * should be trying to achieve for this replica.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
+    public Optional<Output<Integer>> autoscalingTargetTotalCpuUtilizationPercent() {
+        return Optional.ofNullable(this.autoscalingTargetTotalCpuUtilizationPercent);
+    }
+
+    /**
+     * If true, disables high priority CPU autoscaling for this replica and ignores
+     * highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    @Import(name="disableHighPriorityCpuAutoscaling")
+    private @Nullable Output<Boolean> disableHighPriorityCpuAutoscaling;
+
+    /**
+     * @return If true, disables high priority CPU autoscaling for this replica and ignores
+     * highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> disableHighPriorityCpuAutoscaling() {
+        return Optional.ofNullable(this.disableHighPriorityCpuAutoscaling);
+    }
+
+    /**
+     * If true, disables total CPU autoscaling for this replica and ignores
+     * totalCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    @Import(name="disableTotalCpuAutoscaling")
+    private @Nullable Output<Boolean> disableTotalCpuAutoscaling;
+
+    /**
+     * @return If true, disables total CPU autoscaling for this replica and ignores
+     * totalCpuUtilizationPercent in the top-level autoscaling configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> disableTotalCpuAutoscaling() {
+        return Optional.ofNullable(this.disableTotalCpuAutoscaling);
     }
 
     private InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs() {}
 
     private InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs $) {
         this.autoscalingLimits = $.autoscalingLimits;
+        this.autoscalingTargetHighPriorityCpuUtilizationPercent = $.autoscalingTargetHighPriorityCpuUtilizationPercent;
+        this.autoscalingTargetTotalCpuUtilizationPercent = $.autoscalingTargetTotalCpuUtilizationPercent;
+        this.disableHighPriorityCpuAutoscaling = $.disableHighPriorityCpuAutoscaling;
+        this.disableTotalCpuAutoscaling = $.disableTotalCpuAutoscaling;
     }
 
     public static Builder builder() {
@@ -62,7 +141,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
          * @return builder
          * 
          */
-        public Builder autoscalingLimits(Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs> autoscalingLimits) {
+        public Builder autoscalingLimits(@Nullable Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs> autoscalingLimits) {
             $.autoscalingLimits = autoscalingLimits;
             return this;
         }
@@ -78,10 +157,103 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
             return autoscalingLimits(Output.of(autoscalingLimits));
         }
 
+        /**
+         * @param autoscalingTargetHighPriorityCpuUtilizationPercent The target high priority cpu utilization percentage that the autoscaler
+         * should be trying to achieve for this replica.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingTargetHighPriorityCpuUtilizationPercent(@Nullable Output<Integer> autoscalingTargetHighPriorityCpuUtilizationPercent) {
+            $.autoscalingTargetHighPriorityCpuUtilizationPercent = autoscalingTargetHighPriorityCpuUtilizationPercent;
+            return this;
+        }
+
+        /**
+         * @param autoscalingTargetHighPriorityCpuUtilizationPercent The target high priority cpu utilization percentage that the autoscaler
+         * should be trying to achieve for this replica.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingTargetHighPriorityCpuUtilizationPercent(Integer autoscalingTargetHighPriorityCpuUtilizationPercent) {
+            return autoscalingTargetHighPriorityCpuUtilizationPercent(Output.of(autoscalingTargetHighPriorityCpuUtilizationPercent));
+        }
+
+        /**
+         * @param autoscalingTargetTotalCpuUtilizationPercent The target total cpu utilization percentage that the autoscaler
+         * should be trying to achieve for this replica.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingTargetTotalCpuUtilizationPercent(@Nullable Output<Integer> autoscalingTargetTotalCpuUtilizationPercent) {
+            $.autoscalingTargetTotalCpuUtilizationPercent = autoscalingTargetTotalCpuUtilizationPercent;
+            return this;
+        }
+
+        /**
+         * @param autoscalingTargetTotalCpuUtilizationPercent The target total cpu utilization percentage that the autoscaler
+         * should be trying to achieve for this replica.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingTargetTotalCpuUtilizationPercent(Integer autoscalingTargetTotalCpuUtilizationPercent) {
+            return autoscalingTargetTotalCpuUtilizationPercent(Output.of(autoscalingTargetTotalCpuUtilizationPercent));
+        }
+
+        /**
+         * @param disableHighPriorityCpuAutoscaling If true, disables high priority CPU autoscaling for this replica and ignores
+         * highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableHighPriorityCpuAutoscaling(@Nullable Output<Boolean> disableHighPriorityCpuAutoscaling) {
+            $.disableHighPriorityCpuAutoscaling = disableHighPriorityCpuAutoscaling;
+            return this;
+        }
+
+        /**
+         * @param disableHighPriorityCpuAutoscaling If true, disables high priority CPU autoscaling for this replica and ignores
+         * highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableHighPriorityCpuAutoscaling(Boolean disableHighPriorityCpuAutoscaling) {
+            return disableHighPriorityCpuAutoscaling(Output.of(disableHighPriorityCpuAutoscaling));
+        }
+
+        /**
+         * @param disableTotalCpuAutoscaling If true, disables total CPU autoscaling for this replica and ignores
+         * totalCpuUtilizationPercent in the top-level autoscaling configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableTotalCpuAutoscaling(@Nullable Output<Boolean> disableTotalCpuAutoscaling) {
+            $.disableTotalCpuAutoscaling = disableTotalCpuAutoscaling;
+            return this;
+        }
+
+        /**
+         * @param disableTotalCpuAutoscaling If true, disables total CPU autoscaling for this replica and ignores
+         * totalCpuUtilizationPercent in the top-level autoscaling configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableTotalCpuAutoscaling(Boolean disableTotalCpuAutoscaling) {
+            return disableTotalCpuAutoscaling(Output.of(disableTotalCpuAutoscaling));
+        }
+
         public InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs build() {
-            if ($.autoscalingLimits == null) {
-                throw new MissingRequiredPropertyException("InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs", "autoscalingLimits");
-            }
             return $;
         }
     }

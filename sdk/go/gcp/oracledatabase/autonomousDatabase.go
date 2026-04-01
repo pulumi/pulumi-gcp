@@ -213,6 +213,58 @@ import (
 //	}
 //
 // ```
+// ### Oracledatabase Autonomous Database Disaster Recovery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			adb_dr, err := oracledatabase.NewAutonomousDatabase(ctx, "adb-dr", &oracledatabase.AutonomousDatabaseArgs{
+//				AutonomousDatabaseId: pulumi.String("my-instance"),
+//				Location:             pulumi.String("us-east4"),
+//				Project:              pulumi.String("my-project"),
+//				Database:             pulumi.String("mydatabase"),
+//				AdminPassword:        pulumi.String("123Abpassword"),
+//				Properties: &oracledatabase.AutonomousDatabasePropertiesArgs{
+//					ComputeCount:           pulumi.Float64(2),
+//					DataStorageSizeGb:      pulumi.Int(20),
+//					DbVersion:              pulumi.String("19c"),
+//					DbWorkload:             pulumi.String("OLTP"),
+//					LicenseType:            pulumi.String("LICENSE_INCLUDED"),
+//					MtlsConnectionRequired: pulumi.Bool(true),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oracledatabase.NewAutonomousDatabase(ctx, "myADB", &oracledatabase.AutonomousDatabaseArgs{
+//				AutonomousDatabaseId: pulumi.String("my-instance"),
+//				Location:             pulumi.String("my-location"),
+//				Project:              pulumi.String("my-project"),
+//				SourceConfig: &oracledatabase.AutonomousDatabaseSourceConfigArgs{
+//					AutonomousDatabase:                 adb_dr.Name,
+//					AutomaticBackupsReplicationEnabled: pulumi.Bool(false),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // AutonomousDatabase can be imported using any of these accepted formats:
