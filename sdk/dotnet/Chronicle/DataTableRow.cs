@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Chronicle
         /// The ID of the DataTable Row.
         /// </summary>
         [Output("dataTableRow")]
-        public Output<string> DataTableRow { get; private set; } = null!;
+        public Output<string> DataTableRowId { get; private set; } = null!;
 
         /// <summary>
         /// The Chronicle instance ID.
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Chronicle
         /// The ID of the DataTable Row.
         /// </summary>
         [Input("dataTableRow")]
-        public Input<string>? DataTableRow { get; set; }
+        public Input<string>? DataTableRowId { get; set; }
 
         /// <summary>
         /// The Chronicle instance ID.
