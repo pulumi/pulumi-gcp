@@ -101,6 +101,35 @@ func skipIfNotCI(t *testing.T) {
 	}
 }
 
+// Covers pulumi/pulumi-gcp#3666.
+// Updating an instance description should not panic when multiple resource
+// policies are attached to the boot disk.
+func TestComputeInstanceWithMultipleBootDiskResourcePolicies(t *testing.T) {
+	pt := pulumiTest(
+		t,
+		filepath.Join("test-programs", "compute-instance-description-update-multiple-boot-disk-resource-policies"),
+	)
+
+	pt.SetConfig(t, "gcpProj", getProject())
+	pt.SetConfig(t, "gcpRegion", getRegion())
+	pt.SetConfig(t, "gcpZone", getZone())
+	pt.SetConfig(t, "instanceDescription", "pulumi maxitems test repro instance description 1")
+
+	pt.Up(t)
+
+	pt.SetConfig(t, "instanceDescription", "pulumi maxitems test repro instance description 2")
+
+	previewResult := pt.Preview(t)
+	assertpreview.HasNoReplacements(t, previewResult)
+	assertpreview.HasNoDeletes(t, previewResult)
+
+	upResult := pt.Up(t)
+	require.NotEmpty(t, upResult.Outputs["bootDiskName"].Value)
+	require.NotEmpty(t, upResult.Outputs["instanceName"].Value)
+
+	pt.Preview(t, optpreview.ExpectNoChanges())
+}
+
 func TestIamBinding(t *testing.T) {
 	t.Skip("TODO[https://github.com/pulumi/pulumi-gcp/issues/2725]: Flaky")
 	skipIfNotCI(t)
