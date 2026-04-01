@@ -1,6 +1,6 @@
-name: compute-instance-maxitems-3666
+name: compute-instance-description-update-multiple-boot-disk-resource-policies
 runtime: yaml
-description: Regression test for pulumi/pulumi-gcp#3666
+description: Update a compute instance description with multiple boot disk resource policy attachments
 config:
   gcpProj: string
   gcpRegion: string
