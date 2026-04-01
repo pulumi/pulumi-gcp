@@ -2212,6 +2212,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_table": {
 				DeleteBeforeReplace: true,
 			},
+			"google_chronicle_data_table_row": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"data_table_row": {
+						CSharpName: "DataTableRowId",
+					},
+				},
+			},
 			"google_chronicle_retrohunt": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"retrohunt": {
