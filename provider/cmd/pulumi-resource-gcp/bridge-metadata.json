@@ -3990,6 +3990,10 @@
                 "current": "gcp:bigquery/reservationAssignment:ReservationAssignment",
                 "majorVersion": 9
             },
+            "google_bigquery_reservation_group": {
+                "current": "gcp:bigquery/reservationGroup:ReservationGroup",
+                "majorVersion": 9
+            },
             "google_bigquery_routine": {
                 "current": "gcp:bigquery/routine:Routine",
                 "majorVersion": 9,
@@ -6034,6 +6038,54 @@
                             "fields": {
                                 "data_access_scopes": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_chronicle_data_table_row": {
+                "current": "gcp:chronicle/dataTableRow:DataTableRow",
+                "majorVersion": 9,
+                "fields": {
+                    "values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_chronicle_native_dashboard": {
+                "current": "gcp:chronicle/nativeDashboard:NativeDashboard",
+                "majorVersion": 9,
+                "fields": {
+                    "charts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "chart_layout": {
+                                    "maxItemsOne": true
+                                },
+                                "filters_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "chart_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "filter_operator_and_field_values": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "field_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -8953,6 +9005,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "colab_image": {
+                                    "maxItemsOne": true
+                                },
                                 "env": {
                                     "maxItemsOne": false
                                 },
@@ -15453,6 +15508,18 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_contact_center_insights_assessment_rule": {
+                "current": "gcp:contactcenterinsights/assessmentRule:AssessmentRule",
+                "majorVersion": 9,
+                "fields": {
+                    "sample_rule": {
+                        "maxItemsOne": true
+                    },
+                    "schedule_info": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -39080,7 +39147,22 @@
             },
             "google_spanner_instance_partition": {
                 "current": "gcp:spanner/instancePartition:InstancePartition",
-                "majorVersion": 9
+                "majorVersion": 9,
+                "fields": {
+                    "autoscaling_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "autoscaling_limits": {
+                                    "maxItemsOne": true
+                                },
+                                "autoscaling_targets": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_sql_database": {
                 "current": "gcp:sql/database:Database",
@@ -39349,7 +39431,20 @@
                         }
                     },
                     "encryption": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "customer_managed_encryption_enforcement_config": {
+                                    "maxItemsOne": true
+                                },
+                                "customer_supplied_encryption_enforcement_config": {
+                                    "maxItemsOne": true
+                                },
+                                "google_managed_encryption_enforcement_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "hierarchical_namespace": {
                         "maxItemsOne": true
@@ -49616,6 +49711,22 @@
                 "current": "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy",
                 "majorVersion": 9
             },
+            "google_network_security_address_groups": {
+                "current": "gcp:networksecurity/getAddressGroups:getAddressGroups",
+                "majorVersion": 9,
+                "fields": {
+                    "address_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "items": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_notebooks_instance_iam_policy": {
                 "current": "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy",
                 "majorVersion": 9
@@ -51475,7 +51586,20 @@
                         }
                     },
                     "encryption": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "customer_managed_encryption_enforcement_config": {
+                                    "maxItemsOne": false
+                                },
+                                "customer_supplied_encryption_enforcement_config": {
+                                    "maxItemsOne": false
+                                },
+                                "google_managed_encryption_enforcement_config": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "hierarchical_namespace": {
                         "maxItemsOne": false
@@ -53994,6 +54118,7 @@
             "gcp:bigquery/job:Job": 0,
             "gcp:bigquery/reservation:Reservation": 0,
             "gcp:bigquery/reservationAssignment:ReservationAssignment": 0,
+            "gcp:bigquery/reservationGroup:ReservationGroup": 0,
             "gcp:bigquery/routine:Routine": 0,
             "gcp:bigquery/rowAccessPolicy:RowAccessPolicy": 0,
             "gcp:bigquery/table:Table": 0,
@@ -54064,6 +54189,8 @@
             "gcp:chronicle/dataAccessLabel:DataAccessLabel": 0,
             "gcp:chronicle/dataAccessScope:DataAccessScope": 0,
             "gcp:chronicle/dataTable:DataTable": 0,
+            "gcp:chronicle/dataTableRow:DataTableRow": 0,
+            "gcp:chronicle/nativeDashboard:NativeDashboard": 0,
             "gcp:chronicle/referenceList:ReferenceList": 0,
             "gcp:chronicle/retrohunt:Retrohunt": 0,
             "gcp:chronicle/rule:Rule": 0,
@@ -54324,6 +54451,7 @@
             "gcp:compute/vPNTunnel:VPNTunnel": 0,
             "gcp:compute/wireGroup:WireGroup": 0,
             "gcp:contactcenterinsights/analysisRule:AnalysisRule": 0,
+            "gcp:contactcenterinsights/assessmentRule:AssessmentRule": 0,
             "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule": 0,
             "gcp:contactcenterinsights/view:View": 0,
             "gcp:container/attachedCluster:AttachedCluster": 0,
@@ -55485,6 +55613,7 @@
             "gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun": 0,
             "gcp:networkmanagement/getConnectivityTests:getConnectivityTests": 0,
             "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": 0,
+            "gcp:networksecurity/getAddressGroups:getAddressGroups": 0,
             "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy": 0,
             "gcp:observability/getFolderSettings:getFolderSettings": 0,

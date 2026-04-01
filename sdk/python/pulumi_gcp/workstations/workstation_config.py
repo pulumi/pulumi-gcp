@@ -925,12 +925,9 @@ class WorkstationConfig(pulumi.CustomResource):
         """
         A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about WorkstationConfig, see:
 
-        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs/create)
         * How-to Guides
             * [Workstations](https://cloud.google.com/workstations/docs/)
 
@@ -1444,12 +1441,9 @@ class WorkstationConfig(pulumi.CustomResource):
         """
         A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about WorkstationConfig, see:
 
-        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs/create)
         * How-to Guides
             * [Workstations](https://cloud.google.com/workstations/docs/)
 

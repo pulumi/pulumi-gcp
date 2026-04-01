@@ -6082,6 +6082,14 @@ type WorkloadIdentityPoolInlineCertificateIssuanceConfig struct {
 	// on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
 	// to `50`.
 	RotationWindowPercentage *int `pulumi:"rotationWindowPercentage"`
+	// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+	// CA in the same region as the workload will be selected to issue the certificate. Enabling
+	// this will clear any existing `caPools` configuration to provision the certificates.
+	//
+	// > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+	// certificates will be automatically provisioned from the default shared CAs. This flag should
+	// not be set if you want to use your own CA pools to provision the certificates.
+	UseDefaultSharedCa *bool `pulumi:"useDefaultSharedCa"`
 }
 
 // WorkloadIdentityPoolInlineCertificateIssuanceConfigInput is an input type that accepts WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs and WorkloadIdentityPoolInlineCertificateIssuanceConfigOutput values.
@@ -6123,6 +6131,14 @@ type WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs struct {
 	// on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
 	// to `50`.
 	RotationWindowPercentage pulumi.IntPtrInput `pulumi:"rotationWindowPercentage"`
+	// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+	// CA in the same region as the workload will be selected to issue the certificate. Enabling
+	// this will clear any existing `caPools` configuration to provision the certificates.
+	//
+	// > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+	// certificates will be automatically provisioned from the default shared CAs. This flag should
+	// not be set if you want to use your own CA pools to provision the certificates.
+	UseDefaultSharedCa pulumi.BoolPtrInput `pulumi:"useDefaultSharedCa"`
 }
 
 func (WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs) ElementType() reflect.Type {
@@ -6241,6 +6257,17 @@ func (o WorkloadIdentityPoolInlineCertificateIssuanceConfigOutput) RotationWindo
 	return o.ApplyT(func(v WorkloadIdentityPoolInlineCertificateIssuanceConfig) *int { return v.RotationWindowPercentage }).(pulumi.IntPtrOutput)
 }
 
+// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+// CA in the same region as the workload will be selected to issue the certificate. Enabling
+// this will clear any existing `caPools` configuration to provision the certificates.
+//
+// > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+// certificates will be automatically provisioned from the default shared CAs. This flag should
+// not be set if you want to use your own CA pools to provision the certificates.
+func (o WorkloadIdentityPoolInlineCertificateIssuanceConfigOutput) UseDefaultSharedCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolInlineCertificateIssuanceConfig) *bool { return v.UseDefaultSharedCa }).(pulumi.BoolPtrOutput)
+}
+
 type WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput) ElementType() reflect.Type {
@@ -6322,6 +6349,22 @@ func (o WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput) RotationWi
 		}
 		return v.RotationWindowPercentage
 	}).(pulumi.IntPtrOutput)
+}
+
+// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+// CA in the same region as the workload will be selected to issue the certificate. Enabling
+// this will clear any existing `caPools` configuration to provision the certificates.
+//
+// > **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
+// certificates will be automatically provisioned from the default shared CAs. This flag should
+// not be set if you want to use your own CA pools to provision the certificates.
+func (o WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput) UseDefaultSharedCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolInlineCertificateIssuanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseDefaultSharedCa
+	}).(pulumi.BoolPtrOutput)
 }
 
 type WorkloadIdentityPoolInlineTrustConfig struct {
@@ -8115,6 +8158,14 @@ type GetWorkloadIdentityPoolInlineCertificateIssuanceConfig struct {
 	// on remaining lifetime. Must be between '50' - '80'. If unspecified, this will be defaulted
 	// to '50'.
 	RotationWindowPercentage int `pulumi:"rotationWindowPercentage"`
+	// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+	// CA in the same region as the workload will be selected to issue the certificate. Enabling
+	// this will clear any existing 'ca_pools' configuration to provision the certificates.
+	//
+	// > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
+	// certificates will be automatically provisioned from the default shared CAs. This flag should
+	// not be set if you want to use your own CA pools to provision the certificates.
+	UseDefaultSharedCa bool `pulumi:"useDefaultSharedCa"`
 }
 
 // GetWorkloadIdentityPoolInlineCertificateIssuanceConfigInput is an input type that accepts GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArgs and GetWorkloadIdentityPoolInlineCertificateIssuanceConfigOutput values.
@@ -8157,6 +8208,14 @@ type GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArgs struct {
 	// on remaining lifetime. Must be between '50' - '80'. If unspecified, this will be defaulted
 	// to '50'.
 	RotationWindowPercentage pulumi.IntInput `pulumi:"rotationWindowPercentage"`
+	// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+	// CA in the same region as the workload will be selected to issue the certificate. Enabling
+	// this will clear any existing 'ca_pools' configuration to provision the certificates.
+	//
+	// > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
+	// certificates will be automatically provisioned from the default shared CAs. This flag should
+	// not be set if you want to use your own CA pools to provision the certificates.
+	UseDefaultSharedCa pulumi.BoolInput `pulumi:"useDefaultSharedCa"`
 }
 
 func (GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArgs) ElementType() reflect.Type {
@@ -8248,6 +8307,17 @@ func (o GetWorkloadIdentityPoolInlineCertificateIssuanceConfigOutput) Lifetime()
 // to '50'.
 func (o GetWorkloadIdentityPoolInlineCertificateIssuanceConfigOutput) RotationWindowPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolInlineCertificateIssuanceConfig) int { return v.RotationWindowPercentage }).(pulumi.IntOutput)
+}
+
+// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+// CA in the same region as the workload will be selected to issue the certificate. Enabling
+// this will clear any existing 'ca_pools' configuration to provision the certificates.
+//
+// > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
+// certificates will be automatically provisioned from the default shared CAs. This flag should
+// not be set if you want to use your own CA pools to provision the certificates.
+func (o GetWorkloadIdentityPoolInlineCertificateIssuanceConfigOutput) UseDefaultSharedCa() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolInlineCertificateIssuanceConfig) bool { return v.UseDefaultSharedCa }).(pulumi.BoolOutput)
 }
 
 type GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArrayOutput struct{ *pulumi.OutputState }

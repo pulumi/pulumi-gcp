@@ -888,6 +888,474 @@ func (o AnalysisRuleAnnotatorSelectorSummarizationConfigPtrOutput) Summarization
 	}).(pulumi.StringPtrOutput)
 }
 
+type AssessmentRuleSampleRule struct {
+	// To specify the filter for the conversions that should apply this sample
+	// rule. An empty filter means this sample rule applies to all conversations.
+	ConversationFilter *string `pulumi:"conversationFilter"`
+	// Group by dimension to sample the conversation. If no dimension is
+	// provided, the sampling will be applied to the project level.
+	// Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+	Dimension *string `pulumi:"dimension"`
+	// Percentage of conversations that we should sample  based on the dimension
+	// between [0, 100].
+	SamplePercentage *float64 `pulumi:"samplePercentage"`
+	// Number of the conversations that we should sample based on the dimension.
+	SampleRow *int `pulumi:"sampleRow"`
+}
+
+// AssessmentRuleSampleRuleInput is an input type that accepts AssessmentRuleSampleRuleArgs and AssessmentRuleSampleRuleOutput values.
+// You can construct a concrete instance of `AssessmentRuleSampleRuleInput` via:
+//
+//	AssessmentRuleSampleRuleArgs{...}
+type AssessmentRuleSampleRuleInput interface {
+	pulumi.Input
+
+	ToAssessmentRuleSampleRuleOutput() AssessmentRuleSampleRuleOutput
+	ToAssessmentRuleSampleRuleOutputWithContext(context.Context) AssessmentRuleSampleRuleOutput
+}
+
+type AssessmentRuleSampleRuleArgs struct {
+	// To specify the filter for the conversions that should apply this sample
+	// rule. An empty filter means this sample rule applies to all conversations.
+	ConversationFilter pulumi.StringPtrInput `pulumi:"conversationFilter"`
+	// Group by dimension to sample the conversation. If no dimension is
+	// provided, the sampling will be applied to the project level.
+	// Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+	Dimension pulumi.StringPtrInput `pulumi:"dimension"`
+	// Percentage of conversations that we should sample  based on the dimension
+	// between [0, 100].
+	SamplePercentage pulumi.Float64PtrInput `pulumi:"samplePercentage"`
+	// Number of the conversations that we should sample based on the dimension.
+	SampleRow pulumi.IntPtrInput `pulumi:"sampleRow"`
+}
+
+func (AssessmentRuleSampleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentRuleSampleRule)(nil)).Elem()
+}
+
+func (i AssessmentRuleSampleRuleArgs) ToAssessmentRuleSampleRuleOutput() AssessmentRuleSampleRuleOutput {
+	return i.ToAssessmentRuleSampleRuleOutputWithContext(context.Background())
+}
+
+func (i AssessmentRuleSampleRuleArgs) ToAssessmentRuleSampleRuleOutputWithContext(ctx context.Context) AssessmentRuleSampleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentRuleSampleRuleOutput)
+}
+
+func (i AssessmentRuleSampleRuleArgs) ToAssessmentRuleSampleRulePtrOutput() AssessmentRuleSampleRulePtrOutput {
+	return i.ToAssessmentRuleSampleRulePtrOutputWithContext(context.Background())
+}
+
+func (i AssessmentRuleSampleRuleArgs) ToAssessmentRuleSampleRulePtrOutputWithContext(ctx context.Context) AssessmentRuleSampleRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentRuleSampleRuleOutput).ToAssessmentRuleSampleRulePtrOutputWithContext(ctx)
+}
+
+// AssessmentRuleSampleRulePtrInput is an input type that accepts AssessmentRuleSampleRuleArgs, AssessmentRuleSampleRulePtr and AssessmentRuleSampleRulePtrOutput values.
+// You can construct a concrete instance of `AssessmentRuleSampleRulePtrInput` via:
+//
+//	        AssessmentRuleSampleRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssessmentRuleSampleRulePtrInput interface {
+	pulumi.Input
+
+	ToAssessmentRuleSampleRulePtrOutput() AssessmentRuleSampleRulePtrOutput
+	ToAssessmentRuleSampleRulePtrOutputWithContext(context.Context) AssessmentRuleSampleRulePtrOutput
+}
+
+type assessmentRuleSampleRulePtrType AssessmentRuleSampleRuleArgs
+
+func AssessmentRuleSampleRulePtr(v *AssessmentRuleSampleRuleArgs) AssessmentRuleSampleRulePtrInput {
+	return (*assessmentRuleSampleRulePtrType)(v)
+}
+
+func (*assessmentRuleSampleRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentRuleSampleRule)(nil)).Elem()
+}
+
+func (i *assessmentRuleSampleRulePtrType) ToAssessmentRuleSampleRulePtrOutput() AssessmentRuleSampleRulePtrOutput {
+	return i.ToAssessmentRuleSampleRulePtrOutputWithContext(context.Background())
+}
+
+func (i *assessmentRuleSampleRulePtrType) ToAssessmentRuleSampleRulePtrOutputWithContext(ctx context.Context) AssessmentRuleSampleRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentRuleSampleRulePtrOutput)
+}
+
+type AssessmentRuleSampleRuleOutput struct{ *pulumi.OutputState }
+
+func (AssessmentRuleSampleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentRuleSampleRule)(nil)).Elem()
+}
+
+func (o AssessmentRuleSampleRuleOutput) ToAssessmentRuleSampleRuleOutput() AssessmentRuleSampleRuleOutput {
+	return o
+}
+
+func (o AssessmentRuleSampleRuleOutput) ToAssessmentRuleSampleRuleOutputWithContext(ctx context.Context) AssessmentRuleSampleRuleOutput {
+	return o
+}
+
+func (o AssessmentRuleSampleRuleOutput) ToAssessmentRuleSampleRulePtrOutput() AssessmentRuleSampleRulePtrOutput {
+	return o.ToAssessmentRuleSampleRulePtrOutputWithContext(context.Background())
+}
+
+func (o AssessmentRuleSampleRuleOutput) ToAssessmentRuleSampleRulePtrOutputWithContext(ctx context.Context) AssessmentRuleSampleRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssessmentRuleSampleRule) *AssessmentRuleSampleRule {
+		return &v
+	}).(AssessmentRuleSampleRulePtrOutput)
+}
+
+// To specify the filter for the conversions that should apply this sample
+// rule. An empty filter means this sample rule applies to all conversations.
+func (o AssessmentRuleSampleRuleOutput) ConversationFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleSampleRule) *string { return v.ConversationFilter }).(pulumi.StringPtrOutput)
+}
+
+// Group by dimension to sample the conversation. If no dimension is
+// provided, the sampling will be applied to the project level.
+// Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+func (o AssessmentRuleSampleRuleOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleSampleRule) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
+// Percentage of conversations that we should sample  based on the dimension
+// between [0, 100].
+func (o AssessmentRuleSampleRuleOutput) SamplePercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AssessmentRuleSampleRule) *float64 { return v.SamplePercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Number of the conversations that we should sample based on the dimension.
+func (o AssessmentRuleSampleRuleOutput) SampleRow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleSampleRule) *int { return v.SampleRow }).(pulumi.IntPtrOutput)
+}
+
+type AssessmentRuleSampleRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AssessmentRuleSampleRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentRuleSampleRule)(nil)).Elem()
+}
+
+func (o AssessmentRuleSampleRulePtrOutput) ToAssessmentRuleSampleRulePtrOutput() AssessmentRuleSampleRulePtrOutput {
+	return o
+}
+
+func (o AssessmentRuleSampleRulePtrOutput) ToAssessmentRuleSampleRulePtrOutputWithContext(ctx context.Context) AssessmentRuleSampleRulePtrOutput {
+	return o
+}
+
+func (o AssessmentRuleSampleRulePtrOutput) Elem() AssessmentRuleSampleRuleOutput {
+	return o.ApplyT(func(v *AssessmentRuleSampleRule) AssessmentRuleSampleRule {
+		if v != nil {
+			return *v
+		}
+		var ret AssessmentRuleSampleRule
+		return ret
+	}).(AssessmentRuleSampleRuleOutput)
+}
+
+// To specify the filter for the conversions that should apply this sample
+// rule. An empty filter means this sample rule applies to all conversations.
+func (o AssessmentRuleSampleRulePtrOutput) ConversationFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleSampleRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConversationFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Group by dimension to sample the conversation. If no dimension is
+// provided, the sampling will be applied to the project level.
+// Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+func (o AssessmentRuleSampleRulePtrOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleSampleRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dimension
+	}).(pulumi.StringPtrOutput)
+}
+
+// Percentage of conversations that we should sample  based on the dimension
+// between [0, 100].
+func (o AssessmentRuleSampleRulePtrOutput) SamplePercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleSampleRule) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplePercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Number of the conversations that we should sample based on the dimension.
+func (o AssessmentRuleSampleRulePtrOutput) SampleRow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleSampleRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SampleRow
+	}).(pulumi.IntPtrOutput)
+}
+
+type AssessmentRuleScheduleInfo struct {
+	// End time of the schedule. If not specified, will keep scheduling new
+	// pipelines for execution until the schedule is no longer active or deleted.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EndTime *string `pulumi:"endTime"`
+	// The groc expression.
+	// Format: `every number [synchronized]`
+	// Cron syntax is not supported.
+	// Time units can be: minutes, hours
+	// Synchronized is optional and indicates that the schedule should be
+	// synchronized to the start of the interval: every 5 minutes synchronized
+	// means 00:00, 00:05 ...
+	// Otherwise the start time is random within the interval.
+	// Example: `every 5 minutes`
+	// could be  00:02, 00:07, 00:12, ...
+	Schedule *string `pulumi:"schedule"`
+	// Start time of the schedule. If not specified, will start as soon as the
+	// schedule is created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	StartTime *string `pulumi:"startTime"`
+	// The timezone to use for the groc expression.
+	// If not specified, defaults to UTC.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// AssessmentRuleScheduleInfoInput is an input type that accepts AssessmentRuleScheduleInfoArgs and AssessmentRuleScheduleInfoOutput values.
+// You can construct a concrete instance of `AssessmentRuleScheduleInfoInput` via:
+//
+//	AssessmentRuleScheduleInfoArgs{...}
+type AssessmentRuleScheduleInfoInput interface {
+	pulumi.Input
+
+	ToAssessmentRuleScheduleInfoOutput() AssessmentRuleScheduleInfoOutput
+	ToAssessmentRuleScheduleInfoOutputWithContext(context.Context) AssessmentRuleScheduleInfoOutput
+}
+
+type AssessmentRuleScheduleInfoArgs struct {
+	// End time of the schedule. If not specified, will keep scheduling new
+	// pipelines for execution until the schedule is no longer active or deleted.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The groc expression.
+	// Format: `every number [synchronized]`
+	// Cron syntax is not supported.
+	// Time units can be: minutes, hours
+	// Synchronized is optional and indicates that the schedule should be
+	// synchronized to the start of the interval: every 5 minutes synchronized
+	// means 00:00, 00:05 ...
+	// Otherwise the start time is random within the interval.
+	// Example: `every 5 minutes`
+	// could be  00:02, 00:07, 00:12, ...
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// Start time of the schedule. If not specified, will start as soon as the
+	// schedule is created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// The timezone to use for the groc expression.
+	// If not specified, defaults to UTC.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (AssessmentRuleScheduleInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentRuleScheduleInfo)(nil)).Elem()
+}
+
+func (i AssessmentRuleScheduleInfoArgs) ToAssessmentRuleScheduleInfoOutput() AssessmentRuleScheduleInfoOutput {
+	return i.ToAssessmentRuleScheduleInfoOutputWithContext(context.Background())
+}
+
+func (i AssessmentRuleScheduleInfoArgs) ToAssessmentRuleScheduleInfoOutputWithContext(ctx context.Context) AssessmentRuleScheduleInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentRuleScheduleInfoOutput)
+}
+
+func (i AssessmentRuleScheduleInfoArgs) ToAssessmentRuleScheduleInfoPtrOutput() AssessmentRuleScheduleInfoPtrOutput {
+	return i.ToAssessmentRuleScheduleInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AssessmentRuleScheduleInfoArgs) ToAssessmentRuleScheduleInfoPtrOutputWithContext(ctx context.Context) AssessmentRuleScheduleInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentRuleScheduleInfoOutput).ToAssessmentRuleScheduleInfoPtrOutputWithContext(ctx)
+}
+
+// AssessmentRuleScheduleInfoPtrInput is an input type that accepts AssessmentRuleScheduleInfoArgs, AssessmentRuleScheduleInfoPtr and AssessmentRuleScheduleInfoPtrOutput values.
+// You can construct a concrete instance of `AssessmentRuleScheduleInfoPtrInput` via:
+//
+//	        AssessmentRuleScheduleInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssessmentRuleScheduleInfoPtrInput interface {
+	pulumi.Input
+
+	ToAssessmentRuleScheduleInfoPtrOutput() AssessmentRuleScheduleInfoPtrOutput
+	ToAssessmentRuleScheduleInfoPtrOutputWithContext(context.Context) AssessmentRuleScheduleInfoPtrOutput
+}
+
+type assessmentRuleScheduleInfoPtrType AssessmentRuleScheduleInfoArgs
+
+func AssessmentRuleScheduleInfoPtr(v *AssessmentRuleScheduleInfoArgs) AssessmentRuleScheduleInfoPtrInput {
+	return (*assessmentRuleScheduleInfoPtrType)(v)
+}
+
+func (*assessmentRuleScheduleInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentRuleScheduleInfo)(nil)).Elem()
+}
+
+func (i *assessmentRuleScheduleInfoPtrType) ToAssessmentRuleScheduleInfoPtrOutput() AssessmentRuleScheduleInfoPtrOutput {
+	return i.ToAssessmentRuleScheduleInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *assessmentRuleScheduleInfoPtrType) ToAssessmentRuleScheduleInfoPtrOutputWithContext(ctx context.Context) AssessmentRuleScheduleInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentRuleScheduleInfoPtrOutput)
+}
+
+type AssessmentRuleScheduleInfoOutput struct{ *pulumi.OutputState }
+
+func (AssessmentRuleScheduleInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentRuleScheduleInfo)(nil)).Elem()
+}
+
+func (o AssessmentRuleScheduleInfoOutput) ToAssessmentRuleScheduleInfoOutput() AssessmentRuleScheduleInfoOutput {
+	return o
+}
+
+func (o AssessmentRuleScheduleInfoOutput) ToAssessmentRuleScheduleInfoOutputWithContext(ctx context.Context) AssessmentRuleScheduleInfoOutput {
+	return o
+}
+
+func (o AssessmentRuleScheduleInfoOutput) ToAssessmentRuleScheduleInfoPtrOutput() AssessmentRuleScheduleInfoPtrOutput {
+	return o.ToAssessmentRuleScheduleInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AssessmentRuleScheduleInfoOutput) ToAssessmentRuleScheduleInfoPtrOutputWithContext(ctx context.Context) AssessmentRuleScheduleInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssessmentRuleScheduleInfo) *AssessmentRuleScheduleInfo {
+		return &v
+	}).(AssessmentRuleScheduleInfoPtrOutput)
+}
+
+// End time of the schedule. If not specified, will keep scheduling new
+// pipelines for execution until the schedule is no longer active or deleted.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o AssessmentRuleScheduleInfoOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleScheduleInfo) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The groc expression.
+// Format: `every number [synchronized]`
+// Cron syntax is not supported.
+// Time units can be: minutes, hours
+// Synchronized is optional and indicates that the schedule should be
+// synchronized to the start of the interval: every 5 minutes synchronized
+// means 00:00, 00:05 ...
+// Otherwise the start time is random within the interval.
+// Example: `every 5 minutes`
+// could be  00:02, 00:07, 00:12, ...
+func (o AssessmentRuleScheduleInfoOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleScheduleInfo) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// Start time of the schedule. If not specified, will start as soon as the
+// schedule is created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o AssessmentRuleScheduleInfoOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleScheduleInfo) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// The timezone to use for the groc expression.
+// If not specified, defaults to UTC.
+func (o AssessmentRuleScheduleInfoOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssessmentRuleScheduleInfo) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type AssessmentRuleScheduleInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AssessmentRuleScheduleInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentRuleScheduleInfo)(nil)).Elem()
+}
+
+func (o AssessmentRuleScheduleInfoPtrOutput) ToAssessmentRuleScheduleInfoPtrOutput() AssessmentRuleScheduleInfoPtrOutput {
+	return o
+}
+
+func (o AssessmentRuleScheduleInfoPtrOutput) ToAssessmentRuleScheduleInfoPtrOutputWithContext(ctx context.Context) AssessmentRuleScheduleInfoPtrOutput {
+	return o
+}
+
+func (o AssessmentRuleScheduleInfoPtrOutput) Elem() AssessmentRuleScheduleInfoOutput {
+	return o.ApplyT(func(v *AssessmentRuleScheduleInfo) AssessmentRuleScheduleInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AssessmentRuleScheduleInfo
+		return ret
+	}).(AssessmentRuleScheduleInfoOutput)
+}
+
+// End time of the schedule. If not specified, will keep scheduling new
+// pipelines for execution until the schedule is no longer active or deleted.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o AssessmentRuleScheduleInfoPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleScheduleInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The groc expression.
+// Format: `every number [synchronized]`
+// Cron syntax is not supported.
+// Time units can be: minutes, hours
+// Synchronized is optional and indicates that the schedule should be
+// synchronized to the start of the interval: every 5 minutes synchronized
+// means 00:00, 00:05 ...
+// Otherwise the start time is random within the interval.
+// Example: `every 5 minutes`
+// could be  00:02, 00:07, 00:12, ...
+func (o AssessmentRuleScheduleInfoPtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleScheduleInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of the schedule. If not specified, will start as soon as the
+// schedule is created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o AssessmentRuleScheduleInfoPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleScheduleInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timezone to use for the groc expression.
+// If not specified, defaults to UTC.
+func (o AssessmentRuleScheduleInfoPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssessmentRuleScheduleInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
 type AutoLabelingRuleCondition struct {
 	// A optional CEL expression to be evaluated as a boolean value.
 	// Once evaluated as true, then we will proceed with the value evaluation.
@@ -1009,6 +1477,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorQaConfigScorecardListPtrInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorSummarizationConfigInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorSummarizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorSummarizationConfigPtrInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorSummarizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentRuleSampleRuleInput)(nil)).Elem(), AssessmentRuleSampleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentRuleSampleRulePtrInput)(nil)).Elem(), AssessmentRuleSampleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentRuleScheduleInfoInput)(nil)).Elem(), AssessmentRuleScheduleInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentRuleScheduleInfoPtrInput)(nil)).Elem(), AssessmentRuleScheduleInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoLabelingRuleConditionInput)(nil)).Elem(), AutoLabelingRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoLabelingRuleConditionArrayInput)(nil)).Elem(), AutoLabelingRuleConditionArray{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorOutput{})
@@ -1019,6 +1491,10 @@ func init() {
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorQaConfigScorecardListPtrOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorSummarizationConfigOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorSummarizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AssessmentRuleSampleRuleOutput{})
+	pulumi.RegisterOutputType(AssessmentRuleSampleRulePtrOutput{})
+	pulumi.RegisterOutputType(AssessmentRuleScheduleInfoOutput{})
+	pulumi.RegisterOutputType(AssessmentRuleScheduleInfoPtrOutput{})
 	pulumi.RegisterOutputType(AutoLabelingRuleConditionOutput{})
 	pulumi.RegisterOutputType(AutoLabelingRuleConditionArrayOutput{})
 }

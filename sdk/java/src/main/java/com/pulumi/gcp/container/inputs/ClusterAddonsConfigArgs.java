@@ -380,14 +380,18 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * .
+     * The status of the slice controller addon.
+     * It is disabled by default. Set `enabled = true` to enable.
      * 
      */
     @Import(name="sliceControllerConfig")
     private @Nullable Output<ClusterAddonsConfigSliceControllerConfigArgs> sliceControllerConfig;
 
     /**
-     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * @return .
+     * The status of the slice controller addon.
+     * It is disabled by default. Set `enabled = true` to enable.
      * 
      */
     public Optional<Output<ClusterAddonsConfigSliceControllerConfigArgs>> sliceControllerConfig() {
@@ -918,7 +922,9 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sliceControllerConfig The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+         * @param sliceControllerConfig .
+         * The status of the slice controller addon.
+         * It is disabled by default. Set `enabled = true` to enable.
          * 
          * @return builder
          * 
@@ -929,7 +935,9 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sliceControllerConfig The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+         * @param sliceControllerConfig .
+         * The status of the slice controller addon.
+         * It is disabled by default. Set `enabled = true` to enable.
          * 
          * @return builder
          * 

@@ -30,18 +30,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultTcpRoute = new Gcp.NetworkServices.TcpRoute("default", new()
@@ -92,18 +94,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultTcpRoute = new Gcp.NetworkServices.TcpRoute("default", new()
@@ -147,18 +151,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultMesh = new Gcp.NetworkServices.Mesh("default", new()
@@ -223,18 +229,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultGateway = new Gcp.NetworkServices.Gateway("default", new()

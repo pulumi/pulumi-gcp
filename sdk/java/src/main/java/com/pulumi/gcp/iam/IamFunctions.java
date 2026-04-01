@@ -877,8 +877,6 @@ public final class IamFunctions {
     }
     /**
      * Retrieves the current IAM policy data for workloadidentitypool
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -920,8 +918,6 @@ public final class IamFunctions {
     }
     /**
      * Retrieves the current IAM policy data for workloadidentitypool
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -963,8 +959,6 @@ public final class IamFunctions {
     }
     /**
      * Retrieves the current IAM policy data for workloadidentitypool
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -1006,8 +1000,6 @@ public final class IamFunctions {
     }
     /**
      * Retrieves the current IAM policy data for workloadidentitypool
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -1049,8 +1041,6 @@ public final class IamFunctions {
     }
     /**
      * Retrieves the current IAM policy data for workloadidentitypool
-     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 

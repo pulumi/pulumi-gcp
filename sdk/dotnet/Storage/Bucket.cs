@@ -281,6 +281,40 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// ### Enabling Encryption Enforcement Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hns_enabled = new Gcp.Storage.Bucket("hns-enabled", new()
+    ///     {
+    ///         Name = "hns-enabled-bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
+    ///         {
+    ///             GoogleManagedEncryptionEnforcementConfig = new Gcp.Storage.Inputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs
+    ///             {
+    ///                 RestrictionMode = "FullyRestricted",
+    ///             },
+    ///             CustomerManagedEncryptionEnforcementConfig = new Gcp.Storage.Inputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs
+    ///             {
+    ///                 RestrictionMode = "FullyRestricted",
+    ///             },
+    ///             CustomerSuppliedEncryptionEnforcementConfig = new Gcp.Storage.Inputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs
+    ///             {
+    ///                 RestrictionMode = "NotRestricted",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

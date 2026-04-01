@@ -14,12 +14,9 @@ namespace Pulumi.Gcp.Compute
     /// aggregation policy applied to the source resources to determine the
     /// aggregated health status.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about RegionHealthSource, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthSources)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionHealthSources)
     /// * How-to Guides
     ///     * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
     /// 

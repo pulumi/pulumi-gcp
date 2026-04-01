@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.spanner.InstancePartitionArgs;
 import com.pulumi.gcp.spanner.inputs.InstancePartitionState;
+import com.pulumi.gcp.spanner.outputs.InstancePartitionAutoscalingConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -73,6 +74,64 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Spanner Instance Partition Autoscaling
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.Instance;
+ * import com.pulumi.gcp.spanner.InstanceArgs;
+ * import com.pulumi.gcp.spanner.InstancePartition;
+ * import com.pulumi.gcp.spanner.InstancePartitionArgs;
+ * import com.pulumi.gcp.spanner.inputs.InstancePartitionAutoscalingConfigArgs;
+ * import com.pulumi.gcp.spanner.inputs.InstancePartitionAutoscalingConfigAutoscalingLimitsArgs;
+ * import com.pulumi.gcp.spanner.inputs.InstancePartitionAutoscalingConfigAutoscalingTargetsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new Instance("main", InstanceArgs.builder()
+ *             .name("test-instance")
+ *             .config("nam6")
+ *             .displayName("main-instance")
+ *             .numNodes(1)
+ *             .edition("ENTERPRISE_PLUS")
+ *             .build());
+ * 
+ *         var partition = new InstancePartition("partition", InstancePartitionArgs.builder()
+ *             .name("test-partition")
+ *             .instance(main.name())
+ *             .config("nam8")
+ *             .displayName("test-spanner-partition")
+ *             .autoscalingConfig(InstancePartitionAutoscalingConfigArgs.builder()
+ *                 .autoscalingLimits(InstancePartitionAutoscalingConfigAutoscalingLimitsArgs.builder()
+ *                     .minProcessingUnits(1000)
+ *                     .maxProcessingUnits(2000)
+ *                     .build())
+ *                 .autoscalingTargets(InstancePartitionAutoscalingConfigAutoscalingTargetsArgs.builder()
+ *                     .highPriorityCpuUtilizationPercent(65)
+ *                     .storageUtilizationPercent(95)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -93,6 +152,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:spanner/instancePartition:InstancePartition")
 public class InstancePartition extends com.pulumi.resources.CustomResource {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="autoscalingConfig", refs={InstancePartitionAutoscalingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePartitionAutoscalingConfig> autoscalingConfig;
+
+    /**
+     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig must be
+     * present. When autoscaling is enabled, nodeCount and processingUnits are treated as
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+     * instance partition.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstancePartitionAutoscalingConfig>> autoscalingConfig() {
+        return Codegen.optional(this.autoscalingConfig);
+    }
     /**
      * The name of the instance partition&#39;s configuration (similar to a region) which
      * defines the geographic placement and replication of data in this instance partition.
@@ -159,37 +242,39 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      * 
      */
     @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> nodeCount;
+    private Output<Integer> nodeCount;
 
     /**
      * @return The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either nodeCount or processingUnits
-     * must be present.
+     * 1000 processing units. Exactly one of either node_count, processing_units,
+     * or autoscalingConfig must be present.
      * 
      */
-    public Output<Optional<Integer>> nodeCount() {
-        return Codegen.optional(this.nodeCount);
+    public Output<Integer> nodeCount() {
+        return this.nodeCount;
     }
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      * 
      */
     @Export(name="processingUnits", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> processingUnits;
+    private Output<Integer> processingUnits;
 
     /**
      * @return The number of processing units allocated to this instance partition.
-     * Exactly one of either nodeCount or processingUnits must be present.
+     * Exactly one of either node_count, processing_units, or autoscalingConfig
+     * must be present.
      * 
      */
-    public Output<Optional<Integer>> processingUnits() {
-        return Codegen.optional(this.processingUnits);
+    public Output<Integer> processingUnits() {
+        return this.processingUnits;
     }
     /**
      * The ID of the project in which the resource belongs.

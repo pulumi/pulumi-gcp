@@ -163,7 +163,9 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
     /**
-     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * @return .
+     * The status of the slice controller addon.
+     * It is disabled by default. Set `enabled = true` to enable.
      * 
      */
     private @Nullable ClusterAddonsConfigSliceControllerConfig sliceControllerConfig;
@@ -342,7 +344,9 @@ public final class ClusterAddonsConfig {
         return this.rayOperatorConfigs == null ? List.of() : this.rayOperatorConfigs;
     }
     /**
-     * @return The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+     * @return .
+     * The status of the slice controller addon.
+     * It is disabled by default. Set `enabled = true` to enable.
      * 
      */
     public Optional<ClusterAddonsConfigSliceControllerConfig> sliceControllerConfig() {

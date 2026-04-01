@@ -22,6 +22,10 @@ __all__ = [
     'DataAccessScopeDeniedDataAccessLabelIngestionLabel',
     'DataTableColumnInfo',
     'DataTableScopeInfo',
+    'NativeDashboardChart',
+    'NativeDashboardChartChartLayout',
+    'NativeDashboardFilter',
+    'NativeDashboardFilterFilterOperatorAndFieldValue',
     'ReferenceListEntry',
     'ReferenceListScopeInfo',
     'ReferenceListScopeInfoReferenceListScope',
@@ -523,6 +527,358 @@ class DataTableScopeInfo(dict):
         "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
         """
         return pulumi.get(self, "data_access_scopes")
+
+
+@pulumi.output_type
+class NativeDashboardChart(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartLayout":
+            suggest = "chart_layout"
+        elif key == "dashboardChart":
+            suggest = "dashboard_chart"
+        elif key == "filtersIds":
+            suggest = "filters_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NativeDashboardChart. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NativeDashboardChart.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NativeDashboardChart.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chart_layout: Optional['outputs.NativeDashboardChartChartLayout'] = None,
+                 dashboard_chart: Optional[_builtins.str] = None,
+                 filters_ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'NativeDashboardChartChartLayoutArgs' chart_layout: The visual layout parameters of this chart within the dashboard.
+               Structure is documented below.
+        :param _builtins.str dashboard_chart: The resource name of the associated DashboardChart.
+        :param Sequence[_builtins.str] filters_ids: List of dashboard filter IDs applied to this chart.
+        """
+        if chart_layout is not None:
+            pulumi.set(__self__, "chart_layout", chart_layout)
+        if dashboard_chart is not None:
+            pulumi.set(__self__, "dashboard_chart", dashboard_chart)
+        if filters_ids is not None:
+            pulumi.set(__self__, "filters_ids", filters_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="chartLayout")
+    def chart_layout(self) -> Optional['outputs.NativeDashboardChartChartLayout']:
+        """
+        The visual layout parameters of this chart within the dashboard.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "chart_layout")
+
+    @_builtins.property
+    @pulumi.getter(name="dashboardChart")
+    def dashboard_chart(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the associated DashboardChart.
+        """
+        return pulumi.get(self, "dashboard_chart")
+
+    @_builtins.property
+    @pulumi.getter(name="filtersIds")
+    def filters_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of dashboard filter IDs applied to this chart.
+        """
+        return pulumi.get(self, "filters_ids")
+
+
+@pulumi.output_type
+class NativeDashboardChartChartLayout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "spanX":
+            suggest = "span_x"
+        elif key == "spanY":
+            suggest = "span_y"
+        elif key == "startX":
+            suggest = "start_x"
+        elif key == "startY":
+            suggest = "start_y"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NativeDashboardChartChartLayout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NativeDashboardChartChartLayout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NativeDashboardChartChartLayout.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 span_x: _builtins.int,
+                 span_y: _builtins.int,
+                 start_x: Optional[_builtins.int] = None,
+                 start_y: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int span_x: The number of columns the chart spans.
+        :param _builtins.int span_y: The number of rows the chart spans.
+        :param _builtins.int start_x: The starting X coordinate.
+        :param _builtins.int start_y: The starting Y coordinate.
+        """
+        pulumi.set(__self__, "span_x", span_x)
+        pulumi.set(__self__, "span_y", span_y)
+        if start_x is not None:
+            pulumi.set(__self__, "start_x", start_x)
+        if start_y is not None:
+            pulumi.set(__self__, "start_y", start_y)
+
+    @_builtins.property
+    @pulumi.getter(name="spanX")
+    def span_x(self) -> _builtins.int:
+        """
+        The number of columns the chart spans.
+        """
+        return pulumi.get(self, "span_x")
+
+    @_builtins.property
+    @pulumi.getter(name="spanY")
+    def span_y(self) -> _builtins.int:
+        """
+        The number of rows the chart spans.
+        """
+        return pulumi.get(self, "span_y")
+
+    @_builtins.property
+    @pulumi.getter(name="startX")
+    def start_x(self) -> Optional[_builtins.int]:
+        """
+        The starting X coordinate.
+        """
+        return pulumi.get(self, "start_x")
+
+    @_builtins.property
+    @pulumi.getter(name="startY")
+    def start_y(self) -> Optional[_builtins.int]:
+        """
+        The starting Y coordinate.
+        """
+        return pulumi.get(self, "start_y")
+
+
+@pulumi.output_type
+class NativeDashboardFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartIds":
+            suggest = "chart_ids"
+        elif key == "dataSource":
+            suggest = "data_source"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "fieldPath":
+            suggest = "field_path"
+        elif key == "filterOperatorAndFieldValues":
+            suggest = "filter_operator_and_field_values"
+        elif key == "isMandatory":
+            suggest = "is_mandatory"
+        elif key == "isStandardTimeRangeFilter":
+            suggest = "is_standard_time_range_filter"
+        elif key == "isStandardTimeRangeFilterEnabled":
+            suggest = "is_standard_time_range_filter_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NativeDashboardFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NativeDashboardFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NativeDashboardFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chart_ids: Optional[Sequence[_builtins.str]] = None,
+                 data_source: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 field_path: Optional[_builtins.str] = None,
+                 filter_operator_and_field_values: Optional[Sequence['outputs.NativeDashboardFilterFilterOperatorAndFieldValue']] = None,
+                 id: Optional[_builtins.str] = None,
+                 is_mandatory: Optional[_builtins.bool] = None,
+                 is_standard_time_range_filter: Optional[_builtins.bool] = None,
+                 is_standard_time_range_filter_enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] chart_ids: The IDs of charts that this filter applies to.
+        :param _builtins.str data_source: The data source for the filter.
+               Possible values:
+               UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+               IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+               DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+        :param _builtins.str display_name: The display name of the filter.
+        :param _builtins.str field_path: The UDM field path being filtered.
+        :param Sequence['NativeDashboardFilterFilterOperatorAndFieldValueArgs'] filter_operator_and_field_values: The specific operator and value set for the filter.
+               Structure is documented below.
+        :param _builtins.str id: The unique ID of the filter.
+        :param _builtins.bool is_mandatory: Whether the filter is mandatory for the dashboard consumer.
+        :param _builtins.bool is_standard_time_range_filter: Whether the filter is a standard time range filter.
+        :param _builtins.bool is_standard_time_range_filter_enabled: Whether the standard time range filter is currently enabled.
+        """
+        if chart_ids is not None:
+            pulumi.set(__self__, "chart_ids", chart_ids)
+        if data_source is not None:
+            pulumi.set(__self__, "data_source", data_source)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+        if filter_operator_and_field_values is not None:
+            pulumi.set(__self__, "filter_operator_and_field_values", filter_operator_and_field_values)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_mandatory is not None:
+            pulumi.set(__self__, "is_mandatory", is_mandatory)
+        if is_standard_time_range_filter is not None:
+            pulumi.set(__self__, "is_standard_time_range_filter", is_standard_time_range_filter)
+        if is_standard_time_range_filter_enabled is not None:
+            pulumi.set(__self__, "is_standard_time_range_filter_enabled", is_standard_time_range_filter_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="chartIds")
+    def chart_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The IDs of charts that this filter applies to.
+        """
+        return pulumi.get(self, "chart_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> Optional[_builtins.str]:
+        """
+        The data source for the filter.
+        Possible values:
+        UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+        IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+        DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+        """
+        return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the filter.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[_builtins.str]:
+        """
+        The UDM field path being filtered.
+        """
+        return pulumi.get(self, "field_path")
+
+    @_builtins.property
+    @pulumi.getter(name="filterOperatorAndFieldValues")
+    def filter_operator_and_field_values(self) -> Optional[Sequence['outputs.NativeDashboardFilterFilterOperatorAndFieldValue']]:
+        """
+        The specific operator and value set for the filter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter_operator_and_field_values")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique ID of the filter.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isMandatory")
+    def is_mandatory(self) -> Optional[_builtins.bool]:
+        """
+        Whether the filter is mandatory for the dashboard consumer.
+        """
+        return pulumi.get(self, "is_mandatory")
+
+    @_builtins.property
+    @pulumi.getter(name="isStandardTimeRangeFilter")
+    def is_standard_time_range_filter(self) -> Optional[_builtins.bool]:
+        """
+        Whether the filter is a standard time range filter.
+        """
+        return pulumi.get(self, "is_standard_time_range_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="isStandardTimeRangeFilterEnabled")
+    def is_standard_time_range_filter_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the standard time range filter is currently enabled.
+        """
+        return pulumi.get(self, "is_standard_time_range_filter_enabled")
+
+
+@pulumi.output_type
+class NativeDashboardFilterFilterOperatorAndFieldValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldValues":
+            suggest = "field_values"
+        elif key == "filterOperator":
+            suggest = "filter_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NativeDashboardFilterFilterOperatorAndFieldValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NativeDashboardFilterFilterOperatorAndFieldValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NativeDashboardFilterFilterOperatorAndFieldValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_values: Optional[Sequence[_builtins.str]] = None,
+                 filter_operator: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] field_values: The values for the modifier. All operators should have a single
+               value other than 'IN' and 'BETWEEN'.
+        :param _builtins.str filter_operator: The operator to apply to the field.
+               Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+        """
+        if field_values is not None:
+            pulumi.set(__self__, "field_values", field_values)
+        if filter_operator is not None:
+            pulumi.set(__self__, "filter_operator", filter_operator)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldValues")
+    def field_values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The values for the modifier. All operators should have a single
+        value other than 'IN' and 'BETWEEN'.
+        """
+        return pulumi.get(self, "field_values")
+
+    @_builtins.property
+    @pulumi.getter(name="filterOperator")
+    def filter_operator(self) -> Optional[_builtins.str]:
+        """
+        The operator to apply to the field.
+        Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+        """
+        return pulumi.get(self, "filter_operator")
 
 
 @pulumi.output_type

@@ -1136,6 +1136,28 @@ class Bucket(pulumi.CustomResource):
                 },
             })
         ```
+        ### Enabling Encryption Enforcement Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            encryption={
+                "google_managed_encryption_enforcement_config": {
+                    "restriction_mode": "FullyRestricted",
+                },
+                "customer_managed_encryption_enforcement_config": {
+                    "restriction_mode": "FullyRestricted",
+                },
+                "customer_supplied_encryption_enforcement_config": {
+                    "restriction_mode": "NotRestricted",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1371,6 +1393,28 @@ class Bucket(pulumi.CustomResource):
                         "0.0.0.0/0",
                         "::/0",
                     ],
+                },
+            })
+        ```
+        ### Enabling Encryption Enforcement Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
+            name="hns-enabled-bucket",
+            location="US",
+            force_destroy=True,
+            encryption={
+                "google_managed_encryption_enforcement_config": {
+                    "restriction_mode": "FullyRestricted",
+                },
+                "customer_managed_encryption_enforcement_config": {
+                    "restriction_mode": "FullyRestricted",
+                },
+                "customer_supplied_encryption_enforcement_config": {
+                    "restriction_mode": "NotRestricted",
                 },
             })
         ```

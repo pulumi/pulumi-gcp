@@ -393,14 +393,15 @@ class TlsRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            https_health_check={
+                "port": 443,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_tls_route = gcp.networkservices.TlsRoute("default",
             name="my-tls-route",
             description="my description",
@@ -458,14 +459,15 @@ class TlsRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            https_health_check={
+                "port": 443,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_mesh = gcp.networkservices.Mesh("default",
             name="my-tls-route",
             labels={
@@ -495,14 +497,15 @@ class TlsRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            https_health_check={
+                "port": 443,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_gateway = gcp.networkservices.Gateway("default",
             name="my-tls-route",
             labels={
@@ -525,6 +528,39 @@ class TlsRoute(pulumi.CustomResource):
                     "destinations": [{
                         "service_name": default.id,
                         "weight": 1,
+                    }],
+                },
+            }])
+        ```
+        ### Network Services Tls Route Target Tcp Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="my-health-check",
+            https_health_check={
+                "port": 443,
+            })
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="TCP",
+            health_checks=default_health_check.id)
+        default_target_tcp_proxy = gcp.compute.TargetTCPProxy("default",
+            name="my-target-tcp-proxy",
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="my-tls-route",
+            target_proxies=[default_target_tcp_proxy.id],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default.id,
                     }],
                 },
             }])
@@ -627,14 +663,15 @@ class TlsRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            https_health_check={
+                "port": 443,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_tls_route = gcp.networkservices.TlsRoute("default",
             name="my-tls-route",
             description="my description",
@@ -692,14 +729,15 @@ class TlsRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            https_health_check={
+                "port": 443,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_mesh = gcp.networkservices.Mesh("default",
             name="my-tls-route",
             labels={
@@ -729,14 +767,15 @@ class TlsRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
+        default_health_check = gcp.compute.HealthCheck("default",
             name="backend-service-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
+            https_health_check={
+                "port": 443,
+            })
         default = gcp.compute.BackendService("default",
             name="my-backend-service",
-            health_checks=default_http_health_check.id)
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            health_checks=default_health_check.id)
         default_gateway = gcp.networkservices.Gateway("default",
             name="my-tls-route",
             labels={
@@ -759,6 +798,39 @@ class TlsRoute(pulumi.CustomResource):
                     "destinations": [{
                         "service_name": default.id,
                         "weight": 1,
+                    }],
+                },
+            }])
+        ```
+        ### Network Services Tls Route Target Tcp Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="my-health-check",
+            https_health_check={
+                "port": 443,
+            })
+        default = gcp.compute.BackendService("default",
+            name="my-backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="TCP",
+            health_checks=default_health_check.id)
+        default_target_tcp_proxy = gcp.compute.TargetTCPProxy("default",
+            name="my-target-tcp-proxy",
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_tls_route = gcp.networkservices.TlsRoute("default",
+            name="my-tls-route",
+            target_proxies=[default_target_tcp_proxy.id],
+            rules=[{
+                "matches": [{
+                    "sni_hosts": ["example.com"],
+                }],
+                "action": {
+                    "destinations": [{
+                        "service_name": default.id,
                     }],
                 },
             }])

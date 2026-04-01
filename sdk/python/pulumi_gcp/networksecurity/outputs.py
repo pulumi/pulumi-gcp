@@ -97,6 +97,7 @@ __all__ = [
     'ServerTlsPolicyServerCertificate',
     'ServerTlsPolicyServerCertificateCertificateProviderInstance',
     'ServerTlsPolicyServerCertificateGrpcEndpoint',
+    'GetAddressGroupsAddressGroupResult',
 ]
 
 @pulumi.output_type
@@ -4635,5 +4636,48 @@ class ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
         The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class GetAddressGroupsAddressGroupResult(dict):
+    def __init__(__self__, *,
+                 capacity: _builtins.int,
+                 items: Sequence[_builtins.str],
+                 location: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str location: The location of the Address Group.
+        :param _builtins.str name: The name of the Address Group.
+        """
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> _builtins.int:
+        return pulumi.get(self, "capacity")
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "items")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> _builtins.str:
+        """
+        The location of the Address Group.
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Address Group.
+        """
+        return pulumi.get(self, "name")
 
 

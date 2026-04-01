@@ -5,14 +5,48 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.storage.inputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs;
+import com.pulumi.gcp.storage.inputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs;
+import com.pulumi.gcp.storage.inputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BucketEncryptionArgs Empty = new BucketEncryptionArgs();
+
+    /**
+     * If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    @Import(name="customerManagedEncryptionEnforcementConfig")
+    private @Nullable Output<BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs> customerManagedEncryptionEnforcementConfig;
+
+    /**
+     * @return If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    public Optional<Output<BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs>> customerManagedEncryptionEnforcementConfig() {
+        return Optional.ofNullable(this.customerManagedEncryptionEnforcementConfig);
+    }
+
+    /**
+     * If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    @Import(name="customerSuppliedEncryptionEnforcementConfig")
+    private @Nullable Output<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs> customerSuppliedEncryptionEnforcementConfig;
+
+    /**
+     * @return If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    public Optional<Output<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs>> customerSuppliedEncryptionEnforcementConfig() {
+        return Optional.ofNullable(this.customerSuppliedEncryptionEnforcementConfig);
+    }
 
     /**
      * The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -31,8 +65,8 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
      * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
      * 
      */
-    @Import(name="defaultKmsKeyName", required=true)
-    private Output<String> defaultKmsKeyName;
+    @Import(name="defaultKmsKeyName")
+    private @Nullable Output<String> defaultKmsKeyName;
 
     /**
      * @return The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -51,14 +85,32 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
      * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
      * 
      */
-    public Output<String> defaultKmsKeyName() {
-        return this.defaultKmsKeyName;
+    public Optional<Output<String>> defaultKmsKeyName() {
+        return Optional.ofNullable(this.defaultKmsKeyName);
+    }
+
+    /**
+     * If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    @Import(name="googleManagedEncryptionEnforcementConfig")
+    private @Nullable Output<BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs> googleManagedEncryptionEnforcementConfig;
+
+    /**
+     * @return If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    public Optional<Output<BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs>> googleManagedEncryptionEnforcementConfig() {
+        return Optional.ofNullable(this.googleManagedEncryptionEnforcementConfig);
     }
 
     private BucketEncryptionArgs() {}
 
     private BucketEncryptionArgs(BucketEncryptionArgs $) {
+        this.customerManagedEncryptionEnforcementConfig = $.customerManagedEncryptionEnforcementConfig;
+        this.customerSuppliedEncryptionEnforcementConfig = $.customerSuppliedEncryptionEnforcementConfig;
         this.defaultKmsKeyName = $.defaultKmsKeyName;
+        this.googleManagedEncryptionEnforcementConfig = $.googleManagedEncryptionEnforcementConfig;
     }
 
     public static Builder builder() {
@@ -80,6 +132,48 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param customerManagedEncryptionEnforcementConfig If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerManagedEncryptionEnforcementConfig(@Nullable Output<BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs> customerManagedEncryptionEnforcementConfig) {
+            $.customerManagedEncryptionEnforcementConfig = customerManagedEncryptionEnforcementConfig;
+            return this;
+        }
+
+        /**
+         * @param customerManagedEncryptionEnforcementConfig If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerManagedEncryptionEnforcementConfig(BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs customerManagedEncryptionEnforcementConfig) {
+            return customerManagedEncryptionEnforcementConfig(Output.of(customerManagedEncryptionEnforcementConfig));
+        }
+
+        /**
+         * @param customerSuppliedEncryptionEnforcementConfig If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerSuppliedEncryptionEnforcementConfig(@Nullable Output<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs> customerSuppliedEncryptionEnforcementConfig) {
+            $.customerSuppliedEncryptionEnforcementConfig = customerSuppliedEncryptionEnforcementConfig;
+            return this;
+        }
+
+        /**
+         * @param customerSuppliedEncryptionEnforcementConfig If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerSuppliedEncryptionEnforcementConfig(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs customerSuppliedEncryptionEnforcementConfig) {
+            return customerSuppliedEncryptionEnforcementConfig(Output.of(customerSuppliedEncryptionEnforcementConfig));
+        }
+
+        /**
          * @param defaultKmsKeyName The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
          * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
          * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -98,7 +192,7 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder defaultKmsKeyName(Output<String> defaultKmsKeyName) {
+        public Builder defaultKmsKeyName(@Nullable Output<String> defaultKmsKeyName) {
             $.defaultKmsKeyName = defaultKmsKeyName;
             return this;
         }
@@ -126,10 +220,28 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
             return defaultKmsKeyName(Output.of(defaultKmsKeyName));
         }
 
+        /**
+         * @param googleManagedEncryptionEnforcementConfig If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleManagedEncryptionEnforcementConfig(@Nullable Output<BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs> googleManagedEncryptionEnforcementConfig) {
+            $.googleManagedEncryptionEnforcementConfig = googleManagedEncryptionEnforcementConfig;
+            return this;
+        }
+
+        /**
+         * @param googleManagedEncryptionEnforcementConfig If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleManagedEncryptionEnforcementConfig(BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs googleManagedEncryptionEnforcementConfig) {
+            return googleManagedEncryptionEnforcementConfig(Output.of(googleManagedEncryptionEnforcementConfig));
+        }
+
         public BucketEncryptionArgs build() {
-            if ($.defaultKmsKeyName == null) {
-                throw new MissingRequiredPropertyException("BucketEncryptionArgs", "defaultKmsKeyName");
-            }
             return $;
         }
     }

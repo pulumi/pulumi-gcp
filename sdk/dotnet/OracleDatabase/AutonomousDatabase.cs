@@ -182,6 +182,51 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// ### Oracledatabase Autonomous Database Disaster Recovery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var adb_dr = new Gcp.OracleDatabase.AutonomousDatabase("adb-dr", new()
+    ///     {
+    ///         AutonomousDatabaseId = "my-instance",
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         Database = "mydatabase",
+    ///         AdminPassword = "123Abpassword",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
+    ///         {
+    ///             ComputeCount = 2,
+    ///             DataStorageSizeGb = 20,
+    ///             DbVersion = "19c",
+    ///             DbWorkload = "OLTP",
+    ///             LicenseType = "LICENSE_INCLUDED",
+    ///             MtlsConnectionRequired = true,
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var myADB = new Gcp.OracleDatabase.AutonomousDatabase("myADB", new()
+    ///     {
+    ///         AutonomousDatabaseId = "my-instance",
+    ///         Location = "my-location",
+    ///         Project = "my-project",
+    ///         SourceConfig = new Gcp.OracleDatabase.Inputs.AutonomousDatabaseSourceConfigArgs
+    ///         {
+    ///             AutonomousDatabase = adb_dr.Name,
+    ///             AutomaticBackupsReplicationEnabled = false,
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// AutonomousDatabase can be imported using any of these accepted formats:

@@ -5,6 +5,7 @@ package com.pulumi.gcp.colab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigColabImageArgs;
 import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigEnvArgs;
 import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
 import java.util.List;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class RuntimeTemplateSoftwareConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RuntimeTemplateSoftwareConfigArgs Empty = new RuntimeTemplateSoftwareConfigArgs();
+
+    /**
+     * Colab Image Configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="colabImage")
+    private @Nullable Output<RuntimeTemplateSoftwareConfigColabImageArgs> colabImage;
+
+    /**
+     * @return Colab Image Configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RuntimeTemplateSoftwareConfigColabImageArgs>> colabImage() {
+        return Optional.ofNullable(this.colabImage);
+    }
 
     /**
      * Environment variables to be passed to the container.
@@ -54,6 +72,7 @@ public final class RuntimeTemplateSoftwareConfigArgs extends com.pulumi.resource
     private RuntimeTemplateSoftwareConfigArgs() {}
 
     private RuntimeTemplateSoftwareConfigArgs(RuntimeTemplateSoftwareConfigArgs $) {
+        this.colabImage = $.colabImage;
         this.envs = $.envs;
         this.postStartupScriptConfig = $.postStartupScriptConfig;
     }
@@ -74,6 +93,29 @@ public final class RuntimeTemplateSoftwareConfigArgs extends com.pulumi.resource
 
         public Builder(RuntimeTemplateSoftwareConfigArgs defaults) {
             $ = new RuntimeTemplateSoftwareConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param colabImage Colab Image Configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder colabImage(@Nullable Output<RuntimeTemplateSoftwareConfigColabImageArgs> colabImage) {
+            $.colabImage = colabImage;
+            return this;
+        }
+
+        /**
+         * @param colabImage Colab Image Configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder colabImage(RuntimeTemplateSoftwareConfigColabImageArgs colabImage) {
+            return colabImage(Output.of(colabImage));
         }
 
         /**

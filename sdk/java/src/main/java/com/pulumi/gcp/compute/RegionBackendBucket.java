@@ -34,9 +34,12 @@ import javax.annotation.Nullable;
  * - The bucket must be in the same region as the load balancer
  * - Single-region buckets only (multi-region and dual-region buckets are not supported)
  * 
+ * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+ * See Provider Versions for more details on beta resources.
+ * 
  * To get more information about RegionBackendBucket, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/regionBackendBuckets)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/regionBackendBuckets)
  * * How-to Guides
  *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
  * 

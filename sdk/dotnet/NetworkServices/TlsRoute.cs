@@ -28,18 +28,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
+    ///         {
+    ///             Port = 443,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultTlsRoute = new Gcp.NetworkServices.TlsRoute("default", new()
@@ -157,18 +159,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
+    ///         {
+    ///             Port = 443,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultMesh = new Gcp.NetworkServices.Mesh("default", new()
@@ -234,18 +238,20 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
     ///         Name = "backend-service-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
+    ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
+    ///         {
+    ///             Port = 443,
+    ///         },
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "my-backend-service",
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultGateway = new Gcp.NetworkServices.Gateway("default", new()
@@ -298,6 +304,76 @@ namespace Pulumi.Gcp.NetworkServices
     ///                         {
     ///                             ServiceName = @default.Id,
     ///                             Weight = 1,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Services Tls Route Target Tcp Proxy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "my-health-check",
+    ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
+    ///         {
+    ///             Port = 443,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "my-backend-service",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Protocol = "TCP",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultTargetTCPProxy = new Gcp.Compute.TargetTCPProxy("default", new()
+    ///     {
+    ///         Name = "my-target-tcp-proxy",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultTlsRoute = new Gcp.NetworkServices.TlsRoute("default", new()
+    ///     {
+    ///         Name = "my-tls-route",
+    ///         TargetProxies = new[]
+    ///         {
+    ///             defaultTargetTCPProxy.Id,
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.TlsRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.TlsRouteRuleMatchArgs
+    ///                     {
+    ///                         SniHosts = new[]
+    ///                         {
+    ///                             "example.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.TlsRouteRuleActionArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         new Gcp.NetworkServices.Inputs.TlsRouteRuleActionDestinationArgs
+    ///                         {
+    ///                             ServiceName = @default.Id,
     ///                         },
     ///                     },
     ///                 },

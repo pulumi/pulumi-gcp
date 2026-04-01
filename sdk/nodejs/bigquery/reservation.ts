@@ -171,6 +171,10 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly replicationStatuses: pulumi.Output<outputs.bigquery.ReservationReplicationStatus[]>;
     /**
+     * The reservation group that this reservation belongs to.
+     */
+    declare public readonly reservationGroup: pulumi.Output<string | undefined>;
+    /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -244,6 +248,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["primaryLocation"] = state?.primaryLocation;
             resourceInputs["project"] = state?.project;
             resourceInputs["replicationStatuses"] = state?.replicationStatuses;
+            resourceInputs["reservationGroup"] = state?.reservationGroup;
             resourceInputs["scalingMode"] = state?.scalingMode;
             resourceInputs["secondaryLocation"] = state?.secondaryLocation;
             resourceInputs["slotCapacity"] = state?.slotCapacity;
@@ -260,6 +265,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["maxSlots"] = args?.maxSlots;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
+            resourceInputs["reservationGroup"] = args?.reservationGroup;
             resourceInputs["scalingMode"] = args?.scalingMode;
             resourceInputs["secondaryLocation"] = args?.secondaryLocation;
             resourceInputs["slotCapacity"] = args?.slotCapacity;
@@ -366,6 +372,10 @@ export interface ReservationState {
      * Structure is documented below.
      */
     replicationStatuses?: pulumi.Input<pulumi.Input<inputs.bigquery.ReservationReplicationStatus>[]>;
+    /**
+     * The reservation group that this reservation belongs to.
+     */
+    reservationGroup?: pulumi.Input<string>;
     /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
@@ -490,6 +500,10 @@ export interface ReservationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The reservation group that this reservation belongs to.
+     */
+    reservationGroup?: pulumi.Input<string>;
     /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,

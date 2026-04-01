@@ -14,14 +14,36 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class GetBucketEncryptionResult
     {
         /// <summary>
+        /// If omitted, then new objects with CMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigResult> CustomerManagedEncryptionEnforcementConfigs;
+        /// <summary>
+        /// If omitted, then new objects with CSEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigResult> CustomerSuppliedEncryptionEnforcementConfigs;
+        /// <summary>
         /// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         /// </summary>
         public readonly string DefaultKmsKeyName;
+        /// <summary>
+        /// If omitted, then new objects with GMEK encryption-type is allowed. If FullyRestricted, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigResult> GoogleManagedEncryptionEnforcementConfigs;
 
         [OutputConstructor]
-        private GetBucketEncryptionResult(string defaultKmsKeyName)
+        private GetBucketEncryptionResult(
+            ImmutableArray<Outputs.GetBucketEncryptionCustomerManagedEncryptionEnforcementConfigResult> customerManagedEncryptionEnforcementConfigs,
+
+            ImmutableArray<Outputs.GetBucketEncryptionCustomerSuppliedEncryptionEnforcementConfigResult> customerSuppliedEncryptionEnforcementConfigs,
+
+            string defaultKmsKeyName,
+
+            ImmutableArray<Outputs.GetBucketEncryptionGoogleManagedEncryptionEnforcementConfigResult> googleManagedEncryptionEnforcementConfigs)
         {
+            CustomerManagedEncryptionEnforcementConfigs = customerManagedEncryptionEnforcementConfigs;
+            CustomerSuppliedEncryptionEnforcementConfigs = customerSuppliedEncryptionEnforcementConfigs;
             DefaultKmsKeyName = defaultKmsKeyName;
+            GoogleManagedEncryptionEnforcementConfigs = googleManagedEncryptionEnforcementConfigs;
         }
     }
 }

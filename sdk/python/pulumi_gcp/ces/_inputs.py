@@ -995,6 +995,10 @@ class AgentRemoteDialogflowAgentArgsDict(TypedDict):
     variables names to be sent back to the CES agent after the Dialogflow
     agent execution ends.
     """
+    respect_response_interruption_settings: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allow_playback_interruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+    """
 
 @pulumi.input_type
 class AgentRemoteDialogflowAgentArgs:
@@ -1003,7 +1007,8 @@ class AgentRemoteDialogflowAgentArgs:
                  flow_id: pulumi.Input[_builtins.str],
                  environment_id: Optional[pulumi.Input[_builtins.str]] = None,
                  input_variable_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 output_variable_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 output_variable_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 respect_response_interruption_settings: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] agent: The
                [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents
@@ -1017,6 +1022,7 @@ class AgentRemoteDialogflowAgentArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] output_variable_mapping: The mapping of the Dialogflow session parameters names to the app
                variables names to be sent back to the CES agent after the Dialogflow
                agent execution ends.
+        :param pulumi.Input[_builtins.bool] respect_response_interruption_settings: Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allow_playback_interruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
         """
         pulumi.set(__self__, "agent", agent)
         pulumi.set(__self__, "flow_id", flow_id)
@@ -1026,6 +1032,8 @@ class AgentRemoteDialogflowAgentArgs:
             pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
         if output_variable_mapping is not None:
             pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
+        if respect_response_interruption_settings is not None:
+            pulumi.set(__self__, "respect_response_interruption_settings", respect_response_interruption_settings)
 
     @_builtins.property
     @pulumi.getter
@@ -1093,6 +1101,18 @@ class AgentRemoteDialogflowAgentArgs:
     @output_variable_mapping.setter
     def output_variable_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "output_variable_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="respectResponseInterruptionSettings")
+    def respect_response_interruption_settings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allow_playback_interruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+        """
+        return pulumi.get(self, "respect_response_interruption_settings")
+
+    @respect_response_interruption_settings.setter
+    def respect_response_interruption_settings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "respect_response_interruption_settings", value)
 
 
 class AgentToolsetArgsDict(TypedDict):

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Spanner.Inputs
         public Input<int>? MaxNodes { get; set; }
 
         /// <summary>
-        /// Specifies maximum number of processing units allocated to the instance.
+        /// The maximum number of processing units for this specific replica.
         /// If set, this number should be multiples of 1000 and be greater than or equal to
         /// min_processing_units.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Spanner.Inputs
         public Input<int>? MinNodes { get; set; }
 
         /// <summary>
-        /// Specifies minimum number of processing units allocated to the instance.
+        /// The minimum number of processing units for this specific replica.
         /// If set, this number should be multiples of 1000.
         /// </summary>
         [Input("minProcessingUnits")]

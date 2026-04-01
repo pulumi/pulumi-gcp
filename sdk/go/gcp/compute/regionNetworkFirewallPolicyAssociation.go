@@ -65,6 +65,52 @@ import (
 //	}
 //
 // ```
+// ### Region Network Firewall Policy Association Priority
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			policy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "policy", &compute.RegionNetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("my-policy"),
+//				Project:     pulumi.String("my-project-name"),
+//				Description: pulumi.String("Sample global network firewall policy"),
+//				Region:      pulumi.String("us-west1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "association", &compute.RegionNetworkFirewallPolicyAssociationArgs{
+//				Name:             pulumi.String("my-association"),
+//				Project:          pulumi.String("my-project-name"),
+//				AttachmentTarget: network.ID(),
+//				FirewallPolicy:   policy.ID(),
+//				Region:           pulumi.String("us-west1"),
+//				Priority:         pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -94,6 +140,9 @@ type RegionNetworkFirewallPolicyAssociation struct {
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Beta)
+	// An integer indicating the priority of an association.
+	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -145,6 +194,9 @@ type regionNetworkFirewallPolicyAssociationState struct {
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
+	// An integer indicating the priority of an association.
+	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -161,6 +213,9 @@ type RegionNetworkFirewallPolicyAssociationState struct {
 	FirewallPolicy pulumi.StringPtrInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
+	// An integer indicating the priority of an association.
+	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -181,6 +236,9 @@ type regionNetworkFirewallPolicyAssociationArgs struct {
 	FirewallPolicy string `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
+	// An integer indicating the priority of an association.
+	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -196,6 +254,9 @@ type RegionNetworkFirewallPolicyAssociationArgs struct {
 	FirewallPolicy pulumi.StringInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
+	// An integer indicating the priority of an association.
+	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -303,6 +364,12 @@ func (o RegionNetworkFirewallPolicyAssociationOutput) FirewallPolicy() pulumi.St
 // The name for an association.
 func (o RegionNetworkFirewallPolicyAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional, Beta)
+// An integer indicating the priority of an association.
+func (o RegionNetworkFirewallPolicyAssociationOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionNetworkFirewallPolicyAssociation) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 // The ID of the project in which the resource belongs.

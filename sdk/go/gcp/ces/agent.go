@@ -299,6 +299,71 @@ import (
 //	}
 //
 // ```
+// ### Ces Agent Remote Dialogflow Agent Interruption
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Agent example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewAgent(ctx, "ces_agent_remote_dialogflow_agent_interruption", &ces.AgentArgs{
+//				AgentId:     pulumi.String("agent-id"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForAgent.AppId,
+//				DisplayName: pulumi.String("my-agent"),
+//				ModelSettings: &ces.AgentModelSettingsArgs{
+//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Temperature: pulumi.Float64(0.5),
+//				},
+//				RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
+//					Agent:                               pulumi.String("projects/example/locations/us/agents/fake-agent"),
+//					FlowId:                              pulumi.String("fake-flow"),
+//					EnvironmentId:                       pulumi.String("fake-env"),
+//					RespectResponseInterruptionSettings: pulumi.Bool(true),
+//					InputVariableMapping: pulumi.StringMap{
+//						"example": pulumi.String("1"),
+//					},
+//					OutputVariableMapping: pulumi.StringMap{
+//						"example": pulumi.String("1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

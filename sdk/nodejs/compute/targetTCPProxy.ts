@@ -80,6 +80,43 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * ```
+ * ### Target Tcp Proxy Tls Route
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.TargetTCPProxy("default", {
+ *     name: "test-proxy",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpsHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     protocol: "TCP",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const defaultTlsRoute = new gcp.networkservices.TlsRoute("default", {
+ *     name: "tls-route-check",
+ *     targetProxies: [_default.id],
+ *     rules: [{
+ *         matches: [{
+ *             sniHosts: ["example.com"],
+ *         }],
+ *         action: {
+ *             destinations: [{
+ *                 serviceName: defaultBackendService.id,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -91,6 +91,7 @@ namespace Pulumi.Gcp.DataPlex
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -142,6 +143,18 @@ namespace Pulumi.Gcp.DataPlex
     ///         Description = "term created by Terraform",
     ///     });
     /// 
+    ///     // Introduce a 45-second wait after the glossary resource creation
+    ///     var wait_for_sync = new Time.Sleep("wait-for-sync", new()
+    ///     {
+    ///         CreateDuration = "45s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             termTestIdFullGlossaryTerm,
+    ///         },
+    ///     });
+    /// 
     ///     var fullEntryLink = new Gcp.DataPlex.EntryLink("full_entry_link", new()
     ///     {
     ///         Project = "1111111111111",
@@ -174,7 +187,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         DependsOn =
     ///         {
-    ///             termTestIdFullGlossaryTerm,
+    ///             wait_for_sync,
     ///         },
     ///     });
     /// 

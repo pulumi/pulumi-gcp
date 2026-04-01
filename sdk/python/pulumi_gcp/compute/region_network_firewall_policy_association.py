@@ -22,6 +22,7 @@ class RegionNetworkFirewallPolicyAssociationArgs:
                  attachment_target: pulumi.Input[_builtins.str],
                  firewall_policy: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -30,6 +31,8 @@ class RegionNetworkFirewallPolicyAssociationArgs:
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] name: The name for an association.
+        :param pulumi.Input[_builtins.int] priority: (Optional, Beta)
+               An integer indicating the priority of an association.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location of this resource.
@@ -38,6 +41,8 @@ class RegionNetworkFirewallPolicyAssociationArgs:
         pulumi.set(__self__, "firewall_policy", firewall_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -81,6 +86,19 @@ class RegionNetworkFirewallPolicyAssociationArgs:
 
     @_builtins.property
     @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional, Beta)
+        An integer indicating the priority of an association.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -111,6 +129,7 @@ class _RegionNetworkFirewallPolicyAssociationState:
                  attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  short_name: Optional[pulumi.Input[_builtins.str]] = None):
@@ -120,6 +139,8 @@ class _RegionNetworkFirewallPolicyAssociationState:
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] name: The name for an association.
+        :param pulumi.Input[_builtins.int] priority: (Optional, Beta)
+               An integer indicating the priority of an association.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location of this resource.
@@ -131,6 +152,8 @@ class _RegionNetworkFirewallPolicyAssociationState:
             pulumi.set(__self__, "firewall_policy", firewall_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -173,6 +196,19 @@ class _RegionNetworkFirewallPolicyAssociationState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional, Beta)
+        An integer indicating the priority of an association.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
@@ -221,6 +257,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
                  attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -254,6 +291,28 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=policy.id,
             region="us-west1")
         ```
+        ### Region Network Firewall Policy Association Priority
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.RegionNetworkFirewallPolicy("policy",
+            name="my-policy",
+            project="my-project-name",
+            description="Sample global network firewall policy",
+            region="us-west1")
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        association = gcp.compute.RegionNetworkFirewallPolicyAssociation("association",
+            name="my-association",
+            project="my-project-name",
+            attachment_target=network.id,
+            firewall_policy=policy.id,
+            region="us-west1",
+            priority=1)
+        ```
 
         ## Import
 
@@ -281,6 +340,8 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] name: The name for an association.
+        :param pulumi.Input[_builtins.int] priority: (Optional, Beta)
+               An integer indicating the priority of an association.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location of this resource.
@@ -320,6 +381,28 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=network.id,
             firewall_policy=policy.id,
             region="us-west1")
+        ```
+        ### Region Network Firewall Policy Association Priority
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.RegionNetworkFirewallPolicy("policy",
+            name="my-policy",
+            project="my-project-name",
+            description="Sample global network firewall policy",
+            region="us-west1")
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        association = gcp.compute.RegionNetworkFirewallPolicyAssociation("association",
+            name="my-association",
+            project="my-project-name",
+            attachment_target=network.id,
+            firewall_policy=policy.id,
+            region="us-west1",
+            priority=1)
         ```
 
         ## Import
@@ -361,6 +444,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
                  attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -379,6 +463,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'firewall_policy'")
             __props__.__dict__["firewall_policy"] = firewall_policy
             __props__.__dict__["name"] = name
+            __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["short_name"] = None
@@ -395,6 +480,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
             firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            priority: Optional[pulumi.Input[_builtins.int]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             short_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionNetworkFirewallPolicyAssociation':
@@ -408,6 +494,8 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[_builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[_builtins.str] name: The name for an association.
+        :param pulumi.Input[_builtins.int] priority: (Optional, Beta)
+               An integer indicating the priority of an association.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The location of this resource.
@@ -420,6 +508,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         __props__.__dict__["attachment_target"] = attachment_target
         __props__.__dict__["firewall_policy"] = firewall_policy
         __props__.__dict__["name"] = name
+        __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["short_name"] = short_name
@@ -448,6 +537,15 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The name for an association.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Optional, Beta)
+        An integer indicating the priority of an association.
+        """
+        return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter

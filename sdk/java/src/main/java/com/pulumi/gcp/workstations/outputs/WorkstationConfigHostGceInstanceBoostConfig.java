@@ -29,7 +29,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     private @Nullable Integer bootDiskSizeGb;
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     private @Nullable Boolean enableNestedVirtualization;
@@ -67,7 +67,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     }
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     public Optional<Boolean> enableNestedVirtualization() {

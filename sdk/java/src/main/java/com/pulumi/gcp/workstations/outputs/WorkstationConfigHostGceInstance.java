@@ -54,7 +54,7 @@ public final class WorkstationConfigHostGceInstance {
     private @Nullable Boolean disableSsh;
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     private @Nullable Boolean enableNestedVirtualization;
@@ -147,7 +147,7 @@ public final class WorkstationConfigHostGceInstance {
     }
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
      */
     public Optional<Boolean> enableNestedVirtualization() {

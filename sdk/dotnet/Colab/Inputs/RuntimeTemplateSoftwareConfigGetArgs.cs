@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.Colab.Inputs
 
     public sealed class RuntimeTemplateSoftwareConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Colab Image Configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("colabImage")]
+        public Input<Inputs.RuntimeTemplateSoftwareConfigColabImageGetArgs>? ColabImage { get; set; }
+
         [Input("envs")]
         private InputList<Inputs.RuntimeTemplateSoftwareConfigEnvGetArgs>? _envs;
 

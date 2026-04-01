@@ -35,18 +35,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-//				Name:             pulumi.String("backend-service-health-check"),
-//				RequestPath:      pulumi.String("/"),
-//				CheckIntervalSec: pulumi.Int(1),
-//				TimeoutSec:       pulumi.Int(1),
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("backend-service-health-check"),
+//				HttpsHealthCheck: &compute.HealthCheckHttpsHealthCheckArgs{
+//					Port: pulumi.Int(443),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("my-backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				Name:                pulumi.String("my-backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -168,18 +169,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-//				Name:             pulumi.String("backend-service-health-check"),
-//				RequestPath:      pulumi.String("/"),
-//				CheckIntervalSec: pulumi.Int(1),
-//				TimeoutSec:       pulumi.Int(1),
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("backend-service-health-check"),
+//				HttpsHealthCheck: &compute.HealthCheckHttpsHealthCheckArgs{
+//					Port: pulumi.Int(443),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("my-backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				Name:                pulumi.String("my-backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -246,18 +248,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-//				Name:             pulumi.String("backend-service-health-check"),
-//				RequestPath:      pulumi.String("/"),
-//				CheckIntervalSec: pulumi.Int(1),
-//				TimeoutSec:       pulumi.Int(1),
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("backend-service-health-check"),
+//				HttpsHealthCheck: &compute.HealthCheckHttpsHealthCheckArgs{
+//					Port: pulumi.Int(443),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("my-backend-service"),
-//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				Name:                pulumi.String("my-backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -300,6 +303,78 @@ import (
 //								&networkservices.TlsRouteRuleActionDestinationArgs{
 //									ServiceName: _default.ID(),
 //									Weight:      pulumi.Int(1),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Tls Route Target Tcp Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("my-health-check"),
+//				HttpsHealthCheck: &compute.HealthCheckHttpsHealthCheckArgs{
+//					Port: pulumi.Int(443),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("my-backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("TCP"),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTargetTCPProxy, err := compute.NewTargetTCPProxy(ctx, "default", &compute.TargetTCPProxyArgs{
+//				Name:                pulumi.String("my-target-tcp-proxy"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name: pulumi.String("my-tls-route"),
+//				TargetProxies: pulumi.StringArray{
+//					defaultTargetTCPProxy.ID(),
+//				},
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: _default.ID(),
 //								},
 //							},
 //						},

@@ -311,6 +311,44 @@ import (
 //	}
 //
 // ```
+// ### Enabling Encryption Enforcement Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "hns-enabled", &storage.BucketArgs{
+//				Name:         pulumi.String("hns-enabled-bucket"),
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//				Encryption: &storage.BucketEncryptionArgs{
+//					GoogleManagedEncryptionEnforcementConfig: &storage.BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{
+//						RestrictionMode: pulumi.String("FullyRestricted"),
+//					},
+//					CustomerManagedEncryptionEnforcementConfig: &storage.BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{
+//						RestrictionMode: pulumi.String("FullyRestricted"),
+//					},
+//					CustomerSuppliedEncryptionEnforcementConfig: &storage.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{
+//						RestrictionMode: pulumi.String("NotRestricted"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

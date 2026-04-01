@@ -123,6 +123,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.GlossaryArgs;
  * import com.pulumi.gcp.dataplex.GlossaryTerm;
  * import com.pulumi.gcp.dataplex.GlossaryTermArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.dataplex.EntryLink;
  * import com.pulumi.gcp.dataplex.EntryLinkArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryLinkEntryReferenceArgs;
@@ -179,6 +181,13 @@ import javax.annotation.Nullable;
  *             .description("term created by Terraform")
  *             .build());
  * 
+ *         // Introduce a 45-second wait after the glossary resource creation
+ *         var wait_for_sync = new Sleep("wait-for-sync", SleepArgs.builder()
+ *             .createDuration("45s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(termTestIdFullGlossaryTerm)
+ *                 .build());
+ * 
  *         var fullEntryLink = new EntryLink("fullEntryLink", EntryLinkArgs.builder()
  *             .project("1111111111111")
  *             .location("us-central1")
@@ -202,7 +211,7 @@ import javax.annotation.Nullable;
  *                     .type("TARGET")
  *                     .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(termTestIdFullGlossaryTerm)
+ *                 .dependsOn(wait_for_sync)
  *                 .build());
  * 
  *     }}{@code

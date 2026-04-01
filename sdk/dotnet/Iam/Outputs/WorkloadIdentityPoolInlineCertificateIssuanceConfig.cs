@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
         /// same region. Also the CA pool region (in value) must match the workload's region (key).
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CaPools;
+        public readonly ImmutableDictionary<string, string>? CaPools;
         /// <summary>
         /// Key algorithm to use when generating the key pair. This key pair will be used to create
         /// the certificate. If unspecified, this will default to `ECDSA_P256`.
@@ -48,21 +48,34 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// to `50`.
         /// </summary>
         public readonly int? RotationWindowPercentage;
+        /// <summary>
+        /// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+        /// CA in the same region as the workload will be selected to issue the certificate. Enabling
+        /// this will clear any existing `CaPools` configuration to provision the certificates.
+        /// 
+        /// &gt; **Note** This field is mutually exclusive with `CaPools`. If this flag is enabled,
+        /// certificates will be automatically provisioned from the default shared CAs. This flag should
+        /// not be set if you want to use your own CA pools to provision the certificates.
+        /// </summary>
+        public readonly bool? UseDefaultSharedCa;
 
         [OutputConstructor]
         private WorkloadIdentityPoolInlineCertificateIssuanceConfig(
-            ImmutableDictionary<string, string> caPools,
+            ImmutableDictionary<string, string>? caPools,
 
             string? keyAlgorithm,
 
             string? lifetime,
 
-            int? rotationWindowPercentage)
+            int? rotationWindowPercentage,
+
+            bool? useDefaultSharedCa)
         {
             CaPools = caPools;
             KeyAlgorithm = keyAlgorithm;
             Lifetime = lifetime;
             RotationWindowPercentage = rotationWindowPercentage;
+            UseDefaultSharedCa = useDefaultSharedCa;
         }
     }
 }

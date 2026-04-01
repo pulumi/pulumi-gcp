@@ -1157,6 +1157,51 @@ class Agent(pulumi.CustomResource):
                 },
             })
         ```
+        ### Ces Agent Remote Dialogflow Agent Interruption
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Agent example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_agent_remote_dialogflow_agent_interruption = gcp.ces.Agent("ces_agent_remote_dialogflow_agent_interruption",
+            agent_id="agent-id",
+            location="us",
+            app=ces_app_for_agent.app_id,
+            display_name="my-agent",
+            model_settings={
+                "model": "gemini-1.5-flash",
+                "temperature": 0.5,
+            },
+            remote_dialogflow_agent={
+                "agent": "projects/example/locations/us/agents/fake-agent",
+                "flow_id": "fake-flow",
+                "environment_id": "fake-env",
+                "respect_response_interruption_settings": True,
+                "input_variable_mapping": {
+                    "example": "1",
+                },
+                "output_variable_mapping": {
+                    "example": "1",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1436,6 +1481,51 @@ class Agent(pulumi.CustomResource):
                 "agent": "projects/example/locations/us/agents/fake-agent",
                 "flow_id": "fake-flow",
                 "environment_id": "fake-env",
+                "input_variable_mapping": {
+                    "example": "1",
+                },
+                "output_variable_mapping": {
+                    "example": "1",
+                },
+            })
+        ```
+        ### Ces Agent Remote Dialogflow Agent Interruption
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Agent example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_agent_remote_dialogflow_agent_interruption = gcp.ces.Agent("ces_agent_remote_dialogflow_agent_interruption",
+            agent_id="agent-id",
+            location="us",
+            app=ces_app_for_agent.app_id,
+            display_name="my-agent",
+            model_settings={
+                "model": "gemini-1.5-flash",
+                "temperature": 0.5,
+            },
+            remote_dialogflow_agent={
+                "agent": "projects/example/locations/us/agents/fake-agent",
+                "flow_id": "fake-flow",
+                "environment_id": "fake-env",
+                "respect_response_interruption_settings": True,
                 "input_variable_mapping": {
                     "example": "1",
                 },

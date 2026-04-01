@@ -4,6 +4,7 @@
 package com.pulumi.gcp.colab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.colab.outputs.RuntimeTemplateSoftwareConfigColabImage;
 import com.pulumi.gcp.colab.outputs.RuntimeTemplateSoftwareConfigEnv;
 import com.pulumi.gcp.colab.outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig;
 import java.util.List;
@@ -13,6 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuntimeTemplateSoftwareConfig {
+    /**
+     * @return Colab Image Configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RuntimeTemplateSoftwareConfigColabImage colabImage;
     /**
      * @return Environment variables to be passed to the container.
      * Structure is documented below.
@@ -27,6 +34,14 @@ public final class RuntimeTemplateSoftwareConfig {
     private @Nullable RuntimeTemplateSoftwareConfigPostStartupScriptConfig postStartupScriptConfig;
 
     private RuntimeTemplateSoftwareConfig() {}
+    /**
+     * @return Colab Image Configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RuntimeTemplateSoftwareConfigColabImage> colabImage() {
+        return Optional.ofNullable(this.colabImage);
+    }
     /**
      * @return Environment variables to be passed to the container.
      * Structure is documented below.
@@ -53,15 +68,23 @@ public final class RuntimeTemplateSoftwareConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RuntimeTemplateSoftwareConfigColabImage colabImage;
         private @Nullable List<RuntimeTemplateSoftwareConfigEnv> envs;
         private @Nullable RuntimeTemplateSoftwareConfigPostStartupScriptConfig postStartupScriptConfig;
         public Builder() {}
         public Builder(RuntimeTemplateSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.colabImage = defaults.colabImage;
     	      this.envs = defaults.envs;
     	      this.postStartupScriptConfig = defaults.postStartupScriptConfig;
         }
 
+        @CustomType.Setter
+        public Builder colabImage(@Nullable RuntimeTemplateSoftwareConfigColabImage colabImage) {
+
+            this.colabImage = colabImage;
+            return this;
+        }
         @CustomType.Setter
         public Builder envs(@Nullable List<RuntimeTemplateSoftwareConfigEnv> envs) {
 
@@ -79,6 +102,7 @@ public final class RuntimeTemplateSoftwareConfig {
         }
         public RuntimeTemplateSoftwareConfig build() {
             final var _resultValue = new RuntimeTemplateSoftwareConfig();
+            _resultValue.colabImage = colabImage;
             _resultValue.envs = envs;
             _resultValue.postStartupScriptConfig = postStartupScriptConfig;
             return _resultValue;

@@ -40,20 +40,17 @@ class WorkloadIdentityPoolArgs:
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
                access again.
         :param pulumi.Input[_builtins.str] display_name: A display name for the pool. Cannot exceed 32 characters.
-        :param pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs'] inline_certificate_issuance_config: (Optional, Beta)
-               Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+        :param pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs'] inline_certificate_issuance_config: Represents configuration for generating mutual TLS (mTLS) certificates for the identities
                within this pool. Defines the Certificate Authority (CA) pool resources and configurations
                required for issuance and rotation of mTLS workload certificates.
                Structure is documented below.
-        :param pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs'] inline_trust_config: (Optional, Beta)
-               Represents config to add additional trusted trust domains. Defines configuration for extending
+        :param pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs'] inline_trust_config: Represents config to add additional trusted trust domains. Defines configuration for extending
                trust to additional trust domains. By establishing trust with another domain, the current
                domain will recognize and accept certificates issued by entities within the trusted domains.
                Note that a trust domain automatically trusts itself, eliminating the need for explicit
                configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
-               The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+        :param pulumi.Input[_builtins.str] mode: The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
                are in `FEDERATION_ONLY` mode.
                
                > **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -70,7 +67,13 @@ class WorkloadIdentityPoolArgs:
                format: `ns/<namespace>/sa/<workload_identifier>`.
                `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
                mode pools.
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+               * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+               * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+               * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -146,7 +149,6 @@ class WorkloadIdentityPoolArgs:
     @pulumi.getter(name="inlineCertificateIssuanceConfig")
     def inline_certificate_issuance_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]:
         """
-        (Optional, Beta)
         Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         within this pool. Defines the Certificate Authority (CA) pool resources and configurations
         required for issuance and rotation of mTLS workload certificates.
@@ -162,7 +164,6 @@ class WorkloadIdentityPoolArgs:
     @pulumi.getter(name="inlineTrustConfig")
     def inline_trust_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']]:
         """
-        (Optional, Beta)
         Represents config to add additional trusted trust domains. Defines configuration for extending
         trust to additional trust domains. By establishing trust with another domain, the current
         domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -180,7 +181,6 @@ class WorkloadIdentityPoolArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         are in `FEDERATION_ONLY` mode.
 
@@ -198,7 +198,13 @@ class WorkloadIdentityPoolArgs:
         format: `ns/<namespace>/sa/<workload_identifier>`.
         `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
         mode pools.
-        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+        * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+        `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+        can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+        `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+        * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+        * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         """
         return pulumi.get(self, "mode")
 
@@ -241,20 +247,17 @@ class _WorkloadIdentityPoolState:
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
                access again.
         :param pulumi.Input[_builtins.str] display_name: A display name for the pool. Cannot exceed 32 characters.
-        :param pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs'] inline_certificate_issuance_config: (Optional, Beta)
-               Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+        :param pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs'] inline_certificate_issuance_config: Represents configuration for generating mutual TLS (mTLS) certificates for the identities
                within this pool. Defines the Certificate Authority (CA) pool resources and configurations
                required for issuance and rotation of mTLS workload certificates.
                Structure is documented below.
-        :param pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs'] inline_trust_config: (Optional, Beta)
-               Represents config to add additional trusted trust domains. Defines configuration for extending
+        :param pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs'] inline_trust_config: Represents config to add additional trusted trust domains. Defines configuration for extending
                trust to additional trust domains. By establishing trust with another domain, the current
                domain will recognize and accept certificates issued by entities within the trusted domains.
                Note that a trust domain automatically trusts itself, eliminating the need for explicit
                configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
-               The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+        :param pulumi.Input[_builtins.str] mode: The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
                are in `FEDERATION_ONLY` mode.
                
                > **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -271,7 +274,13 @@ class _WorkloadIdentityPoolState:
                format: `ns/<namespace>/sa/<workload_identifier>`.
                `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
                mode pools.
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+               * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+               * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+               * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] name: The resource name of the pool as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -352,7 +361,6 @@ class _WorkloadIdentityPoolState:
     @pulumi.getter(name="inlineCertificateIssuanceConfig")
     def inline_certificate_issuance_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]:
         """
-        (Optional, Beta)
         Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         within this pool. Defines the Certificate Authority (CA) pool resources and configurations
         required for issuance and rotation of mTLS workload certificates.
@@ -368,7 +376,6 @@ class _WorkloadIdentityPoolState:
     @pulumi.getter(name="inlineTrustConfig")
     def inline_trust_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']]:
         """
-        (Optional, Beta)
         Represents config to add additional trusted trust domains. Defines configuration for extending
         trust to additional trust domains. By establishing trust with another domain, the current
         domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -386,7 +393,6 @@ class _WorkloadIdentityPoolState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         are in `FEDERATION_ONLY` mode.
 
@@ -404,7 +410,13 @@ class _WorkloadIdentityPoolState:
         format: `ns/<namespace>/sa/<workload_identifier>`.
         `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
         mode pools.
-        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+        * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+        `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+        can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+        `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+        * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+        * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         """
         return pulumi.get(self, "mode")
 
@@ -572,6 +584,52 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        example = gcp.iam.WorkloadIdentityPool("example",
+            workload_identity_pool_id="example-pool",
+            display_name="Name of the pool",
+            description="Identity pool operates in TRUST_DOMAIN mode",
+            disabled=True,
+            mode="TRUST_DOMAIN",
+            inline_certificate_issuance_config={
+                "use_default_shared_ca": True,
+                "lifetime": "86400s",
+                "rotation_window_percentage": 50,
+                "key_algorithm": "ECDSA_P256",
+            },
+            inline_trust_config={
+                "additional_trust_bundles": [
+                    {
+                        "trust_domain": "example.com",
+                        "trust_anchors": [
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
+                            },
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_2.pem").result,
+                            },
+                        ],
+                    },
+                    {
+                        "trust_domain": "example.net",
+                        "trust_anchors": [
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
+                            },
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_4.pem").result,
+                            },
+                        ],
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -597,20 +655,17 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
                access again.
         :param pulumi.Input[_builtins.str] display_name: A display name for the pool. Cannot exceed 32 characters.
-        :param pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']] inline_certificate_issuance_config: (Optional, Beta)
-               Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+        :param pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']] inline_certificate_issuance_config: Represents configuration for generating mutual TLS (mTLS) certificates for the identities
                within this pool. Defines the Certificate Authority (CA) pool resources and configurations
                required for issuance and rotation of mTLS workload certificates.
                Structure is documented below.
-        :param pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']] inline_trust_config: (Optional, Beta)
-               Represents config to add additional trusted trust domains. Defines configuration for extending
+        :param pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']] inline_trust_config: Represents config to add additional trusted trust domains. Defines configuration for extending
                trust to additional trust domains. By establishing trust with another domain, the current
                domain will recognize and accept certificates issued by entities within the trusted domains.
                Note that a trust domain automatically trusts itself, eliminating the need for explicit
                configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
-               The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+        :param pulumi.Input[_builtins.str] mode: The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
                are in `FEDERATION_ONLY` mode.
                
                > **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -627,7 +682,13 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                format: `ns/<namespace>/sa/<workload_identifier>`.
                `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
                mode pools.
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+               * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+               * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+               * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
@@ -693,6 +754,52 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                     "us-central1": "projects/project-bar/locations/us-central1/caPools/ca-pool-bar",
                     "asia-east2": "projects/project-foo/locations/asia-east2/caPools/ca-pool-foo",
                 },
+                "lifetime": "86400s",
+                "rotation_window_percentage": 50,
+                "key_algorithm": "ECDSA_P256",
+            },
+            inline_trust_config={
+                "additional_trust_bundles": [
+                    {
+                        "trust_domain": "example.com",
+                        "trust_anchors": [
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
+                            },
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_2.pem").result,
+                            },
+                        ],
+                    },
+                    {
+                        "trust_domain": "example.net",
+                        "trust_anchors": [
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
+                            },
+                            {
+                                "pem_certificate": std.file(input="test-fixtures/trust_anchor_4.pem").result,
+                            },
+                        ],
+                    },
+                ],
+            })
+        ```
+        ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        example = gcp.iam.WorkloadIdentityPool("example",
+            workload_identity_pool_id="example-pool",
+            display_name="Name of the pool",
+            description="Identity pool operates in TRUST_DOMAIN mode",
+            disabled=True,
+            mode="TRUST_DOMAIN",
+            inline_certificate_issuance_config={
+                "use_default_shared_ca": True,
                 "lifetime": "86400s",
                 "rotation_window_percentage": 50,
                 "key_algorithm": "ECDSA_P256",
@@ -818,20 +925,17 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
                access again.
         :param pulumi.Input[_builtins.str] display_name: A display name for the pool. Cannot exceed 32 characters.
-        :param pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']] inline_certificate_issuance_config: (Optional, Beta)
-               Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+        :param pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']] inline_certificate_issuance_config: Represents configuration for generating mutual TLS (mTLS) certificates for the identities
                within this pool. Defines the Certificate Authority (CA) pool resources and configurations
                required for issuance and rotation of mTLS workload certificates.
                Structure is documented below.
-        :param pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']] inline_trust_config: (Optional, Beta)
-               Represents config to add additional trusted trust domains. Defines configuration for extending
+        :param pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']] inline_trust_config: Represents config to add additional trusted trust domains. Defines configuration for extending
                trust to additional trust domains. By establishing trust with another domain, the current
                domain will recognize and accept certificates issued by entities within the trusted domains.
                Note that a trust domain automatically trusts itself, eliminating the need for explicit
                configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] mode: (Optional, Beta)
-               The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+        :param pulumi.Input[_builtins.str] mode: The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
                are in `FEDERATION_ONLY` mode.
                
                > **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -848,7 +952,13 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                format: `ns/<namespace>/sa/<workload_identifier>`.
                `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
                mode pools.
-               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+               * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+               `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+               can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+               `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+               * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+               * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+               Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         :param pulumi.Input[_builtins.str] name: The resource name of the pool as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -912,7 +1022,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     @pulumi.getter(name="inlineCertificateIssuanceConfig")
     def inline_certificate_issuance_config(self) -> pulumi.Output[Optional['outputs.WorkloadIdentityPoolInlineCertificateIssuanceConfig']]:
         """
-        (Optional, Beta)
         Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         within this pool. Defines the Certificate Authority (CA) pool resources and configurations
         required for issuance and rotation of mTLS workload certificates.
@@ -924,7 +1033,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     @pulumi.getter(name="inlineTrustConfig")
     def inline_trust_config(self) -> pulumi.Output[Optional['outputs.WorkloadIdentityPoolInlineTrustConfig']]:
         """
-        (Optional, Beta)
         Represents config to add additional trusted trust domains. Defines configuration for extending
         trust to additional trust domains. By establishing trust with another domain, the current
         domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -936,9 +1044,8 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def mode(self) -> pulumi.Output[_builtins.str]:
         """
-        (Optional, Beta)
         The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         are in `FEDERATION_ONLY` mode.
 
@@ -956,7 +1063,13 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         format: `ns/<namespace>/sa/<workload_identifier>`.
         `iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
         mode pools.
-        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
+        * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+        `iam.WorkloadIdentityPoolNamespace`s nor `iam.WorkloadIdentityPoolProvider`s
+        can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+        `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+        * `spiffe://<trust-domain>/ns/<kubernetes-namespace>/sa/<kubernetes-service-account>`
+        * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
+        Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
         """
         return pulumi.get(self, "mode")
 

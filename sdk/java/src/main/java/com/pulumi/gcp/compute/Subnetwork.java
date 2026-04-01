@@ -960,7 +960,6 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reservedInternalRange);
     }
     /**
-     * (Optional, Beta)
      * &#39;Configures subnet mask resolution for this subnetwork.&#39;
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      * 
@@ -969,8 +968,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> resolveSubnetMask;
 
     /**
-     * @return (Optional, Beta)
-     * &#39;Configures subnet mask resolution for this subnetwork.&#39;
+     * @return &#39;Configures subnet mask resolution for this subnetwork.&#39;
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      * 
      */

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// </summary>
         public readonly int? MaxNodes;
         /// <summary>
-        /// Specifies maximum number of processing units allocated to the instance.
+        /// The maximum number of processing units for this specific replica.
         /// If set, this number should be multiples of 1000 and be greater than or equal to
         /// min_processing_units.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// </summary>
         public readonly int? MinNodes;
         /// <summary>
-        /// Specifies minimum number of processing units allocated to the instance.
+        /// The minimum number of processing units for this specific replica.
         /// If set, this number should be multiples of 1000.
         /// </summary>
         public readonly int? MinProcessingUnits;

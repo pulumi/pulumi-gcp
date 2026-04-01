@@ -17,7 +17,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
      */
     private @Nullable Integer maxNodes;
     /**
-     * @return Specifies maximum number of processing units allocated to the instance.
+     * @return The maximum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
      * 
@@ -29,7 +29,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
      */
     private @Nullable Integer minNodes;
     /**
-     * @return Specifies minimum number of processing units allocated to the instance.
+     * @return The minimum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000.
      * 
      */
@@ -44,7 +44,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
         return Optional.ofNullable(this.maxNodes);
     }
     /**
-     * @return Specifies maximum number of processing units allocated to the instance.
+     * @return The maximum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
      * 
@@ -60,7 +60,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
         return Optional.ofNullable(this.minNodes);
     }
     /**
-     * @return Specifies minimum number of processing units allocated to the instance.
+     * @return The minimum number of processing units for this specific replica.
      * If set, this number should be multiples of 1000.
      * 
      */

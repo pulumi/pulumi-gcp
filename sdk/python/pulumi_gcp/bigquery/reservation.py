@@ -30,6 +30,7 @@ class ReservationArgs:
                  max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -82,6 +83,7 @@ class ReservationArgs:
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] reservation_group: The reservation group that this reservation belongs to.
         :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
                The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -138,6 +140,8 @@ class ReservationArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_group is not None:
+            pulumi.set(__self__, "reservation_group", reservation_group)
         if scaling_mode is not None:
             pulumi.set(__self__, "scaling_mode", scaling_mode)
         if secondary_location is not None:
@@ -290,6 +294,18 @@ class ReservationArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="reservationGroup")
+    def reservation_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The reservation group that this reservation belongs to.
+        """
+        return pulumi.get(self, "reservation_group")
+
+    @reservation_group.setter
+    def reservation_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "reservation_group", value)
+
+    @_builtins.property
     @pulumi.getter(name="scalingMode")
     def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -364,6 +380,7 @@ class _ReservationState:
                  primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
+                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None):
@@ -427,6 +444,7 @@ class _ReservationState:
                either not a DR reservation or the reservation is a DR secondary or that any replication
                operations on the reservation have succeeded.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] reservation_group: The reservation group that this reservation belongs to.
         :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
                The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -490,6 +508,8 @@ class _ReservationState:
             pulumi.set(__self__, "project", project)
         if replication_statuses is not None:
             pulumi.set(__self__, "replication_statuses", replication_statuses)
+        if reservation_group is not None:
+            pulumi.set(__self__, "reservation_group", reservation_group)
         if scaling_mode is not None:
             pulumi.set(__self__, "scaling_mode", scaling_mode)
         if secondary_location is not None:
@@ -676,6 +696,18 @@ class _ReservationState:
         pulumi.set(self, "replication_statuses", value)
 
     @_builtins.property
+    @pulumi.getter(name="reservationGroup")
+    def reservation_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The reservation group that this reservation belongs to.
+        """
+        return pulumi.get(self, "reservation_group")
+
+    @reservation_group.setter
+    def reservation_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "reservation_group", value)
+
+    @_builtins.property
     @pulumi.getter(name="scalingMode")
     def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -763,6 +795,7 @@ class Reservation(pulumi.CustomResource):
                  max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -860,6 +893,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] reservation_group: The reservation group that this reservation belongs to.
         :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
                The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -976,6 +1010,7 @@ class Reservation(pulumi.CustomResource):
                  max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -996,6 +1031,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["max_slots"] = max_slots
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["reservation_group"] = reservation_group
             __props__.__dict__["scaling_mode"] = scaling_mode
             __props__.__dict__["secondary_location"] = secondary_location
             if slot_capacity is None and not opts.urn:
@@ -1025,6 +1061,7 @@ class Reservation(pulumi.CustomResource):
             primary_location: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
+            reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
             scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
             secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
             slot_capacity: Optional[pulumi.Input[_builtins.int]] = None) -> 'Reservation':
@@ -1092,6 +1129,7 @@ class Reservation(pulumi.CustomResource):
                either not a DR reservation or the reservation is a DR secondary or that any replication
                operations on the reservation have succeeded.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] reservation_group: The reservation group that this reservation belongs to.
         :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
                The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -1148,6 +1186,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
         __props__.__dict__["replication_statuses"] = replication_statuses
+        __props__.__dict__["reservation_group"] = reservation_group
         __props__.__dict__["scaling_mode"] = scaling_mode
         __props__.__dict__["secondary_location"] = secondary_location
         __props__.__dict__["slot_capacity"] = slot_capacity
@@ -1286,6 +1325,14 @@ class Reservation(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "replication_statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="reservationGroup")
+    def reservation_group(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The reservation group that this reservation belongs to.
+        """
+        return pulumi.get(self, "reservation_group")
 
     @_builtins.property
     @pulumi.getter(name="scalingMode")

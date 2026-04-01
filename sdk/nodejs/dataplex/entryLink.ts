@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
  * const entry_group_full = new gcp.dataplex.EntryGroup("entry-group-full", {
  *     location: "us-central1",
@@ -101,6 +102,10 @@ import * as utilities from "../utilities";
  *     displayName: "terraform term",
  *     description: "term created by Terraform",
  * });
+ * // Introduce a 45-second wait after the glossary resource creation
+ * const wait_for_sync = new time.Sleep("wait-for-sync", {createDuration: "45s"}, {
+ *     dependsOn: [termTestIdFullGlossaryTerm],
+ * });
  * const fullEntryLink = new gcp.dataplex.EntryLink("full_entry_link", {
  *     project: "1111111111111",
  *     location: "us-central1",
@@ -119,7 +124,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * }, {
- *     dependsOn: [termTestIdFullGlossaryTerm],
+ *     dependsOn: [wait_for_sync],
  * });
  * ```
  *

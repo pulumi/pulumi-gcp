@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.RuntimeTemplateArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateMachineSpecArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateNetworkSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -113,6 +114,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .networkSpec(RuntimeTemplateNetworkSpecArgs.builder()
  *                 .enableInternetAccess(true)
+ *                 .build())
+ *             .softwareConfig(RuntimeTemplateSoftwareConfigArgs.builder()
  *                 .build())
  *             .build());
  * 
@@ -144,6 +147,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEncryptionSpecArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigColabImageArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -213,6 +217,9 @@ import javax.annotation.Nullable;
  *                     .postStartupScript("echo 'hello world'")
  *                     .postStartupScriptUrl("gs://colab-enterprise-pss-secure/secure_pss.sh")
  *                     .postStartupScriptBehavior("RUN_ONCE")
+ *                     .build())
+ *                 .colabImage(RuntimeTemplateSoftwareConfigColabImageArgs.builder()
+ *                     .releaseName("py312")
  *                     .build())
  *                 .build())
  *             .build());

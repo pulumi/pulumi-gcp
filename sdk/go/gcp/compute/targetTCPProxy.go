@@ -143,6 +143,78 @@ import (
 //	}
 //
 // ```
+// ### Target Tcp Proxy Tls Route
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewTargetTCPProxy(ctx, "default", &compute.TargetTCPProxyArgs{
+//				Name:                pulumi.String("test-proxy"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpsHealthCheck: &compute.HealthCheckHttpsHealthCheckArgs{
+//					Port: pulumi.Int(443),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("TCP"),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
+//				Name: pulumi.String("tls-route-check"),
+//				TargetProxies: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//				Rules: networkservices.TlsRouteRuleArray{
+//					&networkservices.TlsRouteRuleArgs{
+//						Matches: networkservices.TlsRouteRuleMatchArray{
+//							&networkservices.TlsRouteRuleMatchArgs{
+//								SniHosts: pulumi.StringArray{
+//									pulumi.String("example.com"),
+//								},
+//							},
+//						},
+//						Action: &networkservices.TlsRouteRuleActionArgs{
+//							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
+//								&networkservices.TlsRouteRuleActionDestinationArgs{
+//									ServiceName: defaultBackendService.ID(),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

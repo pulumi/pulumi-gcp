@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -52,6 +53,17 @@ public final class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
      * 
      */
     private Integer rotationWindowPercentage;
+    /**
+     * @return If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+     * CA in the same region as the workload will be selected to issue the certificate. Enabling
+     * this will clear any existing &#39;ca_pools&#39; configuration to provision the certificates.
+     * 
+     * &gt; **Note** This field is mutually exclusive with &#39;ca_pools&#39;. If this flag is enabled,
+     * certificates will be automatically provisioned from the default shared CAs. This flag should
+     * not be set if you want to use your own CA pools to provision the certificates.
+     * 
+     */
+    private Boolean useDefaultSharedCa;
 
     private GetWorkloadIdentityPoolInlineCertificateIssuanceConfig() {}
     /**
@@ -102,6 +114,19 @@ public final class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
     public Integer rotationWindowPercentage() {
         return this.rotationWindowPercentage;
     }
+    /**
+     * @return If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+     * CA in the same region as the workload will be selected to issue the certificate. Enabling
+     * this will clear any existing &#39;ca_pools&#39; configuration to provision the certificates.
+     * 
+     * &gt; **Note** This field is mutually exclusive with &#39;ca_pools&#39;. If this flag is enabled,
+     * certificates will be automatically provisioned from the default shared CAs. This flag should
+     * not be set if you want to use your own CA pools to provision the certificates.
+     * 
+     */
+    public Boolean useDefaultSharedCa() {
+        return this.useDefaultSharedCa;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -116,6 +141,7 @@ public final class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
         private String keyAlgorithm;
         private String lifetime;
         private Integer rotationWindowPercentage;
+        private Boolean useDefaultSharedCa;
         public Builder() {}
         public Builder(GetWorkloadIdentityPoolInlineCertificateIssuanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -123,6 +149,7 @@ public final class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
     	      this.keyAlgorithm = defaults.keyAlgorithm;
     	      this.lifetime = defaults.lifetime;
     	      this.rotationWindowPercentage = defaults.rotationWindowPercentage;
+    	      this.useDefaultSharedCa = defaults.useDefaultSharedCa;
         }
 
         @CustomType.Setter
@@ -157,12 +184,21 @@ public final class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
             this.rotationWindowPercentage = rotationWindowPercentage;
             return this;
         }
+        @CustomType.Setter
+        public Builder useDefaultSharedCa(Boolean useDefaultSharedCa) {
+            if (useDefaultSharedCa == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolInlineCertificateIssuanceConfig", "useDefaultSharedCa");
+            }
+            this.useDefaultSharedCa = useDefaultSharedCa;
+            return this;
+        }
         public GetWorkloadIdentityPoolInlineCertificateIssuanceConfig build() {
             final var _resultValue = new GetWorkloadIdentityPoolInlineCertificateIssuanceConfig();
             _resultValue.caPools = caPools;
             _resultValue.keyAlgorithm = keyAlgorithm;
             _resultValue.lifetime = lifetime;
             _resultValue.rotationWindowPercentage = rotationWindowPercentage;
+            _resultValue.useDefaultSharedCa = useDefaultSharedCa;
             return _resultValue;
         }
     }

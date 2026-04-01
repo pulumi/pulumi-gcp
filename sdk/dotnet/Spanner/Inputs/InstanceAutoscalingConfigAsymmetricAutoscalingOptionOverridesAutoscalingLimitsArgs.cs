@@ -15,14 +15,29 @@ namespace Pulumi.Gcp.Spanner.Inputs
         /// <summary>
         /// The maximum number of nodes for this specific replica.
         /// </summary>
-        [Input("maxNodes", required: true)]
-        public Input<int> MaxNodes { get; set; } = null!;
+        [Input("maxNodes")]
+        public Input<int>? MaxNodes { get; set; }
+
+        /// <summary>
+        /// The maximum number of processing units for this specific replica.
+        /// If set, this number should be multiples of 1000 and be greater than or equal to
+        /// min_processing_units.
+        /// </summary>
+        [Input("maxProcessingUnits")]
+        public Input<int>? MaxProcessingUnits { get; set; }
 
         /// <summary>
         /// The minimum number of nodes for this specific replica.
         /// </summary>
-        [Input("minNodes", required: true)]
-        public Input<int> MinNodes { get; set; } = null!;
+        [Input("minNodes")]
+        public Input<int>? MinNodes { get; set; }
+
+        /// <summary>
+        /// The minimum number of processing units for this specific replica.
+        /// If set, this number should be multiples of 1000.
+        /// </summary>
+        [Input("minProcessingUnits")]
+        public Input<int>? MinProcessingUnits { get; set; }
 
         public InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs()
         {

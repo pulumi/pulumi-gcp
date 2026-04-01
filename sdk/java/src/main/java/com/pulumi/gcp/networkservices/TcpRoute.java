@@ -37,8 +37,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.TcpRoute;
@@ -58,16 +59,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
@@ -102,8 +104,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.TcpRoute;
@@ -123,16 +126,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultTcpRoute = new TcpRoute("defaultTcpRoute", TcpRouteArgs.builder()
@@ -164,8 +168,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.Mesh;
@@ -187,16 +192,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultMesh = new Mesh("defaultMesh", MeshArgs.builder()
@@ -238,8 +244,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.networkservices.Gateway;
@@ -261,16 +268,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("backend-service-health-check")
- *             .requestPath("/")
- *             .checkIntervalSec(1)
- *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
  *             .build());
  * 
  *         var default_ = new BackendService("default", BackendServiceArgs.builder()
  *             .name("my-backend-service")
- *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()

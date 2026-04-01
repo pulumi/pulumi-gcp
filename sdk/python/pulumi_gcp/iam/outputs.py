@@ -1998,6 +1998,8 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
             suggest = "key_algorithm"
         elif key == "rotationWindowPercentage":
             suggest = "rotation_window_percentage"
+        elif key == "useDefaultSharedCa":
+            suggest = "use_default_shared_ca"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolInlineCertificateIssuanceConfig. Access the value via the '{suggest}' property getter instead.")
@@ -2011,10 +2013,11 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ca_pools: Mapping[str, _builtins.str],
+                 ca_pools: Optional[Mapping[str, _builtins.str]] = None,
                  key_algorithm: Optional[_builtins.str] = None,
                  lifetime: Optional[_builtins.str] = None,
-                 rotation_window_percentage: Optional[_builtins.int] = None):
+                 rotation_window_percentage: Optional[_builtins.int] = None,
+                 use_default_shared_ca: Optional[_builtins.bool] = None):
         """
         :param Mapping[str, _builtins.str] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
                for certificate issuance, adhering to these constraints:
@@ -2039,18 +2042,28 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
         :param _builtins.int rotation_window_percentage: Rotation window percentage indicating when certificate rotation should be initiated based
                on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
                to `50`.
+        :param _builtins.bool use_default_shared_ca: If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+               CA in the same region as the workload will be selected to issue the certificate. Enabling
+               this will clear any existing `ca_pools` configuration to provision the certificates.
+               
+               > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
+               certificates will be automatically provisioned from the default shared CAs. This flag should
+               not be set if you want to use your own CA pools to provision the certificates.
         """
-        pulumi.set(__self__, "ca_pools", ca_pools)
+        if ca_pools is not None:
+            pulumi.set(__self__, "ca_pools", ca_pools)
         if key_algorithm is not None:
             pulumi.set(__self__, "key_algorithm", key_algorithm)
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
         if rotation_window_percentage is not None:
             pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+        if use_default_shared_ca is not None:
+            pulumi.set(__self__, "use_default_shared_ca", use_default_shared_ca)
 
     @_builtins.property
     @pulumi.getter(name="caPools")
-    def ca_pools(self) -> Mapping[str, _builtins.str]:
+    def ca_pools(self) -> Optional[Mapping[str, _builtins.str]]:
         """
         A required mapping of a cloud region to the CA pool resource located in that region used
         for certificate issuance, adhering to these constraints:
@@ -2098,6 +2111,20 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig(dict):
         to `50`.
         """
         return pulumi.get(self, "rotation_window_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="useDefaultSharedCa")
+    def use_default_shared_ca(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+        CA in the same region as the workload will be selected to issue the certificate. Enabling
+        this will clear any existing `ca_pools` configuration to provision the certificates.
+
+        > **Note** This field is mutually exclusive with `ca_pools`. If this flag is enabled,
+        certificates will be automatically provisioned from the default shared CAs. This flag should
+        not be set if you want to use your own CA pools to provision the certificates.
+        """
+        return pulumi.get(self, "use_default_shared_ca")
 
 
 @pulumi.output_type
@@ -2767,7 +2794,8 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
                  ca_pools: Mapping[str, _builtins.str],
                  key_algorithm: _builtins.str,
                  lifetime: _builtins.str,
-                 rotation_window_percentage: _builtins.int):
+                 rotation_window_percentage: _builtins.int,
+                 use_default_shared_ca: _builtins.bool):
         """
         :param Mapping[str, _builtins.str] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
                for certificate issuance, adhering to these constraints:
@@ -2793,11 +2821,20 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
         :param _builtins.int rotation_window_percentage: Rotation window percentage indicating when certificate rotation should be initiated based
                on remaining lifetime. Must be between '50' - '80'. If unspecified, this will be defaulted
                to '50'.
+        :param _builtins.bool use_default_shared_ca: If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+               CA in the same region as the workload will be selected to issue the certificate. Enabling
+               this will clear any existing 'ca_pools' configuration to provision the certificates.
+               
+               
+               > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
+               certificates will be automatically provisioned from the default shared CAs. This flag should
+               not be set if you want to use your own CA pools to provision the certificates.
         """
         pulumi.set(__self__, "ca_pools", ca_pools)
         pulumi.set(__self__, "key_algorithm", key_algorithm)
         pulumi.set(__self__, "lifetime", lifetime)
         pulumi.set(__self__, "rotation_window_percentage", rotation_window_percentage)
+        pulumi.set(__self__, "use_default_shared_ca", use_default_shared_ca)
 
     @_builtins.property
     @pulumi.getter(name="caPools")
@@ -2850,6 +2887,21 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult(dict):
         to '50'.
         """
         return pulumi.get(self, "rotation_window_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="useDefaultSharedCa")
+    def use_default_shared_ca(self) -> _builtins.bool:
+        """
+        If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
+        CA in the same region as the workload will be selected to issue the certificate. Enabling
+        this will clear any existing 'ca_pools' configuration to provision the certificates.
+
+
+        > **Note** This field is mutually exclusive with 'ca_pools'. If this flag is enabled,
+        certificates will be automatically provisioned from the default shared CAs. This flag should
+        not be set if you want to use your own CA pools to provision the certificates.
+        """
+        return pulumi.get(self, "use_default_shared_ca")
 
 
 @pulumi.output_type

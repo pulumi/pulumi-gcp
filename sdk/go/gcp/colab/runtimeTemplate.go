@@ -81,6 +81,7 @@ import (
 //				NetworkSpec: &colab.RuntimeTemplateNetworkSpecArgs{
 //					EnableInternetAccess: pulumi.Bool(true),
 //				},
+//				SoftwareConfig: &colab.RuntimeTemplateSoftwareConfigArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -170,6 +171,9 @@ import (
 //						PostStartupScript:         pulumi.String("echo 'hello world'"),
 //						PostStartupScriptUrl:      pulumi.String("gs://colab-enterprise-pss-secure/secure_pss.sh"),
 //						PostStartupScriptBehavior: pulumi.String("RUN_ONCE"),
+//					},
+//					ColabImage: &colab.RuntimeTemplateSoftwareConfigColabImageArgs{
+//						ReleaseName: pulumi.String("py312"),
 //					},
 //				},
 //			})

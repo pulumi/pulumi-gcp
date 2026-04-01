@@ -63,6 +63,11 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      */
     private @Nullable String serverCaPool;
     /**
+     * @return Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+     * 
+     */
+    private @Nullable String serverCertificateRotationMode;
+    /**
      * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
@@ -135,6 +140,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return Optional.ofNullable(this.serverCaPool);
     }
     /**
+     * @return Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+     * 
+     */
+    public Optional<String> serverCertificateRotationMode() {
+        return Optional.ofNullable(this.serverCertificateRotationMode);
+    }
+    /**
      * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
@@ -160,6 +172,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
         private @Nullable String serverCaMode;
         private @Nullable String serverCaPool;
+        private @Nullable String serverCertificateRotationMode;
         private @Nullable String sslMode;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfiguration defaults) {
@@ -173,6 +186,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.serverCaMode = defaults.serverCaMode;
     	      this.serverCaPool = defaults.serverCaPool;
+    	      this.serverCertificateRotationMode = defaults.serverCertificateRotationMode;
     	      this.sslMode = defaults.sslMode;
         }
 
@@ -240,6 +254,12 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCertificateRotationMode(@Nullable String serverCertificateRotationMode) {
+
+            this.serverCertificateRotationMode = serverCertificateRotationMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslMode(@Nullable String sslMode) {
 
             this.sslMode = sslMode;
@@ -256,6 +276,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             _resultValue.pscConfigs = pscConfigs;
             _resultValue.serverCaMode = serverCaMode;
             _resultValue.serverCaPool = serverCaPool;
+            _resultValue.serverCertificateRotationMode = serverCertificateRotationMode;
             _resultValue.sslMode = sslMode;
             return _resultValue;
         }

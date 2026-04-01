@@ -168,7 +168,9 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        /// . 
+        /// The status of the slice controller addon.
+        /// It is disabled by default. Set `enabled = true` to enable.
         /// </summary>
         [Input("sliceControllerConfig")]
         public Input<Inputs.ClusterAddonsConfigSliceControllerConfigGetArgs>? SliceControllerConfig { get; set; }

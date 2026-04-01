@@ -20,6 +20,8 @@ __all__ = [
     'AnalysisRuleAnnotatorSelectorQaConfig',
     'AnalysisRuleAnnotatorSelectorQaConfigScorecardList',
     'AnalysisRuleAnnotatorSelectorSummarizationConfig',
+    'AssessmentRuleSampleRule',
+    'AssessmentRuleScheduleInfo',
     'AutoLabelingRuleCondition',
 ]
 
@@ -385,6 +387,198 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig(dict):
         Possible values are: `BASELINE_MODEL`, `BASELINE_MODEL_V2_0`.
         """
         return pulumi.get(self, "summarization_model")
+
+
+@pulumi.output_type
+class AssessmentRuleSampleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationFilter":
+            suggest = "conversation_filter"
+        elif key == "samplePercentage":
+            suggest = "sample_percentage"
+        elif key == "sampleRow":
+            suggest = "sample_row"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssessmentRuleSampleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssessmentRuleSampleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssessmentRuleSampleRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conversation_filter: Optional[_builtins.str] = None,
+                 dimension: Optional[_builtins.str] = None,
+                 sample_percentage: Optional[_builtins.float] = None,
+                 sample_row: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str conversation_filter: To specify the filter for the conversions that should apply this sample
+               rule. An empty filter means this sample rule applies to all conversations.
+        :param _builtins.str dimension: Group by dimension to sample the conversation. If no dimension is
+               provided, the sampling will be applied to the project level.
+               Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+        :param _builtins.float sample_percentage: Percentage of conversations that we should sample  based on the dimension
+               between [0, 100].
+        :param _builtins.int sample_row: Number of the conversations that we should sample based on the dimension.
+        """
+        if conversation_filter is not None:
+            pulumi.set(__self__, "conversation_filter", conversation_filter)
+        if dimension is not None:
+            pulumi.set(__self__, "dimension", dimension)
+        if sample_percentage is not None:
+            pulumi.set(__self__, "sample_percentage", sample_percentage)
+        if sample_row is not None:
+            pulumi.set(__self__, "sample_row", sample_row)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationFilter")
+    def conversation_filter(self) -> Optional[_builtins.str]:
+        """
+        To specify the filter for the conversions that should apply this sample
+        rule. An empty filter means this sample rule applies to all conversations.
+        """
+        return pulumi.get(self, "conversation_filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def dimension(self) -> Optional[_builtins.str]:
+        """
+        Group by dimension to sample the conversation. If no dimension is
+        provided, the sampling will be applied to the project level.
+        Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
+        """
+        return pulumi.get(self, "dimension")
+
+    @_builtins.property
+    @pulumi.getter(name="samplePercentage")
+    def sample_percentage(self) -> Optional[_builtins.float]:
+        """
+        Percentage of conversations that we should sample  based on the dimension
+        between [0, 100].
+        """
+        return pulumi.get(self, "sample_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="sampleRow")
+    def sample_row(self) -> Optional[_builtins.int]:
+        """
+        Number of the conversations that we should sample based on the dimension.
+        """
+        return pulumi.get(self, "sample_row")
+
+
+@pulumi.output_type
+class AssessmentRuleScheduleInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssessmentRuleScheduleInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssessmentRuleScheduleInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssessmentRuleScheduleInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[_builtins.str] = None,
+                 schedule: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None,
+                 time_zone: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end_time: End time of the schedule. If not specified, will keep scheduling new
+               pipelines for execution until the schedule is no longer active or deleted.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+               up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str schedule: The groc expression.
+               Format: `every number [synchronized]`
+               Cron syntax is not supported.
+               Time units can be: minutes, hours
+               Synchronized is optional and indicates that the schedule should be
+               synchronized to the start of the interval: every 5 minutes synchronized
+               means 00:00, 00:05 ...
+               Otherwise the start time is random within the interval.
+               Example: `every 5 minutes`
+               could be  00:02, 00:07, 00:12, ...
+        :param _builtins.str start_time: Start time of the schedule. If not specified, will start as soon as the
+               schedule is created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+               up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str time_zone: The timezone to use for the groc expression.
+               If not specified, defaults to UTC.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        End time of the schedule. If not specified, will keep scheduling new
+        pipelines for execution until the schedule is no longer active or deleted.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> Optional[_builtins.str]:
+        """
+        The groc expression.
+        Format: `every number [synchronized]`
+        Cron syntax is not supported.
+        Time units can be: minutes, hours
+        Synchronized is optional and indicates that the schedule should be
+        synchronized to the start of the interval: every 5 minutes synchronized
+        means 00:00, 00:05 ...
+        Otherwise the start time is random within the interval.
+        Example: `every 5 minutes`
+        could be  00:02, 00:07, 00:12, ...
+        """
+        return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Start time of the schedule. If not specified, will start as soon as the
+        schedule is created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+        up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[_builtins.str]:
+        """
+        The timezone to use for the groc expression.
+        If not specified, defaults to UTC.
+        """
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type

@@ -51,8 +51,7 @@ namespace Pulumi.Gcp.Vertex
     ///                 {
     ///                     EntrypointModule = "simple_agent",
     ///                     EntrypointObject = "fixed_name_generator",
-    ///                     RequirementsFile = "./test-fixtures/requirements.txt",
-    ///                     Version = "3.11",
+    ///                     Version = "3.14",
     ///                 },
     ///             },
     ///         },

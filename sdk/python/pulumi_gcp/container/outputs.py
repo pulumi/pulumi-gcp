@@ -4155,7 +4155,9 @@ class ClusterAddonsConfig(dict):
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
-        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: . 
+               The status of the slice controller addon.
+               It is disabled by default. Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigStatefulHaConfigArgs' stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4382,7 +4384,9 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="sliceControllerConfig")
     def slice_controller_config(self) -> Optional['outputs.ClusterAddonsConfigSliceControllerConfig']:
         """
-        The status of the Slice Controller addon. It is disabled by default; set enabled = true to enable.
+        . 
+        The status of the slice controller addon.
+        It is disabled by default. Set `enabled = true` to enable.
         """
         return pulumi.get(self, "slice_controller_config")
 

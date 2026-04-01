@@ -75,6 +75,11 @@ export const getAddressGroupIamPolicy: typeof import("./getAddressGroupIamPolicy
 export const getAddressGroupIamPolicyOutput: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAddressGroupIamPolicy","getAddressGroupIamPolicyOutput"], () => require("./getAddressGroupIamPolicy"));
 
+export { GetAddressGroupsArgs, GetAddressGroupsResult, GetAddressGroupsOutputArgs } from "./getAddressGroups";
+export const getAddressGroups: typeof import("./getAddressGroups").getAddressGroups = null as any;
+export const getAddressGroupsOutput: typeof import("./getAddressGroups").getAddressGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressGroups","getAddressGroupsOutput"], () => require("./getAddressGroups"));
+
 export { InterceptDeploymentArgs, InterceptDeploymentState } from "./interceptDeployment";
 export type InterceptDeployment = import("./interceptDeployment").InterceptDeployment;
 export const InterceptDeployment: typeof import("./interceptDeployment").InterceptDeployment = null as any;

@@ -34,6 +34,7 @@ __all__ = [
     'RuntimeTemplateNetworkSpec',
     'RuntimeTemplateShieldedVmConfig',
     'RuntimeTemplateSoftwareConfig',
+    'RuntimeTemplateSoftwareConfigColabImage',
     'RuntimeTemplateSoftwareConfigEnv',
     'RuntimeTemplateSoftwareConfigPostStartupScriptConfig',
     'ScheduleCreateNotebookExecutionJobRequest',
@@ -795,7 +796,9 @@ class RuntimeTemplateSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "postStartupScriptConfig":
+        if key == "colabImage":
+            suggest = "colab_image"
+        elif key == "postStartupScriptConfig":
             suggest = "post_startup_script_config"
 
         if suggest:
@@ -810,18 +813,32 @@ class RuntimeTemplateSoftwareConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 colab_image: Optional['outputs.RuntimeTemplateSoftwareConfigColabImage'] = None,
                  envs: Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']] = None,
                  post_startup_script_config: Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig'] = None):
         """
+        :param 'RuntimeTemplateSoftwareConfigColabImageArgs' colab_image: Colab Image Configuration.
+               Structure is documented below.
         :param Sequence['RuntimeTemplateSoftwareConfigEnvArgs'] envs: Environment variables to be passed to the container.
                Structure is documented below.
         :param 'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs' post_startup_script_config: Post startup script config.
                Structure is documented below.
         """
+        if colab_image is not None:
+            pulumi.set(__self__, "colab_image", colab_image)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if post_startup_script_config is not None:
             pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
+
+    @_builtins.property
+    @pulumi.getter(name="colabImage")
+    def colab_image(self) -> Optional['outputs.RuntimeTemplateSoftwareConfigColabImage']:
+        """
+        Colab Image Configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "colab_image")
 
     @_builtins.property
     @pulumi.getter
@@ -840,6 +857,42 @@ class RuntimeTemplateSoftwareConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "post_startup_script_config")
+
+
+@pulumi.output_type
+class RuntimeTemplateSoftwareConfigColabImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseName":
+            suggest = "release_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfigColabImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeTemplateSoftwareConfigColabImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeTemplateSoftwareConfigColabImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 release_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str release_name: The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
+        """
+        if release_name is not None:
+            pulumi.set(__self__, "release_name", release_name)
+
+    @_builtins.property
+    @pulumi.getter(name="releaseName")
+    def release_name(self) -> Optional[_builtins.str]:
+        """
+        The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
+        """
+        return pulumi.get(self, "release_name")
 
 
 @pulumi.output_type

@@ -38,8 +38,7 @@ import * as utilities from "../utilities";
  *             pythonSpec: {
  *                 entrypointModule: "simple_agent",
  *                 entrypointObject: "fixed_name_generator",
- *                 requirementsFile: "./test-fixtures/requirements.txt",
- *                 version: "3.11",
+ *                 version: "3.14",
  *             },
  *         },
  *     },

@@ -278,6 +278,21 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The reservation group that this reservation belongs to.
+     * 
+     */
+    @Import(name="reservationGroup")
+    private @Nullable Output<String> reservationGroup;
+
+    /**
+     * @return The reservation group that this reservation belongs to.
+     * 
+     */
+    public Optional<Output<String>> reservationGroup() {
+        return Optional.ofNullable(this.reservationGroup);
+    }
+
+    /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -410,6 +425,7 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         this.primaryLocation = $.primaryLocation;
         this.project = $.project;
         this.replicationStatuses = $.replicationStatuses;
+        this.reservationGroup = $.reservationGroup;
         this.scalingMode = $.scalingMode;
         this.secondaryLocation = $.secondaryLocation;
         this.slotCapacity = $.slotCapacity;
@@ -770,6 +786,27 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder replicationStatuses(ReservationReplicationStatusArgs... replicationStatuses) {
             return replicationStatuses(List.of(replicationStatuses));
+        }
+
+        /**
+         * @param reservationGroup The reservation group that this reservation belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationGroup(@Nullable Output<String> reservationGroup) {
+            $.reservationGroup = reservationGroup;
+            return this;
+        }
+
+        /**
+         * @param reservationGroup The reservation group that this reservation belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationGroup(String reservationGroup) {
+            return reservationGroup(Output.of(reservationGroup));
         }
 
         /**

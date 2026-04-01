@@ -20,6 +20,16 @@ export type DataTable = import("./dataTable").DataTable;
 export const DataTable: typeof import("./dataTable").DataTable = null as any;
 utilities.lazyLoad(exports, ["DataTable"], () => require("./dataTable"));
 
+export { DataTableRowArgs, DataTableRowState } from "./dataTableRow";
+export type DataTableRow = import("./dataTableRow").DataTableRow;
+export const DataTableRow: typeof import("./dataTableRow").DataTableRow = null as any;
+utilities.lazyLoad(exports, ["DataTableRow"], () => require("./dataTableRow"));
+
+export { NativeDashboardArgs, NativeDashboardState } from "./nativeDashboard";
+export type NativeDashboard = import("./nativeDashboard").NativeDashboard;
+export const NativeDashboard: typeof import("./nativeDashboard").NativeDashboard = null as any;
+utilities.lazyLoad(exports, ["NativeDashboard"], () => require("./nativeDashboard"));
+
 export { ReferenceListArgs, ReferenceListState } from "./referenceList";
 export type ReferenceList = import("./referenceList").ReferenceList;
 export const ReferenceList: typeof import("./referenceList").ReferenceList = null as any;
@@ -56,6 +66,10 @@ const _module = {
                 return new DataAccessScope(name, <any>undefined, { urn })
             case "gcp:chronicle/dataTable:DataTable":
                 return new DataTable(name, <any>undefined, { urn })
+            case "gcp:chronicle/dataTableRow:DataTableRow":
+                return new DataTableRow(name, <any>undefined, { urn })
+            case "gcp:chronicle/nativeDashboard:NativeDashboard":
+                return new NativeDashboard(name, <any>undefined, { urn })
             case "gcp:chronicle/referenceList:ReferenceList":
                 return new ReferenceList(name, <any>undefined, { urn })
             case "gcp:chronicle/retrohunt:Retrohunt":
@@ -74,6 +88,8 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTable", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTableRow", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/nativeDashboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/rule", _module)

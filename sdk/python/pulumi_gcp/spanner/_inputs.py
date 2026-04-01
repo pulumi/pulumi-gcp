@@ -51,6 +51,12 @@ __all__ = [
     'InstanceIAMBindingConditionArgsDict',
     'InstanceIAMMemberConditionArgs',
     'InstanceIAMMemberConditionArgsDict',
+    'InstancePartitionAutoscalingConfigArgs',
+    'InstancePartitionAutoscalingConfigArgsDict',
+    'InstancePartitionAutoscalingConfigAutoscalingLimitsArgs',
+    'InstancePartitionAutoscalingConfigAutoscalingLimitsArgsDict',
+    'InstancePartitionAutoscalingConfigAutoscalingTargetsArgs',
+    'InstancePartitionAutoscalingConfigAutoscalingTargetsArgsDict',
 ]
 
 class BackupScheduleEncryptionConfigArgsDict(TypedDict):
@@ -608,25 +614,70 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
 
 
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict(TypedDict):
-    autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']
+    autoscaling_limits: NotRequired[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']]
     """
     A nested object resource.
     Structure is documented below.
+    """
+    autoscaling_target_high_priority_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The target high priority cpu utilization percentage that the autoscaler
+    should be trying to achieve for this replica.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization).
+    """
+    autoscaling_target_total_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The target total cpu utilization percentage that the autoscaler
+    should be trying to achieve for this replica.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization).
+    """
+    disable_high_priority_cpu_autoscaling: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, disables high priority CPU autoscaling for this replica and ignores
+    high_priority_cpu_utilization_percent in the top-level autoscaling configuration.
+    """
+    disable_total_cpu_autoscaling: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, disables total CPU autoscaling for this replica and ignores
+    total_cpu_utilization_percent in the top-level autoscaling configuration.
     """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
     def __init__(__self__, *,
-                 autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']):
+                 autoscaling_limits: Optional[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']] = None,
+                 autoscaling_target_high_priority_cpu_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None,
+                 autoscaling_target_total_cpu_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None,
+                 disable_high_priority_cpu_autoscaling: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_total_cpu_autoscaling: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs'] autoscaling_limits: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[_builtins.int] autoscaling_target_high_priority_cpu_utilization_percent: The target high priority cpu utilization percentage that the autoscaler
+               should be trying to achieve for this replica.
+               This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        :param pulumi.Input[_builtins.int] autoscaling_target_total_cpu_utilization_percent: The target total cpu utilization percentage that the autoscaler
+               should be trying to achieve for this replica.
+               This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        :param pulumi.Input[_builtins.bool] disable_high_priority_cpu_autoscaling: If true, disables high priority CPU autoscaling for this replica and ignores
+               high_priority_cpu_utilization_percent in the top-level autoscaling configuration.
+        :param pulumi.Input[_builtins.bool] disable_total_cpu_autoscaling: If true, disables total CPU autoscaling for this replica and ignores
+               total_cpu_utilization_percent in the top-level autoscaling configuration.
         """
-        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+        if autoscaling_limits is not None:
+            pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+        if autoscaling_target_high_priority_cpu_utilization_percent is not None:
+            pulumi.set(__self__, "autoscaling_target_high_priority_cpu_utilization_percent", autoscaling_target_high_priority_cpu_utilization_percent)
+        if autoscaling_target_total_cpu_utilization_percent is not None:
+            pulumi.set(__self__, "autoscaling_target_total_cpu_utilization_percent", autoscaling_target_total_cpu_utilization_percent)
+        if disable_high_priority_cpu_autoscaling is not None:
+            pulumi.set(__self__, "disable_high_priority_cpu_autoscaling", disable_high_priority_cpu_autoscaling)
+        if disable_total_cpu_autoscaling is not None:
+            pulumi.set(__self__, "disable_total_cpu_autoscaling", disable_total_cpu_autoscaling)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingLimits")
-    def autoscaling_limits(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']:
+    def autoscaling_limits(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -634,55 +685,160 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
         return pulumi.get(self, "autoscaling_limits")
 
     @autoscaling_limits.setter
-    def autoscaling_limits(self, value: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']):
+    def autoscaling_limits(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']]):
         pulumi.set(self, "autoscaling_limits", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingTargetHighPriorityCpuUtilizationPercent")
+    def autoscaling_target_high_priority_cpu_utilization_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The target high priority cpu utilization percentage that the autoscaler
+        should be trying to achieve for this replica.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        """
+        return pulumi.get(self, "autoscaling_target_high_priority_cpu_utilization_percent")
+
+    @autoscaling_target_high_priority_cpu_utilization_percent.setter
+    def autoscaling_target_high_priority_cpu_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "autoscaling_target_high_priority_cpu_utilization_percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingTargetTotalCpuUtilizationPercent")
+    def autoscaling_target_total_cpu_utilization_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The target total cpu utilization percentage that the autoscaler
+        should be trying to achieve for this replica.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        """
+        return pulumi.get(self, "autoscaling_target_total_cpu_utilization_percent")
+
+    @autoscaling_target_total_cpu_utilization_percent.setter
+    def autoscaling_target_total_cpu_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "autoscaling_target_total_cpu_utilization_percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableHighPriorityCpuAutoscaling")
+    def disable_high_priority_cpu_autoscaling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, disables high priority CPU autoscaling for this replica and ignores
+        high_priority_cpu_utilization_percent in the top-level autoscaling configuration.
+        """
+        return pulumi.get(self, "disable_high_priority_cpu_autoscaling")
+
+    @disable_high_priority_cpu_autoscaling.setter
+    def disable_high_priority_cpu_autoscaling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_high_priority_cpu_autoscaling", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableTotalCpuAutoscaling")
+    def disable_total_cpu_autoscaling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, disables total CPU autoscaling for this replica and ignores
+        total_cpu_utilization_percent in the top-level autoscaling configuration.
+        """
+        return pulumi.get(self, "disable_total_cpu_autoscaling")
+
+    @disable_total_cpu_autoscaling.setter
+    def disable_total_cpu_autoscaling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_total_cpu_autoscaling", value)
 
 
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict(TypedDict):
-    max_nodes: pulumi.Input[_builtins.int]
+    max_nodes: NotRequired[pulumi.Input[_builtins.int]]
     """
     The maximum number of nodes for this specific replica.
     """
-    min_nodes: pulumi.Input[_builtins.int]
+    max_processing_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of processing units for this specific replica.
+    If set, this number should be multiples of 1000 and be greater than or equal to
+    min_processing_units.
+    """
+    min_nodes: NotRequired[pulumi.Input[_builtins.int]]
     """
     The minimum number of nodes for this specific replica.
+    """
+    min_processing_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of processing units for this specific replica.
+    If set, this number should be multiples of 1000.
     """
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs:
     def __init__(__self__, *,
-                 max_nodes: pulumi.Input[_builtins.int],
-                 min_nodes: pulumi.Input[_builtins.int]):
+                 max_nodes: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_processing_units: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_nodes: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_processing_units: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_nodes: The maximum number of nodes for this specific replica.
+        :param pulumi.Input[_builtins.int] max_processing_units: The maximum number of processing units for this specific replica.
+               If set, this number should be multiples of 1000 and be greater than or equal to
+               min_processing_units.
         :param pulumi.Input[_builtins.int] min_nodes: The minimum number of nodes for this specific replica.
+        :param pulumi.Input[_builtins.int] min_processing_units: The minimum number of processing units for this specific replica.
+               If set, this number should be multiples of 1000.
         """
-        pulumi.set(__self__, "max_nodes", max_nodes)
-        pulumi.set(__self__, "min_nodes", min_nodes)
+        if max_nodes is not None:
+            pulumi.set(__self__, "max_nodes", max_nodes)
+        if max_processing_units is not None:
+            pulumi.set(__self__, "max_processing_units", max_processing_units)
+        if min_nodes is not None:
+            pulumi.set(__self__, "min_nodes", min_nodes)
+        if min_processing_units is not None:
+            pulumi.set(__self__, "min_processing_units", min_processing_units)
 
     @_builtins.property
     @pulumi.getter(name="maxNodes")
-    def max_nodes(self) -> pulumi.Input[_builtins.int]:
+    def max_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The maximum number of nodes for this specific replica.
         """
         return pulumi.get(self, "max_nodes")
 
     @max_nodes.setter
-    def max_nodes(self, value: pulumi.Input[_builtins.int]):
+    def max_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "max_nodes", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxProcessingUnits")
+    def max_processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of processing units for this specific replica.
+        If set, this number should be multiples of 1000 and be greater than or equal to
+        min_processing_units.
+        """
+        return pulumi.get(self, "max_processing_units")
+
+    @max_processing_units.setter
+    def max_processing_units(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_processing_units", value)
+
+    @_builtins.property
     @pulumi.getter(name="minNodes")
-    def min_nodes(self) -> pulumi.Input[_builtins.int]:
+    def min_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The minimum number of nodes for this specific replica.
         """
         return pulumi.get(self, "min_nodes")
 
     @min_nodes.setter
-    def min_nodes(self, value: pulumi.Input[_builtins.int]):
+    def min_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "min_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minProcessingUnits")
+    def min_processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The minimum number of processing units for this specific replica.
+        If set, this number should be multiples of 1000.
+        """
+        return pulumi.get(self, "min_processing_units")
+
+    @min_processing_units.setter
+    def min_processing_units(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_processing_units", value)
 
 
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict(TypedDict):
@@ -720,7 +876,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
     """
     max_processing_units: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Specifies maximum number of processing units allocated to the instance.
+    The maximum number of processing units for this specific replica.
     If set, this number should be multiples of 1000 and be greater than or equal to
     min_processing_units.
     """
@@ -730,7 +886,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
     """
     min_processing_units: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Specifies minimum number of processing units allocated to the instance.
+    The minimum number of processing units for this specific replica.
     If set, this number should be multiples of 1000.
     """
 
@@ -743,11 +899,11 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
                  min_processing_units: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_nodes: The maximum number of nodes for this specific replica.
-        :param pulumi.Input[_builtins.int] max_processing_units: Specifies maximum number of processing units allocated to the instance.
+        :param pulumi.Input[_builtins.int] max_processing_units: The maximum number of processing units for this specific replica.
                If set, this number should be multiples of 1000 and be greater than or equal to
                min_processing_units.
         :param pulumi.Input[_builtins.int] min_nodes: The minimum number of nodes for this specific replica.
-        :param pulumi.Input[_builtins.int] min_processing_units: Specifies minimum number of processing units allocated to the instance.
+        :param pulumi.Input[_builtins.int] min_processing_units: The minimum number of processing units for this specific replica.
                If set, this number should be multiples of 1000.
         """
         if max_nodes is not None:
@@ -775,7 +931,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
     @pulumi.getter(name="maxProcessingUnits")
     def max_processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies maximum number of processing units allocated to the instance.
+        The maximum number of processing units for this specific replica.
         If set, this number should be multiples of 1000 and be greater than or equal to
         min_processing_units.
         """
@@ -801,7 +957,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
     @pulumi.getter(name="minProcessingUnits")
     def min_processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies minimum number of processing units allocated to the instance.
+        The minimum number of processing units for this specific replica.
         If set, this number should be multiples of 1000.
         """
         return pulumi.get(self, "min_processing_units")
@@ -1068,5 +1224,275 @@ class InstanceIAMMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class InstancePartitionAutoscalingConfigArgsDict(TypedDict):
+    autoscaling_limits: NotRequired[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingLimitsArgsDict']]
+    """
+    Defines scale in controls to reduce the risk of response latency
+    and outages due to abrupt scale-in events. Users can define the minimum and
+    maximum compute capacity allocated to the instance partition, and the autoscaler will
+    only scale within that range. Users can either use nodes or processing
+    units to specify the limits, but should use the same unit to set both the
+    min_limit and max_limit.
+    Structure is documented below.
+    """
+    autoscaling_targets: NotRequired[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingTargetsArgsDict']]
+    """
+    Defines scale in controls to reduce the risk of response latency
+    and outages due to abrupt scale-in events
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class InstancePartitionAutoscalingConfigArgs:
+    def __init__(__self__, *,
+                 autoscaling_limits: Optional[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingLimitsArgs']] = None,
+                 autoscaling_targets: Optional[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingTargetsArgs']] = None):
+        """
+        :param pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingLimitsArgs'] autoscaling_limits: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events. Users can define the minimum and
+               maximum compute capacity allocated to the instance partition, and the autoscaler will
+               only scale within that range. Users can either use nodes or processing
+               units to specify the limits, but should use the same unit to set both the
+               min_limit and max_limit.
+               Structure is documented below.
+        :param pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingTargetsArgs'] autoscaling_targets: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
+        """
+        if autoscaling_limits is not None:
+            pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+        if autoscaling_targets is not None:
+            pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> Optional[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingLimitsArgs']]:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events. Users can define the minimum and
+        maximum compute capacity allocated to the instance partition, and the autoscaler will
+        only scale within that range. Users can either use nodes or processing
+        units to specify the limits, but should use the same unit to set both the
+        min_limit and max_limit.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+    @autoscaling_limits.setter
+    def autoscaling_limits(self, value: Optional[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingLimitsArgs']]):
+        pulumi.set(self, "autoscaling_limits", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingTargets")
+    def autoscaling_targets(self) -> Optional[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingTargetsArgs']]:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_targets")
+
+    @autoscaling_targets.setter
+    def autoscaling_targets(self, value: Optional[pulumi.Input['InstancePartitionAutoscalingConfigAutoscalingTargetsArgs']]):
+        pulumi.set(self, "autoscaling_targets", value)
+
+
+class InstancePartitionAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
+    max_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies maximum number of nodes allocated to the instance partition. If set, this number
+    should be greater than or equal to min_nodes.
+    """
+    max_processing_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies maximum number of processing units allocated to the instance partition.
+    If set, this number should be multiples of 1000 and be greater than or equal to
+    min_processing_units.
+    """
+    min_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies number of nodes allocated to the instance partition. If set, this number
+    should be greater than or equal to 1.
+    """
+    min_processing_units: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies minimum number of processing units allocated to the instance partition.
+    If set, this number should be multiples of 1000.
+    """
+
+@pulumi.input_type
+class InstancePartitionAutoscalingConfigAutoscalingLimitsArgs:
+    def __init__(__self__, *,
+                 max_nodes: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_processing_units: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_nodes: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_processing_units: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_nodes: Specifies maximum number of nodes allocated to the instance partition. If set, this number
+               should be greater than or equal to min_nodes.
+        :param pulumi.Input[_builtins.int] max_processing_units: Specifies maximum number of processing units allocated to the instance partition.
+               If set, this number should be multiples of 1000 and be greater than or equal to
+               min_processing_units.
+        :param pulumi.Input[_builtins.int] min_nodes: Specifies number of nodes allocated to the instance partition. If set, this number
+               should be greater than or equal to 1.
+        :param pulumi.Input[_builtins.int] min_processing_units: Specifies minimum number of processing units allocated to the instance partition.
+               If set, this number should be multiples of 1000.
+        """
+        if max_nodes is not None:
+            pulumi.set(__self__, "max_nodes", max_nodes)
+        if max_processing_units is not None:
+            pulumi.set(__self__, "max_processing_units", max_processing_units)
+        if min_nodes is not None:
+            pulumi.set(__self__, "min_nodes", min_nodes)
+        if min_processing_units is not None:
+            pulumi.set(__self__, "min_processing_units", min_processing_units)
+
+    @_builtins.property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies maximum number of nodes allocated to the instance partition. If set, this number
+        should be greater than or equal to min_nodes.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @max_nodes.setter
+    def max_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxProcessingUnits")
+    def max_processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies maximum number of processing units allocated to the instance partition.
+        If set, this number should be multiples of 1000 and be greater than or equal to
+        min_processing_units.
+        """
+        return pulumi.get(self, "max_processing_units")
+
+    @max_processing_units.setter
+    def max_processing_units(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_processing_units", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies number of nodes allocated to the instance partition. If set, this number
+        should be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_nodes")
+
+    @min_nodes.setter
+    def min_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minProcessingUnits")
+    def min_processing_units(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies minimum number of processing units allocated to the instance partition.
+        If set, this number should be multiples of 1000.
+        """
+        return pulumi.get(self, "min_processing_units")
+
+    @min_processing_units.setter
+    def min_processing_units(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_processing_units", value)
+
+
+class InstancePartitionAutoscalingConfigAutoscalingTargetsArgsDict(TypedDict):
+    high_priority_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the target high priority cpu utilization percentage that the autoscaler
+    should be trying to achieve for the instance partition.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization).
+    """
+    storage_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the target storage utilization percentage that the autoscaler
+    should be trying to achieve for the instance partition.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization).
+    """
+    total_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the target total cpu utilization percentage that the autoscaler
+    should be trying to achieve for the instance partition.
+    This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+    If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+    The value should be higher than high_priority_cpu_utilization_percent if present.
+    """
+
+@pulumi.input_type
+class InstancePartitionAutoscalingConfigAutoscalingTargetsArgs:
+    def __init__(__self__, *,
+                 high_priority_cpu_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None,
+                 storage_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_cpu_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] high_priority_cpu_utilization_percent: Specifies the target high priority cpu utilization percentage that the autoscaler
+               should be trying to achieve for the instance partition.
+               This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        :param pulumi.Input[_builtins.int] storage_utilization_percent: Specifies the target storage utilization percentage that the autoscaler
+               should be trying to achieve for the instance partition.
+               This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        :param pulumi.Input[_builtins.int] total_cpu_utilization_percent: Specifies the target total cpu utilization percentage that the autoscaler
+               should be trying to achieve for the instance partition.
+               This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+               If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+               The value should be higher than high_priority_cpu_utilization_percent if present.
+        """
+        if high_priority_cpu_utilization_percent is not None:
+            pulumi.set(__self__, "high_priority_cpu_utilization_percent", high_priority_cpu_utilization_percent)
+        if storage_utilization_percent is not None:
+            pulumi.set(__self__, "storage_utilization_percent", storage_utilization_percent)
+        if total_cpu_utilization_percent is not None:
+            pulumi.set(__self__, "total_cpu_utilization_percent", total_cpu_utilization_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="highPriorityCpuUtilizationPercent")
+    def high_priority_cpu_utilization_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the target high priority cpu utilization percentage that the autoscaler
+        should be trying to achieve for the instance partition.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        """
+        return pulumi.get(self, "high_priority_cpu_utilization_percent")
+
+    @high_priority_cpu_utilization_percent.setter
+    def high_priority_cpu_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "high_priority_cpu_utilization_percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageUtilizationPercent")
+    def storage_utilization_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the target storage utilization percentage that the autoscaler
+        should be trying to achieve for the instance partition.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        """
+        return pulumi.get(self, "storage_utilization_percent")
+
+    @storage_utilization_percent.setter
+    def storage_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "storage_utilization_percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalCpuUtilizationPercent")
+    def total_cpu_utilization_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the target total cpu utilization percentage that the autoscaler
+        should be trying to achieve for the instance partition.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+        The value should be higher than high_priority_cpu_utilization_percent if present.
+        """
+        return pulumi.get(self, "total_cpu_utilization_percent")
+
+    @total_cpu_utilization_percent.setter
+    def total_cpu_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_cpu_utilization_percent", value)
 
 

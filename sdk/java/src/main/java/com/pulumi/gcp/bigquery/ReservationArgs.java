@@ -214,6 +214,21 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The reservation group that this reservation belongs to.
+     * 
+     */
+    @Import(name="reservationGroup")
+    private @Nullable Output<String> reservationGroup;
+
+    /**
+     * @return The reservation group that this reservation belongs to.
+     * 
+     */
+    public Optional<Output<String>> reservationGroup() {
+        return Optional.ofNullable(this.reservationGroup);
+    }
+
+    /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -343,6 +358,7 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         this.maxSlots = $.maxSlots;
         this.name = $.name;
         this.project = $.project;
+        this.reservationGroup = $.reservationGroup;
         this.scalingMode = $.scalingMode;
         this.secondaryLocation = $.secondaryLocation;
         this.slotCapacity = $.slotCapacity;
@@ -606,6 +622,27 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param reservationGroup The reservation group that this reservation belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationGroup(@Nullable Output<String> reservationGroup) {
+            $.reservationGroup = reservationGroup;
+            return this;
+        }
+
+        /**
+         * @param reservationGroup The reservation group that this reservation belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationGroup(String reservationGroup) {
+            return reservationGroup(Output.of(reservationGroup));
         }
 
         /**

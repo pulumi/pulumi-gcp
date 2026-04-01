@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Colab
     ///         {
     ///             EnableInternetAccess = true,
     ///         },
+    ///         SoftwareConfig = null,
     ///     });
     /// 
     /// });
@@ -162,6 +163,10 @@ namespace Pulumi.Gcp.Colab
     ///                 PostStartupScript = "echo 'hello world'",
     ///                 PostStartupScriptUrl = "gs://colab-enterprise-pss-secure/secure_pss.sh",
     ///                 PostStartupScriptBehavior = "RUN_ONCE",
+    ///             },
+    ///             ColabImage = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigColabImageArgs
+    ///             {
+    ///                 ReleaseName = "py312",
     ///             },
     ///         },
     ///     });

@@ -454,7 +454,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * &#39;Configures subnet mask resolution for this subnetwork.&#39;
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      * 
@@ -463,8 +462,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> resolveSubnetMask;
 
     /**
-     * @return (Optional, Beta)
-     * &#39;Configures subnet mask resolution for this subnetwork.&#39;
+     * @return &#39;Configures subnet mask resolution for this subnetwork.&#39;
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      * 
      */
@@ -1233,8 +1231,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resolveSubnetMask (Optional, Beta)
-         * &#39;Configures subnet mask resolution for this subnetwork.&#39;
+         * @param resolveSubnetMask &#39;Configures subnet mask resolution for this subnetwork.&#39;
          * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
          * 
          * @return builder
@@ -1246,8 +1243,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resolveSubnetMask (Optional, Beta)
-         * &#39;Configures subnet mask resolution for this subnetwork.&#39;
+         * @param resolveSubnetMask &#39;Configures subnet mask resolution for this subnetwork.&#39;
          * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
          * 
          * @return builder

@@ -1688,6 +1688,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigquery/reservationGroup",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/reservationGroup:ReservationGroup": "ReservationGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquery/routine",
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
@@ -2244,6 +2252,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/dataTable:DataTable": "DataTable"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/dataTableRow",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/dataTableRow:DataTableRow": "DataTableRow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/nativeDashboard",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/nativeDashboard:NativeDashboard": "NativeDashboard"
   }
  },
  {
@@ -4324,6 +4348,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
    "gcp:contactcenterinsights/analysisRule:AnalysisRule": "AnalysisRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "contactcenterinsights/assessmentRule",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/assessmentRule:AssessmentRule": "AssessmentRule"
   }
  },
  {

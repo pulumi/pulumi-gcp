@@ -27,6 +27,14 @@ __all__ = [
     'DataTableColumnInfoArgsDict',
     'DataTableScopeInfoArgs',
     'DataTableScopeInfoArgsDict',
+    'NativeDashboardChartArgs',
+    'NativeDashboardChartArgsDict',
+    'NativeDashboardChartChartLayoutArgs',
+    'NativeDashboardChartChartLayoutArgsDict',
+    'NativeDashboardFilterArgs',
+    'NativeDashboardFilterArgsDict',
+    'NativeDashboardFilterFilterOperatorAndFieldValueArgs',
+    'NativeDashboardFilterFilterOperatorAndFieldValueArgsDict',
     'ReferenceListEntryArgs',
     'ReferenceListEntryArgsDict',
     'ReferenceListScopeInfoArgs',
@@ -622,6 +630,424 @@ class DataTableScopeInfoArgs:
     @data_access_scopes.setter
     def data_access_scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "data_access_scopes", value)
+
+
+class NativeDashboardChartArgsDict(TypedDict):
+    chart_layout: NotRequired[pulumi.Input['NativeDashboardChartChartLayoutArgsDict']]
+    """
+    The visual layout parameters of this chart within the dashboard.
+    Structure is documented below.
+    """
+    dashboard_chart: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource name of the associated DashboardChart.
+    """
+    filters_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of dashboard filter IDs applied to this chart.
+    """
+
+@pulumi.input_type
+class NativeDashboardChartArgs:
+    def __init__(__self__, *,
+                 chart_layout: Optional[pulumi.Input['NativeDashboardChartChartLayoutArgs']] = None,
+                 dashboard_chart: Optional[pulumi.Input[_builtins.str]] = None,
+                 filters_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['NativeDashboardChartChartLayoutArgs'] chart_layout: The visual layout parameters of this chart within the dashboard.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] dashboard_chart: The resource name of the associated DashboardChart.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters_ids: List of dashboard filter IDs applied to this chart.
+        """
+        if chart_layout is not None:
+            pulumi.set(__self__, "chart_layout", chart_layout)
+        if dashboard_chart is not None:
+            pulumi.set(__self__, "dashboard_chart", dashboard_chart)
+        if filters_ids is not None:
+            pulumi.set(__self__, "filters_ids", filters_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="chartLayout")
+    def chart_layout(self) -> Optional[pulumi.Input['NativeDashboardChartChartLayoutArgs']]:
+        """
+        The visual layout parameters of this chart within the dashboard.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "chart_layout")
+
+    @chart_layout.setter
+    def chart_layout(self, value: Optional[pulumi.Input['NativeDashboardChartChartLayoutArgs']]):
+        pulumi.set(self, "chart_layout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dashboardChart")
+    def dashboard_chart(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name of the associated DashboardChart.
+        """
+        return pulumi.get(self, "dashboard_chart")
+
+    @dashboard_chart.setter
+    def dashboard_chart(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dashboard_chart", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filtersIds")
+    def filters_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of dashboard filter IDs applied to this chart.
+        """
+        return pulumi.get(self, "filters_ids")
+
+    @filters_ids.setter
+    def filters_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "filters_ids", value)
+
+
+class NativeDashboardChartChartLayoutArgsDict(TypedDict):
+    span_x: pulumi.Input[_builtins.int]
+    """
+    The number of columns the chart spans.
+    """
+    span_y: pulumi.Input[_builtins.int]
+    """
+    The number of rows the chart spans.
+    """
+    start_x: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The starting X coordinate.
+    """
+    start_y: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The starting Y coordinate.
+    """
+
+@pulumi.input_type
+class NativeDashboardChartChartLayoutArgs:
+    def __init__(__self__, *,
+                 span_x: pulumi.Input[_builtins.int],
+                 span_y: pulumi.Input[_builtins.int],
+                 start_x: Optional[pulumi.Input[_builtins.int]] = None,
+                 start_y: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] span_x: The number of columns the chart spans.
+        :param pulumi.Input[_builtins.int] span_y: The number of rows the chart spans.
+        :param pulumi.Input[_builtins.int] start_x: The starting X coordinate.
+        :param pulumi.Input[_builtins.int] start_y: The starting Y coordinate.
+        """
+        pulumi.set(__self__, "span_x", span_x)
+        pulumi.set(__self__, "span_y", span_y)
+        if start_x is not None:
+            pulumi.set(__self__, "start_x", start_x)
+        if start_y is not None:
+            pulumi.set(__self__, "start_y", start_y)
+
+    @_builtins.property
+    @pulumi.getter(name="spanX")
+    def span_x(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of columns the chart spans.
+        """
+        return pulumi.get(self, "span_x")
+
+    @span_x.setter
+    def span_x(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "span_x", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spanY")
+    def span_y(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of rows the chart spans.
+        """
+        return pulumi.get(self, "span_y")
+
+    @span_y.setter
+    def span_y(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "span_y", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startX")
+    def start_x(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The starting X coordinate.
+        """
+        return pulumi.get(self, "start_x")
+
+    @start_x.setter
+    def start_x(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "start_x", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startY")
+    def start_y(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The starting Y coordinate.
+        """
+        return pulumi.get(self, "start_y")
+
+    @start_y.setter
+    def start_y(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "start_y", value)
+
+
+class NativeDashboardFilterArgsDict(TypedDict):
+    chart_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The IDs of charts that this filter applies to.
+    """
+    data_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The data source for the filter.
+    Possible values:
+    UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+    IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+    DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the filter.
+    """
+    field_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The UDM field path being filtered.
+    """
+    filter_operator_and_field_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgsDict']]]]
+    """
+    The specific operator and value set for the filter.
+    Structure is documented below.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique ID of the filter.
+    """
+    is_mandatory: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the filter is mandatory for the dashboard consumer.
+    """
+    is_standard_time_range_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the filter is a standard time range filter.
+    """
+    is_standard_time_range_filter_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the standard time range filter is currently enabled.
+    """
+
+@pulumi.input_type
+class NativeDashboardFilterArgs:
+    def __init__(__self__, *,
+                 chart_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 field_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 filter_operator_and_field_values: Optional[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_standard_time_range_filter: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_standard_time_range_filter_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] chart_ids: The IDs of charts that this filter applies to.
+        :param pulumi.Input[_builtins.str] data_source: The data source for the filter.
+               Possible values:
+               UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+               IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+               DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+        :param pulumi.Input[_builtins.str] display_name: The display name of the filter.
+        :param pulumi.Input[_builtins.str] field_path: The UDM field path being filtered.
+        :param pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]] filter_operator_and_field_values: The specific operator and value set for the filter.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] id: The unique ID of the filter.
+        :param pulumi.Input[_builtins.bool] is_mandatory: Whether the filter is mandatory for the dashboard consumer.
+        :param pulumi.Input[_builtins.bool] is_standard_time_range_filter: Whether the filter is a standard time range filter.
+        :param pulumi.Input[_builtins.bool] is_standard_time_range_filter_enabled: Whether the standard time range filter is currently enabled.
+        """
+        if chart_ids is not None:
+            pulumi.set(__self__, "chart_ids", chart_ids)
+        if data_source is not None:
+            pulumi.set(__self__, "data_source", data_source)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if field_path is not None:
+            pulumi.set(__self__, "field_path", field_path)
+        if filter_operator_and_field_values is not None:
+            pulumi.set(__self__, "filter_operator_and_field_values", filter_operator_and_field_values)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_mandatory is not None:
+            pulumi.set(__self__, "is_mandatory", is_mandatory)
+        if is_standard_time_range_filter is not None:
+            pulumi.set(__self__, "is_standard_time_range_filter", is_standard_time_range_filter)
+        if is_standard_time_range_filter_enabled is not None:
+            pulumi.set(__self__, "is_standard_time_range_filter_enabled", is_standard_time_range_filter_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="chartIds")
+    def chart_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The IDs of charts that this filter applies to.
+        """
+        return pulumi.get(self, "chart_ids")
+
+    @chart_ids.setter
+    def chart_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "chart_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The data source for the filter.
+        Possible values:
+        UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
+        IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
+        DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
+        """
+        return pulumi.get(self, "data_source")
+
+    @data_source.setter
+    def data_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The display name of the filter.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The UDM field path being filtered.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "field_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterOperatorAndFieldValues")
+    def filter_operator_and_field_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]:
+        """
+        The specific operator and value set for the filter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter_operator_and_field_values")
+
+    @filter_operator_and_field_values.setter
+    def filter_operator_and_field_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]):
+        pulumi.set(self, "filter_operator_and_field_values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique ID of the filter.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isMandatory")
+    def is_mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the filter is mandatory for the dashboard consumer.
+        """
+        return pulumi.get(self, "is_mandatory")
+
+    @is_mandatory.setter
+    def is_mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_mandatory", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isStandardTimeRangeFilter")
+    def is_standard_time_range_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the filter is a standard time range filter.
+        """
+        return pulumi.get(self, "is_standard_time_range_filter")
+
+    @is_standard_time_range_filter.setter
+    def is_standard_time_range_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_standard_time_range_filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isStandardTimeRangeFilterEnabled")
+    def is_standard_time_range_filter_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the standard time range filter is currently enabled.
+        """
+        return pulumi.get(self, "is_standard_time_range_filter_enabled")
+
+    @is_standard_time_range_filter_enabled.setter
+    def is_standard_time_range_filter_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_standard_time_range_filter_enabled", value)
+
+
+class NativeDashboardFilterFilterOperatorAndFieldValueArgsDict(TypedDict):
+    field_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The values for the modifier. All operators should have a single
+    value other than 'IN' and 'BETWEEN'.
+    """
+    filter_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The operator to apply to the field.
+    Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+    """
+
+@pulumi.input_type
+class NativeDashboardFilterFilterOperatorAndFieldValueArgs:
+    def __init__(__self__, *,
+                 field_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filter_operator: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] field_values: The values for the modifier. All operators should have a single
+               value other than 'IN' and 'BETWEEN'.
+        :param pulumi.Input[_builtins.str] filter_operator: The operator to apply to the field.
+               Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+        """
+        if field_values is not None:
+            pulumi.set(__self__, "field_values", field_values)
+        if filter_operator is not None:
+            pulumi.set(__self__, "filter_operator", filter_operator)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldValues")
+    def field_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The values for the modifier. All operators should have a single
+        value other than 'IN' and 'BETWEEN'.
+        """
+        return pulumi.get(self, "field_values")
+
+    @field_values.setter
+    def field_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "field_values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterOperator")
+    def filter_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The operator to apply to the field.
+        Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
+        """
+        return pulumi.get(self, "filter_operator")
+
+    @filter_operator.setter
+    def filter_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "filter_operator", value)
 
 
 class ReferenceListEntryArgsDict(TypedDict):

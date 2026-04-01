@@ -51,6 +51,48 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// ### Spanner Instance Partition Autoscaling
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var main = new Gcp.Spanner.Instance("main", new()
+    ///     {
+    ///         Name = "test-instance",
+    ///         Config = "nam6",
+    ///         DisplayName = "main-instance",
+    ///         NumNodes = 1,
+    ///         Edition = "ENTERPRISE_PLUS",
+    ///     });
+    /// 
+    ///     var partition = new Gcp.Spanner.InstancePartition("partition", new()
+    ///     {
+    ///         Name = "test-partition",
+    ///         Instance = main.Name,
+    ///         Config = "nam8",
+    ///         DisplayName = "test-spanner-partition",
+    ///         AutoscalingConfig = new Gcp.Spanner.Inputs.InstancePartitionAutoscalingConfigArgs
+    ///         {
+    ///             AutoscalingLimits = new Gcp.Spanner.Inputs.InstancePartitionAutoscalingConfigAutoscalingLimitsArgs
+    ///             {
+    ///                 MinProcessingUnits = 1000,
+    ///                 MaxProcessingUnits = 2000,
+    ///             },
+    ///             AutoscalingTargets = new Gcp.Spanner.Inputs.InstancePartitionAutoscalingConfigAutoscalingTargetsArgs
+    ///             {
+    ///                 HighPriorityCpuUtilizationPercent = 65,
+    ///                 StorageUtilizationPercent = 95,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -71,6 +113,17 @@ namespace Pulumi.Gcp.Spanner
     [GcpResourceType("gcp:spanner/instancePartition:InstancePartition")]
     public partial class InstancePartition : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// Exactly one of either node_count, processing_units, or AutoscalingConfig must be
+        /// present. When autoscaling is enabled, NodeCount and ProcessingUnits are treated as
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+        /// instance partition.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("autoscalingConfig")]
+        public Output<Outputs.InstancePartitionAutoscalingConfig?> AutoscalingConfig { get; private set; } = null!;
+
         /// <summary>
         /// The name of the instance partition's configuration (similar to a region) which
         /// defines the geographic placement and replication of data in this instance partition.
@@ -101,18 +154,19 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. One node equals
-        /// 1000 processing units. Exactly one of either NodeCount or ProcessingUnits
-        /// must be present.
+        /// 1000 processing units. Exactly one of either node_count, processing_units,
+        /// or AutoscalingConfig must be present.
         /// </summary>
         [Output("nodeCount")]
-        public Output<int?> NodeCount { get; private set; } = null!;
+        public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The number of processing units allocated to this instance partition.
-        /// Exactly one of either NodeCount or ProcessingUnits must be present.
+        /// Exactly one of either node_count, processing_units, or AutoscalingConfig
+        /// must be present.
         /// </summary>
         [Output("processingUnits")]
-        public Output<int?> ProcessingUnits { get; private set; } = null!;
+        public Output<int> ProcessingUnits { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -177,6 +231,17 @@ namespace Pulumi.Gcp.Spanner
     public sealed class InstancePartitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// Exactly one of either node_count, processing_units, or AutoscalingConfig must be
+        /// present. When autoscaling is enabled, NodeCount and ProcessingUnits are treated as
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+        /// instance partition.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.InstancePartitionAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
+
+        /// <summary>
         /// The name of the instance partition's configuration (similar to a region) which
         /// defines the geographic placement and replication of data in this instance partition.
         /// </summary>
@@ -206,15 +271,16 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. One node equals
-        /// 1000 processing units. Exactly one of either NodeCount or ProcessingUnits
-        /// must be present.
+        /// 1000 processing units. Exactly one of either node_count, processing_units,
+        /// or AutoscalingConfig must be present.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
         /// The number of processing units allocated to this instance partition.
-        /// Exactly one of either NodeCount or ProcessingUnits must be present.
+        /// Exactly one of either node_count, processing_units, or AutoscalingConfig
+        /// must be present.
         /// </summary>
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }
@@ -234,6 +300,17 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstancePartitionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// Exactly one of either node_count, processing_units, or AutoscalingConfig must be
+        /// present. When autoscaling is enabled, NodeCount and ProcessingUnits are treated as
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
+        /// instance partition.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.InstancePartitionAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
+
         /// <summary>
         /// The name of the instance partition's configuration (similar to a region) which
         /// defines the geographic placement and replication of data in this instance partition.
@@ -264,15 +341,16 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The number of nodes allocated to this instance partition. One node equals
-        /// 1000 processing units. Exactly one of either NodeCount or ProcessingUnits
-        /// must be present.
+        /// 1000 processing units. Exactly one of either node_count, processing_units,
+        /// or AutoscalingConfig must be present.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
         /// The number of processing units allocated to this instance partition.
-        /// Exactly one of either NodeCount or ProcessingUnits must be present.
+        /// Exactly one of either node_count, processing_units, or AutoscalingConfig
+        /// must be present.
         /// </summary>
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }

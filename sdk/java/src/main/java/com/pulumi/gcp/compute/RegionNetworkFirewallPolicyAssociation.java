@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociationArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyAssociationState;
+import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -68,6 +69,59 @@ import javax.annotation.Nullable;
  *             .attachmentTarget(network.id())
  *             .firewallPolicy(policy.id())
  *             .region("us-west1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Network Firewall Policy Association Priority
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociation;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new RegionNetworkFirewallPolicy("policy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("my-policy")
+ *             .project("my-project-name")
+ *             .description("Sample global network firewall policy")
+ *             .region("us-west1")
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var association = new RegionNetworkFirewallPolicyAssociation("association", RegionNetworkFirewallPolicyAssociationArgs.builder()
+ *             .name("my-association")
+ *             .project("my-project-name")
+ *             .attachmentTarget(network.id())
+ *             .firewallPolicy(policy.id())
+ *             .region("us-west1")
+ *             .priority(1)
  *             .build());
  * 
  *     }
@@ -139,6 +193,22 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * (Optional, Beta)
+     * An integer indicating the priority of an association.
+     * 
+     */
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    private Output<Integer> priority;
+
+    /**
+     * @return (Optional, Beta)
+     * An integer indicating the priority of an association.
+     * 
+     */
+    public Output<Integer> priority() {
+        return this.priority;
     }
     /**
      * The ID of the project in which the resource belongs.

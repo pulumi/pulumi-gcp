@@ -4,32 +4,26 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.storage.outputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfig;
+import com.pulumi.gcp.storage.outputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig;
+import com.pulumi.gcp.storage.outputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfig;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketEncryption {
     /**
-     * @return The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-     * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-     * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-     * 
-     * &gt; As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-     * specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket&#39;s
-     * project to use the specified key for encryption and decryption operations.
-     * Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-     * until a relevant action has occurred which triggers its creation.
-     * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-     * address for the service account when configuring IAM policy on the Cloud KMS key.
-     * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-     * state of the project.
-     * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+     * @return If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
      * 
      */
-    private String defaultKmsKeyName;
-
-    private BucketEncryption() {}
+    private @Nullable BucketEncryptionCustomerManagedEncryptionEnforcementConfig customerManagedEncryptionEnforcementConfig;
+    /**
+     * @return If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    private @Nullable BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig customerSuppliedEncryptionEnforcementConfig;
     /**
      * @return The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
      * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
@@ -47,8 +41,54 @@ public final class BucketEncryption {
      * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
      * 
      */
-    public String defaultKmsKeyName() {
-        return this.defaultKmsKeyName;
+    private @Nullable String defaultKmsKeyName;
+    /**
+     * @return If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    private @Nullable BucketEncryptionGoogleManagedEncryptionEnforcementConfig googleManagedEncryptionEnforcementConfig;
+
+    private BucketEncryption() {}
+    /**
+     * @return If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    public Optional<BucketEncryptionCustomerManagedEncryptionEnforcementConfig> customerManagedEncryptionEnforcementConfig() {
+        return Optional.ofNullable(this.customerManagedEncryptionEnforcementConfig);
+    }
+    /**
+     * @return If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    public Optional<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig> customerSuppliedEncryptionEnforcementConfig() {
+        return Optional.ofNullable(this.customerSuppliedEncryptionEnforcementConfig);
+    }
+    /**
+     * @return The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+     * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+     * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+     * 
+     * &gt; As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+     * specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket&#39;s
+     * project to use the specified key for encryption and decryption operations.
+     * Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+     * until a relevant action has occurred which triggers its creation.
+     * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+     * address for the service account when configuring IAM policy on the Cloud KMS key.
+     * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+     * state of the project.
+     * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+     * 
+     */
+    public Optional<String> defaultKmsKeyName() {
+        return Optional.ofNullable(this.defaultKmsKeyName);
+    }
+    /**
+     * @return If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
+     * 
+     */
+    public Optional<BucketEncryptionGoogleManagedEncryptionEnforcementConfig> googleManagedEncryptionEnforcementConfig() {
+        return Optional.ofNullable(this.googleManagedEncryptionEnforcementConfig);
     }
 
     public static Builder builder() {
@@ -60,24 +100,49 @@ public final class BucketEncryption {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String defaultKmsKeyName;
+        private @Nullable BucketEncryptionCustomerManagedEncryptionEnforcementConfig customerManagedEncryptionEnforcementConfig;
+        private @Nullable BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig customerSuppliedEncryptionEnforcementConfig;
+        private @Nullable String defaultKmsKeyName;
+        private @Nullable BucketEncryptionGoogleManagedEncryptionEnforcementConfig googleManagedEncryptionEnforcementConfig;
         public Builder() {}
         public Builder(BucketEncryption defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customerManagedEncryptionEnforcementConfig = defaults.customerManagedEncryptionEnforcementConfig;
+    	      this.customerSuppliedEncryptionEnforcementConfig = defaults.customerSuppliedEncryptionEnforcementConfig;
     	      this.defaultKmsKeyName = defaults.defaultKmsKeyName;
+    	      this.googleManagedEncryptionEnforcementConfig = defaults.googleManagedEncryptionEnforcementConfig;
         }
 
         @CustomType.Setter
-        public Builder defaultKmsKeyName(String defaultKmsKeyName) {
-            if (defaultKmsKeyName == null) {
-              throw new MissingRequiredPropertyException("BucketEncryption", "defaultKmsKeyName");
-            }
+        public Builder customerManagedEncryptionEnforcementConfig(@Nullable BucketEncryptionCustomerManagedEncryptionEnforcementConfig customerManagedEncryptionEnforcementConfig) {
+
+            this.customerManagedEncryptionEnforcementConfig = customerManagedEncryptionEnforcementConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customerSuppliedEncryptionEnforcementConfig(@Nullable BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig customerSuppliedEncryptionEnforcementConfig) {
+
+            this.customerSuppliedEncryptionEnforcementConfig = customerSuppliedEncryptionEnforcementConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultKmsKeyName(@Nullable String defaultKmsKeyName) {
+
             this.defaultKmsKeyName = defaultKmsKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder googleManagedEncryptionEnforcementConfig(@Nullable BucketEncryptionGoogleManagedEncryptionEnforcementConfig googleManagedEncryptionEnforcementConfig) {
+
+            this.googleManagedEncryptionEnforcementConfig = googleManagedEncryptionEnforcementConfig;
             return this;
         }
         public BucketEncryption build() {
             final var _resultValue = new BucketEncryption();
+            _resultValue.customerManagedEncryptionEnforcementConfig = customerManagedEncryptionEnforcementConfig;
+            _resultValue.customerSuppliedEncryptionEnforcementConfig = customerSuppliedEncryptionEnforcementConfig;
             _resultValue.defaultKmsKeyName = defaultKmsKeyName;
+            _resultValue.googleManagedEncryptionEnforcementConfig = googleManagedEncryptionEnforcementConfig;
             return _resultValue;
         }
     }

@@ -1029,6 +1029,8 @@ type AgentRemoteDialogflowAgent struct {
 	// variables names to be sent back to the CES agent after the Dialogflow
 	// agent execution ends.
 	OutputVariableMapping map[string]string `pulumi:"outputVariableMapping"`
+	// Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+	RespectResponseInterruptionSettings *bool `pulumi:"respectResponseInterruptionSettings"`
 }
 
 // AgentRemoteDialogflowAgentInput is an input type that accepts AgentRemoteDialogflowAgentArgs and AgentRemoteDialogflowAgentOutput values.
@@ -1060,6 +1062,8 @@ type AgentRemoteDialogflowAgentArgs struct {
 	// variables names to be sent back to the CES agent after the Dialogflow
 	// agent execution ends.
 	OutputVariableMapping pulumi.StringMapInput `pulumi:"outputVariableMapping"`
+	// Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+	RespectResponseInterruptionSettings pulumi.BoolPtrInput `pulumi:"respectResponseInterruptionSettings"`
 }
 
 func (AgentRemoteDialogflowAgentArgs) ElementType() reflect.Type {
@@ -1171,6 +1175,11 @@ func (o AgentRemoteDialogflowAgentOutput) OutputVariableMapping() pulumi.StringM
 	return o.ApplyT(func(v AgentRemoteDialogflowAgent) map[string]string { return v.OutputVariableMapping }).(pulumi.StringMapOutput)
 }
 
+// Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+func (o AgentRemoteDialogflowAgentOutput) RespectResponseInterruptionSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AgentRemoteDialogflowAgent) *bool { return v.RespectResponseInterruptionSettings }).(pulumi.BoolPtrOutput)
+}
+
 type AgentRemoteDialogflowAgentPtrOutput struct{ *pulumi.OutputState }
 
 func (AgentRemoteDialogflowAgentPtrOutput) ElementType() reflect.Type {
@@ -1250,6 +1259,16 @@ func (o AgentRemoteDialogflowAgentPtrOutput) OutputVariableMapping() pulumi.Stri
 		}
 		return v.OutputVariableMapping
 	}).(pulumi.StringMapOutput)
+}
+
+// Indicates whether to respect the message-level interruption settings configured in the Dialogflow agent. * If false: all response messages from the Dialogflow agent follow the app-level barge-in settings. * If true: only response messages with [`allowPlaybackInterruption`](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#text) set to true will be interruptable, all other messages follow the app-level barge-in settings.
+func (o AgentRemoteDialogflowAgentPtrOutput) RespectResponseInterruptionSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AgentRemoteDialogflowAgent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectResponseInterruptionSettings
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AgentToolset struct {

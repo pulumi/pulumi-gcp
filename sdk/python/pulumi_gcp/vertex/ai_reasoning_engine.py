@@ -377,8 +377,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                     "python_spec": {
                         "entrypoint_module": "simple_agent",
                         "entrypoint_object": "fixed_name_generator",
-                        "requirements_file": "./test-fixtures/requirements.txt",
-                        "version": "3.11",
+                        "version": "3.14",
                     },
                 },
             })
@@ -701,8 +700,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                     "python_spec": {
                         "entrypoint_module": "simple_agent",
                         "entrypoint_object": "fixed_name_generator",
-                        "requirements_file": "./test-fixtures/requirements.txt",
-                        "version": "3.11",
+                        "version": "3.14",
                     },
                 },
             })
