@@ -22,11 +22,6 @@ linters:
       - third_party$
       - builtin$
       - examples$
-    rules:
-      - linters:
-          - revive
-        path: pkg/version/
-        text: "var-naming"
 formatters:
   enable:
     - gci
