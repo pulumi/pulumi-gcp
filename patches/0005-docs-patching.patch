@@ -817,7 +817,7 @@ index fffbcf0b1..ec148994c 100644
    maintenance_window {
      start_time = "08:00"
 diff --git a/website/docs/r/compute_organization_security_policy_association.html.markdown b/website/docs/r/compute_organization_security_policy_association.html.markdown
-index 8ad96324c..41a279952 100644
+index 41de44591..b5a943b1c 100644
 --- a/website/docs/r/compute_organization_security_policy_association.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_association.html.markdown
 @@ -35,19 +35,19 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
@@ -1319,7 +1319,7 @@ index 19e798c12..35d919713 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 9d92d6e8b..9d1962b4f 100644
+index 25ed41222..530a54920 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,9 +27,7 @@ To get more information about GKE clusters, see:
@@ -1359,7 +1359,7 @@ index 9d92d6e8b..9d1962b4f 100644
  ## Argument Reference
  
  * `name` - (Required) The name of the cluster, unique within the project and
-@@ -245,8 +262,7 @@ Structure is [documented below](#nested_master_auth).
+@@ -252,8 +269,7 @@ Structure is [documented below](#nested_master_auth).
      If unset, the cluster's version will be set by GKE to the version of the most recent
      official release (which is not necessarily the latest version).  Most users will find
      the `google_container_engine_versions` data source useful - it indicates which versions
@@ -1369,7 +1369,7 @@ index 9d92d6e8b..9d1962b4f 100644
      [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      describe the various acceptable formats for this field.
  
-@@ -276,8 +292,11 @@ region are guaranteed to support the same version.
+@@ -283,8 +299,11 @@ region are guaranteed to support the same version.
  * `node_config` -  (Optional) Parameters used in creating the default node pool.
      Generally, this field should not be used at the same time as a
      `google_container_node_pool` or a `node_pool` block; this configuration
@@ -1383,7 +1383,7 @@ index 9d92d6e8b..9d1962b4f 100644
  
  * `node_pool` - (Optional) List of node pools associated with this cluster.
      See [google_container_node_pool](container_node_pool.html) for schema.
-@@ -296,9 +315,9 @@ region are guaranteed to support the same version.
+@@ -303,9 +322,9 @@ region are guaranteed to support the same version.
      or set to the same value as `min_master_version` on create. Defaults to the default
      version set by GKE which is not necessarily the latest version. This only affects
      nodes in the default node pool. While a fuzzy version can be specified, it's
@@ -1395,7 +1395,7 @@ index 9d92d6e8b..9d1962b4f 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -346,7 +365,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -353,7 +372,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1404,7 +1404,7 @@ index 9d92d6e8b..9d1962b4f 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -1024,10 +1043,6 @@ gvnic {
+@@ -1031,10 +1050,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1415,7 +1415,7 @@ index 9d92d6e8b..9d1962b4f 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -1054,7 +1069,7 @@ gvnic {
+@@ -1061,7 +1076,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1424,7 +1424,7 @@ index 9d92d6e8b..9d1962b4f 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1096,13 +1111,14 @@ gvnic {
+@@ -1103,13 +1118,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1446,7 +1446,7 @@ index 9d92d6e8b..9d1962b4f 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1426,7 +1442,7 @@ for more details. This field only applies to private clusters, when
+@@ -1433,7 +1449,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1455,7 +1455,7 @@ index 9d92d6e8b..9d1962b4f 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1539,9 +1555,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1546,9 +1562,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1683,7 +1683,7 @@ index ad0cde9bf..fdf69242a 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index 878281d88..be18d7a59 100644
+index 3ac96f391..0b2956b66 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -162,7 +162,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -1695,7 +1695,7 @@ index 878281d88..be18d7a59 100644
        Does not affect auto scaling decomissioning from an autoscaling policy.
        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
-@@ -702,7 +702,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
+@@ -710,7 +710,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
    * PREEMPTIBILITY_UNSPECIFIED
    * NON_PREEMPTIBLE
    * PREEMPTIBLE
@@ -2923,7 +2923,7 @@ index 38794a30a..4cb4d9ebb 100644
    target_platforms = ["COMPUTE"]
  }
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
-index 94c3db9d4..091d0e9ac 100644
+index 9c5fe1aef..c5e7aefb3 100644
 --- a/website/docs/r/spanner_database.html.markdown
 +++ b/website/docs/r/spanner_database.html.markdown
 @@ -31,12 +31,10 @@ To get more information about Database, see:
@@ -2941,7 +2941,7 @@ index 94c3db9d4..091d0e9ac 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=spanner_database_basic&open_in_editor=main.tf" target="_blank">
-@@ -124,12 +122,8 @@ The following arguments are supported:
+@@ -125,12 +123,8 @@ The following arguments are supported:
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
  

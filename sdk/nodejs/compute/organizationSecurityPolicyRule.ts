@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_56730",
+ *     shortName: "tf-test_72490",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_95154",
+ *     shortName: "tf-test_89605",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });

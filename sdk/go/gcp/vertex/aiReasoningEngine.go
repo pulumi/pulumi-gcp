@@ -481,6 +481,103 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Reasoning Engine Context Spec
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("re-ctx-spec"),
+//				Description: pulumi.String("Reasoning engine with context spec"),
+//				Region:      pulumi.String("us-central1"),
+//				ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
+//					MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
+//						GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
+//							Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+//						},
+//						SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
+//							EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
+//						},
+//						DisableMemoryRevisions: pulumi.Bool(false),
+//						TtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{
+//							DefaultTtl: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vertex Ai Reasoning Engine Granular Ttl
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("re-gran-ttl"),
+//				Description: pulumi.String("Reasoning engine with granular ttl"),
+//				Region:      pulumi.String("us-central1"),
+//				ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
+//					MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
+//						GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
+//							Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+//						},
+//						SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
+//							EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
+//						},
+//						DisableMemoryRevisions: pulumi.Bool(false),
+//						TtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{
+//							MemoryRevisionDefaultTtl: pulumi.String("86400s"),
+//							GranularTtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{
+//								CreateTtl:          pulumi.String("86400s"),
+//								GenerateCreatedTtl: pulumi.String("86400s"),
+//								GenerateUpdatedTtl: pulumi.String("86400s"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -502,6 +599,10 @@ import (
 type AiReasoningEngine struct {
 	pulumi.CustomResourceState
 
+	// (Optional, Beta)
+	// Optional. Configuration for how Agent Engine sub-resources should manage context.
+	// Structure is documented below.
+	ContextSpec AiReasoningEngineContextSpecPtrOutput `pulumi:"contextSpec"`
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -565,6 +666,10 @@ func GetAiReasoningEngine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiReasoningEngine resources.
 type aiReasoningEngineState struct {
+	// (Optional, Beta)
+	// Optional. Configuration for how Agent Engine sub-resources should manage context.
+	// Structure is documented below.
+	ContextSpec *AiReasoningEngineContextSpec `pulumi:"contextSpec"`
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
@@ -596,6 +701,10 @@ type aiReasoningEngineState struct {
 }
 
 type AiReasoningEngineState struct {
+	// (Optional, Beta)
+	// Optional. Configuration for how Agent Engine sub-resources should manage context.
+	// Structure is documented below.
+	ContextSpec AiReasoningEngineContextSpecPtrInput
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
@@ -631,6 +740,10 @@ func (AiReasoningEngineState) ElementType() reflect.Type {
 }
 
 type aiReasoningEngineArgs struct {
+	// (Optional, Beta)
+	// Optional. Configuration for how Agent Engine sub-resources should manage context.
+	// Structure is documented below.
+	ContextSpec *AiReasoningEngineContextSpec `pulumi:"contextSpec"`
 	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the ReasoningEngine.
@@ -654,6 +767,10 @@ type aiReasoningEngineArgs struct {
 
 // The set of arguments for constructing a AiReasoningEngine resource.
 type AiReasoningEngineArgs struct {
+	// (Optional, Beta)
+	// Optional. Configuration for how Agent Engine sub-resources should manage context.
+	// Structure is documented below.
+	ContextSpec AiReasoningEngineContextSpecPtrInput
 	// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
 	DeletionPolicy pulumi.StringPtrInput
 	// The description of the ReasoningEngine.
@@ -760,6 +877,13 @@ func (o AiReasoningEngineOutput) ToAiReasoningEngineOutput() AiReasoningEngineOu
 
 func (o AiReasoningEngineOutput) ToAiReasoningEngineOutputWithContext(ctx context.Context) AiReasoningEngineOutput {
 	return o
+}
+
+// (Optional, Beta)
+// Optional. Configuration for how Agent Engine sub-resources should manage context.
+// Structure is documented below.
+func (o AiReasoningEngineOutput) ContextSpec() AiReasoningEngineContextSpecPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineContextSpecPtrOutput { return v.ContextSpec }).(AiReasoningEngineContextSpecPtrOutput)
 }
 
 // The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,

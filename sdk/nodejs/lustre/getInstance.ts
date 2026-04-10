@@ -46,6 +46,7 @@ export interface GetInstanceResult {
     readonly capacityGib: string;
     readonly createTime: string;
     readonly description: string;
+    readonly dynamicTierOptions: outputs.lustre.GetInstanceDynamicTierOption[];
     readonly effectiveLabels: {[key: string]: string};
     readonly filesystem: string;
     readonly gkeSupportEnabled: boolean;
@@ -67,6 +68,8 @@ export interface GetInstanceResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly state: string;
     readonly stateReason: string;
+    readonly uid: string;
+    readonly upcomingMaintenanceSchedules: outputs.lustre.GetInstanceUpcomingMaintenanceSchedule[];
     readonly updateTime: string;
     readonly zone?: string;
 }

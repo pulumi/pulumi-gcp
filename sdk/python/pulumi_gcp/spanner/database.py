@@ -508,6 +508,7 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.spanner.Instance("main",
+            name="my-instance",
             config="regional-europe-west1",
             display_name="main-instance",
             num_nodes=1)
@@ -609,6 +610,7 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.spanner.Instance("main",
+            name="my-instance",
             config="regional-europe-west1",
             display_name="main-instance",
             num_nodes=1)

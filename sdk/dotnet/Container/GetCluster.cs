@@ -175,6 +175,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool AllowNetAdmin;
         public readonly ImmutableArray<Outputs.GetClusterAnonymousAuthenticationConfigResult> AnonymousAuthenticationConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
+        public readonly ImmutableArray<string> AutopilotPrivilegedAdmissions;
         public readonly ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> BinaryAuthorizations;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
         public readonly string ClusterIpv4Cidr;
@@ -276,6 +277,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterAnonymousAuthenticationConfigResult> anonymousAuthenticationConfigs,
 
             ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> authenticatorGroupsConfigs,
+
+            ImmutableArray<string> autopilotPrivilegedAdmissions,
 
             ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> binaryAuthorizations,
 
@@ -457,6 +460,7 @@ namespace Pulumi.Gcp.Container
             AllowNetAdmin = allowNetAdmin;
             AnonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
+            AutopilotPrivilegedAdmissions = autopilotPrivilegedAdmissions;
             BinaryAuthorizations = binaryAuthorizations;
             ClusterAutoscalings = clusterAutoscalings;
             ClusterIpv4Cidr = clusterIpv4Cidr;

@@ -16,14 +16,18 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
     public static final InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs Empty = new InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs();
 
     /**
-     * Hours of day in 24 hour format. Should be from 0 to 23.
+     * Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+     * typically must be less than or equal to 23. An API may choose to allow the
+     * value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     @Import(name="hours")
     private @Nullable Output<Integer> hours;
 
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23.
+     * @return Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+     * typically must be less than or equal to 23. An API may choose to allow the
+     * value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     public Optional<Output<Integer>> hours() {
@@ -31,14 +35,16 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
     }
 
     /**
-     * Minutes of hour of day. Must be from 0 to 59.
+     * Minutes of an hour. Must be greater than or equal to 0 and less than or
+     * equal to 59.
      * 
      */
     @Import(name="minutes")
     private @Nullable Output<Integer> minutes;
 
     /**
-     * @return Minutes of hour of day. Must be from 0 to 59.
+     * @return Minutes of an hour. Must be greater than or equal to 0 and less than or
+     * equal to 59.
      * 
      */
     public Optional<Output<Integer>> minutes() {
@@ -46,14 +52,16 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
     }
 
     /**
-     * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+     * and less than or equal to 999,999,999.
      * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
-     * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * @return Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+     * and less than or equal to 999,999,999.
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -61,14 +69,18 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
     }
 
     /**
-     * Seconds of minutes of the time. Must be from 0 to 59.
+     * Seconds of a minute. Must be greater than or equal to 0 and typically must
+     * be less than or equal to 59. An API may allow the value 60 if it allows
+     * leap-seconds.
      * 
      */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
     /**
-     * @return Seconds of minutes of the time. Must be from 0 to 59.
+     * @return Seconds of a minute. Must be greater than or equal to 0 and typically must
+     * be less than or equal to 59. An API may allow the value 60 if it allows
+     * leap-seconds.
      * 
      */
     public Optional<Output<Integer>> seconds() {
@@ -103,7 +115,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param hours Hours of day in 24 hour format. Should be from 0 to 23.
+         * @param hours Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+         * typically must be less than or equal to 23. An API may choose to allow the
+         * value &#34;24:00:00&#34; for scenarios like business closing time.
          * 
          * @return builder
          * 
@@ -114,7 +128,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param hours Hours of day in 24 hour format. Should be from 0 to 23.
+         * @param hours Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+         * typically must be less than or equal to 23. An API may choose to allow the
+         * value &#34;24:00:00&#34; for scenarios like business closing time.
          * 
          * @return builder
          * 
@@ -124,7 +140,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param minutes Minutes of hour of day. Must be from 0 to 59.
+         * @param minutes Minutes of an hour. Must be greater than or equal to 0 and less than or
+         * equal to 59.
          * 
          * @return builder
          * 
@@ -135,7 +152,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param minutes Minutes of hour of day. Must be from 0 to 59.
+         * @param minutes Minutes of an hour. Must be greater than or equal to 0 and less than or
+         * equal to 59.
          * 
          * @return builder
          * 
@@ -145,7 +163,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param nanos Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         * @param nanos Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+         * and less than or equal to 999,999,999.
          * 
          * @return builder
          * 
@@ -156,7 +175,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param nanos Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         * @param nanos Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+         * and less than or equal to 999,999,999.
          * 
          * @return builder
          * 
@@ -166,7 +186,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param seconds Seconds of minutes of the time. Must be from 0 to 59.
+         * @param seconds Seconds of a minute. Must be greater than or equal to 0 and typically must
+         * be less than or equal to 59. An API may allow the value 60 if it allows
+         * leap-seconds.
          * 
          * @return builder
          * 
@@ -177,7 +199,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArg
         }
 
         /**
-         * @param seconds Seconds of minutes of the time. Must be from 0 to 59.
+         * @param seconds Seconds of a minute. Must be greater than or equal to 0 and typically must
+         * be less than or equal to 59. An API may allow the value 60 if it allows
+         * leap-seconds.
          * 
          * @return builder
          * 

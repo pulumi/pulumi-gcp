@@ -785,11 +785,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_88722",
+                "cluster_id": "tf-test-dbmsalloycluster_74000",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_39249",
-                        "password": "alloypass_74391",
+                        "user": "alloyuser_75125",
+                        "password": "alloypass_88722",
                     },
                     "vpc_network": default.id,
                     "labels": {
@@ -1220,11 +1220,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "cluster_id": "tf-test-dbmsalloycluster_88722",
+                "cluster_id": "tf-test-dbmsalloycluster_74000",
                 "settings": {
                     "initial_user": {
-                        "user": "alloyuser_39249",
-                        "password": "alloypass_74391",
+                        "user": "alloyuser_75125",
+                        "password": "alloypass_88722",
                     },
                     "vpc_network": default.id,
                     "labels": {

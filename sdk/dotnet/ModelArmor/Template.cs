@@ -27,14 +27,168 @@ namespace Pulumi.Gcp.ModelArmor
     /// {
     ///     var template_basic = new Gcp.ModelArmor.Template("template-basic", new()
     ///     {
-    ///         Location = "&lt;no value&gt;",
-    ///         TemplateId = "&lt;no value&gt;",
+    ///         Location = "us-central1",
+    ///         TemplateId = "modelarmor1",
     ///         FilterConfig = null,
     ///         TemplateMetadata = null,
     ///     });
     /// 
     /// });
     /// ```
+    /// ### Modelarmor Template Filter Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var template_filter_config = new Gcp.ModelArmor.Template("template-filter-config", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         TemplateId = "modelarmor2",
+    ///         FilterConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigArgs
+    ///         {
+    ///             RaiSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsArgs
+    ///             {
+    ///                 RaiFilters = new[]
+    ///                 {
+    ///                     new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs
+    ///                     {
+    ///                         FilterType = "HATE_SPEECH",
+    ///                         ConfidenceLevel = "HIGH",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SdpSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigSdpSettingsArgs
+    ///             {
+    ///                 BasicConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigSdpSettingsBasicConfigArgs
+    ///                 {
+    ///                     FilterEnforcement = "ENABLED",
+    ///                 },
+    ///             },
+    ///             PiAndJailbreakFilterSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs
+    ///             {
+    ///                 FilterEnforcement = "ENABLED",
+    ///                 ConfidenceLevel = "MEDIUM_AND_ABOVE",
+    ///             },
+    ///             MaliciousUriFilterSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigMaliciousUriFilterSettingsArgs
+    ///             {
+    ///                 FilterEnforcement = "ENABLED",
+    ///             },
+    ///         },
+    ///         TemplateMetadata = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataArgs
+    ///         {
+    ///             MultiLanguageDetection = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs
+    ///             {
+    ///                 EnableMultiLanguageDetection = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Modelarmor Template Template Metadata
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var template_template_metadata = new Gcp.ModelArmor.Template("template-template-metadata", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         TemplateId = "modelarmor3",
+    ///         FilterConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigArgs
+    ///         {
+    ///             RaiSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsArgs
+    ///             {
+    ///                 RaiFilters = new[]
+    ///                 {
+    ///                     new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs
+    ///                     {
+    ///                         FilterType = "HARASSMENT",
+    ///                         ConfidenceLevel = "MEDIUM_AND_ABOVE",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         TemplateMetadata = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataArgs
+    ///         {
+    ///             CustomLlmResponseSafetyErrorMessage = "This is a custom error message for LLM response",
+    ///             LogSanitizeOperations = false,
+    ///             LogTemplateOperations = true,
+    ///             MultiLanguageDetection = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs
+    ///             {
+    ///                 EnableMultiLanguageDetection = true,
+    ///             },
+    ///             IgnorePartialInvocationFailures = false,
+    ///             CustomPromptSafetyErrorCode = 400,
+    ///             CustomPromptSafetyErrorMessage = "This is a custom error message for prompt",
+    ///             CustomLlmResponseSafetyErrorCode = 401,
+    ///             EnforcementType = "INSPECT_ONLY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Modelarmor Template Label
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var template_label_advanced_config = new Gcp.ModelArmor.Template("template-label-advanced-config", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         TemplateId = "modelarmor4",
+    ///         Labels = 
+    ///         {
+    ///             { "test-label", "template-test-label" },
+    ///         },
+    ///         FilterConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigArgs
+    ///         {
+    ///             RaiSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsArgs
+    ///             {
+    ///                 RaiFilters = new[]
+    ///                 {
+    ///                     new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs
+    ///                     {
+    ///                         FilterType = "DANGEROUS",
+    ///                         ConfidenceLevel = "MEDIUM_AND_ABOVE",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SdpSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigSdpSettingsArgs
+    ///             {
+    ///                 AdvancedConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigSdpSettingsAdvancedConfigArgs
+    ///                 {
+    ///                     InspectTemplate = "projects/llm-firewall-demo/locations/us-central1/inspectTemplates/t3",
+    ///                     DeidentifyTemplate = "projects/llm-firewall-demo/locations/us-central1/deidentifyTemplates/t2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TemplateMetadata = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataArgs
+    ///         {
+    ///             MultiLanguageDetection = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs
+    ///             {
+    ///                 EnableMultiLanguageDetection = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Template can be imported using any of these accepted formats:

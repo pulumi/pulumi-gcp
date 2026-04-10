@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapDefaultRouteAction
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the cache policy configuration for matched traffic. Available
+        /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+        /// property must be specified. This policy cannot be specified if any target
+        /// backend has Identity-Aware Proxy enabled.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapDefaultRouteActionCachePolicy? CachePolicy;
+        /// <summary>
         /// The specification for allowing client side cross-origin requests. Please see
         /// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
         /// Structure is documented below.
@@ -75,6 +84,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private URLMapDefaultRouteAction(
+            Outputs.URLMapDefaultRouteActionCachePolicy? cachePolicy,
+
             Outputs.URLMapDefaultRouteActionCorsPolicy? corsPolicy,
 
             Outputs.URLMapDefaultRouteActionFaultInjectionPolicy? faultInjectionPolicy,
@@ -91,6 +102,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.URLMapDefaultRouteActionWeightedBackendService> weightedBackendServices)
         {
+            CachePolicy = cachePolicy;
             CorsPolicy = corsPolicy;
             FaultInjectionPolicy = faultInjectionPolicy;
             MaxStreamDuration = maxStreamDuration;

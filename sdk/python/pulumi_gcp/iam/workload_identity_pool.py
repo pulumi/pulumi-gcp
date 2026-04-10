@@ -22,6 +22,7 @@ __all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
 class WorkloadIdentityPoolArgs:
     def __init__(__self__, *,
                  workload_identity_pool_id: pulumi.Input[_builtins.str],
+                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,6 +36,10 @@ class WorkloadIdentityPoolArgs:
         :param pulumi.Input[_builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]] attestation_rules: Defines which workloads can receive an identity within a pool. When an AttestationRule is
+               defined under a managed identity, matching workloads may receive that identity. A maximum of
+               50 AttestationRules can be set.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -78,6 +83,8 @@ class WorkloadIdentityPoolArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
+        if attestation_rules is not None:
+            pulumi.set(__self__, "attestation_rules", attestation_rules)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -106,6 +113,21 @@ class WorkloadIdentityPoolArgs:
     @workload_identity_pool_id.setter
     def workload_identity_pool_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workload_identity_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="attestationRules")
+    def attestation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]:
+        """
+        Defines which workloads can receive an identity within a pool. When an AttestationRule is
+        defined under a managed identity, matching workloads may receive that identity. A maximum of
+        50 AttestationRules can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attestation_rules")
+
+    @attestation_rules.setter
+    def attestation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]):
+        pulumi.set(self, "attestation_rules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -229,6 +251,7 @@ class WorkloadIdentityPoolArgs:
 @pulumi.input_type
 class _WorkloadIdentityPoolState:
     def __init__(__self__, *,
+                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -242,6 +265,10 @@ class _WorkloadIdentityPoolState:
         """
         Input properties used for looking up and filtering WorkloadIdentityPool resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]] attestation_rules: Defines which workloads can receive an identity within a pool. When an AttestationRule is
+               defined under a managed identity, matching workloads may receive that identity. A maximum of
+               50 AttestationRules can be set.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -298,6 +325,8 @@ class _WorkloadIdentityPoolState:
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
         """
+        if attestation_rules is not None:
+            pulumi.set(__self__, "attestation_rules", attestation_rules)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -318,6 +347,21 @@ class _WorkloadIdentityPoolState:
             pulumi.set(__self__, "state", state)
         if workload_identity_pool_id is not None:
             pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
+
+    @_builtins.property
+    @pulumi.getter(name="attestationRules")
+    def attestation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]:
+        """
+        Defines which workloads can receive an identity within a pool. When an AttestationRule is
+        defined under a managed identity, matching workloads may receive that identity. A maximum of
+        50 AttestationRules can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attestation_rules")
+
+    @attestation_rules.setter
+    def attestation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]):
+        pulumi.set(self, "attestation_rules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -491,6 +535,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -582,7 +627,10 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                         ],
                     },
                 ],
-            })
+            },
+            attestation_rules=[{
+                "google_cloud_resource": "//run.googleapis.com/projects/1111111111111/type/Service/*",
+            }])
         ```
         ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
 
@@ -650,6 +698,10 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]] attestation_rules: Defines which workloads can receive an identity within a pool. When an AttestationRule is
+               defined under a managed identity, matching workloads may receive that identity. A maximum of
+               50 AttestationRules can be set.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -783,7 +835,10 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                         ],
                     },
                 ],
-            })
+            },
+            attestation_rules=[{
+                "google_cloud_resource": "//run.googleapis.com/projects/1111111111111/type/Service/*",
+            }])
         ```
         ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
 
@@ -864,6 +919,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -881,6 +937,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkloadIdentityPoolArgs.__new__(WorkloadIdentityPoolArgs)
 
+            __props__.__dict__["attestation_rules"] = attestation_rules
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
@@ -903,6 +960,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -920,6 +978,10 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]] attestation_rules: Defines which workloads can receive an identity within a pool. When an AttestationRule is
+               defined under a managed identity, matching workloads may receive that identity. A maximum of
+               50 AttestationRules can be set.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -980,6 +1042,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
         __props__ = _WorkloadIdentityPoolState.__new__(_WorkloadIdentityPoolState)
 
+        __props__.__dict__["attestation_rules"] = attestation_rules
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
@@ -991,6 +1054,17 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
         return WorkloadIdentityPool(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="attestationRules")
+    def attestation_rules(self) -> pulumi.Output[Optional[Sequence['outputs.WorkloadIdentityPoolAttestationRule']]]:
+        """
+        Defines which workloads can receive an identity within a pool. When an AttestationRule is
+        defined under a managed identity, matching workloads may receive that identity. A maximum of
+        50 AttestationRules can be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attestation_rules")
 
     @_builtins.property
     @pulumi.getter

@@ -1028,6 +1028,264 @@ import (
 //	}
 //
 // ```
+// ### Url Map Cache Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				DefaultService: _default.ID(),
+//				DefaultRouteAction: &compute.URLMapDefaultRouteActionArgs{
+//					CachePolicy: &compute.URLMapDefaultRouteActionCachePolicyArgs{
+//						CacheMode: pulumi.String("CACHE_ALL_STATIC"),
+//						DefaultTtl: &compute.URLMapDefaultRouteActionCachePolicyDefaultTtlArgs{
+//							Seconds: pulumi.String("3600"),
+//						},
+//						ClientTtl: &compute.URLMapDefaultRouteActionCachePolicyClientTtlArgs{
+//							Seconds: pulumi.String("1800"),
+//						},
+//						NegativeCaching: pulumi.Bool(true),
+//						NegativeCachingPolicies: compute.URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyArray{
+//							&compute.URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyArgs{
+//								Code: pulumi.Int(404),
+//								Ttl: &compute.URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs{
+//									Seconds: pulumi.String("300"),
+//								},
+//							},
+//						},
+//						RequestCoalescing: pulumi.Bool(true),
+//						CacheBypassRequestHeaderNames: pulumi.StringArray{
+//							pulumi.String("X-Internal-Bypass"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Url Map Cache Policy Multi Level
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("home"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        defaultHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
+//				Name:           pulumi.String("urlmap"),
+//				DefaultService: _default.ID(),
+//				DefaultRouteAction: &compute.URLMapDefaultRouteActionArgs{
+//					CachePolicy: &compute.URLMapDefaultRouteActionCachePolicyArgs{
+//						CacheKeyPolicy: &compute.URLMapDefaultRouteActionCachePolicyCacheKeyPolicyArgs{
+//							IncludeHost:        pulumi.Bool(true),
+//							IncludeProtocol:    pulumi.Bool(true),
+//							IncludeQueryString: pulumi.Bool(true),
+//							IncludedCookieNames: pulumi.StringArray{
+//								pulumi.String("cookie1"),
+//								pulumi.String("cookie2"),
+//							},
+//							IncludedHeaderNames: pulumi.StringArray{
+//								pulumi.String("header1"),
+//								pulumi.String("header2"),
+//							},
+//							IncludedQueryParameters: pulumi.StringArray{
+//								pulumi.String("param1"),
+//								pulumi.String("param2"),
+//							},
+//						},
+//						CacheMode: pulumi.String("FORCE_CACHE_ALL"),
+//						DefaultTtl: &compute.URLMapDefaultRouteActionCachePolicyDefaultTtlArgs{
+//							Seconds: pulumi.String("3600"),
+//						},
+//						ClientTtl: &compute.URLMapDefaultRouteActionCachePolicyClientTtlArgs{
+//							Seconds: pulumi.String("1800"),
+//						},
+//						RequestCoalescing: pulumi.Bool(true),
+//						CacheBypassRequestHeaderNames: pulumi.StringArray{
+//							pulumi.String("X-Internal-Bypass"),
+//						},
+//					},
+//				},
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("example.com"),
+//						},
+//						PathMatcher: pulumi.String("main-matcher"),
+//					},
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("api.example.com"),
+//						},
+//						PathMatcher: pulumi.String("api-matcher"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("main-matcher"),
+//						DefaultService: _default.ID(),
+//						DefaultRouteAction: &compute.URLMapPathMatcherDefaultRouteActionArgs{
+//							CachePolicy: &compute.URLMapPathMatcherDefaultRouteActionCachePolicyArgs{
+//								CacheMode: pulumi.String("CACHE_ALL_STATIC"),
+//								DefaultTtl: &compute.URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs{
+//									Seconds: pulumi.String("7200"),
+//								},
+//								NegativeCaching: pulumi.Bool(true),
+//								NegativeCachingPolicies: compute.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArray{
+//									&compute.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArgs{
+//										Code: pulumi.Int(404),
+//										Ttl: &compute.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs{
+//											Seconds: pulumi.String("300"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/static/*"),
+//								},
+//								Service: _default.ID(),
+//								RouteAction: &compute.URLMapPathMatcherPathRuleRouteActionArgs{
+//									CachePolicy: &compute.URLMapPathMatcherPathRuleRouteActionCachePolicyArgs{
+//										CacheMode: pulumi.String("CACHE_ALL_STATIC"),
+//										DefaultTtl: &compute.URLMapPathMatcherPathRuleRouteActionCachePolicyDefaultTtlArgs{
+//											Seconds: pulumi.String("86400"),
+//										},
+//										CacheKeyPolicy: &compute.URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicyArgs{
+//											IncludeHost:        pulumi.Bool(true),
+//											IncludeProtocol:    pulumi.Bool(true),
+//											IncludeQueryString: pulumi.Bool(true),
+//											ExcludedQueryParameters: pulumi.StringArray{
+//												pulumi.String("custom_parameter"),
+//											},
+//											IncludedHeaderNames: pulumi.StringArray{
+//												pulumi.String("X-Custom-Header"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("api-matcher"),
+//						DefaultService: _default.ID(),
+//						DefaultRouteAction: &compute.URLMapPathMatcherDefaultRouteActionArgs{
+//							CachePolicy: &compute.URLMapPathMatcherDefaultRouteActionCachePolicyArgs{
+//								CacheMode: pulumi.String("CACHE_ALL_STATIC"),
+//								DefaultTtl: &compute.URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs{
+//									Seconds: pulumi.String("0"),
+//								},
+//								NegativeCaching: pulumi.Bool(true),
+//								NegativeCachingPolicies: compute.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArray{
+//									&compute.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArgs{
+//										Code: pulumi.Int(404),
+//										Ttl: &compute.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs{
+//											Seconds: pulumi.String("300"),
+//											Nanos:   pulumi.Int(0),
+//										},
+//									},
+//								},
+//							},
+//						},
+//						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
+//							&compute.URLMapPathMatcherRouteRuleArgs{
+//								Priority: pulumi.Int(1),
+//								MatchRules: compute.URLMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.URLMapPathMatcherRouteRuleMatchRuleArgs{
+//										PrefixMatch: pulumi.String("/api/v1"),
+//									},
+//								},
+//								Service: _default.ID(),
+//								RouteAction: &compute.URLMapPathMatcherRouteRuleRouteActionArgs{
+//									CachePolicy: &compute.URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs{
+//										CacheMode: pulumi.String("CACHE_ALL_STATIC"),
+//										DefaultTtl: &compute.URLMapPathMatcherRouteRuleRouteActionCachePolicyDefaultTtlArgs{
+//											Seconds: pulumi.String("60"),
+//										},
+//										ClientTtl: &compute.URLMapPathMatcherRouteRuleRouteActionCachePolicyClientTtlArgs{
+//											Seconds: pulumi.String("90"),
+//										},
+//										MaxTtl: &compute.URLMapPathMatcherRouteRuleRouteActionCachePolicyMaxTtlArgs{
+//											Seconds: pulumi.String("120"),
+//										},
+//										ServeWhileStale: &compute.URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStaleArgs{
+//											Seconds: pulumi.String("3600"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Url Map Path Rule Mirror Percent
 //
 // ```go

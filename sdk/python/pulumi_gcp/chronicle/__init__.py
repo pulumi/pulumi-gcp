@@ -6,10 +6,12 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .dashboard_chart import *
 from .data_access_label import *
 from .data_access_scope import *
 from .data_table import *
 from .data_table_row import *
+from .feed import *
 from .native_dashboard import *
 from .reference_list import *
 from .retrohunt import *

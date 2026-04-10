@@ -82,6 +82,18 @@ namespace Pulumi.Gcp.Compute
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// A list of folders to exclude from the security policy.
+        /// </summary>
+        [Output("excludedFolders")]
+        public Output<ImmutableArray<string>> ExcludedFolders { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of projects to exclude from the security policy.
+        /// </summary>
+        [Output("excludedProjects")]
+        public Output<ImmutableArray<string>> ExcludedProjects { get; private set; } = null!;
+
+        /// <summary>
         /// The name for an association.
         /// </summary>
         [Output("name")]
@@ -145,6 +157,30 @@ namespace Pulumi.Gcp.Compute
         [Input("attachmentId", required: true)]
         public Input<string> AttachmentId { get; set; } = null!;
 
+        [Input("excludedFolders")]
+        private InputList<string>? _excludedFolders;
+
+        /// <summary>
+        /// A list of folders to exclude from the security policy.
+        /// </summary>
+        public InputList<string> ExcludedFolders
+        {
+            get => _excludedFolders ?? (_excludedFolders = new InputList<string>());
+            set => _excludedFolders = value;
+        }
+
+        [Input("excludedProjects")]
+        private InputList<string>? _excludedProjects;
+
+        /// <summary>
+        /// A list of projects to exclude from the security policy.
+        /// </summary>
+        public InputList<string> ExcludedProjects
+        {
+            get => _excludedProjects ?? (_excludedProjects = new InputList<string>());
+            set => _excludedProjects = value;
+        }
+
         /// <summary>
         /// The name for an association.
         /// </summary>
@@ -176,6 +212,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("excludedFolders")]
+        private InputList<string>? _excludedFolders;
+
+        /// <summary>
+        /// A list of folders to exclude from the security policy.
+        /// </summary>
+        public InputList<string> ExcludedFolders
+        {
+            get => _excludedFolders ?? (_excludedFolders = new InputList<string>());
+            set => _excludedFolders = value;
+        }
+
+        [Input("excludedProjects")]
+        private InputList<string>? _excludedProjects;
+
+        /// <summary>
+        /// A list of projects to exclude from the security policy.
+        /// </summary>
+        public InputList<string> ExcludedProjects
+        {
+            get => _excludedProjects ?? (_excludedProjects = new InputList<string>());
+            set => _excludedProjects = value;
+        }
 
         /// <summary>
         /// The name for an association.

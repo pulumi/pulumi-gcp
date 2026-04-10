@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var template_basic = new Template("template-basic", TemplateArgs.builder()
- *             .location("<no value>")
- *             .templateId("<no value>")
+ *             .location("us-central1")
+ *             .templateId("modelarmor1")
  *             .filterConfig(TemplateFilterConfigArgs.builder()
  *                 .build())
  *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
@@ -63,6 +63,190 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Modelarmor Template Filter Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.modelarmor.Template;
+ * import com.pulumi.gcp.modelarmor.TemplateArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsBasicConfigArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigMaliciousUriFilterSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var template_filter_config = new Template("template-filter-config", TemplateArgs.builder()
+ *             .location("us-central1")
+ *             .templateId("modelarmor2")
+ *             .filterConfig(TemplateFilterConfigArgs.builder()
+ *                 .raiSettings(TemplateFilterConfigRaiSettingsArgs.builder()
+ *                     .raiFilters(TemplateFilterConfigRaiSettingsRaiFilterArgs.builder()
+ *                         .filterType("HATE_SPEECH")
+ *                         .confidenceLevel("HIGH")
+ *                         .build())
+ *                     .build())
+ *                 .sdpSettings(TemplateFilterConfigSdpSettingsArgs.builder()
+ *                     .basicConfig(TemplateFilterConfigSdpSettingsBasicConfigArgs.builder()
+ *                         .filterEnforcement("ENABLED")
+ *                         .build())
+ *                     .build())
+ *                 .piAndJailbreakFilterSettings(TemplateFilterConfigPiAndJailbreakFilterSettingsArgs.builder()
+ *                     .filterEnforcement("ENABLED")
+ *                     .confidenceLevel("MEDIUM_AND_ABOVE")
+ *                     .build())
+ *                 .maliciousUriFilterSettings(TemplateFilterConfigMaliciousUriFilterSettingsArgs.builder()
+ *                     .filterEnforcement("ENABLED")
+ *                     .build())
+ *                 .build())
+ *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
+ *                 .multiLanguageDetection(TemplateTemplateMetadataMultiLanguageDetectionArgs.builder()
+ *                     .enableMultiLanguageDetection(false)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Modelarmor Template Template Metadata
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.modelarmor.Template;
+ * import com.pulumi.gcp.modelarmor.TemplateArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var template_template_metadata = new Template("template-template-metadata", TemplateArgs.builder()
+ *             .location("us-central1")
+ *             .templateId("modelarmor3")
+ *             .filterConfig(TemplateFilterConfigArgs.builder()
+ *                 .raiSettings(TemplateFilterConfigRaiSettingsArgs.builder()
+ *                     .raiFilters(TemplateFilterConfigRaiSettingsRaiFilterArgs.builder()
+ *                         .filterType("HARASSMENT")
+ *                         .confidenceLevel("MEDIUM_AND_ABOVE")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
+ *                 .customLlmResponseSafetyErrorMessage("This is a custom error message for LLM response")
+ *                 .logSanitizeOperations(false)
+ *                 .logTemplateOperations(true)
+ *                 .multiLanguageDetection(TemplateTemplateMetadataMultiLanguageDetectionArgs.builder()
+ *                     .enableMultiLanguageDetection(true)
+ *                     .build())
+ *                 .ignorePartialInvocationFailures(false)
+ *                 .customPromptSafetyErrorCode(400)
+ *                 .customPromptSafetyErrorMessage("This is a custom error message for prompt")
+ *                 .customLlmResponseSafetyErrorCode(401)
+ *                 .enforcementType("INSPECT_ONLY")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Modelarmor Template Label
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.modelarmor.Template;
+ * import com.pulumi.gcp.modelarmor.TemplateArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigSdpSettingsAdvancedConfigArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var template_label_advanced_config = new Template("template-label-advanced-config", TemplateArgs.builder()
+ *             .location("us-central1")
+ *             .templateId("modelarmor4")
+ *             .labels(Map.of("test-label", "template-test-label"))
+ *             .filterConfig(TemplateFilterConfigArgs.builder()
+ *                 .raiSettings(TemplateFilterConfigRaiSettingsArgs.builder()
+ *                     .raiFilters(TemplateFilterConfigRaiSettingsRaiFilterArgs.builder()
+ *                         .filterType("DANGEROUS")
+ *                         .confidenceLevel("MEDIUM_AND_ABOVE")
+ *                         .build())
+ *                     .build())
+ *                 .sdpSettings(TemplateFilterConfigSdpSettingsArgs.builder()
+ *                     .advancedConfig(TemplateFilterConfigSdpSettingsAdvancedConfigArgs.builder()
+ *                         .inspectTemplate("projects/llm-firewall-demo/locations/us-central1/inspectTemplates/t3")
+ *                         .deidentifyTemplate("projects/llm-firewall-demo/locations/us-central1/deidentifyTemplates/t2")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
+ *                 .multiLanguageDetection(TemplateTemplateMetadataMultiLanguageDetectionArgs.builder()
+ *                     .enableMultiLanguageDetection(false)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Template can be imported using any of these accepted formats:

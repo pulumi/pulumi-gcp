@@ -15,8 +15,23 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SpokeLinkedRouterApplianceInstances {
     /**
-     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
-     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * @return Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+     * 
+     */
+    private @Nullable List<String> excludeExportRanges;
+    /**
+     * @return Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+     * 
+     */
+    private @Nullable List<String> excludeImportRanges;
+    /**
+     * @return Dynamic routes fully encompassed by include export ranges are included during export to hub.
+     * 
+     */
+    private @Nullable List<String> includeExportRanges;
+    /**
+     * @return Hub routes fully encompassed by include import ranges are included during import from hub.
+     * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
      * 
      */
     private @Nullable List<String> includeImportRanges;
@@ -34,8 +49,29 @@ public final class SpokeLinkedRouterApplianceInstances {
 
     private SpokeLinkedRouterApplianceInstances() {}
     /**
-     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
-     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * @return Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+     * 
+     */
+    public List<String> excludeExportRanges() {
+        return this.excludeExportRanges == null ? List.of() : this.excludeExportRanges;
+    }
+    /**
+     * @return Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+     * 
+     */
+    public List<String> excludeImportRanges() {
+        return this.excludeImportRanges == null ? List.of() : this.excludeImportRanges;
+    }
+    /**
+     * @return Dynamic routes fully encompassed by include export ranges are included during export to hub.
+     * 
+     */
+    public List<String> includeExportRanges() {
+        return this.includeExportRanges == null ? List.of() : this.includeExportRanges;
+    }
+    /**
+     * @return Hub routes fully encompassed by include import ranges are included during import from hub.
+     * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
      * 
      */
     public List<String> includeImportRanges() {
@@ -66,17 +102,50 @@ public final class SpokeLinkedRouterApplianceInstances {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> excludeExportRanges;
+        private @Nullable List<String> excludeImportRanges;
+        private @Nullable List<String> includeExportRanges;
         private @Nullable List<String> includeImportRanges;
         private List<SpokeLinkedRouterApplianceInstancesInstance> instances;
         private Boolean siteToSiteDataTransfer;
         public Builder() {}
         public Builder(SpokeLinkedRouterApplianceInstances defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludeExportRanges = defaults.excludeExportRanges;
+    	      this.excludeImportRanges = defaults.excludeImportRanges;
+    	      this.includeExportRanges = defaults.includeExportRanges;
     	      this.includeImportRanges = defaults.includeImportRanges;
     	      this.instances = defaults.instances;
     	      this.siteToSiteDataTransfer = defaults.siteToSiteDataTransfer;
         }
 
+        @CustomType.Setter
+        public Builder excludeExportRanges(@Nullable List<String> excludeExportRanges) {
+
+            this.excludeExportRanges = excludeExportRanges;
+            return this;
+        }
+        public Builder excludeExportRanges(String... excludeExportRanges) {
+            return excludeExportRanges(List.of(excludeExportRanges));
+        }
+        @CustomType.Setter
+        public Builder excludeImportRanges(@Nullable List<String> excludeImportRanges) {
+
+            this.excludeImportRanges = excludeImportRanges;
+            return this;
+        }
+        public Builder excludeImportRanges(String... excludeImportRanges) {
+            return excludeImportRanges(List.of(excludeImportRanges));
+        }
+        @CustomType.Setter
+        public Builder includeExportRanges(@Nullable List<String> includeExportRanges) {
+
+            this.includeExportRanges = includeExportRanges;
+            return this;
+        }
+        public Builder includeExportRanges(String... includeExportRanges) {
+            return includeExportRanges(List.of(includeExportRanges));
+        }
         @CustomType.Setter
         public Builder includeImportRanges(@Nullable List<String> includeImportRanges) {
 
@@ -107,6 +176,9 @@ public final class SpokeLinkedRouterApplianceInstances {
         }
         public SpokeLinkedRouterApplianceInstances build() {
             final var _resultValue = new SpokeLinkedRouterApplianceInstances();
+            _resultValue.excludeExportRanges = excludeExportRanges;
+            _resultValue.excludeImportRanges = excludeImportRanges;
+            _resultValue.includeExportRanges = includeExportRanges;
             _resultValue.includeImportRanges = includeImportRanges;
             _resultValue.instances = instances;
             _resultValue.siteToSiteDataTransfer = siteToSiteDataTransfer;

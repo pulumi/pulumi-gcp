@@ -17,6 +17,36 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
     public static final ClusterClusterConfigMasterConfigDiskConfigArgs Empty = new ClusterClusterConfigMasterConfigDiskConfigArgs();
 
     /**
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+     * 
+     */
+    @Import(name="bootDiskProvisionedIops")
+    private @Nullable Output<Integer> bootDiskProvisionedIops;
+
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+     * 
+     */
+    public Optional<Output<Integer>> bootDiskProvisionedIops() {
+        return Optional.ofNullable(this.bootDiskProvisionedIops);
+    }
+
+    /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+     * 
+     */
+    @Import(name="bootDiskProvisionedThroughput")
+    private @Nullable Output<Integer> bootDiskProvisionedThroughput;
+
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+     * 
+     */
+    public Optional<Output<Integer>> bootDiskProvisionedThroughput() {
+        return Optional.ofNullable(this.bootDiskProvisionedThroughput);
+    }
+
+    /**
      * Size of the primary disk attached to each node, specified
      * in GB. The primary disk contains the boot volume and system libraries, and the
      * smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -97,6 +127,8 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
     private ClusterClusterConfigMasterConfigDiskConfigArgs() {}
 
     private ClusterClusterConfigMasterConfigDiskConfigArgs(ClusterClusterConfigMasterConfigDiskConfigArgs $) {
+        this.bootDiskProvisionedIops = $.bootDiskProvisionedIops;
+        this.bootDiskProvisionedThroughput = $.bootDiskProvisionedThroughput;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.bootDiskType = $.bootDiskType;
         this.localSsdInterface = $.localSsdInterface;
@@ -119,6 +151,48 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
 
         public Builder(ClusterClusterConfigMasterConfigDiskConfigArgs defaults) {
             $ = new ClusterClusterConfigMasterConfigDiskConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bootDiskProvisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedIops(@Nullable Output<Integer> bootDiskProvisionedIops) {
+            $.bootDiskProvisionedIops = bootDiskProvisionedIops;
+            return this;
+        }
+
+        /**
+         * @param bootDiskProvisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedIops(Integer bootDiskProvisionedIops) {
+            return bootDiskProvisionedIops(Output.of(bootDiskProvisionedIops));
+        }
+
+        /**
+         * @param bootDiskProvisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedThroughput(@Nullable Output<Integer> bootDiskProvisionedThroughput) {
+            $.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param bootDiskProvisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedThroughput(Integer bootDiskProvisionedThroughput) {
+            return bootDiskProvisionedThroughput(Output.of(bootDiskProvisionedThroughput));
         }
 
         /**

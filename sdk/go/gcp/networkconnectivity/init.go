@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceConnectionPolicy{}
 	case "gcp:networkconnectivity/spoke:Spoke":
 		r = &Spoke{}
+	case "gcp:networkconnectivity/transport:Transport":
+		r = &Transport{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -102,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkconnectivity/spoke",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkconnectivity/transport",
 		&module{version},
 	)
 }

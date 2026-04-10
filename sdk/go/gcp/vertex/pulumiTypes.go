@@ -18878,6 +18878,1001 @@ func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) Elem() AiRagE
 	}).(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput)
 }
 
+type AiReasoningEngineContextSpec struct {
+	// Specification for a Memory Bank, which manages memories for the Agent Engine.
+	// Structure is documented below.
+	MemoryBankConfig *AiReasoningEngineContextSpecMemoryBankConfig `pulumi:"memoryBankConfig"`
+}
+
+// AiReasoningEngineContextSpecInput is an input type that accepts AiReasoningEngineContextSpecArgs and AiReasoningEngineContextSpecOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecInput` via:
+//
+//	AiReasoningEngineContextSpecArgs{...}
+type AiReasoningEngineContextSpecInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecOutput() AiReasoningEngineContextSpecOutput
+	ToAiReasoningEngineContextSpecOutputWithContext(context.Context) AiReasoningEngineContextSpecOutput
+}
+
+type AiReasoningEngineContextSpecArgs struct {
+	// Specification for a Memory Bank, which manages memories for the Agent Engine.
+	// Structure is documented below.
+	MemoryBankConfig AiReasoningEngineContextSpecMemoryBankConfigPtrInput `pulumi:"memoryBankConfig"`
+}
+
+func (AiReasoningEngineContextSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpec)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecArgs) ToAiReasoningEngineContextSpecOutput() AiReasoningEngineContextSpecOutput {
+	return i.ToAiReasoningEngineContextSpecOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecArgs) ToAiReasoningEngineContextSpecOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecOutput)
+}
+
+func (i AiReasoningEngineContextSpecArgs) ToAiReasoningEngineContextSpecPtrOutput() AiReasoningEngineContextSpecPtrOutput {
+	return i.ToAiReasoningEngineContextSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecArgs) ToAiReasoningEngineContextSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecOutput).ToAiReasoningEngineContextSpecPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecPtrInput is an input type that accepts AiReasoningEngineContextSpecArgs, AiReasoningEngineContextSpecPtr and AiReasoningEngineContextSpecPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecPtrOutput() AiReasoningEngineContextSpecPtrOutput
+	ToAiReasoningEngineContextSpecPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecPtrOutput
+}
+
+type aiReasoningEngineContextSpecPtrType AiReasoningEngineContextSpecArgs
+
+func AiReasoningEngineContextSpecPtr(v *AiReasoningEngineContextSpecArgs) AiReasoningEngineContextSpecPtrInput {
+	return (*aiReasoningEngineContextSpecPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpec)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecPtrType) ToAiReasoningEngineContextSpecPtrOutput() AiReasoningEngineContextSpecPtrOutput {
+	return i.ToAiReasoningEngineContextSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecPtrType) ToAiReasoningEngineContextSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecPtrOutput)
+}
+
+type AiReasoningEngineContextSpecOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecOutput) ToAiReasoningEngineContextSpecOutput() AiReasoningEngineContextSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecOutput) ToAiReasoningEngineContextSpecOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecOutput) ToAiReasoningEngineContextSpecPtrOutput() AiReasoningEngineContextSpecPtrOutput {
+	return o.ToAiReasoningEngineContextSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecOutput) ToAiReasoningEngineContextSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpec) *AiReasoningEngineContextSpec {
+		return &v
+	}).(AiReasoningEngineContextSpecPtrOutput)
+}
+
+// Specification for a Memory Bank, which manages memories for the Agent Engine.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecOutput) MemoryBankConfig() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpec) *AiReasoningEngineContextSpecMemoryBankConfig {
+		return v.MemoryBankConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecPtrOutput) ToAiReasoningEngineContextSpecPtrOutput() AiReasoningEngineContextSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecPtrOutput) ToAiReasoningEngineContextSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecPtrOutput) Elem() AiReasoningEngineContextSpecOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpec) AiReasoningEngineContextSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpec
+		return ret
+	}).(AiReasoningEngineContextSpecOutput)
+}
+
+// Specification for a Memory Bank, which manages memories for the Agent Engine.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecPtrOutput) MemoryBankConfig() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpec) *AiReasoningEngineContextSpecMemoryBankConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryBankConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfig struct {
+	// If true, no memory revisions will be created for any requests to the Memory Bank.
+	DisableMemoryRevisions *bool `pulumi:"disableMemoryRevisions"`
+	// Configuration for how to generate memories for the Memory Bank.
+	// Structure is documented below.
+	GenerationConfig *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig `pulumi:"generationConfig"`
+	// Configuration for how to perform similarity search on memories.
+	// Structure is documented below.
+	SimilaritySearchConfig *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig `pulumi:"similaritySearchConfig"`
+	// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+	// Structure is documented below.
+	TtlConfig *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig `pulumi:"ttlConfig"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigArgs struct {
+	// If true, no memory revisions will be created for any requests to the Memory Bank.
+	DisableMemoryRevisions pulumi.BoolPtrInput `pulumi:"disableMemoryRevisions"`
+	// Configuration for how to generate memories for the Memory Bank.
+	// Structure is documented below.
+	GenerationConfig AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput `pulumi:"generationConfig"`
+	// Configuration for how to perform similarity search on memories.
+	// Structure is documented below.
+	SimilaritySearchConfig AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput `pulumi:"similaritySearchConfig"`
+	// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+	// Structure is documented below.
+	TtlConfig AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput `pulumi:"ttlConfig"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput)
+}
+
+// If true, no memory revisions will be created for any requests to the Memory Bank.
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) DisableMemoryRevisions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) *bool { return v.DisableMemoryRevisions }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for how to generate memories for the Memory Bank.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) GenerationConfig() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
+		return v.GenerationConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput)
+}
+
+// Configuration for how to perform similarity search on memories.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) SimilaritySearchConfig() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {
+		return v.SimilaritySearchConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
+}
+
+// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) TtlConfig() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig {
+		return v.TtlConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) AiReasoningEngineContextSpecMemoryBankConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigOutput)
+}
+
+// If true, no memory revisions will be created for any requests to the Memory Bank.
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) DisableMemoryRevisions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableMemoryRevisions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for how to generate memories for the Memory Bank.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) GenerationConfig() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GenerationConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput)
+}
+
+// Configuration for how to perform similarity search on memories.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) SimilaritySearchConfig() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SimilaritySearchConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
+}
+
+// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) TtlConfig() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TtlConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig struct {
+	// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+	Model string `pulumi:"model"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs struct {
+	// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+	Model pulumi.StringInput `pulumi:"model"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput)
+}
+
+// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) string { return v.Model }).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput)
+}
+
+// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig struct {
+	// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+	EmbeddingModel string `pulumi:"embeddingModel"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs struct {
+	// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+	EmbeddingModel pulumi.StringInput `pulumi:"embeddingModel"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig) *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
+}
+
+// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) EmbeddingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig) string {
+		return v.EmbeddingModel
+	}).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig) AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput)
+}
+
+// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput) EmbeddingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EmbeddingModel
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfig struct {
+	// The default TTL duration of the memories in the Memory Bank.
+	DefaultTtl *string `pulumi:"defaultTtl"`
+	// The granular TTL configuration of the memories in the Memory Bank.
+	// Structure is documented below.
+	GranularTtlConfig *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig `pulumi:"granularTtlConfig"`
+	// The default TTL duration of the memory revisions in the Memory Bank.
+	MemoryRevisionDefaultTtl *string `pulumi:"memoryRevisionDefaultTtl"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigTtlConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigTtlConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs struct {
+	// The default TTL duration of the memories in the Memory Bank.
+	DefaultTtl pulumi.StringPtrInput `pulumi:"defaultTtl"`
+	// The granular TTL configuration of the memories in the Memory Bank.
+	// Structure is documented below.
+	GranularTtlConfig AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrInput `pulumi:"granularTtlConfig"`
+	// The default TTL duration of the memory revisions in the Memory Bank.
+	MemoryRevisionDefaultTtl pulumi.StringPtrInput `pulumi:"memoryRevisionDefaultTtl"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigTtlConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput)
+}
+
+// The default TTL duration of the memories in the Memory Bank.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) DefaultTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *string { return v.DefaultTtl }).(pulumi.StringPtrOutput)
+}
+
+// The granular TTL configuration of the memories in the Memory Bank.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) GranularTtlConfig() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig {
+		return v.GranularTtlConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput)
+}
+
+// The default TTL duration of the memory revisions in the Memory Bank.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput) MemoryRevisionDefaultTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *string {
+		return v.MemoryRevisionDefaultTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigTtlConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) AiReasoningEngineContextSpecMemoryBankConfigTtlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigTtlConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput)
+}
+
+// The default TTL duration of the memories in the Memory Bank.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) DefaultTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The granular TTL configuration of the memories in the Memory Bank.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) GranularTtlConfig() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GranularTtlConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput)
+}
+
+// The default TTL duration of the memory revisions in the Memory Bank.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput) MemoryRevisionDefaultTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryRevisionDefaultTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig struct {
+	// The TTL duration for memories uploaded via CreateMemory.
+	CreateTtl *string `pulumi:"createTtl"`
+	// The TTL duration for memories newly generated via GenerateMemories.
+	GenerateCreatedTtl *string `pulumi:"generateCreatedTtl"`
+	// The TTL duration for memories updated via GenerateMemories.
+	GenerateUpdatedTtl *string `pulumi:"generateUpdatedTtl"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs struct {
+	// The TTL duration for memories uploaded via CreateMemory.
+	CreateTtl pulumi.StringPtrInput `pulumi:"createTtl"`
+	// The TTL duration for memories newly generated via GenerateMemories.
+	GenerateCreatedTtl pulumi.StringPtrInput `pulumi:"generateCreatedTtl"`
+	// The TTL duration for memories updated via GenerateMemories.
+	GenerateUpdatedTtl pulumi.StringPtrInput `pulumi:"generateUpdatedTtl"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput)
+}
+
+// The TTL duration for memories uploaded via CreateMemory.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) CreateTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *string {
+		return v.CreateTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TTL duration for memories newly generated via GenerateMemories.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) GenerateCreatedTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *string {
+		return v.GenerateCreatedTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TTL duration for memories updated via GenerateMemories.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput) GenerateUpdatedTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *string {
+		return v.GenerateUpdatedTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput)
+}
+
+// The TTL duration for memories uploaded via CreateMemory.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) CreateTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TTL duration for memories newly generated via GenerateMemories.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) GenerateCreatedTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateCreatedTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TTL duration for memories updated via GenerateMemories.
+func (o AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput) GenerateUpdatedTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateUpdatedTtl
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiReasoningEngineEncryptionSpec struct {
 	// Required. The Cloud KMS resource identifier of the customer managed
 	// encryption key used to protect a resource. Has the form:
@@ -22740,6 +23735,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigScaledPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigScaledArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecInput)(nil)).Elem(), AiReasoningEngineContextSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineEncryptionSpecInput)(nil)).Elem(), AiReasoningEngineEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineEncryptionSpecPtrInput)(nil)).Elem(), AiReasoningEngineEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecInput)(nil)).Elem(), AiReasoningEngineSpecArgs{})
@@ -22997,6 +24004,18 @@ func init() {
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecOutput{})

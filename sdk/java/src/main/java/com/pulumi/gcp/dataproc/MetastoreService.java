@@ -420,12 +420,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name("backup")
+ *             .name("backup-1")
  *             .location("us-central1")
  *             .build());
  * 
  *         var backup = new MetastoreService("backup", MetastoreServiceArgs.builder()
- *             .serviceId("backup")
+ *             .serviceId("backup-1")
  *             .location("us-central1")
  *             .port(9080)
  *             .tier("DEVELOPER")

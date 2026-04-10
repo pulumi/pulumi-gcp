@@ -196,7 +196,7 @@ class TeamFolder(pulumi.CustomResource):
 
         dataform_team_folder_basic = gcp.dataform.TeamFolder("dataform_team_folder_basic",
             region="us-central1",
-            display_name="Basic TeamFolder-_8493")
+            display_name="Basic TeamFolder-_74391")
         ```
 
         ## Import
@@ -255,7 +255,7 @@ class TeamFolder(pulumi.CustomResource):
 
         dataform_team_folder_basic = gcp.dataform.TeamFolder("dataform_team_folder_basic",
             region="us-central1",
-            display_name="Basic TeamFolder-_8493")
+            display_name="Basic TeamFolder-_74391")
         ```
 
         ## Import

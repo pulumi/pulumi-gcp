@@ -6,7 +6,9 @@ package com.pulumi.gcp.lustre.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.lustre.outputs.GetInstanceAccessRulesOption;
+import com.pulumi.gcp.lustre.outputs.GetInstanceDynamicTierOption;
 import com.pulumi.gcp.lustre.outputs.GetInstanceMaintenancePolicy;
+import com.pulumi.gcp.lustre.outputs.GetInstanceUpcomingMaintenanceSchedule;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -21,6 +23,7 @@ public final class GetInstanceResult {
     private String capacityGib;
     private String createTime;
     private String description;
+    private List<GetInstanceDynamicTierOption> dynamicTierOptions;
     private Map<String,String> effectiveLabels;
     private String filesystem;
     private Boolean gkeSupportEnabled;
@@ -43,6 +46,8 @@ public final class GetInstanceResult {
     private Map<String,String> pulumiLabels;
     private String state;
     private String stateReason;
+    private String uid;
+    private List<GetInstanceUpcomingMaintenanceSchedule> upcomingMaintenanceSchedules;
     private String updateTime;
     private @Nullable String zone;
 
@@ -58,6 +63,9 @@ public final class GetInstanceResult {
     }
     public String description() {
         return this.description;
+    }
+    public List<GetInstanceDynamicTierOption> dynamicTierOptions() {
+        return this.dynamicTierOptions;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -117,6 +125,12 @@ public final class GetInstanceResult {
     public String stateReason() {
         return this.stateReason;
     }
+    public String uid() {
+        return this.uid;
+    }
+    public List<GetInstanceUpcomingMaintenanceSchedule> upcomingMaintenanceSchedules() {
+        return this.upcomingMaintenanceSchedules;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -137,6 +151,7 @@ public final class GetInstanceResult {
         private String capacityGib;
         private String createTime;
         private String description;
+        private List<GetInstanceDynamicTierOption> dynamicTierOptions;
         private Map<String,String> effectiveLabels;
         private String filesystem;
         private Boolean gkeSupportEnabled;
@@ -155,6 +170,8 @@ public final class GetInstanceResult {
         private Map<String,String> pulumiLabels;
         private String state;
         private String stateReason;
+        private String uid;
+        private List<GetInstanceUpcomingMaintenanceSchedule> upcomingMaintenanceSchedules;
         private String updateTime;
         private @Nullable String zone;
         public Builder() {}
@@ -164,6 +181,7 @@ public final class GetInstanceResult {
     	      this.capacityGib = defaults.capacityGib;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.dynamicTierOptions = defaults.dynamicTierOptions;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.filesystem = defaults.filesystem;
     	      this.gkeSupportEnabled = defaults.gkeSupportEnabled;
@@ -182,6 +200,8 @@ public final class GetInstanceResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
     	      this.stateReason = defaults.stateReason;
+    	      this.uid = defaults.uid;
+    	      this.upcomingMaintenanceSchedules = defaults.upcomingMaintenanceSchedules;
     	      this.updateTime = defaults.updateTime;
     	      this.zone = defaults.zone;
         }
@@ -220,6 +240,17 @@ public final class GetInstanceResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicTierOptions(List<GetInstanceDynamicTierOption> dynamicTierOptions) {
+            if (dynamicTierOptions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "dynamicTierOptions");
+            }
+            this.dynamicTierOptions = dynamicTierOptions;
+            return this;
+        }
+        public Builder dynamicTierOptions(GetInstanceDynamicTierOption... dynamicTierOptions) {
+            return dynamicTierOptions(List.of(dynamicTierOptions));
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -367,6 +398,25 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder uid(String uid) {
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "uid");
+            }
+            this.uid = uid;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder upcomingMaintenanceSchedules(List<GetInstanceUpcomingMaintenanceSchedule> upcomingMaintenanceSchedules) {
+            if (upcomingMaintenanceSchedules == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "upcomingMaintenanceSchedules");
+            }
+            this.upcomingMaintenanceSchedules = upcomingMaintenanceSchedules;
+            return this;
+        }
+        public Builder upcomingMaintenanceSchedules(GetInstanceUpcomingMaintenanceSchedule... upcomingMaintenanceSchedules) {
+            return upcomingMaintenanceSchedules(List.of(upcomingMaintenanceSchedules));
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "updateTime");
@@ -386,6 +436,7 @@ public final class GetInstanceResult {
             _resultValue.capacityGib = capacityGib;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.dynamicTierOptions = dynamicTierOptions;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.filesystem = filesystem;
             _resultValue.gkeSupportEnabled = gkeSupportEnabled;
@@ -404,6 +455,8 @@ public final class GetInstanceResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.state = state;
             _resultValue.stateReason = stateReason;
+            _resultValue.uid = uid;
+            _resultValue.upcomingMaintenanceSchedules = upcomingMaintenanceSchedules;
             _resultValue.updateTime = updateTime;
             _resultValue.zone = zone;
             return _resultValue;

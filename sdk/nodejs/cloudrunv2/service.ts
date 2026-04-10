@@ -563,7 +563,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
- *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_89605`),
+ *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_91042`),
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -588,6 +588,36 @@ import * as utilities from "../utilities";
  *                     object: sourceTar.name,
  *                     generation: sourceTar.generation,
  *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Emptydir Disk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     launchStage: "ALPHA",
+ *     deletionProtection: true,
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             volumeMounts: [{
+ *                 name: "empty-dir-volume",
+ *                 mountPath: "/mnt",
+ *             }],
+ *         }],
+ *         volumes: [{
+ *             name: "empty-dir-volume",
+ *             emptyDir: {
+ *                 medium: "DISK",
+ *                 sizeLimit: "10Gi",
  *             },
  *         }],
  *     },

@@ -1718,7 +1718,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         sourcebucket = gcp.storage.Bucket("sourcebucket",
-            name=f"{project.project_id}-tf-test-gcf-source_89605",
+            name=f"{project.project_id}-tf-test-gcf-source_91042",
             location="US",
             uniform_bucket_level_access=True)
         source_tar = gcp.storage.BucketObject("source_tar",
@@ -1741,6 +1741,35 @@ class Service(pulumi.CustomResource):
                             "object": source_tar.name,
                             "generation": source_tar.generation,
                         },
+                    },
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Emptydir Disk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            launch_stage="ALPHA",
+            deletion_protection=True,
+            ingress="INGRESS_TRAFFIC_ALL",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "volume_mounts": [{
+                        "name": "empty-dir-volume",
+                        "mount_path": "/mnt",
+                    }],
+                }],
+                "volumes": [{
+                    "name": "empty-dir-volume",
+                    "empty_dir": {
+                        "medium": "DISK",
+                        "size_limit": "10Gi",
                     },
                 }],
             })
@@ -2344,7 +2373,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         sourcebucket = gcp.storage.Bucket("sourcebucket",
-            name=f"{project.project_id}-tf-test-gcf-source_89605",
+            name=f"{project.project_id}-tf-test-gcf-source_91042",
             location="US",
             uniform_bucket_level_access=True)
         source_tar = gcp.storage.BucketObject("source_tar",
@@ -2367,6 +2396,35 @@ class Service(pulumi.CustomResource):
                             "object": source_tar.name,
                             "generation": source_tar.generation,
                         },
+                    },
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Emptydir Disk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            launch_stage="ALPHA",
+            deletion_protection=True,
+            ingress="INGRESS_TRAFFIC_ALL",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "volume_mounts": [{
+                        "name": "empty-dir-volume",
+                        "mount_path": "/mnt",
+                    }],
+                }],
+                "volumes": [{
+                    "name": "empty-dir-volume",
+                    "empty_dir": {
+                        "medium": "DISK",
+                        "size_limit": "10Gi",
                     },
                 }],
             })

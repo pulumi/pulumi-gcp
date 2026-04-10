@@ -1207,6 +1207,190 @@ class URLMap(pulumi.CustomResource):
                 "default_service": home.id,
             }])
         ```
+        ### Url Map Cache Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "cache_policy": {
+                    "cache_mode": "CACHE_ALL_STATIC",
+                    "default_ttl": {
+                        "seconds": "3600",
+                    },
+                    "client_ttl": {
+                        "seconds": "1800",
+                    },
+                    "negative_caching": True,
+                    "negative_caching_policies": [{
+                        "code": 404,
+                        "ttl": {
+                            "seconds": "300",
+                        },
+                    }],
+                    "request_coalescing": True,
+                    "cache_bypass_request_header_names": ["X-Internal-Bypass"],
+                },
+            })
+        ```
+        ### Url Map Cache Policy Multi Level
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "cache_policy": {
+                    "cache_key_policy": {
+                        "include_host": True,
+                        "include_protocol": True,
+                        "include_query_string": True,
+                        "included_cookie_names": [
+                            "cookie1",
+                            "cookie2",
+                        ],
+                        "included_header_names": [
+                            "header1",
+                            "header2",
+                        ],
+                        "included_query_parameters": [
+                            "param1",
+                            "param2",
+                        ],
+                    },
+                    "cache_mode": "FORCE_CACHE_ALL",
+                    "default_ttl": {
+                        "seconds": "3600",
+                    },
+                    "client_ttl": {
+                        "seconds": "1800",
+                    },
+                    "request_coalescing": True,
+                    "cache_bypass_request_header_names": ["X-Internal-Bypass"],
+                },
+            },
+            host_rules=[
+                {
+                    "hosts": ["example.com"],
+                    "path_matcher": "main-matcher",
+                },
+                {
+                    "hosts": ["api.example.com"],
+                    "path_matcher": "api-matcher",
+                },
+            ],
+            path_matchers=[
+                {
+                    "name": "main-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "cache_policy": {
+                            "cache_mode": "CACHE_ALL_STATIC",
+                            "default_ttl": {
+                                "seconds": "7200",
+                            },
+                            "negative_caching": True,
+                            "negative_caching_policies": [{
+                                "code": 404,
+                                "ttl": {
+                                    "seconds": "300",
+                                },
+                            }],
+                        },
+                    },
+                    "path_rules": [{
+                        "paths": ["/static/*"],
+                        "service": default.id,
+                        "route_action": {
+                            "cache_policy": {
+                                "cache_mode": "CACHE_ALL_STATIC",
+                                "default_ttl": {
+                                    "seconds": "86400",
+                                },
+                                "cache_key_policy": {
+                                    "include_host": True,
+                                    "include_protocol": True,
+                                    "include_query_string": True,
+                                    "excluded_query_parameters": ["custom_parameter"],
+                                    "included_header_names": ["X-Custom-Header"],
+                                },
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "api-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "cache_policy": {
+                            "cache_mode": "CACHE_ALL_STATIC",
+                            "default_ttl": {
+                                "seconds": "0",
+                            },
+                            "negative_caching": True,
+                            "negative_caching_policies": [{
+                                "code": 404,
+                                "ttl": {
+                                    "seconds": "300",
+                                    "nanos": 0,
+                                },
+                            }],
+                        },
+                    },
+                    "route_rules": [{
+                        "priority": 1,
+                        "match_rules": [{
+                            "prefix_match": "/api/v1",
+                        }],
+                        "service": default.id,
+                        "route_action": {
+                            "cache_policy": {
+                                "cache_mode": "CACHE_ALL_STATIC",
+                                "default_ttl": {
+                                    "seconds": "60",
+                                },
+                                "client_ttl": {
+                                    "seconds": "90",
+                                },
+                                "max_ttl": {
+                                    "seconds": "120",
+                                },
+                                "serve_while_stale": {
+                                    "seconds": "3600",
+                                },
+                            },
+                        },
+                    }],
+                },
+            ])
+        ```
         ### Url Map Path Rule Mirror Percent
 
         ```python
@@ -2461,6 +2645,190 @@ class URLMap(pulumi.CustomResource):
                 "name": "allpaths",
                 "default_service": home.id,
             }])
+        ```
+        ### Url Map Cache Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "cache_policy": {
+                    "cache_mode": "CACHE_ALL_STATIC",
+                    "default_ttl": {
+                        "seconds": "3600",
+                    },
+                    "client_ttl": {
+                        "seconds": "1800",
+                    },
+                    "negative_caching": True,
+                    "negative_caching_policies": [{
+                        "code": 404,
+                        "ttl": {
+                            "seconds": "300",
+                        },
+                    }],
+                    "request_coalescing": True,
+                    "cache_bypass_request_header_names": ["X-Internal-Bypass"],
+                },
+            })
+        ```
+        ### Url Map Cache Policy Multi Level
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "cache_policy": {
+                    "cache_key_policy": {
+                        "include_host": True,
+                        "include_protocol": True,
+                        "include_query_string": True,
+                        "included_cookie_names": [
+                            "cookie1",
+                            "cookie2",
+                        ],
+                        "included_header_names": [
+                            "header1",
+                            "header2",
+                        ],
+                        "included_query_parameters": [
+                            "param1",
+                            "param2",
+                        ],
+                    },
+                    "cache_mode": "FORCE_CACHE_ALL",
+                    "default_ttl": {
+                        "seconds": "3600",
+                    },
+                    "client_ttl": {
+                        "seconds": "1800",
+                    },
+                    "request_coalescing": True,
+                    "cache_bypass_request_header_names": ["X-Internal-Bypass"],
+                },
+            },
+            host_rules=[
+                {
+                    "hosts": ["example.com"],
+                    "path_matcher": "main-matcher",
+                },
+                {
+                    "hosts": ["api.example.com"],
+                    "path_matcher": "api-matcher",
+                },
+            ],
+            path_matchers=[
+                {
+                    "name": "main-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "cache_policy": {
+                            "cache_mode": "CACHE_ALL_STATIC",
+                            "default_ttl": {
+                                "seconds": "7200",
+                            },
+                            "negative_caching": True,
+                            "negative_caching_policies": [{
+                                "code": 404,
+                                "ttl": {
+                                    "seconds": "300",
+                                },
+                            }],
+                        },
+                    },
+                    "path_rules": [{
+                        "paths": ["/static/*"],
+                        "service": default.id,
+                        "route_action": {
+                            "cache_policy": {
+                                "cache_mode": "CACHE_ALL_STATIC",
+                                "default_ttl": {
+                                    "seconds": "86400",
+                                },
+                                "cache_key_policy": {
+                                    "include_host": True,
+                                    "include_protocol": True,
+                                    "include_query_string": True,
+                                    "excluded_query_parameters": ["custom_parameter"],
+                                    "included_header_names": ["X-Custom-Header"],
+                                },
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "api-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "cache_policy": {
+                            "cache_mode": "CACHE_ALL_STATIC",
+                            "default_ttl": {
+                                "seconds": "0",
+                            },
+                            "negative_caching": True,
+                            "negative_caching_policies": [{
+                                "code": 404,
+                                "ttl": {
+                                    "seconds": "300",
+                                    "nanos": 0,
+                                },
+                            }],
+                        },
+                    },
+                    "route_rules": [{
+                        "priority": 1,
+                        "match_rules": [{
+                            "prefix_match": "/api/v1",
+                        }],
+                        "service": default.id,
+                        "route_action": {
+                            "cache_policy": {
+                                "cache_mode": "CACHE_ALL_STATIC",
+                                "default_ttl": {
+                                    "seconds": "60",
+                                },
+                                "client_ttl": {
+                                    "seconds": "90",
+                                },
+                                "max_ttl": {
+                                    "seconds": "120",
+                                },
+                                "serve_while_stale": {
+                                    "seconds": "3600",
+                                },
+                            },
+                        },
+                    }],
+                },
+            ])
         ```
         ### Url Map Path Rule Mirror Percent
 

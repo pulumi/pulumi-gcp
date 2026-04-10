@@ -290,6 +290,65 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait5Minutes],
  * });
  * ```
+ * ### Vertex Ai Reasoning Engine Context Spec
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+ *     displayName: "re-ctx-spec",
+ *     description: "Reasoning engine with context spec",
+ *     region: "us-central1",
+ *     contextSpec: {
+ *         memoryBankConfig: {
+ *             generationConfig: {
+ *                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+ *             },
+ *             similaritySearchConfig: {
+ *                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
+ *             },
+ *             disableMemoryRevisions: false,
+ *             ttlConfig: {
+ *                 defaultTtl: "86400s",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Vertex Ai Reasoning Engine Granular Ttl
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+ *     displayName: "re-gran-ttl",
+ *     description: "Reasoning engine with granular ttl",
+ *     region: "us-central1",
+ *     contextSpec: {
+ *         memoryBankConfig: {
+ *             generationConfig: {
+ *                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+ *             },
+ *             similaritySearchConfig: {
+ *                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
+ *             },
+ *             disableMemoryRevisions: false,
+ *             ttlConfig: {
+ *                 memoryRevisionDefaultTtl: "86400s",
+ *                 granularTtlConfig: {
+ *                     createTtl: "86400s",
+ *                     generateCreatedTtl: "86400s",
+ *                     generateUpdatedTtl: "86400s",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -337,6 +396,12 @@ export class AiReasoningEngine extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiReasoningEngine.__pulumiType;
     }
 
+    /**
+     * (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     */
+    declare public readonly contextSpec: pulumi.Output<outputs.vertex.AiReasoningEngineContextSpec | undefined>;
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
@@ -399,6 +464,7 @@ export class AiReasoningEngine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiReasoningEngineState | undefined;
+            resourceInputs["contextSpec"] = state?.contextSpec;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
@@ -414,6 +480,7 @@ export class AiReasoningEngine extends pulumi.CustomResource {
             if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["contextSpec"] = args?.contextSpec;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
@@ -434,6 +501,12 @@ export class AiReasoningEngine extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiReasoningEngine resources.
  */
 export interface AiReasoningEngineState {
+    /**
+     * (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     */
+    contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec>;
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
@@ -488,6 +561,12 @@ export interface AiReasoningEngineState {
  * The set of arguments for constructing a AiReasoningEngine resource.
  */
 export interface AiReasoningEngineArgs {
+    /**
+     * (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     */
+    contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec>;
     /**
      * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
      */

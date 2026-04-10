@@ -122,7 +122,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
-//				AppId:       pulumi.String("app-id-_44703"),
+//				AppId:       pulumi.String("app-id"),
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("my-app"),
 //				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
@@ -133,7 +133,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewConversationProfile(ctx, "bidi_profile", &diagflow.ConversationProfileArgs{
-//				DisplayName:      pulumi.String("tf-test-dialogflow-profile-bidi-_32270"),
+//				DisplayName:      pulumi.String("dialogflow-profile-bidi"),
 //				Location:         pulumi.String("global"),
 //				LanguageCode:     pulumi.String("en-US"),
 //				UseBidiStreaming: pulumi.Bool(true),

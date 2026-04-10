@@ -26,6 +26,7 @@ class EntryLinkArgs:
                  entry_link_type: pulumi.Input[_builtins.str],
                  entry_references: pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]],
                  location: pulumi.Input[_builtins.str],
+                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntryLink resource.
@@ -37,6 +38,8 @@ class EntryLinkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]] entry_references: Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location for the entry.
+        :param pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]] aspects: The Aspects attached to the Entry Link.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -45,6 +48,8 @@ class EntryLinkArgs:
         pulumi.set(__self__, "entry_link_type", entry_link_type)
         pulumi.set(__self__, "entry_references", entry_references)
         pulumi.set(__self__, "location", location)
+        if aspects is not None:
+            pulumi.set(__self__, "aspects", aspects)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -112,6 +117,19 @@ class EntryLinkArgs:
 
     @_builtins.property
     @pulumi.getter
+    def aspects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]:
+        """
+        The Aspects attached to the Entry Link.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aspects")
+
+    @aspects.setter
+    def aspects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]):
+        pulumi.set(self, "aspects", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -127,6 +145,7 @@ class EntryLinkArgs:
 @pulumi.input_type
 class _EntryLinkState:
     def __init__(__self__, *,
+                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -139,6 +158,8 @@ class _EntryLinkState:
         """
         Input properties used for looking up and filtering EntryLink resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]] aspects: The Aspects attached to the Entry Link.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry Link was created.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
@@ -153,6 +174,8 @@ class _EntryLinkState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] update_time: The time when the Entry Link was last updated.
         """
+        if aspects is not None:
+            pulumi.set(__self__, "aspects", aspects)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if entry_group_id is not None:
@@ -171,6 +194,19 @@ class _EntryLinkState:
             pulumi.set(__self__, "project", project)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def aspects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]:
+        """
+        The Aspects attached to the Entry Link.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aspects")
+
+    @aspects.setter
+    def aspects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]):
+        pulumi.set(self, "aspects", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -291,6 +327,7 @@ class EntryLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
                  entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
                  entry_link_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -317,29 +354,29 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_33395",
+            entry_group_id="tf-test-entry-group_13293",
             project="1111111111111")
         entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-            entry_type_id="tf-test-entry-type_69391",
+            entry_type_id="tf-test-entry-type_33395",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-source-entry_76044",
+            entry_id="tf-test-source-entry_40289",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         target = gcp.dataplex.Entry("target",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-target-entry_8270",
+            entry_id="tf-test-target-entry_76044",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_link_id="tf-test-entry-link_41150",
+            entry_link_id="tf-test-entry-link_69391",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
             entry_references=[
                 {
@@ -359,20 +396,20 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_89313",
+            entry_group_id="tf-test-entry-group_8270",
             project="1111111111111")
         entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-            entry_type_id="tf-test-entry-type_9394",
+            entry_type_id="tf-test-entry-type_89313",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-source-entry_60646",
+            entry_id="tf-test-source-entry_41150",
             entry_type=entry_type_full.name,
             project="1111111111111")
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_11380",
+            glossary_id="tf-test-glossary_60646",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -382,7 +419,7 @@ class EntryLink(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_35305",
+            term_id="tf-test-term-full_9394",
             labels={
                 "tag": "test-tf",
             },
@@ -395,7 +432,7 @@ class EntryLink(pulumi.CustomResource):
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_link_id="tf-test-entry-link_62793",
+            entry_link_id="tf-test-entry-link_11380",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
             entry_references=[
                 {
@@ -416,7 +453,6 @@ class EntryLink(pulumi.CustomResource):
             ],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
         ```
-
         ## Import
 
         EntryLink can be imported using any of these accepted formats:
@@ -436,6 +472,8 @@ class EntryLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]] aspects: The Aspects attached to the Entry Link.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
@@ -471,29 +509,29 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_33395",
+            entry_group_id="tf-test-entry-group_13293",
             project="1111111111111")
         entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-            entry_type_id="tf-test-entry-type_69391",
+            entry_type_id="tf-test-entry-type_33395",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-source-entry_76044",
+            entry_id="tf-test-source-entry_40289",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         target = gcp.dataplex.Entry("target",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-target-entry_8270",
+            entry_id="tf-test-target-entry_76044",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_link_id="tf-test-entry-link_41150",
+            entry_link_id="tf-test-entry-link_69391",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
             entry_references=[
                 {
@@ -513,20 +551,20 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_89313",
+            entry_group_id="tf-test-entry-group_8270",
             project="1111111111111")
         entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-            entry_type_id="tf-test-entry-type_9394",
+            entry_type_id="tf-test-entry-type_89313",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-source-entry_60646",
+            entry_id="tf-test-source-entry_41150",
             entry_type=entry_type_full.name,
             project="1111111111111")
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_11380",
+            glossary_id="tf-test-glossary_60646",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -536,7 +574,7 @@ class EntryLink(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_35305",
+            term_id="tf-test-term-full_9394",
             labels={
                 "tag": "test-tf",
             },
@@ -549,7 +587,7 @@ class EntryLink(pulumi.CustomResource):
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_link_id="tf-test-entry-link_62793",
+            entry_link_id="tf-test-entry-link_11380",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
             entry_references=[
                 {
@@ -570,7 +608,6 @@ class EntryLink(pulumi.CustomResource):
             ],
             opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
         ```
-
         ## Import
 
         EntryLink can be imported using any of these accepted formats:
@@ -603,6 +640,7 @@ class EntryLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
                  entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
                  entry_link_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -618,6 +656,7 @@ class EntryLink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EntryLinkArgs.__new__(EntryLinkArgs)
 
+            __props__.__dict__["aspects"] = aspects
             if entry_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group_id'")
             __props__.__dict__["entry_group_id"] = entry_group_id
@@ -647,6 +686,7 @@ class EntryLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -663,6 +703,8 @@ class EntryLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]] aspects: The Aspects attached to the Entry Link.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry Link was created.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
@@ -681,6 +723,7 @@ class EntryLink(pulumi.CustomResource):
 
         __props__ = _EntryLinkState.__new__(_EntryLinkState)
 
+        __props__.__dict__["aspects"] = aspects
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["entry_group_id"] = entry_group_id
         __props__.__dict__["entry_link_id"] = entry_link_id
@@ -691,6 +734,15 @@ class EntryLink(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["update_time"] = update_time
         return EntryLink(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def aspects(self) -> pulumi.Output[Optional[Sequence['outputs.EntryLinkAspect']]]:
+        """
+        The Aspects attached to the Entry Link.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aspects")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

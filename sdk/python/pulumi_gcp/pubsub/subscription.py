@@ -1206,7 +1206,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_24243",
+                "filename_suffix": "-_21912",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1239,7 +1239,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_7495",
+                "filename_suffix": "-_46731",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1273,7 +1273,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_21912",
+                "filename_suffix": "-_26240",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1312,7 +1312,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_46731",
+                "filename_suffix": "-_35711",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1412,6 +1412,39 @@ class Subscription(pulumi.CustomResource):
                 resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
             })
         )
+        ```
+        ### Pubsub Subscription Ai Inference
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
+            account_id="example-sa",
+            display_name="Gemini Query Service Account")
+        gemini_inference_get = gcp.projects.IAMMember("gemini_inference_get",
+            project="my-project-name",
+            role="roles/aiplatform.user",
+            member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            message_transforms=[{
+                "ai_inference": {
+                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "unstructured_inference": {
+                        "parameters": {
+                            "max_tokens": "25000",
+                        },
+                    },
+                    "service_account_email": gemini_query_service_account.email,
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         ```
 
         ## Import
@@ -1769,7 +1802,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_24243",
+                "filename_suffix": "-_21912",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1802,7 +1835,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_7495",
+                "filename_suffix": "-_46731",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1836,7 +1869,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_21912",
+                "filename_suffix": "-_26240",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1875,7 +1908,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_46731",
+                "filename_suffix": "-_35711",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1975,6 +2008,39 @@ class Subscription(pulumi.CustomResource):
                 resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
             })
         )
+        ```
+        ### Pubsub Subscription Ai Inference
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
+            account_id="example-sa",
+            display_name="Gemini Query Service Account")
+        gemini_inference_get = gcp.projects.IAMMember("gemini_inference_get",
+            project="my-project-name",
+            role="roles/aiplatform.user",
+            member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            message_transforms=[{
+                "ai_inference": {
+                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "unstructured_inference": {
+                        "parameters": {
+                            "max_tokens": "25000",
+                        },
+                    },
+                    "service_account_email": gemini_query_service_account.email,
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         ```
 
         ## Import

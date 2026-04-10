@@ -14,11 +14,20 @@ namespace Pulumi.Gcp.Lustre.Outputs
     public sealed class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult
     {
         /// <summary>
-        /// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+        /// Possible values:
+        /// MONDAY
+        /// TUESDAY
+        /// WEDNESDAY
+        /// THURSDAY
+        /// FRIDAY
+        /// SATURDAY
+        /// SUNDAY
         /// </summary>
         public readonly string DayOfWeek;
         /// <summary>
-        /// Start time of the maintenance window in UTC.
+        /// Represents a time of day. The date and time zone are either not significant
+        /// or are specified elsewhere. An API may choose to allow leap seconds. Related
+        /// types are google.type.Date and 'google.protobuf.Timestamp'.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult> StartTimes;
 

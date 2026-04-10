@@ -719,10 +719,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_26240")
+        default = gcp.compute.Network("default", name="psc-network-_85072")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_35711",
+            name="endpoint-name_35762",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -746,7 +746,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_85072",
+            name="endpoint-name_24469",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -879,10 +879,10 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Network("default", name="psc-network-_26240")
+        default = gcp.compute.Network("default", name="psc-network-_85072")
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_35711",
+            name="endpoint-name_35762",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -906,7 +906,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_85072",
+            name="endpoint-name_24469",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",

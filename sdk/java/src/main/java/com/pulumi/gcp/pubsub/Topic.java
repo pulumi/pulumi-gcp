@@ -605,6 +605,76 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Pubsub Topic Ai Inference
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformAiInferenceArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformAiInferenceUnstructuredInferenceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var geminiQueryServiceAccount = new Account("geminiQueryServiceAccount", AccountArgs.builder()
+ *             .accountId("example-sa")
+ *             .displayName("Gemini Query Service Account")
+ *             .build());
+ * 
+ *         var geminiInferenceGet = new IAMMember("geminiInferenceGet", IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/aiplatform.user")
+ *             .member(geminiQueryServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(geminiInferenceGet)
+ *                 .build());
+ * 
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .messageTransforms(TopicMessageTransformArgs.builder()
+ *                 .aiInference(TopicMessageTransformAiInferenceArgs.builder()
+ *                     .endpoint("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash")
+ *                     .unstructuredInference(TopicMessageTransformAiInferenceUnstructuredInferenceArgs.builder()
+ *                         .parameters(Map.of("max_tokens", "25000"))
+ *                         .build())
+ *                     .serviceAccountEmail(geminiQueryServiceAccount.email())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120Seconds)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

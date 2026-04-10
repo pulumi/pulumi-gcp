@@ -13,6 +13,18 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        /// </summary>
+        [Input("bootDiskProvisionedIops")]
+        public Input<int>? BootDiskProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        /// </summary>
+        [Input("bootDiskProvisionedThroughput")]
+        public Input<int>? BootDiskProvisionedThroughput { get; set; }
+
+        /// <summary>
         /// Size of the primary disk attached to each node, specified
         /// in GB. The primary disk contains the boot volume and system libraries, and the
         /// smallest allowed disk size is 10GB. GCP will default to a predetermined

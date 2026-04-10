@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataplex.EntryLinkArgs;
 import com.pulumi.gcp.dataplex.inputs.EntryLinkState;
+import com.pulumi.gcp.dataplex.outputs.EntryLinkAspect;
 import com.pulumi.gcp.dataplex.outputs.EntryLinkEntryReference;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -59,12 +61,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var entry_group_basic = new EntryGroup("entry-group-basic", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_33395")
+ *             .entryGroupId("tf-test-entry-group_13293")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_basic = new EntryType("entry-type-basic", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_69391")
+ *             .entryTypeId("tf-test-entry-type_33395")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -72,7 +74,7 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-source-entry_76044")
+ *             .entryId("tf-test-source-entry_40289")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -80,7 +82,7 @@ import javax.annotation.Nullable;
  *         var target = new Entry("target", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-target-entry_8270")
+ *             .entryId("tf-test-target-entry_76044")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -89,7 +91,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_41150")
+ *             .entryLinkId("tf-test-entry-link_69391")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
@@ -144,12 +146,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var entry_group_full = new EntryGroup("entry-group-full", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_89313")
+ *             .entryGroupId("tf-test-entry-group_8270")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_full = new EntryType("entry-type-full", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_9394")
+ *             .entryTypeId("tf-test-entry-type_89313")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -157,13 +159,13 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryId("tf-test-source-entry_60646")
+ *             .entryId("tf-test-source-entry_41150")
  *             .entryType(entry_type_full.name())
  *             .project("1111111111111")
  *             .build());
  * 
  *         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_11380")
+ *             .glossaryId("tf-test-glossary_60646")
  *             .location("us-central1")
  *             .build());
  * 
@@ -175,7 +177,7 @@ import javax.annotation.Nullable;
  *             }}{@code ))
  *             .glossaryId(termTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-full_35305")
+ *             .termId("tf-test-term-full_9394")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform term")
  *             .description("term created by Terraform")
@@ -192,7 +194,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_62793")
+ *             .entryLinkId("tf-test-entry-link_11380")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/definition")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
@@ -218,7 +220,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * 
  * ## Import
  * 
  * EntryLink can be imported using any of these accepted formats:
@@ -238,6 +239,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataplex/entryLink:EntryLink")
 public class EntryLink extends com.pulumi.resources.CustomResource {
+    /**
+     * The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="aspects", refs={List.class,EntryLinkAspect.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<EntryLinkAspect>> aspects;
+
+    /**
+     * @return The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<EntryLinkAspect>>> aspects() {
+        return Codegen.optional(this.aspects);
+    }
     /**
      * The time when the Entry Link was created.
      * 

@@ -16,8 +16,7 @@ namespace Pulumi.Gcp.Lustre.Inputs
         private InputList<Inputs.InstanceAccessRulesOptionsAccessRuleArgs>? _accessRules;
 
         /// <summary>
-        /// An array of access rule exceptions. Each rule defines IP address ranges
-        /// that should have different squash behavior than the default.
+        /// The access rules for the instance.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceAccessRulesOptionsAccessRuleArgs> AccessRules
@@ -27,23 +26,28 @@ namespace Pulumi.Gcp.Lustre.Inputs
         }
 
         /// <summary>
-        /// The GID to map the root user to when root squashing is enabled
-        /// (e.g., 65534 for nobody).
+        /// The user squash GID for the default access rule.
+        /// This user squash GID applies to all root users connecting from clients
+        /// that are not matched by any of the access rules. If not set, the default
+        /// is 0 (no GID squash).
         /// </summary>
         [Input("defaultSquashGid")]
         public Input<int>? DefaultSquashGid { get; set; }
 
         /// <summary>
-        /// Set to "ROOT_SQUASH" to enable root squashing by default.
-        /// Other values include "NO_SQUASH".
-        /// Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+        /// The squash mode for the default access rule.
+        /// Possible values:
+        /// NO_SQUASH
+        /// ROOT_SQUASH
         /// </summary>
         [Input("defaultSquashMode", required: true)]
         public Input<string> DefaultSquashMode { get; set; } = null!;
 
         /// <summary>
-        /// The UID to map the root user to when root squashing is enabled
-        /// (e.g., 65534 for nobody).
+        /// The user squash UID for the default access rule.
+        /// This user squash UID applies to all root users connecting from clients
+        /// that are not matched by any of the access rules. If not set, the default
+        /// is 0 (no UID squash).
         /// </summary>
         [Input("defaultSquashUid")]
         public Input<int>? DefaultSquashUid { get; set; }

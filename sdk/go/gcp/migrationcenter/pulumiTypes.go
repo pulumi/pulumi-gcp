@@ -294,6 +294,9 @@ type PreferenceSetVirtualMachinePreferencesComputeEnginePreferences struct {
 	// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
 	// Structure is documented below.
 	MachinePreferences *PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences `pulumi:"machinePreferences"`
+	// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+	// Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+	PersistentDiskType *string `pulumi:"persistentDiskType"`
 }
 
 // PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesInput is an input type that accepts PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs and PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput values.
@@ -313,6 +316,9 @@ type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs struct {
 	// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
 	// Structure is documented below.
 	MachinePreferences PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesPtrInput `pulumi:"machinePreferences"`
+	// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+	// Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+	PersistentDiskType pulumi.StringPtrInput `pulumi:"persistentDiskType"`
 }
 
 func (PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs) ElementType() reflect.Type {
@@ -405,6 +411,14 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput) Ma
 	}).(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesPtrOutput)
 }
 
+// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+// Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesOutput) PersistentDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesComputeEnginePreferences) *string {
+		return v.PersistentDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput struct{ *pulumi.OutputState }
 
 func (PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput) ElementType() reflect.Type {
@@ -448,6 +462,17 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput)
 		}
 		return v.MachinePreferences
 	}).(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesPtrOutput)
+}
+
+// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+// Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesPtrOutput) PersistentDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferencesComputeEnginePreferences) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentDiskType
+	}).(pulumi.StringPtrOutput)
 }
 
 type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences struct {

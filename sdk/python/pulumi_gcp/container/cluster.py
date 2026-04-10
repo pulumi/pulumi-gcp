@@ -25,6 +25,7 @@ class ClusterArgs:
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
@@ -115,6 +116,12 @@ class ClusterArgs:
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
+               allowlist Cloud Storage paths for the cluster. These paths are used with the
+               `--autopilot-privileged-admission` flag to authorize privileged workloads in
+               Autopilot clusters. See the Cluster API's
+               [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+               documentation for more details.
         :param pulumi.Input['ClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary
                Authorization feature. Structure is documented below.
         :param pulumi.Input['ClusterClusterAutoscalingArgs'] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
@@ -345,6 +352,8 @@ class ClusterArgs:
             pulumi.set(__self__, "anonymous_authentication_config", anonymous_authentication_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if autopilot_privileged_admissions is not None:
+            pulumi.set(__self__, "autopilot_privileged_admissions", autopilot_privileged_admissions)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_autoscaling is not None:
@@ -557,6 +566,23 @@ class ClusterArgs:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotPrivilegedAdmissions")
+    def autopilot_privileged_admissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The customer
+        allowlist Cloud Storage paths for the cluster. These paths are used with the
+        `--autopilot-privileged-admission` flag to authorize privileged workloads in
+        Autopilot clusters. See the Cluster API's
+        [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+        documentation for more details.
+        """
+        return pulumi.get(self, "autopilot_privileged_admissions")
+
+    @autopilot_privileged_admissions.setter
+    def autopilot_privileged_admissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "autopilot_privileged_admissions", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
@@ -1646,6 +1672,7 @@ class _ClusterState:
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1745,6 +1772,12 @@ class _ClusterState:
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
+               allowlist Cloud Storage paths for the cluster. These paths are used with the
+               `--autopilot-privileged-admission` flag to authorize privileged workloads in
+               Autopilot clusters. See the Cluster API's
+               [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+               documentation for more details.
         :param pulumi.Input['ClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary
                Authorization feature. Structure is documented below.
         :param pulumi.Input['ClusterClusterAutoscalingArgs'] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
@@ -1983,6 +2016,8 @@ class _ClusterState:
             pulumi.set(__self__, "anonymous_authentication_config", anonymous_authentication_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if autopilot_privileged_admissions is not None:
+            pulumi.set(__self__, "autopilot_privileged_admissions", autopilot_privileged_admissions)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_autoscaling is not None:
@@ -2213,6 +2248,23 @@ class _ClusterState:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotPrivilegedAdmissions")
+    def autopilot_privileged_admissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The customer
+        allowlist Cloud Storage paths for the cluster. These paths are used with the
+        `--autopilot-privileged-admission` flag to authorize privileged workloads in
+        Autopilot clusters. See the Cluster API's
+        [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+        documentation for more details.
+        """
+        return pulumi.get(self, "autopilot_privileged_admissions")
+
+    @autopilot_privileged_admissions.setter
+    def autopilot_privileged_admissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "autopilot_privileged_admissions", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
@@ -3410,6 +3462,7 @@ class Cluster(pulumi.CustomResource):
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3590,6 +3643,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
+               allowlist Cloud Storage paths for the cluster. These paths are used with the
+               `--autopilot-privileged-admission` flag to authorize privileged workloads in
+               Autopilot clusters. See the Cluster API's
+               [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+               documentation for more details.
         :param pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary
                Authorization feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
@@ -3927,6 +3986,7 @@ class Cluster(pulumi.CustomResource):
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4018,6 +4078,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["allow_net_admin"] = allow_net_admin
             __props__.__dict__["anonymous_authentication_config"] = anonymous_authentication_config
             __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+            __props__.__dict__["autopilot_privileged_admissions"] = autopilot_privileged_admissions
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
@@ -4121,6 +4182,7 @@ class Cluster(pulumi.CustomResource):
             allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
             anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
             authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+            autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
             cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
             cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4224,6 +4286,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
+               allowlist Cloud Storage paths for the cluster. These paths are used with the
+               `--autopilot-privileged-admission` flag to authorize privileged workloads in
+               Autopilot clusters. See the Cluster API's
+               [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+               documentation for more details.
         :param pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary
                Authorization feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
@@ -4462,6 +4530,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["allow_net_admin"] = allow_net_admin
         __props__.__dict__["anonymous_authentication_config"] = anonymous_authentication_config
         __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+        __props__.__dict__["autopilot_privileged_admissions"] = autopilot_privileged_admissions
         __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
         __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
@@ -4587,6 +4656,19 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "authenticator_groups_config")
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotPrivilegedAdmissions")
+    def autopilot_privileged_admissions(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The customer
+        allowlist Cloud Storage paths for the cluster. These paths are used with the
+        `--autopilot-privileged-admission` flag to authorize privileged workloads in
+        Autopilot clusters. See the Cluster API's
+        [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+        documentation for more details.
+        """
+        return pulumi.get(self, "autopilot_privileged_admissions")
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")

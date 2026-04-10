@@ -13,6 +13,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigMasterConfigDiskConfig {
     /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+     * 
+     */
+    private @Nullable Integer bootDiskProvisionedIops;
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+     * 
+     */
+    private @Nullable Integer bootDiskProvisionedThroughput;
+    /**
      * @return Size of the primary disk attached to each node, specified
      * in GB. The primary disk contains the boot volume and system libraries, and the
      * smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -43,6 +53,20 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
     private @Nullable Integer numLocalSsds;
 
     private ClusterClusterConfigMasterConfigDiskConfig() {}
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+     * 
+     */
+    public Optional<Integer> bootDiskProvisionedIops() {
+        return Optional.ofNullable(this.bootDiskProvisionedIops);
+    }
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+     * 
+     */
+    public Optional<Integer> bootDiskProvisionedThroughput() {
+        return Optional.ofNullable(this.bootDiskProvisionedThroughput);
+    }
     /**
      * @return Size of the primary disk attached to each node, specified
      * in GB. The primary disk contains the boot volume and system libraries, and the
@@ -90,6 +114,8 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer bootDiskProvisionedIops;
+        private @Nullable Integer bootDiskProvisionedThroughput;
         private @Nullable Integer bootDiskSizeGb;
         private @Nullable String bootDiskType;
         private @Nullable String localSsdInterface;
@@ -97,12 +123,26 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
         public Builder() {}
         public Builder(ClusterClusterConfigMasterConfigDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bootDiskProvisionedIops = defaults.bootDiskProvisionedIops;
+    	      this.bootDiskProvisionedThroughput = defaults.bootDiskProvisionedThroughput;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
     	      this.bootDiskType = defaults.bootDiskType;
     	      this.localSsdInterface = defaults.localSsdInterface;
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
+        @CustomType.Setter
+        public Builder bootDiskProvisionedIops(@Nullable Integer bootDiskProvisionedIops) {
+
+            this.bootDiskProvisionedIops = bootDiskProvisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bootDiskProvisionedThroughput(@Nullable Integer bootDiskProvisionedThroughput) {
+
+            this.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
+            return this;
+        }
         @CustomType.Setter
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
 
@@ -129,6 +169,8 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
         }
         public ClusterClusterConfigMasterConfigDiskConfig build() {
             final var _resultValue = new ClusterClusterConfigMasterConfigDiskConfig();
+            _resultValue.bootDiskProvisionedIops = bootDiskProvisionedIops;
+            _resultValue.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;
             _resultValue.bootDiskType = bootDiskType;
             _resultValue.localSsdInterface = localSsdInterface;

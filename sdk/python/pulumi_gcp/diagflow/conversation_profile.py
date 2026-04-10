@@ -693,14 +693,14 @@ class ConversationProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
-            app_id="app-id-_44703",
+            app_id="app-id",
             location="us",
             display_name="my-app",
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
         bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
-            display_name="tf-test-dialogflow-profile-bidi-_32270",
+            display_name="dialogflow-profile-bidi",
             location="global",
             language_code="en-US",
             use_bidi_streaming=True,
@@ -816,14 +816,14 @@ class ConversationProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
-            app_id="app-id-_44703",
+            app_id="app-id",
             location="us",
             display_name="my-app",
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
         bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
-            display_name="tf-test-dialogflow-profile-bidi-_32270",
+            display_name="dialogflow-profile-bidi",
             location="global",
             language_code="en-US",
             use_bidi_streaming=True,

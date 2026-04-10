@@ -85,6 +85,10 @@ type OrganizationSecurityPolicyAssociation struct {
 	AttachmentId pulumi.StringOutput `pulumi:"attachmentId"`
 	// The display name of the security policy of the association.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// A list of folders to exclude from the security policy.
+	ExcludedFolders pulumi.StringArrayOutput `pulumi:"excludedFolders"`
+	// A list of projects to exclude from the security policy.
+	ExcludedProjects pulumi.StringArrayOutput `pulumi:"excludedProjects"`
 	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The security policy ID of the association.
@@ -131,6 +135,10 @@ type organizationSecurityPolicyAssociationState struct {
 	AttachmentId *string `pulumi:"attachmentId"`
 	// The display name of the security policy of the association.
 	DisplayName *string `pulumi:"displayName"`
+	// A list of folders to exclude from the security policy.
+	ExcludedFolders []string `pulumi:"excludedFolders"`
+	// A list of projects to exclude from the security policy.
+	ExcludedProjects []string `pulumi:"excludedProjects"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
 	// The security policy ID of the association.
@@ -142,6 +150,10 @@ type OrganizationSecurityPolicyAssociationState struct {
 	AttachmentId pulumi.StringPtrInput
 	// The display name of the security policy of the association.
 	DisplayName pulumi.StringPtrInput
+	// A list of folders to exclude from the security policy.
+	ExcludedFolders pulumi.StringArrayInput
+	// A list of projects to exclude from the security policy.
+	ExcludedProjects pulumi.StringArrayInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
 	// The security policy ID of the association.
@@ -155,6 +167,10 @@ func (OrganizationSecurityPolicyAssociationState) ElementType() reflect.Type {
 type organizationSecurityPolicyAssociationArgs struct {
 	// The resource that the security policy is attached to.
 	AttachmentId string `pulumi:"attachmentId"`
+	// A list of folders to exclude from the security policy.
+	ExcludedFolders []string `pulumi:"excludedFolders"`
+	// A list of projects to exclude from the security policy.
+	ExcludedProjects []string `pulumi:"excludedProjects"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
 	// The security policy ID of the association.
@@ -165,6 +181,10 @@ type organizationSecurityPolicyAssociationArgs struct {
 type OrganizationSecurityPolicyAssociationArgs struct {
 	// The resource that the security policy is attached to.
 	AttachmentId pulumi.StringInput
+	// A list of folders to exclude from the security policy.
+	ExcludedFolders pulumi.StringArrayInput
+	// A list of projects to exclude from the security policy.
+	ExcludedProjects pulumi.StringArrayInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
 	// The security policy ID of the association.
@@ -266,6 +286,16 @@ func (o OrganizationSecurityPolicyAssociationOutput) AttachmentId() pulumi.Strin
 // The display name of the security policy of the association.
 func (o OrganizationSecurityPolicyAssociationOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyAssociation) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A list of folders to exclude from the security policy.
+func (o OrganizationSecurityPolicyAssociationOutput) ExcludedFolders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyAssociation) pulumi.StringArrayOutput { return v.ExcludedFolders }).(pulumi.StringArrayOutput)
+}
+
+// A list of projects to exclude from the security policy.
+func (o OrganizationSecurityPolicyAssociationOutput) ExcludedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicyAssociation) pulumi.StringArrayOutput { return v.ExcludedProjects }).(pulumi.StringArrayOutput)
 }
 
 // The name for an association.

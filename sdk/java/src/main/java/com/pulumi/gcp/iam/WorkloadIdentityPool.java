@@ -10,10 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolState;
+import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolAttestationRule;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolInlineCertificateIssuanceConfig;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolInlineTrustConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -112,6 +114,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
  * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolAttestationRuleArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
@@ -172,6 +175,9 @@ import javax.annotation.Nullable;
  *                                     .build()).result())
  *                                 .build())
  *                         .build())
+ *                 .build())
+ *             .attestationRules(WorkloadIdentityPoolAttestationRuleArgs.builder()
+ *                 .googleCloudResource("//run.googleapis.com/projects/1111111111111/type/Service/*")
  *                 .build())
  *             .build());
  * 
@@ -276,6 +282,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:iam/workloadIdentityPool:WorkloadIdentityPool")
 public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="attestationRules", refs={List.class,WorkloadIdentityPoolAttestationRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkloadIdentityPoolAttestationRule>> attestationRules;
+
+    /**
+     * @return Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<WorkloadIdentityPoolAttestationRule>>> attestationRules() {
+        return Codegen.optional(this.attestationRules);
+    }
     /**
      * A description of the pool. Cannot exceed 256 characters.
      * 

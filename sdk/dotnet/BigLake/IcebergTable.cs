@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.BigLake
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = "my-bucket-_15222",
+    ///         Name = "my-bucket",
     ///         Location = "us-central1",
     ///         ForceDestroy = true,
     ///         UniformBucketLevelAccess = true,
@@ -41,19 +41,19 @@ namespace Pulumi.Gcp.BigLake
     ///     var @namespace = new Gcp.BigLake.IcebergNamespace("namespace", new()
     ///     {
     ///         Catalog = catalog.Name,
-    ///         NamespaceId = "my_namespace__81126",
+    ///         NamespaceId = "my_namespace",
     ///     });
     /// 
     ///     var myIcebergTable = new Gcp.BigLake.IcebergTable("my_iceberg_table", new()
     ///     {
     ///         Catalog = catalog.Name,
     ///         Namespace = @namespace.NamespaceId,
-    ///         Name = "my_table__88717",
+    ///         Name = "my_table",
     ///         Location = Output.Tuple(bucket.Name, @namespace.NamespaceId).Apply(values =&gt;
     ///         {
     ///             var name = values.Item1;
     ///             var namespaceId = values.Item2;
-    ///             return $"gs://{name}/{namespaceId}/my_table__85794";
+    ///             return $"gs://{name}/{namespaceId}/my_table";
     ///         }),
     ///         Schema = new Gcp.BigLake.Inputs.IcebergTableSchemaArgs
     ///         {
@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.BigLake
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = "my-bucket-_21197",
+    ///         Name = "my-bucket",
     ///         Location = "us-central1",
     ///         ForceDestroy = true,
     ///         UniformBucketLevelAccess = true,
@@ -124,14 +124,14 @@ namespace Pulumi.Gcp.BigLake
     ///     var @namespace = new Gcp.BigLake.IcebergNamespace("namespace", new()
     ///     {
     ///         Catalog = catalog.Name,
-    ///         NamespaceId = "my_namespace__52865",
+    ///         NamespaceId = "my_namespace",
     ///     });
     /// 
     ///     var myIcebergTable = new Gcp.BigLake.IcebergTable("my_iceberg_table", new()
     ///     {
     ///         Catalog = catalog.Name,
     ///         Namespace = @namespace.NamespaceId,
-    ///         Name = "my_table__85840",
+    ///         Name = "my_table",
     ///         Schema = new Gcp.BigLake.Inputs.IcebergTableSchemaArgs
     ///         {
     ///             Type = "struct",

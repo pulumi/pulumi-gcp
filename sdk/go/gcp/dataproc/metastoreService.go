@@ -340,14 +340,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:     pulumi.String("backup"),
+//				Name:     pulumi.String("backup-1"),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataproc.NewMetastoreService(ctx, "backup", &dataproc.MetastoreServiceArgs{
-//				ServiceId: pulumi.String("backup"),
+//				ServiceId: pulumi.String("backup-1"),
 //				Location:  pulumi.String("us-central1"),
 //				Port:      pulumi.Int(9080),
 //				Tier:      pulumi.String("DEVELOPER"),

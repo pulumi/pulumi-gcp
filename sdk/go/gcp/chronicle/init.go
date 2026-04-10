@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:chronicle/dashboardChart:DashboardChart":
+		r = &DashboardChart{}
 	case "gcp:chronicle/dataAccessLabel:DataAccessLabel":
 		r = &DataAccessLabel{}
 	case "gcp:chronicle/dataAccessScope:DataAccessScope":
@@ -29,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataTable{}
 	case "gcp:chronicle/dataTableRow:DataTableRow":
 		r = &DataTableRow{}
+	case "gcp:chronicle/feed:Feed":
+		r = &Feed{}
 	case "gcp:chronicle/nativeDashboard:NativeDashboard":
 		r = &NativeDashboard{}
 	case "gcp:chronicle/referenceList:ReferenceList":
@@ -56,6 +60,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"chronicle/dashboardChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"chronicle/dataAccessLabel",
 		&module{version},
 	)
@@ -72,6 +81,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/dataTableRow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/feed",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

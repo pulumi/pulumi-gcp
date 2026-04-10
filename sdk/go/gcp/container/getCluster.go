@@ -72,6 +72,7 @@ type LookupClusterResult struct {
 	AllowNetAdmin                        bool                                      `pulumi:"allowNetAdmin"`
 	AnonymousAuthenticationConfigs       []GetClusterAnonymousAuthenticationConfig `pulumi:"anonymousAuthenticationConfigs"`
 	AuthenticatorGroupsConfigs           []GetClusterAuthenticatorGroupsConfig     `pulumi:"authenticatorGroupsConfigs"`
+	AutopilotPrivilegedAdmissions        []string                                  `pulumi:"autopilotPrivilegedAdmissions"`
 	BinaryAuthorizations                 []GetClusterBinaryAuthorization           `pulumi:"binaryAuthorizations"`
 	ClusterAutoscalings                  []GetClusterClusterAutoscaling            `pulumi:"clusterAutoscalings"`
 	ClusterIpv4Cidr                      string                                    `pulumi:"clusterIpv4Cidr"`
@@ -220,6 +221,10 @@ func (o LookupClusterResultOutput) AnonymousAuthenticationConfigs() GetClusterAn
 
 func (o LookupClusterResultOutput) AuthenticatorGroupsConfigs() GetClusterAuthenticatorGroupsConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfigs }).(GetClusterAuthenticatorGroupsConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) AutopilotPrivilegedAdmissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.AutopilotPrivilegedAdmissions }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupClusterResultOutput) BinaryAuthorizations() GetClusterBinaryAuthorizationArrayOutput {

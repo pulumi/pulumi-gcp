@@ -57,6 +57,7 @@ __all__ = [
     'GetKeysZoneSigningKeyResult',
     'GetKeysZoneSigningKeyDigestResult',
     'GetManagedZonesManagedZoneResult',
+    'GetRecordSetsRrsetResult',
 ]
 
 @pulumi.output_type
@@ -2448,5 +2449,56 @@ class GetManagedZonesManagedZoneResult(dict):
         The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetRecordSetsRrsetResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 rrdatas: Sequence[_builtins.str],
+                 ttl: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: The name of the record set to filter by.
+        :param Sequence[_builtins.str] rrdatas: A list of the record set's data (e.g., IP addresses, target names).
+        :param _builtins.int ttl: The time-to-live of this record set (seconds).
+        :param _builtins.str type: The type of the record set to filter by.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rrdatas", rrdatas)
+        pulumi.set(__self__, "ttl", ttl)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the record set to filter by.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def rrdatas(self) -> Sequence[_builtins.str]:
+        """
+        A list of the record set's data (e.g., IP addresses, target names).
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> _builtins.int:
+        """
+        The time-to-live of this record set (seconds).
+        """
+        return pulumi.get(self, "ttl")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the record set to filter by.
+        """
+        return pulumi.get(self, "type")
 
 

@@ -12,40 +12,52 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceAccessRulesOptionAccessRule {
     /**
-     * @return An array of IP address strings or CIDR ranges that this rule applies to.
+     * @return The IP address ranges to which to apply this access rule. Accepts
+     * non-overlapping CIDR ranges (e.g., &#39;192.168.1.0/24&#39;) and IP addresses
+     * (e.g., &#39;192.168.1.0&#39;).
      * 
      */
     private List<String> ipAddressRanges;
     /**
-     * @return A unique identifier for the access rule.
+     * @return The name of the access rule policy group.
+     * Must be 16 characters or less and include only alphanumeric characters
+     * or &#39;_&#39;.
      * 
      */
     private String name;
     /**
-     * @return The squash mode for this specific rule. Currently, only &#34;NO_SQUASH&#34;
-     * is supported for exceptions. Possible values: [&#34;NO_SQUASH&#34;]
+     * @return Squash mode for the access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     private String squashMode;
 
     private GetInstanceAccessRulesOptionAccessRule() {}
     /**
-     * @return An array of IP address strings or CIDR ranges that this rule applies to.
+     * @return The IP address ranges to which to apply this access rule. Accepts
+     * non-overlapping CIDR ranges (e.g., &#39;192.168.1.0/24&#39;) and IP addresses
+     * (e.g., &#39;192.168.1.0&#39;).
      * 
      */
     public List<String> ipAddressRanges() {
         return this.ipAddressRanges;
     }
     /**
-     * @return A unique identifier for the access rule.
+     * @return The name of the access rule policy group.
+     * Must be 16 characters or less and include only alphanumeric characters
+     * or &#39;_&#39;.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The squash mode for this specific rule. Currently, only &#34;NO_SQUASH&#34;
-     * is supported for exceptions. Possible values: [&#34;NO_SQUASH&#34;]
+     * @return Squash mode for the access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     public String squashMode() {

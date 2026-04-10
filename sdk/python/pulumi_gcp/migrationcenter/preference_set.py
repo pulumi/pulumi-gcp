@@ -366,6 +366,31 @@ class PreferenceSet(pulumi.CustomResource):
                 },
             })
         ```
+        ### Preference Set Compute Engine Preferences Disk Type
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.migrationcenter.PreferenceSet("default",
+            location="us-central1",
+            preference_set_id="preference-set-test",
+            description="Terraform integration test description",
+            display_name="Terraform integration test display",
+            virtual_machine_preferences={
+                "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "compute_engine_preferences": {
+                    "license_type": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "machine_preferences": {
+                        "allowed_machine_series": [{
+                            "code": "C3",
+                        }],
+                    },
+                    "persistent_disk_type": "PERSISTENT_DISK_TYPE_SSD",
+                },
+            })
+        ```
 
         ## Import
 
@@ -469,6 +494,31 @@ class PreferenceSet(pulumi.CustomResource):
                             "code": "C3",
                         }],
                     },
+                },
+            })
+        ```
+        ### Preference Set Compute Engine Preferences Disk Type
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.migrationcenter.PreferenceSet("default",
+            location="us-central1",
+            preference_set_id="preference-set-test",
+            description="Terraform integration test description",
+            display_name="Terraform integration test display",
+            virtual_machine_preferences={
+                "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "compute_engine_preferences": {
+                    "license_type": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "machine_preferences": {
+                        "allowed_machine_series": [{
+                            "code": "C3",
+                        }],
+                    },
+                    "persistent_disk_type": "PERSISTENT_DISK_TYPE_SSD",
                 },
             })
         ```

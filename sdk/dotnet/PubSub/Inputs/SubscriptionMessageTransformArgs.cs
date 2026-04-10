@@ -13,6 +13,15 @@ namespace Pulumi.Gcp.PubSub.Inputs
     public sealed class SubscriptionMessageTransformArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// AI Inference. Specifies the Vertex AI endpoint that inference
+        /// requests built from the Pub/Sub message data and provided parameters will
+        /// be sent to.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("aiInference")]
+        public Input<Inputs.SubscriptionMessageTransformAiInferenceArgs>? AiInference { get; set; }
+
+        /// <summary>
         /// Controls whether or not to use this transform. If not set or `False`,
         /// the transform will be applied to messages. Default: `True`.
         /// </summary>

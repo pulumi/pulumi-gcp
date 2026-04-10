@@ -65,7 +65,6 @@ import (
 //			ctx.Export("dataTableUuid", example.DataTableUuid)
 //			ctx.Export("dataTableDescription", example.Description)
 //			ctx.Export("dataTableCreateTime", example.CreateTime)
-//			ctx.Export("dataTableTtl", example.RowTimeToLive)
 //			return nil
 //		})
 //	}
@@ -99,7 +98,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleDt, err := chronicle.NewDataTable(ctx, "example_dt", &chronicle.DataTableArgs{
+//			_, err = chronicle.NewDataTable(ctx, "example_dt", &chronicle.DataTableArgs{
 //				Location:      pulumi.String("us"),
 //				Instance:      pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				DataTableId:   pulumi.String("tf_test_full"),
@@ -132,10 +131,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("dataTableName", exampleDt.Name)
-//			ctx.Export("dataTableId", exampleDt.ID())
-//			ctx.Export("dataTableCreateTime", exampleDt.CreateTime)
-//			ctx.Export("dataTableColumnInfo", exampleDt.ColumnInfos)
 //			return nil
 //		})
 //	}

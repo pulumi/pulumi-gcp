@@ -5672,6 +5672,106 @@ func (o WorkforcePoolProviderSamlPtrOutput) IdpMetadataXml() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkloadIdentityPoolAttestationRule struct {
+	// A single workload operating on Google Cloud. For example:
+	// `//run.googleapis.com/projects/123/type/Service/*`.
+	GoogleCloudResource string `pulumi:"googleCloudResource"`
+}
+
+// WorkloadIdentityPoolAttestationRuleInput is an input type that accepts WorkloadIdentityPoolAttestationRuleArgs and WorkloadIdentityPoolAttestationRuleOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolAttestationRuleInput` via:
+//
+//	WorkloadIdentityPoolAttestationRuleArgs{...}
+type WorkloadIdentityPoolAttestationRuleInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolAttestationRuleOutput() WorkloadIdentityPoolAttestationRuleOutput
+	ToWorkloadIdentityPoolAttestationRuleOutputWithContext(context.Context) WorkloadIdentityPoolAttestationRuleOutput
+}
+
+type WorkloadIdentityPoolAttestationRuleArgs struct {
+	// A single workload operating on Google Cloud. For example:
+	// `//run.googleapis.com/projects/123/type/Service/*`.
+	GoogleCloudResource pulumi.StringInput `pulumi:"googleCloudResource"`
+}
+
+func (WorkloadIdentityPoolAttestationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolAttestationRuleArgs) ToWorkloadIdentityPoolAttestationRuleOutput() WorkloadIdentityPoolAttestationRuleOutput {
+	return i.ToWorkloadIdentityPoolAttestationRuleOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolAttestationRuleArgs) ToWorkloadIdentityPoolAttestationRuleOutputWithContext(ctx context.Context) WorkloadIdentityPoolAttestationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolAttestationRuleOutput)
+}
+
+// WorkloadIdentityPoolAttestationRuleArrayInput is an input type that accepts WorkloadIdentityPoolAttestationRuleArray and WorkloadIdentityPoolAttestationRuleArrayOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolAttestationRuleArrayInput` via:
+//
+//	WorkloadIdentityPoolAttestationRuleArray{ WorkloadIdentityPoolAttestationRuleArgs{...} }
+type WorkloadIdentityPoolAttestationRuleArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolAttestationRuleArrayOutput() WorkloadIdentityPoolAttestationRuleArrayOutput
+	ToWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(context.Context) WorkloadIdentityPoolAttestationRuleArrayOutput
+}
+
+type WorkloadIdentityPoolAttestationRuleArray []WorkloadIdentityPoolAttestationRuleInput
+
+func (WorkloadIdentityPoolAttestationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolAttestationRuleArray) ToWorkloadIdentityPoolAttestationRuleArrayOutput() WorkloadIdentityPoolAttestationRuleArrayOutput {
+	return i.ToWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolAttestationRuleArray) ToWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolAttestationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolAttestationRuleArrayOutput)
+}
+
+type WorkloadIdentityPoolAttestationRuleOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolAttestationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolAttestationRuleOutput) ToWorkloadIdentityPoolAttestationRuleOutput() WorkloadIdentityPoolAttestationRuleOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolAttestationRuleOutput) ToWorkloadIdentityPoolAttestationRuleOutputWithContext(ctx context.Context) WorkloadIdentityPoolAttestationRuleOutput {
+	return o
+}
+
+// A single workload operating on Google Cloud. For example:
+// `//run.googleapis.com/projects/123/type/Service/*`.
+func (o WorkloadIdentityPoolAttestationRuleOutput) GoogleCloudResource() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolAttestationRule) string { return v.GoogleCloudResource }).(pulumi.StringOutput)
+}
+
+type WorkloadIdentityPoolAttestationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolAttestationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolAttestationRuleArrayOutput) ToWorkloadIdentityPoolAttestationRuleArrayOutput() WorkloadIdentityPoolAttestationRuleArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolAttestationRuleArrayOutput) ToWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolAttestationRuleArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolAttestationRuleArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolAttestationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityPoolAttestationRule {
+		return vs[0].([]WorkloadIdentityPoolAttestationRule)[vs[1].(int)]
+	}).(WorkloadIdentityPoolAttestationRuleOutput)
+}
+
 type WorkloadIdentityPoolIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -8129,6 +8229,106 @@ func (o GetTestablePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetTestablePermissionsPermissionOutput)
 }
 
+type GetWorkloadIdentityPoolAttestationRule struct {
+	// A single workload operating on Google Cloud. For example:
+	// '//run.googleapis.com/projects/123/type/Service/*'.
+	GoogleCloudResource string `pulumi:"googleCloudResource"`
+}
+
+// GetWorkloadIdentityPoolAttestationRuleInput is an input type that accepts GetWorkloadIdentityPoolAttestationRuleArgs and GetWorkloadIdentityPoolAttestationRuleOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolAttestationRuleInput` via:
+//
+//	GetWorkloadIdentityPoolAttestationRuleArgs{...}
+type GetWorkloadIdentityPoolAttestationRuleInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolAttestationRuleOutput() GetWorkloadIdentityPoolAttestationRuleOutput
+	ToGetWorkloadIdentityPoolAttestationRuleOutputWithContext(context.Context) GetWorkloadIdentityPoolAttestationRuleOutput
+}
+
+type GetWorkloadIdentityPoolAttestationRuleArgs struct {
+	// A single workload operating on Google Cloud. For example:
+	// '//run.googleapis.com/projects/123/type/Service/*'.
+	GoogleCloudResource pulumi.StringInput `pulumi:"googleCloudResource"`
+}
+
+func (GetWorkloadIdentityPoolAttestationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolAttestationRuleArgs) ToGetWorkloadIdentityPoolAttestationRuleOutput() GetWorkloadIdentityPoolAttestationRuleOutput {
+	return i.ToGetWorkloadIdentityPoolAttestationRuleOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolAttestationRuleArgs) ToGetWorkloadIdentityPoolAttestationRuleOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolAttestationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolAttestationRuleOutput)
+}
+
+// GetWorkloadIdentityPoolAttestationRuleArrayInput is an input type that accepts GetWorkloadIdentityPoolAttestationRuleArray and GetWorkloadIdentityPoolAttestationRuleArrayOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolAttestationRuleArrayInput` via:
+//
+//	GetWorkloadIdentityPoolAttestationRuleArray{ GetWorkloadIdentityPoolAttestationRuleArgs{...} }
+type GetWorkloadIdentityPoolAttestationRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolAttestationRuleArrayOutput() GetWorkloadIdentityPoolAttestationRuleArrayOutput
+	ToGetWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(context.Context) GetWorkloadIdentityPoolAttestationRuleArrayOutput
+}
+
+type GetWorkloadIdentityPoolAttestationRuleArray []GetWorkloadIdentityPoolAttestationRuleInput
+
+func (GetWorkloadIdentityPoolAttestationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolAttestationRuleArray) ToGetWorkloadIdentityPoolAttestationRuleArrayOutput() GetWorkloadIdentityPoolAttestationRuleArrayOutput {
+	return i.ToGetWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolAttestationRuleArray) ToGetWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolAttestationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolAttestationRuleArrayOutput)
+}
+
+type GetWorkloadIdentityPoolAttestationRuleOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolAttestationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolAttestationRuleOutput) ToGetWorkloadIdentityPoolAttestationRuleOutput() GetWorkloadIdentityPoolAttestationRuleOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolAttestationRuleOutput) ToGetWorkloadIdentityPoolAttestationRuleOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolAttestationRuleOutput {
+	return o
+}
+
+// A single workload operating on Google Cloud. For example:
+// '//run.googleapis.com/projects/123/type/Service/*'.
+func (o GetWorkloadIdentityPoolAttestationRuleOutput) GoogleCloudResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolAttestationRule) string { return v.GoogleCloudResource }).(pulumi.StringOutput)
+}
+
+type GetWorkloadIdentityPoolAttestationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolAttestationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolAttestationRule)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolAttestationRuleArrayOutput) ToGetWorkloadIdentityPoolAttestationRuleArrayOutput() GetWorkloadIdentityPoolAttestationRuleArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolAttestationRuleArrayOutput) ToGetWorkloadIdentityPoolAttestationRuleArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolAttestationRuleArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolAttestationRuleArrayOutput) Index(i pulumi.IntInput) GetWorkloadIdentityPoolAttestationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkloadIdentityPoolAttestationRule {
+		return vs[0].([]GetWorkloadIdentityPoolAttestationRule)[vs[1].(int)]
+	}).(GetWorkloadIdentityPoolAttestationRuleOutput)
+}
+
 type GetWorkloadIdentityPoolInlineCertificateIssuanceConfig struct {
 	// A required mapping of a cloud region to the CA pool resource located in that region used
 	// for certificate issuance, adhering to these constraints:
@@ -9581,6 +9781,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfigPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcWebSsoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlPtrInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolAttestationRuleInput)(nil)).Elem(), WorkloadIdentityPoolAttestationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolAttestationRuleArrayInput)(nil)).Elem(), WorkloadIdentityPoolAttestationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolIamBindingConditionInput)(nil)).Elem(), WorkloadIdentityPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolIamBindingConditionPtrInput)(nil)).Elem(), WorkloadIdentityPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolIamMemberConditionInput)(nil)).Elem(), WorkloadIdentityPoolIamMemberConditionArgs{})
@@ -9613,6 +9815,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionInput)(nil)).Elem(), GetTestablePermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionArrayInput)(nil)).Elem(), GetTestablePermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolAttestationRuleInput)(nil)).Elem(), GetWorkloadIdentityPoolAttestationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolAttestationRuleArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolAttestationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolInlineCertificateIssuanceConfigInput)(nil)).Elem(), GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolInlineTrustConfigInput)(nil)).Elem(), GetWorkloadIdentityPoolInlineTrustConfigArgs{})
@@ -9699,6 +9903,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcWebSsoConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderSamlOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderSamlPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolAttestationRuleOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolAttestationRuleArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolIamMemberConditionOutput{})
@@ -9731,6 +9937,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolAttestationRuleOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolAttestationRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolInlineCertificateIssuanceConfigOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolInlineCertificateIssuanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolInlineTrustConfigOutput{})

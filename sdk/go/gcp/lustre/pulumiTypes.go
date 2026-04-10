@@ -14,19 +14,23 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceAccessRulesOptions struct {
-	// An array of access rule exceptions. Each rule defines IP address ranges
-	// that should have different squash behavior than the default.
+	// The access rules for the instance.
 	// Structure is documented below.
 	AccessRules []InstanceAccessRulesOptionsAccessRule `pulumi:"accessRules"`
-	// The GID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash GID for the default access rule.
+	// This user squash GID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no GID squash).
 	DefaultSquashGid *int `pulumi:"defaultSquashGid"`
-	// Set to "ROOT_SQUASH" to enable root squashing by default.
-	// Other values include "NO_SQUASH".
-	// Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+	// The squash mode for the default access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	DefaultSquashMode string `pulumi:"defaultSquashMode"`
-	// The UID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash UID for the default access rule.
+	// This user squash UID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no UID squash).
 	DefaultSquashUid *int `pulumi:"defaultSquashUid"`
 }
 
@@ -42,19 +46,23 @@ type InstanceAccessRulesOptionsInput interface {
 }
 
 type InstanceAccessRulesOptionsArgs struct {
-	// An array of access rule exceptions. Each rule defines IP address ranges
-	// that should have different squash behavior than the default.
+	// The access rules for the instance.
 	// Structure is documented below.
 	AccessRules InstanceAccessRulesOptionsAccessRuleArrayInput `pulumi:"accessRules"`
-	// The GID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash GID for the default access rule.
+	// This user squash GID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no GID squash).
 	DefaultSquashGid pulumi.IntPtrInput `pulumi:"defaultSquashGid"`
-	// Set to "ROOT_SQUASH" to enable root squashing by default.
-	// Other values include "NO_SQUASH".
-	// Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+	// The squash mode for the default access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	DefaultSquashMode pulumi.StringInput `pulumi:"defaultSquashMode"`
-	// The UID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash UID for the default access rule.
+	// This user squash UID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no UID squash).
 	DefaultSquashUid pulumi.IntPtrInput `pulumi:"defaultSquashUid"`
 }
 
@@ -135,28 +143,32 @@ func (o InstanceAccessRulesOptionsOutput) ToInstanceAccessRulesOptionsPtrOutputW
 	}).(InstanceAccessRulesOptionsPtrOutput)
 }
 
-// An array of access rule exceptions. Each rule defines IP address ranges
-// that should have different squash behavior than the default.
+// The access rules for the instance.
 // Structure is documented below.
 func (o InstanceAccessRulesOptionsOutput) AccessRules() InstanceAccessRulesOptionsAccessRuleArrayOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptions) []InstanceAccessRulesOptionsAccessRule { return v.AccessRules }).(InstanceAccessRulesOptionsAccessRuleArrayOutput)
 }
 
-// The GID to map the root user to when root squashing is enabled
-// (e.g., 65534 for nobody).
+// The user squash GID for the default access rule.
+// This user squash GID applies to all root users connecting from clients
+// that are not matched by any of the access rules. If not set, the default
+// is 0 (no GID squash).
 func (o InstanceAccessRulesOptionsOutput) DefaultSquashGid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptions) *int { return v.DefaultSquashGid }).(pulumi.IntPtrOutput)
 }
 
-// Set to "ROOT_SQUASH" to enable root squashing by default.
-// Other values include "NO_SQUASH".
-// Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+// The squash mode for the default access rule.
+// Possible values:
+// NO_SQUASH
+// ROOT_SQUASH
 func (o InstanceAccessRulesOptionsOutput) DefaultSquashMode() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptions) string { return v.DefaultSquashMode }).(pulumi.StringOutput)
 }
 
-// The UID to map the root user to when root squashing is enabled
-// (e.g., 65534 for nobody).
+// The user squash UID for the default access rule.
+// This user squash UID applies to all root users connecting from clients
+// that are not matched by any of the access rules. If not set, the default
+// is 0 (no UID squash).
 func (o InstanceAccessRulesOptionsOutput) DefaultSquashUid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptions) *int { return v.DefaultSquashUid }).(pulumi.IntPtrOutput)
 }
@@ -185,8 +197,7 @@ func (o InstanceAccessRulesOptionsPtrOutput) Elem() InstanceAccessRulesOptionsOu
 	}).(InstanceAccessRulesOptionsOutput)
 }
 
-// An array of access rule exceptions. Each rule defines IP address ranges
-// that should have different squash behavior than the default.
+// The access rules for the instance.
 // Structure is documented below.
 func (o InstanceAccessRulesOptionsPtrOutput) AccessRules() InstanceAccessRulesOptionsAccessRuleArrayOutput {
 	return o.ApplyT(func(v *InstanceAccessRulesOptions) []InstanceAccessRulesOptionsAccessRule {
@@ -197,8 +208,10 @@ func (o InstanceAccessRulesOptionsPtrOutput) AccessRules() InstanceAccessRulesOp
 	}).(InstanceAccessRulesOptionsAccessRuleArrayOutput)
 }
 
-// The GID to map the root user to when root squashing is enabled
-// (e.g., 65534 for nobody).
+// The user squash GID for the default access rule.
+// This user squash GID applies to all root users connecting from clients
+// that are not matched by any of the access rules. If not set, the default
+// is 0 (no GID squash).
 func (o InstanceAccessRulesOptionsPtrOutput) DefaultSquashGid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAccessRulesOptions) *int {
 		if v == nil {
@@ -208,9 +221,10 @@ func (o InstanceAccessRulesOptionsPtrOutput) DefaultSquashGid() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Set to "ROOT_SQUASH" to enable root squashing by default.
-// Other values include "NO_SQUASH".
-// Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+// The squash mode for the default access rule.
+// Possible values:
+// NO_SQUASH
+// ROOT_SQUASH
 func (o InstanceAccessRulesOptionsPtrOutput) DefaultSquashMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceAccessRulesOptions) *string {
 		if v == nil {
@@ -220,8 +234,10 @@ func (o InstanceAccessRulesOptionsPtrOutput) DefaultSquashMode() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The UID to map the root user to when root squashing is enabled
-// (e.g., 65534 for nobody).
+// The user squash UID for the default access rule.
+// This user squash UID applies to all root users connecting from clients
+// that are not matched by any of the access rules. If not set, the default
+// is 0 (no UID squash).
 func (o InstanceAccessRulesOptionsPtrOutput) DefaultSquashUid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAccessRulesOptions) *int {
 		if v == nil {
@@ -232,13 +248,18 @@ func (o InstanceAccessRulesOptionsPtrOutput) DefaultSquashUid() pulumi.IntPtrOut
 }
 
 type InstanceAccessRulesOptionsAccessRule struct {
-	// An array of IP address strings or CIDR ranges that this rule applies to.
+	// The IP address ranges to which to apply this access rule. Accepts
+	// non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+	// (e.g., `192.168.1.0`).
 	IpAddressRanges []string `pulumi:"ipAddressRanges"`
-	// A unique identifier for the access rule.
+	// The name of the access rule policy group.
+	// Must be 16 characters or less and include only alphanumeric characters
+	// or '_'.
 	Name string `pulumi:"name"`
-	// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-	// is supported for exceptions.
-	// Possible values are: `NO_SQUASH`.
+	// Squash mode for the access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	SquashMode string `pulumi:"squashMode"`
 }
 
@@ -254,13 +275,18 @@ type InstanceAccessRulesOptionsAccessRuleInput interface {
 }
 
 type InstanceAccessRulesOptionsAccessRuleArgs struct {
-	// An array of IP address strings or CIDR ranges that this rule applies to.
+	// The IP address ranges to which to apply this access rule. Accepts
+	// non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+	// (e.g., `192.168.1.0`).
 	IpAddressRanges pulumi.StringArrayInput `pulumi:"ipAddressRanges"`
-	// A unique identifier for the access rule.
+	// The name of the access rule policy group.
+	// Must be 16 characters or less and include only alphanumeric characters
+	// or '_'.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-	// is supported for exceptions.
-	// Possible values are: `NO_SQUASH`.
+	// Squash mode for the access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	SquashMode pulumi.StringInput `pulumi:"squashMode"`
 }
 
@@ -315,19 +341,24 @@ func (o InstanceAccessRulesOptionsAccessRuleOutput) ToInstanceAccessRulesOptions
 	return o
 }
 
-// An array of IP address strings or CIDR ranges that this rule applies to.
+// The IP address ranges to which to apply this access rule. Accepts
+// non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+// (e.g., `192.168.1.0`).
 func (o InstanceAccessRulesOptionsAccessRuleOutput) IpAddressRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptionsAccessRule) []string { return v.IpAddressRanges }).(pulumi.StringArrayOutput)
 }
 
-// A unique identifier for the access rule.
+// The name of the access rule policy group.
+// Must be 16 characters or less and include only alphanumeric characters
+// or '_'.
 func (o InstanceAccessRulesOptionsAccessRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptionsAccessRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-// is supported for exceptions.
-// Possible values are: `NO_SQUASH`.
+// Squash mode for the access rule.
+// Possible values:
+// NO_SQUASH
+// ROOT_SQUASH
 func (o InstanceAccessRulesOptionsAccessRuleOutput) SquashMode() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAccessRulesOptionsAccessRule) string { return v.SquashMode }).(pulumi.StringOutput)
 }
@@ -352,13 +383,163 @@ func (o InstanceAccessRulesOptionsAccessRuleArrayOutput) Index(i pulumi.IntInput
 	}).(InstanceAccessRulesOptionsAccessRuleOutput)
 }
 
+type InstanceDynamicTierOptions struct {
+	// The dynamic tier mode of the instance.
+	// Possible values:
+	// DISABLED
+	// DEFAULT_CACHE
+	Mode string `pulumi:"mode"`
+}
+
+// InstanceDynamicTierOptionsInput is an input type that accepts InstanceDynamicTierOptionsArgs and InstanceDynamicTierOptionsOutput values.
+// You can construct a concrete instance of `InstanceDynamicTierOptionsInput` via:
+//
+//	InstanceDynamicTierOptionsArgs{...}
+type InstanceDynamicTierOptionsInput interface {
+	pulumi.Input
+
+	ToInstanceDynamicTierOptionsOutput() InstanceDynamicTierOptionsOutput
+	ToInstanceDynamicTierOptionsOutputWithContext(context.Context) InstanceDynamicTierOptionsOutput
+}
+
+type InstanceDynamicTierOptionsArgs struct {
+	// The dynamic tier mode of the instance.
+	// Possible values:
+	// DISABLED
+	// DEFAULT_CACHE
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (InstanceDynamicTierOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDynamicTierOptions)(nil)).Elem()
+}
+
+func (i InstanceDynamicTierOptionsArgs) ToInstanceDynamicTierOptionsOutput() InstanceDynamicTierOptionsOutput {
+	return i.ToInstanceDynamicTierOptionsOutputWithContext(context.Background())
+}
+
+func (i InstanceDynamicTierOptionsArgs) ToInstanceDynamicTierOptionsOutputWithContext(ctx context.Context) InstanceDynamicTierOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDynamicTierOptionsOutput)
+}
+
+func (i InstanceDynamicTierOptionsArgs) ToInstanceDynamicTierOptionsPtrOutput() InstanceDynamicTierOptionsPtrOutput {
+	return i.ToInstanceDynamicTierOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceDynamicTierOptionsArgs) ToInstanceDynamicTierOptionsPtrOutputWithContext(ctx context.Context) InstanceDynamicTierOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDynamicTierOptionsOutput).ToInstanceDynamicTierOptionsPtrOutputWithContext(ctx)
+}
+
+// InstanceDynamicTierOptionsPtrInput is an input type that accepts InstanceDynamicTierOptionsArgs, InstanceDynamicTierOptionsPtr and InstanceDynamicTierOptionsPtrOutput values.
+// You can construct a concrete instance of `InstanceDynamicTierOptionsPtrInput` via:
+//
+//	        InstanceDynamicTierOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceDynamicTierOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceDynamicTierOptionsPtrOutput() InstanceDynamicTierOptionsPtrOutput
+	ToInstanceDynamicTierOptionsPtrOutputWithContext(context.Context) InstanceDynamicTierOptionsPtrOutput
+}
+
+type instanceDynamicTierOptionsPtrType InstanceDynamicTierOptionsArgs
+
+func InstanceDynamicTierOptionsPtr(v *InstanceDynamicTierOptionsArgs) InstanceDynamicTierOptionsPtrInput {
+	return (*instanceDynamicTierOptionsPtrType)(v)
+}
+
+func (*instanceDynamicTierOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDynamicTierOptions)(nil)).Elem()
+}
+
+func (i *instanceDynamicTierOptionsPtrType) ToInstanceDynamicTierOptionsPtrOutput() InstanceDynamicTierOptionsPtrOutput {
+	return i.ToInstanceDynamicTierOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceDynamicTierOptionsPtrType) ToInstanceDynamicTierOptionsPtrOutputWithContext(ctx context.Context) InstanceDynamicTierOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDynamicTierOptionsPtrOutput)
+}
+
+type InstanceDynamicTierOptionsOutput struct{ *pulumi.OutputState }
+
+func (InstanceDynamicTierOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDynamicTierOptions)(nil)).Elem()
+}
+
+func (o InstanceDynamicTierOptionsOutput) ToInstanceDynamicTierOptionsOutput() InstanceDynamicTierOptionsOutput {
+	return o
+}
+
+func (o InstanceDynamicTierOptionsOutput) ToInstanceDynamicTierOptionsOutputWithContext(ctx context.Context) InstanceDynamicTierOptionsOutput {
+	return o
+}
+
+func (o InstanceDynamicTierOptionsOutput) ToInstanceDynamicTierOptionsPtrOutput() InstanceDynamicTierOptionsPtrOutput {
+	return o.ToInstanceDynamicTierOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceDynamicTierOptionsOutput) ToInstanceDynamicTierOptionsPtrOutputWithContext(ctx context.Context) InstanceDynamicTierOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDynamicTierOptions) *InstanceDynamicTierOptions {
+		return &v
+	}).(InstanceDynamicTierOptionsPtrOutput)
+}
+
+// The dynamic tier mode of the instance.
+// Possible values:
+// DISABLED
+// DEFAULT_CACHE
+func (o InstanceDynamicTierOptionsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDynamicTierOptions) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type InstanceDynamicTierOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceDynamicTierOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDynamicTierOptions)(nil)).Elem()
+}
+
+func (o InstanceDynamicTierOptionsPtrOutput) ToInstanceDynamicTierOptionsPtrOutput() InstanceDynamicTierOptionsPtrOutput {
+	return o
+}
+
+func (o InstanceDynamicTierOptionsPtrOutput) ToInstanceDynamicTierOptionsPtrOutputWithContext(ctx context.Context) InstanceDynamicTierOptionsPtrOutput {
+	return o
+}
+
+func (o InstanceDynamicTierOptionsPtrOutput) Elem() InstanceDynamicTierOptionsOutput {
+	return o.ApplyT(func(v *InstanceDynamicTierOptions) InstanceDynamicTierOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDynamicTierOptions
+		return ret
+	}).(InstanceDynamicTierOptionsOutput)
+}
+
+// The dynamic tier mode of the instance.
+// Possible values:
+// DISABLED
+// DEFAULT_CACHE
+func (o InstanceDynamicTierOptionsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDynamicTierOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceMaintenancePolicy struct {
 	// The exclusion windows for the instance. Currently limited to 1 window.
 	// Structure is documented below.
 	MaintenanceExclusionWindow *InstanceMaintenancePolicyMaintenanceExclusionWindow `pulumi:"maintenanceExclusionWindow"`
-	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	// The weekly maintenance windows for the instance. Currently limited to 1
+	// window.
 	// Structure is documented below.
-	WeeklyMaintenanceWindows *InstanceMaintenancePolicyWeeklyMaintenanceWindows `pulumi:"weeklyMaintenanceWindows"`
+	WeeklyMaintenanceWindows InstanceMaintenancePolicyWeeklyMaintenanceWindows `pulumi:"weeklyMaintenanceWindows"`
 }
 
 // InstanceMaintenancePolicyInput is an input type that accepts InstanceMaintenancePolicyArgs and InstanceMaintenancePolicyOutput values.
@@ -376,9 +557,10 @@ type InstanceMaintenancePolicyArgs struct {
 	// The exclusion windows for the instance. Currently limited to 1 window.
 	// Structure is documented below.
 	MaintenanceExclusionWindow InstanceMaintenancePolicyMaintenanceExclusionWindowPtrInput `pulumi:"maintenanceExclusionWindow"`
-	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	// The weekly maintenance windows for the instance. Currently limited to 1
+	// window.
 	// Structure is documented below.
-	WeeklyMaintenanceWindows InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput `pulumi:"weeklyMaintenanceWindows"`
+	WeeklyMaintenanceWindows InstanceMaintenancePolicyWeeklyMaintenanceWindowsInput `pulumi:"weeklyMaintenanceWindows"`
 }
 
 func (InstanceMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -466,12 +648,13 @@ func (o InstanceMaintenancePolicyOutput) MaintenanceExclusionWindow() InstanceMa
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
 }
 
-// The weekly maintenance windows for the instance. Currently limited to 1 window.
+// The weekly maintenance windows for the instance. Currently limited to 1
+// window.
 // Structure is documented below.
-func (o InstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
-	return o.ApplyT(func(v InstanceMaintenancePolicy) *InstanceMaintenancePolicyWeeklyMaintenanceWindows {
+func (o InstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) InstanceMaintenancePolicyWeeklyMaintenanceWindows {
 		return v.WeeklyMaintenanceWindows
-	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput)
 }
 
 type InstanceMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
@@ -509,25 +692,52 @@ func (o InstanceMaintenancePolicyPtrOutput) MaintenanceExclusionWindow() Instanc
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
 }
 
-// The weekly maintenance windows for the instance. Currently limited to 1 window.
+// The weekly maintenance windows for the instance. Currently limited to 1
+// window.
 // Structure is documented below.
 func (o InstanceMaintenancePolicyPtrOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicy) *InstanceMaintenancePolicyWeeklyMaintenanceWindows {
 		if v == nil {
 			return nil
 		}
-		return v.WeeklyMaintenanceWindows
+		return &v.WeeklyMaintenanceWindows
 	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindow struct {
-	// End date of the exclusion period in UTC.
-	// Structure is documented below.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//   Related types:
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
+	//   Structure is documented below.
 	EndDate InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate `pulumi:"endDate"`
-	// Start date of the exclusion period in UTC.
-	// Structure is documented below.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//   Related types:
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
+	//   Structure is documented below.
 	StartDate InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate `pulumi:"startDate"`
-	// Time in UTC for the exclusion window.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and `google.protobuf.Timestamp`.
 	// Structure is documented below.
 	Time InstanceMaintenancePolicyMaintenanceExclusionWindowTime `pulumi:"time"`
 }
@@ -544,13 +754,39 @@ type InstanceMaintenancePolicyMaintenanceExclusionWindowInput interface {
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowArgs struct {
-	// End date of the exclusion period in UTC.
-	// Structure is documented below.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//   Related types:
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
+	//   Structure is documented below.
 	EndDate InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput `pulumi:"endDate"`
-	// Start date of the exclusion period in UTC.
-	// Structure is documented below.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//   Related types:
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
+	//   Structure is documented below.
 	StartDate InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput `pulumi:"startDate"`
-	// Time in UTC for the exclusion window.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and `google.protobuf.Timestamp`.
 	// Structure is documented below.
 	Time InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput `pulumi:"time"`
 }
@@ -632,23 +868,49 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToInstanceMai
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
 }
 
-// End date of the exclusion period in UTC.
-// Structure is documented below.
+// Represents a whole or partial calendar date, such as a birthday. The time of
+// day and time zone are either specified elsewhere or are insignificant. The
+// date is relative to the Gregorian Calendar. This can represent one of the
+// following:
+//   - A full date, with non-zero year, month, and day values.
+//   - A month and day, with a zero year (for example, an anniversary).
+//   - A year on its own, with a zero month and a zero day.
+//   - A year and month, with a zero day (for example, a credit card expiration
+//     date).
+//     Related types:
+//   - google.type.TimeOfDay
+//   - google.type.DateTime
+//   - google.protobuf.Timestamp
+//     Structure is documented below.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) EndDate() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
 		return v.EndDate
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
 }
 
-// Start date of the exclusion period in UTC.
-// Structure is documented below.
+// Represents a whole or partial calendar date, such as a birthday. The time of
+// day and time zone are either specified elsewhere or are insignificant. The
+// date is relative to the Gregorian Calendar. This can represent one of the
+// following:
+//   - A full date, with non-zero year, month, and day values.
+//   - A month and day, with a zero year (for example, an anniversary).
+//   - A year on its own, with a zero month and a zero day.
+//   - A year and month, with a zero day (for example, a credit card expiration
+//     date).
+//     Related types:
+//   - google.type.TimeOfDay
+//   - google.type.DateTime
+//   - google.protobuf.Timestamp
+//     Structure is documented below.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) StartDate() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
 		return v.StartDate
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
 }
 
-// Time in UTC for the exclusion window.
+// Represents a time of day. The date and time zone are either not significant
+// or are specified elsewhere. An API may choose to allow leap seconds. Related
+// types are google.type.Date and `google.protobuf.Timestamp`.
 // Structure is documented below.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowOutput) Time() InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindow) InstanceMaintenancePolicyMaintenanceExclusionWindowTime {
@@ -680,8 +942,20 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) Elem() Ins
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowOutput)
 }
 
-// End date of the exclusion period in UTC.
-// Structure is documented below.
+// Represents a whole or partial calendar date, such as a birthday. The time of
+// day and time zone are either specified elsewhere or are insignificant. The
+// date is relative to the Gregorian Calendar. This can represent one of the
+// following:
+//   - A full date, with non-zero year, month, and day values.
+//   - A month and day, with a zero year (for example, an anniversary).
+//   - A year on its own, with a zero month and a zero day.
+//   - A year and month, with a zero day (for example, a credit card expiration
+//     date).
+//     Related types:
+//   - google.type.TimeOfDay
+//   - google.type.DateTime
+//   - google.protobuf.Timestamp
+//     Structure is documented below.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) EndDate() InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
 		if v == nil {
@@ -691,8 +965,20 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) EndDate() 
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput)
 }
 
-// Start date of the exclusion period in UTC.
-// Structure is documented below.
+// Represents a whole or partial calendar date, such as a birthday. The time of
+// day and time zone are either specified elsewhere or are insignificant. The
+// date is relative to the Gregorian Calendar. This can represent one of the
+// following:
+//   - A full date, with non-zero year, month, and day values.
+//   - A month and day, with a zero year (for example, an anniversary).
+//   - A year on its own, with a zero month and a zero day.
+//   - A year and month, with a zero day (for example, a credit card expiration
+//     date).
+//     Related types:
+//   - google.type.TimeOfDay
+//   - google.type.DateTime
+//   - google.protobuf.Timestamp
+//     Structure is documented below.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) StartDate() InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
 		if v == nil {
@@ -702,7 +988,9 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) StartDate(
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput)
 }
 
-// Time in UTC for the exclusion window.
+// Represents a time of day. The date and time zone are either not significant
+// or are specified elsewhere. An API may choose to allow leap seconds. Related
+// types are google.type.Date and `google.protobuf.Timestamp`.
 // Structure is documented below.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) Time() InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindow) *InstanceMaintenancePolicyMaintenanceExclusionWindowTime {
@@ -714,11 +1002,15 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowPtrOutput) Time() Ins
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day *int `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month *int `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year *int `pulumi:"year"`
 }
 
@@ -734,11 +1026,15 @@ type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput interface {
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day pulumi.IntPtrInput `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year pulumi.IntPtrInput `pulumi:"year"`
 }
 
@@ -819,17 +1115,21 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToInst
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput)
 }
 
-// Day of a month. Must be from 1 to 31 and valid for the year and month.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+// to specify a year by itself or a year and month where the day isn't
+// significant.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int { return v.Day }).(pulumi.IntPtrOutput)
 }
 
-// Month of a year. Must be from 1 to 12.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+// month and day.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Month() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int { return v.Month }).(pulumi.IntPtrOutput)
 }
 
-// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+// a year.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Year() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int { return v.Year }).(pulumi.IntPtrOutput)
 }
@@ -858,7 +1158,9 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Ele
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput)
 }
 
-// Day of a month. Must be from 1 to 31 and valid for the year and month.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+// to specify a year by itself or a year and month where the day isn't
+// significant.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int {
 		if v == nil {
@@ -868,7 +1170,8 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Day
 	}).(pulumi.IntPtrOutput)
 }
 
-// Month of a year. Must be from 1 to 12.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+// month and day.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Month() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int {
 		if v == nil {
@@ -878,7 +1181,8 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Mon
 	}).(pulumi.IntPtrOutput)
 }
 
-// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+// a year.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Year() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) *int {
 		if v == nil {
@@ -889,11 +1193,15 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowEndDatePtrOutput) Yea
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day *int `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month *int `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year *int `pulumi:"year"`
 }
 
@@ -909,11 +1217,15 @@ type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput interface
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day pulumi.IntPtrInput `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year pulumi.IntPtrInput `pulumi:"year"`
 }
 
@@ -994,17 +1306,21 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) ToIn
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput)
 }
 
-// Day of a month. Must be from 1 to 31 and valid for the year and month.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+// to specify a year by itself or a year and month where the day isn't
+// significant.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int { return v.Day }).(pulumi.IntPtrOutput)
 }
 
-// Month of a year. Must be from 1 to 12.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+// month and day.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Month() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int { return v.Month }).(pulumi.IntPtrOutput)
 }
 
-// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+// a year.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Year() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int { return v.Year }).(pulumi.IntPtrOutput)
 }
@@ -1033,7 +1349,9 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) E
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput)
 }
 
-// Day of a month. Must be from 1 to 31 and valid for the year and month.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+// to specify a year by itself or a year and month where the day isn't
+// significant.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int {
 		if v == nil {
@@ -1043,7 +1361,8 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) D
 	}).(pulumi.IntPtrOutput)
 }
 
-// Month of a year. Must be from 1 to 12.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+// month and day.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Month() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int {
 		if v == nil {
@@ -1053,7 +1372,8 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) M
 	}).(pulumi.IntPtrOutput)
 }
 
-// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+// a year.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Year() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) *int {
 		if v == nil {
@@ -1064,13 +1384,19 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowStartDatePtrOutput) Y
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowTime struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours *int `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes *int `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos *int `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds *int `pulumi:"seconds"`
 }
 
@@ -1086,13 +1412,19 @@ type InstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput interface {
 }
 
 type InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours pulumi.IntPtrInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
 }
 
@@ -1173,22 +1505,28 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToInstanc
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Minutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+// and less than or equal to 999,999,999.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must be from 0 to 59.
+// Seconds of a minute. Must be greater than or equal to 0 and typically must
+// be less than or equal to 59. An API may allow the value 60 if it allows
+// leap-seconds.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
 }
@@ -1217,7 +1555,9 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Elem()
 	}).(InstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
 		if v == nil {
@@ -1227,7 +1567,8 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Hours(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Minutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
 		if v == nil {
@@ -1237,7 +1578,8 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Minute
 	}).(pulumi.IntPtrOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+// and less than or equal to 999,999,999.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
 		if v == nil {
@@ -1247,7 +1589,9 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Nanos(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must be from 0 to 59.
+// Seconds of a minute. Must be greater than or equal to 0 and typically must
+// be less than or equal to 59. An API may allow the value 60 if it allows
+// leap-seconds.
 func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceExclusionWindowTime) *int {
 		if v == nil {
@@ -1258,10 +1602,18 @@ func (o InstanceMaintenancePolicyMaintenanceExclusionWindowTimePtrOutput) Second
 }
 
 type InstanceMaintenancePolicyWeeklyMaintenanceWindows struct {
-	// Day of the week for the maintenance window.
-	// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
 	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Start time of the maintenance window in UTC.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and `google.protobuf.Timestamp`.
 	// Structure is documented below.
 	StartTime InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime `pulumi:"startTime"`
 }
@@ -1278,10 +1630,18 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindowsInput interface {
 }
 
 type InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs struct {
-	// Day of the week for the maintenance window.
-	// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// Start time of the maintenance window in UTC.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and `google.protobuf.Timestamp`.
 	// Structure is documented below.
 	StartTime InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput `pulumi:"startTime"`
 }
@@ -1363,13 +1723,21 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) ToInstanceMaint
 	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput)
 }
 
-// Day of the week for the maintenance window.
-// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindows) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
-// Start time of the maintenance window in UTC.
+// Represents a time of day. The date and time zone are either not significant
+// or are specified elsewhere. An API may choose to allow leap seconds. Related
+// types are google.type.Date and `google.protobuf.Timestamp`.
 // Structure is documented below.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput) StartTime() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindows) InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime {
@@ -1401,8 +1769,14 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) Elem() Insta
 	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsOutput)
 }
 
-// Day of the week for the maintenance window.
-// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindows) *string {
 		if v == nil {
@@ -1412,7 +1786,9 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) DayOfWeek() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Start time of the maintenance window in UTC.
+// Represents a time of day. The date and time zone are either not significant
+// or are specified elsewhere. An API may choose to allow leap seconds. Related
+// types are google.type.Date and `google.protobuf.Timestamp`.
 // Structure is documented below.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) StartTime() InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindows) *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime {
@@ -1424,13 +1800,19 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput) StartTime() 
 }
 
 type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours *int `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes *int `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos *int `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds *int `pulumi:"seconds"`
 }
 
@@ -1446,13 +1828,19 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput interface {
 }
 
 type InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours pulumi.IntPtrInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
 }
 
@@ -1533,22 +1921,28 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) ToInst
 	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Minutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+// and less than or equal to 999,999,999.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must be from 0 to 59.
+// Seconds of a minute. Must be greater than or equal to 0 and typically must
+// be less than or equal to 59. An API may allow the value 60 if it allows
+// leap-seconds.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
 }
@@ -1577,7 +1971,9 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Ele
 	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
 		if v == nil {
@@ -1587,7 +1983,8 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Hou
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
 		if v == nil {
@@ -1597,7 +1994,8 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Min
 	}).(pulumi.IntPtrOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+// and less than or equal to 999,999,999.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
 		if v == nil {
@@ -1607,7 +2005,9 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Nan
 	}).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must be from 0 to 59.
+// Seconds of a minute. Must be greater than or equal to 0 and typically must
+// be less than or equal to 59. An API may allow the value 60 if it allows
+// leap-seconds.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime) *int {
 		if v == nil {
@@ -1617,18 +2017,135 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput) Sec
 	}).(pulumi.IntPtrOutput)
 }
 
+type InstanceUpcomingMaintenanceSchedule struct {
+	// (Output)
+	// The scheduled end time for the maintenance.
+	EndTime *string `pulumi:"endTime"`
+	// (Output)
+	// The scheduled start time for the maintenance.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// InstanceUpcomingMaintenanceScheduleInput is an input type that accepts InstanceUpcomingMaintenanceScheduleArgs and InstanceUpcomingMaintenanceScheduleOutput values.
+// You can construct a concrete instance of `InstanceUpcomingMaintenanceScheduleInput` via:
+//
+//	InstanceUpcomingMaintenanceScheduleArgs{...}
+type InstanceUpcomingMaintenanceScheduleInput interface {
+	pulumi.Input
+
+	ToInstanceUpcomingMaintenanceScheduleOutput() InstanceUpcomingMaintenanceScheduleOutput
+	ToInstanceUpcomingMaintenanceScheduleOutputWithContext(context.Context) InstanceUpcomingMaintenanceScheduleOutput
+}
+
+type InstanceUpcomingMaintenanceScheduleArgs struct {
+	// (Output)
+	// The scheduled end time for the maintenance.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
+	// The scheduled start time for the maintenance.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (InstanceUpcomingMaintenanceScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i InstanceUpcomingMaintenanceScheduleArgs) ToInstanceUpcomingMaintenanceScheduleOutput() InstanceUpcomingMaintenanceScheduleOutput {
+	return i.ToInstanceUpcomingMaintenanceScheduleOutputWithContext(context.Background())
+}
+
+func (i InstanceUpcomingMaintenanceScheduleArgs) ToInstanceUpcomingMaintenanceScheduleOutputWithContext(ctx context.Context) InstanceUpcomingMaintenanceScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceUpcomingMaintenanceScheduleOutput)
+}
+
+// InstanceUpcomingMaintenanceScheduleArrayInput is an input type that accepts InstanceUpcomingMaintenanceScheduleArray and InstanceUpcomingMaintenanceScheduleArrayOutput values.
+// You can construct a concrete instance of `InstanceUpcomingMaintenanceScheduleArrayInput` via:
+//
+//	InstanceUpcomingMaintenanceScheduleArray{ InstanceUpcomingMaintenanceScheduleArgs{...} }
+type InstanceUpcomingMaintenanceScheduleArrayInput interface {
+	pulumi.Input
+
+	ToInstanceUpcomingMaintenanceScheduleArrayOutput() InstanceUpcomingMaintenanceScheduleArrayOutput
+	ToInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(context.Context) InstanceUpcomingMaintenanceScheduleArrayOutput
+}
+
+type InstanceUpcomingMaintenanceScheduleArray []InstanceUpcomingMaintenanceScheduleInput
+
+func (InstanceUpcomingMaintenanceScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i InstanceUpcomingMaintenanceScheduleArray) ToInstanceUpcomingMaintenanceScheduleArrayOutput() InstanceUpcomingMaintenanceScheduleArrayOutput {
+	return i.ToInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceUpcomingMaintenanceScheduleArray) ToInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(ctx context.Context) InstanceUpcomingMaintenanceScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceUpcomingMaintenanceScheduleArrayOutput)
+}
+
+type InstanceUpcomingMaintenanceScheduleOutput struct{ *pulumi.OutputState }
+
+func (InstanceUpcomingMaintenanceScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o InstanceUpcomingMaintenanceScheduleOutput) ToInstanceUpcomingMaintenanceScheduleOutput() InstanceUpcomingMaintenanceScheduleOutput {
+	return o
+}
+
+func (o InstanceUpcomingMaintenanceScheduleOutput) ToInstanceUpcomingMaintenanceScheduleOutputWithContext(ctx context.Context) InstanceUpcomingMaintenanceScheduleOutput {
+	return o
+}
+
+// (Output)
+// The scheduled end time for the maintenance.
+func (o InstanceUpcomingMaintenanceScheduleOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceUpcomingMaintenanceSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The scheduled start time for the maintenance.
+func (o InstanceUpcomingMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceUpcomingMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type InstanceUpcomingMaintenanceScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceUpcomingMaintenanceScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o InstanceUpcomingMaintenanceScheduleArrayOutput) ToInstanceUpcomingMaintenanceScheduleArrayOutput() InstanceUpcomingMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o InstanceUpcomingMaintenanceScheduleArrayOutput) ToInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(ctx context.Context) InstanceUpcomingMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o InstanceUpcomingMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) InstanceUpcomingMaintenanceScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceUpcomingMaintenanceSchedule {
+		return vs[0].([]InstanceUpcomingMaintenanceSchedule)[vs[1].(int)]
+	}).(InstanceUpcomingMaintenanceScheduleOutput)
+}
+
 type GetInstanceAccessRulesOption struct {
-	// An array of access rule exceptions. Each rule defines IP address ranges
-	// that should have different squash behavior than the default.
+	// The access rules for the instance.
 	AccessRules []GetInstanceAccessRulesOptionAccessRule `pulumi:"accessRules"`
-	// The GID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash GID for the default access rule.
+	// This user squash GID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no GID squash).
 	DefaultSquashGid int `pulumi:"defaultSquashGid"`
-	// Set to "ROOT_SQUASH" to enable root squashing by default.
-	// Other values include "NO_SQUASH". Possible values: ["ROOT_SQUASH", "NO_SQUASH"]
+	// The squash mode for the default access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	DefaultSquashMode string `pulumi:"defaultSquashMode"`
-	// The UID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash UID for the default access rule.
+	// This user squash UID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no UID squash).
 	DefaultSquashUid int `pulumi:"defaultSquashUid"`
 }
 
@@ -1644,17 +2161,22 @@ type GetInstanceAccessRulesOptionInput interface {
 }
 
 type GetInstanceAccessRulesOptionArgs struct {
-	// An array of access rule exceptions. Each rule defines IP address ranges
-	// that should have different squash behavior than the default.
+	// The access rules for the instance.
 	AccessRules GetInstanceAccessRulesOptionAccessRuleArrayInput `pulumi:"accessRules"`
-	// The GID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash GID for the default access rule.
+	// This user squash GID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no GID squash).
 	DefaultSquashGid pulumi.IntInput `pulumi:"defaultSquashGid"`
-	// Set to "ROOT_SQUASH" to enable root squashing by default.
-	// Other values include "NO_SQUASH". Possible values: ["ROOT_SQUASH", "NO_SQUASH"]
+	// The squash mode for the default access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	DefaultSquashMode pulumi.StringInput `pulumi:"defaultSquashMode"`
-	// The UID to map the root user to when root squashing is enabled
-	// (e.g., 65534 for nobody).
+	// The user squash UID for the default access rule.
+	// This user squash UID applies to all root users connecting from clients
+	// that are not matched by any of the access rules. If not set, the default
+	// is 0 (no UID squash).
 	DefaultSquashUid pulumi.IntInput `pulumi:"defaultSquashUid"`
 }
 
@@ -1709,26 +2231,31 @@ func (o GetInstanceAccessRulesOptionOutput) ToGetInstanceAccessRulesOptionOutput
 	return o
 }
 
-// An array of access rule exceptions. Each rule defines IP address ranges
-// that should have different squash behavior than the default.
+// The access rules for the instance.
 func (o GetInstanceAccessRulesOptionOutput) AccessRules() GetInstanceAccessRulesOptionAccessRuleArrayOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOption) []GetInstanceAccessRulesOptionAccessRule { return v.AccessRules }).(GetInstanceAccessRulesOptionAccessRuleArrayOutput)
 }
 
-// The GID to map the root user to when root squashing is enabled
-// (e.g., 65534 for nobody).
+// The user squash GID for the default access rule.
+// This user squash GID applies to all root users connecting from clients
+// that are not matched by any of the access rules. If not set, the default
+// is 0 (no GID squash).
 func (o GetInstanceAccessRulesOptionOutput) DefaultSquashGid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOption) int { return v.DefaultSquashGid }).(pulumi.IntOutput)
 }
 
-// Set to "ROOT_SQUASH" to enable root squashing by default.
-// Other values include "NO_SQUASH". Possible values: ["ROOT_SQUASH", "NO_SQUASH"]
+// The squash mode for the default access rule.
+// Possible values:
+// NO_SQUASH
+// ROOT_SQUASH
 func (o GetInstanceAccessRulesOptionOutput) DefaultSquashMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOption) string { return v.DefaultSquashMode }).(pulumi.StringOutput)
 }
 
-// The UID to map the root user to when root squashing is enabled
-// (e.g., 65534 for nobody).
+// The user squash UID for the default access rule.
+// This user squash UID applies to all root users connecting from clients
+// that are not matched by any of the access rules. If not set, the default
+// is 0 (no UID squash).
 func (o GetInstanceAccessRulesOptionOutput) DefaultSquashUid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOption) int { return v.DefaultSquashUid }).(pulumi.IntOutput)
 }
@@ -1754,12 +2281,18 @@ func (o GetInstanceAccessRulesOptionArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceAccessRulesOptionAccessRule struct {
-	// An array of IP address strings or CIDR ranges that this rule applies to.
+	// The IP address ranges to which to apply this access rule. Accepts
+	// non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
+	// (e.g., '192.168.1.0').
 	IpAddressRanges []string `pulumi:"ipAddressRanges"`
-	// A unique identifier for the access rule.
+	// The name of the access rule policy group.
+	// Must be 16 characters or less and include only alphanumeric characters
+	// or '_'.
 	Name string `pulumi:"name"`
-	// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-	// is supported for exceptions. Possible values: ["NO_SQUASH"]
+	// Squash mode for the access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	SquashMode string `pulumi:"squashMode"`
 }
 
@@ -1775,12 +2308,18 @@ type GetInstanceAccessRulesOptionAccessRuleInput interface {
 }
 
 type GetInstanceAccessRulesOptionAccessRuleArgs struct {
-	// An array of IP address strings or CIDR ranges that this rule applies to.
+	// The IP address ranges to which to apply this access rule. Accepts
+	// non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
+	// (e.g., '192.168.1.0').
 	IpAddressRanges pulumi.StringArrayInput `pulumi:"ipAddressRanges"`
-	// A unique identifier for the access rule.
+	// The name of the access rule policy group.
+	// Must be 16 characters or less and include only alphanumeric characters
+	// or '_'.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-	// is supported for exceptions. Possible values: ["NO_SQUASH"]
+	// Squash mode for the access rule.
+	// Possible values:
+	// NO_SQUASH
+	// ROOT_SQUASH
 	SquashMode pulumi.StringInput `pulumi:"squashMode"`
 }
 
@@ -1835,18 +2374,24 @@ func (o GetInstanceAccessRulesOptionAccessRuleOutput) ToGetInstanceAccessRulesOp
 	return o
 }
 
-// An array of IP address strings or CIDR ranges that this rule applies to.
+// The IP address ranges to which to apply this access rule. Accepts
+// non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
+// (e.g., '192.168.1.0').
 func (o GetInstanceAccessRulesOptionAccessRuleOutput) IpAddressRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOptionAccessRule) []string { return v.IpAddressRanges }).(pulumi.StringArrayOutput)
 }
 
-// A unique identifier for the access rule.
+// The name of the access rule policy group.
+// Must be 16 characters or less and include only alphanumeric characters
+// or '_'.
 func (o GetInstanceAccessRulesOptionAccessRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOptionAccessRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-// is supported for exceptions. Possible values: ["NO_SQUASH"]
+// Squash mode for the access rule.
+// Possible values:
+// NO_SQUASH
+// ROOT_SQUASH
 func (o GetInstanceAccessRulesOptionAccessRuleOutput) SquashMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAccessRulesOptionAccessRule) string { return v.SquashMode }).(pulumi.StringOutput)
 }
@@ -1871,10 +2416,117 @@ func (o GetInstanceAccessRulesOptionAccessRuleArrayOutput) Index(i pulumi.IntInp
 	}).(GetInstanceAccessRulesOptionAccessRuleOutput)
 }
 
+type GetInstanceDynamicTierOption struct {
+	// The dynamic tier mode of the instance.
+	// Possible values:
+	// DISABLED
+	// DEFAULT_CACHE
+	Mode string `pulumi:"mode"`
+}
+
+// GetInstanceDynamicTierOptionInput is an input type that accepts GetInstanceDynamicTierOptionArgs and GetInstanceDynamicTierOptionOutput values.
+// You can construct a concrete instance of `GetInstanceDynamicTierOptionInput` via:
+//
+//	GetInstanceDynamicTierOptionArgs{...}
+type GetInstanceDynamicTierOptionInput interface {
+	pulumi.Input
+
+	ToGetInstanceDynamicTierOptionOutput() GetInstanceDynamicTierOptionOutput
+	ToGetInstanceDynamicTierOptionOutputWithContext(context.Context) GetInstanceDynamicTierOptionOutput
+}
+
+type GetInstanceDynamicTierOptionArgs struct {
+	// The dynamic tier mode of the instance.
+	// Possible values:
+	// DISABLED
+	// DEFAULT_CACHE
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetInstanceDynamicTierOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDynamicTierOption)(nil)).Elem()
+}
+
+func (i GetInstanceDynamicTierOptionArgs) ToGetInstanceDynamicTierOptionOutput() GetInstanceDynamicTierOptionOutput {
+	return i.ToGetInstanceDynamicTierOptionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDynamicTierOptionArgs) ToGetInstanceDynamicTierOptionOutputWithContext(ctx context.Context) GetInstanceDynamicTierOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDynamicTierOptionOutput)
+}
+
+// GetInstanceDynamicTierOptionArrayInput is an input type that accepts GetInstanceDynamicTierOptionArray and GetInstanceDynamicTierOptionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDynamicTierOptionArrayInput` via:
+//
+//	GetInstanceDynamicTierOptionArray{ GetInstanceDynamicTierOptionArgs{...} }
+type GetInstanceDynamicTierOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDynamicTierOptionArrayOutput() GetInstanceDynamicTierOptionArrayOutput
+	ToGetInstanceDynamicTierOptionArrayOutputWithContext(context.Context) GetInstanceDynamicTierOptionArrayOutput
+}
+
+type GetInstanceDynamicTierOptionArray []GetInstanceDynamicTierOptionInput
+
+func (GetInstanceDynamicTierOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDynamicTierOption)(nil)).Elem()
+}
+
+func (i GetInstanceDynamicTierOptionArray) ToGetInstanceDynamicTierOptionArrayOutput() GetInstanceDynamicTierOptionArrayOutput {
+	return i.ToGetInstanceDynamicTierOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDynamicTierOptionArray) ToGetInstanceDynamicTierOptionArrayOutputWithContext(ctx context.Context) GetInstanceDynamicTierOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDynamicTierOptionArrayOutput)
+}
+
+type GetInstanceDynamicTierOptionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDynamicTierOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDynamicTierOption)(nil)).Elem()
+}
+
+func (o GetInstanceDynamicTierOptionOutput) ToGetInstanceDynamicTierOptionOutput() GetInstanceDynamicTierOptionOutput {
+	return o
+}
+
+func (o GetInstanceDynamicTierOptionOutput) ToGetInstanceDynamicTierOptionOutputWithContext(ctx context.Context) GetInstanceDynamicTierOptionOutput {
+	return o
+}
+
+// The dynamic tier mode of the instance.
+// Possible values:
+// DISABLED
+// DEFAULT_CACHE
+func (o GetInstanceDynamicTierOptionOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDynamicTierOption) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetInstanceDynamicTierOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDynamicTierOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDynamicTierOption)(nil)).Elem()
+}
+
+func (o GetInstanceDynamicTierOptionArrayOutput) ToGetInstanceDynamicTierOptionArrayOutput() GetInstanceDynamicTierOptionArrayOutput {
+	return o
+}
+
+func (o GetInstanceDynamicTierOptionArrayOutput) ToGetInstanceDynamicTierOptionArrayOutputWithContext(ctx context.Context) GetInstanceDynamicTierOptionArrayOutput {
+	return o
+}
+
+func (o GetInstanceDynamicTierOptionArrayOutput) Index(i pulumi.IntInput) GetInstanceDynamicTierOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDynamicTierOption {
+		return vs[0].([]GetInstanceDynamicTierOption)[vs[1].(int)]
+	}).(GetInstanceDynamicTierOptionOutput)
+}
+
 type GetInstanceMaintenancePolicy struct {
 	// The exclusion windows for the instance. Currently limited to 1 window.
 	MaintenanceExclusionWindows []GetInstanceMaintenancePolicyMaintenanceExclusionWindow `pulumi:"maintenanceExclusionWindows"`
-	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	// The weekly maintenance windows for the instance. Currently limited to 1
+	// window.
 	WeeklyMaintenanceWindows []GetInstanceMaintenancePolicyWeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindows"`
 }
 
@@ -1892,7 +2544,8 @@ type GetInstanceMaintenancePolicyInput interface {
 type GetInstanceMaintenancePolicyArgs struct {
 	// The exclusion windows for the instance. Currently limited to 1 window.
 	MaintenanceExclusionWindows GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayInput `pulumi:"maintenanceExclusionWindows"`
-	// The weekly maintenance windows for the instance. Currently limited to 1 window.
+	// The weekly maintenance windows for the instance. Currently limited to 1
+	// window.
 	WeeklyMaintenanceWindows GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindows"`
 }
 
@@ -1954,7 +2607,8 @@ func (o GetInstanceMaintenancePolicyOutput) MaintenanceExclusionWindows() GetIns
 	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput)
 }
 
-// The weekly maintenance windows for the instance. Currently limited to 1 window.
+// The weekly maintenance windows for the instance. Currently limited to 1
+// window.
 func (o GetInstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicy) []GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
 		return v.WeeklyMaintenanceWindows
@@ -1982,11 +2636,43 @@ func (o GetInstanceMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindow struct {
-	// End date of the exclusion period in UTC.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	//
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//
+	// Related types:
+	//
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
 	EndDates []GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate `pulumi:"endDates"`
-	// Start date of the exclusion period in UTC.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	//
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//
+	// Related types:
+	//
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
 	StartDates []GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate `pulumi:"startDates"`
-	// Time in UTC for the exclusion window.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and 'google.protobuf.Timestamp'.
 	Times []GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime `pulumi:"times"`
 }
 
@@ -2002,11 +2688,43 @@ type GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput interface {
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs struct {
-	// End date of the exclusion period in UTC.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	//
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//
+	// Related types:
+	//
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
 	EndDates GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayInput `pulumi:"endDates"`
-	// Start date of the exclusion period in UTC.
+	// Represents a whole or partial calendar date, such as a birthday. The time of
+	// day and time zone are either specified elsewhere or are insignificant. The
+	// date is relative to the Gregorian Calendar. This can represent one of the
+	// following:
+	//
+	// * A full date, with non-zero year, month, and day values.
+	// * A month and day, with a zero year (for example, an anniversary).
+	// * A year on its own, with a zero month and a zero day.
+	// * A year and month, with a zero day (for example, a credit card expiration
+	//   date).
+	//
+	// Related types:
+	//
+	// * google.type.TimeOfDay
+	// * google.type.DateTime
+	// * google.protobuf.Timestamp
 	StartDates GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayInput `pulumi:"startDates"`
-	// Time in UTC for the exclusion window.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and 'google.protobuf.Timestamp'.
 	Times GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayInput `pulumi:"times"`
 }
 
@@ -2061,21 +2779,53 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) ToGetInsta
 	return o
 }
 
-// End date of the exclusion period in UTC.
+// Represents a whole or partial calendar date, such as a birthday. The time of
+// day and time zone are either specified elsewhere or are insignificant. The
+// date is relative to the Gregorian Calendar. This can represent one of the
+// following:
+//
+//   - A full date, with non-zero year, month, and day values.
+//   - A month and day, with a zero year (for example, an anniversary).
+//   - A year on its own, with a zero month and a zero day.
+//   - A year and month, with a zero day (for example, a credit card expiration
+//     date).
+//
+// Related types:
+//
+// * google.type.TimeOfDay
+// * google.type.DateTime
+// * google.protobuf.Timestamp
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) EndDates() GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindow) []GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
 		return v.EndDates
 	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput)
 }
 
-// Start date of the exclusion period in UTC.
+// Represents a whole or partial calendar date, such as a birthday. The time of
+// day and time zone are either specified elsewhere or are insignificant. The
+// date is relative to the Gregorian Calendar. This can represent one of the
+// following:
+//
+//   - A full date, with non-zero year, month, and day values.
+//   - A month and day, with a zero year (for example, an anniversary).
+//   - A year on its own, with a zero month and a zero day.
+//   - A year and month, with a zero day (for example, a credit card expiration
+//     date).
+//
+// Related types:
+//
+// * google.type.TimeOfDay
+// * google.type.DateTime
+// * google.protobuf.Timestamp
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) StartDates() GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindow) []GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate {
 		return v.StartDates
 	}).(GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutput)
 }
 
-// Time in UTC for the exclusion window.
+// Represents a time of day. The date and time zone are either not significant
+// or are specified elsewhere. An API may choose to allow leap seconds. Related
+// types are google.type.Date and 'google.protobuf.Timestamp'.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput) Times() GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindow) []GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime {
 		return v.Times
@@ -2103,11 +2853,15 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowArrayOutput) Index
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day int `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month int `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year int `pulumi:"year"`
 }
 
@@ -2123,11 +2877,15 @@ type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateInput interfac
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day pulumi.IntInput `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month pulumi.IntInput `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year pulumi.IntInput `pulumi:"year"`
 }
 
@@ -2182,17 +2940,21 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) ToG
 	return o
 }
 
-// Day of a month. Must be from 1 to 31 and valid for the year and month.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+// to specify a year by itself or a year and month where the day isn't
+// significant.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
-// Month of a year. Must be from 1 to 12.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+// month and day.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Month() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
-// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+// a year.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate) int { return v.Year }).(pulumi.IntOutput)
 }
@@ -2218,11 +2980,15 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArrayOutput
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day int `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month int `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year int `pulumi:"year"`
 }
 
@@ -2238,11 +3004,15 @@ type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateInput interf
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+	// to specify a year by itself or a year and month where the day isn't
+	// significant.
 	Day pulumi.IntInput `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+	// month and day.
 	Month pulumi.IntInput `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+	// a year.
 	Year pulumi.IntInput `pulumi:"year"`
 }
 
@@ -2297,17 +3067,21 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) T
 	return o
 }
 
-// Day of a month. Must be from 1 to 31 and valid for the year and month.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+// to specify a year by itself or a year and month where the day isn't
+// significant.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
-// Month of a year. Must be from 1 to 12.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+// month and day.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Month() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
-// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+// a year.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDate) int { return v.Year }).(pulumi.IntOutput)
 }
@@ -2333,13 +3107,19 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArrayOutp
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours int `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes int `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos int `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -2355,13 +3135,19 @@ type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeInput interface {
 }
 
 type GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours pulumi.IntInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes pulumi.IntInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -2416,22 +3202,28 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) ToGetI
 	return o
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Hours }).(pulumi.IntOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Minutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+// and less than or equal to 999,999,999.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
-// Seconds of minutes of the time. Must be from 0 to 59.
+// Seconds of a minute. Must be greater than or equal to 0 and typically must
+// be less than or equal to 59. An API may allow the value 60 if it allows
+// leap-seconds.
 func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyMaintenanceExclusionWindowTime) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -2457,9 +3249,18 @@ func (o GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArrayOutput) I
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
-	// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
 	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Start time of the maintenance window in UTC.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and 'google.protobuf.Timestamp'.
 	StartTimes []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime `pulumi:"startTimes"`
 }
 
@@ -2475,9 +3276,18 @@ type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput interface {
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
-	// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	// Possible values:
+	// MONDAY
+	// TUESDAY
+	// WEDNESDAY
+	// THURSDAY
+	// FRIDAY
+	// SATURDAY
+	// SUNDAY
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// Start time of the maintenance window in UTC.
+	// Represents a time of day. The date and time zone are either not significant
+	// or are specified elsewhere. An API may choose to allow leap seconds. Related
+	// types are google.type.Date and 'google.protobuf.Timestamp'.
 	StartTimes GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput `pulumi:"startTimes"`
 }
 
@@ -2532,12 +3342,21 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToGetInstance
 	return o
 }
 
-// Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+// Possible values:
+// MONDAY
+// TUESDAY
+// WEDNESDAY
+// THURSDAY
+// FRIDAY
+// SATURDAY
+// SUNDAY
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
-// Start time of the maintenance window in UTC.
+// Represents a time of day. The date and time zone are either not significant
+// or are specified elsewhere. An API may choose to allow leap seconds. Related
+// types are google.type.Date and 'google.protobuf.Timestamp'.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) StartTimes() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
 		return v.StartTimes
@@ -2565,13 +3384,19 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) Index(i 
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours int `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes int `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos int `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -2587,13 +3412,19 @@ type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+	// typically must be less than or equal to 23. An API may choose to allow the
+	// value "24:00:00" for scenarios like business closing time.
 	Hours pulumi.IntInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or
+	// equal to 59.
 	Minutes pulumi.IntInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+	// and less than or equal to 999,999,999.
 	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must be from 0 to 59.
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must
+	// be less than or equal to 59. An API may allow the value 60 if it allows
+	// leap-seconds.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -2648,22 +3479,28 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToGe
 	return o
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+// typically must be less than or equal to 23. An API may choose to allow the
+// value "24:00:00" for scenarios like business closing time.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Hours }).(pulumi.IntOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of an hour. Must be greater than or equal to 0 and less than or
+// equal to 59.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Minutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+// and less than or equal to 999,999,999.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
-// Seconds of minutes of the time. Must be from 0 to 59.
+// Seconds of a minute. Must be greater than or equal to 0 and typically must
+// be less than or equal to 59. An API may allow the value 60 if it allows
+// leap-seconds.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -2688,11 +3525,119 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput)
 	}).(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
 }
 
+type GetInstanceUpcomingMaintenanceSchedule struct {
+	// The scheduled end time for the maintenance.
+	EndTime string `pulumi:"endTime"`
+	// The scheduled start time for the maintenance.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetInstanceUpcomingMaintenanceScheduleInput is an input type that accepts GetInstanceUpcomingMaintenanceScheduleArgs and GetInstanceUpcomingMaintenanceScheduleOutput values.
+// You can construct a concrete instance of `GetInstanceUpcomingMaintenanceScheduleInput` via:
+//
+//	GetInstanceUpcomingMaintenanceScheduleArgs{...}
+type GetInstanceUpcomingMaintenanceScheduleInput interface {
+	pulumi.Input
+
+	ToGetInstanceUpcomingMaintenanceScheduleOutput() GetInstanceUpcomingMaintenanceScheduleOutput
+	ToGetInstanceUpcomingMaintenanceScheduleOutputWithContext(context.Context) GetInstanceUpcomingMaintenanceScheduleOutput
+}
+
+type GetInstanceUpcomingMaintenanceScheduleArgs struct {
+	// The scheduled end time for the maintenance.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The scheduled start time for the maintenance.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetInstanceUpcomingMaintenanceScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i GetInstanceUpcomingMaintenanceScheduleArgs) ToGetInstanceUpcomingMaintenanceScheduleOutput() GetInstanceUpcomingMaintenanceScheduleOutput {
+	return i.ToGetInstanceUpcomingMaintenanceScheduleOutputWithContext(context.Background())
+}
+
+func (i GetInstanceUpcomingMaintenanceScheduleArgs) ToGetInstanceUpcomingMaintenanceScheduleOutputWithContext(ctx context.Context) GetInstanceUpcomingMaintenanceScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceUpcomingMaintenanceScheduleOutput)
+}
+
+// GetInstanceUpcomingMaintenanceScheduleArrayInput is an input type that accepts GetInstanceUpcomingMaintenanceScheduleArray and GetInstanceUpcomingMaintenanceScheduleArrayOutput values.
+// You can construct a concrete instance of `GetInstanceUpcomingMaintenanceScheduleArrayInput` via:
+//
+//	GetInstanceUpcomingMaintenanceScheduleArray{ GetInstanceUpcomingMaintenanceScheduleArgs{...} }
+type GetInstanceUpcomingMaintenanceScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceUpcomingMaintenanceScheduleArrayOutput() GetInstanceUpcomingMaintenanceScheduleArrayOutput
+	ToGetInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(context.Context) GetInstanceUpcomingMaintenanceScheduleArrayOutput
+}
+
+type GetInstanceUpcomingMaintenanceScheduleArray []GetInstanceUpcomingMaintenanceScheduleInput
+
+func (GetInstanceUpcomingMaintenanceScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i GetInstanceUpcomingMaintenanceScheduleArray) ToGetInstanceUpcomingMaintenanceScheduleArrayOutput() GetInstanceUpcomingMaintenanceScheduleArrayOutput {
+	return i.ToGetInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceUpcomingMaintenanceScheduleArray) ToGetInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(ctx context.Context) GetInstanceUpcomingMaintenanceScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceUpcomingMaintenanceScheduleArrayOutput)
+}
+
+type GetInstanceUpcomingMaintenanceScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceUpcomingMaintenanceScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o GetInstanceUpcomingMaintenanceScheduleOutput) ToGetInstanceUpcomingMaintenanceScheduleOutput() GetInstanceUpcomingMaintenanceScheduleOutput {
+	return o
+}
+
+func (o GetInstanceUpcomingMaintenanceScheduleOutput) ToGetInstanceUpcomingMaintenanceScheduleOutputWithContext(ctx context.Context) GetInstanceUpcomingMaintenanceScheduleOutput {
+	return o
+}
+
+// The scheduled end time for the maintenance.
+func (o GetInstanceUpcomingMaintenanceScheduleOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceUpcomingMaintenanceSchedule) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The scheduled start time for the maintenance.
+func (o GetInstanceUpcomingMaintenanceScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceUpcomingMaintenanceSchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetInstanceUpcomingMaintenanceScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceUpcomingMaintenanceScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceUpcomingMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o GetInstanceUpcomingMaintenanceScheduleArrayOutput) ToGetInstanceUpcomingMaintenanceScheduleArrayOutput() GetInstanceUpcomingMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o GetInstanceUpcomingMaintenanceScheduleArrayOutput) ToGetInstanceUpcomingMaintenanceScheduleArrayOutputWithContext(ctx context.Context) GetInstanceUpcomingMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o GetInstanceUpcomingMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) GetInstanceUpcomingMaintenanceScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceUpcomingMaintenanceSchedule {
+		return vs[0].([]GetInstanceUpcomingMaintenanceSchedule)[vs[1].(int)]
+	}).(GetInstanceUpcomingMaintenanceScheduleOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsInput)(nil)).Elem(), InstanceAccessRulesOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsPtrInput)(nil)).Elem(), InstanceAccessRulesOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsAccessRuleInput)(nil)).Elem(), InstanceAccessRulesOptionsAccessRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessRulesOptionsAccessRuleArrayInput)(nil)).Elem(), InstanceAccessRulesOptionsAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDynamicTierOptionsInput)(nil)).Elem(), InstanceDynamicTierOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDynamicTierOptionsPtrInput)(nil)).Elem(), InstanceDynamicTierOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceExclusionWindowInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceExclusionWindowArgs{})
@@ -2707,10 +3652,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUpcomingMaintenanceScheduleInput)(nil)).Elem(), InstanceUpcomingMaintenanceScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUpcomingMaintenanceScheduleArrayInput)(nil)).Elem(), InstanceUpcomingMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionInput)(nil)).Elem(), GetInstanceAccessRulesOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionArrayInput)(nil)).Elem(), GetInstanceAccessRulesOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionAccessRuleInput)(nil)).Elem(), GetInstanceAccessRulesOptionAccessRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAccessRulesOptionAccessRuleArrayInput)(nil)).Elem(), GetInstanceAccessRulesOptionAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDynamicTierOptionInput)(nil)).Elem(), GetInstanceDynamicTierOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDynamicTierOptionArrayInput)(nil)).Elem(), GetInstanceDynamicTierOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyInput)(nil)).Elem(), GetInstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyMaintenanceExclusionWindowInput)(nil)).Elem(), GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs{})
@@ -2725,10 +3674,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceUpcomingMaintenanceScheduleInput)(nil)).Elem(), GetInstanceUpcomingMaintenanceScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceUpcomingMaintenanceScheduleArrayInput)(nil)).Elem(), GetInstanceUpcomingMaintenanceScheduleArray{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsOutput{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsAccessRuleOutput{})
 	pulumi.RegisterOutputType(InstanceAccessRulesOptionsAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(InstanceDynamicTierOptionsOutput{})
+	pulumi.RegisterOutputType(InstanceDynamicTierOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceExclusionWindowOutput{})
@@ -2743,10 +3696,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimePtrOutput{})
+	pulumi.RegisterOutputType(InstanceUpcomingMaintenanceScheduleOutput{})
+	pulumi.RegisterOutputType(InstanceUpcomingMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionAccessRuleOutput{})
 	pulumi.RegisterOutputType(GetInstanceAccessRulesOptionAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceDynamicTierOptionOutput{})
+	pulumi.RegisterOutputType(GetInstanceDynamicTierOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyMaintenanceExclusionWindowOutput{})
@@ -2761,4 +3718,6 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceUpcomingMaintenanceScheduleOutput{})
+	pulumi.RegisterOutputType(GetInstanceUpcomingMaintenanceScheduleArrayOutput{})
 }

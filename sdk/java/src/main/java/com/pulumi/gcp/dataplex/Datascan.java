@@ -515,7 +515,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_56529")
+ *             .name("tf-test-bucket-name-_40785")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -584,15 +584,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_75413")
+ *             .name("tf-test-bucket-name-_79169")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var tfTestConnection = new Connection("tfTestConnection", ConnectionArgs.builder()
- *             .connectionId("tf-test-connection-_55138")
+ *             .connectionId("tf-test-connection-_56529")
  *             .location("us-central1")
- *             .friendlyName("tf-test-connection-_37559")
+ *             .friendlyName("tf-test-connection-_75413")
  *             .description("a bigquery connection for tf test")
  *             .cloudResource(ConnectionCloudResourceArgs.builder()
  *                 .build())
@@ -689,7 +689,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_91980")
+ *             .name("tf-test-bucket-name-_55138")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -754,13 +754,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__37118")
+ *             .datasetId("tf_dataplex_test_dataset_id__37559")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__80332")
+ *             .tableId("tf_dataplex_test_table_id__91980")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -874,13 +874,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__13293")
+ *             .datasetId("tf_dataplex_test_dataset_id__37118")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__40289")
+ *             .tableId("tf_dataplex_test_table_id__80332")
  *             .deletionProtection(false)
  *             .schema("""
  *     [

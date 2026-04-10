@@ -9,9 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Represents a managed identity for a workload identity pool namespace.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about WorkloadIdentityPoolManagedIdentity, see:
  *
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces.managedIdentities)

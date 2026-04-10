@@ -288,13 +288,13 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = "backup",
+    ///         Name = "backup-1",
     ///         Location = "us-central1",
     ///     });
     /// 
     ///     var backup = new Gcp.Dataproc.MetastoreService("backup", new()
     ///     {
-    ///         ServiceId = "backup",
+    ///         ServiceId = "backup-1",
     ///         Location = "us-central1",
     ///         Port = 9080,
     ///         Tier = "DEVELOPER",

@@ -18,7 +18,7 @@ public final class BatchRuntimeConfigAutotuningConfigArgs extends com.pulumi.res
 
     /**
      * Optional. Scenarios for which tunings are applied.
-     * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+     * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
      * 
      */
     @Import(name="scenarios")
@@ -26,7 +26,7 @@ public final class BatchRuntimeConfigAutotuningConfigArgs extends com.pulumi.res
 
     /**
      * @return Optional. Scenarios for which tunings are applied.
-     * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+     * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
      * 
      */
     public Optional<Output<List<String>>> scenarios() {
@@ -59,7 +59,7 @@ public final class BatchRuntimeConfigAutotuningConfigArgs extends com.pulumi.res
 
         /**
          * @param scenarios Optional. Scenarios for which tunings are applied.
-         * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+         * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
          * 
          * @return builder
          * 
@@ -71,7 +71,7 @@ public final class BatchRuntimeConfigAutotuningConfigArgs extends com.pulumi.res
 
         /**
          * @param scenarios Optional. Scenarios for which tunings are applied.
-         * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+         * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class BatchRuntimeConfigAutotuningConfigArgs extends com.pulumi.res
 
         /**
          * @param scenarios Optional. Scenarios for which tunings are applied.
-         * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+         * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
          * 
          * @return builder
          * 

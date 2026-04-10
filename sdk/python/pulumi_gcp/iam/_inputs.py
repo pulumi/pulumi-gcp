@@ -79,6 +79,8 @@ __all__ = [
     'WorkforcePoolProviderOidcWebSsoConfigArgsDict',
     'WorkforcePoolProviderSamlArgs',
     'WorkforcePoolProviderSamlArgsDict',
+    'WorkloadIdentityPoolAttestationRuleArgs',
+    'WorkloadIdentityPoolAttestationRuleArgsDict',
     'WorkloadIdentityPoolIamBindingConditionArgs',
     'WorkloadIdentityPoolIamBindingConditionArgsDict',
     'WorkloadIdentityPoolIamMemberConditionArgs',
@@ -2428,6 +2430,37 @@ class WorkforcePoolProviderSamlArgs:
     @idp_metadata_xml.setter
     def idp_metadata_xml(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "idp_metadata_xml", value)
+
+
+class WorkloadIdentityPoolAttestationRuleArgsDict(TypedDict):
+    google_cloud_resource: pulumi.Input[_builtins.str]
+    """
+    A single workload operating on Google Cloud. For example:
+    `//run.googleapis.com/projects/123/type/Service/*`.
+    """
+
+@pulumi.input_type
+class WorkloadIdentityPoolAttestationRuleArgs:
+    def __init__(__self__, *,
+                 google_cloud_resource: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] google_cloud_resource: A single workload operating on Google Cloud. For example:
+               `//run.googleapis.com/projects/123/type/Service/*`.
+        """
+        pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> pulumi.Input[_builtins.str]:
+        """
+        A single workload operating on Google Cloud. For example:
+        `//run.googleapis.com/projects/123/type/Service/*`.
+        """
+        return pulumi.get(self, "google_cloud_resource")
+
+    @google_cloud_resource.setter
+    def google_cloud_resource(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "google_cloud_resource", value)
 
 
 class WorkloadIdentityPoolIamBindingConditionArgsDict(TypedDict):

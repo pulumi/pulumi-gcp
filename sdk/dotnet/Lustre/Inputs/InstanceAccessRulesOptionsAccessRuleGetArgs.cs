@@ -16,7 +16,9 @@ namespace Pulumi.Gcp.Lustre.Inputs
         private InputList<string>? _ipAddressRanges;
 
         /// <summary>
-        /// An array of IP address strings or CIDR ranges that this rule applies to.
+        /// The IP address ranges to which to apply this access rule. Accepts
+        /// non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+        /// (e.g., `192.168.1.0`).
         /// </summary>
         public InputList<string> IpAddressRanges
         {
@@ -25,15 +27,18 @@ namespace Pulumi.Gcp.Lustre.Inputs
         }
 
         /// <summary>
-        /// A unique identifier for the access rule.
+        /// The name of the access rule policy group.
+        /// Must be 16 characters or less and include only alphanumeric characters
+        /// or '_'.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-        /// is supported for exceptions.
-        /// Possible values are: `NO_SQUASH`.
+        /// Squash mode for the access rule.
+        /// Possible values:
+        /// NO_SQUASH
+        /// ROOT_SQUASH
         /// </summary>
         [Input("squashMode", required: true)]
         public Input<string> SquashMode { get; set; } = null!;

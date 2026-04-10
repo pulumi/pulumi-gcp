@@ -14,58 +14,68 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceAccessRulesOption {
     /**
-     * @return An array of access rule exceptions. Each rule defines IP address ranges
-     * that should have different squash behavior than the default.
+     * @return The access rules for the instance.
      * 
      */
     private List<GetInstanceAccessRulesOptionAccessRule> accessRules;
     /**
-     * @return The GID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash GID for the default access rule.
+     * This user squash GID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no GID squash).
      * 
      */
     private Integer defaultSquashGid;
     /**
-     * @return Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-     * Other values include &#34;NO_SQUASH&#34;. Possible values: [&#34;ROOT_SQUASH&#34;, &#34;NO_SQUASH&#34;]
+     * @return The squash mode for the default access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     private String defaultSquashMode;
     /**
-     * @return The UID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash UID for the default access rule.
+     * This user squash UID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no UID squash).
      * 
      */
     private Integer defaultSquashUid;
 
     private GetInstanceAccessRulesOption() {}
     /**
-     * @return An array of access rule exceptions. Each rule defines IP address ranges
-     * that should have different squash behavior than the default.
+     * @return The access rules for the instance.
      * 
      */
     public List<GetInstanceAccessRulesOptionAccessRule> accessRules() {
         return this.accessRules;
     }
     /**
-     * @return The GID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash GID for the default access rule.
+     * This user squash GID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no GID squash).
      * 
      */
     public Integer defaultSquashGid() {
         return this.defaultSquashGid;
     }
     /**
-     * @return Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-     * Other values include &#34;NO_SQUASH&#34;. Possible values: [&#34;ROOT_SQUASH&#34;, &#34;NO_SQUASH&#34;]
+     * @return The squash mode for the default access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     public String defaultSquashMode() {
         return this.defaultSquashMode;
     }
     /**
-     * @return The UID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash UID for the default access rule.
+     * This user squash UID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no UID squash).
      * 
      */
     public Integer defaultSquashUid() {

@@ -48,6 +48,7 @@ __all__ = [
     'WorkforcePoolProviderOidcClientSecretValue',
     'WorkforcePoolProviderOidcWebSsoConfig',
     'WorkforcePoolProviderSaml',
+    'WorkloadIdentityPoolAttestationRule',
     'WorkloadIdentityPoolIamBindingCondition',
     'WorkloadIdentityPoolIamMemberCondition',
     'WorkloadIdentityPoolInlineCertificateIssuanceConfig',
@@ -64,6 +65,7 @@ __all__ = [
     'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa',
     'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor',
     'GetTestablePermissionsPermissionResult',
+    'GetWorkloadIdentityPoolAttestationRuleResult',
     'GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult',
     'GetWorkloadIdentityPoolInlineTrustConfigResult',
     'GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult',
@@ -1890,6 +1892,43 @@ class WorkforcePoolProviderSaml(dict):
 
 
 @pulumi.output_type
+class WorkloadIdentityPoolAttestationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCloudResource":
+            suggest = "google_cloud_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolAttestationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolAttestationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolAttestationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_cloud_resource: _builtins.str):
+        """
+        :param _builtins.str google_cloud_resource: A single workload operating on Google Cloud. For example:
+               `//run.googleapis.com/projects/123/type/Service/*`.
+        """
+        pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> _builtins.str:
+        """
+        A single workload operating on Google Cloud. For example:
+        `//run.googleapis.com/projects/123/type/Service/*`.
+        """
+        return pulumi.get(self, "google_cloud_resource")
+
+
+@pulumi.output_type
 class WorkloadIdentityPoolIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: _builtins.str,
@@ -2786,6 +2825,26 @@ class GetTestablePermissionsPermissionResult(dict):
         Human readable title of the permission.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolAttestationRuleResult(dict):
+    def __init__(__self__, *,
+                 google_cloud_resource: _builtins.str):
+        """
+        :param _builtins.str google_cloud_resource: A single workload operating on Google Cloud. For example:
+               '//run.googleapis.com/projects/123/type/Service/*'.
+        """
+        pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> _builtins.str:
+        """
+        A single workload operating on Google Cloud. For example:
+        '//run.googleapis.com/projects/123/type/Service/*'.
+        """
+        return pulumi.get(self, "google_cloud_resource")
 
 
 @pulumi.output_type

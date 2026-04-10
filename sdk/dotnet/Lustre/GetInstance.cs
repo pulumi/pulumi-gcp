@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Lustre
         public readonly string CapacityGib;
         public readonly string CreateTime;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetInstanceDynamicTierOptionResult> DynamicTierOptions;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Filesystem;
         public readonly bool GkeSupportEnabled;
@@ -118,6 +119,8 @@ namespace Pulumi.Gcp.Lustre
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string State;
         public readonly string StateReason;
+        public readonly string Uid;
+        public readonly ImmutableArray<Outputs.GetInstanceUpcomingMaintenanceScheduleResult> UpcomingMaintenanceSchedules;
         public readonly string UpdateTime;
         public readonly string? Zone;
 
@@ -130,6 +133,8 @@ namespace Pulumi.Gcp.Lustre
             string createTime,
 
             string description,
+
+            ImmutableArray<Outputs.GetInstanceDynamicTierOptionResult> dynamicTierOptions,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -167,6 +172,10 @@ namespace Pulumi.Gcp.Lustre
 
             string stateReason,
 
+            string uid,
+
+            ImmutableArray<Outputs.GetInstanceUpcomingMaintenanceScheduleResult> upcomingMaintenanceSchedules,
+
             string updateTime,
 
             string? zone)
@@ -175,6 +184,7 @@ namespace Pulumi.Gcp.Lustre
             CapacityGib = capacityGib;
             CreateTime = createTime;
             Description = description;
+            DynamicTierOptions = dynamicTierOptions;
             EffectiveLabels = effectiveLabels;
             Filesystem = filesystem;
             GkeSupportEnabled = gkeSupportEnabled;
@@ -193,6 +203,8 @@ namespace Pulumi.Gcp.Lustre
             PulumiLabels = pulumiLabels;
             State = state;
             StateReason = stateReason;
+            Uid = uid;
+            UpcomingMaintenanceSchedules = upcomingMaintenanceSchedules;
             UpdateTime = updateTime;
             Zone = zone;
         }

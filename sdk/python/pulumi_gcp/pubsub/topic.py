@@ -783,6 +783,37 @@ class Topic(pulumi.CustomResource):
             parent=example.name.apply(lambda name: f"//pubsub.googleapis.com/projects/{project.number}/topics/{name}"),
             tag_value=tag_value.id)
         ```
+        ### Pubsub Topic Ai Inference
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
+            account_id="example-sa",
+            display_name="Gemini Query Service Account")
+        gemini_inference_get = gcp.projects.IAMMember("gemini_inference_get",
+            project="my-project-name",
+            role="roles/aiplatform.user",
+            member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_transforms=[{
+                "ai_inference": {
+                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "unstructured_inference": {
+                        "parameters": {
+                            "max_tokens": "25000",
+                        },
+                    },
+                    "service_account_email": gemini_query_service_account.email,
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+        ```
 
         ## Import
 
@@ -1108,6 +1139,37 @@ class Topic(pulumi.CustomResource):
         binding = gcp.tags.TagBinding("binding",
             parent=example.name.apply(lambda name: f"//pubsub.googleapis.com/projects/{project.number}/topics/{name}"),
             tag_value=tag_value.id)
+        ```
+        ### Pubsub Topic Ai Inference
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        gemini_query_service_account = gcp.serviceaccount.Account("gemini_query_service_account",
+            account_id="example-sa",
+            display_name="Gemini Query Service Account")
+        gemini_inference_get = gcp.projects.IAMMember("gemini_inference_get",
+            project="my-project-name",
+            role="roles/aiplatform.user",
+            member=gemini_query_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gemini_inference_get]))
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_transforms=[{
+                "ai_inference": {
+                    "endpoint": "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    "unstructured_inference": {
+                        "parameters": {
+                            "max_tokens": "25000",
+                        },
+                    },
+                    "service_account_email": gemini_query_service_account.email,
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         ```
 
         ## Import

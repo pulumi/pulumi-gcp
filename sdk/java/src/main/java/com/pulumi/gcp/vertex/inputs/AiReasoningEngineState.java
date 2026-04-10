@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
 import java.lang.String;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineState extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineState Empty = new AiReasoningEngineState();
+
+    /**
+     * (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="contextSpec")
+    private @Nullable Output<AiReasoningEngineContextSpecArgs> contextSpec;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineContextSpecArgs>> contextSpec() {
+        return Optional.ofNullable(this.contextSpec);
+    }
 
     /**
      * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format,
@@ -186,6 +206,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
     private AiReasoningEngineState() {}
 
     private AiReasoningEngineState(AiReasoningEngineState $) {
+        this.contextSpec = $.contextSpec;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
@@ -214,6 +235,31 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
         public Builder(AiReasoningEngineState defaults) {
             $ = new AiReasoningEngineState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param contextSpec (Optional, Beta)
+         * Optional. Configuration for how Agent Engine sub-resources should manage context.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextSpec(@Nullable Output<AiReasoningEngineContextSpecArgs> contextSpec) {
+            $.contextSpec = contextSpec;
+            return this;
+        }
+
+        /**
+         * @param contextSpec (Optional, Beta)
+         * Optional. Configuration for how Agent Engine sub-resources should manage context.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextSpec(AiReasoningEngineContextSpecArgs contextSpec) {
+            return contextSpec(Output.of(contextSpec));
         }
 
         /**

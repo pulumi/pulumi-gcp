@@ -19,12 +19,114 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const template_basic = new gcp.modelarmor.Template("template-basic", {
- *     location: "<no value>",
- *     templateId: "<no value>",
+ *     location: "us-central1",
+ *     templateId: "modelarmor1",
  *     filterConfig: {},
  *     templateMetadata: {},
  * });
  * ```
+ * ### Modelarmor Template Filter Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const template_filter_config = new gcp.modelarmor.Template("template-filter-config", {
+ *     location: "us-central1",
+ *     templateId: "modelarmor2",
+ *     filterConfig: {
+ *         raiSettings: {
+ *             raiFilters: [{
+ *                 filterType: "HATE_SPEECH",
+ *                 confidenceLevel: "HIGH",
+ *             }],
+ *         },
+ *         sdpSettings: {
+ *             basicConfig: {
+ *                 filterEnforcement: "ENABLED",
+ *             },
+ *         },
+ *         piAndJailbreakFilterSettings: {
+ *             filterEnforcement: "ENABLED",
+ *             confidenceLevel: "MEDIUM_AND_ABOVE",
+ *         },
+ *         maliciousUriFilterSettings: {
+ *             filterEnforcement: "ENABLED",
+ *         },
+ *     },
+ *     templateMetadata: {
+ *         multiLanguageDetection: {
+ *             enableMultiLanguageDetection: false,
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Modelarmor Template Template Metadata
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const template_template_metadata = new gcp.modelarmor.Template("template-template-metadata", {
+ *     location: "us-central1",
+ *     templateId: "modelarmor3",
+ *     filterConfig: {
+ *         raiSettings: {
+ *             raiFilters: [{
+ *                 filterType: "HARASSMENT",
+ *                 confidenceLevel: "MEDIUM_AND_ABOVE",
+ *             }],
+ *         },
+ *     },
+ *     templateMetadata: {
+ *         customLlmResponseSafetyErrorMessage: "This is a custom error message for LLM response",
+ *         logSanitizeOperations: false,
+ *         logTemplateOperations: true,
+ *         multiLanguageDetection: {
+ *             enableMultiLanguageDetection: true,
+ *         },
+ *         ignorePartialInvocationFailures: false,
+ *         customPromptSafetyErrorCode: 400,
+ *         customPromptSafetyErrorMessage: "This is a custom error message for prompt",
+ *         customLlmResponseSafetyErrorCode: 401,
+ *         enforcementType: "INSPECT_ONLY",
+ *     },
+ * });
+ * ```
+ * ### Modelarmor Template Label
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const template_label_advanced_config = new gcp.modelarmor.Template("template-label-advanced-config", {
+ *     location: "us-central1",
+ *     templateId: "modelarmor4",
+ *     labels: {
+ *         "test-label": "template-test-label",
+ *     },
+ *     filterConfig: {
+ *         raiSettings: {
+ *             raiFilters: [{
+ *                 filterType: "DANGEROUS",
+ *                 confidenceLevel: "MEDIUM_AND_ABOVE",
+ *             }],
+ *         },
+ *         sdpSettings: {
+ *             advancedConfig: {
+ *                 inspectTemplate: "projects/llm-firewall-demo/locations/us-central1/inspectTemplates/t3",
+ *                 deidentifyTemplate: "projects/llm-firewall-demo/locations/us-central1/deidentifyTemplates/t2",
+ *             },
+ *         },
+ *     },
+ *     templateMetadata: {
+ *         multiLanguageDetection: {
+ *             enableMultiLanguageDetection: false,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Template can be imported using any of these accepted formats:

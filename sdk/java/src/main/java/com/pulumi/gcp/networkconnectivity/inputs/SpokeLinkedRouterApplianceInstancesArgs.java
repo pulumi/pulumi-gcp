@@ -20,16 +20,61 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
     public static final SpokeLinkedRouterApplianceInstancesArgs Empty = new SpokeLinkedRouterApplianceInstancesArgs();
 
     /**
-     * IP ranges allowed to be included during import from hub (does not control transit connectivity).
-     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+     * 
+     */
+    @Import(name="excludeExportRanges")
+    private @Nullable Output<List<String>> excludeExportRanges;
+
+    /**
+     * @return Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+     * 
+     */
+    public Optional<Output<List<String>>> excludeExportRanges() {
+        return Optional.ofNullable(this.excludeExportRanges);
+    }
+
+    /**
+     * Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+     * 
+     */
+    @Import(name="excludeImportRanges")
+    private @Nullable Output<List<String>> excludeImportRanges;
+
+    /**
+     * @return Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+     * 
+     */
+    public Optional<Output<List<String>>> excludeImportRanges() {
+        return Optional.ofNullable(this.excludeImportRanges);
+    }
+
+    /**
+     * Dynamic routes fully encompassed by include export ranges are included during export to hub.
+     * 
+     */
+    @Import(name="includeExportRanges")
+    private @Nullable Output<List<String>> includeExportRanges;
+
+    /**
+     * @return Dynamic routes fully encompassed by include export ranges are included during export to hub.
+     * 
+     */
+    public Optional<Output<List<String>>> includeExportRanges() {
+        return Optional.ofNullable(this.includeExportRanges);
+    }
+
+    /**
+     * Hub routes fully encompassed by include import ranges are included during import from hub.
+     * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
      * 
      */
     @Import(name="includeImportRanges")
     private @Nullable Output<List<String>> includeImportRanges;
 
     /**
-     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
-     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * @return Hub routes fully encompassed by include import ranges are included during import from hub.
+     * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
      * 
      */
     public Optional<Output<List<String>>> includeImportRanges() {
@@ -71,6 +116,9 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
     private SpokeLinkedRouterApplianceInstancesArgs() {}
 
     private SpokeLinkedRouterApplianceInstancesArgs(SpokeLinkedRouterApplianceInstancesArgs $) {
+        this.excludeExportRanges = $.excludeExportRanges;
+        this.excludeImportRanges = $.excludeImportRanges;
+        this.includeExportRanges = $.includeExportRanges;
         this.includeImportRanges = $.includeImportRanges;
         this.instances = $.instances;
         this.siteToSiteDataTransfer = $.siteToSiteDataTransfer;
@@ -95,8 +143,101 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeImportRanges IP ranges allowed to be included during import from hub (does not control transit connectivity).
-         * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+         * @param excludeExportRanges Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeExportRanges(@Nullable Output<List<String>> excludeExportRanges) {
+            $.excludeExportRanges = excludeExportRanges;
+            return this;
+        }
+
+        /**
+         * @param excludeExportRanges Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeExportRanges(List<String> excludeExportRanges) {
+            return excludeExportRanges(Output.of(excludeExportRanges));
+        }
+
+        /**
+         * @param excludeExportRanges Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeExportRanges(String... excludeExportRanges) {
+            return excludeExportRanges(List.of(excludeExportRanges));
+        }
+
+        /**
+         * @param excludeImportRanges Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeImportRanges(@Nullable Output<List<String>> excludeImportRanges) {
+            $.excludeImportRanges = excludeImportRanges;
+            return this;
+        }
+
+        /**
+         * @param excludeImportRanges Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeImportRanges(List<String> excludeImportRanges) {
+            return excludeImportRanges(Output.of(excludeImportRanges));
+        }
+
+        /**
+         * @param excludeImportRanges Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeImportRanges(String... excludeImportRanges) {
+            return excludeImportRanges(List.of(excludeImportRanges));
+        }
+
+        /**
+         * @param includeExportRanges Dynamic routes fully encompassed by include export ranges are included during export to hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExportRanges(@Nullable Output<List<String>> includeExportRanges) {
+            $.includeExportRanges = includeExportRanges;
+            return this;
+        }
+
+        /**
+         * @param includeExportRanges Dynamic routes fully encompassed by include export ranges are included during export to hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExportRanges(List<String> includeExportRanges) {
+            return includeExportRanges(Output.of(includeExportRanges));
+        }
+
+        /**
+         * @param includeExportRanges Dynamic routes fully encompassed by include export ranges are included during export to hub.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExportRanges(String... includeExportRanges) {
+            return includeExportRanges(List.of(includeExportRanges));
+        }
+
+        /**
+         * @param includeImportRanges Hub routes fully encompassed by include import ranges are included during import from hub.
+         * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
          * 
          * @return builder
          * 
@@ -107,8 +248,8 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeImportRanges IP ranges allowed to be included during import from hub (does not control transit connectivity).
-         * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+         * @param includeImportRanges Hub routes fully encompassed by include import ranges are included during import from hub.
+         * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
          * 
          * @return builder
          * 
@@ -118,8 +259,8 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
         }
 
         /**
-         * @param includeImportRanges IP ranges allowed to be included during import from hub (does not control transit connectivity).
-         * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+         * @param includeImportRanges Hub routes fully encompassed by include import ranges are included during import from hub.
+         * &#34;ALL_IPV4_RANGES&#34; or IPv4 CIDR ranges are allowed.
          * 
          * @return builder
          * 

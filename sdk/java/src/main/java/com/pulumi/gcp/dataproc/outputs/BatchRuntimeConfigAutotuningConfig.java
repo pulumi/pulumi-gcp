@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class BatchRuntimeConfigAutotuningConfig {
     /**
      * @return Optional. Scenarios for which tunings are applied.
-     * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+     * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
      * 
      */
     private @Nullable List<String> scenarios;
@@ -21,7 +21,7 @@ public final class BatchRuntimeConfigAutotuningConfig {
     private BatchRuntimeConfigAutotuningConfig() {}
     /**
      * @return Optional. Scenarios for which tunings are applied.
-     * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+     * Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
      * 
      */
     public List<String> scenarios() {
