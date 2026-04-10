@@ -22,6 +22,7 @@ __all__ = ['AiReasoningEngineArgs', 'AiReasoningEngine']
 class AiReasoningEngineArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
+                 context_spec: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_spec: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']] = None,
@@ -32,6 +33,9 @@ class AiReasoningEngineArgs:
         The set of arguments for constructing a AiReasoningEngine resource.
 
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
+        :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: (Optional, Beta)
+               Optional. Configuration for how Agent Engine sub-resources should manage context.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input['AiReasoningEngineEncryptionSpecArgs'] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
@@ -45,6 +49,8 @@ class AiReasoningEngineArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if context_spec is not None:
+            pulumi.set(__self__, "context_spec", context_spec)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -69,6 +75,20 @@ class AiReasoningEngineArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contextSpec")
+    def context_spec(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Configuration for how Agent Engine sub-resources should manage context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context_spec")
+
+    @context_spec.setter
+    def context_spec(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]):
+        pulumi.set(self, "context_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -151,6 +171,7 @@ class AiReasoningEngineArgs:
 @pulumi.input_type
 class _AiReasoningEngineState:
     def __init__(__self__, *,
+                 context_spec: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -164,6 +185,9 @@ class _AiReasoningEngineState:
         """
         Input properties used for looking up and filtering AiReasoningEngine resources.
 
+        :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: (Optional, Beta)
+               Optional. Configuration for how Agent Engine sub-resources should manage context.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
@@ -183,6 +207,8 @@ class _AiReasoningEngineState:
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
                format, with nanosecond resolution and up to nine fractional digits.
         """
+        if context_spec is not None:
+            pulumi.set(__self__, "context_spec", context_spec)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
@@ -203,6 +229,20 @@ class _AiReasoningEngineState:
             pulumi.set(__self__, "spec", spec)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="contextSpec")
+    def context_spec(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Configuration for how Agent Engine sub-resources should manage context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context_spec")
+
+    @context_spec.setter
+    def context_spec(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]):
+        pulumi.set(self, "context_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -339,6 +379,7 @@ class AiReasoningEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 context_spec: Optional[pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -629,6 +670,63 @@ class AiReasoningEngine(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait5_minutes]))
         ```
+        ### Vertex Ai Reasoning Engine Context Spec
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="re-ctx-spec",
+            description="Reasoning engine with context spec",
+            region="us-central1",
+            context_spec={
+                "memory_bank_config": {
+                    "generation_config": {
+                        "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    },
+                    "similarity_search_config": {
+                        "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
+                    },
+                    "disable_memory_revisions": False,
+                    "ttl_config": {
+                        "default_ttl": "86400s",
+                    },
+                },
+            })
+        ```
+        ### Vertex Ai Reasoning Engine Granular Ttl
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="re-gran-ttl",
+            description="Reasoning engine with granular ttl",
+            region="us-central1",
+            context_spec={
+                "memory_bank_config": {
+                    "generation_config": {
+                        "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    },
+                    "similarity_search_config": {
+                        "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
+                    },
+                    "disable_memory_revisions": False,
+                    "ttl_config": {
+                        "memory_revision_default_ttl": "86400s",
+                        "granular_ttl_config": {
+                            "create_ttl": "86400s",
+                            "generate_created_ttl": "86400s",
+                            "generate_updated_ttl": "86400s",
+                        },
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -651,6 +749,9 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']] context_spec: (Optional, Beta)
+               Optional. Configuration for how Agent Engine sub-resources should manage context.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
@@ -952,6 +1053,63 @@ class AiReasoningEngine(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait5_minutes]))
         ```
+        ### Vertex Ai Reasoning Engine Context Spec
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="re-ctx-spec",
+            description="Reasoning engine with context spec",
+            region="us-central1",
+            context_spec={
+                "memory_bank_config": {
+                    "generation_config": {
+                        "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    },
+                    "similarity_search_config": {
+                        "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
+                    },
+                    "disable_memory_revisions": False,
+                    "ttl_config": {
+                        "default_ttl": "86400s",
+                    },
+                },
+            })
+        ```
+        ### Vertex Ai Reasoning Engine Granular Ttl
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="re-gran-ttl",
+            description="Reasoning engine with granular ttl",
+            region="us-central1",
+            context_spec={
+                "memory_bank_config": {
+                    "generation_config": {
+                        "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                    },
+                    "similarity_search_config": {
+                        "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
+                    },
+                    "disable_memory_revisions": False,
+                    "ttl_config": {
+                        "memory_revision_default_ttl": "86400s",
+                        "granular_ttl_config": {
+                            "create_ttl": "86400s",
+                            "generate_created_ttl": "86400s",
+                            "generate_updated_ttl": "86400s",
+                        },
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -987,6 +1145,7 @@ class AiReasoningEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 context_spec: Optional[pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1003,6 +1162,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiReasoningEngineArgs.__new__(AiReasoningEngineArgs)
 
+            __props__.__dict__["context_spec"] = context_spec
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -1025,6 +1185,7 @@ class AiReasoningEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            context_spec: Optional[pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1042,6 +1203,9 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']] context_spec: (Optional, Beta)
+               Optional. Configuration for how Agent Engine sub-resources should manage context.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
@@ -1065,6 +1229,7 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         __props__ = _AiReasoningEngineState.__new__(_AiReasoningEngineState)
 
+        __props__.__dict__["context_spec"] = context_spec
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
@@ -1076,6 +1241,16 @@ class AiReasoningEngine(pulumi.CustomResource):
         __props__.__dict__["spec"] = spec
         __props__.__dict__["update_time"] = update_time
         return AiReasoningEngine(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="contextSpec")
+    def context_spec(self) -> pulumi.Output[Optional['outputs.AiReasoningEngineContextSpec']]:
+        """
+        (Optional, Beta)
+        Optional. Configuration for how Agent Engine sub-resources should manage context.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context_spec")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

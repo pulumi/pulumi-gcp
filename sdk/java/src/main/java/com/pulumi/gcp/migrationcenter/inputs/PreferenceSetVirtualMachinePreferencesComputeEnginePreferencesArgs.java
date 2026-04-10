@@ -48,11 +48,29 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
         return Optional.ofNullable(this.machinePreferences);
     }
 
+    /**
+     * Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+     * Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+     * 
+     */
+    @Import(name="persistentDiskType")
+    private @Nullable Output<String> persistentDiskType;
+
+    /**
+     * @return Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+     * Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+     * 
+     */
+    public Optional<Output<String>> persistentDiskType() {
+        return Optional.ofNullable(this.persistentDiskType);
+    }
+
     private PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs() {}
 
     private PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs $) {
         this.licenseType = $.licenseType;
         this.machinePreferences = $.machinePreferences;
+        this.persistentDiskType = $.persistentDiskType;
     }
 
     public static Builder builder() {
@@ -115,6 +133,29 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
          */
         public Builder machinePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs machinePreferences) {
             return machinePreferences(Output.of(machinePreferences));
+        }
+
+        /**
+         * @param persistentDiskType Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+         * Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistentDiskType(@Nullable Output<String> persistentDiskType) {
+            $.persistentDiskType = persistentDiskType;
+            return this;
+        }
+
+        /**
+         * @param persistentDiskType Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+         * Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistentDiskType(String persistentDiskType) {
+            return persistentDiskType(Output.of(persistentDiskType));
         }
 
         public PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs build() {

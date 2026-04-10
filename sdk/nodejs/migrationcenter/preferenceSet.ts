@@ -79,6 +79,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Preference Set Compute Engine Preferences Disk Type
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.migrationcenter.PreferenceSet("default", {
+ *     location: "us-central1",
+ *     preferenceSetId: "preference-set-test",
+ *     description: "Terraform integration test description",
+ *     displayName: "Terraform integration test display",
+ *     virtualMachinePreferences: {
+ *         sizingOptimizationStrategy: "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+ *         targetProduct: "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+ *         computeEnginePreferences: {
+ *             licenseType: "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+ *             machinePreferences: {
+ *                 allowedMachineSeries: [{
+ *                     code: "C3",
+ *                 }],
+ *             },
+ *             persistentDiskType: "PERSISTENT_DISK_TYPE_SSD",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

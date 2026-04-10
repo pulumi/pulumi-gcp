@@ -960,6 +960,263 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Url Map Cache Policy Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyDefaultTtlArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyClientTtlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .defaultService(default_.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .cachePolicy(URLMapDefaultRouteActionCachePolicyArgs.builder()
+ *                     .cacheMode("CACHE_ALL_STATIC")
+ *                     .defaultTtl(URLMapDefaultRouteActionCachePolicyDefaultTtlArgs.builder()
+ *                         .seconds("3600")
+ *                         .build())
+ *                     .clientTtl(URLMapDefaultRouteActionCachePolicyClientTtlArgs.builder()
+ *                         .seconds("1800")
+ *                         .build())
+ *                     .negativeCaching(true)
+ *                     .negativeCachingPolicies(URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyArgs.builder()
+ *                         .code(404)
+ *                         .ttl(URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs.builder()
+ *                             .seconds("300")
+ *                             .build())
+ *                         .build())
+ *                     .requestCoalescing(true)
+ *                     .cacheBypassRequestHeaderNames("X-Internal-Bypass")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Url Map Cache Policy Multi Level
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyCacheKeyPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyDefaultTtlArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionCachePolicyClientTtlArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionCachePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .defaultService(default_.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .cachePolicy(URLMapDefaultRouteActionCachePolicyArgs.builder()
+ *                     .cacheKeyPolicy(URLMapDefaultRouteActionCachePolicyCacheKeyPolicyArgs.builder()
+ *                         .includeHost(true)
+ *                         .includeProtocol(true)
+ *                         .includeQueryString(true)
+ *                         .includedCookieNames(                        
+ *                             "cookie1",
+ *                             "cookie2")
+ *                         .includedHeaderNames(                        
+ *                             "header1",
+ *                             "header2")
+ *                         .includedQueryParameters(                        
+ *                             "param1",
+ *                             "param2")
+ *                         .build())
+ *                     .cacheMode("FORCE_CACHE_ALL")
+ *                     .defaultTtl(URLMapDefaultRouteActionCachePolicyDefaultTtlArgs.builder()
+ *                         .seconds("3600")
+ *                         .build())
+ *                     .clientTtl(URLMapDefaultRouteActionCachePolicyClientTtlArgs.builder()
+ *                         .seconds("1800")
+ *                         .build())
+ *                     .requestCoalescing(true)
+ *                     .cacheBypassRequestHeaderNames("X-Internal-Bypass")
+ *                     .build())
+ *                 .build())
+ *             .hostRules(            
+ *                 URLMapHostRuleArgs.builder()
+ *                     .hosts("example.com")
+ *                     .pathMatcher("main-matcher")
+ *                     .build(),
+ *                 URLMapHostRuleArgs.builder()
+ *                     .hosts("api.example.com")
+ *                     .pathMatcher("api-matcher")
+ *                     .build())
+ *             .pathMatchers(            
+ *                 URLMapPathMatcherArgs.builder()
+ *                     .name("main-matcher")
+ *                     .defaultService(default_.id())
+ *                     .defaultRouteAction(URLMapPathMatcherDefaultRouteActionArgs.builder()
+ *                         .cachePolicy(URLMapPathMatcherDefaultRouteActionCachePolicyArgs.builder()
+ *                             .cacheMode("CACHE_ALL_STATIC")
+ *                             .defaultTtl(URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs.builder()
+ *                                 .seconds("7200")
+ *                                 .build())
+ *                             .negativeCaching(true)
+ *                             .negativeCachingPolicies(URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArgs.builder()
+ *                                 .code(404)
+ *                                 .ttl(URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs.builder()
+ *                                     .seconds("300")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                         .paths("/static/*")
+ *                         .service(default_.id())
+ *                         .routeAction(URLMapPathMatcherPathRuleRouteActionArgs.builder()
+ *                             .cachePolicy(URLMapPathMatcherPathRuleRouteActionCachePolicyArgs.builder()
+ *                                 .cacheMode("CACHE_ALL_STATIC")
+ *                                 .defaultTtl(URLMapPathMatcherPathRuleRouteActionCachePolicyDefaultTtlArgs.builder()
+ *                                     .seconds("86400")
+ *                                     .build())
+ *                                 .cacheKeyPolicy(URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicyArgs.builder()
+ *                                     .includeHost(true)
+ *                                     .includeProtocol(true)
+ *                                     .includeQueryString(true)
+ *                                     .excludedQueryParameters("custom_parameter")
+ *                                     .includedHeaderNames("X-Custom-Header")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 URLMapPathMatcherArgs.builder()
+ *                     .name("api-matcher")
+ *                     .defaultService(default_.id())
+ *                     .defaultRouteAction(URLMapPathMatcherDefaultRouteActionArgs.builder()
+ *                         .cachePolicy(URLMapPathMatcherDefaultRouteActionCachePolicyArgs.builder()
+ *                             .cacheMode("CACHE_ALL_STATIC")
+ *                             .defaultTtl(URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs.builder()
+ *                                 .seconds("0")
+ *                                 .build())
+ *                             .negativeCaching(true)
+ *                             .negativeCachingPolicies(URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArgs.builder()
+ *                                 .code(404)
+ *                                 .ttl(URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs.builder()
+ *                                     .seconds("300")
+ *                                     .nanos(0)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(1)
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/api/v1")
+ *                             .build())
+ *                         .service(default_.id())
+ *                         .routeAction(URLMapPathMatcherRouteRuleRouteActionArgs.builder()
+ *                             .cachePolicy(URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs.builder()
+ *                                 .cacheMode("CACHE_ALL_STATIC")
+ *                                 .defaultTtl(URLMapPathMatcherRouteRuleRouteActionCachePolicyDefaultTtlArgs.builder()
+ *                                     .seconds("60")
+ *                                     .build())
+ *                                 .clientTtl(URLMapPathMatcherRouteRuleRouteActionCachePolicyClientTtlArgs.builder()
+ *                                     .seconds("90")
+ *                                     .build())
+ *                                 .maxTtl(URLMapPathMatcherRouteRuleRouteActionCachePolicyMaxTtlArgs.builder()
+ *                                     .seconds("120")
+ *                                     .build())
+ *                                 .serveWhileStale(URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStaleArgs.builder()
+ *                                     .seconds("3600")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Url Map Path Rule Mirror Percent
  * 
  * <pre>

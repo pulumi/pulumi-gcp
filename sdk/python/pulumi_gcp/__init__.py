@@ -2232,6 +2232,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/dashboardChart",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/dashboardChart:DashboardChart": "DashboardChart"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/dataAccessLabel",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2260,6 +2268,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/dataTableRow:DataTableRow": "DataTableRow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/feed",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/feed:Feed": "Feed"
   }
  },
  {
@@ -8328,6 +8344,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkconnectivity/transport",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/transport:Transport": "Transport"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkmanagement/connectivityTest",
   "fqn": "pulumi_gcp.networkmanagement",
   "classes": {
@@ -9052,6 +9076,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.organizations",
   "classes": {
    "gcp:organizations/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "organizations/serviceIdentity",
+  "fqn": "pulumi_gcp.organizations",
+  "classes": {
+   "gcp:organizations/serviceIdentity:ServiceIdentity": "ServiceIdentity"
   }
  },
  {

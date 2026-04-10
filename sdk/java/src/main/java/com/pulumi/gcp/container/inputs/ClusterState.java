@@ -139,6 +139,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API&#39;s
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     * 
+     */
+    @Import(name="autopilotPrivilegedAdmissions")
+    private @Nullable Output<List<String>> autopilotPrivilegedAdmissions;
+
+    /**
+     * @return The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API&#39;s
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     * 
+     */
+    public Optional<Output<List<String>>> autopilotPrivilegedAdmissions() {
+        return Optional.ofNullable(this.autopilotPrivilegedAdmissions);
+    }
+
+    /**
      * Configuration options for the Binary
      * Authorization feature. Structure is documented below.
      * 
@@ -1736,6 +1761,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.allowNetAdmin = $.allowNetAdmin;
         this.anonymousAuthenticationConfig = $.anonymousAuthenticationConfig;
         this.authenticatorGroupsConfig = $.authenticatorGroupsConfig;
+        this.autopilotPrivilegedAdmissions = $.autopilotPrivilegedAdmissions;
         this.binaryAuthorization = $.binaryAuthorization;
         this.clusterAutoscaling = $.clusterAutoscaling;
         this.clusterIpv4Cidr = $.clusterIpv4Cidr;
@@ -1935,6 +1961,52 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authenticatorGroupsConfig(ClusterAuthenticatorGroupsConfigArgs authenticatorGroupsConfig) {
             return authenticatorGroupsConfig(Output.of(authenticatorGroupsConfig));
+        }
+
+        /**
+         * @param autopilotPrivilegedAdmissions The customer
+         * allowlist Cloud Storage paths for the cluster. These paths are used with the
+         * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+         * Autopilot clusters. See the Cluster API&#39;s
+         * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+         * documentation for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotPrivilegedAdmissions(@Nullable Output<List<String>> autopilotPrivilegedAdmissions) {
+            $.autopilotPrivilegedAdmissions = autopilotPrivilegedAdmissions;
+            return this;
+        }
+
+        /**
+         * @param autopilotPrivilegedAdmissions The customer
+         * allowlist Cloud Storage paths for the cluster. These paths are used with the
+         * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+         * Autopilot clusters. See the Cluster API&#39;s
+         * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+         * documentation for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotPrivilegedAdmissions(List<String> autopilotPrivilegedAdmissions) {
+            return autopilotPrivilegedAdmissions(Output.of(autopilotPrivilegedAdmissions));
+        }
+
+        /**
+         * @param autopilotPrivilegedAdmissions The customer
+         * allowlist Cloud Storage paths for the cluster. These paths are used with the
+         * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+         * Autopilot clusters. See the Cluster API&#39;s
+         * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+         * documentation for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotPrivilegedAdmissions(String... autopilotPrivilegedAdmissions) {
+            return autopilotPrivilegedAdmissions(List.of(autopilotPrivilegedAdmissions));
         }
 
         /**

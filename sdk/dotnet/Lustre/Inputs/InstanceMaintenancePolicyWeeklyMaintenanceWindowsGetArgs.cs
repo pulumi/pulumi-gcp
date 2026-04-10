@@ -13,14 +13,22 @@ namespace Pulumi.Gcp.Lustre.Inputs
     public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Day of the week for the maintenance window.
-        /// Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        /// Possible values:
+        /// MONDAY
+        /// TUESDAY
+        /// WEDNESDAY
+        /// THURSDAY
+        /// FRIDAY
+        /// SATURDAY
+        /// SUNDAY
         /// </summary>
         [Input("dayOfWeek", required: true)]
         public Input<string> DayOfWeek { get; set; } = null!;
 
         /// <summary>
-        /// Start time of the maintenance window in UTC.
+        /// Represents a time of day. The date and time zone are either not significant
+        /// or are specified elsewhere. An API may choose to allow leap seconds. Related
+        /// types are google.type.Date and `google.protobuf.Timestamp`.
         /// Structure is documented below.
         /// </summary>
         [Input("startTime", required: true)]

@@ -13,19 +13,23 @@ namespace Pulumi.Gcp.Lustre.Inputs
     public sealed class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Day of a month. Must be from 1 to 31 and valid for the year and month.
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+        /// to specify a year by itself or a year and month where the day isn't
+        /// significant.
         /// </summary>
         [Input("day")]
         public Input<int>? Day { get; set; }
 
         /// <summary>
-        /// Month of a year. Must be from 1 to 12.
+        /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+        /// month and day.
         /// </summary>
         [Input("month")]
         public Input<int>? Month { get; set; }
 
         /// <summary>
-        /// Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+        /// a year.
         /// </summary>
         [Input("year")]
         public Input<int>? Year { get; set; }

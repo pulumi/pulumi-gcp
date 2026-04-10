@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociationArgs;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyAssociationState;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -117,6 +119,34 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * A list of folders to exclude from the security policy.
+     * 
+     */
+    @Export(name="excludedFolders", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> excludedFolders;
+
+    /**
+     * @return A list of folders to exclude from the security policy.
+     * 
+     */
+    public Output<Optional<List<String>>> excludedFolders() {
+        return Codegen.optional(this.excludedFolders);
+    }
+    /**
+     * A list of projects to exclude from the security policy.
+     * 
+     */
+    @Export(name="excludedProjects", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> excludedProjects;
+
+    /**
+     * @return A list of projects to exclude from the security policy.
+     * 
+     */
+    public Output<Optional<List<String>>> excludedProjects() {
+        return Codegen.optional(this.excludedProjects);
     }
     /**
      * The name for an association.

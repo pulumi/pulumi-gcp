@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
- *     appId: "app-id-_44703",
+ *     appId: "app-id",
  *     location: "us",
  *     displayName: "my-app",
  *     timeZoneSettings: {
@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const bidiProfile = new gcp.diagflow.ConversationProfile("bidi_profile", {
- *     displayName: "tf-test-dialogflow-profile-bidi-_32270",
+ *     displayName: "dialogflow-profile-bidi",
  *     location: "global",
  *     languageCode: "en-US",
  *     useBidiStreaming: true,

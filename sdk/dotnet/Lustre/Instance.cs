@@ -81,8 +81,8 @@ namespace Pulumi.Gcp.Lustre
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access control rules for the Lustre instance. Configures default root
-        /// squashing behavior and specific access rules based on IP addresses.
+        /// IP-based access rules for the Managed Lustre instance. These options
+        /// define the root user squash configuration.
         /// Structure is documented below.
         /// </summary>
         [Output("accessRulesOptions")]
@@ -90,7 +90,10 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
-        /// are from `18000` to `954000`, in increments of 9000.
+        /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+        /// See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for specific minimums, maximums, and step sizes for each performance tier.
         /// </summary>
         [Output("capacityGib")]
         public Output<string> CapacityGib { get; private set; } = null!;
@@ -106,6 +109,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Dynamic tier options for a Managed Lustre instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dynamicTierOptions")]
+        public Output<Outputs.InstanceDynamicTierOptions?> DynamicTierOptions { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -139,7 +149,12 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The KMS key id to use for encryption of the Lustre instance.
+        /// The Cloud KMS key name to use for data encryption.
+        /// If not set, the instance will use Google-managed encryption keys.
+        /// If set, the instance will use customer-managed encryption keys.
+        /// The key must be in the same region as the instance.
+        /// The key format is:
+        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         /// </summary>
         [Output("kmsKey")]
         public Output<string?> KmsKey { get; private set; } = null!;
@@ -159,7 +174,7 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        /// Defines a maintenance policy for a resource.
         /// Structure is documented below.
         /// </summary>
         [Output("maintenancePolicy")]
@@ -186,11 +201,16 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The throughput of the instance in MB/s/TiB.
-        /// Valid values are 125, 250, 500, 1000.
+        /// The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+        /// 500, 1000.
+        /// See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for more information.
+        /// If the instance is using the Dynamic tier, this field must not be set or
+        /// must be set to zero.
         /// </summary>
         [Output("perUnitStorageThroughput")]
-        public Output<string> PerUnitStorageThroughput { get; private set; } = null!;
+        public Output<string?> PerUnitStorageThroughput { get; private set; } = null!;
 
         /// <summary>
         /// The placement policy name for the instance in the format of
@@ -215,16 +235,39 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The state of the instance.
-        /// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+        /// Possible values:
+        /// ACTIVE
+        /// CREATING
+        /// DELETING
+        /// UPGRADING
+        /// REPAIRING
+        /// STOPPED
+        /// UPDATING
+        /// SUSPENDED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The reason why the instance is in a certain state.
+        /// The reason why the instance is in a certain state (e.g. SUSPENDED).
         /// </summary>
         [Output("stateReason")]
         public Output<string> StateReason { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID of the resource.
+        /// This is unrelated to the access rules which allow specifying the root
+        /// squash uid.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents a scheduled maintenance event.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("upcomingMaintenanceSchedules")]
+        public Output<ImmutableArray<Outputs.InstanceUpcomingMaintenanceSchedule>> UpcomingMaintenanceSchedules { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the instance was last updated.
@@ -284,8 +327,8 @@ namespace Pulumi.Gcp.Lustre
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access control rules for the Lustre instance. Configures default root
-        /// squashing behavior and specific access rules based on IP addresses.
+        /// IP-based access rules for the Managed Lustre instance. These options
+        /// define the root user squash configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("accessRulesOptions")]
@@ -293,7 +336,10 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
-        /// are from `18000` to `954000`, in increments of 9000.
+        /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+        /// See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for specific minimums, maximums, and step sizes for each performance tier.
         /// </summary>
         [Input("capacityGib", required: true)]
         public Input<string> CapacityGib { get; set; } = null!;
@@ -303,6 +349,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Dynamic tier options for a Managed Lustre instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicTierOptions")]
+        public Input<Inputs.InstanceDynamicTierOptionsArgs>? DynamicTierOptions { get; set; }
 
         /// <summary>
         /// The filesystem name for this instance. This name is used by client-side
@@ -330,7 +383,12 @@ namespace Pulumi.Gcp.Lustre
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The KMS key id to use for encryption of the Lustre instance.
+        /// The Cloud KMS key name to use for data encryption.
+        /// If not set, the instance will use Google-managed encryption keys.
+        /// If set, the instance will use customer-managed encryption keys.
+        /// The key must be in the same region as the instance.
+        /// The key format is:
+        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
@@ -356,7 +414,7 @@ namespace Pulumi.Gcp.Lustre
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        /// Defines a maintenance policy for a resource.
         /// Structure is documented below.
         /// </summary>
         [Input("maintenancePolicy")]
@@ -371,11 +429,16 @@ namespace Pulumi.Gcp.Lustre
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// The throughput of the instance in MB/s/TiB.
-        /// Valid values are 125, 250, 500, 1000.
+        /// The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+        /// 500, 1000.
+        /// See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for more information.
+        /// If the instance is using the Dynamic tier, this field must not be set or
+        /// must be set to zero.
         /// </summary>
-        [Input("perUnitStorageThroughput", required: true)]
-        public Input<string> PerUnitStorageThroughput { get; set; } = null!;
+        [Input("perUnitStorageThroughput")]
+        public Input<string>? PerUnitStorageThroughput { get; set; }
 
         /// <summary>
         /// The placement policy name for the instance in the format of
@@ -400,8 +463,8 @@ namespace Pulumi.Gcp.Lustre
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access control rules for the Lustre instance. Configures default root
-        /// squashing behavior and specific access rules based on IP addresses.
+        /// IP-based access rules for the Managed Lustre instance. These options
+        /// define the root user squash configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("accessRulesOptions")]
@@ -409,7 +472,10 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
-        /// are from `18000` to `954000`, in increments of 9000.
+        /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+        /// See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for specific minimums, maximums, and step sizes for each performance tier.
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
@@ -425,6 +491,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Dynamic tier options for a Managed Lustre instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicTierOptions")]
+        public Input<Inputs.InstanceDynamicTierOptionsGetArgs>? DynamicTierOptions { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -468,7 +541,12 @@ namespace Pulumi.Gcp.Lustre
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The KMS key id to use for encryption of the Lustre instance.
+        /// The Cloud KMS key name to use for data encryption.
+        /// If not set, the instance will use Google-managed encryption keys.
+        /// If set, the instance will use customer-managed encryption keys.
+        /// The key must be in the same region as the instance.
+        /// The key format is:
+        /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
@@ -494,7 +572,7 @@ namespace Pulumi.Gcp.Lustre
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        /// Defines a maintenance policy for a resource.
         /// Structure is documented below.
         /// </summary>
         [Input("maintenancePolicy")]
@@ -521,8 +599,13 @@ namespace Pulumi.Gcp.Lustre
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The throughput of the instance in MB/s/TiB.
-        /// Valid values are 125, 250, 500, 1000.
+        /// The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+        /// 500, 1000.
+        /// See [Performance tiers and maximum storage
+        /// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        /// for more information.
+        /// If the instance is using the Dynamic tier, this field must not be set or
+        /// must be set to zero.
         /// </summary>
         [Input("perUnitStorageThroughput")]
         public Input<string>? PerUnitStorageThroughput { get; set; }
@@ -560,16 +643,45 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The state of the instance.
-        /// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+        /// Possible values:
+        /// ACTIVE
+        /// CREATING
+        /// DELETING
+        /// UPGRADING
+        /// REPAIRING
+        /// STOPPED
+        /// UPDATING
+        /// SUSPENDED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The reason why the instance is in a certain state.
+        /// The reason why the instance is in a certain state (e.g. SUSPENDED).
         /// </summary>
         [Input("stateReason")]
         public Input<string>? StateReason { get; set; }
+
+        /// <summary>
+        /// Unique ID of the resource.
+        /// This is unrelated to the access rules which allow specifying the root
+        /// squash uid.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
+
+        [Input("upcomingMaintenanceSchedules")]
+        private InputList<Inputs.InstanceUpcomingMaintenanceScheduleGetArgs>? _upcomingMaintenanceSchedules;
+
+        /// <summary>
+        /// Represents a scheduled maintenance event.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceUpcomingMaintenanceScheduleGetArgs> UpcomingMaintenanceSchedules
+        {
+            get => _upcomingMaintenanceSchedules ?? (_upcomingMaintenanceSchedules = new InputList<Inputs.InstanceUpcomingMaintenanceScheduleGetArgs>());
+            set => _upcomingMaintenanceSchedules = value;
+        }
 
         /// <summary>
         /// Timestamp when the instance was last updated.

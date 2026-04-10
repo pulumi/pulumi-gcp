@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Lustre.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyMaintenanceExclusionWindowResult> MaintenanceExclusionWindows;
         /// <summary>
-        /// The weekly maintenance windows for the instance. Currently limited to 1 window.
+        /// The weekly maintenance windows for the instance. Currently limited to 1
+        /// window.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult> WeeklyMaintenanceWindows;
 

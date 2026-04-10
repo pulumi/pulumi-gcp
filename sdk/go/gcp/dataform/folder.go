@@ -41,7 +41,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewFolder(ctx, "dataform_folder_basic", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic Folder-_16511"),
+//				DisplayName: pulumi.String("Basic Folder-_39249"),
 //			})
 //			if err != nil {
 //				return err

@@ -18,7 +18,8 @@ public final class GetInstanceMaintenancePolicy {
      */
     private List<GetInstanceMaintenancePolicyMaintenanceExclusionWindow> maintenanceExclusionWindows;
     /**
-     * @return The weekly maintenance windows for the instance. Currently limited to 1 window.
+     * @return The weekly maintenance windows for the instance. Currently limited to 1
+     * window.
      * 
      */
     private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
@@ -32,7 +33,8 @@ public final class GetInstanceMaintenancePolicy {
         return this.maintenanceExclusionWindows;
     }
     /**
-     * @return The weekly maintenance windows for the instance. Currently limited to 1 window.
+     * @return The weekly maintenance windows for the instance. Currently limited to 1
+     * window.
      * 
      */
     public List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows() {

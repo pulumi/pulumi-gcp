@@ -19,16 +19,17 @@ namespace Pulumi.Gcp.Lustre.Outputs
         /// </summary>
         public readonly Outputs.InstanceMaintenancePolicyMaintenanceExclusionWindow? MaintenanceExclusionWindow;
         /// <summary>
-        /// The weekly maintenance windows for the instance. Currently limited to 1 window.
+        /// The weekly maintenance windows for the instance. Currently limited to 1
+        /// window.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows? WeeklyMaintenanceWindows;
+        public readonly Outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows WeeklyMaintenanceWindows;
 
         [OutputConstructor]
         private InstanceMaintenancePolicy(
             Outputs.InstanceMaintenancePolicyMaintenanceExclusionWindow? maintenanceExclusionWindow,
 
-            Outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows? weeklyMaintenanceWindows)
+            Outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows)
         {
             MaintenanceExclusionWindow = maintenanceExclusionWindow;
             WeeklyMaintenanceWindows = weeklyMaintenanceWindows;

@@ -16,36 +16,39 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceAccessRulesOptions {
     /**
-     * @return An array of access rule exceptions. Each rule defines IP address ranges
-     * that should have different squash behavior than the default.
+     * @return The access rules for the instance.
      * Structure is documented below.
      * 
      */
     private @Nullable List<InstanceAccessRulesOptionsAccessRule> accessRules;
     /**
-     * @return The GID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash GID for the default access rule.
+     * This user squash GID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no GID squash).
      * 
      */
     private @Nullable Integer defaultSquashGid;
     /**
-     * @return Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-     * Other values include &#34;NO_SQUASH&#34;.
-     * Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+     * @return The squash mode for the default access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     private String defaultSquashMode;
     /**
-     * @return The UID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash UID for the default access rule.
+     * This user squash UID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no UID squash).
      * 
      */
     private @Nullable Integer defaultSquashUid;
 
     private InstanceAccessRulesOptions() {}
     /**
-     * @return An array of access rule exceptions. Each rule defines IP address ranges
-     * that should have different squash behavior than the default.
+     * @return The access rules for the instance.
      * Structure is documented below.
      * 
      */
@@ -53,25 +56,30 @@ public final class InstanceAccessRulesOptions {
         return this.accessRules == null ? List.of() : this.accessRules;
     }
     /**
-     * @return The GID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash GID for the default access rule.
+     * This user squash GID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no GID squash).
      * 
      */
     public Optional<Integer> defaultSquashGid() {
         return Optional.ofNullable(this.defaultSquashGid);
     }
     /**
-     * @return Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-     * Other values include &#34;NO_SQUASH&#34;.
-     * Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+     * @return The squash mode for the default access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     public String defaultSquashMode() {
         return this.defaultSquashMode;
     }
     /**
-     * @return The UID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash UID for the default access rule.
+     * This user squash UID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no UID squash).
      * 
      */
     public Optional<Integer> defaultSquashUid() {

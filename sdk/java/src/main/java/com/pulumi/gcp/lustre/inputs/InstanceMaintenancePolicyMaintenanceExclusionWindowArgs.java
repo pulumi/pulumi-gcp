@@ -17,16 +17,40 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
     public static final InstanceMaintenancePolicyMaintenanceExclusionWindowArgs Empty = new InstanceMaintenancePolicyMaintenanceExclusionWindowArgs();
 
     /**
-     * End date of the exclusion period in UTC.
-     * Structure is documented below.
+     * Represents a whole or partial calendar date, such as a birthday. The time of
+     * day and time zone are either specified elsewhere or are insignificant. The
+     * date is relative to the Gregorian Calendar. This can represent one of the
+     * following:
+     * * A full date, with non-zero year, month, and day values.
+     * * A month and day, with a zero year (for example, an anniversary).
+     * * A year on its own, with a zero month and a zero day.
+     * * A year and month, with a zero day (for example, a credit card expiration
+     *   date).
+     *   Related types:
+     * * google.type.TimeOfDay
+     * * google.type.DateTime
+     * * google.protobuf.Timestamp
+     *   Structure is documented below.
      * 
      */
     @Import(name="endDate", required=true)
     private Output<InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs> endDate;
 
     /**
-     * @return End date of the exclusion period in UTC.
-     * Structure is documented below.
+     * @return Represents a whole or partial calendar date, such as a birthday. The time of
+     * day and time zone are either specified elsewhere or are insignificant. The
+     * date is relative to the Gregorian Calendar. This can represent one of the
+     * following:
+     * * A full date, with non-zero year, month, and day values.
+     * * A month and day, with a zero year (for example, an anniversary).
+     * * A year on its own, with a zero month and a zero day.
+     * * A year and month, with a zero day (for example, a credit card expiration
+     *   date).
+     *   Related types:
+     * * google.type.TimeOfDay
+     * * google.type.DateTime
+     * * google.protobuf.Timestamp
+     *   Structure is documented below.
      * 
      */
     public Output<InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs> endDate() {
@@ -34,16 +58,40 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
     }
 
     /**
-     * Start date of the exclusion period in UTC.
-     * Structure is documented below.
+     * Represents a whole or partial calendar date, such as a birthday. The time of
+     * day and time zone are either specified elsewhere or are insignificant. The
+     * date is relative to the Gregorian Calendar. This can represent one of the
+     * following:
+     * * A full date, with non-zero year, month, and day values.
+     * * A month and day, with a zero year (for example, an anniversary).
+     * * A year on its own, with a zero month and a zero day.
+     * * A year and month, with a zero day (for example, a credit card expiration
+     *   date).
+     *   Related types:
+     * * google.type.TimeOfDay
+     * * google.type.DateTime
+     * * google.protobuf.Timestamp
+     *   Structure is documented below.
      * 
      */
     @Import(name="startDate", required=true)
     private Output<InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs> startDate;
 
     /**
-     * @return Start date of the exclusion period in UTC.
-     * Structure is documented below.
+     * @return Represents a whole or partial calendar date, such as a birthday. The time of
+     * day and time zone are either specified elsewhere or are insignificant. The
+     * date is relative to the Gregorian Calendar. This can represent one of the
+     * following:
+     * * A full date, with non-zero year, month, and day values.
+     * * A month and day, with a zero year (for example, an anniversary).
+     * * A year on its own, with a zero month and a zero day.
+     * * A year and month, with a zero day (for example, a credit card expiration
+     *   date).
+     *   Related types:
+     * * google.type.TimeOfDay
+     * * google.type.DateTime
+     * * google.protobuf.Timestamp
+     *   Structure is documented below.
      * 
      */
     public Output<InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs> startDate() {
@@ -51,7 +99,9 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
     }
 
     /**
-     * Time in UTC for the exclusion window.
+     * Represents a time of day. The date and time zone are either not significant
+     * or are specified elsewhere. An API may choose to allow leap seconds. Related
+     * types are google.type.Date and `google.protobuf.Timestamp`.
      * Structure is documented below.
      * 
      */
@@ -59,7 +109,9 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
     private Output<InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs> time;
 
     /**
-     * @return Time in UTC for the exclusion window.
+     * @return Represents a time of day. The date and time zone are either not significant
+     * or are specified elsewhere. An API may choose to allow leap seconds. Related
+     * types are google.type.Date and `google.protobuf.Timestamp`.
      * Structure is documented below.
      * 
      */
@@ -94,8 +146,20 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
         }
 
         /**
-         * @param endDate End date of the exclusion period in UTC.
-         * Structure is documented below.
+         * @param endDate Represents a whole or partial calendar date, such as a birthday. The time of
+         * day and time zone are either specified elsewhere or are insignificant. The
+         * date is relative to the Gregorian Calendar. This can represent one of the
+         * following:
+         * * A full date, with non-zero year, month, and day values.
+         * * A month and day, with a zero year (for example, an anniversary).
+         * * A year on its own, with a zero month and a zero day.
+         * * A year and month, with a zero day (for example, a credit card expiration
+         *   date).
+         *   Related types:
+         * * google.type.TimeOfDay
+         * * google.type.DateTime
+         * * google.protobuf.Timestamp
+         *   Structure is documented below.
          * 
          * @return builder
          * 
@@ -106,8 +170,20 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
         }
 
         /**
-         * @param endDate End date of the exclusion period in UTC.
-         * Structure is documented below.
+         * @param endDate Represents a whole or partial calendar date, such as a birthday. The time of
+         * day and time zone are either specified elsewhere or are insignificant. The
+         * date is relative to the Gregorian Calendar. This can represent one of the
+         * following:
+         * * A full date, with non-zero year, month, and day values.
+         * * A month and day, with a zero year (for example, an anniversary).
+         * * A year on its own, with a zero month and a zero day.
+         * * A year and month, with a zero day (for example, a credit card expiration
+         *   date).
+         *   Related types:
+         * * google.type.TimeOfDay
+         * * google.type.DateTime
+         * * google.protobuf.Timestamp
+         *   Structure is documented below.
          * 
          * @return builder
          * 
@@ -117,8 +193,20 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
         }
 
         /**
-         * @param startDate Start date of the exclusion period in UTC.
-         * Structure is documented below.
+         * @param startDate Represents a whole or partial calendar date, such as a birthday. The time of
+         * day and time zone are either specified elsewhere or are insignificant. The
+         * date is relative to the Gregorian Calendar. This can represent one of the
+         * following:
+         * * A full date, with non-zero year, month, and day values.
+         * * A month and day, with a zero year (for example, an anniversary).
+         * * A year on its own, with a zero month and a zero day.
+         * * A year and month, with a zero day (for example, a credit card expiration
+         *   date).
+         *   Related types:
+         * * google.type.TimeOfDay
+         * * google.type.DateTime
+         * * google.protobuf.Timestamp
+         *   Structure is documented below.
          * 
          * @return builder
          * 
@@ -129,8 +217,20 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
         }
 
         /**
-         * @param startDate Start date of the exclusion period in UTC.
-         * Structure is documented below.
+         * @param startDate Represents a whole or partial calendar date, such as a birthday. The time of
+         * day and time zone are either specified elsewhere or are insignificant. The
+         * date is relative to the Gregorian Calendar. This can represent one of the
+         * following:
+         * * A full date, with non-zero year, month, and day values.
+         * * A month and day, with a zero year (for example, an anniversary).
+         * * A year on its own, with a zero month and a zero day.
+         * * A year and month, with a zero day (for example, a credit card expiration
+         *   date).
+         *   Related types:
+         * * google.type.TimeOfDay
+         * * google.type.DateTime
+         * * google.protobuf.Timestamp
+         *   Structure is documented below.
          * 
          * @return builder
          * 
@@ -140,7 +240,9 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
         }
 
         /**
-         * @param time Time in UTC for the exclusion window.
+         * @param time Represents a time of day. The date and time zone are either not significant
+         * or are specified elsewhere. An API may choose to allow leap seconds. Related
+         * types are google.type.Date and `google.protobuf.Timestamp`.
          * Structure is documented below.
          * 
          * @return builder
@@ -152,7 +254,9 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs exten
         }
 
         /**
-         * @param time Time in UTC for the exclusion window.
+         * @param time Represents a time of day. The date and time zone are either not significant
+         * or are specified elsewhere. An API may choose to allow leap seconds. Related
+         * types are google.type.Date and `google.protobuf.Timestamp`.
          * Structure is documented below.
          * 
          * @return builder

@@ -122,6 +122,12 @@ __all__ = [
     'AiRagEngineConfigRagManagedDbConfigBasic',
     'AiRagEngineConfigRagManagedDbConfigScaled',
     'AiRagEngineConfigRagManagedDbConfigUnprovisioned',
+    'AiReasoningEngineContextSpec',
+    'AiReasoningEngineContextSpecMemoryBankConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigTtlConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig',
     'AiReasoningEngineEncryptionSpec',
     'AiReasoningEngineSpec',
     'AiReasoningEngineSpecDeploymentSpec',
@@ -6648,6 +6654,311 @@ class AiRagEngineConfigRagManagedDbConfigScaled(dict):
 class AiRagEngineConfigRagManagedDbConfigUnprovisioned(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryBankConfig":
+            suggest = "memory_bank_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 memory_bank_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfig'] = None):
+        """
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigArgs' memory_bank_config: Specification for a Memory Bank, which manages memories for the Agent Engine.
+               Structure is documented below.
+        """
+        if memory_bank_config is not None:
+            pulumi.set(__self__, "memory_bank_config", memory_bank_config)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryBankConfig")
+    def memory_bank_config(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfig']:
+        """
+        Specification for a Memory Bank, which manages memories for the Agent Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_bank_config")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableMemoryRevisions":
+            suggest = "disable_memory_revisions"
+        elif key == "generationConfig":
+            suggest = "generation_config"
+        elif key == "similaritySearchConfig":
+            suggest = "similarity_search_config"
+        elif key == "ttlConfig":
+            suggest = "ttl_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_memory_revisions: Optional[_builtins.bool] = None,
+                 generation_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig'] = None,
+                 similarity_search_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig'] = None,
+                 ttl_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfig'] = None):
+        """
+        :param _builtins.bool disable_memory_revisions: If true, no memory revisions will be created for any requests to the Memory Bank.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs' generation_config: Configuration for how to generate memories for the Memory Bank.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs' similarity_search_config: Configuration for how to perform similarity search on memories.
+               Structure is documented below.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs' ttl_config: Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+               Structure is documented below.
+        """
+        if disable_memory_revisions is not None:
+            pulumi.set(__self__, "disable_memory_revisions", disable_memory_revisions)
+        if generation_config is not None:
+            pulumi.set(__self__, "generation_config", generation_config)
+        if similarity_search_config is not None:
+            pulumi.set(__self__, "similarity_search_config", similarity_search_config)
+        if ttl_config is not None:
+            pulumi.set(__self__, "ttl_config", ttl_config)
+
+    @_builtins.property
+    @pulumi.getter(name="disableMemoryRevisions")
+    def disable_memory_revisions(self) -> Optional[_builtins.bool]:
+        """
+        If true, no memory revisions will be created for any requests to the Memory Bank.
+        """
+        return pulumi.get(self, "disable_memory_revisions")
+
+    @_builtins.property
+    @pulumi.getter(name="generationConfig")
+    def generation_config(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig']:
+        """
+        Configuration for how to generate memories for the Memory Bank.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_config")
+
+    @_builtins.property
+    @pulumi.getter(name="similaritySearchConfig")
+    def similarity_search_config(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig']:
+        """
+        Configuration for how to perform similarity search on memories.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "similarity_search_config")
+
+    @_builtins.property
+    @pulumi.getter(name="ttlConfig")
+    def ttl_config(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfig']:
+        """
+        Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ttl_config")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig(dict):
+    def __init__(__self__, *,
+                 model: _builtins.str):
+        """
+        :param _builtins.str model: The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> _builtins.str:
+        """
+        The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "embeddingModel":
+            suggest = "embedding_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 embedding_model: _builtins.str):
+        """
+        :param _builtins.str embedding_model: The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        pulumi.set(__self__, "embedding_model", embedding_model)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModel")
+    def embedding_model(self) -> _builtins.str:
+        """
+        The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        return pulumi.get(self, "embedding_model")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigTtlConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultTtl":
+            suggest = "default_ttl"
+        elif key == "granularTtlConfig":
+            suggest = "granular_ttl_config"
+        elif key == "memoryRevisionDefaultTtl":
+            suggest = "memory_revision_default_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigTtlConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigTtlConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigTtlConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_ttl: Optional[_builtins.str] = None,
+                 granular_ttl_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig'] = None,
+                 memory_revision_default_ttl: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str default_ttl: The default TTL duration of the memories in the Memory Bank.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs' granular_ttl_config: The granular TTL configuration of the memories in the Memory Bank.
+               Structure is documented below.
+        :param _builtins.str memory_revision_default_ttl: The default TTL duration of the memory revisions in the Memory Bank.
+        """
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if granular_ttl_config is not None:
+            pulumi.set(__self__, "granular_ttl_config", granular_ttl_config)
+        if memory_revision_default_ttl is not None:
+            pulumi.set(__self__, "memory_revision_default_ttl", memory_revision_default_ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[_builtins.str]:
+        """
+        The default TTL duration of the memories in the Memory Bank.
+        """
+        return pulumi.get(self, "default_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="granularTtlConfig")
+    def granular_ttl_config(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig']:
+        """
+        The granular TTL configuration of the memories in the Memory Bank.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "granular_ttl_config")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryRevisionDefaultTtl")
+    def memory_revision_default_ttl(self) -> Optional[_builtins.str]:
+        """
+        The default TTL duration of the memory revisions in the Memory Bank.
+        """
+        return pulumi.get(self, "memory_revision_default_ttl")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTtl":
+            suggest = "create_ttl"
+        elif key == "generateCreatedTtl":
+            suggest = "generate_created_ttl"
+        elif key == "generateUpdatedTtl":
+            suggest = "generate_updated_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_ttl: Optional[_builtins.str] = None,
+                 generate_created_ttl: Optional[_builtins.str] = None,
+                 generate_updated_ttl: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_ttl: The TTL duration for memories uploaded via CreateMemory.
+        :param _builtins.str generate_created_ttl: The TTL duration for memories newly generated via GenerateMemories.
+        :param _builtins.str generate_updated_ttl: The TTL duration for memories updated via GenerateMemories.
+        """
+        if create_ttl is not None:
+            pulumi.set(__self__, "create_ttl", create_ttl)
+        if generate_created_ttl is not None:
+            pulumi.set(__self__, "generate_created_ttl", generate_created_ttl)
+        if generate_updated_ttl is not None:
+            pulumi.set(__self__, "generate_updated_ttl", generate_updated_ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="createTtl")
+    def create_ttl(self) -> Optional[_builtins.str]:
+        """
+        The TTL duration for memories uploaded via CreateMemory.
+        """
+        return pulumi.get(self, "create_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="generateCreatedTtl")
+    def generate_created_ttl(self) -> Optional[_builtins.str]:
+        """
+        The TTL duration for memories newly generated via GenerateMemories.
+        """
+        return pulumi.get(self, "generate_created_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="generateUpdatedTtl")
+    def generate_updated_ttl(self) -> Optional[_builtins.str]:
+        """
+        The TTL duration for memories updated via GenerateMemories.
+        """
+        return pulumi.get(self, "generate_updated_ttl")
 
 
 @pulumi.output_type

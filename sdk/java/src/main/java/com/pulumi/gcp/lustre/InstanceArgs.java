@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.lustre.inputs.InstanceAccessRulesOptionsArgs;
+import com.pulumi.gcp.lustre.inputs.InstanceDynamicTierOptionsArgs;
 import com.pulumi.gcp.lustre.inputs.InstanceMaintenancePolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -21,8 +22,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      * 
      */
@@ -30,8 +31,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceAccessRulesOptionsArgs> accessRulesOptions;
 
     /**
-     * @return Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * @return IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      * 
      */
@@ -41,7 +42,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      * 
      */
     @Import(name="capacityGib", required=true)
@@ -49,7 +53,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      * 
      */
     public Output<String> capacityGib() {
@@ -69,6 +76,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicTierOptions")
+    private @Nullable Output<InstanceDynamicTierOptionsArgs> dynamicTierOptions;
+
+    /**
+     * @return Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceDynamicTierOptionsArgs>> dynamicTierOptions() {
+        return Optional.ofNullable(this.dynamicTierOptions);
     }
 
     /**
@@ -131,14 +155,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The KMS key id to use for encryption of the Lustre instance.
+     * The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return The KMS key id to use for encryption of the Lustre instance.
+     * @return The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -180,7 +214,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Defines a maintenance policy for a resource.
      * Structure is documented below.
      * 
      */
@@ -188,7 +222,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy;
 
     /**
-     * @return The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * @return Defines a maintenance policy for a resource.
      * Structure is documented below.
      * 
      */
@@ -216,20 +250,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      * 
      */
-    @Import(name="perUnitStorageThroughput", required=true)
-    private Output<String> perUnitStorageThroughput;
+    @Import(name="perUnitStorageThroughput")
+    private @Nullable Output<String> perUnitStorageThroughput;
 
     /**
-     * @return The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * @return The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      * 
      */
-    public Output<String> perUnitStorageThroughput() {
-        return this.perUnitStorageThroughput;
+    public Optional<Output<String>> perUnitStorageThroughput() {
+        return Optional.ofNullable(this.perUnitStorageThroughput);
     }
 
     /**
@@ -272,6 +316,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.accessRulesOptions = $.accessRulesOptions;
         this.capacityGib = $.capacityGib;
         this.description = $.description;
+        this.dynamicTierOptions = $.dynamicTierOptions;
         this.filesystem = $.filesystem;
         this.gkeSupportEnabled = $.gkeSupportEnabled;
         this.instanceId = $.instanceId;
@@ -304,8 +349,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRulesOptions Access control rules for the Lustre instance. Configures default root
-         * squashing behavior and specific access rules based on IP addresses.
+         * @param accessRulesOptions IP-based access rules for the Managed Lustre instance. These options
+         * define the root user squash configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -317,8 +362,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessRulesOptions Access control rules for the Lustre instance. Configures default root
-         * squashing behavior and specific access rules based on IP addresses.
+         * @param accessRulesOptions IP-based access rules for the Managed Lustre instance. These options
+         * define the root user squash configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -330,7 +375,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param capacityGib The storage capacity of the instance in gibibytes (GiB). Allowed values
-         * are from `18000` to `954000`, in increments of 9000.
+         * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+         * See [Performance tiers and maximum storage
+         * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+         * for specific minimums, maximums, and step sizes for each performance tier.
          * 
          * @return builder
          * 
@@ -342,7 +390,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param capacityGib The storage capacity of the instance in gibibytes (GiB). Allowed values
-         * are from `18000` to `954000`, in increments of 9000.
+         * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+         * See [Performance tiers and maximum storage
+         * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+         * for specific minimums, maximums, and step sizes for each performance tier.
          * 
          * @return builder
          * 
@@ -370,6 +421,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dynamicTierOptions Dynamic tier options for a Managed Lustre instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicTierOptions(@Nullable Output<InstanceDynamicTierOptionsArgs> dynamicTierOptions) {
+            $.dynamicTierOptions = dynamicTierOptions;
+            return this;
+        }
+
+        /**
+         * @param dynamicTierOptions Dynamic tier options for a Managed Lustre instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicTierOptions(InstanceDynamicTierOptionsArgs dynamicTierOptions) {
+            return dynamicTierOptions(Output.of(dynamicTierOptions));
         }
 
         /**
@@ -450,7 +524,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKey The KMS key id to use for encryption of the Lustre instance.
+         * @param kmsKey The Cloud KMS key name to use for data encryption.
+         * If not set, the instance will use Google-managed encryption keys.
+         * If set, the instance will use customer-managed encryption keys.
+         * The key must be in the same region as the instance.
+         * The key format is:
+         * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
          * 
          * @return builder
          * 
@@ -461,7 +540,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKey The KMS key id to use for encryption of the Lustre instance.
+         * @param kmsKey The Cloud KMS key name to use for data encryption.
+         * If not set, the instance will use Google-managed encryption keys.
+         * If set, the instance will use customer-managed encryption keys.
+         * The key must be in the same region as the instance.
+         * The key format is:
+         * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
          * 
          * @return builder
          * 
@@ -517,7 +601,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenancePolicy The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+         * @param maintenancePolicy Defines a maintenance policy for a resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -529,7 +613,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenancePolicy The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+         * @param maintenancePolicy Defines a maintenance policy for a resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -565,20 +649,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param perUnitStorageThroughput The throughput of the instance in MB/s/TiB.
-         * Valid values are 125, 250, 500, 1000.
+         * @param perUnitStorageThroughput The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+         * 500, 1000.
+         * See [Performance tiers and maximum storage
+         * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+         * for more information.
+         * If the instance is using the Dynamic tier, this field must not be set or
+         * must be set to zero.
          * 
          * @return builder
          * 
          */
-        public Builder perUnitStorageThroughput(Output<String> perUnitStorageThroughput) {
+        public Builder perUnitStorageThroughput(@Nullable Output<String> perUnitStorageThroughput) {
             $.perUnitStorageThroughput = perUnitStorageThroughput;
             return this;
         }
 
         /**
-         * @param perUnitStorageThroughput The throughput of the instance in MB/s/TiB.
-         * Valid values are 125, 250, 500, 1000.
+         * @param perUnitStorageThroughput The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+         * 500, 1000.
+         * See [Performance tiers and maximum storage
+         * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+         * for more information.
+         * If the instance is using the Dynamic tier, this field must not be set or
+         * must be set to zero.
          * 
          * @return builder
          * 
@@ -648,9 +742,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.network == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "network");
-            }
-            if ($.perUnitStorageThroughput == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "perUnitStorageThroughput");
             }
             return $;
         }

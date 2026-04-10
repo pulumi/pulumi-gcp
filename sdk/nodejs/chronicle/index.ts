@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DashboardChartArgs, DashboardChartState } from "./dashboardChart";
+export type DashboardChart = import("./dashboardChart").DashboardChart;
+export const DashboardChart: typeof import("./dashboardChart").DashboardChart = null as any;
+utilities.lazyLoad(exports, ["DashboardChart"], () => require("./dashboardChart"));
+
 export { DataAccessLabelArgs, DataAccessLabelState } from "./dataAccessLabel";
 export type DataAccessLabel = import("./dataAccessLabel").DataAccessLabel;
 export const DataAccessLabel: typeof import("./dataAccessLabel").DataAccessLabel = null as any;
@@ -24,6 +29,11 @@ export { DataTableRowArgs, DataTableRowState } from "./dataTableRow";
 export type DataTableRow = import("./dataTableRow").DataTableRow;
 export const DataTableRow: typeof import("./dataTableRow").DataTableRow = null as any;
 utilities.lazyLoad(exports, ["DataTableRow"], () => require("./dataTableRow"));
+
+export { FeedArgs, FeedState } from "./feed";
+export type Feed = import("./feed").Feed;
+export const Feed: typeof import("./feed").Feed = null as any;
+utilities.lazyLoad(exports, ["Feed"], () => require("./feed"));
 
 export { NativeDashboardArgs, NativeDashboardState } from "./nativeDashboard";
 export type NativeDashboard = import("./nativeDashboard").NativeDashboard;
@@ -60,6 +70,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:chronicle/dashboardChart:DashboardChart":
+                return new DashboardChart(name, <any>undefined, { urn })
             case "gcp:chronicle/dataAccessLabel:DataAccessLabel":
                 return new DataAccessLabel(name, <any>undefined, { urn })
             case "gcp:chronicle/dataAccessScope:DataAccessScope":
@@ -68,6 +80,8 @@ const _module = {
                 return new DataTable(name, <any>undefined, { urn })
             case "gcp:chronicle/dataTableRow:DataTableRow":
                 return new DataTableRow(name, <any>undefined, { urn })
+            case "gcp:chronicle/feed:Feed":
+                return new Feed(name, <any>undefined, { urn })
             case "gcp:chronicle/nativeDashboard:NativeDashboard":
                 return new NativeDashboard(name, <any>undefined, { urn })
             case "gcp:chronicle/referenceList:ReferenceList":
@@ -85,10 +99,12 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "chronicle/dashboardChart", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTable", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTableRow", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/feed", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/nativeDashboard", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)

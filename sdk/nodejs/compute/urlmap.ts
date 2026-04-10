@@ -652,6 +652,196 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Url Map Cache Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     defaultService: _default.id,
+ *     defaultRouteAction: {
+ *         cachePolicy: {
+ *             cacheMode: "CACHE_ALL_STATIC",
+ *             defaultTtl: {
+ *                 seconds: "3600",
+ *             },
+ *             clientTtl: {
+ *                 seconds: "1800",
+ *             },
+ *             negativeCaching: true,
+ *             negativeCachingPolicies: [{
+ *                 code: 404,
+ *                 ttl: {
+ *                     seconds: "300",
+ *                 },
+ *             }],
+ *             requestCoalescing: true,
+ *             cacheBypassRequestHeaderNames: ["X-Internal-Bypass"],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Url Map Cache Policy Multi Level
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     defaultService: _default.id,
+ *     defaultRouteAction: {
+ *         cachePolicy: {
+ *             cacheKeyPolicy: {
+ *                 includeHost: true,
+ *                 includeProtocol: true,
+ *                 includeQueryString: true,
+ *                 includedCookieNames: [
+ *                     "cookie1",
+ *                     "cookie2",
+ *                 ],
+ *                 includedHeaderNames: [
+ *                     "header1",
+ *                     "header2",
+ *                 ],
+ *                 includedQueryParameters: [
+ *                     "param1",
+ *                     "param2",
+ *                 ],
+ *             },
+ *             cacheMode: "FORCE_CACHE_ALL",
+ *             defaultTtl: {
+ *                 seconds: "3600",
+ *             },
+ *             clientTtl: {
+ *                 seconds: "1800",
+ *             },
+ *             requestCoalescing: true,
+ *             cacheBypassRequestHeaderNames: ["X-Internal-Bypass"],
+ *         },
+ *     },
+ *     hostRules: [
+ *         {
+ *             hosts: ["example.com"],
+ *             pathMatcher: "main-matcher",
+ *         },
+ *         {
+ *             hosts: ["api.example.com"],
+ *             pathMatcher: "api-matcher",
+ *         },
+ *     ],
+ *     pathMatchers: [
+ *         {
+ *             name: "main-matcher",
+ *             defaultService: _default.id,
+ *             defaultRouteAction: {
+ *                 cachePolicy: {
+ *                     cacheMode: "CACHE_ALL_STATIC",
+ *                     defaultTtl: {
+ *                         seconds: "7200",
+ *                     },
+ *                     negativeCaching: true,
+ *                     negativeCachingPolicies: [{
+ *                         code: 404,
+ *                         ttl: {
+ *                             seconds: "300",
+ *                         },
+ *                     }],
+ *                 },
+ *             },
+ *             pathRules: [{
+ *                 paths: ["/static/*"],
+ *                 service: _default.id,
+ *                 routeAction: {
+ *                     cachePolicy: {
+ *                         cacheMode: "CACHE_ALL_STATIC",
+ *                         defaultTtl: {
+ *                             seconds: "86400",
+ *                         },
+ *                         cacheKeyPolicy: {
+ *                             includeHost: true,
+ *                             includeProtocol: true,
+ *                             includeQueryString: true,
+ *                             excludedQueryParameters: ["custom_parameter"],
+ *                             includedHeaderNames: ["X-Custom-Header"],
+ *                         },
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: "api-matcher",
+ *             defaultService: _default.id,
+ *             defaultRouteAction: {
+ *                 cachePolicy: {
+ *                     cacheMode: "CACHE_ALL_STATIC",
+ *                     defaultTtl: {
+ *                         seconds: "0",
+ *                     },
+ *                     negativeCaching: true,
+ *                     negativeCachingPolicies: [{
+ *                         code: 404,
+ *                         ttl: {
+ *                             seconds: "300",
+ *                             nanos: 0,
+ *                         },
+ *                     }],
+ *                 },
+ *             },
+ *             routeRules: [{
+ *                 priority: 1,
+ *                 matchRules: [{
+ *                     prefixMatch: "/api/v1",
+ *                 }],
+ *                 service: _default.id,
+ *                 routeAction: {
+ *                     cachePolicy: {
+ *                         cacheMode: "CACHE_ALL_STATIC",
+ *                         defaultTtl: {
+ *                             seconds: "60",
+ *                         },
+ *                         clientTtl: {
+ *                             seconds: "90",
+ *                         },
+ *                         maxTtl: {
+ *                             seconds: "120",
+ *                         },
+ *                         serveWhileStale: {
+ *                             seconds: "3600",
+ *                         },
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
  * ### Url Map Path Rule Mirror Percent
  *
  * ```typescript

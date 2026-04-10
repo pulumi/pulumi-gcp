@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +30,36 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
      */
     public Output<String> attachmentId() {
         return this.attachmentId;
+    }
+
+    /**
+     * A list of folders to exclude from the security policy.
+     * 
+     */
+    @Import(name="excludedFolders")
+    private @Nullable Output<List<String>> excludedFolders;
+
+    /**
+     * @return A list of folders to exclude from the security policy.
+     * 
+     */
+    public Optional<Output<List<String>>> excludedFolders() {
+        return Optional.ofNullable(this.excludedFolders);
+    }
+
+    /**
+     * A list of projects to exclude from the security policy.
+     * 
+     */
+    @Import(name="excludedProjects")
+    private @Nullable Output<List<String>> excludedProjects;
+
+    /**
+     * @return A list of projects to exclude from the security policy.
+     * 
+     */
+    public Optional<Output<List<String>>> excludedProjects() {
+        return Optional.ofNullable(this.excludedProjects);
     }
 
     /**
@@ -65,6 +96,8 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
 
     private OrganizationSecurityPolicyAssociationArgs(OrganizationSecurityPolicyAssociationArgs $) {
         this.attachmentId = $.attachmentId;
+        this.excludedFolders = $.excludedFolders;
+        this.excludedProjects = $.excludedProjects;
         this.name = $.name;
         this.policyId = $.policyId;
     }
@@ -106,6 +139,68 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
          */
         public Builder attachmentId(String attachmentId) {
             return attachmentId(Output.of(attachmentId));
+        }
+
+        /**
+         * @param excludedFolders A list of folders to exclude from the security policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedFolders(@Nullable Output<List<String>> excludedFolders) {
+            $.excludedFolders = excludedFolders;
+            return this;
+        }
+
+        /**
+         * @param excludedFolders A list of folders to exclude from the security policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedFolders(List<String> excludedFolders) {
+            return excludedFolders(Output.of(excludedFolders));
+        }
+
+        /**
+         * @param excludedFolders A list of folders to exclude from the security policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedFolders(String... excludedFolders) {
+            return excludedFolders(List.of(excludedFolders));
+        }
+
+        /**
+         * @param excludedProjects A list of projects to exclude from the security policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedProjects(@Nullable Output<List<String>> excludedProjects) {
+            $.excludedProjects = excludedProjects;
+            return this;
+        }
+
+        /**
+         * @param excludedProjects A list of projects to exclude from the security policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedProjects(List<String> excludedProjects) {
+            return excludedProjects(Output.of(excludedProjects));
+        }
+
+        /**
+         * @param excludedProjects A list of projects to exclude from the security policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedProjects(String... excludedProjects) {
+            return excludedProjects(List.of(excludedProjects));
         }
 
         /**

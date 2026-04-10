@@ -638,7 +638,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_20665",
+            batch_id="tf-test-batch_92130",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -761,7 +761,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_85160",
+            batch_id="tf-test-batch_16199",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -789,7 +789,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_92130",
+            batch_id="tf-test-batch_21563",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -822,7 +822,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_16199",
+            batch_id="tf-test-batch_25141",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -852,7 +852,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_21563",
+            batch_id="tf-test-batch_30827",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -866,6 +866,7 @@ class Batch(pulumi.CustomResource):
                 "cohort": "tf-dataproc-batch-example",
                 "autotuning_config": {
                     "scenarios": [
+                        "AUTO",
                         "SCALING",
                         "MEMORY",
                     ],
@@ -950,7 +951,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-            batch_id="tf-test-batch_20665",
+            batch_id="tf-test-batch_92130",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1073,7 +1074,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-            batch_id="tf-test-batch_85160",
+            batch_id="tf-test-batch_16199",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1101,7 +1102,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-            batch_id="tf-test-batch_92130",
+            batch_id="tf-test-batch_21563",
             location="us-central1",
             runtime_config={
                 "properties": {
@@ -1134,7 +1135,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-            batch_id="tf-test-batch_16199",
+            batch_id="tf-test-batch_25141",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1164,7 +1165,7 @@ class Batch(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-            batch_id="tf-test-batch_21563",
+            batch_id="tf-test-batch_30827",
             location="us-central1",
             labels={
                 "batch_test": "terraform",
@@ -1178,6 +1179,7 @@ class Batch(pulumi.CustomResource):
                 "cohort": "tf-dataproc-batch-example",
                 "autotuning_config": {
                     "scenarios": [
+                        "AUTO",
                         "SCALING",
                         "MEMORY",
                     ],

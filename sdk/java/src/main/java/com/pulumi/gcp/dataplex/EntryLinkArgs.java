@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataplex.inputs.EntryLinkAspectArgs;
 import com.pulumi.gcp.dataplex.inputs.EntryLinkEntryReferenceArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class EntryLinkArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EntryLinkArgs Empty = new EntryLinkArgs();
+
+    /**
+     * The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="aspects")
+    private @Nullable Output<List<EntryLinkAspectArgs>> aspects;
+
+    /**
+     * @return The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<EntryLinkAspectArgs>>> aspects() {
+        return Optional.ofNullable(this.aspects);
+    }
 
     /**
      * The id of the entry group this entry link is in.
@@ -117,6 +135,7 @@ public final class EntryLinkArgs extends com.pulumi.resources.ResourceArgs {
     private EntryLinkArgs() {}
 
     private EntryLinkArgs(EntryLinkArgs $) {
+        this.aspects = $.aspects;
         this.entryGroupId = $.entryGroupId;
         this.entryLinkId = $.entryLinkId;
         this.entryLinkType = $.entryLinkType;
@@ -141,6 +160,40 @@ public final class EntryLinkArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(EntryLinkArgs defaults) {
             $ = new EntryLinkArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aspects The Aspects attached to the Entry Link.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aspects(@Nullable Output<List<EntryLinkAspectArgs>> aspects) {
+            $.aspects = aspects;
+            return this;
+        }
+
+        /**
+         * @param aspects The Aspects attached to the Entry Link.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aspects(List<EntryLinkAspectArgs> aspects) {
+            return aspects(Output.of(aspects));
+        }
+
+        /**
+         * @param aspects The Aspects attached to the Entry Link.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aspects(EntryLinkAspectArgs... aspects) {
+            return aspects(List.of(aspects));
         }
 
         /**

@@ -498,6 +498,76 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Topic Ai Inference
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			geminiQueryServiceAccount, err := serviceaccount.NewAccount(ctx, "gemini_query_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("example-sa"),
+//				DisplayName: pulumi.String("Gemini Query Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			geminiInferenceGet, err := projects.NewIAMMember(ctx, "gemini_inference_get", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/aiplatform.user"),
+//				Member: geminiQueryServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				geminiInferenceGet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				MessageTransforms: pubsub.TopicMessageTransformArray{
+//					&pubsub.TopicMessageTransformArgs{
+//						AiInference: &pubsub.TopicMessageTransformAiInferenceArgs{
+//							Endpoint: pulumi.String("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"),
+//							UnstructuredInference: &pubsub.TopicMessageTransformAiInferenceUnstructuredInferenceArgs{
+//								Parameters: pulumi.StringMap{
+//									"max_tokens": pulumi.String("25000"),
+//								},
+//							},
+//							ServiceAccountEmail: geminiQueryServiceAccount.Email,
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

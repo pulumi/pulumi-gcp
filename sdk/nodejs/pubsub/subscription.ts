@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_24243",
+ *         filenameSuffix: "-_21912",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_7495",
+ *         filenameSuffix: "-_46731",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -318,7 +318,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_21912",
+ *         filenameSuffix: "-_26240",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -362,7 +362,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_46731",
+ *         filenameSuffix: "-_35711",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -465,6 +465,44 @@ import * as utilities from "../utilities";
  *     tags: pulumi.all([tagKey.namespacedName, tagValue.shortName]).apply(([namespacedName, shortName]) => {
  *         [namespacedName]: shortName,
  *     }),
+ * });
+ * ```
+ * ### Pubsub Subscription Ai Inference
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const geminiQueryServiceAccount = new gcp.serviceaccount.Account("gemini_query_service_account", {
+ *     accountId: "example-sa",
+ *     displayName: "Gemini Query Service Account",
+ * });
+ * const geminiInferenceGet = new gcp.projects.IAMMember("gemini_inference_get", {
+ *     project: "my-project-name",
+ *     role: "roles/aiplatform.user",
+ *     member: pulumi.interpolate`serviceAccount:${geminiQueryServiceAccount.email}`,
+ * });
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [geminiInferenceGet],
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: example.id,
+ *     messageTransforms: [{
+ *         aiInference: {
+ *             endpoint: "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+ *             unstructuredInference: {
+ *                 parameters: {
+ *                     max_tokens: "25000",
+ *                 },
+ *             },
+ *             serviceAccountEmail: geminiQueryServiceAccount.email,
+ *         },
+ *     }],
+ * }, {
+ *     dependsOn: [wait120Seconds],
  * });
  * ```
  *

@@ -14,17 +14,22 @@ namespace Pulumi.Gcp.Lustre.Outputs
     public sealed class InstanceAccessRulesOptionsAccessRule
     {
         /// <summary>
-        /// An array of IP address strings or CIDR ranges that this rule applies to.
+        /// The IP address ranges to which to apply this access rule. Accepts
+        /// non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+        /// (e.g., `192.168.1.0`).
         /// </summary>
         public readonly ImmutableArray<string> IpAddressRanges;
         /// <summary>
-        /// A unique identifier for the access rule.
+        /// The name of the access rule policy group.
+        /// Must be 16 characters or less and include only alphanumeric characters
+        /// or '_'.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The squash mode for this specific rule. Currently, only "NO_SQUASH"
-        /// is supported for exceptions.
-        /// Possible values are: `NO_SQUASH`.
+        /// Squash mode for the access rule.
+        /// Possible values:
+        /// NO_SQUASH
+        /// ROOT_SQUASH
         /// </summary>
         public readonly string SquashMode;
 

@@ -32,6 +32,8 @@ __all__ = [
     'SubscriptionIAMBindingCondition',
     'SubscriptionIAMMemberCondition',
     'SubscriptionMessageTransform',
+    'SubscriptionMessageTransformAiInference',
+    'SubscriptionMessageTransformAiInferenceUnstructuredInference',
     'SubscriptionMessageTransformJavascriptUdf',
     'SubscriptionPushConfig',
     'SubscriptionPushConfigNoWrapper',
@@ -51,6 +53,8 @@ __all__ = [
     'TopicIngestionDataSourceSettingsPlatformLogsSettings',
     'TopicMessageStoragePolicy',
     'TopicMessageTransform',
+    'TopicMessageTransformAiInference',
+    'TopicMessageTransformAiInferenceUnstructuredInference',
     'TopicMessageTransformJavascriptUdf',
     'TopicSchemaSettings',
     'GetSubscriptionBigqueryConfigResult',
@@ -60,6 +64,8 @@ __all__ = [
     'GetSubscriptionDeadLetterPolicyResult',
     'GetSubscriptionExpirationPolicyResult',
     'GetSubscriptionMessageTransformResult',
+    'GetSubscriptionMessageTransformAiInferenceResult',
+    'GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceResult',
     'GetSubscriptionMessageTransformJavascriptUdfResult',
     'GetSubscriptionPushConfigResult',
     'GetSubscriptionPushConfigNoWrapperResult',
@@ -77,6 +83,8 @@ __all__ = [
     'GetTopicIngestionDataSourceSettingPlatformLogsSettingResult',
     'GetTopicMessageStoragePolicyResult',
     'GetTopicMessageTransformResult',
+    'GetTopicMessageTransformAiInferenceResult',
+    'GetTopicMessageTransformAiInferenceUnstructuredInferenceResult',
     'GetTopicMessageTransformJavascriptUdfResult',
     'GetTopicSchemaSettingResult',
 ]
@@ -885,7 +893,9 @@ class SubscriptionMessageTransform(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "javascriptUdf":
+        if key == "aiInference":
+            suggest = "ai_inference"
+        elif key == "javascriptUdf":
             suggest = "javascript_udf"
 
         if suggest:
@@ -900,19 +910,37 @@ class SubscriptionMessageTransform(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ai_inference: Optional['outputs.SubscriptionMessageTransformAiInference'] = None,
                  disabled: Optional[_builtins.bool] = None,
                  javascript_udf: Optional['outputs.SubscriptionMessageTransformJavascriptUdf'] = None):
         """
+        :param 'SubscriptionMessageTransformAiInferenceArgs' ai_inference: AI Inference. Specifies the Vertex AI endpoint that inference
+               requests built from the Pub/Sub message data and provided parameters will
+               be sent to.
+               Structure is documented below.
         :param _builtins.bool disabled: Controls whether or not to use this transform. If not set or `false`,
                the transform will be applied to messages. Default: `true`.
         :param 'SubscriptionMessageTransformJavascriptUdfArgs' javascript_udf: Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
                each one must have a unique `function_name`.
                Structure is documented below.
         """
+        if ai_inference is not None:
+            pulumi.set(__self__, "ai_inference", ai_inference)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if javascript_udf is not None:
             pulumi.set(__self__, "javascript_udf", javascript_udf)
+
+    @_builtins.property
+    @pulumi.getter(name="aiInference")
+    def ai_inference(self) -> Optional['outputs.SubscriptionMessageTransformAiInference']:
+        """
+        AI Inference. Specifies the Vertex AI endpoint that inference
+        requests built from the Pub/Sub message data and provided parameters will
+        be sent to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ai_inference")
 
     @_builtins.property
     @pulumi.getter
@@ -932,6 +960,100 @@ class SubscriptionMessageTransform(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "javascript_udf")
+
+
+@pulumi.output_type
+class SubscriptionMessageTransformAiInference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "unstructuredInference":
+            suggest = "unstructured_inference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionMessageTransformAiInference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionMessageTransformAiInference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionMessageTransformAiInference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: _builtins.str,
+                 service_account_email: Optional[_builtins.str] = None,
+                 unstructured_inference: Optional['outputs.SubscriptionMessageTransformAiInferenceUnstructuredInference'] = None):
+        """
+        :param _builtins.str endpoint: The endpoint to a Vertex AI model of the form
+               `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+               `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+               Vertex AI API requests will be sent to this endpoint.
+        :param _builtins.str service_account_email: The service account to use to make prediction requests against
+               endpoints.
+        :param 'SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs' unstructured_inference: Configuration for making inferences using arbitrary JSON payloads.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if unstructured_inference is not None:
+            pulumi.set(__self__, "unstructured_inference", unstructured_inference)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        The endpoint to a Vertex AI model of the form
+        `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+        `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+        Vertex AI API requests will be sent to this endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[_builtins.str]:
+        """
+        The service account to use to make prediction requests against
+        endpoints.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter(name="unstructuredInference")
+    def unstructured_inference(self) -> Optional['outputs.SubscriptionMessageTransformAiInferenceUnstructuredInference']:
+        """
+        Configuration for making inferences using arbitrary JSON payloads.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "unstructured_inference")
+
+
+@pulumi.output_type
+class SubscriptionMessageTransformAiInferenceUnstructuredInference(dict):
+    def __init__(__self__, *,
+                 parameters: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] parameters: A parameters object to be included in each inference request.
+               The parameters object is combined with the data field of the Pub/Sub
+               message to form the inference request.
+        """
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A parameters object to be included in each inference request.
+        The parameters object is combined with the data field of the Pub/Sub
+        message to form the inference request.
+        """
+        return pulumi.get(self, "parameters")
 
 
 @pulumi.output_type
@@ -2124,7 +2246,9 @@ class TopicMessageTransform(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "javascriptUdf":
+        if key == "aiInference":
+            suggest = "ai_inference"
+        elif key == "javascriptUdf":
             suggest = "javascript_udf"
 
         if suggest:
@@ -2139,19 +2263,37 @@ class TopicMessageTransform(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ai_inference: Optional['outputs.TopicMessageTransformAiInference'] = None,
                  disabled: Optional[_builtins.bool] = None,
                  javascript_udf: Optional['outputs.TopicMessageTransformJavascriptUdf'] = None):
         """
+        :param 'TopicMessageTransformAiInferenceArgs' ai_inference: AI Inference. Specifies the Vertex AI endpoint that inference
+               requests built from the Pub/Sub message data and provided parameters will
+               be sent to.
+               Structure is documented below.
         :param _builtins.bool disabled: Controls whether or not to use this transform. If not set or `false`,
                the transform will be applied to messages. Default: `true`.
         :param 'TopicMessageTransformJavascriptUdfArgs' javascript_udf: Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
                each one must have a unique `function_name`.
                Structure is documented below.
         """
+        if ai_inference is not None:
+            pulumi.set(__self__, "ai_inference", ai_inference)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if javascript_udf is not None:
             pulumi.set(__self__, "javascript_udf", javascript_udf)
+
+    @_builtins.property
+    @pulumi.getter(name="aiInference")
+    def ai_inference(self) -> Optional['outputs.TopicMessageTransformAiInference']:
+        """
+        AI Inference. Specifies the Vertex AI endpoint that inference
+        requests built from the Pub/Sub message data and provided parameters will
+        be sent to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ai_inference")
 
     @_builtins.property
     @pulumi.getter
@@ -2171,6 +2313,100 @@ class TopicMessageTransform(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "javascript_udf")
+
+
+@pulumi.output_type
+class TopicMessageTransformAiInference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "unstructuredInference":
+            suggest = "unstructured_inference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TopicMessageTransformAiInference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TopicMessageTransformAiInference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TopicMessageTransformAiInference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: _builtins.str,
+                 service_account_email: Optional[_builtins.str] = None,
+                 unstructured_inference: Optional['outputs.TopicMessageTransformAiInferenceUnstructuredInference'] = None):
+        """
+        :param _builtins.str endpoint: The endpoint to a Vertex AI model of the form
+               `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+               `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+               Vertex AI API requests will be sent to this endpoint.
+        :param _builtins.str service_account_email: The service account to use to make prediction requests against
+               endpoints.
+        :param 'TopicMessageTransformAiInferenceUnstructuredInferenceArgs' unstructured_inference: Configuration for making inferences using arbitrary JSON payloads.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if unstructured_inference is not None:
+            pulumi.set(__self__, "unstructured_inference", unstructured_inference)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        The endpoint to a Vertex AI model of the form
+        `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+        `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+        Vertex AI API requests will be sent to this endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[_builtins.str]:
+        """
+        The service account to use to make prediction requests against
+        endpoints.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter(name="unstructuredInference")
+    def unstructured_inference(self) -> Optional['outputs.TopicMessageTransformAiInferenceUnstructuredInference']:
+        """
+        Configuration for making inferences using arbitrary JSON payloads.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "unstructured_inference")
+
+
+@pulumi.output_type
+class TopicMessageTransformAiInferenceUnstructuredInference(dict):
+    def __init__(__self__, *,
+                 parameters: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] parameters: A parameters object to be included in each inference request.
+               The parameters object is combined with the data field of the Pub/Sub
+               message to form the inference request.
+        """
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A parameters object to be included in each inference request.
+        The parameters object is combined with the data field of the Pub/Sub
+        message to form the inference request.
+        """
+        return pulumi.get(self, "parameters")
 
 
 @pulumi.output_type
@@ -2685,16 +2921,31 @@ class GetSubscriptionExpirationPolicyResult(dict):
 @pulumi.output_type
 class GetSubscriptionMessageTransformResult(dict):
     def __init__(__self__, *,
+                 ai_inferences: Sequence['outputs.GetSubscriptionMessageTransformAiInferenceResult'],
                  disabled: _builtins.bool,
                  javascript_udfs: Sequence['outputs.GetSubscriptionMessageTransformJavascriptUdfResult']):
         """
+        :param Sequence['GetSubscriptionMessageTransformAiInferenceArgs'] ai_inferences: AI Inference. Specifies the Vertex AI endpoint that inference
+               requests built from the Pub/Sub message data and provided parameters will
+               be sent to.
         :param _builtins.bool disabled: Controls whether or not to use this transform. If not set or 'false',
                the transform will be applied to messages. Default: 'true'.
         :param Sequence['GetSubscriptionMessageTransformJavascriptUdfArgs'] javascript_udfs: Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
                each one must have a unique 'function_name'.
         """
+        pulumi.set(__self__, "ai_inferences", ai_inferences)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "javascript_udfs", javascript_udfs)
+
+    @_builtins.property
+    @pulumi.getter(name="aiInferences")
+    def ai_inferences(self) -> Sequence['outputs.GetSubscriptionMessageTransformAiInferenceResult']:
+        """
+        AI Inference. Specifies the Vertex AI endpoint that inference
+        requests built from the Pub/Sub message data and provided parameters will
+        be sent to.
+        """
+        return pulumi.get(self, "ai_inferences")
 
     @_builtins.property
     @pulumi.getter
@@ -2713,6 +2964,76 @@ class GetSubscriptionMessageTransformResult(dict):
         each one must have a unique 'function_name'.
         """
         return pulumi.get(self, "javascript_udfs")
+
+
+@pulumi.output_type
+class GetSubscriptionMessageTransformAiInferenceResult(dict):
+    def __init__(__self__, *,
+                 endpoint: _builtins.str,
+                 service_account_email: _builtins.str,
+                 unstructured_inferences: Sequence['outputs.GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceResult']):
+        """
+        :param _builtins.str endpoint: The endpoint to a Vertex AI model of the form
+               'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+               'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+               Vertex AI API requests will be sent to this endpoint.
+        :param _builtins.str service_account_email: The service account to use to make prediction requests against
+               endpoints.
+        :param Sequence['GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs'] unstructured_inferences: Configuration for making inferences using arbitrary JSON payloads.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "unstructured_inferences", unstructured_inferences)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        The endpoint to a Vertex AI model of the form
+        'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+        'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+        Vertex AI API requests will be sent to this endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> _builtins.str:
+        """
+        The service account to use to make prediction requests against
+        endpoints.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter(name="unstructuredInferences")
+    def unstructured_inferences(self) -> Sequence['outputs.GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceResult']:
+        """
+        Configuration for making inferences using arbitrary JSON payloads.
+        """
+        return pulumi.get(self, "unstructured_inferences")
+
+
+@pulumi.output_type
+class GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceResult(dict):
+    def __init__(__self__, *,
+                 parameters: Mapping[str, _builtins.str]):
+        """
+        :param Mapping[str, _builtins.str] parameters: A parameters object to be included in each inference request.
+               The parameters object is combined with the data field of the Pub/Sub
+               message to form the inference request.
+        """
+        pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, _builtins.str]:
+        """
+        A parameters object to be included in each inference request.
+        The parameters object is combined with the data field of the Pub/Sub
+        message to form the inference request.
+        """
+        return pulumi.get(self, "parameters")
 
 
 @pulumi.output_type
@@ -3553,16 +3874,31 @@ class GetTopicMessageStoragePolicyResult(dict):
 @pulumi.output_type
 class GetTopicMessageTransformResult(dict):
     def __init__(__self__, *,
+                 ai_inferences: Sequence['outputs.GetTopicMessageTransformAiInferenceResult'],
                  disabled: _builtins.bool,
                  javascript_udfs: Sequence['outputs.GetTopicMessageTransformJavascriptUdfResult']):
         """
+        :param Sequence['GetTopicMessageTransformAiInferenceArgs'] ai_inferences: AI Inference. Specifies the Vertex AI endpoint that inference
+               requests built from the Pub/Sub message data and provided parameters will
+               be sent to.
         :param _builtins.bool disabled: Controls whether or not to use this transform. If not set or 'false',
                the transform will be applied to messages. Default: 'true'.
         :param Sequence['GetTopicMessageTransformJavascriptUdfArgs'] javascript_udfs: Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
                each one must have a unique 'function_name'.
         """
+        pulumi.set(__self__, "ai_inferences", ai_inferences)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "javascript_udfs", javascript_udfs)
+
+    @_builtins.property
+    @pulumi.getter(name="aiInferences")
+    def ai_inferences(self) -> Sequence['outputs.GetTopicMessageTransformAiInferenceResult']:
+        """
+        AI Inference. Specifies the Vertex AI endpoint that inference
+        requests built from the Pub/Sub message data and provided parameters will
+        be sent to.
+        """
+        return pulumi.get(self, "ai_inferences")
 
     @_builtins.property
     @pulumi.getter
@@ -3581,6 +3917,76 @@ class GetTopicMessageTransformResult(dict):
         each one must have a unique 'function_name'.
         """
         return pulumi.get(self, "javascript_udfs")
+
+
+@pulumi.output_type
+class GetTopicMessageTransformAiInferenceResult(dict):
+    def __init__(__self__, *,
+                 endpoint: _builtins.str,
+                 service_account_email: _builtins.str,
+                 unstructured_inferences: Sequence['outputs.GetTopicMessageTransformAiInferenceUnstructuredInferenceResult']):
+        """
+        :param _builtins.str endpoint: The endpoint to a Vertex AI model of the form
+               'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+               'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+               Vertex AI API requests will be sent to this endpoint.
+        :param _builtins.str service_account_email: The service account to use to make prediction requests against
+               endpoints.
+        :param Sequence['GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs'] unstructured_inferences: Configuration for making inferences using arbitrary JSON payloads.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "unstructured_inferences", unstructured_inferences)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        The endpoint to a Vertex AI model of the form
+        'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+        'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+        Vertex AI API requests will be sent to this endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> _builtins.str:
+        """
+        The service account to use to make prediction requests against
+        endpoints.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter(name="unstructuredInferences")
+    def unstructured_inferences(self) -> Sequence['outputs.GetTopicMessageTransformAiInferenceUnstructuredInferenceResult']:
+        """
+        Configuration for making inferences using arbitrary JSON payloads.
+        """
+        return pulumi.get(self, "unstructured_inferences")
+
+
+@pulumi.output_type
+class GetTopicMessageTransformAiInferenceUnstructuredInferenceResult(dict):
+    def __init__(__self__, *,
+                 parameters: Mapping[str, _builtins.str]):
+        """
+        :param Mapping[str, _builtins.str] parameters: A parameters object to be included in each inference request.
+               The parameters object is combined with the data field of the Pub/Sub
+               message to form the inference request.
+        """
+        pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, _builtins.str]:
+        """
+        A parameters object to be included in each inference request.
+        The parameters object is combined with the data field of the Pub/Sub
+        message to form the inference request.
+        """
+        return pulumi.get(self, "parameters")
 
 
 @pulumi.output_type

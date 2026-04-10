@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformAiInferenceArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformJavascriptUdfArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -15,6 +16,27 @@ import javax.annotation.Nullable;
 public final class TopicMessageTransformArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TopicMessageTransformArgs Empty = new TopicMessageTransformArgs();
+
+    /**
+     * AI Inference. Specifies the Vertex AI endpoint that inference
+     * requests built from the Pub/Sub message data and provided parameters will
+     * be sent to.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="aiInference")
+    private @Nullable Output<TopicMessageTransformAiInferenceArgs> aiInference;
+
+    /**
+     * @return AI Inference. Specifies the Vertex AI endpoint that inference
+     * requests built from the Pub/Sub message data and provided parameters will
+     * be sent to.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicMessageTransformAiInferenceArgs>> aiInference() {
+        return Optional.ofNullable(this.aiInference);
+    }
 
     /**
      * Controls whether or not to use this transform. If not set or `false`,
@@ -55,6 +77,7 @@ public final class TopicMessageTransformArgs extends com.pulumi.resources.Resour
     private TopicMessageTransformArgs() {}
 
     private TopicMessageTransformArgs(TopicMessageTransformArgs $) {
+        this.aiInference = $.aiInference;
         this.disabled = $.disabled;
         this.javascriptUdf = $.javascriptUdf;
     }
@@ -75,6 +98,33 @@ public final class TopicMessageTransformArgs extends com.pulumi.resources.Resour
 
         public Builder(TopicMessageTransformArgs defaults) {
             $ = new TopicMessageTransformArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aiInference AI Inference. Specifies the Vertex AI endpoint that inference
+         * requests built from the Pub/Sub message data and provided parameters will
+         * be sent to.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiInference(@Nullable Output<TopicMessageTransformAiInferenceArgs> aiInference) {
+            $.aiInference = aiInference;
+            return this;
+        }
+
+        /**
+         * @param aiInference AI Inference. Specifies the Vertex AI endpoint that inference
+         * requests built from the Pub/Sub message data and provided parameters will
+         * be sent to.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiInference(TopicMessageTransformAiInferenceArgs aiInference) {
+            return aiInference(Output.of(aiInference));
         }
 
         /**

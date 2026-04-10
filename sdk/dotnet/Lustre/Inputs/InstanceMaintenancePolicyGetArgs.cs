@@ -20,11 +20,12 @@ namespace Pulumi.Gcp.Lustre.Inputs
         public Input<Inputs.InstanceMaintenancePolicyMaintenanceExclusionWindowGetArgs>? MaintenanceExclusionWindow { get; set; }
 
         /// <summary>
-        /// The weekly maintenance windows for the instance. Currently limited to 1 window.
+        /// The weekly maintenance windows for the instance. Currently limited to 1
+        /// window.
         /// Structure is documented below.
         /// </summary>
-        [Input("weeklyMaintenanceWindows")]
-        public Input<Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowsGetArgs>? WeeklyMaintenanceWindows { get; set; }
+        [Input("weeklyMaintenanceWindows", required: true)]
+        public Input<Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowsGetArgs> WeeklyMaintenanceWindows { get; set; } = null!;
 
         public InstanceMaintenancePolicyGetArgs()
         {

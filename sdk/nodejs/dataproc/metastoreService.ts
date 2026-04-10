@@ -195,11 +195,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: "backup",
+ *     name: "backup-1",
  *     location: "us-central1",
  * });
  * const backup = new gcp.dataproc.MetastoreService("backup", {
- *     serviceId: "backup",
+ *     serviceId: "backup-1",
  *     location: "us-central1",
  *     port: 9080,
  *     tier: "DEVELOPER",

@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. Scenarios for which tunings are applied.
-        /// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+        /// Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
         /// </summary>
         public InputList<string> Scenarios
         {

@@ -152,6 +152,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly authenticatorGroupsConfig: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
+     * The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API's
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     */
+    declare public readonly autopilotPrivilegedAdmissions: pulumi.Output<string[]>;
+    /**
      * Configuration options for the Binary
      * Authorization feature. Structure is documented below.
      */
@@ -659,6 +668,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["allowNetAdmin"] = state?.allowNetAdmin;
             resourceInputs["anonymousAuthenticationConfig"] = state?.anonymousAuthenticationConfig;
             resourceInputs["authenticatorGroupsConfig"] = state?.authenticatorGroupsConfig;
+            resourceInputs["autopilotPrivilegedAdmissions"] = state?.autopilotPrivilegedAdmissions;
             resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
             resourceInputs["clusterAutoscaling"] = state?.clusterAutoscaling;
             resourceInputs["clusterIpv4Cidr"] = state?.clusterIpv4Cidr;
@@ -752,6 +762,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["allowNetAdmin"] = args?.allowNetAdmin;
             resourceInputs["anonymousAuthenticationConfig"] = args?.anonymousAuthenticationConfig;
             resourceInputs["authenticatorGroupsConfig"] = args?.authenticatorGroupsConfig;
+            resourceInputs["autopilotPrivilegedAdmissions"] = args?.autopilotPrivilegedAdmissions;
             resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
             resourceInputs["clusterAutoscaling"] = args?.clusterAutoscaling;
             resourceInputs["clusterIpv4Cidr"] = args?.clusterIpv4Cidr;
@@ -872,6 +883,15 @@ export interface ClusterState {
      * Structure is documented below.
      */
     authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
+    /**
+     * The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API's
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     */
+    autopilotPrivilegedAdmissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration options for the Binary
      * Authorization feature. Structure is documented below.
@@ -1389,6 +1409,15 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
+    /**
+     * The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API's
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     */
+    autopilotPrivilegedAdmissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration options for the Binary
      * Authorization feature. Structure is documented below.

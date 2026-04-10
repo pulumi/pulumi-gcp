@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new Instance("main", InstanceArgs.builder()
+ *             .name("my-instance")
  *             .config("regional-europe-west1")
  *             .displayName("main-instance")
  *             .numNodes(1)

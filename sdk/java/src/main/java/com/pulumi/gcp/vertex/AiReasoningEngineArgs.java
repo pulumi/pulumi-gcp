@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
 import java.lang.String;
@@ -17,6 +18,25 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineArgs Empty = new AiReasoningEngineArgs();
+
+    /**
+     * (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="contextSpec")
+    private @Nullable Output<AiReasoningEngineContextSpecArgs> contextSpec;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineContextSpecArgs>> contextSpec() {
+        return Optional.ofNullable(this.contextSpec);
+    }
 
     /**
      * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
@@ -136,6 +156,7 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
     private AiReasoningEngineArgs() {}
 
     private AiReasoningEngineArgs(AiReasoningEngineArgs $) {
+        this.contextSpec = $.contextSpec;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -161,6 +182,31 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(AiReasoningEngineArgs defaults) {
             $ = new AiReasoningEngineArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param contextSpec (Optional, Beta)
+         * Optional. Configuration for how Agent Engine sub-resources should manage context.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextSpec(@Nullable Output<AiReasoningEngineContextSpecArgs> contextSpec) {
+            $.contextSpec = contextSpec;
+            return this;
+        }
+
+        /**
+         * @param contextSpec (Optional, Beta)
+         * Optional. Configuration for how Agent Engine sub-resources should manage context.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextSpec(AiReasoningEngineContextSpecArgs contextSpec) {
+            return contextSpec(Output.of(contextSpec));
         }
 
         /**

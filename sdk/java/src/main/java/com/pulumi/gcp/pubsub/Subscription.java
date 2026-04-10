@@ -550,7 +550,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_24243")
+ *                 .filenameSuffix("-_21912")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -626,7 +626,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_7495")
+ *                 .filenameSuffix("-_46731")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -704,7 +704,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_21912")
+ *                 .filenameSuffix("-_26240")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -787,7 +787,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_46731")
+ *                 .filenameSuffix("-_35711")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -992,6 +992,83 @@ import javax.annotation.Nullable;
  *                 return Map.of(namespacedName, shortName);
  *             }))
  *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Pubsub Subscription Ai Inference
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformAiInferenceArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .build());
+ * 
+ *         var geminiQueryServiceAccount = new Account("geminiQueryServiceAccount", AccountArgs.builder()
+ *             .accountId("example-sa")
+ *             .displayName("Gemini Query Service Account")
+ *             .build());
+ * 
+ *         var geminiInferenceGet = new IAMMember("geminiInferenceGet", IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/aiplatform.user")
+ *             .member(geminiQueryServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(geminiInferenceGet)
+ *                 .build());
+ * 
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+ *             .name("example-subscription")
+ *             .topic(example.id())
+ *             .messageTransforms(SubscriptionMessageTransformArgs.builder()
+ *                 .aiInference(SubscriptionMessageTransformAiInferenceArgs.builder()
+ *                     .endpoint("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash")
+ *                     .unstructuredInference(SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs.builder()
+ *                         .parameters(Map.of("max_tokens", "25000"))
+ *                         .build())
+ *                     .serviceAccountEmail(geminiQueryServiceAccount.email())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120Seconds)
+ *                 .build());
  * 
  *     }
  * }

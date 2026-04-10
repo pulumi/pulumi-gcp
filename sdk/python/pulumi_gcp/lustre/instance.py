@@ -26,20 +26,24 @@ class InstanceArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  network: pulumi.Input[_builtins.str],
-                 per_unit_storage_throughput: pulumi.Input[_builtins.str],
                  access_rules_options: Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_tier_options: Optional[pulumi.Input['InstanceDynamicTierOptionsArgs']] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 per_unit_storage_throughput: Optional[pulumi.Input[_builtins.str]] = None,
                  placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from `18000` to `954000`, in increments of 9000.
+               are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for specific minimums, maximums, and step sizes for each performance tier.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
                less and can only contain letters and numbers.
@@ -52,20 +56,32 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
-        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
-               Valid values are 125, 250, 500, 1000.
-        :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: Access control rules for the Lustre instance. Configures default root
-               squashing behavior and specific access rules based on IP addresses.
+        :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
+               define the root user squash configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
+        :param pulumi.Input['InstanceDynamicTierOptionsArgs'] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
-        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
+        :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS key name to use for data encryption.
+               If not set, the instance will use Google-managed encryption keys.
+               If set, the instance will use customer-managed encryption keys.
+               The key must be in the same region as the instance.
+               The key format is:
+               projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Defines a maintenance policy for a resource.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+               500, 1000.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for more information.
+               If the instance is using the Dynamic tier, this field must not be set or
+               must be set to zero.
         :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -76,11 +92,12 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
         if access_rules_options is not None:
             pulumi.set(__self__, "access_rules_options", access_rules_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_tier_options is not None:
+            pulumi.set(__self__, "dynamic_tier_options", dynamic_tier_options)
         if gke_support_enabled is not None:
             pulumi.set(__self__, "gke_support_enabled", gke_support_enabled)
         if kms_key is not None:
@@ -89,6 +106,8 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if per_unit_storage_throughput is not None:
+            pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
         if placement_policy is not None:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
@@ -99,7 +118,10 @@ class InstanceArgs:
     def capacity_gib(self) -> pulumi.Input[_builtins.str]:
         """
         The storage capacity of the instance in gibibytes (GiB). Allowed values
-        are from `18000` to `954000`, in increments of 9000.
+        are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+        See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for specific minimums, maximums, and step sizes for each performance tier.
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -164,24 +186,11 @@ class InstanceArgs:
         pulumi.set(self, "network", value)
 
     @_builtins.property
-    @pulumi.getter(name="perUnitStorageThroughput")
-    def per_unit_storage_throughput(self) -> pulumi.Input[_builtins.str]:
-        """
-        The throughput of the instance in MB/s/TiB.
-        Valid values are 125, 250, 500, 1000.
-        """
-        return pulumi.get(self, "per_unit_storage_throughput")
-
-    @per_unit_storage_throughput.setter
-    def per_unit_storage_throughput(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "per_unit_storage_throughput", value)
-
-    @_builtins.property
     @pulumi.getter(name="accessRulesOptions")
     def access_rules_options(self) -> Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']]:
         """
-        Access control rules for the Lustre instance. Configures default root
-        squashing behavior and specific access rules based on IP addresses.
+        IP-based access rules for the Managed Lustre instance. These options
+        define the root user squash configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "access_rules_options")
@@ -203,6 +212,19 @@ class InstanceArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicTierOptions")
+    def dynamic_tier_options(self) -> Optional[pulumi.Input['InstanceDynamicTierOptionsArgs']]:
+        """
+        Dynamic tier options for a Managed Lustre instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_tier_options")
+
+    @dynamic_tier_options.setter
+    def dynamic_tier_options(self, value: Optional[pulumi.Input['InstanceDynamicTierOptionsArgs']]):
+        pulumi.set(self, "dynamic_tier_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="gkeSupportEnabled")
     def gke_support_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -219,7 +241,12 @@ class InstanceArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The KMS key id to use for encryption of the Lustre instance.
+        The Cloud KMS key name to use for data encryption.
+        If not set, the instance will use Google-managed encryption keys.
+        If set, the instance will use customer-managed encryption keys.
+        The key must be in the same region as the instance.
+        The key format is:
+        projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         """
         return pulumi.get(self, "kms_key")
 
@@ -245,7 +272,7 @@ class InstanceArgs:
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
         """
-        The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        Defines a maintenance policy for a resource.
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
@@ -253,6 +280,24 @@ class InstanceArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perUnitStorageThroughput")
+    def per_unit_storage_throughput(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+        500, 1000.
+        See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for more information.
+        If the instance is using the Dynamic tier, this field must not be set or
+        must be set to zero.
+        """
+        return pulumi.get(self, "per_unit_storage_throughput")
+
+    @per_unit_storage_throughput.setter
+    def per_unit_storage_throughput(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "per_unit_storage_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="placementPolicy")
@@ -288,6 +333,7 @@ class _InstanceState:
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_tier_options: Optional[pulumi.Input['InstanceDynamicTierOptionsArgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -305,17 +351,24 @@ class _InstanceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  state_reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 upcoming_maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpcomingMaintenanceScheduleArgs']]]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
-        :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: Access control rules for the Lustre instance. Configures default root
-               squashing behavior and specific access rules based on IP addresses.
+        :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
+               define the root user squash configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from `18000` to `954000`, in increments of 9000.
+               are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for specific minimums, maximums, and step sizes for each performance tier.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the instance was created.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
+        :param pulumi.Input['InstanceDynamicTierOptionsArgs'] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
@@ -327,20 +380,30 @@ class _InstanceState:
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
+        :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS key name to use for data encryption.
+               If not set, the instance will use Google-managed encryption keys.
+               If set, the instance will use customer-managed encryption keys.
+               The key must be in the same region as the instance.
+               The key format is:
+               projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Defines a maintenance policy for a resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the instance.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
-        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
-               Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+               500, 1000.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for more information.
+               If the instance is using the Dynamic tier, this field must not be set or
+               must be set to zero.
         :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -348,8 +411,21 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of the instance.
-               Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
-        :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state.
+               Possible values:
+               ACTIVE
+               CREATING
+               DELETING
+               UPGRADING
+               REPAIRING
+               STOPPED
+               UPDATING
+               SUSPENDED
+        :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state (e.g. SUSPENDED).
+        :param pulumi.Input[_builtins.str] uid: Unique ID of the resource.
+               This is unrelated to the access rules which allow specifying the root
+               squash uid.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceUpcomingMaintenanceScheduleArgs']]] upcoming_maintenance_schedules: Represents a scheduled maintenance event.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the instance was last updated.
         """
         if access_rules_options is not None:
@@ -360,6 +436,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_tier_options is not None:
+            pulumi.set(__self__, "dynamic_tier_options", dynamic_tier_options)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if filesystem is not None:
@@ -394,6 +472,10 @@ class _InstanceState:
             pulumi.set(__self__, "state", state)
         if state_reason is not None:
             pulumi.set(__self__, "state_reason", state_reason)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+        if upcoming_maintenance_schedules is not None:
+            pulumi.set(__self__, "upcoming_maintenance_schedules", upcoming_maintenance_schedules)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -401,8 +483,8 @@ class _InstanceState:
     @pulumi.getter(name="accessRulesOptions")
     def access_rules_options(self) -> Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']]:
         """
-        Access control rules for the Lustre instance. Configures default root
-        squashing behavior and specific access rules based on IP addresses.
+        IP-based access rules for the Managed Lustre instance. These options
+        define the root user squash configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "access_rules_options")
@@ -416,7 +498,10 @@ class _InstanceState:
     def capacity_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The storage capacity of the instance in gibibytes (GiB). Allowed values
-        are from `18000` to `954000`, in increments of 9000.
+        are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+        See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for specific minimums, maximums, and step sizes for each performance tier.
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -447,6 +532,19 @@ class _InstanceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicTierOptions")
+    def dynamic_tier_options(self) -> Optional[pulumi.Input['InstanceDynamicTierOptionsArgs']]:
+        """
+        Dynamic tier options for a Managed Lustre instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_tier_options")
+
+    @dynamic_tier_options.setter
+    def dynamic_tier_options(self, value: Optional[pulumi.Input['InstanceDynamicTierOptionsArgs']]):
+        pulumi.set(self, "dynamic_tier_options", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -507,7 +605,12 @@ class _InstanceState:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The KMS key id to use for encryption of the Lustre instance.
+        The Cloud KMS key name to use for data encryption.
+        If not set, the instance will use Google-managed encryption keys.
+        If set, the instance will use customer-managed encryption keys.
+        The key must be in the same region as the instance.
+        The key format is:
+        projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         """
         return pulumi.get(self, "kms_key")
 
@@ -545,7 +648,7 @@ class _InstanceState:
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
         """
-        The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        Defines a maintenance policy for a resource.
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
@@ -596,8 +699,13 @@ class _InstanceState:
     @pulumi.getter(name="perUnitStorageThroughput")
     def per_unit_storage_throughput(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The throughput of the instance in MB/s/TiB.
-        Valid values are 125, 250, 500, 1000.
+        The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+        500, 1000.
+        See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for more information.
+        If the instance is using the Dynamic tier, this field must not be set or
+        must be set to zero.
         """
         return pulumi.get(self, "per_unit_storage_throughput")
 
@@ -649,7 +757,15 @@ class _InstanceState:
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The state of the instance.
-        Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+        Possible values:
+        ACTIVE
+        CREATING
+        DELETING
+        UPGRADING
+        REPAIRING
+        STOPPED
+        UPDATING
+        SUSPENDED
         """
         return pulumi.get(self, "state")
 
@@ -661,13 +777,40 @@ class _InstanceState:
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The reason why the instance is in a certain state.
+        The reason why the instance is in a certain state (e.g. SUSPENDED).
         """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
     def state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state_reason", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique ID of the resource.
+        This is unrelated to the access rules which allow specifying the root
+        squash uid.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upcomingMaintenanceSchedules")
+    def upcoming_maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpcomingMaintenanceScheduleArgs']]]]:
+        """
+        Represents a scheduled maintenance event.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upcoming_maintenance_schedules")
+
+    @upcoming_maintenance_schedules.setter
+    def upcoming_maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpcomingMaintenanceScheduleArgs']]]]):
+        pulumi.set(self, "upcoming_maintenance_schedules", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
@@ -691,6 +834,7 @@ class Instance(pulumi.CustomResource):
                  access_rules_options: Optional[pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_tier_options: Optional[pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -761,12 +905,17 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: Access control rules for the Lustre instance. Configures default root
-               squashing behavior and specific access rules based on IP addresses.
+        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
+               define the root user squash configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from `18000` to `954000`, in increments of 9000.
+               are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for specific minimums, maximums, and step sizes for each performance tier.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
+        :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
                less and can only contain letters and numbers.
@@ -777,18 +926,28 @@ class Instance(pulumi.CustomResource):
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
+        :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS key name to use for data encryption.
+               If not set, the instance will use Google-managed encryption keys.
+               If set, the instance will use customer-managed encryption keys.
+               The key must be in the same region as the instance.
+               The key format is:
+               projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Defines a maintenance policy for a resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
-        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
-               Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+               500, 1000.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for more information.
+               If the instance is using the Dynamic tier, this field must not be set or
+               must be set to zero.
         :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -874,6 +1033,7 @@ class Instance(pulumi.CustomResource):
                  access_rules_options: Optional[pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_tier_options: Optional[pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -899,6 +1059,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
             __props__.__dict__["description"] = description
+            __props__.__dict__["dynamic_tier_options"] = dynamic_tier_options
             if filesystem is None and not opts.urn:
                 raise TypeError("Missing required property 'filesystem'")
             __props__.__dict__["filesystem"] = filesystem
@@ -915,8 +1076,6 @@ class Instance(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
-            if per_unit_storage_throughput is None and not opts.urn:
-                raise TypeError("Missing required property 'per_unit_storage_throughput'")
             __props__.__dict__["per_unit_storage_throughput"] = per_unit_storage_throughput
             __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
@@ -927,6 +1086,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_reason"] = None
+            __props__.__dict__["uid"] = None
+            __props__.__dict__["upcoming_maintenance_schedules"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -944,6 +1105,7 @@ class Instance(pulumi.CustomResource):
             capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            dynamic_tier_options: Optional[pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             filesystem: Optional[pulumi.Input[_builtins.str]] = None,
             gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -961,6 +1123,8 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             state_reason: Optional[pulumi.Input[_builtins.str]] = None,
+            uid: Optional[pulumi.Input[_builtins.str]] = None,
+            upcoming_maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -969,13 +1133,18 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: Access control rules for the Lustre instance. Configures default root
-               squashing behavior and specific access rules based on IP addresses.
+        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
+               define the root user squash configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
-               are from `18000` to `954000`, in increments of 9000.
+               are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for specific minimums, maximums, and step sizes for each performance tier.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the instance was created.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
+        :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
@@ -987,20 +1156,30 @@ class Instance(pulumi.CustomResource):
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
+        :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS key name to use for data encryption.
+               If not set, the instance will use Google-managed encryption keys.
+               If set, the instance will use customer-managed encryption keys.
+               The key must be in the same region as the instance.
+               The key format is:
+               projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Defines a maintenance policy for a resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] mount_point: Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
         :param pulumi.Input[_builtins.str] name: Identifier. The name of the instance.
         :param pulumi.Input[_builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
                `projects/{project_id}/global/networks/{network_name}`.
-        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
-               Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+               500, 1000.
+               See [Performance tiers and maximum storage
+               capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+               for more information.
+               If the instance is using the Dynamic tier, this field must not be set or
+               must be set to zero.
         :param pulumi.Input[_builtins.str] placement_policy: The placement policy name for the instance in the format of
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1008,8 +1187,21 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of the instance.
-               Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
-        :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state.
+               Possible values:
+               ACTIVE
+               CREATING
+               DELETING
+               UPGRADING
+               REPAIRING
+               STOPPED
+               UPDATING
+               SUSPENDED
+        :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state (e.g. SUSPENDED).
+        :param pulumi.Input[_builtins.str] uid: Unique ID of the resource.
+               This is unrelated to the access rules which allow specifying the root
+               squash uid.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict']]]] upcoming_maintenance_schedules: Represents a scheduled maintenance event.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the instance was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1020,6 +1212,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["dynamic_tier_options"] = dynamic_tier_options
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["filesystem"] = filesystem
         __props__.__dict__["gke_support_enabled"] = gke_support_enabled
@@ -1037,6 +1230,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
+        __props__.__dict__["uid"] = uid
+        __props__.__dict__["upcoming_maintenance_schedules"] = upcoming_maintenance_schedules
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -1044,8 +1239,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="accessRulesOptions")
     def access_rules_options(self) -> pulumi.Output[Optional['outputs.InstanceAccessRulesOptions']]:
         """
-        Access control rules for the Lustre instance. Configures default root
-        squashing behavior and specific access rules based on IP addresses.
+        IP-based access rules for the Managed Lustre instance. These options
+        define the root user squash configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "access_rules_options")
@@ -1055,7 +1250,10 @@ class Instance(pulumi.CustomResource):
     def capacity_gib(self) -> pulumi.Output[_builtins.str]:
         """
         The storage capacity of the instance in gibibytes (GiB). Allowed values
-        are from `18000` to `954000`, in increments of 9000.
+        are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+        See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for specific minimums, maximums, and step sizes for each performance tier.
         """
         return pulumi.get(self, "capacity_gib")
 
@@ -1074,6 +1272,15 @@ class Instance(pulumi.CustomResource):
         A user-readable description of the instance.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicTierOptions")
+    def dynamic_tier_options(self) -> pulumi.Output[Optional['outputs.InstanceDynamicTierOptions']]:
+        """
+        Dynamic tier options for a Managed Lustre instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_tier_options")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -1118,7 +1325,12 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The KMS key id to use for encryption of the Lustre instance.
+        The Cloud KMS key name to use for data encryption.
+        If not set, the instance will use Google-managed encryption keys.
+        If set, the instance will use customer-managed encryption keys.
+        The key must be in the same region as the instance.
+        The key format is:
+        projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
         """
         return pulumi.get(self, "kms_key")
 
@@ -1144,7 +1356,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
         """
-        The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+        Defines a maintenance policy for a resource.
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
@@ -1177,10 +1389,15 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="perUnitStorageThroughput")
-    def per_unit_storage_throughput(self) -> pulumi.Output[_builtins.str]:
+    def per_unit_storage_throughput(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The throughput of the instance in MB/s/TiB.
-        Valid values are 125, 250, 500, 1000.
+        The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+        500, 1000.
+        See [Performance tiers and maximum storage
+        capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+        for more information.
+        If the instance is using the Dynamic tier, this field must not be set or
+        must be set to zero.
         """
         return pulumi.get(self, "per_unit_storage_throughput")
 
@@ -1216,7 +1433,15 @@ class Instance(pulumi.CustomResource):
     def state(self) -> pulumi.Output[_builtins.str]:
         """
         The state of the instance.
-        Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+        Possible values:
+        ACTIVE
+        CREATING
+        DELETING
+        UPGRADING
+        REPAIRING
+        STOPPED
+        UPDATING
+        SUSPENDED
         """
         return pulumi.get(self, "state")
 
@@ -1224,9 +1449,28 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> pulumi.Output[_builtins.str]:
         """
-        The reason why the instance is in a certain state.
+        The reason why the instance is in a certain state (e.g. SUSPENDED).
         """
         return pulumi.get(self, "state_reason")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[_builtins.str]:
+        """
+        Unique ID of the resource.
+        This is unrelated to the access rules which allow specifying the root
+        squash uid.
+        """
+        return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="upcomingMaintenanceSchedules")
+    def upcoming_maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.InstanceUpcomingMaintenanceSchedule']]:
+        """
+        Represents a scheduled maintenance event.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upcoming_maintenance_schedules")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

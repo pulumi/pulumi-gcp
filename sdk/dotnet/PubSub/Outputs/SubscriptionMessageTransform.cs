@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.PubSub.Outputs
     public sealed class SubscriptionMessageTransform
     {
         /// <summary>
+        /// AI Inference. Specifies the Vertex AI endpoint that inference
+        /// requests built from the Pub/Sub message data and provided parameters will
+        /// be sent to.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SubscriptionMessageTransformAiInference? AiInference;
+        /// <summary>
         /// Controls whether or not to use this transform. If not set or `False`,
         /// the transform will be applied to messages. Default: `True`.
         /// </summary>
@@ -27,10 +34,13 @@ namespace Pulumi.Gcp.PubSub.Outputs
 
         [OutputConstructor]
         private SubscriptionMessageTransform(
+            Outputs.SubscriptionMessageTransformAiInference? aiInference,
+
             bool? disabled,
 
             Outputs.SubscriptionMessageTransformJavascriptUdf? javascriptUdf)
         {
+            AiInference = aiInference;
             Disabled = disabled;
             JavascriptUdf = javascriptUdf;
         }

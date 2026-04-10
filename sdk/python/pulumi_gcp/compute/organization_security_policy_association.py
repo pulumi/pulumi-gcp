@@ -21,16 +21,24 @@ class OrganizationSecurityPolicyAssociationArgs:
     def __init__(__self__, *,
                  attachment_id: pulumi.Input[_builtins.str],
                  policy_id: pulumi.Input[_builtins.str],
+                 excluded_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excluded_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicyAssociation resource.
 
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[_builtins.str] policy_id: The security policy ID of the association.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
         :param pulumi.Input[_builtins.str] name: The name for an association.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "policy_id", policy_id)
+        if excluded_folders is not None:
+            pulumi.set(__self__, "excluded_folders", excluded_folders)
+        if excluded_projects is not None:
+            pulumi.set(__self__, "excluded_projects", excluded_projects)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -59,6 +67,30 @@ class OrganizationSecurityPolicyAssociationArgs:
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="excludedFolders")
+    def excluded_folders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of folders to exclude from the security policy.
+        """
+        return pulumi.get(self, "excluded_folders")
+
+    @excluded_folders.setter
+    def excluded_folders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_folders", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedProjects")
+    def excluded_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of projects to exclude from the security policy.
+        """
+        return pulumi.get(self, "excluded_projects")
+
+    @excluded_projects.setter
+    def excluded_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_projects", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -76,6 +108,8 @@ class _OrganizationSecurityPolicyAssociationState:
     def __init__(__self__, *,
                  attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 excluded_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excluded_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -83,6 +117,8 @@ class _OrganizationSecurityPolicyAssociationState:
 
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[_builtins.str] display_name: The display name of the security policy of the association.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
         :param pulumi.Input[_builtins.str] name: The name for an association.
         :param pulumi.Input[_builtins.str] policy_id: The security policy ID of the association.
         """
@@ -90,6 +126,10 @@ class _OrganizationSecurityPolicyAssociationState:
             pulumi.set(__self__, "attachment_id", attachment_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if excluded_folders is not None:
+            pulumi.set(__self__, "excluded_folders", excluded_folders)
+        if excluded_projects is not None:
+            pulumi.set(__self__, "excluded_projects", excluded_projects)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if policy_id is not None:
@@ -118,6 +158,30 @@ class _OrganizationSecurityPolicyAssociationState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedFolders")
+    def excluded_folders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of folders to exclude from the security policy.
+        """
+        return pulumi.get(self, "excluded_folders")
+
+    @excluded_folders.setter
+    def excluded_folders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_folders", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedProjects")
+    def excluded_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of projects to exclude from the security policy.
+        """
+        return pulumi.get(self, "excluded_projects")
+
+    @excluded_projects.setter
+    def excluded_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_projects", value)
 
     @_builtins.property
     @pulumi.getter
@@ -151,6 +215,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 excluded_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excluded_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -201,6 +267,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
         :param pulumi.Input[_builtins.str] name: The name for an association.
         :param pulumi.Input[_builtins.str] policy_id: The security policy ID of the association.
         """
@@ -270,6 +338,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 excluded_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excluded_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -284,6 +354,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             if attachment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attachment_id'")
             __props__.__dict__["attachment_id"] = attachment_id
+            __props__.__dict__["excluded_folders"] = excluded_folders
+            __props__.__dict__["excluded_projects"] = excluded_projects
             __props__.__dict__["name"] = name
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
@@ -301,6 +373,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            excluded_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            excluded_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationSecurityPolicyAssociation':
         """
@@ -312,6 +386,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[_builtins.str] display_name: The display name of the security policy of the association.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
         :param pulumi.Input[_builtins.str] name: The name for an association.
         :param pulumi.Input[_builtins.str] policy_id: The security policy ID of the association.
         """
@@ -321,6 +397,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         __props__.__dict__["attachment_id"] = attachment_id
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["excluded_folders"] = excluded_folders
+        __props__.__dict__["excluded_projects"] = excluded_projects
         __props__.__dict__["name"] = name
         __props__.__dict__["policy_id"] = policy_id
         return OrganizationSecurityPolicyAssociation(resource_name, opts=opts, __props__=__props__)
@@ -340,6 +418,22 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         The display name of the security policy of the association.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedFolders")
+    def excluded_folders(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of folders to exclude from the security policy.
+        """
+        return pulumi.get(self, "excluded_folders")
+
+    @_builtins.property
+    @pulumi.getter(name="excludedProjects")
+    def excluded_projects(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of projects to exclude from the security policy.
+        """
+        return pulumi.get(self, "excluded_projects")
 
     @_builtins.property
     @pulumi.getter

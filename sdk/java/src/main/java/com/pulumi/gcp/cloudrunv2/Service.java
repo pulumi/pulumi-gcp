@@ -1028,7 +1028,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sourcebucket = new Bucket("sourcebucket", BucketArgs.builder()
- *             .name(String.format("%s-tf-test-gcf-source_89605", project.projectId()))
+ *             .name(String.format("%s-tf-test-gcf-source_91042", project.projectId()))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1055,6 +1055,59 @@ import javax.annotation.Nullable;
  *                             .object(sourceTar.name())
  *                             .generation(sourceTar.generation())
  *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudrunv2 Service Emptydir Disk
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .launchStage("ALPHA")
+ *             .deletionProtection(true)
+ *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+ *                         .name("empty-dir-volume")
+ *                         .mountPath("/mnt")
+ *                         .build())
+ *                     .build())
+ *                 .volumes(ServiceTemplateVolumeArgs.builder()
+ *                     .name("empty-dir-volume")
+ *                     .emptyDir(ServiceTemplateVolumeEmptyDirArgs.builder()
+ *                         .medium("DISK")
+ *                         .sizeLimit("10Gi")
  *                         .build())
  *                     .build())
  *                 .build())

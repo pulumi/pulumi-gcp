@@ -80,7 +80,6 @@ import javax.annotation.Nullable;
  *         ctx.export("dataTableUuid", example.dataTableUuid());
  *         ctx.export("dataTableDescription", example.description());
  *         ctx.export("dataTableCreateTime", example.createTime());
- *         ctx.export("dataTableTtl", example.rowTimeToLive());
  *     }
  * }
  * }
@@ -153,10 +152,6 @@ import javax.annotation.Nullable;
  *                 .dependsOn(testScopeAllowEveryone)
  *                 .build());
  * 
- *         ctx.export("dataTableName", exampleDt.name());
- *         ctx.export("dataTableId", exampleDt.id());
- *         ctx.export("dataTableCreateTime", exampleDt.createTime());
- *         ctx.export("dataTableColumnInfo", exampleDt.columnInfos());
  *     }
  * }
  * }

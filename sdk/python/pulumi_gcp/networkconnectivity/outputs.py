@@ -1079,6 +1079,12 @@ class SpokeLinkedInterconnectAttachments(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "excludeExportRanges":
+            suggest = "exclude_export_ranges"
+        elif key == "excludeImportRanges":
+            suggest = "exclude_import_ranges"
+        elif key == "includeExportRanges":
+            suggest = "include_export_ranges"
         elif key == "includeImportRanges":
             suggest = "include_import_ranges"
 
@@ -1096,15 +1102,27 @@ class SpokeLinkedInterconnectAttachments(dict):
     def __init__(__self__, *,
                  site_to_site_data_transfer: _builtins.bool,
                  uris: Sequence[_builtins.str],
+                 exclude_export_ranges: Optional[Sequence[_builtins.str]] = None,
+                 exclude_import_ranges: Optional[Sequence[_builtins.str]] = None,
+                 include_export_ranges: Optional[Sequence[_builtins.str]] = None,
                  include_import_ranges: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param Sequence[_builtins.str] uris: The URIs of linked interconnect attachment resources
-        :param Sequence[_builtins.str] include_import_ranges: IP ranges allowed to be included during import from hub (does not control transit connectivity).
-               The only allowed value for now is "ALL_IPV4_RANGES".
+        :param Sequence[_builtins.str] exclude_export_ranges: Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        :param Sequence[_builtins.str] exclude_import_ranges: Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        :param Sequence[_builtins.str] include_export_ranges: Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        :param Sequence[_builtins.str] include_import_ranges: Hub routes fully encompassed by include import ranges are included during import from hub.
+               "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        if exclude_import_ranges is not None:
+            pulumi.set(__self__, "exclude_import_ranges", exclude_import_ranges)
+        if include_export_ranges is not None:
+            pulumi.set(__self__, "include_export_ranges", include_export_ranges)
         if include_import_ranges is not None:
             pulumi.set(__self__, "include_import_ranges", include_import_ranges)
 
@@ -1125,11 +1143,35 @@ class SpokeLinkedInterconnectAttachments(dict):
         return pulumi.get(self, "uris")
 
     @_builtins.property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeImportRanges")
+    def exclude_import_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        """
+        return pulumi.get(self, "exclude_import_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="includeExportRanges")
+    def include_export_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        """
+        return pulumi.get(self, "include_export_ranges")
+
+    @_builtins.property
     @pulumi.getter(name="includeImportRanges")
     def include_import_ranges(self) -> Optional[Sequence[_builtins.str]]:
         """
-        IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        The only allowed value for now is "ALL_IPV4_RANGES".
+        Hub routes fully encompassed by include import ranges are included during import from hub.
+        "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         """
         return pulumi.get(self, "include_import_ranges")
 
@@ -1229,6 +1271,12 @@ class SpokeLinkedRouterApplianceInstances(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "excludeExportRanges":
+            suggest = "exclude_export_ranges"
+        elif key == "excludeImportRanges":
+            suggest = "exclude_import_ranges"
+        elif key == "includeExportRanges":
+            suggest = "include_export_ranges"
         elif key == "includeImportRanges":
             suggest = "include_import_ranges"
 
@@ -1246,16 +1294,28 @@ class SpokeLinkedRouterApplianceInstances(dict):
     def __init__(__self__, *,
                  instances: Sequence['outputs.SpokeLinkedRouterApplianceInstancesInstance'],
                  site_to_site_data_transfer: _builtins.bool,
+                 exclude_export_ranges: Optional[Sequence[_builtins.str]] = None,
+                 exclude_import_ranges: Optional[Sequence[_builtins.str]] = None,
+                 include_export_ranges: Optional[Sequence[_builtins.str]] = None,
                  include_import_ranges: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArgs'] instances: The list of router appliance instances
                Structure is documented below.
         :param _builtins.bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
-        :param Sequence[_builtins.str] include_import_ranges: IP ranges allowed to be included during import from hub (does not control transit connectivity).
-               The only allowed value for now is "ALL_IPV4_RANGES".
+        :param Sequence[_builtins.str] exclude_export_ranges: Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        :param Sequence[_builtins.str] exclude_import_ranges: Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        :param Sequence[_builtins.str] include_export_ranges: Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        :param Sequence[_builtins.str] include_import_ranges: Hub routes fully encompassed by include import ranges are included during import from hub.
+               "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         """
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        if exclude_import_ranges is not None:
+            pulumi.set(__self__, "exclude_import_ranges", exclude_import_ranges)
+        if include_export_ranges is not None:
+            pulumi.set(__self__, "include_export_ranges", include_export_ranges)
         if include_import_ranges is not None:
             pulumi.set(__self__, "include_import_ranges", include_import_ranges)
 
@@ -1277,11 +1337,35 @@ class SpokeLinkedRouterApplianceInstances(dict):
         return pulumi.get(self, "site_to_site_data_transfer")
 
     @_builtins.property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeImportRanges")
+    def exclude_import_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        """
+        return pulumi.get(self, "exclude_import_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="includeExportRanges")
+    def include_export_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        """
+        return pulumi.get(self, "include_export_ranges")
+
+    @_builtins.property
     @pulumi.getter(name="includeImportRanges")
     def include_import_ranges(self) -> Optional[Sequence[_builtins.str]]:
         """
-        IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        The only allowed value for now is "ALL_IPV4_RANGES".
+        Hub routes fully encompassed by include import ranges are included during import from hub.
+        "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         """
         return pulumi.get(self, "include_import_ranges")
 
@@ -1402,6 +1486,12 @@ class SpokeLinkedVpnTunnels(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "excludeExportRanges":
+            suggest = "exclude_export_ranges"
+        elif key == "excludeImportRanges":
+            suggest = "exclude_import_ranges"
+        elif key == "includeExportRanges":
+            suggest = "include_export_ranges"
         elif key == "includeImportRanges":
             suggest = "include_import_ranges"
 
@@ -1419,15 +1509,27 @@ class SpokeLinkedVpnTunnels(dict):
     def __init__(__self__, *,
                  site_to_site_data_transfer: _builtins.bool,
                  uris: Sequence[_builtins.str],
+                 exclude_export_ranges: Optional[Sequence[_builtins.str]] = None,
+                 exclude_import_ranges: Optional[Sequence[_builtins.str]] = None,
+                 include_export_ranges: Optional[Sequence[_builtins.str]] = None,
                  include_import_ranges: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param Sequence[_builtins.str] uris: The URIs of linked VPN tunnel resources.
-        :param Sequence[_builtins.str] include_import_ranges: IP ranges allowed to be included during import from hub (does not control transit connectivity).
-               The only allowed value for now is "ALL_IPV4_RANGES".
+        :param Sequence[_builtins.str] exclude_export_ranges: Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        :param Sequence[_builtins.str] exclude_import_ranges: Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        :param Sequence[_builtins.str] include_export_ranges: Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        :param Sequence[_builtins.str] include_import_ranges: Hub routes fully encompassed by include import ranges are included during import from hub.
+               "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        if exclude_import_ranges is not None:
+            pulumi.set(__self__, "exclude_import_ranges", exclude_import_ranges)
+        if include_export_ranges is not None:
+            pulumi.set(__self__, "include_export_ranges", include_export_ranges)
         if include_import_ranges is not None:
             pulumi.set(__self__, "include_import_ranges", include_import_ranges)
 
@@ -1448,11 +1550,35 @@ class SpokeLinkedVpnTunnels(dict):
         return pulumi.get(self, "uris")
 
     @_builtins.property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeImportRanges")
+    def exclude_import_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        """
+        return pulumi.get(self, "exclude_import_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="includeExportRanges")
+    def include_export_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        """
+        return pulumi.get(self, "include_export_ranges")
+
+    @_builtins.property
     @pulumi.getter(name="includeImportRanges")
     def include_import_ranges(self) -> Optional[Sequence[_builtins.str]]:
         """
-        IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        The only allowed value for now is "ALL_IPV4_RANGES".
+        Hub routes fully encompassed by include import ranges are included during import from hub.
+        "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         """
         return pulumi.get(self, "include_import_ranges")
 

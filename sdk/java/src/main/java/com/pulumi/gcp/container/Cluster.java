@@ -310,6 +310,30 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.authenticatorGroupsConfig;
     }
     /**
+     * The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API&#39;s
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     * 
+     */
+    @Export(name="autopilotPrivilegedAdmissions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> autopilotPrivilegedAdmissions;
+
+    /**
+     * @return The customer
+     * allowlist Cloud Storage paths for the cluster. These paths are used with the
+     * `--autopilot-privileged-admission` flag to authorize privileged workloads in
+     * Autopilot clusters. See the Cluster API&#39;s
+     * [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+     * documentation for more details.
+     * 
+     */
+    public Output<List<String>> autopilotPrivilegedAdmissions() {
+        return this.autopilotPrivilegedAdmissions;
+    }
+    /**
      * Configuration options for the Binary
      * Authorization feature. Structure is documented below.
      * 

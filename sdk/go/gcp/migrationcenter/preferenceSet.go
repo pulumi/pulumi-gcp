@@ -120,6 +120,49 @@ import (
 //	}
 //
 // ```
+// ### Preference Set Compute Engine Preferences Disk Type
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := migrationcenter.NewPreferenceSet(ctx, "default", &migrationcenter.PreferenceSetArgs{
+//				Location:        pulumi.String("us-central1"),
+//				PreferenceSetId: pulumi.String("preference-set-test"),
+//				Description:     pulumi.String("Terraform integration test description"),
+//				DisplayName:     pulumi.String("Terraform integration test display"),
+//				VirtualMachinePreferences: &migrationcenter.PreferenceSetVirtualMachinePreferencesArgs{
+//					SizingOptimizationStrategy: pulumi.String("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"),
+//					TargetProduct:              pulumi.String("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"),
+//					ComputeEnginePreferences: &migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs{
+//						LicenseType: pulumi.String("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"),
+//						MachinePreferences: &migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs{
+//							AllowedMachineSeries: migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArray{
+//								&migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs{
+//									Code: pulumi.String("C3"),
+//								},
+//							},
+//						},
+//						PersistentDiskType: pulumi.String("PERSISTENT_DISK_TYPE_SSD"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

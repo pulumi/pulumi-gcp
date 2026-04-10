@@ -83,6 +83,19 @@ __all__ = [
     'WidgetConfigUiSettingsDataStoreUiConfigFacetField',
     'WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap',
     'WidgetConfigUiSettingsGenerativeAnswerConfig',
+    'GetDataStoreAdvancedSiteSearchConfigResult',
+    'GetDataStoreDocumentProcessingConfigResult',
+    'GetDataStoreDocumentProcessingConfigChunkingConfigResult',
+    'GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResult',
+    'GetDataStoreDocumentProcessingConfigDefaultParsingConfigResult',
+    'GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigResult',
+    'GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigResult',
+    'GetDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigResult',
+    'GetDataStoreDocumentProcessingConfigParsingConfigOverrideResult',
+    'GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigResult',
+    'GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult',
+    'GetDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigResult',
+    'GetDataStoresDataStoreResult',
 ]
 
 @pulumi.output_type
@@ -4031,5 +4044,524 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig(dict):
         The number of top results to generate the answer from. Up to 10.
         """
         return pulumi.get(self, "result_count")
+
+
+@pulumi.output_type
+class GetDataStoreAdvancedSiteSearchConfigResult(dict):
+    def __init__(__self__, *,
+                 disable_automatic_refresh: _builtins.bool,
+                 disable_initial_index: _builtins.bool):
+        """
+        :param _builtins.bool disable_automatic_refresh: If set true, automatic refresh is disabled for the DataStore.
+        :param _builtins.bool disable_initial_index: If set true, initial indexing is disabled for the DataStore.
+        """
+        pulumi.set(__self__, "disable_automatic_refresh", disable_automatic_refresh)
+        pulumi.set(__self__, "disable_initial_index", disable_initial_index)
+
+    @_builtins.property
+    @pulumi.getter(name="disableAutomaticRefresh")
+    def disable_automatic_refresh(self) -> _builtins.bool:
+        """
+        If set true, automatic refresh is disabled for the DataStore.
+        """
+        return pulumi.get(self, "disable_automatic_refresh")
+
+    @_builtins.property
+    @pulumi.getter(name="disableInitialIndex")
+    def disable_initial_index(self) -> _builtins.bool:
+        """
+        If set true, initial indexing is disabled for the DataStore.
+        """
+        return pulumi.get(self, "disable_initial_index")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigResult(dict):
+    def __init__(__self__, *,
+                 chunking_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigChunkingConfigResult'],
+                 default_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigResult'],
+                 name: _builtins.str,
+                 parsing_config_overrides: Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideResult']):
+        """
+        :param Sequence['GetDataStoreDocumentProcessingConfigChunkingConfigArgs'] chunking_configs: Whether chunking mode is enabled.
+        :param Sequence['GetDataStoreDocumentProcessingConfigDefaultParsingConfigArgs'] default_parsing_configs: Configurations for default Document parser. If not specified, this resource
+               will be configured to use a default DigitalParsingConfig, and the default parsing
+               config will be applied to all file types for Document parsing.
+        :param _builtins.str name: The full resource name of the Document Processing Config. Format:
+               'projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig'.
+        :param Sequence['GetDataStoreDocumentProcessingConfigParsingConfigOverrideArgs'] parsing_config_overrides: Map from file type to override the default parsing configuration based on the file type. Supported keys:
+                 * 'pdf': Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported.
+                 * 'html': Override parsing config for HTML files, only digital parsing and or layout parsing are supported.
+                 * 'docx': Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+        """
+        pulumi.set(__self__, "chunking_configs", chunking_configs)
+        pulumi.set(__self__, "default_parsing_configs", default_parsing_configs)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parsing_config_overrides", parsing_config_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="chunkingConfigs")
+    def chunking_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigChunkingConfigResult']:
+        """
+        Whether chunking mode is enabled.
+        """
+        return pulumi.get(self, "chunking_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultParsingConfigs")
+    def default_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigResult']:
+        """
+        Configurations for default Document parser. If not specified, this resource
+        will be configured to use a default DigitalParsingConfig, and the default parsing
+        config will be applied to all file types for Document parsing.
+        """
+        return pulumi.get(self, "default_parsing_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The full resource name of the Document Processing Config. Format:
+        'projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig'.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parsingConfigOverrides")
+    def parsing_config_overrides(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideResult']:
+        """
+        Map from file type to override the default parsing configuration based on the file type. Supported keys:
+          * 'pdf': Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported.
+          * 'html': Override parsing config for HTML files, only digital parsing and or layout parsing are supported.
+          * 'docx': Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+        """
+        return pulumi.get(self, "parsing_config_overrides")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigChunkingConfigResult(dict):
+    def __init__(__self__, *,
+                 layout_based_chunking_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResult']):
+        """
+        :param Sequence['GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs'] layout_based_chunking_configs: Configuration for the layout based chunking.
+        """
+        pulumi.set(__self__, "layout_based_chunking_configs", layout_based_chunking_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="layoutBasedChunkingConfigs")
+    def layout_based_chunking_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResult']:
+        """
+        Configuration for the layout based chunking.
+        """
+        return pulumi.get(self, "layout_based_chunking_configs")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResult(dict):
+    def __init__(__self__, *,
+                 chunk_size: _builtins.int,
+                 include_ancestor_headings: _builtins.bool):
+        """
+        :param _builtins.int chunk_size: The token size limit for each chunk.
+               Supported values: 100-500 (inclusive). Default value: 500.
+        :param _builtins.bool include_ancestor_headings: Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+               Default value: False.
+        """
+        pulumi.set(__self__, "chunk_size", chunk_size)
+        pulumi.set(__self__, "include_ancestor_headings", include_ancestor_headings)
+
+    @_builtins.property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> _builtins.int:
+        """
+        The token size limit for each chunk.
+        Supported values: 100-500 (inclusive). Default value: 500.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="includeAncestorHeadings")
+    def include_ancestor_headings(self) -> _builtins.bool:
+        """
+        Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+        Default value: False.
+        """
+        return pulumi.get(self, "include_ancestor_headings")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigDefaultParsingConfigResult(dict):
+    def __init__(__self__, *,
+                 digital_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigResult'],
+                 layout_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigResult'],
+                 ocr_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigResult']):
+        """
+        :param Sequence['GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs'] digital_parsing_configs: Configurations applied to digital parser.
+        :param Sequence['GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs'] layout_parsing_configs: Configurations applied to layout parser.
+        :param Sequence['GetDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs'] ocr_parsing_configs: Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        pulumi.set(__self__, "digital_parsing_configs", digital_parsing_configs)
+        pulumi.set(__self__, "layout_parsing_configs", layout_parsing_configs)
+        pulumi.set(__self__, "ocr_parsing_configs", ocr_parsing_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="digitalParsingConfigs")
+    def digital_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigResult']:
+        """
+        Configurations applied to digital parser.
+        """
+        return pulumi.get(self, "digital_parsing_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="layoutParsingConfigs")
+    def layout_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigResult']:
+        """
+        Configurations applied to layout parser.
+        """
+        return pulumi.get(self, "layout_parsing_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="ocrParsingConfigs")
+    def ocr_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigResult']:
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        return pulumi.get(self, "ocr_parsing_configs")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_image_annotation: _builtins.bool,
+                 enable_table_annotation: _builtins.bool,
+                 exclude_html_classes: Sequence[_builtins.str],
+                 exclude_html_elements: Sequence[_builtins.str],
+                 exclude_html_ids: Sequence[_builtins.str],
+                 structured_content_types: Sequence[_builtins.str]):
+        """
+        :param _builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param _builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
+        :param Sequence[_builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
+        :param Sequence[_builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
+        :param Sequence[_builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
+        :param Sequence[_builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.
+        """
+        pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
+        pulumi.set(__self__, "exclude_html_classes", exclude_html_classes)
+        pulumi.set(__self__, "exclude_html_elements", exclude_html_elements)
+        pulumi.set(__self__, "exclude_html_ids", exclude_html_ids)
+        pulumi.set(__self__, "structured_content_types", structured_content_types)
+
+    @_builtins.property
+    @pulumi.getter(name="enableImageAnnotation")
+    def enable_image_annotation(self) -> _builtins.bool:
+        """
+        If true, the LLM based annotation is added to the image during parsing.
+        """
+        return pulumi.get(self, "enable_image_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableTableAnnotation")
+    def enable_table_annotation(self) -> _builtins.bool:
+        """
+        If true, the LLM based annotation is added to the table during parsing.
+        """
+        return pulumi.get(self, "enable_table_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeHtmlClasses")
+    def exclude_html_classes(self) -> Sequence[_builtins.str]:
+        """
+        List of HTML classes to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_classes")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeHtmlElements")
+    def exclude_html_elements(self) -> Sequence[_builtins.str]:
+        """
+        List of HTML elements to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_elements")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeHtmlIds")
+    def exclude_html_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of HTML ids to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="structuredContentTypes")
+    def structured_content_types(self) -> Sequence[_builtins.str]:
+        """
+        Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.
+        """
+        return pulumi.get(self, "structured_content_types")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigResult(dict):
+    def __init__(__self__, *,
+                 use_native_text: _builtins.bool):
+        """
+        :param _builtins.bool use_native_text: If true, will use native text instead of OCR text on pages containing native text.
+        """
+        pulumi.set(__self__, "use_native_text", use_native_text)
+
+    @_builtins.property
+    @pulumi.getter(name="useNativeText")
+    def use_native_text(self) -> _builtins.bool:
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+        return pulumi.get(self, "use_native_text")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigParsingConfigOverrideResult(dict):
+    def __init__(__self__, *,
+                 digital_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigResult'],
+                 file_type: _builtins.str,
+                 layout_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult'],
+                 ocr_parsing_configs: Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigResult']):
+        """
+        :param Sequence['GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs'] digital_parsing_configs: Configurations applied to digital parser.
+        :param Sequence['GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs'] layout_parsing_configs: Configurations applied to layout parser.
+        :param Sequence['GetDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs'] ocr_parsing_configs: Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        pulumi.set(__self__, "digital_parsing_configs", digital_parsing_configs)
+        pulumi.set(__self__, "file_type", file_type)
+        pulumi.set(__self__, "layout_parsing_configs", layout_parsing_configs)
+        pulumi.set(__self__, "ocr_parsing_configs", ocr_parsing_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="digitalParsingConfigs")
+    def digital_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigResult']:
+        """
+        Configurations applied to digital parser.
+        """
+        return pulumi.get(self, "digital_parsing_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> _builtins.str:
+        return pulumi.get(self, "file_type")
+
+    @_builtins.property
+    @pulumi.getter(name="layoutParsingConfigs")
+    def layout_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult']:
+        """
+        Configurations applied to layout parser.
+        """
+        return pulumi.get(self, "layout_parsing_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="ocrParsingConfigs")
+    def ocr_parsing_configs(self) -> Sequence['outputs.GetDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigResult']:
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        return pulumi.get(self, "ocr_parsing_configs")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_image_annotation: _builtins.bool,
+                 enable_table_annotation: _builtins.bool,
+                 exclude_html_classes: Sequence[_builtins.str],
+                 exclude_html_elements: Sequence[_builtins.str],
+                 exclude_html_ids: Sequence[_builtins.str],
+                 structured_content_types: Sequence[_builtins.str]):
+        """
+        :param _builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param _builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
+        :param Sequence[_builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
+        :param Sequence[_builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
+        :param Sequence[_builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
+        :param Sequence[_builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.
+        """
+        pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
+        pulumi.set(__self__, "exclude_html_classes", exclude_html_classes)
+        pulumi.set(__self__, "exclude_html_elements", exclude_html_elements)
+        pulumi.set(__self__, "exclude_html_ids", exclude_html_ids)
+        pulumi.set(__self__, "structured_content_types", structured_content_types)
+
+    @_builtins.property
+    @pulumi.getter(name="enableImageAnnotation")
+    def enable_image_annotation(self) -> _builtins.bool:
+        """
+        If true, the LLM based annotation is added to the image during parsing.
+        """
+        return pulumi.get(self, "enable_image_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableTableAnnotation")
+    def enable_table_annotation(self) -> _builtins.bool:
+        """
+        If true, the LLM based annotation is added to the table during parsing.
+        """
+        return pulumi.get(self, "enable_table_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeHtmlClasses")
+    def exclude_html_classes(self) -> Sequence[_builtins.str]:
+        """
+        List of HTML classes to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_classes")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeHtmlElements")
+    def exclude_html_elements(self) -> Sequence[_builtins.str]:
+        """
+        List of HTML elements to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_elements")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeHtmlIds")
+    def exclude_html_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of HTML ids to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="structuredContentTypes")
+    def structured_content_types(self) -> Sequence[_builtins.str]:
+        """
+        Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.
+        """
+        return pulumi.get(self, "structured_content_types")
+
+
+@pulumi.output_type
+class GetDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigResult(dict):
+    def __init__(__self__, *,
+                 use_native_text: _builtins.bool):
+        """
+        :param _builtins.bool use_native_text: If true, will use native text instead of OCR text on pages containing native text.
+        """
+        pulumi.set(__self__, "use_native_text", use_native_text)
+
+    @_builtins.property
+    @pulumi.getter(name="useNativeText")
+    def use_native_text(self) -> _builtins.bool:
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+        return pulumi.get(self, "use_native_text")
+
+
+@pulumi.output_type
+class GetDataStoresDataStoreResult(dict):
+    def __init__(__self__, *,
+                 content_config: _builtins.str,
+                 create_time: _builtins.str,
+                 data_store_id: _builtins.str,
+                 default_schema_id: _builtins.str,
+                 display_name: _builtins.str,
+                 industry_vertical: _builtins.str,
+                 name: _builtins.str,
+                 solution_types: Sequence[_builtins.str]):
+        """
+        :param _builtins.str content_config: The content configuration of the data store (e.g. `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`).
+        :param _builtins.str create_time: The timestamp of when the data store was created.
+        :param _builtins.str data_store_id: The unique id of the data store.
+        :param _builtins.str default_schema_id: The id of the default schema associated with the data store.
+        :param _builtins.str display_name: The display name of the data store.
+        :param _builtins.str industry_vertical: The industry vertical of the data store (e.g. `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`).
+        :param _builtins.str name: The full resource name of the data store.
+        :param Sequence[_builtins.str] solution_types: The solutions the data store enrolls (e.g. `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_RECOMMENDATION`).
+        """
+        pulumi.set(__self__, "content_config", content_config)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_store_id", data_store_id)
+        pulumi.set(__self__, "default_schema_id", default_schema_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "industry_vertical", industry_vertical)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "solution_types", solution_types)
+
+    @_builtins.property
+    @pulumi.getter(name="contentConfig")
+    def content_config(self) -> _builtins.str:
+        """
+        The content configuration of the data store (e.g. `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`).
+        """
+        return pulumi.get(self, "content_config")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The timestamp of when the data store was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataStoreId")
+    def data_store_id(self) -> _builtins.str:
+        """
+        The unique id of the data store.
+        """
+        return pulumi.get(self, "data_store_id")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultSchemaId")
+    def default_schema_id(self) -> _builtins.str:
+        """
+        The id of the default schema associated with the data store.
+        """
+        return pulumi.get(self, "default_schema_id")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The display name of the data store.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="industryVertical")
+    def industry_vertical(self) -> _builtins.str:
+        """
+        The industry vertical of the data store (e.g. `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`).
+        """
+        return pulumi.get(self, "industry_vertical")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The full resource name of the data store.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="solutionTypes")
+    def solution_types(self) -> Sequence[_builtins.str]:
+        """
+        The solutions the data store enrolls (e.g. `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_RECOMMENDATION`).
+        """
+        return pulumi.get(self, "solution_types")
 
 

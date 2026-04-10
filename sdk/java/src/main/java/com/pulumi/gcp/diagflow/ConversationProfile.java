@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
- *             .appId("app-id-_44703")
+ *             .appId("app-id")
  *             .location("us")
  *             .displayName("my-app")
  *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bidiProfile = new ConversationProfile("bidiProfile", ConversationProfileArgs.builder()
- *             .displayName("tf-test-dialogflow-profile-bidi-_32270")
+ *             .displayName("dialogflow-profile-bidi")
  *             .location("global")
  *             .languageCode("en-US")
  *             .useBidiStreaming(true)

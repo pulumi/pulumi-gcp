@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Diagflow
     /// {
     ///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
     ///     {
-    ///         AppId = "app-id-_44703",
+    ///         AppId = "app-id",
     ///         Location = "us",
     ///         DisplayName = "my-app",
     ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     ///     var bidiProfile = new Gcp.Diagflow.ConversationProfile("bidi_profile", new()
     ///     {
-    ///         DisplayName = "tf-test-dialogflow-profile-bidi-_32270",
+    ///         DisplayName = "dialogflow-profile-bidi",
     ///         Location = "global",
     ///         LanguageCode = "en-US",
     ///         UseBidiStreaming = true,

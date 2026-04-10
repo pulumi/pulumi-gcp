@@ -16,16 +16,28 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
     public static final InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs Empty = new InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs();
 
     /**
-     * Day of the week for the maintenance window.
-     * Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+     * Possible values:
+     * MONDAY
+     * TUESDAY
+     * WEDNESDAY
+     * THURSDAY
+     * FRIDAY
+     * SATURDAY
+     * SUNDAY
      * 
      */
     @Import(name="dayOfWeek", required=true)
     private Output<String> dayOfWeek;
 
     /**
-     * @return Day of the week for the maintenance window.
-     * Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+     * @return Possible values:
+     * MONDAY
+     * TUESDAY
+     * WEDNESDAY
+     * THURSDAY
+     * FRIDAY
+     * SATURDAY
+     * SUNDAY
      * 
      */
     public Output<String> dayOfWeek() {
@@ -33,7 +45,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
     }
 
     /**
-     * Start time of the maintenance window in UTC.
+     * Represents a time of day. The date and time zone are either not significant
+     * or are specified elsewhere. An API may choose to allow leap seconds. Related
+     * types are google.type.Date and `google.protobuf.Timestamp`.
      * Structure is documented below.
      * 
      */
@@ -41,7 +55,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
     private Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs> startTime;
 
     /**
-     * @return Start time of the maintenance window in UTC.
+     * @return Represents a time of day. The date and time zone are either not significant
+     * or are specified elsewhere. An API may choose to allow leap seconds. Related
+     * types are google.type.Date and `google.protobuf.Timestamp`.
      * Structure is documented below.
      * 
      */
@@ -75,8 +91,14 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
         }
 
         /**
-         * @param dayOfWeek Day of the week for the maintenance window.
-         * Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+         * @param dayOfWeek Possible values:
+         * MONDAY
+         * TUESDAY
+         * WEDNESDAY
+         * THURSDAY
+         * FRIDAY
+         * SATURDAY
+         * SUNDAY
          * 
          * @return builder
          * 
@@ -87,8 +109,14 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
         }
 
         /**
-         * @param dayOfWeek Day of the week for the maintenance window.
-         * Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+         * @param dayOfWeek Possible values:
+         * MONDAY
+         * TUESDAY
+         * WEDNESDAY
+         * THURSDAY
+         * FRIDAY
+         * SATURDAY
+         * SUNDAY
          * 
          * @return builder
          * 
@@ -98,7 +126,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
         }
 
         /**
-         * @param startTime Start time of the maintenance window in UTC.
+         * @param startTime Represents a time of day. The date and time zone are either not significant
+         * or are specified elsewhere. An API may choose to allow leap seconds. Related
+         * types are google.type.Date and `google.protobuf.Timestamp`.
          * Structure is documented below.
          * 
          * @return builder
@@ -110,7 +140,9 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs extends
         }
 
         /**
-         * @param startTime Start time of the maintenance window in UTC.
+         * @param startTime Represents a time of day. The date and time zone are either not significant
+         * or are specified elsewhere. An API may choose to allow leap seconds. Related
+         * types are google.type.Date and `google.protobuf.Timestamp`.
          * Structure is documented below.
          * 
          * @return builder

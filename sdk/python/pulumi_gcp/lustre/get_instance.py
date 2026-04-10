@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, update_time=None, zone=None):
+    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, description=None, dynamic_tier_options=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, uid=None, upcoming_maintenance_schedules=None, update_time=None, zone=None):
         if access_rules_options and not isinstance(access_rules_options, list):
             raise TypeError("Expected argument 'access_rules_options' to be a list")
         pulumi.set(__self__, "access_rules_options", access_rules_options)
@@ -40,6 +40,9 @@ class GetInstanceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if dynamic_tier_options and not isinstance(dynamic_tier_options, list):
+            raise TypeError("Expected argument 'dynamic_tier_options' to be a list")
+        pulumi.set(__self__, "dynamic_tier_options", dynamic_tier_options)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -94,6 +97,12 @@ class GetInstanceResult:
         if state_reason and not isinstance(state_reason, str):
             raise TypeError("Expected argument 'state_reason' to be a str")
         pulumi.set(__self__, "state_reason", state_reason)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
+        if upcoming_maintenance_schedules and not isinstance(upcoming_maintenance_schedules, list):
+            raise TypeError("Expected argument 'upcoming_maintenance_schedules' to be a list")
+        pulumi.set(__self__, "upcoming_maintenance_schedules", upcoming_maintenance_schedules)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -120,6 +129,11 @@ class GetInstanceResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicTierOptions")
+    def dynamic_tier_options(self) -> Sequence['outputs.GetInstanceDynamicTierOptionResult']:
+        return pulumi.get(self, "dynamic_tier_options")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -215,6 +229,16 @@ class GetInstanceResult:
         return pulumi.get(self, "state_reason")
 
     @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="upcomingMaintenanceSchedules")
+    def upcoming_maintenance_schedules(self) -> Sequence['outputs.GetInstanceUpcomingMaintenanceScheduleResult']:
+        return pulumi.get(self, "upcoming_maintenance_schedules")
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         return pulumi.get(self, "update_time")
@@ -235,6 +259,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             capacity_gib=self.capacity_gib,
             create_time=self.create_time,
             description=self.description,
+            dynamic_tier_options=self.dynamic_tier_options,
             effective_labels=self.effective_labels,
             filesystem=self.filesystem,
             gke_support_enabled=self.gke_support_enabled,
@@ -253,6 +278,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             pulumi_labels=self.pulumi_labels,
             state=self.state,
             state_reason=self.state_reason,
+            uid=self.uid,
+            upcoming_maintenance_schedules=self.upcoming_maintenance_schedules,
             update_time=self.update_time,
             zone=self.zone)
 
@@ -283,6 +310,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         capacity_gib=pulumi.get(__ret__, 'capacity_gib'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        dynamic_tier_options=pulumi.get(__ret__, 'dynamic_tier_options'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         filesystem=pulumi.get(__ret__, 'filesystem'),
         gke_support_enabled=pulumi.get(__ret__, 'gke_support_enabled'),
@@ -301,6 +329,8 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         state=pulumi.get(__ret__, 'state'),
         state_reason=pulumi.get(__ret__, 'state_reason'),
+        uid=pulumi.get(__ret__, 'uid'),
+        upcoming_maintenance_schedules=pulumi.get(__ret__, 'upcoming_maintenance_schedules'),
         update_time=pulumi.get(__ret__, 'update_time'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -328,6 +358,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         capacity_gib=pulumi.get(__response__, 'capacity_gib'),
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
+        dynamic_tier_options=pulumi.get(__response__, 'dynamic_tier_options'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         filesystem=pulumi.get(__response__, 'filesystem'),
         gke_support_enabled=pulumi.get(__response__, 'gke_support_enabled'),
@@ -346,5 +377,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         state=pulumi.get(__response__, 'state'),
         state_reason=pulumi.get(__response__, 'state_reason'),
+        uid=pulumi.get(__response__, 'uid'),
+        upcoming_maintenance_schedules=pulumi.get(__response__, 'upcoming_maintenance_schedules'),
         update_time=pulumi.get(__response__, 'update_time'),
         zone=pulumi.get(__response__, 'zone')))

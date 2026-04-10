@@ -4,6 +4,7 @@
 package com.pulumi.gcp.lustre.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.lustre.outputs.InstanceMaintenancePolicyMaintenanceExclusionWindow;
 import com.pulumi.gcp.lustre.outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows;
 import java.util.Objects;
@@ -19,11 +20,12 @@ public final class InstanceMaintenancePolicy {
      */
     private @Nullable InstanceMaintenancePolicyMaintenanceExclusionWindow maintenanceExclusionWindow;
     /**
-     * @return The weekly maintenance windows for the instance. Currently limited to 1 window.
+     * @return The weekly maintenance windows for the instance. Currently limited to 1
+     * window.
      * Structure is documented below.
      * 
      */
-    private @Nullable InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows;
+    private InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows;
 
     private InstanceMaintenancePolicy() {}
     /**
@@ -35,12 +37,13 @@ public final class InstanceMaintenancePolicy {
         return Optional.ofNullable(this.maintenanceExclusionWindow);
     }
     /**
-     * @return The weekly maintenance windows for the instance. Currently limited to 1 window.
+     * @return The weekly maintenance windows for the instance. Currently limited to 1
+     * window.
      * Structure is documented below.
      * 
      */
-    public Optional<InstanceMaintenancePolicyWeeklyMaintenanceWindows> weeklyMaintenanceWindows() {
-        return Optional.ofNullable(this.weeklyMaintenanceWindows);
+    public InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows() {
+        return this.weeklyMaintenanceWindows;
     }
 
     public static Builder builder() {
@@ -53,7 +56,7 @@ public final class InstanceMaintenancePolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable InstanceMaintenancePolicyMaintenanceExclusionWindow maintenanceExclusionWindow;
-        private @Nullable InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows;
+        private InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows;
         public Builder() {}
         public Builder(InstanceMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -68,8 +71,10 @@ public final class InstanceMaintenancePolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder weeklyMaintenanceWindows(@Nullable InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows) {
-
+        public Builder weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindows weeklyMaintenanceWindows) {
+            if (weeklyMaintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("InstanceMaintenancePolicy", "weeklyMaintenanceWindows");
+            }
             this.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
             return this;
         }

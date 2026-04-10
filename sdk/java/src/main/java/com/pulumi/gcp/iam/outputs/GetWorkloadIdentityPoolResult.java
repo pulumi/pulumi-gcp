@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolAttestationRule;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolInlineCertificateIssuanceConfig;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolInlineTrustConfig;
 import java.lang.Boolean;
@@ -16,6 +17,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkloadIdentityPoolResult {
+    private List<GetWorkloadIdentityPoolAttestationRule> attestationRules;
     private String description;
     private Boolean disabled;
     private String displayName;
@@ -33,6 +35,9 @@ public final class GetWorkloadIdentityPoolResult {
     private String workloadIdentityPoolId;
 
     private GetWorkloadIdentityPoolResult() {}
+    public List<GetWorkloadIdentityPoolAttestationRule> attestationRules() {
+        return this.attestationRules;
+    }
     public String description() {
         return this.description;
     }
@@ -80,6 +85,7 @@ public final class GetWorkloadIdentityPoolResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetWorkloadIdentityPoolAttestationRule> attestationRules;
         private String description;
         private Boolean disabled;
         private String displayName;
@@ -94,6 +100,7 @@ public final class GetWorkloadIdentityPoolResult {
         public Builder() {}
         public Builder(GetWorkloadIdentityPoolResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attestationRules = defaults.attestationRules;
     	      this.description = defaults.description;
     	      this.disabled = defaults.disabled;
     	      this.displayName = defaults.displayName;
@@ -107,6 +114,17 @@ public final class GetWorkloadIdentityPoolResult {
     	      this.workloadIdentityPoolId = defaults.workloadIdentityPoolId;
         }
 
+        @CustomType.Setter
+        public Builder attestationRules(List<GetWorkloadIdentityPoolAttestationRule> attestationRules) {
+            if (attestationRules == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolResult", "attestationRules");
+            }
+            this.attestationRules = attestationRules;
+            return this;
+        }
+        public Builder attestationRules(GetWorkloadIdentityPoolAttestationRule... attestationRules) {
+            return attestationRules(List.of(attestationRules));
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -201,6 +219,7 @@ public final class GetWorkloadIdentityPoolResult {
         }
         public GetWorkloadIdentityPoolResult build() {
             final var _resultValue = new GetWorkloadIdentityPoolResult();
+            _resultValue.attestationRules = attestationRules;
             _resultValue.description = description;
             _resultValue.disabled = disabled;
             _resultValue.displayName = displayName;

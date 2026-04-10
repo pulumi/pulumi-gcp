@@ -115,6 +115,46 @@ namespace Pulumi.Gcp.MigrationCenter
     /// 
     /// });
     /// ```
+    /// ### Preference Set Compute Engine Preferences Disk Type
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.MigrationCenter.PreferenceSet("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         PreferenceSetId = "preference-set-test",
+    ///         Description = "Terraform integration test description",
+    ///         DisplayName = "Terraform integration test display",
+    ///         VirtualMachinePreferences = new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesArgs
+    ///         {
+    ///             SizingOptimizationStrategy = "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+    ///             TargetProduct = "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+    ///             ComputeEnginePreferences = new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs
+    ///             {
+    ///                 LicenseType = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+    ///                 MachinePreferences = new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs
+    ///                 {
+    ///                     AllowedMachineSeries = new[]
+    ///                     {
+    ///                         new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs
+    ///                         {
+    ///                             Code = "C3",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 PersistentDiskType = "PERSISTENT_DISK_TYPE_SSD",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

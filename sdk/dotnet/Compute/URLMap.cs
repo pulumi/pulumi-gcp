@@ -1101,6 +1101,302 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Url Map Cache Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "home",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         DefaultService = @default.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.URLMapDefaultRouteActionArgs
+    ///         {
+    ///             CachePolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyArgs
+    ///             {
+    ///                 CacheMode = "CACHE_ALL_STATIC",
+    ///                 DefaultTtl = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyDefaultTtlArgs
+    ///                 {
+    ///                     Seconds = "3600",
+    ///                 },
+    ///                 ClientTtl = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyClientTtlArgs
+    ///                 {
+    ///                     Seconds = "1800",
+    ///                 },
+    ///                 NegativeCaching = true,
+    ///                 NegativeCachingPolicies = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyArgs
+    ///                     {
+    ///                         Code = 404,
+    ///                         Ttl = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs
+    ///                         {
+    ///                             Seconds = "300",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 RequestCoalescing = true,
+    ///                 CacheBypassRequestHeaderNames = new[]
+    ///                 {
+    ///                     "X-Internal-Bypass",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Url Map Cache Policy Multi Level
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "home",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         DefaultService = @default.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.URLMapDefaultRouteActionArgs
+    ///         {
+    ///             CachePolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyArgs
+    ///             {
+    ///                 CacheKeyPolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyCacheKeyPolicyArgs
+    ///                 {
+    ///                     IncludeHost = true,
+    ///                     IncludeProtocol = true,
+    ///                     IncludeQueryString = true,
+    ///                     IncludedCookieNames = new[]
+    ///                     {
+    ///                         "cookie1",
+    ///                         "cookie2",
+    ///                     },
+    ///                     IncludedHeaderNames = new[]
+    ///                     {
+    ///                         "header1",
+    ///                         "header2",
+    ///                     },
+    ///                     IncludedQueryParameters = new[]
+    ///                     {
+    ///                         "param1",
+    ///                         "param2",
+    ///                     },
+    ///                 },
+    ///                 CacheMode = "FORCE_CACHE_ALL",
+    ///                 DefaultTtl = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyDefaultTtlArgs
+    ///                 {
+    ///                     Seconds = "3600",
+    ///                 },
+    ///                 ClientTtl = new Gcp.Compute.Inputs.URLMapDefaultRouteActionCachePolicyClientTtlArgs
+    ///                 {
+    ///                     Seconds = "1800",
+    ///                 },
+    ///                 RequestCoalescing = true,
+    ///                 CacheBypassRequestHeaderNames = new[]
+    ///                 {
+    ///                     "X-Internal-Bypass",
+    ///                 },
+    ///             },
+    ///         },
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "example.com",
+    ///                 },
+    ///                 PathMatcher = "main-matcher",
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "api.example.com",
+    ///                 },
+    ///                 PathMatcher = "api-matcher",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "main-matcher",
+    ///                 DefaultService = @default.Id,
+    ///                 DefaultRouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionArgs
+    ///                 {
+    ///                     CachePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyArgs
+    ///                     {
+    ///                         CacheMode = "CACHE_ALL_STATIC",
+    ///                         DefaultTtl = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs
+    ///                         {
+    ///                             Seconds = "7200",
+    ///                         },
+    ///                         NegativeCaching = true,
+    ///                         NegativeCachingPolicies = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArgs
+    ///                             {
+    ///                                 Code = 404,
+    ///                                 Ttl = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs
+    ///                                 {
+    ///                                     Seconds = "300",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/static/*",
+    ///                         },
+    ///                         Service = @default.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionArgs
+    ///                         {
+    ///                             CachePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionCachePolicyArgs
+    ///                             {
+    ///                                 CacheMode = "CACHE_ALL_STATIC",
+    ///                                 DefaultTtl = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionCachePolicyDefaultTtlArgs
+    ///                                 {
+    ///                                     Seconds = "86400",
+    ///                                 },
+    ///                                 CacheKeyPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicyArgs
+    ///                                 {
+    ///                                     IncludeHost = true,
+    ///                                     IncludeProtocol = true,
+    ///                                     IncludeQueryString = true,
+    ///                                     ExcludedQueryParameters = new[]
+    ///                                     {
+    ///                                         "custom_parameter",
+    ///                                     },
+    ///                                     IncludedHeaderNames = new[]
+    ///                                     {
+    ///                                         "X-Custom-Header",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "api-matcher",
+    ///                 DefaultService = @default.Id,
+    ///                 DefaultRouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionArgs
+    ///                 {
+    ///                     CachePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyArgs
+    ///                     {
+    ///                         CacheMode = "CACHE_ALL_STATIC",
+    ///                         DefaultTtl = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyDefaultTtlArgs
+    ///                         {
+    ///                             Seconds = "0",
+    ///                         },
+    ///                         NegativeCaching = true,
+    ///                         NegativeCachingPolicies = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyArgs
+    ///                             {
+    ///                                 Code = 404,
+    ///                                 Ttl = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyNegativeCachingPolicyTtlArgs
+    ///                                 {
+    ///                                     Seconds = "300",
+    ///                                     Nanos = 0,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 RouteRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         Priority = 1,
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PrefixMatch = "/api/v1",
+    ///                             },
+    ///                         },
+    ///                         Service = @default.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionArgs
+    ///                         {
+    ///                             CachePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs
+    ///                             {
+    ///                                 CacheMode = "CACHE_ALL_STATIC",
+    ///                                 DefaultTtl = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionCachePolicyDefaultTtlArgs
+    ///                                 {
+    ///                                     Seconds = "60",
+    ///                                 },
+    ///                                 ClientTtl = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionCachePolicyClientTtlArgs
+    ///                                 {
+    ///                                     Seconds = "90",
+    ///                                 },
+    ///                                 MaxTtl = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionCachePolicyMaxTtlArgs
+    ///                                 {
+    ///                                     Seconds = "120",
+    ///                                 },
+    ///                                 ServeWhileStale = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStaleArgs
+    ///                                 {
+    ///                                     Seconds = "3600",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Url Map Path Rule Mirror Percent
     /// 
     /// ```csharp

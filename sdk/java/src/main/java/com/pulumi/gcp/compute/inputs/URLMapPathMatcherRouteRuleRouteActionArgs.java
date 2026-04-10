@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs;
@@ -22,6 +23,31 @@ import javax.annotation.Nullable;
 public final class URLMapPathMatcherRouteRuleRouteActionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final URLMapPathMatcherRouteRuleRouteActionArgs Empty = new URLMapPathMatcherRouteRuleRouteActionArgs();
+
+    /**
+     * (Optional, Beta)
+     * Specifies the cache policy configuration for matched traffic. Available
+     * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+     * property must be specified. This policy cannot be specified if any target
+     * backend has Identity-Aware Proxy enabled.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cachePolicy")
+    private @Nullable Output<URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs> cachePolicy;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the cache policy configuration for matched traffic. Available
+     * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+     * property must be specified. This policy cannot be specified if any target
+     * backend has Identity-Aware Proxy enabled.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs>> cachePolicy() {
+        return Optional.ofNullable(this.cachePolicy);
+    }
 
     /**
      * The specification for allowing client side cross-origin requests. Please see W3C
@@ -212,6 +238,7 @@ public final class URLMapPathMatcherRouteRuleRouteActionArgs extends com.pulumi.
     private URLMapPathMatcherRouteRuleRouteActionArgs() {}
 
     private URLMapPathMatcherRouteRuleRouteActionArgs(URLMapPathMatcherRouteRuleRouteActionArgs $) {
+        this.cachePolicy = $.cachePolicy;
         this.corsPolicy = $.corsPolicy;
         this.faultInjectionPolicy = $.faultInjectionPolicy;
         this.maxStreamDuration = $.maxStreamDuration;
@@ -238,6 +265,37 @@ public final class URLMapPathMatcherRouteRuleRouteActionArgs extends com.pulumi.
 
         public Builder(URLMapPathMatcherRouteRuleRouteActionArgs defaults) {
             $ = new URLMapPathMatcherRouteRuleRouteActionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cachePolicy (Optional, Beta)
+         * Specifies the cache policy configuration for matched traffic. Available
+         * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+         * property must be specified. This policy cannot be specified if any target
+         * backend has Identity-Aware Proxy enabled.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cachePolicy(@Nullable Output<URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs> cachePolicy) {
+            $.cachePolicy = cachePolicy;
+            return this;
+        }
+
+        /**
+         * @param cachePolicy (Optional, Beta)
+         * Specifies the cache policy configuration for matched traffic. Available
+         * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+         * property must be specified. This policy cannot be specified if any target
+         * backend has Identity-Aware Proxy enabled.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cachePolicy(URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs cachePolicy) {
+            return cachePolicy(Output.of(cachePolicy));
         }
 
         /**

@@ -22,15 +22,23 @@ namespace Pulumi.Gcp.MigrationCenter.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences? MachinePreferences;
+        /// <summary>
+        /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        /// Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+        /// </summary>
+        public readonly string? PersistentDiskType;
 
         [OutputConstructor]
         private PreferenceSetVirtualMachinePreferencesComputeEnginePreferences(
             string? licenseType,
 
-            Outputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences? machinePreferences)
+            Outputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences? machinePreferences,
+
+            string? persistentDiskType)
         {
             LicenseType = licenseType;
             MachinePreferences = machinePreferences;
+            PersistentDiskType = persistentDiskType;
         }
     }
 }

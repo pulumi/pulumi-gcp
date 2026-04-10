@@ -63,6 +63,7 @@ export interface GetClusterResult {
     readonly allowNetAdmin: boolean;
     readonly anonymousAuthenticationConfigs: outputs.container.GetClusterAnonymousAuthenticationConfig[];
     readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
+    readonly autopilotPrivilegedAdmissions: string[];
     readonly binaryAuthorizations: outputs.container.GetClusterBinaryAuthorization[];
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
     readonly clusterIpv4Cidr: string;

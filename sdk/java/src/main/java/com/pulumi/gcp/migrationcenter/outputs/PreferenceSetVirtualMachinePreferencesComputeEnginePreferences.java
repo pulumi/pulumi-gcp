@@ -23,6 +23,12 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
      * 
      */
     private @Nullable PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences machinePreferences;
+    /**
+     * @return Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+     * Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+     * 
+     */
+    private @Nullable String persistentDiskType;
 
     private PreferenceSetVirtualMachinePreferencesComputeEnginePreferences() {}
     /**
@@ -40,6 +46,14 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
     public Optional<PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences> machinePreferences() {
         return Optional.ofNullable(this.machinePreferences);
     }
+    /**
+     * @return Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+     * Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+     * 
+     */
+    public Optional<String> persistentDiskType() {
+        return Optional.ofNullable(this.persistentDiskType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -52,11 +66,13 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
     public static final class Builder {
         private @Nullable String licenseType;
         private @Nullable PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences machinePreferences;
+        private @Nullable String persistentDiskType;
         public Builder() {}
         public Builder(PreferenceSetVirtualMachinePreferencesComputeEnginePreferences defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.licenseType = defaults.licenseType;
     	      this.machinePreferences = defaults.machinePreferences;
+    	      this.persistentDiskType = defaults.persistentDiskType;
         }
 
         @CustomType.Setter
@@ -71,10 +87,17 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
             this.machinePreferences = machinePreferences;
             return this;
         }
+        @CustomType.Setter
+        public Builder persistentDiskType(@Nullable String persistentDiskType) {
+
+            this.persistentDiskType = persistentDiskType;
+            return this;
+        }
         public PreferenceSetVirtualMachinePreferencesComputeEnginePreferences build() {
             final var _resultValue = new PreferenceSetVirtualMachinePreferencesComputeEnginePreferences();
             _resultValue.licenseType = licenseType;
             _resultValue.machinePreferences = machinePreferences;
+            _resultValue.persistentDiskType = persistentDiskType;
             return _resultValue;
         }
     }

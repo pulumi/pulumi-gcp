@@ -87,6 +87,14 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
      */
     declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
+     * A list of folders to exclude from the security policy.
+     */
+    declare public readonly excludedFolders: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of projects to exclude from the security policy.
+     */
+    declare public readonly excludedProjects: pulumi.Output<string[] | undefined>;
+    /**
      * The name for an association.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -110,6 +118,8 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
             const state = argsOrState as OrganizationSecurityPolicyAssociationState | undefined;
             resourceInputs["attachmentId"] = state?.attachmentId;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["excludedFolders"] = state?.excludedFolders;
+            resourceInputs["excludedProjects"] = state?.excludedProjects;
             resourceInputs["name"] = state?.name;
             resourceInputs["policyId"] = state?.policyId;
         } else {
@@ -121,6 +131,8 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
                 throw new Error("Missing required property 'policyId'");
             }
             resourceInputs["attachmentId"] = args?.attachmentId;
+            resourceInputs["excludedFolders"] = args?.excludedFolders;
+            resourceInputs["excludedProjects"] = args?.excludedProjects;
             resourceInputs["name"] = args?.name;
             resourceInputs["policyId"] = args?.policyId;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -143,6 +155,14 @@ export interface OrganizationSecurityPolicyAssociationState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * A list of folders to exclude from the security policy.
+     */
+    excludedFolders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of projects to exclude from the security policy.
+     */
+    excludedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name for an association.
      */
     name?: pulumi.Input<string>;
@@ -160,6 +180,14 @@ export interface OrganizationSecurityPolicyAssociationArgs {
      * The resource that the security policy is attached to.
      */
     attachmentId: pulumi.Input<string>;
+    /**
+     * A list of folders to exclude from the security policy.
+     */
+    excludedFolders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of projects to exclude from the security policy.
+     */
+    excludedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name for an association.
      */

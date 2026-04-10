@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.MigrationCenter.Inputs
         [Input("machinePreferences")]
         public Input<Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesGetArgs>? MachinePreferences { get; set; }
 
+        /// <summary>
+        /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        /// Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+        /// </summary>
+        [Input("persistentDiskType")]
+        public Input<string>? PersistentDiskType { get; set; }
+
         public PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesGetArgs()
         {
         }

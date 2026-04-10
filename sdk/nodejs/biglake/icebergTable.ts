@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: "my-bucket-_15222",
+ *     name: "my-bucket",
  *     location: "us-central1",
  *     forceDestroy: true,
  *     uniformBucketLevelAccess: true,
@@ -29,13 +29,13 @@ import * as utilities from "../utilities";
  * });
  * const namespace = new gcp.biglake.IcebergNamespace("namespace", {
  *     catalog: catalog.name,
- *     namespaceId: "my_namespace__81126",
+ *     namespaceId: "my_namespace",
  * });
  * const myIcebergTable = new gcp.biglake.IcebergTable("my_iceberg_table", {
  *     catalog: catalog.name,
  *     namespace: namespace.namespaceId,
- *     name: "my_table__88717",
- *     location: pulumi.interpolate`gs://${bucket.name}/${namespace.namespaceId}/my_table__85794`,
+ *     name: "my_table",
+ *     location: pulumi.interpolate`gs://${bucket.name}/${namespace.namespaceId}/my_table`,
  *     schema: {
  *         type: "struct",
  *         fields: [
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: "my-bucket-_21197",
+ *     name: "my-bucket",
  *     location: "us-central1",
  *     forceDestroy: true,
  *     uniformBucketLevelAccess: true,
@@ -82,12 +82,12 @@ import * as utilities from "../utilities";
  * });
  * const namespace = new gcp.biglake.IcebergNamespace("namespace", {
  *     catalog: catalog.name,
- *     namespaceId: "my_namespace__52865",
+ *     namespaceId: "my_namespace",
  * });
  * const myIcebergTable = new gcp.biglake.IcebergTable("my_iceberg_table", {
  *     catalog: catalog.name,
  *     namespace: namespace.namespaceId,
- *     name: "my_table__85840",
+ *     name: "my_table",
  *     schema: {
  *         type: "struct",
  *         fields: [{

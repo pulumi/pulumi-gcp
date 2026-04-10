@@ -40,6 +40,16 @@ export type DataStore = import("./dataStore").DataStore;
 export const DataStore: typeof import("./dataStore").DataStore = null as any;
 utilities.lazyLoad(exports, ["DataStore"], () => require("./dataStore"));
 
+export { GetDataStoreArgs, GetDataStoreResult, GetDataStoreOutputArgs } from "./getDataStore";
+export const getDataStore: typeof import("./getDataStore").getDataStore = null as any;
+export const getDataStoreOutput: typeof import("./getDataStore").getDataStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getDataStore","getDataStoreOutput"], () => require("./getDataStore"));
+
+export { GetDataStoresArgs, GetDataStoresResult, GetDataStoresOutputArgs } from "./getDataStores";
+export const getDataStores: typeof import("./getDataStores").getDataStores = null as any;
+export const getDataStoresOutput: typeof import("./getDataStores").getDataStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getDataStores","getDataStoresOutput"], () => require("./getDataStores"));
+
 export { LicenseConfigArgs, LicenseConfigState } from "./licenseConfig";
 export type LicenseConfig = import("./licenseConfig").LicenseConfig;
 export const LicenseConfig: typeof import("./licenseConfig").LicenseConfig = null as any;

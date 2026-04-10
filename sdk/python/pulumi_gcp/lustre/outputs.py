@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'InstanceAccessRulesOptions',
     'InstanceAccessRulesOptionsAccessRule',
+    'InstanceDynamicTierOptions',
     'InstanceMaintenancePolicy',
     'InstanceMaintenancePolicyMaintenanceExclusionWindow',
     'InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate',
@@ -25,8 +26,10 @@ __all__ = [
     'InstanceMaintenancePolicyMaintenanceExclusionWindowTime',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindows',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime',
+    'InstanceUpcomingMaintenanceSchedule',
     'GetInstanceAccessRulesOptionResult',
     'GetInstanceAccessRulesOptionAccessRuleResult',
+    'GetInstanceDynamicTierOptionResult',
     'GetInstanceMaintenancePolicyResult',
     'GetInstanceMaintenancePolicyMaintenanceExclusionWindowResult',
     'GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateResult',
@@ -34,6 +37,7 @@ __all__ = [
     'GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult',
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult',
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult',
+    'GetInstanceUpcomingMaintenanceScheduleResult',
 ]
 
 @pulumi.output_type
@@ -67,16 +71,20 @@ class InstanceAccessRulesOptions(dict):
                  default_squash_gid: Optional[_builtins.int] = None,
                  default_squash_uid: Optional[_builtins.int] = None):
         """
-        :param _builtins.str default_squash_mode: Set to "ROOT_SQUASH" to enable root squashing by default.
-               Other values include "NO_SQUASH".
-               Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
-        :param Sequence['InstanceAccessRulesOptionsAccessRuleArgs'] access_rules: An array of access rule exceptions. Each rule defines IP address ranges
-               that should have different squash behavior than the default.
+        :param _builtins.str default_squash_mode: The squash mode for the default access rule.
+               Possible values:
+               NO_SQUASH
+               ROOT_SQUASH
+        :param Sequence['InstanceAccessRulesOptionsAccessRuleArgs'] access_rules: The access rules for the instance.
                Structure is documented below.
-        :param _builtins.int default_squash_gid: The GID to map the root user to when root squashing is enabled
-               (e.g., 65534 for nobody).
-        :param _builtins.int default_squash_uid: The UID to map the root user to when root squashing is enabled
-               (e.g., 65534 for nobody).
+        :param _builtins.int default_squash_gid: The user squash GID for the default access rule.
+               This user squash GID applies to all root users connecting from clients
+               that are not matched by any of the access rules. If not set, the default
+               is 0 (no GID squash).
+        :param _builtins.int default_squash_uid: The user squash UID for the default access rule.
+               This user squash UID applies to all root users connecting from clients
+               that are not matched by any of the access rules. If not set, the default
+               is 0 (no UID squash).
         """
         pulumi.set(__self__, "default_squash_mode", default_squash_mode)
         if access_rules is not None:
@@ -90,9 +98,10 @@ class InstanceAccessRulesOptions(dict):
     @pulumi.getter(name="defaultSquashMode")
     def default_squash_mode(self) -> _builtins.str:
         """
-        Set to "ROOT_SQUASH" to enable root squashing by default.
-        Other values include "NO_SQUASH".
-        Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+        The squash mode for the default access rule.
+        Possible values:
+        NO_SQUASH
+        ROOT_SQUASH
         """
         return pulumi.get(self, "default_squash_mode")
 
@@ -100,8 +109,7 @@ class InstanceAccessRulesOptions(dict):
     @pulumi.getter(name="accessRules")
     def access_rules(self) -> Optional[Sequence['outputs.InstanceAccessRulesOptionsAccessRule']]:
         """
-        An array of access rule exceptions. Each rule defines IP address ranges
-        that should have different squash behavior than the default.
+        The access rules for the instance.
         Structure is documented below.
         """
         return pulumi.get(self, "access_rules")
@@ -110,8 +118,10 @@ class InstanceAccessRulesOptions(dict):
     @pulumi.getter(name="defaultSquashGid")
     def default_squash_gid(self) -> Optional[_builtins.int]:
         """
-        The GID to map the root user to when root squashing is enabled
-        (e.g., 65534 for nobody).
+        The user squash GID for the default access rule.
+        This user squash GID applies to all root users connecting from clients
+        that are not matched by any of the access rules. If not set, the default
+        is 0 (no GID squash).
         """
         return pulumi.get(self, "default_squash_gid")
 
@@ -119,8 +129,10 @@ class InstanceAccessRulesOptions(dict):
     @pulumi.getter(name="defaultSquashUid")
     def default_squash_uid(self) -> Optional[_builtins.int]:
         """
-        The UID to map the root user to when root squashing is enabled
-        (e.g., 65534 for nobody).
+        The user squash UID for the default access rule.
+        This user squash UID applies to all root users connecting from clients
+        that are not matched by any of the access rules. If not set, the default
+        is 0 (no UID squash).
         """
         return pulumi.get(self, "default_squash_uid")
 
@@ -151,11 +163,16 @@ class InstanceAccessRulesOptionsAccessRule(dict):
                  name: _builtins.str,
                  squash_mode: _builtins.str):
         """
-        :param Sequence[_builtins.str] ip_address_ranges: An array of IP address strings or CIDR ranges that this rule applies to.
-        :param _builtins.str name: A unique identifier for the access rule.
-        :param _builtins.str squash_mode: The squash mode for this specific rule. Currently, only "NO_SQUASH"
-               is supported for exceptions.
-               Possible values are: `NO_SQUASH`.
+        :param Sequence[_builtins.str] ip_address_ranges: The IP address ranges to which to apply this access rule. Accepts
+               non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+               (e.g., `192.168.1.0`).
+        :param _builtins.str name: The name of the access rule policy group.
+               Must be 16 characters or less and include only alphanumeric characters
+               or '_'.
+        :param _builtins.str squash_mode: Squash mode for the access rule.
+               Possible values:
+               NO_SQUASH
+               ROOT_SQUASH
         """
         pulumi.set(__self__, "ip_address_ranges", ip_address_ranges)
         pulumi.set(__self__, "name", name)
@@ -165,7 +182,9 @@ class InstanceAccessRulesOptionsAccessRule(dict):
     @pulumi.getter(name="ipAddressRanges")
     def ip_address_ranges(self) -> Sequence[_builtins.str]:
         """
-        An array of IP address strings or CIDR ranges that this rule applies to.
+        The IP address ranges to which to apply this access rule. Accepts
+        non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+        (e.g., `192.168.1.0`).
         """
         return pulumi.get(self, "ip_address_ranges")
 
@@ -173,7 +192,9 @@ class InstanceAccessRulesOptionsAccessRule(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A unique identifier for the access rule.
+        The name of the access rule policy group.
+        Must be 16 characters or less and include only alphanumeric characters
+        or '_'.
         """
         return pulumi.get(self, "name")
 
@@ -181,11 +202,36 @@ class InstanceAccessRulesOptionsAccessRule(dict):
     @pulumi.getter(name="squashMode")
     def squash_mode(self) -> _builtins.str:
         """
-        The squash mode for this specific rule. Currently, only "NO_SQUASH"
-        is supported for exceptions.
-        Possible values are: `NO_SQUASH`.
+        Squash mode for the access rule.
+        Possible values:
+        NO_SQUASH
+        ROOT_SQUASH
         """
         return pulumi.get(self, "squash_mode")
+
+
+@pulumi.output_type
+class InstanceDynamicTierOptions(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str):
+        """
+        :param _builtins.str mode: The dynamic tier mode of the instance.
+               Possible values:
+               DISABLED
+               DEFAULT_CACHE
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The dynamic tier mode of the instance.
+        Possible values:
+        DISABLED
+        DEFAULT_CACHE
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -193,10 +239,10 @@ class InstanceMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maintenanceExclusionWindow":
-            suggest = "maintenance_exclusion_window"
-        elif key == "weeklyMaintenanceWindows":
+        if key == "weeklyMaintenanceWindows":
             suggest = "weekly_maintenance_windows"
+        elif key == "maintenanceExclusionWindow":
+            suggest = "maintenance_exclusion_window"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
@@ -210,18 +256,28 @@ class InstanceMaintenancePolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 maintenance_exclusion_window: Optional['outputs.InstanceMaintenancePolicyMaintenanceExclusionWindow'] = None,
-                 weekly_maintenance_windows: Optional['outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows'] = None):
+                 weekly_maintenance_windows: 'outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows',
+                 maintenance_exclusion_window: Optional['outputs.InstanceMaintenancePolicyMaintenanceExclusionWindow'] = None):
         """
+        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs' weekly_maintenance_windows: The weekly maintenance windows for the instance. Currently limited to 1
+               window.
+               Structure is documented below.
         :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowArgs' maintenance_exclusion_window: The exclusion windows for the instance. Currently limited to 1 window.
                Structure is documented below.
-        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs' weekly_maintenance_windows: The weekly maintenance windows for the instance. Currently limited to 1 window.
-               Structure is documented below.
         """
+        pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
         if maintenance_exclusion_window is not None:
             pulumi.set(__self__, "maintenance_exclusion_window", maintenance_exclusion_window)
-        if weekly_maintenance_windows is not None:
-            pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+
+    @_builtins.property
+    @pulumi.getter(name="weeklyMaintenanceWindows")
+    def weekly_maintenance_windows(self) -> 'outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows':
+        """
+        The weekly maintenance windows for the instance. Currently limited to 1
+        window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_maintenance_windows")
 
     @_builtins.property
     @pulumi.getter(name="maintenanceExclusionWindow")
@@ -231,15 +287,6 @@ class InstanceMaintenancePolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_exclusion_window")
-
-    @_builtins.property
-    @pulumi.getter(name="weeklyMaintenanceWindows")
-    def weekly_maintenance_windows(self) -> Optional['outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindows']:
-        """
-        The weekly maintenance windows for the instance. Currently limited to 1 window.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "weekly_maintenance_windows")
 
 
 @pulumi.output_type
@@ -268,11 +315,37 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindow(dict):
                  start_date: 'outputs.InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate',
                  time: 'outputs.InstanceMaintenancePolicyMaintenanceExclusionWindowTime'):
         """
-        :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs' end_date: End date of the exclusion period in UTC.
+        :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs' end_date: Represents a whole or partial calendar date, such as a birthday. The time of
+               day and time zone are either specified elsewhere or are insignificant. The
+               date is relative to the Gregorian Calendar. This can represent one of the
+               following:
+               * A full date, with non-zero year, month, and day values.
+               * A month and day, with a zero year (for example, an anniversary).
+               * A year on its own, with a zero month and a zero day.
+               * A year and month, with a zero day (for example, a credit card expiration
+               date).
+               Related types:
+               * google.type.TimeOfDay
+               * google.type.DateTime
+               * google.protobuf.Timestamp
                Structure is documented below.
-        :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs' start_date: Start date of the exclusion period in UTC.
+        :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs' start_date: Represents a whole or partial calendar date, such as a birthday. The time of
+               day and time zone are either specified elsewhere or are insignificant. The
+               date is relative to the Gregorian Calendar. This can represent one of the
+               following:
+               * A full date, with non-zero year, month, and day values.
+               * A month and day, with a zero year (for example, an anniversary).
+               * A year on its own, with a zero month and a zero day.
+               * A year and month, with a zero day (for example, a credit card expiration
+               date).
+               Related types:
+               * google.type.TimeOfDay
+               * google.type.DateTime
+               * google.protobuf.Timestamp
                Structure is documented below.
-        :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs' time: Time in UTC for the exclusion window.
+        :param 'InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs' time: Represents a time of day. The date and time zone are either not significant
+               or are specified elsewhere. An API may choose to allow leap seconds. Related
+               types are google.type.Date and `google.protobuf.Timestamp`.
                Structure is documented below.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -283,7 +356,19 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindow(dict):
     @pulumi.getter(name="endDate")
     def end_date(self) -> 'outputs.InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate':
         """
-        End date of the exclusion period in UTC.
+        Represents a whole or partial calendar date, such as a birthday. The time of
+        day and time zone are either specified elsewhere or are insignificant. The
+        date is relative to the Gregorian Calendar. This can represent one of the
+        following:
+        * A full date, with non-zero year, month, and day values.
+        * A month and day, with a zero year (for example, an anniversary).
+        * A year on its own, with a zero month and a zero day.
+        * A year and month, with a zero day (for example, a credit card expiration
+        date).
+        Related types:
+        * google.type.TimeOfDay
+        * google.type.DateTime
+        * google.protobuf.Timestamp
         Structure is documented below.
         """
         return pulumi.get(self, "end_date")
@@ -292,7 +377,19 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindow(dict):
     @pulumi.getter(name="startDate")
     def start_date(self) -> 'outputs.InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate':
         """
-        Start date of the exclusion period in UTC.
+        Represents a whole or partial calendar date, such as a birthday. The time of
+        day and time zone are either specified elsewhere or are insignificant. The
+        date is relative to the Gregorian Calendar. This can represent one of the
+        following:
+        * A full date, with non-zero year, month, and day values.
+        * A month and day, with a zero year (for example, an anniversary).
+        * A year on its own, with a zero month and a zero day.
+        * A year and month, with a zero day (for example, a credit card expiration
+        date).
+        Related types:
+        * google.type.TimeOfDay
+        * google.type.DateTime
+        * google.protobuf.Timestamp
         Structure is documented below.
         """
         return pulumi.get(self, "start_date")
@@ -301,7 +398,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindow(dict):
     @pulumi.getter
     def time(self) -> 'outputs.InstanceMaintenancePolicyMaintenanceExclusionWindowTime':
         """
-        Time in UTC for the exclusion window.
+        Represents a time of day. The date and time zone are either not significant
+        or are specified elsewhere. An API may choose to allow leap seconds. Related
+        types are google.type.Date and `google.protobuf.Timestamp`.
         Structure is documented below.
         """
         return pulumi.get(self, "time")
@@ -314,9 +413,13 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate(dict):
                  month: Optional[_builtins.int] = None,
                  year: Optional[_builtins.int] = None):
         """
-        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month.
-        :param _builtins.int month: Month of a year. Must be from 1 to 12.
-        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+               to specify a year by itself or a year and month where the day isn't
+               significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+               month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+               a year.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -329,7 +432,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate(dict):
     @pulumi.getter
     def day(self) -> Optional[_builtins.int]:
         """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+        to specify a year by itself or a year and month where the day isn't
+        significant.
         """
         return pulumi.get(self, "day")
 
@@ -337,7 +442,8 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate(dict):
     @pulumi.getter
     def month(self) -> Optional[_builtins.int]:
         """
-        Month of a year. Must be from 1 to 12.
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+        month and day.
         """
         return pulumi.get(self, "month")
 
@@ -345,7 +451,8 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDate(dict):
     @pulumi.getter
     def year(self) -> Optional[_builtins.int]:
         """
-        Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+        a year.
         """
         return pulumi.get(self, "year")
 
@@ -357,9 +464,13 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate(dict):
                  month: Optional[_builtins.int] = None,
                  year: Optional[_builtins.int] = None):
         """
-        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month.
-        :param _builtins.int month: Month of a year. Must be from 1 to 12.
-        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+               to specify a year by itself or a year and month where the day isn't
+               significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+               month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+               a year.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -372,7 +483,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate(dict):
     @pulumi.getter
     def day(self) -> Optional[_builtins.int]:
         """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+        to specify a year by itself or a year and month where the day isn't
+        significant.
         """
         return pulumi.get(self, "day")
 
@@ -380,7 +493,8 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate(dict):
     @pulumi.getter
     def month(self) -> Optional[_builtins.int]:
         """
-        Month of a year. Must be from 1 to 12.
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+        month and day.
         """
         return pulumi.get(self, "month")
 
@@ -388,7 +502,8 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDate(dict):
     @pulumi.getter
     def year(self) -> Optional[_builtins.int]:
         """
-        Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+        a year.
         """
         return pulumi.get(self, "year")
 
@@ -401,10 +516,16 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTime(dict):
                  nanos: Optional[_builtins.int] = None,
                  seconds: Optional[_builtins.int] = None):
         """
-        :param _builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
-        :param _builtins.int minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param _builtins.int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param _builtins.int seconds: Seconds of minutes of the time. Must be from 0 to 59.
+        :param _builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+               typically must be less than or equal to 23. An API may choose to allow the
+               value "24:00:00" for scenarios like business closing time.
+        :param _builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or
+               equal to 59.
+        :param _builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+               and less than or equal to 999,999,999.
+        :param _builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must
+               be less than or equal to 59. An API may allow the value 60 if it allows
+               leap-seconds.
         """
         if hours is not None:
             pulumi.set(__self__, "hours", hours)
@@ -419,7 +540,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTime(dict):
     @pulumi.getter
     def hours(self) -> Optional[_builtins.int]:
         """
-        Hours of day in 24 hour format. Should be from 0 to 23.
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        typically must be less than or equal to 23. An API may choose to allow the
+        value "24:00:00" for scenarios like business closing time.
         """
         return pulumi.get(self, "hours")
 
@@ -427,7 +550,8 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTime(dict):
     @pulumi.getter
     def minutes(self) -> Optional[_builtins.int]:
         """
-        Minutes of hour of day. Must be from 0 to 59.
+        Minutes of an hour. Must be greater than or equal to 0 and less than or
+        equal to 59.
         """
         return pulumi.get(self, "minutes")
 
@@ -435,7 +559,8 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTime(dict):
     @pulumi.getter
     def nanos(self) -> Optional[_builtins.int]:
         """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+        and less than or equal to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
@@ -443,7 +568,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTime(dict):
     @pulumi.getter
     def seconds(self) -> Optional[_builtins.int]:
         """
-        Seconds of minutes of the time. Must be from 0 to 59.
+        Seconds of a minute. Must be greater than or equal to 0 and typically must
+        be less than or equal to 59. An API may allow the value 60 if it allows
+        leap-seconds.
         """
         return pulumi.get(self, "seconds")
 
@@ -473,9 +600,17 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindows(dict):
                  day_of_week: _builtins.str,
                  start_time: 'outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime'):
         """
-        :param _builtins.str day_of_week: Day of the week for the maintenance window.
-               Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
-        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs' start_time: Start time of the maintenance window in UTC.
+        :param _builtins.str day_of_week: Possible values:
+               MONDAY
+               TUESDAY
+               WEDNESDAY
+               THURSDAY
+               FRIDAY
+               SATURDAY
+               SUNDAY
+        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs' start_time: Represents a time of day. The date and time zone are either not significant
+               or are specified elsewhere. An API may choose to allow leap seconds. Related
+               types are google.type.Date and `google.protobuf.Timestamp`.
                Structure is documented below.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
@@ -485,8 +620,14 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindows(dict):
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> _builtins.str:
         """
-        Day of the week for the maintenance window.
-        Possible values are: `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        Possible values:
+        MONDAY
+        TUESDAY
+        WEDNESDAY
+        THURSDAY
+        FRIDAY
+        SATURDAY
+        SUNDAY
         """
         return pulumi.get(self, "day_of_week")
 
@@ -494,7 +635,9 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindows(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> 'outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime':
         """
-        Start time of the maintenance window in UTC.
+        Represents a time of day. The date and time zone are either not significant
+        or are specified elsewhere. An API may choose to allow leap seconds. Related
+        types are google.type.Date and `google.protobuf.Timestamp`.
         Structure is documented below.
         """
         return pulumi.get(self, "start_time")
@@ -508,10 +651,16 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime(dict):
                  nanos: Optional[_builtins.int] = None,
                  seconds: Optional[_builtins.int] = None):
         """
-        :param _builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
-        :param _builtins.int minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param _builtins.int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param _builtins.int seconds: Seconds of minutes of the time. Must be from 0 to 59.
+        :param _builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+               typically must be less than or equal to 23. An API may choose to allow the
+               value "24:00:00" for scenarios like business closing time.
+        :param _builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or
+               equal to 59.
+        :param _builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+               and less than or equal to 999,999,999.
+        :param _builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must
+               be less than or equal to 59. An API may allow the value 60 if it allows
+               leap-seconds.
         """
         if hours is not None:
             pulumi.set(__self__, "hours", hours)
@@ -526,7 +675,9 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime(dict):
     @pulumi.getter
     def hours(self) -> Optional[_builtins.int]:
         """
-        Hours of day in 24 hour format. Should be from 0 to 23.
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        typically must be less than or equal to 23. An API may choose to allow the
+        value "24:00:00" for scenarios like business closing time.
         """
         return pulumi.get(self, "hours")
 
@@ -534,7 +685,8 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime(dict):
     @pulumi.getter
     def minutes(self) -> Optional[_builtins.int]:
         """
-        Minutes of hour of day. Must be from 0 to 59.
+        Minutes of an hour. Must be greater than or equal to 0 and less than or
+        equal to 59.
         """
         return pulumi.get(self, "minutes")
 
@@ -542,7 +694,8 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime(dict):
     @pulumi.getter
     def nanos(self) -> Optional[_builtins.int]:
         """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+        and less than or equal to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
@@ -550,9 +703,65 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTime(dict):
     @pulumi.getter
     def seconds(self) -> Optional[_builtins.int]:
         """
-        Seconds of minutes of the time. Must be from 0 to 59.
+        Seconds of a minute. Must be greater than or equal to 0 and typically must
+        be less than or equal to 59. An API may allow the value 60 if it allows
+        leap-seconds.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class InstanceUpcomingMaintenanceSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceUpcomingMaintenanceSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceUpcomingMaintenanceSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceUpcomingMaintenanceSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end_time: (Output)
+               The scheduled end time for the maintenance.
+        :param _builtins.str start_time: (Output)
+               The scheduled start time for the maintenance.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The scheduled end time for the maintenance.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The scheduled start time for the maintenance.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -563,14 +772,19 @@ class GetInstanceAccessRulesOptionResult(dict):
                  default_squash_mode: _builtins.str,
                  default_squash_uid: _builtins.int):
         """
-        :param Sequence['GetInstanceAccessRulesOptionAccessRuleArgs'] access_rules: An array of access rule exceptions. Each rule defines IP address ranges
-               that should have different squash behavior than the default.
-        :param _builtins.int default_squash_gid: The GID to map the root user to when root squashing is enabled
-               (e.g., 65534 for nobody).
-        :param _builtins.str default_squash_mode: Set to "ROOT_SQUASH" to enable root squashing by default.
-               Other values include "NO_SQUASH". Possible values: ["ROOT_SQUASH", "NO_SQUASH"]
-        :param _builtins.int default_squash_uid: The UID to map the root user to when root squashing is enabled
-               (e.g., 65534 for nobody).
+        :param Sequence['GetInstanceAccessRulesOptionAccessRuleArgs'] access_rules: The access rules for the instance.
+        :param _builtins.int default_squash_gid: The user squash GID for the default access rule.
+               This user squash GID applies to all root users connecting from clients
+               that are not matched by any of the access rules. If not set, the default
+               is 0 (no GID squash).
+        :param _builtins.str default_squash_mode: The squash mode for the default access rule.
+               Possible values:
+               NO_SQUASH
+               ROOT_SQUASH
+        :param _builtins.int default_squash_uid: The user squash UID for the default access rule.
+               This user squash UID applies to all root users connecting from clients
+               that are not matched by any of the access rules. If not set, the default
+               is 0 (no UID squash).
         """
         pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "default_squash_gid", default_squash_gid)
@@ -581,8 +795,7 @@ class GetInstanceAccessRulesOptionResult(dict):
     @pulumi.getter(name="accessRules")
     def access_rules(self) -> Sequence['outputs.GetInstanceAccessRulesOptionAccessRuleResult']:
         """
-        An array of access rule exceptions. Each rule defines IP address ranges
-        that should have different squash behavior than the default.
+        The access rules for the instance.
         """
         return pulumi.get(self, "access_rules")
 
@@ -590,8 +803,10 @@ class GetInstanceAccessRulesOptionResult(dict):
     @pulumi.getter(name="defaultSquashGid")
     def default_squash_gid(self) -> _builtins.int:
         """
-        The GID to map the root user to when root squashing is enabled
-        (e.g., 65534 for nobody).
+        The user squash GID for the default access rule.
+        This user squash GID applies to all root users connecting from clients
+        that are not matched by any of the access rules. If not set, the default
+        is 0 (no GID squash).
         """
         return pulumi.get(self, "default_squash_gid")
 
@@ -599,8 +814,10 @@ class GetInstanceAccessRulesOptionResult(dict):
     @pulumi.getter(name="defaultSquashMode")
     def default_squash_mode(self) -> _builtins.str:
         """
-        Set to "ROOT_SQUASH" to enable root squashing by default.
-        Other values include "NO_SQUASH". Possible values: ["ROOT_SQUASH", "NO_SQUASH"]
+        The squash mode for the default access rule.
+        Possible values:
+        NO_SQUASH
+        ROOT_SQUASH
         """
         return pulumi.get(self, "default_squash_mode")
 
@@ -608,8 +825,10 @@ class GetInstanceAccessRulesOptionResult(dict):
     @pulumi.getter(name="defaultSquashUid")
     def default_squash_uid(self) -> _builtins.int:
         """
-        The UID to map the root user to when root squashing is enabled
-        (e.g., 65534 for nobody).
+        The user squash UID for the default access rule.
+        This user squash UID applies to all root users connecting from clients
+        that are not matched by any of the access rules. If not set, the default
+        is 0 (no UID squash).
         """
         return pulumi.get(self, "default_squash_uid")
 
@@ -621,10 +840,16 @@ class GetInstanceAccessRulesOptionAccessRuleResult(dict):
                  name: _builtins.str,
                  squash_mode: _builtins.str):
         """
-        :param Sequence[_builtins.str] ip_address_ranges: An array of IP address strings or CIDR ranges that this rule applies to.
-        :param _builtins.str name: A unique identifier for the access rule.
-        :param _builtins.str squash_mode: The squash mode for this specific rule. Currently, only "NO_SQUASH"
-               is supported for exceptions. Possible values: ["NO_SQUASH"]
+        :param Sequence[_builtins.str] ip_address_ranges: The IP address ranges to which to apply this access rule. Accepts
+               non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
+               (e.g., '192.168.1.0').
+        :param _builtins.str name: The name of the access rule policy group.
+               Must be 16 characters or less and include only alphanumeric characters
+               or '_'.
+        :param _builtins.str squash_mode: Squash mode for the access rule.
+               Possible values:
+               NO_SQUASH
+               ROOT_SQUASH
         """
         pulumi.set(__self__, "ip_address_ranges", ip_address_ranges)
         pulumi.set(__self__, "name", name)
@@ -634,7 +859,9 @@ class GetInstanceAccessRulesOptionAccessRuleResult(dict):
     @pulumi.getter(name="ipAddressRanges")
     def ip_address_ranges(self) -> Sequence[_builtins.str]:
         """
-        An array of IP address strings or CIDR ranges that this rule applies to.
+        The IP address ranges to which to apply this access rule. Accepts
+        non-overlapping CIDR ranges (e.g., '192.168.1.0/24') and IP addresses
+        (e.g., '192.168.1.0').
         """
         return pulumi.get(self, "ip_address_ranges")
 
@@ -642,7 +869,9 @@ class GetInstanceAccessRulesOptionAccessRuleResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A unique identifier for the access rule.
+        The name of the access rule policy group.
+        Must be 16 characters or less and include only alphanumeric characters
+        or '_'.
         """
         return pulumi.get(self, "name")
 
@@ -650,10 +879,36 @@ class GetInstanceAccessRulesOptionAccessRuleResult(dict):
     @pulumi.getter(name="squashMode")
     def squash_mode(self) -> _builtins.str:
         """
-        The squash mode for this specific rule. Currently, only "NO_SQUASH"
-        is supported for exceptions. Possible values: ["NO_SQUASH"]
+        Squash mode for the access rule.
+        Possible values:
+        NO_SQUASH
+        ROOT_SQUASH
         """
         return pulumi.get(self, "squash_mode")
+
+
+@pulumi.output_type
+class GetInstanceDynamicTierOptionResult(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str):
+        """
+        :param _builtins.str mode: The dynamic tier mode of the instance.
+               Possible values:
+               DISABLED
+               DEFAULT_CACHE
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The dynamic tier mode of the instance.
+        Possible values:
+        DISABLED
+        DEFAULT_CACHE
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -663,7 +918,8 @@ class GetInstanceMaintenancePolicyResult(dict):
                  weekly_maintenance_windows: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']):
         """
         :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowArgs'] maintenance_exclusion_windows: The exclusion windows for the instance. Currently limited to 1 window.
-        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: The weekly maintenance windows for the instance. Currently limited to 1 window.
+        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: The weekly maintenance windows for the instance. Currently limited to 1
+               window.
         """
         pulumi.set(__self__, "maintenance_exclusion_windows", maintenance_exclusion_windows)
         pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
@@ -680,7 +936,8 @@ class GetInstanceMaintenancePolicyResult(dict):
     @pulumi.getter(name="weeklyMaintenanceWindows")
     def weekly_maintenance_windows(self) -> Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']:
         """
-        The weekly maintenance windows for the instance. Currently limited to 1 window.
+        The weekly maintenance windows for the instance. Currently limited to 1
+        window.
         """
         return pulumi.get(self, "weekly_maintenance_windows")
 
@@ -692,9 +949,41 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowResult(dict):
                  start_dates: Sequence['outputs.GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateResult'],
                  times: Sequence['outputs.GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult']):
         """
-        :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs'] end_dates: End date of the exclusion period in UTC.
-        :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs'] start_dates: Start date of the exclusion period in UTC.
-        :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs'] times: Time in UTC for the exclusion window.
+        :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs'] end_dates: Represents a whole or partial calendar date, such as a birthday. The time of
+               day and time zone are either specified elsewhere or are insignificant. The
+               date is relative to the Gregorian Calendar. This can represent one of the
+               following:
+               
+               * A full date, with non-zero year, month, and day values.
+               * A month and day, with a zero year (for example, an anniversary).
+               * A year on its own, with a zero month and a zero day.
+               * A year and month, with a zero day (for example, a credit card expiration
+               date).
+               
+               Related types:
+               
+               * google.type.TimeOfDay
+               * google.type.DateTime
+               * google.protobuf.Timestamp
+        :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs'] start_dates: Represents a whole or partial calendar date, such as a birthday. The time of
+               day and time zone are either specified elsewhere or are insignificant. The
+               date is relative to the Gregorian Calendar. This can represent one of the
+               following:
+               
+               * A full date, with non-zero year, month, and day values.
+               * A month and day, with a zero year (for example, an anniversary).
+               * A year on its own, with a zero month and a zero day.
+               * A year and month, with a zero day (for example, a credit card expiration
+               date).
+               
+               Related types:
+               
+               * google.type.TimeOfDay
+               * google.type.DateTime
+               * google.protobuf.Timestamp
+        :param Sequence['GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs'] times: Represents a time of day. The date and time zone are either not significant
+               or are specified elsewhere. An API may choose to allow leap seconds. Related
+               types are google.type.Date and 'google.protobuf.Timestamp'.
         """
         pulumi.set(__self__, "end_dates", end_dates)
         pulumi.set(__self__, "start_dates", start_dates)
@@ -704,7 +993,22 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowResult(dict):
     @pulumi.getter(name="endDates")
     def end_dates(self) -> Sequence['outputs.GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateResult']:
         """
-        End date of the exclusion period in UTC.
+        Represents a whole or partial calendar date, such as a birthday. The time of
+        day and time zone are either specified elsewhere or are insignificant. The
+        date is relative to the Gregorian Calendar. This can represent one of the
+        following:
+
+        * A full date, with non-zero year, month, and day values.
+        * A month and day, with a zero year (for example, an anniversary).
+        * A year on its own, with a zero month and a zero day.
+        * A year and month, with a zero day (for example, a credit card expiration
+        date).
+
+        Related types:
+
+        * google.type.TimeOfDay
+        * google.type.DateTime
+        * google.protobuf.Timestamp
         """
         return pulumi.get(self, "end_dates")
 
@@ -712,7 +1016,22 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowResult(dict):
     @pulumi.getter(name="startDates")
     def start_dates(self) -> Sequence['outputs.GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateResult']:
         """
-        Start date of the exclusion period in UTC.
+        Represents a whole or partial calendar date, such as a birthday. The time of
+        day and time zone are either specified elsewhere or are insignificant. The
+        date is relative to the Gregorian Calendar. This can represent one of the
+        following:
+
+        * A full date, with non-zero year, month, and day values.
+        * A month and day, with a zero year (for example, an anniversary).
+        * A year on its own, with a zero month and a zero day.
+        * A year and month, with a zero day (for example, a credit card expiration
+        date).
+
+        Related types:
+
+        * google.type.TimeOfDay
+        * google.type.DateTime
+        * google.protobuf.Timestamp
         """
         return pulumi.get(self, "start_dates")
 
@@ -720,7 +1039,9 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowResult(dict):
     @pulumi.getter
     def times(self) -> Sequence['outputs.GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult']:
         """
-        Time in UTC for the exclusion window.
+        Represents a time of day. The date and time zone are either not significant
+        or are specified elsewhere. An API may choose to allow leap seconds. Related
+        types are google.type.Date and 'google.protobuf.Timestamp'.
         """
         return pulumi.get(self, "times")
 
@@ -732,9 +1053,13 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateResult(dict):
                  month: _builtins.int,
                  year: _builtins.int):
         """
-        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month.
-        :param _builtins.int month: Month of a year. Must be from 1 to 12.
-        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+               to specify a year by itself or a year and month where the day isn't
+               significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+               month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+               a year.
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "month", month)
@@ -744,7 +1069,9 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateResult(dict):
     @pulumi.getter
     def day(self) -> _builtins.int:
         """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+        to specify a year by itself or a year and month where the day isn't
+        significant.
         """
         return pulumi.get(self, "day")
 
@@ -752,7 +1079,8 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateResult(dict):
     @pulumi.getter
     def month(self) -> _builtins.int:
         """
-        Month of a year. Must be from 1 to 12.
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+        month and day.
         """
         return pulumi.get(self, "month")
 
@@ -760,7 +1088,8 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDateResult(dict):
     @pulumi.getter
     def year(self) -> _builtins.int:
         """
-        Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+        a year.
         """
         return pulumi.get(self, "year")
 
@@ -772,9 +1101,13 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateResult(dict
                  month: _builtins.int,
                  year: _builtins.int):
         """
-        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month.
-        :param _builtins.int month: Month of a year. Must be from 1 to 12.
-        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        :param _builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+               to specify a year by itself or a year and month where the day isn't
+               significant.
+        :param _builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+               month and day.
+        :param _builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+               a year.
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "month", month)
@@ -784,7 +1117,9 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateResult(dict
     @pulumi.getter
     def day(self) -> _builtins.int:
         """
-        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+        to specify a year by itself or a year and month where the day isn't
+        significant.
         """
         return pulumi.get(self, "day")
 
@@ -792,7 +1127,8 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateResult(dict
     @pulumi.getter
     def month(self) -> _builtins.int:
         """
-        Month of a year. Must be from 1 to 12.
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+        month and day.
         """
         return pulumi.get(self, "month")
 
@@ -800,7 +1136,8 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowStartDateResult(dict
     @pulumi.getter
     def year(self) -> _builtins.int:
         """
-        Year of the date. Must be from 1 to 9999, or 0 for recurring.
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+        a year.
         """
         return pulumi.get(self, "year")
 
@@ -813,10 +1150,16 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult(dict):
                  nanos: _builtins.int,
                  seconds: _builtins.int):
         """
-        :param _builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
-        :param _builtins.int minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param _builtins.int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param _builtins.int seconds: Seconds of minutes of the time. Must be from 0 to 59.
+        :param _builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+               typically must be less than or equal to 23. An API may choose to allow the
+               value "24:00:00" for scenarios like business closing time.
+        :param _builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or
+               equal to 59.
+        :param _builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+               and less than or equal to 999,999,999.
+        :param _builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must
+               be less than or equal to 59. An API may allow the value 60 if it allows
+               leap-seconds.
         """
         pulumi.set(__self__, "hours", hours)
         pulumi.set(__self__, "minutes", minutes)
@@ -827,7 +1170,9 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult(dict):
     @pulumi.getter
     def hours(self) -> _builtins.int:
         """
-        Hours of day in 24 hour format. Should be from 0 to 23.
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        typically must be less than or equal to 23. An API may choose to allow the
+        value "24:00:00" for scenarios like business closing time.
         """
         return pulumi.get(self, "hours")
 
@@ -835,7 +1180,8 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult(dict):
     @pulumi.getter
     def minutes(self) -> _builtins.int:
         """
-        Minutes of hour of day. Must be from 0 to 59.
+        Minutes of an hour. Must be greater than or equal to 0 and less than or
+        equal to 59.
         """
         return pulumi.get(self, "minutes")
 
@@ -843,7 +1189,8 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult(dict):
     @pulumi.getter
     def nanos(self) -> _builtins.int:
         """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+        and less than or equal to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
@@ -851,7 +1198,9 @@ class GetInstanceMaintenancePolicyMaintenanceExclusionWindowTimeResult(dict):
     @pulumi.getter
     def seconds(self) -> _builtins.int:
         """
-        Seconds of minutes of the time. Must be from 0 to 59.
+        Seconds of a minute. Must be greater than or equal to 0 and typically must
+        be less than or equal to 59. An API may allow the value 60 if it allows
+        leap-seconds.
         """
         return pulumi.get(self, "seconds")
 
@@ -862,8 +1211,17 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
                  day_of_week: _builtins.str,
                  start_times: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']):
         """
-        :param _builtins.str day_of_week: Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
-        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_times: Start time of the maintenance window in UTC.
+        :param _builtins.str day_of_week: Possible values:
+               MONDAY
+               TUESDAY
+               WEDNESDAY
+               THURSDAY
+               FRIDAY
+               SATURDAY
+               SUNDAY
+        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_times: Represents a time of day. The date and time zone are either not significant
+               or are specified elsewhere. An API may choose to allow leap seconds. Related
+               types are google.type.Date and 'google.protobuf.Timestamp'.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "start_times", start_times)
@@ -872,7 +1230,14 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> _builtins.str:
         """
-        Day of the week for the maintenance window. Possible values: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+        Possible values:
+        MONDAY
+        TUESDAY
+        WEDNESDAY
+        THURSDAY
+        FRIDAY
+        SATURDAY
+        SUNDAY
         """
         return pulumi.get(self, "day_of_week")
 
@@ -880,7 +1245,9 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
     @pulumi.getter(name="startTimes")
     def start_times(self) -> Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']:
         """
-        Start time of the maintenance window in UTC.
+        Represents a time of day. The date and time zone are either not significant
+        or are specified elsewhere. An API may choose to allow leap seconds. Related
+        types are google.type.Date and 'google.protobuf.Timestamp'.
         """
         return pulumi.get(self, "start_times")
 
@@ -893,10 +1260,16 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
                  nanos: _builtins.int,
                  seconds: _builtins.int):
         """
-        :param _builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
-        :param _builtins.int minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param _builtins.int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param _builtins.int seconds: Seconds of minutes of the time. Must be from 0 to 59.
+        :param _builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+               typically must be less than or equal to 23. An API may choose to allow the
+               value "24:00:00" for scenarios like business closing time.
+        :param _builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or
+               equal to 59.
+        :param _builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+               and less than or equal to 999,999,999.
+        :param _builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must
+               be less than or equal to 59. An API may allow the value 60 if it allows
+               leap-seconds.
         """
         pulumi.set(__self__, "hours", hours)
         pulumi.set(__self__, "minutes", minutes)
@@ -907,7 +1280,9 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
     @pulumi.getter
     def hours(self) -> _builtins.int:
         """
-        Hours of day in 24 hour format. Should be from 0 to 23.
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        typically must be less than or equal to 23. An API may choose to allow the
+        value "24:00:00" for scenarios like business closing time.
         """
         return pulumi.get(self, "hours")
 
@@ -915,7 +1290,8 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
     @pulumi.getter
     def minutes(self) -> _builtins.int:
         """
-        Minutes of hour of day. Must be from 0 to 59.
+        Minutes of an hour. Must be greater than or equal to 0 and less than or
+        equal to 59.
         """
         return pulumi.get(self, "minutes")
 
@@ -923,7 +1299,8 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
     @pulumi.getter
     def nanos(self) -> _builtins.int:
         """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+        and less than or equal to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
@@ -931,8 +1308,39 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
     @pulumi.getter
     def seconds(self) -> _builtins.int:
         """
-        Seconds of minutes of the time. Must be from 0 to 59.
+        Seconds of a minute. Must be greater than or equal to 0 and typically must
+        be less than or equal to 59. An API may allow the value 60 if it allows
+        leap-seconds.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetInstanceUpcomingMaintenanceScheduleResult(dict):
+    def __init__(__self__, *,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.str end_time: The scheduled end time for the maintenance.
+        :param _builtins.str start_time: The scheduled start time for the maintenance.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        The scheduled end time for the maintenance.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        The scheduled start time for the maintenance.
+        """
+        return pulumi.get(self, "start_time")
 
 

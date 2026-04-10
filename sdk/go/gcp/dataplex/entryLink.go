@@ -38,14 +38,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			entry_group_basic, err := dataplex.NewEntryGroup(ctx, "entry-group-basic", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("tf-test-entry-group_33395"),
+//				EntryGroupId: pulumi.String("tf-test-entry-group_13293"),
 //				Project:      pulumi.String("1111111111111"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			entry_type_basic, err := dataplex.NewEntryType(ctx, "entry-type-basic", &dataplex.EntryTypeArgs{
-//				EntryTypeId: pulumi.String("tf-test-entry-type_69391"),
+//				EntryTypeId: pulumi.String("tf-test-entry-type_33395"),
 //				Location:    pulumi.String("us-central1"),
 //				Project:     pulumi.String("1111111111111"),
 //			})
@@ -55,7 +55,7 @@ import (
 //			source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: entry_group_basic.EntryGroupId,
-//				EntryId:      pulumi.String("tf-test-source-entry_76044"),
+//				EntryId:      pulumi.String("tf-test-source-entry_40289"),
 //				EntryType:    entry_type_basic.Name,
 //				Project:      pulumi.String("1111111111111"),
 //			})
@@ -65,7 +65,7 @@ import (
 //			target, err := dataplex.NewEntry(ctx, "target", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: entry_group_basic.EntryGroupId,
-//				EntryId:      pulumi.String("tf-test-target-entry_8270"),
+//				EntryId:      pulumi.String("tf-test-target-entry_76044"),
 //				EntryType:    entry_type_basic.Name,
 //				Project:      pulumi.String("1111111111111"),
 //			})
@@ -76,7 +76,7 @@ import (
 //				Project:       pulumi.String("1111111111111"),
 //				Location:      pulumi.String("us-central1"),
 //				EntryGroupId:  entry_group_basic.EntryGroupId,
-//				EntryLinkId:   pulumi.String("tf-test-entry-link_41150"),
+//				EntryLinkId:   pulumi.String("tf-test-entry-link_69391"),
 //				EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/related"),
 //				EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 //					&dataplex.EntryLinkEntryReferenceArgs{
@@ -114,14 +114,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			entry_group_full, err := dataplex.NewEntryGroup(ctx, "entry-group-full", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("tf-test-entry-group_89313"),
+//				EntryGroupId: pulumi.String("tf-test-entry-group_8270"),
 //				Project:      pulumi.String("1111111111111"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			entry_type_full, err := dataplex.NewEntryType(ctx, "entry-type-full", &dataplex.EntryTypeArgs{
-//				EntryTypeId: pulumi.String("tf-test-entry-type_9394"),
+//				EntryTypeId: pulumi.String("tf-test-entry-type_89313"),
 //				Location:    pulumi.String("us-central1"),
 //				Project:     pulumi.String("1111111111111"),
 //			})
@@ -131,7 +131,7 @@ import (
 //			source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: entry_group_full.EntryGroupId,
-//				EntryId:      pulumi.String("tf-test-source-entry_60646"),
+//				EntryId:      pulumi.String("tf-test-source-entry_41150"),
 //				EntryType:    entry_type_full.Name,
 //				Project:      pulumi.String("1111111111111"),
 //			})
@@ -139,7 +139,7 @@ import (
 //				return err
 //			}
 //			termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_11380"),
+//				GlossaryId: pulumi.String("tf-test-glossary_60646"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -153,7 +153,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: termTestIdFull.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				TermId:     pulumi.String("tf-test-term-full_35305"),
+//				TermId:     pulumi.String("tf-test-term-full_9394"),
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},
@@ -176,7 +176,7 @@ import (
 //				Project:       pulumi.String("1111111111111"),
 //				Location:      pulumi.String("us-central1"),
 //				EntryGroupId:  entry_group_full.EntryGroupId,
-//				EntryLinkId:   pulumi.String("tf-test-entry-link_62793"),
+//				EntryLinkId:   pulumi.String("tf-test-entry-link_11380"),
 //				EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/definition"),
 //				EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 //					&dataplex.EntryLinkEntryReferenceArgs{
@@ -206,7 +206,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // EntryLink can be imported using any of these accepted formats:
@@ -225,6 +224,9 @@ import (
 type EntryLink struct {
 	pulumi.CustomResourceState
 
+	// The Aspects attached to the Entry Link.
+	// Structure is documented below.
+	Aspects EntryLinkAspectArrayOutput `pulumi:"aspects"`
 	// The time when the Entry Link was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The id of the entry group this entry link is in.
@@ -294,6 +296,9 @@ func GetEntryLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryLink resources.
 type entryLinkState struct {
+	// The Aspects attached to the Entry Link.
+	// Structure is documented below.
+	Aspects []EntryLinkAspect `pulumi:"aspects"`
 	// The time when the Entry Link was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The id of the entry group this entry link is in.
@@ -319,6 +324,9 @@ type entryLinkState struct {
 }
 
 type EntryLinkState struct {
+	// The Aspects attached to the Entry Link.
+	// Structure is documented below.
+	Aspects EntryLinkAspectArrayInput
 	// The time when the Entry Link was created.
 	CreateTime pulumi.StringPtrInput
 	// The id of the entry group this entry link is in.
@@ -348,6 +356,9 @@ func (EntryLinkState) ElementType() reflect.Type {
 }
 
 type entryLinkArgs struct {
+	// The Aspects attached to the Entry Link.
+	// Structure is documented below.
+	Aspects []EntryLinkAspect `pulumi:"aspects"`
 	// The id of the entry group this entry link is in.
 	EntryGroupId string `pulumi:"entryGroupId"`
 	// The id of the entry link to create.
@@ -367,6 +378,9 @@ type entryLinkArgs struct {
 
 // The set of arguments for constructing a EntryLink resource.
 type EntryLinkArgs struct {
+	// The Aspects attached to the Entry Link.
+	// Structure is documented below.
+	Aspects EntryLinkAspectArrayInput
 	// The id of the entry group this entry link is in.
 	EntryGroupId pulumi.StringInput
 	// The id of the entry link to create.
@@ -469,6 +483,12 @@ func (o EntryLinkOutput) ToEntryLinkOutput() EntryLinkOutput {
 
 func (o EntryLinkOutput) ToEntryLinkOutputWithContext(ctx context.Context) EntryLinkOutput {
 	return o
+}
+
+// The Aspects attached to the Entry Link.
+// Structure is documented below.
+func (o EntryLinkOutput) Aspects() EntryLinkAspectArrayOutput {
+	return o.ApplyT(func(v *EntryLink) EntryLinkAspectArrayOutput { return v.Aspects }).(EntryLinkAspectArrayOutput)
 }
 
 // The time when the Entry Link was created.

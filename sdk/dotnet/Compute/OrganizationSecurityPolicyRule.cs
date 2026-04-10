@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_56730",
+    ///         ShortName = "tf-test_72490",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_95154",
+    ///         ShortName = "tf-test_89605",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });

@@ -11,7 +11,9 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.lustre.InstanceArgs;
 import com.pulumi.gcp.lustre.inputs.InstanceState;
 import com.pulumi.gcp.lustre.outputs.InstanceAccessRulesOptions;
+import com.pulumi.gcp.lustre.outputs.InstanceDynamicTierOptions;
 import com.pulumi.gcp.lustre.outputs.InstanceMaintenancePolicy;
+import com.pulumi.gcp.lustre.outputs.InstanceUpcomingMaintenanceSchedule;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -104,8 +106,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:lustre/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      * 
      */
@@ -113,8 +115,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceAccessRulesOptions> accessRulesOptions;
 
     /**
-     * @return Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * @return IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      * 
      */
@@ -123,7 +125,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      * 
      */
     @Export(name="capacityGib", refs={String.class}, tree="[0]")
@@ -131,7 +136,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      * 
      */
     public Output<String> capacityGib() {
@@ -164,6 +172,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dynamicTierOptions", refs={InstanceDynamicTierOptions.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceDynamicTierOptions> dynamicTierOptions;
+
+    /**
+     * @return Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceDynamicTierOptions>> dynamicTierOptions() {
+        return Codegen.optional(this.dynamicTierOptions);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -236,14 +260,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The KMS key id to use for encryption of the Lustre instance.
+     * The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      * 
      */
     @Export(name="kmsKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKey;
 
     /**
-     * @return The KMS key id to use for encryption of the Lustre instance.
+     * @return The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      * 
      */
     public Output<Optional<String>> kmsKey() {
@@ -282,7 +316,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Defines a maintenance policy for a resource.
      * Structure is documented below.
      * 
      */
@@ -290,7 +324,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceMaintenancePolicy> maintenancePolicy;
 
     /**
-     * @return The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * @return Defines a maintenance policy for a resource.
      * Structure is documented below.
      * 
      */
@@ -344,20 +378,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
-     * The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      * 
      */
     @Export(name="perUnitStorageThroughput", refs={String.class}, tree="[0]")
-    private Output<String> perUnitStorageThroughput;
+    private Output</* @Nullable */ String> perUnitStorageThroughput;
 
     /**
-     * @return The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * @return The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      * 
      */
-    public Output<String> perUnitStorageThroughput() {
-        return this.perUnitStorageThroughput;
+    public Output<Optional<String>> perUnitStorageThroughput() {
+        return Codegen.optional(this.perUnitStorageThroughput);
     }
     /**
      * The placement policy name for the instance in the format of
@@ -409,7 +453,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The state of the instance.
-     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+     * Possible values:
+     * ACTIVE
+     * CREATING
+     * DELETING
+     * UPGRADING
+     * REPAIRING
+     * STOPPED
+     * UPDATING
+     * SUSPENDED
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -417,25 +469,67 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The state of the instance.
-     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+     * Possible values:
+     * ACTIVE
+     * CREATING
+     * DELETING
+     * UPGRADING
+     * REPAIRING
+     * STOPPED
+     * UPDATING
+     * SUSPENDED
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * The reason why the instance is in a certain state.
+     * The reason why the instance is in a certain state (e.g. SUSPENDED).
      * 
      */
     @Export(name="stateReason", refs={String.class}, tree="[0]")
     private Output<String> stateReason;
 
     /**
-     * @return The reason why the instance is in a certain state.
+     * @return The reason why the instance is in a certain state (e.g. SUSPENDED).
      * 
      */
     public Output<String> stateReason() {
         return this.stateReason;
+    }
+    /**
+     * Unique ID of the resource.
+     * This is unrelated to the access rules which allow specifying the root
+     * squash uid.
+     * 
+     */
+    @Export(name="uid", refs={String.class}, tree="[0]")
+    private Output<String> uid;
+
+    /**
+     * @return Unique ID of the resource.
+     * This is unrelated to the access rules which allow specifying the root
+     * squash uid.
+     * 
+     */
+    public Output<String> uid() {
+        return this.uid;
+    }
+    /**
+     * Represents a scheduled maintenance event.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="upcomingMaintenanceSchedules", refs={List.class,InstanceUpcomingMaintenanceSchedule.class}, tree="[0,1]")
+    private Output<List<InstanceUpcomingMaintenanceSchedule>> upcomingMaintenanceSchedules;
+
+    /**
+     * @return Represents a scheduled maintenance event.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstanceUpcomingMaintenanceSchedule>> upcomingMaintenanceSchedules() {
+        return this.upcomingMaintenanceSchedules;
     }
     /**
      * Timestamp when the instance was last updated.

@@ -16,14 +16,18 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
     public static final InstanceAccessRulesOptionsAccessRuleArgs Empty = new InstanceAccessRulesOptionsAccessRuleArgs();
 
     /**
-     * An array of IP address strings or CIDR ranges that this rule applies to.
+     * The IP address ranges to which to apply this access rule. Accepts
+     * non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+     * (e.g., `192.168.1.0`).
      * 
      */
     @Import(name="ipAddressRanges", required=true)
     private Output<List<String>> ipAddressRanges;
 
     /**
-     * @return An array of IP address strings or CIDR ranges that this rule applies to.
+     * @return The IP address ranges to which to apply this access rule. Accepts
+     * non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+     * (e.g., `192.168.1.0`).
      * 
      */
     public Output<List<String>> ipAddressRanges() {
@@ -31,14 +35,18 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
     }
 
     /**
-     * A unique identifier for the access rule.
+     * The name of the access rule policy group.
+     * Must be 16 characters or less and include only alphanumeric characters
+     * or &#39;_&#39;.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A unique identifier for the access rule.
+     * @return The name of the access rule policy group.
+     * Must be 16 characters or less and include only alphanumeric characters
+     * or &#39;_&#39;.
      * 
      */
     public Output<String> name() {
@@ -46,18 +54,20 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
     }
 
     /**
-     * The squash mode for this specific rule. Currently, only &#34;NO_SQUASH&#34;
-     * is supported for exceptions.
-     * Possible values are: `NO_SQUASH`.
+     * Squash mode for the access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     @Import(name="squashMode", required=true)
     private Output<String> squashMode;
 
     /**
-     * @return The squash mode for this specific rule. Currently, only &#34;NO_SQUASH&#34;
-     * is supported for exceptions.
-     * Possible values are: `NO_SQUASH`.
+     * @return Squash mode for the access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     public Output<String> squashMode() {
@@ -91,7 +101,9 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipAddressRanges An array of IP address strings or CIDR ranges that this rule applies to.
+         * @param ipAddressRanges The IP address ranges to which to apply this access rule. Accepts
+         * non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+         * (e.g., `192.168.1.0`).
          * 
          * @return builder
          * 
@@ -102,7 +114,9 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipAddressRanges An array of IP address strings or CIDR ranges that this rule applies to.
+         * @param ipAddressRanges The IP address ranges to which to apply this access rule. Accepts
+         * non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+         * (e.g., `192.168.1.0`).
          * 
          * @return builder
          * 
@@ -112,7 +126,9 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param ipAddressRanges An array of IP address strings or CIDR ranges that this rule applies to.
+         * @param ipAddressRanges The IP address ranges to which to apply this access rule. Accepts
+         * non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses
+         * (e.g., `192.168.1.0`).
          * 
          * @return builder
          * 
@@ -122,7 +138,9 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param name A unique identifier for the access rule.
+         * @param name The name of the access rule policy group.
+         * Must be 16 characters or less and include only alphanumeric characters
+         * or &#39;_&#39;.
          * 
          * @return builder
          * 
@@ -133,7 +151,9 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param name A unique identifier for the access rule.
+         * @param name The name of the access rule policy group.
+         * Must be 16 characters or less and include only alphanumeric characters
+         * or &#39;_&#39;.
          * 
          * @return builder
          * 
@@ -143,9 +163,10 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param squashMode The squash mode for this specific rule. Currently, only &#34;NO_SQUASH&#34;
-         * is supported for exceptions.
-         * Possible values are: `NO_SQUASH`.
+         * @param squashMode Squash mode for the access rule.
+         * Possible values:
+         * NO_SQUASH
+         * ROOT_SQUASH
          * 
          * @return builder
          * 
@@ -156,9 +177,10 @@ public final class InstanceAccessRulesOptionsAccessRuleArgs extends com.pulumi.r
         }
 
         /**
-         * @param squashMode The squash mode for this specific rule. Currently, only &#34;NO_SQUASH&#34;
-         * is supported for exceptions.
-         * Possible values are: `NO_SQUASH`.
+         * @param squashMode Squash mode for the access rule.
+         * Possible values:
+         * NO_SQUASH
+         * ROOT_SQUASH
          * 
          * @return builder
          * 

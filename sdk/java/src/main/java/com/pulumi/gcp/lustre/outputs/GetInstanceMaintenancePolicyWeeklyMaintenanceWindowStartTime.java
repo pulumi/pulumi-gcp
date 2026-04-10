@@ -11,50 +11,62 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23.
+     * @return Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+     * typically must be less than or equal to 23. An API may choose to allow the
+     * value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     private Integer hours;
     /**
-     * @return Minutes of hour of day. Must be from 0 to 59.
+     * @return Minutes of an hour. Must be greater than or equal to 0 and less than or
+     * equal to 59.
      * 
      */
     private Integer minutes;
     /**
-     * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * @return Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+     * and less than or equal to 999,999,999.
      * 
      */
     private Integer nanos;
     /**
-     * @return Seconds of minutes of the time. Must be from 0 to 59.
+     * @return Seconds of a minute. Must be greater than or equal to 0 and typically must
+     * be less than or equal to 59. An API may allow the value 60 if it allows
+     * leap-seconds.
      * 
      */
     private Integer seconds;
 
     private GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime() {}
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23.
+     * @return Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+     * typically must be less than or equal to 23. An API may choose to allow the
+     * value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     public Integer hours() {
         return this.hours;
     }
     /**
-     * @return Minutes of hour of day. Must be from 0 to 59.
+     * @return Minutes of an hour. Must be greater than or equal to 0 and less than or
+     * equal to 59.
      * 
      */
     public Integer minutes() {
         return this.minutes;
     }
     /**
-     * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * @return Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
+     * and less than or equal to 999,999,999.
      * 
      */
     public Integer nanos() {
         return this.nanos;
     }
     /**
-     * @return Seconds of minutes of the time. Must be from 0 to 59.
+     * @return Seconds of a minute. Must be greater than or equal to 0 and typically must
+     * be less than or equal to 59. An API may allow the value 60 if it allows
+     * leap-seconds.
      * 
      */
     public Integer seconds() {

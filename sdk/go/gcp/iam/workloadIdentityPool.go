@@ -159,6 +159,11 @@ import (
 //						},
 //					},
 //				},
+//				AttestationRules: iam.WorkloadIdentityPoolAttestationRuleArray{
+//					&iam.WorkloadIdentityPoolAttestationRuleArgs{
+//						GoogleCloudResource: pulumi.String("//run.googleapis.com/projects/1111111111111/type/Service/*"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -273,6 +278,11 @@ import (
 type WorkloadIdentityPool struct {
 	pulumi.CustomResourceState
 
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules WorkloadIdentityPoolAttestationRuleArrayOutput `pulumi:"attestationRules"`
 	// A description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -373,6 +383,11 @@ func GetWorkloadIdentityPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkloadIdentityPool resources.
 type workloadIdentityPoolState struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules []WorkloadIdentityPoolAttestationRule `pulumi:"attestationRules"`
 	// A description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -441,6 +456,11 @@ type workloadIdentityPoolState struct {
 }
 
 type WorkloadIdentityPoolState struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules WorkloadIdentityPoolAttestationRuleArrayInput
 	// A description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -513,6 +533,11 @@ func (WorkloadIdentityPoolState) ElementType() reflect.Type {
 }
 
 type workloadIdentityPoolArgs struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules []WorkloadIdentityPoolAttestationRule `pulumi:"attestationRules"`
 	// A description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -569,6 +594,11 @@ type workloadIdentityPoolArgs struct {
 
 // The set of arguments for constructing a WorkloadIdentityPool resource.
 type WorkloadIdentityPoolArgs struct {
+	// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+	// defined under a managed identity, matching workloads may receive that identity. A maximum of
+	// 50 AttestationRules can be set.
+	// Structure is documented below.
+	AttestationRules WorkloadIdentityPoolAttestationRuleArrayInput
 	// A description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -708,6 +738,16 @@ func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutput() WorkloadIdent
 
 func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
 	return o
+}
+
+// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+// defined under a managed identity, matching workloads may receive that identity. A maximum of
+// 50 AttestationRules can be set.
+// Structure is documented below.
+func (o WorkloadIdentityPoolOutput) AttestationRules() WorkloadIdentityPoolAttestationRuleArrayOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) WorkloadIdentityPoolAttestationRuleArrayOutput {
+		return v.AttestationRules
+	}).(WorkloadIdentityPoolAttestationRuleArrayOutput)
 }
 
 // A description of the pool. Cannot exceed 256 characters.

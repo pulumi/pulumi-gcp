@@ -2664,7 +2664,7 @@ func (o BatchRuntimeConfigPtrOutput) Version() pulumi.StringPtrOutput {
 
 type BatchRuntimeConfigAutotuningConfig struct {
 	// Optional. Scenarios for which tunings are applied.
-	// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+	// Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
 	Scenarios []string `pulumi:"scenarios"`
 }
 
@@ -2681,7 +2681,7 @@ type BatchRuntimeConfigAutotuningConfigInput interface {
 
 type BatchRuntimeConfigAutotuningConfigArgs struct {
 	// Optional. Scenarios for which tunings are applied.
-	// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+	// Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
 	Scenarios pulumi.StringArrayInput `pulumi:"scenarios"`
 }
 
@@ -2763,7 +2763,7 @@ func (o BatchRuntimeConfigAutotuningConfigOutput) ToBatchRuntimeConfigAutotuning
 }
 
 // Optional. Scenarios for which tunings are applied.
-// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+// Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
 func (o BatchRuntimeConfigAutotuningConfigOutput) Scenarios() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BatchRuntimeConfigAutotuningConfig) []string { return v.Scenarios }).(pulumi.StringArrayOutput)
 }
@@ -2793,7 +2793,7 @@ func (o BatchRuntimeConfigAutotuningConfigPtrOutput) Elem() BatchRuntimeConfigAu
 }
 
 // Optional. Scenarios for which tunings are applied.
-// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+// Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
 func (o BatchRuntimeConfigAutotuningConfigPtrOutput) Scenarios() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BatchRuntimeConfigAutotuningConfig) []string {
 		if v == nil {
@@ -5391,6 +5391,10 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerato
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each node, specified
 	// in GB. The primary disk contains the boot volume and system libraries, and the
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -5419,6 +5423,10 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigInp
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each node, specified
 	// in GB. The primary disk contains the boot volume and system libraries, and the
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -5512,6 +5520,20 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
 }
 
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size of the primary disk attached to each node, specified
 // in GB. The primary disk contains the boot volume and system libraries, and the
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -5568,6 +5590,26 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 		var ret ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Size of the primary disk attached to each node, specified
@@ -8090,6 +8132,10 @@ func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) Index(i pulumi.I
 }
 
 type ClusterClusterConfigMasterConfigDiskConfig struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each node, specified
 	// in GB. The primary disk contains the boot volume and system libraries, and the
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -8121,6 +8167,10 @@ type ClusterClusterConfigMasterConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigMasterConfigDiskConfigArgs struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each node, specified
 	// in GB. The primary disk contains the boot volume and system libraries, and the
 	// smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -8217,6 +8267,16 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToClusterClusterConfig
 	}).(ClusterClusterConfigMasterConfigDiskConfigPtrOutput)
 }
 
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.BootDiskProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.BootDiskProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
 // Size of the primary disk attached to each node, specified
 // in GB. The primary disk contains the boot volume and system libraries, and the
 // smallest allowed disk size is 10GB. GCP will default to a predetermined
@@ -8268,6 +8328,26 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) Elem() ClusterClust
 		var ret ClusterClusterConfigMasterConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigMasterConfigDiskConfigOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Size of the primary disk attached to each node, specified
@@ -9094,6 +9174,10 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Preemptibility() p
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each preemptible worker node, specified
 	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
@@ -9121,6 +9205,10 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each preemptible worker node, specified
 	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
@@ -9213,6 +9301,18 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToClusterCl
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput)
 }
 
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int { return v.BootDiskProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size of the primary disk attached to each preemptible worker node, specified
 // in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
@@ -9260,6 +9360,26 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) Elem() C
 		var ret ClusterClusterConfigPreemptibleWorkerConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Size of the primary disk attached to each preemptible worker node, specified
@@ -11366,6 +11486,10 @@ func (o ClusterClusterConfigWorkerConfigAcceleratorArrayOutput) Index(i pulumi.I
 }
 
 type ClusterClusterConfigWorkerConfigDiskConfig struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each worker node, specified
 	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
@@ -11393,6 +11517,10 @@ type ClusterClusterConfigWorkerConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigWorkerConfigDiskConfigArgs struct {
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size of the primary disk attached to each worker node, specified
 	// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
 	// computed value if not set (currently 500GB). Note: If SSDs are not
@@ -11485,6 +11613,16 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToClusterClusterConfig
 	}).(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *int { return v.BootDiskProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *int { return v.BootDiskProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
 // Size of the primary disk attached to each worker node, specified
 // in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
 // computed value if not set (currently 500GB). Note: If SSDs are not
@@ -11532,6 +11670,26 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() ClusterClust
 		var ret ClusterClusterConfigWorkerConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigWorkerConfigDiskConfigOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Size of the primary disk attached to each worker node, specified

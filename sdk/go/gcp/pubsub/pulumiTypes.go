@@ -2721,6 +2721,11 @@ func (o SubscriptionIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type SubscriptionMessageTransform struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	// Structure is documented below.
+	AiInference *SubscriptionMessageTransformAiInference `pulumi:"aiInference"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled *bool `pulumi:"disabled"`
@@ -2742,6 +2747,11 @@ type SubscriptionMessageTransformInput interface {
 }
 
 type SubscriptionMessageTransformArgs struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	// Structure is documented below.
+	AiInference SubscriptionMessageTransformAiInferencePtrInput `pulumi:"aiInference"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
@@ -2802,6 +2812,14 @@ func (o SubscriptionMessageTransformOutput) ToSubscriptionMessageTransformOutput
 	return o
 }
 
+// AI Inference. Specifies the Vertex AI endpoint that inference
+// requests built from the Pub/Sub message data and provided parameters will
+// be sent to.
+// Structure is documented below.
+func (o SubscriptionMessageTransformOutput) AiInference() SubscriptionMessageTransformAiInferencePtrOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransform) *SubscriptionMessageTransformAiInference { return v.AiInference }).(SubscriptionMessageTransformAiInferencePtrOutput)
+}
+
 // Controls whether or not to use this transform. If not set or `false`,
 // the transform will be applied to messages. Default: `true`.
 func (o SubscriptionMessageTransformOutput) Disabled() pulumi.BoolPtrOutput {
@@ -2835,6 +2853,350 @@ func (o SubscriptionMessageTransformArrayOutput) Index(i pulumi.IntInput) Subscr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionMessageTransform {
 		return vs[0].([]SubscriptionMessageTransform)[vs[1].(int)]
 	}).(SubscriptionMessageTransformOutput)
+}
+
+type SubscriptionMessageTransformAiInference struct {
+	// The endpoint to a Vertex AI model of the form
+	// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+	// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	// Structure is documented below.
+	UnstructuredInference *SubscriptionMessageTransformAiInferenceUnstructuredInference `pulumi:"unstructuredInference"`
+}
+
+// SubscriptionMessageTransformAiInferenceInput is an input type that accepts SubscriptionMessageTransformAiInferenceArgs and SubscriptionMessageTransformAiInferenceOutput values.
+// You can construct a concrete instance of `SubscriptionMessageTransformAiInferenceInput` via:
+//
+//	SubscriptionMessageTransformAiInferenceArgs{...}
+type SubscriptionMessageTransformAiInferenceInput interface {
+	pulumi.Input
+
+	ToSubscriptionMessageTransformAiInferenceOutput() SubscriptionMessageTransformAiInferenceOutput
+	ToSubscriptionMessageTransformAiInferenceOutputWithContext(context.Context) SubscriptionMessageTransformAiInferenceOutput
+}
+
+type SubscriptionMessageTransformAiInferenceArgs struct {
+	// The endpoint to a Vertex AI model of the form
+	// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+	// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	// Structure is documented below.
+	UnstructuredInference SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput `pulumi:"unstructuredInference"`
+}
+
+func (SubscriptionMessageTransformAiInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i SubscriptionMessageTransformAiInferenceArgs) ToSubscriptionMessageTransformAiInferenceOutput() SubscriptionMessageTransformAiInferenceOutput {
+	return i.ToSubscriptionMessageTransformAiInferenceOutputWithContext(context.Background())
+}
+
+func (i SubscriptionMessageTransformAiInferenceArgs) ToSubscriptionMessageTransformAiInferenceOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformAiInferenceOutput)
+}
+
+func (i SubscriptionMessageTransformAiInferenceArgs) ToSubscriptionMessageTransformAiInferencePtrOutput() SubscriptionMessageTransformAiInferencePtrOutput {
+	return i.ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionMessageTransformAiInferenceArgs) ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformAiInferenceOutput).ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(ctx)
+}
+
+// SubscriptionMessageTransformAiInferencePtrInput is an input type that accepts SubscriptionMessageTransformAiInferenceArgs, SubscriptionMessageTransformAiInferencePtr and SubscriptionMessageTransformAiInferencePtrOutput values.
+// You can construct a concrete instance of `SubscriptionMessageTransformAiInferencePtrInput` via:
+//
+//	        SubscriptionMessageTransformAiInferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionMessageTransformAiInferencePtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionMessageTransformAiInferencePtrOutput() SubscriptionMessageTransformAiInferencePtrOutput
+	ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(context.Context) SubscriptionMessageTransformAiInferencePtrOutput
+}
+
+type subscriptionMessageTransformAiInferencePtrType SubscriptionMessageTransformAiInferenceArgs
+
+func SubscriptionMessageTransformAiInferencePtr(v *SubscriptionMessageTransformAiInferenceArgs) SubscriptionMessageTransformAiInferencePtrInput {
+	return (*subscriptionMessageTransformAiInferencePtrType)(v)
+}
+
+func (*subscriptionMessageTransformAiInferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i *subscriptionMessageTransformAiInferencePtrType) ToSubscriptionMessageTransformAiInferencePtrOutput() SubscriptionMessageTransformAiInferencePtrOutput {
+	return i.ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionMessageTransformAiInferencePtrType) ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformAiInferencePtrOutput)
+}
+
+type SubscriptionMessageTransformAiInferenceOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionMessageTransformAiInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o SubscriptionMessageTransformAiInferenceOutput) ToSubscriptionMessageTransformAiInferenceOutput() SubscriptionMessageTransformAiInferenceOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferenceOutput) ToSubscriptionMessageTransformAiInferenceOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferenceOutput) ToSubscriptionMessageTransformAiInferencePtrOutput() SubscriptionMessageTransformAiInferencePtrOutput {
+	return o.ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionMessageTransformAiInferenceOutput) ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionMessageTransformAiInference) *SubscriptionMessageTransformAiInference {
+		return &v
+	}).(SubscriptionMessageTransformAiInferencePtrOutput)
+}
+
+// The endpoint to a Vertex AI model of the form
+// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+// Vertex AI API requests will be sent to this endpoint.
+func (o SubscriptionMessageTransformAiInferenceOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransformAiInference) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The service account to use to make prediction requests against
+// endpoints.
+func (o SubscriptionMessageTransformAiInferenceOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransformAiInference) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for making inferences using arbitrary JSON payloads.
+// Structure is documented below.
+func (o SubscriptionMessageTransformAiInferenceOutput) UnstructuredInference() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransformAiInference) *SubscriptionMessageTransformAiInferenceUnstructuredInference {
+		return v.UnstructuredInference
+	}).(SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+type SubscriptionMessageTransformAiInferencePtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionMessageTransformAiInferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o SubscriptionMessageTransformAiInferencePtrOutput) ToSubscriptionMessageTransformAiInferencePtrOutput() SubscriptionMessageTransformAiInferencePtrOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferencePtrOutput) ToSubscriptionMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferencePtrOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferencePtrOutput) Elem() SubscriptionMessageTransformAiInferenceOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformAiInference) SubscriptionMessageTransformAiInference {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionMessageTransformAiInference
+		return ret
+	}).(SubscriptionMessageTransformAiInferenceOutput)
+}
+
+// The endpoint to a Vertex AI model of the form
+// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+// Vertex AI API requests will be sent to this endpoint.
+func (o SubscriptionMessageTransformAiInferencePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformAiInference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to use to make prediction requests against
+// endpoints.
+func (o SubscriptionMessageTransformAiInferencePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformAiInference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for making inferences using arbitrary JSON payloads.
+// Structure is documented below.
+func (o SubscriptionMessageTransformAiInferencePtrOutput) UnstructuredInference() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformAiInference) *SubscriptionMessageTransformAiInferenceUnstructuredInference {
+		if v == nil {
+			return nil
+		}
+		return v.UnstructuredInference
+	}).(SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+type SubscriptionMessageTransformAiInferenceUnstructuredInference struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// SubscriptionMessageTransformAiInferenceUnstructuredInferenceInput is an input type that accepts SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs and SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput values.
+// You can construct a concrete instance of `SubscriptionMessageTransformAiInferenceUnstructuredInferenceInput` via:
+//
+//	SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{...}
+type SubscriptionMessageTransformAiInferenceUnstructuredInferenceInput interface {
+	pulumi.Input
+
+	ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput
+	ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput
+}
+
+type SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return i.ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Background())
+}
+
+func (i SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+func (i SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return i.ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput).ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx)
+}
+
+// SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput is an input type that accepts SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs, SubscriptionMessageTransformAiInferenceUnstructuredInferencePtr and SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput values.
+// You can construct a concrete instance of `SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput` via:
+//
+//	        SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput
+	ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput
+}
+
+type subscriptionMessageTransformAiInferenceUnstructuredInferencePtrType SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs
+
+func SubscriptionMessageTransformAiInferenceUnstructuredInferencePtr(v *SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput {
+	return (*subscriptionMessageTransformAiInferenceUnstructuredInferencePtrType)(v)
+}
+
+func (*subscriptionMessageTransformAiInferenceUnstructuredInferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i *subscriptionMessageTransformAiInferenceUnstructuredInferencePtrType) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return i.ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionMessageTransformAiInferenceUnstructuredInferencePtrType) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+type SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ToSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionMessageTransformAiInferenceUnstructuredInference) *SubscriptionMessageTransformAiInferenceUnstructuredInference {
+		return &v
+	}).(SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+// A parameters object to be included in each inference request.
+// The parameters object is combined with the data field of the Pub/Sub
+// message to form the inference request.
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SubscriptionMessageTransformAiInferenceUnstructuredInference) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+type SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput() SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput) ToSubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o
+}
+
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput) Elem() SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformAiInferenceUnstructuredInference) SubscriptionMessageTransformAiInferenceUnstructuredInference {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionMessageTransformAiInferenceUnstructuredInference
+		return ret
+	}).(SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+// A parameters object to be included in each inference request.
+// The parameters object is combined with the data field of the Pub/Sub
+// message to form the inference request.
+func (o SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SubscriptionMessageTransformAiInferenceUnstructuredInference) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
 }
 
 type SubscriptionMessageTransformJavascriptUdf struct {
@@ -6297,6 +6659,11 @@ func (o TopicMessageStoragePolicyPtrOutput) EnforceInTransit() pulumi.BoolPtrOut
 }
 
 type TopicMessageTransform struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	// Structure is documented below.
+	AiInference *TopicMessageTransformAiInference `pulumi:"aiInference"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled *bool `pulumi:"disabled"`
@@ -6318,6 +6685,11 @@ type TopicMessageTransformInput interface {
 }
 
 type TopicMessageTransformArgs struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	// Structure is documented below.
+	AiInference TopicMessageTransformAiInferencePtrInput `pulumi:"aiInference"`
 	// Controls whether or not to use this transform. If not set or `false`,
 	// the transform will be applied to messages. Default: `true`.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
@@ -6378,6 +6750,14 @@ func (o TopicMessageTransformOutput) ToTopicMessageTransformOutputWithContext(ct
 	return o
 }
 
+// AI Inference. Specifies the Vertex AI endpoint that inference
+// requests built from the Pub/Sub message data and provided parameters will
+// be sent to.
+// Structure is documented below.
+func (o TopicMessageTransformOutput) AiInference() TopicMessageTransformAiInferencePtrOutput {
+	return o.ApplyT(func(v TopicMessageTransform) *TopicMessageTransformAiInference { return v.AiInference }).(TopicMessageTransformAiInferencePtrOutput)
+}
+
 // Controls whether or not to use this transform. If not set or `false`,
 // the transform will be applied to messages. Default: `true`.
 func (o TopicMessageTransformOutput) Disabled() pulumi.BoolPtrOutput {
@@ -6409,6 +6789,348 @@ func (o TopicMessageTransformArrayOutput) Index(i pulumi.IntInput) TopicMessageT
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicMessageTransform {
 		return vs[0].([]TopicMessageTransform)[vs[1].(int)]
 	}).(TopicMessageTransformOutput)
+}
+
+type TopicMessageTransformAiInference struct {
+	// The endpoint to a Vertex AI model of the form
+	// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+	// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	// Structure is documented below.
+	UnstructuredInference *TopicMessageTransformAiInferenceUnstructuredInference `pulumi:"unstructuredInference"`
+}
+
+// TopicMessageTransformAiInferenceInput is an input type that accepts TopicMessageTransformAiInferenceArgs and TopicMessageTransformAiInferenceOutput values.
+// You can construct a concrete instance of `TopicMessageTransformAiInferenceInput` via:
+//
+//	TopicMessageTransformAiInferenceArgs{...}
+type TopicMessageTransformAiInferenceInput interface {
+	pulumi.Input
+
+	ToTopicMessageTransformAiInferenceOutput() TopicMessageTransformAiInferenceOutput
+	ToTopicMessageTransformAiInferenceOutputWithContext(context.Context) TopicMessageTransformAiInferenceOutput
+}
+
+type TopicMessageTransformAiInferenceArgs struct {
+	// The endpoint to a Vertex AI model of the form
+	// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+	// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	// Structure is documented below.
+	UnstructuredInference TopicMessageTransformAiInferenceUnstructuredInferencePtrInput `pulumi:"unstructuredInference"`
+}
+
+func (TopicMessageTransformAiInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i TopicMessageTransformAiInferenceArgs) ToTopicMessageTransformAiInferenceOutput() TopicMessageTransformAiInferenceOutput {
+	return i.ToTopicMessageTransformAiInferenceOutputWithContext(context.Background())
+}
+
+func (i TopicMessageTransformAiInferenceArgs) ToTopicMessageTransformAiInferenceOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformAiInferenceOutput)
+}
+
+func (i TopicMessageTransformAiInferenceArgs) ToTopicMessageTransformAiInferencePtrOutput() TopicMessageTransformAiInferencePtrOutput {
+	return i.ToTopicMessageTransformAiInferencePtrOutputWithContext(context.Background())
+}
+
+func (i TopicMessageTransformAiInferenceArgs) ToTopicMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformAiInferenceOutput).ToTopicMessageTransformAiInferencePtrOutputWithContext(ctx)
+}
+
+// TopicMessageTransformAiInferencePtrInput is an input type that accepts TopicMessageTransformAiInferenceArgs, TopicMessageTransformAiInferencePtr and TopicMessageTransformAiInferencePtrOutput values.
+// You can construct a concrete instance of `TopicMessageTransformAiInferencePtrInput` via:
+//
+//	        TopicMessageTransformAiInferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicMessageTransformAiInferencePtrInput interface {
+	pulumi.Input
+
+	ToTopicMessageTransformAiInferencePtrOutput() TopicMessageTransformAiInferencePtrOutput
+	ToTopicMessageTransformAiInferencePtrOutputWithContext(context.Context) TopicMessageTransformAiInferencePtrOutput
+}
+
+type topicMessageTransformAiInferencePtrType TopicMessageTransformAiInferenceArgs
+
+func TopicMessageTransformAiInferencePtr(v *TopicMessageTransformAiInferenceArgs) TopicMessageTransformAiInferencePtrInput {
+	return (*topicMessageTransformAiInferencePtrType)(v)
+}
+
+func (*topicMessageTransformAiInferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i *topicMessageTransformAiInferencePtrType) ToTopicMessageTransformAiInferencePtrOutput() TopicMessageTransformAiInferencePtrOutput {
+	return i.ToTopicMessageTransformAiInferencePtrOutputWithContext(context.Background())
+}
+
+func (i *topicMessageTransformAiInferencePtrType) ToTopicMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformAiInferencePtrOutput)
+}
+
+type TopicMessageTransformAiInferenceOutput struct{ *pulumi.OutputState }
+
+func (TopicMessageTransformAiInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o TopicMessageTransformAiInferenceOutput) ToTopicMessageTransformAiInferenceOutput() TopicMessageTransformAiInferenceOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferenceOutput) ToTopicMessageTransformAiInferenceOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferenceOutput) ToTopicMessageTransformAiInferencePtrOutput() TopicMessageTransformAiInferencePtrOutput {
+	return o.ToTopicMessageTransformAiInferencePtrOutputWithContext(context.Background())
+}
+
+func (o TopicMessageTransformAiInferenceOutput) ToTopicMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicMessageTransformAiInference) *TopicMessageTransformAiInference {
+		return &v
+	}).(TopicMessageTransformAiInferencePtrOutput)
+}
+
+// The endpoint to a Vertex AI model of the form
+// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+// Vertex AI API requests will be sent to this endpoint.
+func (o TopicMessageTransformAiInferenceOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicMessageTransformAiInference) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The service account to use to make prediction requests against
+// endpoints.
+func (o TopicMessageTransformAiInferenceOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicMessageTransformAiInference) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for making inferences using arbitrary JSON payloads.
+// Structure is documented below.
+func (o TopicMessageTransformAiInferenceOutput) UnstructuredInference() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ApplyT(func(v TopicMessageTransformAiInference) *TopicMessageTransformAiInferenceUnstructuredInference {
+		return v.UnstructuredInference
+	}).(TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+type TopicMessageTransformAiInferencePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicMessageTransformAiInferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o TopicMessageTransformAiInferencePtrOutput) ToTopicMessageTransformAiInferencePtrOutput() TopicMessageTransformAiInferencePtrOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferencePtrOutput) ToTopicMessageTransformAiInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferencePtrOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferencePtrOutput) Elem() TopicMessageTransformAiInferenceOutput {
+	return o.ApplyT(func(v *TopicMessageTransformAiInference) TopicMessageTransformAiInference {
+		if v != nil {
+			return *v
+		}
+		var ret TopicMessageTransformAiInference
+		return ret
+	}).(TopicMessageTransformAiInferenceOutput)
+}
+
+// The endpoint to a Vertex AI model of the form
+// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+// Vertex AI API requests will be sent to this endpoint.
+func (o TopicMessageTransformAiInferencePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMessageTransformAiInference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to use to make prediction requests against
+// endpoints.
+func (o TopicMessageTransformAiInferencePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMessageTransformAiInference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for making inferences using arbitrary JSON payloads.
+// Structure is documented below.
+func (o TopicMessageTransformAiInferencePtrOutput) UnstructuredInference() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ApplyT(func(v *TopicMessageTransformAiInference) *TopicMessageTransformAiInferenceUnstructuredInference {
+		if v == nil {
+			return nil
+		}
+		return v.UnstructuredInference
+	}).(TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+type TopicMessageTransformAiInferenceUnstructuredInference struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// TopicMessageTransformAiInferenceUnstructuredInferenceInput is an input type that accepts TopicMessageTransformAiInferenceUnstructuredInferenceArgs and TopicMessageTransformAiInferenceUnstructuredInferenceOutput values.
+// You can construct a concrete instance of `TopicMessageTransformAiInferenceUnstructuredInferenceInput` via:
+//
+//	TopicMessageTransformAiInferenceUnstructuredInferenceArgs{...}
+type TopicMessageTransformAiInferenceUnstructuredInferenceInput interface {
+	pulumi.Input
+
+	ToTopicMessageTransformAiInferenceUnstructuredInferenceOutput() TopicMessageTransformAiInferenceUnstructuredInferenceOutput
+	ToTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Context) TopicMessageTransformAiInferenceUnstructuredInferenceOutput
+}
+
+type TopicMessageTransformAiInferenceUnstructuredInferenceArgs struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (TopicMessageTransformAiInferenceUnstructuredInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i TopicMessageTransformAiInferenceUnstructuredInferenceArgs) ToTopicMessageTransformAiInferenceUnstructuredInferenceOutput() TopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return i.ToTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Background())
+}
+
+func (i TopicMessageTransformAiInferenceUnstructuredInferenceArgs) ToTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+func (i TopicMessageTransformAiInferenceUnstructuredInferenceArgs) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutput() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return i.ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Background())
+}
+
+func (i TopicMessageTransformAiInferenceUnstructuredInferenceArgs) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformAiInferenceUnstructuredInferenceOutput).ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx)
+}
+
+// TopicMessageTransformAiInferenceUnstructuredInferencePtrInput is an input type that accepts TopicMessageTransformAiInferenceUnstructuredInferenceArgs, TopicMessageTransformAiInferenceUnstructuredInferencePtr and TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput values.
+// You can construct a concrete instance of `TopicMessageTransformAiInferenceUnstructuredInferencePtrInput` via:
+//
+//	        TopicMessageTransformAiInferenceUnstructuredInferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicMessageTransformAiInferenceUnstructuredInferencePtrInput interface {
+	pulumi.Input
+
+	ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutput() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput
+	ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Context) TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput
+}
+
+type topicMessageTransformAiInferenceUnstructuredInferencePtrType TopicMessageTransformAiInferenceUnstructuredInferenceArgs
+
+func TopicMessageTransformAiInferenceUnstructuredInferencePtr(v *TopicMessageTransformAiInferenceUnstructuredInferenceArgs) TopicMessageTransformAiInferenceUnstructuredInferencePtrInput {
+	return (*topicMessageTransformAiInferenceUnstructuredInferencePtrType)(v)
+}
+
+func (*topicMessageTransformAiInferenceUnstructuredInferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i *topicMessageTransformAiInferenceUnstructuredInferencePtrType) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutput() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return i.ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Background())
+}
+
+func (i *topicMessageTransformAiInferenceUnstructuredInferencePtrType) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+type TopicMessageTransformAiInferenceUnstructuredInferenceOutput struct{ *pulumi.OutputState }
+
+func (TopicMessageTransformAiInferenceUnstructuredInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferenceOutput) ToTopicMessageTransformAiInferenceUnstructuredInferenceOutput() TopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferenceOutput) ToTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferenceOutput) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutput() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(context.Background())
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferenceOutput) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicMessageTransformAiInferenceUnstructuredInference) *TopicMessageTransformAiInferenceUnstructuredInference {
+		return &v
+	}).(TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput)
+}
+
+// A parameters object to be included in each inference request.
+// The parameters object is combined with the data field of the Pub/Sub
+// message to form the inference request.
+func (o TopicMessageTransformAiInferenceUnstructuredInferenceOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TopicMessageTransformAiInferenceUnstructuredInference) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+type TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutput() TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput) ToTopicMessageTransformAiInferenceUnstructuredInferencePtrOutputWithContext(ctx context.Context) TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput {
+	return o
+}
+
+func (o TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput) Elem() TopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o.ApplyT(func(v *TopicMessageTransformAiInferenceUnstructuredInference) TopicMessageTransformAiInferenceUnstructuredInference {
+		if v != nil {
+			return *v
+		}
+		var ret TopicMessageTransformAiInferenceUnstructuredInference
+		return ret
+	}).(TopicMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+// A parameters object to be included in each inference request.
+// The parameters object is combined with the data field of the Pub/Sub
+// message to form the inference request.
+func (o TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TopicMessageTransformAiInferenceUnstructuredInference) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
 }
 
 type TopicMessageTransformJavascriptUdf struct {
@@ -7598,6 +8320,10 @@ func (o GetSubscriptionExpirationPolicyArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetSubscriptionMessageTransform struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	AiInferences []GetSubscriptionMessageTransformAiInference `pulumi:"aiInferences"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled bool `pulumi:"disabled"`
@@ -7618,6 +8344,10 @@ type GetSubscriptionMessageTransformInput interface {
 }
 
 type GetSubscriptionMessageTransformArgs struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	AiInferences GetSubscriptionMessageTransformAiInferenceArrayInput `pulumi:"aiInferences"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
@@ -7677,6 +8407,15 @@ func (o GetSubscriptionMessageTransformOutput) ToGetSubscriptionMessageTransform
 	return o
 }
 
+// AI Inference. Specifies the Vertex AI endpoint that inference
+// requests built from the Pub/Sub message data and provided parameters will
+// be sent to.
+func (o GetSubscriptionMessageTransformOutput) AiInferences() GetSubscriptionMessageTransformAiInferenceArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransform) []GetSubscriptionMessageTransformAiInference {
+		return v.AiInferences
+	}).(GetSubscriptionMessageTransformAiInferenceArrayOutput)
+}
+
 // Controls whether or not to use this transform. If not set or 'false',
 // the transform will be applied to messages. Default: 'true'.
 func (o GetSubscriptionMessageTransformOutput) Disabled() pulumi.BoolOutput {
@@ -7709,6 +8448,240 @@ func (o GetSubscriptionMessageTransformArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionMessageTransform {
 		return vs[0].([]GetSubscriptionMessageTransform)[vs[1].(int)]
 	}).(GetSubscriptionMessageTransformOutput)
+}
+
+type GetSubscriptionMessageTransformAiInference struct {
+	// The endpoint to a Vertex AI model of the form
+	// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+	// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	UnstructuredInferences []GetSubscriptionMessageTransformAiInferenceUnstructuredInference `pulumi:"unstructuredInferences"`
+}
+
+// GetSubscriptionMessageTransformAiInferenceInput is an input type that accepts GetSubscriptionMessageTransformAiInferenceArgs and GetSubscriptionMessageTransformAiInferenceOutput values.
+// You can construct a concrete instance of `GetSubscriptionMessageTransformAiInferenceInput` via:
+//
+//	GetSubscriptionMessageTransformAiInferenceArgs{...}
+type GetSubscriptionMessageTransformAiInferenceInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionMessageTransformAiInferenceOutput() GetSubscriptionMessageTransformAiInferenceOutput
+	ToGetSubscriptionMessageTransformAiInferenceOutputWithContext(context.Context) GetSubscriptionMessageTransformAiInferenceOutput
+}
+
+type GetSubscriptionMessageTransformAiInferenceArgs struct {
+	// The endpoint to a Vertex AI model of the form
+	// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+	// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	UnstructuredInferences GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayInput `pulumi:"unstructuredInferences"`
+}
+
+func (GetSubscriptionMessageTransformAiInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceArgs) ToGetSubscriptionMessageTransformAiInferenceOutput() GetSubscriptionMessageTransformAiInferenceOutput {
+	return i.ToGetSubscriptionMessageTransformAiInferenceOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceArgs) ToGetSubscriptionMessageTransformAiInferenceOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionMessageTransformAiInferenceOutput)
+}
+
+// GetSubscriptionMessageTransformAiInferenceArrayInput is an input type that accepts GetSubscriptionMessageTransformAiInferenceArray and GetSubscriptionMessageTransformAiInferenceArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionMessageTransformAiInferenceArrayInput` via:
+//
+//	GetSubscriptionMessageTransformAiInferenceArray{ GetSubscriptionMessageTransformAiInferenceArgs{...} }
+type GetSubscriptionMessageTransformAiInferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionMessageTransformAiInferenceArrayOutput() GetSubscriptionMessageTransformAiInferenceArrayOutput
+	ToGetSubscriptionMessageTransformAiInferenceArrayOutputWithContext(context.Context) GetSubscriptionMessageTransformAiInferenceArrayOutput
+}
+
+type GetSubscriptionMessageTransformAiInferenceArray []GetSubscriptionMessageTransformAiInferenceInput
+
+func (GetSubscriptionMessageTransformAiInferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceArray) ToGetSubscriptionMessageTransformAiInferenceArrayOutput() GetSubscriptionMessageTransformAiInferenceArrayOutput {
+	return i.ToGetSubscriptionMessageTransformAiInferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceArray) ToGetSubscriptionMessageTransformAiInferenceArrayOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionMessageTransformAiInferenceArrayOutput)
+}
+
+type GetSubscriptionMessageTransformAiInferenceOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionMessageTransformAiInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceOutput) ToGetSubscriptionMessageTransformAiInferenceOutput() GetSubscriptionMessageTransformAiInferenceOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceOutput) ToGetSubscriptionMessageTransformAiInferenceOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceOutput {
+	return o
+}
+
+// The endpoint to a Vertex AI model of the form
+// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+// Vertex AI API requests will be sent to this endpoint.
+func (o GetSubscriptionMessageTransformAiInferenceOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransformAiInference) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The service account to use to make prediction requests against
+// endpoints.
+func (o GetSubscriptionMessageTransformAiInferenceOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransformAiInference) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// Configuration for making inferences using arbitrary JSON payloads.
+func (o GetSubscriptionMessageTransformAiInferenceOutput) UnstructuredInferences() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransformAiInference) []GetSubscriptionMessageTransformAiInferenceUnstructuredInference {
+		return v.UnstructuredInferences
+	}).(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput)
+}
+
+type GetSubscriptionMessageTransformAiInferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionMessageTransformAiInferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceArrayOutput) ToGetSubscriptionMessageTransformAiInferenceArrayOutput() GetSubscriptionMessageTransformAiInferenceArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceArrayOutput) ToGetSubscriptionMessageTransformAiInferenceArrayOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceArrayOutput) Index(i pulumi.IntInput) GetSubscriptionMessageTransformAiInferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionMessageTransformAiInference {
+		return vs[0].([]GetSubscriptionMessageTransformAiInference)[vs[1].(int)]
+	}).(GetSubscriptionMessageTransformAiInferenceOutput)
+}
+
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInference struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceInput is an input type that accepts GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs and GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput values.
+// You can construct a concrete instance of `GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceInput` via:
+//
+//	GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{...}
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput
+	ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Context) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput
+}
+
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return i.ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+// GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayInput is an input type that accepts GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray and GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayInput` via:
+//
+//	GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray{ GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{...} }
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput
+	ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(context.Context) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput
+}
+
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray []GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceInput
+
+func (GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return i.ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput)
+}
+
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+// A parameters object to be included in each inference request.
+// The parameters object is combined with the data field of the Pub/Sub
+// message to form the inference request.
+func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSubscriptionMessageTransformAiInferenceUnstructuredInference) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+type GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput() GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput) ToGetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(ctx context.Context) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput) Index(i pulumi.IntInput) GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionMessageTransformAiInferenceUnstructuredInference {
+		return vs[0].([]GetSubscriptionMessageTransformAiInferenceUnstructuredInference)[vs[1].(int)]
+	}).(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput)
 }
 
 type GetSubscriptionMessageTransformJavascriptUdf struct {
@@ -9877,6 +10850,10 @@ func (o GetTopicMessageStoragePolicyArrayOutput) Index(i pulumi.IntInput) GetTop
 }
 
 type GetTopicMessageTransform struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	AiInferences []GetTopicMessageTransformAiInference `pulumi:"aiInferences"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled bool `pulumi:"disabled"`
@@ -9897,6 +10874,10 @@ type GetTopicMessageTransformInput interface {
 }
 
 type GetTopicMessageTransformArgs struct {
+	// AI Inference. Specifies the Vertex AI endpoint that inference
+	// requests built from the Pub/Sub message data and provided parameters will
+	// be sent to.
+	AiInferences GetTopicMessageTransformAiInferenceArrayInput `pulumi:"aiInferences"`
 	// Controls whether or not to use this transform. If not set or 'false',
 	// the transform will be applied to messages. Default: 'true'.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
@@ -9956,6 +10937,13 @@ func (o GetTopicMessageTransformOutput) ToGetTopicMessageTransformOutputWithCont
 	return o
 }
 
+// AI Inference. Specifies the Vertex AI endpoint that inference
+// requests built from the Pub/Sub message data and provided parameters will
+// be sent to.
+func (o GetTopicMessageTransformOutput) AiInferences() GetTopicMessageTransformAiInferenceArrayOutput {
+	return o.ApplyT(func(v GetTopicMessageTransform) []GetTopicMessageTransformAiInference { return v.AiInferences }).(GetTopicMessageTransformAiInferenceArrayOutput)
+}
+
 // Controls whether or not to use this transform. If not set or 'false',
 // the transform will be applied to messages. Default: 'true'.
 func (o GetTopicMessageTransformOutput) Disabled() pulumi.BoolOutput {
@@ -9986,6 +10974,240 @@ func (o GetTopicMessageTransformArrayOutput) Index(i pulumi.IntInput) GetTopicMe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicMessageTransform {
 		return vs[0].([]GetTopicMessageTransform)[vs[1].(int)]
 	}).(GetTopicMessageTransformOutput)
+}
+
+type GetTopicMessageTransformAiInference struct {
+	// The endpoint to a Vertex AI model of the form
+	// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+	// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	UnstructuredInferences []GetTopicMessageTransformAiInferenceUnstructuredInference `pulumi:"unstructuredInferences"`
+}
+
+// GetTopicMessageTransformAiInferenceInput is an input type that accepts GetTopicMessageTransformAiInferenceArgs and GetTopicMessageTransformAiInferenceOutput values.
+// You can construct a concrete instance of `GetTopicMessageTransformAiInferenceInput` via:
+//
+//	GetTopicMessageTransformAiInferenceArgs{...}
+type GetTopicMessageTransformAiInferenceInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageTransformAiInferenceOutput() GetTopicMessageTransformAiInferenceOutput
+	ToGetTopicMessageTransformAiInferenceOutputWithContext(context.Context) GetTopicMessageTransformAiInferenceOutput
+}
+
+type GetTopicMessageTransformAiInferenceArgs struct {
+	// The endpoint to a Vertex AI model of the form
+	// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+	// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+	// Vertex AI API requests will be sent to this endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The service account to use to make prediction requests against
+	// endpoints.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// Configuration for making inferences using arbitrary JSON payloads.
+	UnstructuredInferences GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayInput `pulumi:"unstructuredInferences"`
+}
+
+func (GetTopicMessageTransformAiInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i GetTopicMessageTransformAiInferenceArgs) ToGetTopicMessageTransformAiInferenceOutput() GetTopicMessageTransformAiInferenceOutput {
+	return i.ToGetTopicMessageTransformAiInferenceOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageTransformAiInferenceArgs) ToGetTopicMessageTransformAiInferenceOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageTransformAiInferenceOutput)
+}
+
+// GetTopicMessageTransformAiInferenceArrayInput is an input type that accepts GetTopicMessageTransformAiInferenceArray and GetTopicMessageTransformAiInferenceArrayOutput values.
+// You can construct a concrete instance of `GetTopicMessageTransformAiInferenceArrayInput` via:
+//
+//	GetTopicMessageTransformAiInferenceArray{ GetTopicMessageTransformAiInferenceArgs{...} }
+type GetTopicMessageTransformAiInferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageTransformAiInferenceArrayOutput() GetTopicMessageTransformAiInferenceArrayOutput
+	ToGetTopicMessageTransformAiInferenceArrayOutputWithContext(context.Context) GetTopicMessageTransformAiInferenceArrayOutput
+}
+
+type GetTopicMessageTransformAiInferenceArray []GetTopicMessageTransformAiInferenceInput
+
+func (GetTopicMessageTransformAiInferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (i GetTopicMessageTransformAiInferenceArray) ToGetTopicMessageTransformAiInferenceArrayOutput() GetTopicMessageTransformAiInferenceArrayOutput {
+	return i.ToGetTopicMessageTransformAiInferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageTransformAiInferenceArray) ToGetTopicMessageTransformAiInferenceArrayOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageTransformAiInferenceArrayOutput)
+}
+
+type GetTopicMessageTransformAiInferenceOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageTransformAiInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o GetTopicMessageTransformAiInferenceOutput) ToGetTopicMessageTransformAiInferenceOutput() GetTopicMessageTransformAiInferenceOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformAiInferenceOutput) ToGetTopicMessageTransformAiInferenceOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceOutput {
+	return o
+}
+
+// The endpoint to a Vertex AI model of the form
+// 'projects/{project}/locations/{location}/endpoints/{endpoint}' or
+// 'projects/{project}/locations/{location}/publishers/{publisher}/models/{model}'.
+// Vertex AI API requests will be sent to this endpoint.
+func (o GetTopicMessageTransformAiInferenceOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicMessageTransformAiInference) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The service account to use to make prediction requests against
+// endpoints.
+func (o GetTopicMessageTransformAiInferenceOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicMessageTransformAiInference) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// Configuration for making inferences using arbitrary JSON payloads.
+func (o GetTopicMessageTransformAiInferenceOutput) UnstructuredInferences() GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return o.ApplyT(func(v GetTopicMessageTransformAiInference) []GetTopicMessageTransformAiInferenceUnstructuredInference {
+		return v.UnstructuredInferences
+	}).(GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput)
+}
+
+type GetTopicMessageTransformAiInferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageTransformAiInferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageTransformAiInference)(nil)).Elem()
+}
+
+func (o GetTopicMessageTransformAiInferenceArrayOutput) ToGetTopicMessageTransformAiInferenceArrayOutput() GetTopicMessageTransformAiInferenceArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformAiInferenceArrayOutput) ToGetTopicMessageTransformAiInferenceArrayOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformAiInferenceArrayOutput) Index(i pulumi.IntInput) GetTopicMessageTransformAiInferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicMessageTransformAiInference {
+		return vs[0].([]GetTopicMessageTransformAiInference)[vs[1].(int)]
+	}).(GetTopicMessageTransformAiInferenceOutput)
+}
+
+type GetTopicMessageTransformAiInferenceUnstructuredInference struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// GetTopicMessageTransformAiInferenceUnstructuredInferenceInput is an input type that accepts GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs and GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput values.
+// You can construct a concrete instance of `GetTopicMessageTransformAiInferenceUnstructuredInferenceInput` via:
+//
+//	GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs{...}
+type GetTopicMessageTransformAiInferenceUnstructuredInferenceInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutput() GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput
+	ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Context) GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput
+}
+
+type GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs struct {
+	// A parameters object to be included in each inference request.
+	// The parameters object is combined with the data field of the Pub/Sub
+	// message to form the inference request.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutput() GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return i.ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput)
+}
+
+// GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayInput is an input type that accepts GetTopicMessageTransformAiInferenceUnstructuredInferenceArray and GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput values.
+// You can construct a concrete instance of `GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayInput` via:
+//
+//	GetTopicMessageTransformAiInferenceUnstructuredInferenceArray{ GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs{...} }
+type GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput() GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput
+	ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(context.Context) GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput
+}
+
+type GetTopicMessageTransformAiInferenceUnstructuredInferenceArray []GetTopicMessageTransformAiInferenceUnstructuredInferenceInput
+
+func (GetTopicMessageTransformAiInferenceUnstructuredInferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (i GetTopicMessageTransformAiInferenceUnstructuredInferenceArray) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput() GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return i.ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicMessageTransformAiInferenceUnstructuredInferenceArray) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput)
+}
+
+type GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutput() GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return o
+}
+
+// A parameters object to be included in each inference request.
+// The parameters object is combined with the data field of the Pub/Sub
+// message to form the inference request.
+func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTopicMessageTransformAiInferenceUnstructuredInference) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+type GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicMessageTransformAiInferenceUnstructuredInference)(nil)).Elem()
+}
+
+func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput() GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput) ToGetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutputWithContext(ctx context.Context) GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput {
+	return o
+}
+
+func (o GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput) Index(i pulumi.IntInput) GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicMessageTransformAiInferenceUnstructuredInference {
+		return vs[0].([]GetTopicMessageTransformAiInferenceUnstructuredInference)[vs[1].(int)]
+	}).(GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput)
 }
 
 type GetTopicMessageTransformJavascriptUdf struct {
@@ -10327,6 +11549,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMMemberConditionPtrInput)(nil)).Elem(), SubscriptionIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformInput)(nil)).Elem(), SubscriptionMessageTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformArrayInput)(nil)).Elem(), SubscriptionMessageTransformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferenceInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferencePtrInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrInput)(nil)).Elem(), SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformJavascriptUdfInput)(nil)).Elem(), SubscriptionMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMessageTransformJavascriptUdfPtrInput)(nil)).Elem(), SubscriptionMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigInput)(nil)).Elem(), SubscriptionPushConfigArgs{})
@@ -10365,6 +11591,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyPtrInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformInput)(nil)).Elem(), TopicMessageTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformArrayInput)(nil)).Elem(), TopicMessageTransformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferenceInput)(nil)).Elem(), TopicMessageTransformAiInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferencePtrInput)(nil)).Elem(), TopicMessageTransformAiInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), TopicMessageTransformAiInferenceUnstructuredInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformAiInferenceUnstructuredInferencePtrInput)(nil)).Elem(), TopicMessageTransformAiInferenceUnstructuredInferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformJavascriptUdfInput)(nil)).Elem(), TopicMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageTransformJavascriptUdfPtrInput)(nil)).Elem(), TopicMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
@@ -10383,6 +11613,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionExpirationPolicyArrayInput)(nil)).Elem(), GetSubscriptionExpirationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformInput)(nil)).Elem(), GetSubscriptionMessageTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformJavascriptUdfInput)(nil)).Elem(), GetSubscriptionMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionMessageTransformJavascriptUdfArrayInput)(nil)).Elem(), GetSubscriptionMessageTransformJavascriptUdfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigInput)(nil)).Elem(), GetSubscriptionPushConfigArgs{})
@@ -10417,6 +11651,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyArrayInput)(nil)).Elem(), GetTopicMessageStoragePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformInput)(nil)).Elem(), GetTopicMessageTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformArrayInput)(nil)).Elem(), GetTopicMessageTransformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceArrayInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceUnstructuredInferenceInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceUnstructuredInferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayInput)(nil)).Elem(), GetTopicMessageTransformAiInferenceUnstructuredInferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformJavascriptUdfInput)(nil)).Elem(), GetTopicMessageTransformJavascriptUdfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageTransformJavascriptUdfArrayInput)(nil)).Elem(), GetTopicMessageTransformJavascriptUdfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSchemaSettingInput)(nil)).Elem(), GetTopicSchemaSettingArgs{})
@@ -10453,6 +11691,10 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferenceOutput{})
+	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferencePtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput{})
+	pulumi.RegisterOutputType(SubscriptionMessageTransformAiInferenceUnstructuredInferencePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(SubscriptionMessageTransformJavascriptUdfPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOutput{})
@@ -10491,6 +11733,10 @@ func init() {
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformArrayOutput{})
+	pulumi.RegisterOutputType(TopicMessageTransformAiInferenceOutput{})
+	pulumi.RegisterOutputType(TopicMessageTransformAiInferencePtrOutput{})
+	pulumi.RegisterOutputType(TopicMessageTransformAiInferenceUnstructuredInferenceOutput{})
+	pulumi.RegisterOutputType(TopicMessageTransformAiInferenceUnstructuredInferencePtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(TopicMessageTransformJavascriptUdfPtrOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})
@@ -10509,6 +11755,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSubscriptionExpirationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionMessageTransformAiInferenceUnstructuredInferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionMessageTransformJavascriptUdfArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigOutput{})
@@ -10543,6 +11793,10 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceUnstructuredInferenceOutput{})
+	pulumi.RegisterOutputType(GetTopicMessageTransformAiInferenceUnstructuredInferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformJavascriptUdfOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageTransformJavascriptUdfArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicSchemaSettingOutput{})
