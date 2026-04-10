@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Chronicle
     ///             StartY = 12,
     ///             SpanY = 18,
     ///         },
-    ///         DashboardChart = new Gcp.Chronicle.Inputs.DashboardChartDashboardChartArgs
+    ///         DashboardChartDetails = new Gcp.Chronicle.Inputs.DashboardChartDashboardChartArgs
     ///         {
     ///             DisplayName = "Data Source Health Overview",
     ///             Description = "Health of data sources over time",
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Chronicle
     ///             StartY = 66,
     ///             SpanY = 4,
     ///         },
-    ///         DashboardChart = new Gcp.Chronicle.Inputs.DashboardChartDashboardChartArgs
+    ///         DashboardChartDetails = new Gcp.Chronicle.Inputs.DashboardChartDashboardChartArgs
     ///         {
     ///             DisplayName = "Navigation Button",
     ///             TileType = "TILE_TYPE_BUTTON",
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Chronicle
     ///             StartY = 48,
     ///             SpanY = 4,
     ///         },
-    ///         DashboardChart = new Gcp.Chronicle.Inputs.DashboardChartDashboardChartArgs
+    ///         DashboardChartDetails = new Gcp.Chronicle.Inputs.DashboardChartDashboardChartArgs
     ///         {
     ///             DisplayName = "markdown",
     ///             TileType = "TILE_TYPE_MARKDOWN",
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Structure is documented below.
         /// </summary>
         [Output("dashboardChart")]
-        public Output<Outputs.DashboardChartDashboardChart> DashboardChart { get; private set; } = null!;
+        public Output<Outputs.DashboardChartDashboardChart> DashboardChartDetails { get; private set; } = null!;
 
         /// <summary>
         /// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Structure is documented below.
         /// </summary>
         [Input("dashboardChart", required: true)]
-        public Input<Inputs.DashboardChartDashboardChartArgs> DashboardChart { get; set; } = null!;
+        public Input<Inputs.DashboardChartDashboardChartArgs> DashboardChartDetails { get; set; } = null!;
 
         /// <summary>
         /// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
@@ -459,7 +459,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Structure is documented below.
         /// </summary>
         [Input("dashboardChart")]
-        public Input<Inputs.DashboardChartDashboardChartGetArgs>? DashboardChart { get; set; }
+        public Input<Inputs.DashboardChartDashboardChartGetArgs>? DashboardChartDetails { get; set; }
 
         /// <summary>
         /// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.

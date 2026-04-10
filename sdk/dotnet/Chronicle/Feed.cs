@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("feed")]
-        public Output<string> Feed { get; private set; } = null!;
+        public Output<string> FeedId { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The service account used by Chronicle to ingest data from Cloud Storage. This is only available when the feed source type is GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN or GOOGLE_CLOUD_STORAGE.
@@ -406,7 +406,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("feed")]
-        public Input<string>? Feed { get; set; }
+        public Input<string>? FeedId { get; set; }
 
         /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.Chronicle
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("feed")]
-        public Input<string>? Feed { get; set; }
+        public Input<string>? FeedId { get; set; }
 
         /// <summary>
         /// Output only. The service account used by Chronicle to ingest data from Cloud Storage. This is only available when the feed source type is GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN or GOOGLE_CLOUD_STORAGE.
