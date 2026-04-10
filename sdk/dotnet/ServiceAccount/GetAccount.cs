@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         },
         ///         Data = 
         ///         {
-        ///             { "json", Std.Base64decode.Invoke(new()
+        ///             { "json", Std.Index.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
         ///             }).Result },
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         },
         ///         Data = 
         ///         {
-        ///             { "json", Std.Base64decode.Invoke(new()
+        ///             { "json", Std.Index.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
         ///             }).Result },
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         },
         ///         Data = 
         ///         {
-        ///             { "json", Std.Base64decode.Invoke(new()
+        ///             { "json", Std.Index.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
         ///             }).Result },

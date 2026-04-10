@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.DeploymentManager
     ///         {
     ///             Config = new Gcp.DeploymentManager.Inputs.DeploymentTargetConfigArgs
     ///             {
-    ///                 Content = Std.File.Invoke(new()
+    ///                 Content = Std.Index.File.Invoke(new()
     ///                 {
     ///                     Input = "path/to/config.yml",
     ///                 }).Apply(invoke =&gt; invoke.Result),

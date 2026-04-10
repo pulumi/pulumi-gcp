@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Endpoints
     ///     {
     ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
     ///         Project = "project-id",
-    ///         OpenapiConfig = Std.File.Invoke(new()
+    ///         OpenapiConfig = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "openapi_spec.yml",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -37,11 +37,11 @@ namespace Pulumi.Gcp.Endpoints
     ///     {
     ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
     ///         Project = "project-id",
-    ///         GrpcConfig = Std.File.Invoke(new()
+    ///         GrpcConfig = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "service_spec.yml",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ProtocOutputBase64 = Std.Filebase64.Invoke(new()
+    ///         ProtocOutputBase64 = Std.Index.Filebase64.Invoke(new()
     ///         {
     ///             Input = "compiled_descriptor_file.pb",
     ///         }).Apply(invoke =&gt; invoke.Result),

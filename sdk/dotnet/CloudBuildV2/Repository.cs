@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var private_key_secret_version = new Gcp.SecretManager.SecretVersion("private-key-secret-version", new()
     ///     {
     ///         Secret = private_key_secret.Id,
-    ///         SecretData = Std.File.Invoke(new()
+    ///         SecretData = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "private-key.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
     ///     {
     ///         Secret = github_token_secret.Id,
-    ///         SecretData = Std.File.Invoke(new()
+    ///         SecretData = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "my-github-token.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),

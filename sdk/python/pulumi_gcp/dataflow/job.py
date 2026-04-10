@@ -874,7 +874,7 @@ class Job(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.Id("big_data_job_name_suffix",
             byte_length=4,
             keepers={
                 region: region,
@@ -1009,7 +1009,7 @@ class Job(pulumi.CustomResource):
         big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
         if big_data_job_subscription_id is None:
             big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+        big_data_job_name_suffix = random.Id("big_data_job_name_suffix",
             byte_length=4,
             keepers={
                 region: region,

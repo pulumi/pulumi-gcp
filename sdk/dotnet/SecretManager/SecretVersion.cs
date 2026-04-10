@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.SecretManager
     ///     {
     ///         Secret = secret_basic.Id,
     ///         IsSecretDataBase64 = true,
-    ///         SecretData = Std.Filebase64.Invoke(new()
+    ///         SecretData = Std.Index.Filebase64.Invoke(new()
     ///         {
     ///             Input = "secret-data.pfx",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.SecretManager
     ///         Secret = secret_basic.Id,
     ///         IsSecretDataBase64 = true,
     ///         SecretDataWoVersion = 1,
-    ///         SecretDataWo = Std.Filebase64.Invoke(new()
+    ///         SecretDataWo = Std.Index.Filebase64.Invoke(new()
     ///         {
     ///             Input = "secret-data-base64-write-only.pfx",
     ///         }).Apply(invoke =&gt; invoke.Result),

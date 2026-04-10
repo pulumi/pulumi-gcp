@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     ///     var example = new Gcp.Iam.DenyPolicy("example", new()
     ///     {
-    ///         Parent = Std.Urlencode.Invoke(new()
+    ///         Parent = Std.Index.Urlencode.Invoke(new()
     ///         {
     ///             Input = project.ProjectId.Apply(projectId =&gt; $"cloudresourcemanager.googleapis.com/projects/{projectId}"),
     ///         }).Apply(invoke =&gt; invoke.Result),

@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Observability
     ///     });
     /// 
     ///     // Wait for the project to be created and recognized by the Observability API
-    ///     var waitForSettingsPropagation = new Time.Sleep("wait_for_settings_propagation", new()
+    ///     var waitForSettingsPropagation = new Time.Index.Sleep("wait_for_settings_propagation", new()
     ///     {
     ///         CreateDuration = "90s",
     ///     }, new CustomResourceOptions

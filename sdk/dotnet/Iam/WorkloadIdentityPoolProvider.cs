@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Saml = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderSamlArgs
     ///         {
-    ///             IdpMetadataXml = Std.File.Invoke(new()
+    ///             IdpMetadataXml = Std.Index.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/metadata.xml",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -271,7 +271,7 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Saml = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderSamlArgs
     ///         {
-    ///             IdpMetadataXml = Std.File.Invoke(new()
+    ///             IdpMetadataXml = Std.Index.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/metadata.xml",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.Iam
     ///                 {
     ///                     new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs
     ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         PemCertificate = Std.Index.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/trust_anchor.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),
@@ -406,7 +406,7 @@ namespace Pulumi.Gcp.Iam
     ///                 {
     ///                     new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs
     ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         PemCertificate = Std.Index.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/trust_anchor.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),
@@ -416,7 +416,7 @@ namespace Pulumi.Gcp.Iam
     ///                 {
     ///                     new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs
     ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         PemCertificate = Std.Index.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/intermediate_ca.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),

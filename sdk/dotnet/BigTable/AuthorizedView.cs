@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.BigTable
     ///         {
     ///             RowPrefixes = new[]
     ///             {
-    ///                 Std.Base64encode.Invoke(new()
+    ///                 Std.Index.Base64encode.Invoke(new()
     ///                 {
     ///                     Input = "prefix#",
     ///                 }).Apply(invoke =&gt; invoke.Result),
@@ -90,11 +90,11 @@ namespace Pulumi.Gcp.BigTable
     ///                     FamilyName = "family-first",
     ///                     Qualifiers = new[]
     ///                     {
-    ///                         Std.Base64encode.Invoke(new()
+    ///                         Std.Index.Base64encode.Invoke(new()
     ///                         {
     ///                             Input = "qualifier",
     ///                         }).Apply(invoke =&gt; invoke.Result),
-    ///                         Std.Base64encode.Invoke(new()
+    ///                         Std.Index.Base64encode.Invoke(new()
     ///                         {
     ///                             Input = "qualifier-second",
     ///                         }).Apply(invoke =&gt; invoke.Result),

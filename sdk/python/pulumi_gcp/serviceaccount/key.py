@@ -413,7 +413,7 @@ class Key(pulumi.CustomResource):
             account_id="myaccount",
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
-        google_application_credentials = kubernetes.index.Secret("google-application-credentials",
+        google_application_credentials = kubernetes.Secret("google-application-credentials",
             metadata=[{
                 name: google-application-credentials,
             }],
@@ -509,7 +509,7 @@ class Key(pulumi.CustomResource):
             account_id="myaccount",
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
-        google_application_credentials = kubernetes.index.Secret("google-application-credentials",
+        google_application_credentials = kubernetes.Secret("google-application-credentials",
             metadata=[{
                 name: google-application-credentials,
             }],

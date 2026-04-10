@@ -777,7 +777,7 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
@@ -905,7 +905,7 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
@@ -1005,7 +1005,7 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
@@ -1236,7 +1236,7 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
@@ -1364,7 +1364,7 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
@@ -1464,7 +1464,7 @@ class ConnectionProfile(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
-        pwd = random.index.Password("pwd",
+        pwd = random.Password("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",

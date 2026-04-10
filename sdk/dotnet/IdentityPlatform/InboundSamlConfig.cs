@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///             {
     ///                 new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
     ///                 {
-    ///                     X509Certificate = Std.File.Invoke(new()
+    ///                     X509Certificate = Std.Index.File.Invoke(new()
     ///                     {
     ///                         Input = "test-fixtures/rsa_cert.pem",
     ///                     }).Apply(invoke =&gt; invoke.Result),

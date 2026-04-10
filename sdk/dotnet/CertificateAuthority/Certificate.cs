@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var certKey = new Tls.PrivateKey("cert_key", new()
+    ///     var certKey = new Tls.Index.PrivateKey("cert_key", new()
     ///     {
     ///         Algorithm = "RSA",
     ///     });
@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             PublicKey = new Gcp.CertificateAuthority.Inputs.CertificateConfigPublicKeyArgs
     ///             {
     ///                 Format = "PEM",
-    ///                 Key = Std.Base64encode.Invoke(new()
+    ///                 Key = Std.Index.Base64encode.Invoke(new()
     ///                 {
     ///                     Input = certKey.PublicKeyPem,
     ///                 }).Apply(invoke =&gt; invoke.Result),
@@ -384,7 +384,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
     ///         Name = "my-certificate",
     ///         Lifetime = "860s",
-    ///         PemCsr = Std.File.Invoke(new()
+    ///         PemCsr = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "test-fixtures/rsa_csr.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -469,7 +469,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
     ///         Name = "my-certificate",
     ///         Lifetime = "860s",
-    ///         PemCsr = Std.File.Invoke(new()
+    ///         PemCsr = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "test-fixtures/rsa_csr.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -591,7 +591,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             PublicKey = new Gcp.CertificateAuthority.Inputs.CertificateConfigPublicKeyArgs
     ///             {
     ///                 Format = "PEM",
-    ///                 Key = Std.Filebase64.Invoke(new()
+    ///                 Key = Std.Index.Filebase64.Invoke(new()
     ///                 {
     ///                     Input = "test-fixtures/rsa_public.pem",
     ///                 }).Apply(invoke =&gt; invoke.Result),
@@ -725,7 +725,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             PublicKey = new Gcp.CertificateAuthority.Inputs.CertificateConfigPublicKeyArgs
     ///             {
     ///                 Format = "PEM",
-    ///                 Key = Std.Filebase64.Invoke(new()
+    ///                 Key = Std.Index.Filebase64.Invoke(new()
     ///                 {
     ///                     Input = "test-fixtures/rsa_public.pem",
     ///                 }).Apply(invoke =&gt; invoke.Result),

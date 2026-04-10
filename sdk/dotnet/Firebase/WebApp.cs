@@ -61,25 +61,25 @@ namespace Pulumi.Gcp.Firebase
     ///             ["appId"] = basicWebApp.AppId,
     ///             ["apiKey"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
     ///             ["authDomain"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.AuthDomain),
-    ///             ["databaseURL"] = Std.Lookup.Invoke(new()
+    ///             ["databaseURL"] = Std.Index.Lookup.Invoke(new()
     ///             {
     ///                 Map = basic,
     ///                 Key = "database_url",
     ///                 Default = "",
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             ["storageBucket"] = Std.Lookup.Invoke(new()
+    ///             ["storageBucket"] = Std.Index.Lookup.Invoke(new()
     ///             {
     ///                 Map = basic,
     ///                 Key = "storage_bucket",
     ///                 Default = "",
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             ["messagingSenderId"] = Std.Lookup.Invoke(new()
+    ///             ["messagingSenderId"] = Std.Index.Lookup.Invoke(new()
     ///             {
     ///                 Map = basic,
     ///                 Key = "messaging_sender_id",
     ///                 Default = "",
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             ["measurementId"] = Std.Lookup.Invoke(new()
+    ///             ["measurementId"] = Std.Index.Lookup.Invoke(new()
     ///             {
     ///                 Map = basic,
     ///                 Key = "measurement_id",

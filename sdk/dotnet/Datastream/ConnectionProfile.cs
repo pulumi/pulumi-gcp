@@ -444,7 +444,7 @@ namespace Pulumi.Gcp.Datastream
     ///             Tier = "db-f1-micro",
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
-    ///                 AuthorizedNetworks = Std.Format.Invoke(new()
+    ///                 AuthorizedNetworks = Std.Index.Format.Invoke(new()
     ///                 {
     ///                     Input = "datastream-%d",
     ///                     Args = new[]
