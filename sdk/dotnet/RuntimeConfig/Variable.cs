@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     ///     {
     ///         Parent = my_runtime_config.Name,
     ///         Name = "secret",
-    ///         Value = Std.Filebase64.Invoke(new()
+    ///         Value = Std.Index.Filebase64.Invoke(new()
     ///         {
     ///             Input = "my-encrypted-secret.dat",
     ///         }).Apply(invoke =&gt; invoke.Result),

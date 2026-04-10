@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
     ///     {
     ///         Secret = github_token_secret.Id,
-    ///         SecretData = Std.File.Invoke(new()
+    ///         SecretData = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "my-github-token.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),

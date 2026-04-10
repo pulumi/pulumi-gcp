@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     ///     var iamServiceAccountUser = new Gcp.Sql.User("iam_service_account_user", new()
     ///     {
-    ///         Name = Std.Trimsuffix.Invoke(new()
+    ///         Name = Std.Index.Trimsuffix.Invoke(new()
     ///         {
     ///             Input = serviceAccount.Email,
     ///             Suffix = ".gserviceaccount.com",

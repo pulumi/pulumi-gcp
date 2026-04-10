@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.CertificateManager
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
     ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         PemCertificate = Std.Index.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/cert.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CertificateManager
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
     ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         PemCertificate = Std.Index.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/cert.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),
@@ -90,14 +90,14 @@ namespace Pulumi.Gcp.CertificateManager
     ///         {
     ///             new Gcp.CertificateManager.Inputs.TrustConfigAllowlistedCertificateArgs
     ///             {
-    ///                 PemCertificate = Std.File.Invoke(new()
+    ///                 PemCertificate = Std.Index.File.Invoke(new()
     ///                 {
     ///                     Input = "test-fixtures/cert.pem",
     ///                 }).Apply(invoke =&gt; invoke.Result),
     ///             },
     ///             new Gcp.CertificateManager.Inputs.TrustConfigAllowlistedCertificateArgs
     ///             {
-    ///                 PemCertificate = Std.File.Invoke(new()
+    ///                 PemCertificate = Std.Index.File.Invoke(new()
     ///                 {
     ///                     Input = "test-fixtures/cert2.pem",
     ///                 }).Apply(invoke =&gt; invoke.Result),

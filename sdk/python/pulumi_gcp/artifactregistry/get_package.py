@@ -147,7 +147,7 @@ def get_package(location: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_google as google
 
-    my_package = google.index.ArtifactRegistryPackage("my_package",
+    my_package = google.ArtifactRegistryPackage("my_package",
         location=us-west1,
         repository_id=my-repository)
     ```
@@ -190,7 +190,7 @@ def get_package_output(location: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi
     import pulumi_google as google
 
-    my_package = google.index.ArtifactRegistryPackage("my_package",
+    my_package = google.ArtifactRegistryPackage("my_package",
         location=us-west1,
         repository_id=my-repository)
     ```

@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.ParameterManager
     ///     {
     ///         Parameter = regional_parameter_basic.Id,
     ///         ParameterVersionId = "regional_parameter_version",
-    ///         ParameterData = Std.File.Invoke(new()
+    ///         ParameterData = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "regional-parameter-json-data.json",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.ParameterManager
     ///     {
     ///         Parameter = regional_parameter_basic.Id,
     ///         ParameterVersionId = "regional_parameter_version",
-    ///         ParameterData = Std.File.Invoke(new()
+    ///         ParameterData = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "regional-parameter-yaml-data.yaml",
     ///         }).Apply(invoke =&gt; invoke.Result),

@@ -64,19 +64,19 @@ import (
 //				Bucket: _default.Name,
 //				Name:   pulumi.String("firebase-config.json"),
 //				Content: pulumi.All(basicWebApp.AppId, basic, basic, std.LookupOutput(ctx, std.LookupOutputArgs{
-//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Map:     basic,
 //					Key:     pulumi.String("database_url"),
 //					Default: pulumi.Any(""),
 //				}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
-//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Map:     basic,
 //					Key:     pulumi.String("storage_bucket"),
 //					Default: pulumi.Any(""),
 //				}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
-//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Map:     basic,
 //					Key:     pulumi.String("messaging_sender_id"),
 //					Default: pulumi.Any(""),
 //				}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
-//					Map:     firebase.GetWebAppConfigResult(basic),
+//					Map:     basic,
 //					Key:     pulumi.String("measurement_id"),
 //					Default: pulumi.Any(""),
 //				}, nil)).ApplyT(func(_args []interface{}) (string, error) {

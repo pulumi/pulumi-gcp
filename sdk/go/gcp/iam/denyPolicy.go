@@ -65,7 +65,8 @@ import (
 //						return fmt.Sprintf("cloudresourcemanager.googleapis.com/projects/%v", projectId), nil
 //					}).(pulumi.StringOutput),
 //				}, nil).ApplyT(func(invoke std.UrlencodeResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Name:        pulumi.String("my-deny-policy"),
 //				DisplayName: pulumi.String("A deny rule"),

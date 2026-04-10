@@ -801,7 +801,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "network-services-mesh",
     ///     });
     /// 
-    ///     var waitForMesh = new Time.Sleep("wait_for_mesh", new()
+    ///     var waitForMesh = new Time.Index.Sleep("wait_for_mesh", new()
     ///     {
     ///         CreateDuration = "1m",
     ///     }, new CustomResourceOptions

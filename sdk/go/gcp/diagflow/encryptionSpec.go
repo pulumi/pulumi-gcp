@@ -117,7 +117,8 @@ import (
 //					Search:  pulumi.String("@gcp-sa-dialogflow.iam"),
 //					Replace: pulumi.String("@gcp-sa-ccai-cmek.iam"),
 //				}, nil).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Role: pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //			}, pulumi.DependsOn([]pulumi.Resource{

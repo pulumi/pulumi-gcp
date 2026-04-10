@@ -165,7 +165,8 @@ import (
 //						Key: std.Base64encodeOutput(ctx, std.Base64encodeOutputArgs{
 //							Input: certKey.PublicKeyPem,
 //						}, nil).ApplyT(func(invoke std.Base64encodeResult) (*string, error) {
-//							return invoke.Result, nil
+//							val := invoke.Result
+//							return &val, nil
 //						}).(pulumi.StringPtrOutput),
 //					},
 //				},

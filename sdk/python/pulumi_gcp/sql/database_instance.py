@@ -1179,7 +1179,7 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
             name=f"private-instance-{db_name_suffix['hex']}",
             region="us-central1",
@@ -1571,7 +1571,7 @@ class DatabaseInstance(pulumi.CustomResource):
             network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         instance = gcp.sql.DatabaseInstance("instance",
             name=f"private-instance-{db_name_suffix['hex']}",
             region="us-central1",

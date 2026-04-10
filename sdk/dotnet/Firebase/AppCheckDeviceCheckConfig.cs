@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     ///     // It takes a while for App Check to recognize the new app
     ///     // If your app already exists, you don't have to wait 30 seconds.
-    ///     var wait30s = new Time.Sleep("wait_30s", new()
+    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Firebase
     ///         AppId = @default.AppId,
     ///         TokenTtl = "7200s",
     ///         KeyId = "Key ID",
-    ///         PrivateKey = Std.File.Invoke(new()
+    ///         PrivateKey = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "path/to/private-key.p8",
     ///         }).Apply(invoke =&gt; invoke.Result),

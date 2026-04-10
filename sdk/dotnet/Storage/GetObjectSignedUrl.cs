@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Storage
         ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
         ///         ContentType = "text/plain",
         ///         Duration = "2d",
-        ///         Credentials = Std.File.Invoke(new()
+        ///         Credentials = Std.Index.File.Invoke(new()
         ///         {
         ///             Input = "path/to/credentials.json",
         ///         }).Result,
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Storage
         ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
         ///         ContentType = "text/plain",
         ///         Duration = "2d",
-        ///         Credentials = Std.File.Invoke(new()
+        ///         Credentials = Std.Index.File.Invoke(new()
         ///         {
         ///             Input = "path/to/credentials.json",
         ///         }).Result,
@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Storage
         ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
         ///         ContentType = "text/plain",
         ///         Duration = "2d",
-        ///         Credentials = Std.File.Invoke(new()
+        ///         Credentials = Std.Index.File.Invoke(new()
         ///         {
         ///             Input = "path/to/credentials.json",
         ///         }).Result,

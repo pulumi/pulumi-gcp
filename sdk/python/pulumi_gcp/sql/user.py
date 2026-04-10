@@ -552,7 +552,7 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="MYSQL_5_7",
@@ -574,7 +574,7 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="POSTGRES_15",
@@ -597,7 +597,7 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="POSTGRES_15",
@@ -626,7 +626,7 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="MYSQL_8_0",
@@ -740,7 +740,7 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="MYSQL_5_7",
@@ -762,7 +762,7 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="POSTGRES_15",
@@ -785,7 +785,7 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
         import pulumi_std as std
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="POSTGRES_15",
@@ -814,7 +814,7 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+        db_name_suffix = random.Id("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             name=f"main-instance-{db_name_suffix['hex']}",
             database_version="MYSQL_8_0",

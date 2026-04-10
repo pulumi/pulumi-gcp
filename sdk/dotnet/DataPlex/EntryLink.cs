@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     });
     /// 
     ///     // Introduce a 45-second wait after the glossary resource creation
-    ///     var wait_for_sync = new Time.Sleep("wait-for-sync", new()
+    ///     var wait_for_sync = new Time.Index.Sleep("wait-for-sync", new()
     ///     {
     ///         CreateDuration = "45s",
     ///     }, new CustomResourceOptions

@@ -93,7 +93,8 @@ import (
 //					Input:  group.ID(),
 //					Prefix: pulumi.String("groups/"),
 //				}, nil).ApplyT(func(invoke std.TrimprefixResult) (*string, error) {
-//					return invoke.Result, nil
+//					val := invoke.Result
+//					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
 //				AccessLevels: accessLevelIdForUserAccessBinding.Name,
 //			})

@@ -44,11 +44,11 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         Rule = Output.Tuple(Std.Split.Invoke(new()
+    ///         Rule = Output.Tuple(Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }), Std.Split.Invoke(new()
+    ///         }), Std.Index.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,

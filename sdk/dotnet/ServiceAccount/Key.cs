@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     });
     /// 
     ///     // note this requires the terraform to be run regularly
-    ///     var mykeyRotation = new Time.Rotating("mykey_rotation", new()
+    ///     var mykeyRotation = new Time.Index.Rotating("mykey_rotation", new()
     ///     {
     ///         RotationDays = 30,
     ///     });
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         },
     ///         Data = 
     ///         {
-    ///             { "credentials.json", Std.Base64decode.Invoke(new()
+    ///             { "credentials.json", Std.Index.Base64decode.Invoke(new()
     ///             {
     ///                 Input = mykey.PrivateKey,
     ///             }).Result },

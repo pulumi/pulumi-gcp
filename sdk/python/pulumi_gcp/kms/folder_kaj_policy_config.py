@@ -152,7 +152,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.index.Id("project_suffix", byte_length=4)
+        project_suffix = random.Id("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
             project_id=f"kms-api-project{project_suffix['hex']}",
@@ -242,7 +242,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
             display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
-        project_suffix = random.index.Id("project_suffix", byte_length=4)
+        project_suffix = random.Id("project_suffix", byte_length=4)
         # Create a project for enabling KMS API.
         kms_project = gcp.organizations.Project("kms_project",
             project_id=f"kms-api-project{project_suffix['hex']}",

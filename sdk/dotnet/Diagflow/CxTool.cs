@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                     new Gcp.Diagflow.Inputs.CxToolOpenApiSpecTlsConfigCaCertArgs
     ///                     {
     ///                         DisplayName = "example ca cert name",
-    ///                         Cert = Std.Base64encode.Invoke(new()
+    ///                         Cert = Std.Index.Base64encode.Invoke(new()
     ///                         {
     ///                             Input = "example cert",
     ///                         }).Apply(invoke =&gt; invoke.Result),

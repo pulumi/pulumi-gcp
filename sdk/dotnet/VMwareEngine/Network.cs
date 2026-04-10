@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions

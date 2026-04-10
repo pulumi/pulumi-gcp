@@ -201,7 +201,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        url_signature = random.index.Id("url_signature", byte_length=16)
+        url_signature = random.Id("url_signature", byte_length=16)
         webserver = gcp.compute.InstanceTemplate("webserver",
             name="standard-webserver",
             machine_type="e2-medium",
@@ -283,7 +283,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        url_signature = random.index.Id("url_signature", byte_length=16)
+        url_signature = random.Id("url_signature", byte_length=16)
         webserver = gcp.compute.InstanceTemplate("webserver",
             name="standard-webserver",
             machine_type="e2-medium",
