@@ -13,18 +13,84 @@ namespace Pulumi.Gcp.BigLake
     {
         /// <summary>
         /// Retrieves the current IAM policy data for icebergtable
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigLake.GetIcebergTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = myIcebergTable.Project,
+        ///         Catalog = myIcebergTable.Catalog,
+        ///         Namespace = myIcebergTable.Namespace,
+        ///         Name = myIcebergTable.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetIcebergTableIamPolicyResult> InvokeAsync(GetIcebergTableIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIcebergTableIamPolicyResult>("gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy", args ?? new GetIcebergTableIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for icebergtable
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigLake.GetIcebergTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = myIcebergTable.Project,
+        ///         Catalog = myIcebergTable.Catalog,
+        ///         Namespace = myIcebergTable.Namespace,
+        ///         Name = myIcebergTable.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIcebergTableIamPolicyResult> Invoke(GetIcebergTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIcebergTableIamPolicyResult>("gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy", args ?? new GetIcebergTableIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for icebergtable
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigLake.GetIcebergTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = myIcebergTable.Project,
+        ///         Catalog = myIcebergTable.Catalog,
+        ///         Namespace = myIcebergTable.Namespace,
+        ///         Name = myIcebergTable.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIcebergTableIamPolicyResult> Invoke(GetIcebergTableIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIcebergTableIamPolicyResult>("gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy", args ?? new GetIcebergTableIamPolicyInvokeArgs(), options.WithDefaults());

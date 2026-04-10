@@ -168,14 +168,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("psc-network-_26240")
+ *             .name("psc-network-_85072")
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name_35711")
+ *             .name("endpoint-name_35762")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .location("us-central1")
@@ -222,7 +222,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name_85072")
+ *             .name("endpoint-name_24469")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .location("us-central1")

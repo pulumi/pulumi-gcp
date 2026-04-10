@@ -9429,6 +9429,218 @@ func (o EntryGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type EntryLinkAspect struct {
+	// A nested object resource.
+	// Structure is documented below.
+	Aspect EntryLinkAspectAspect `pulumi:"aspect"`
+	// The map keys of the Aspects which the service should modify.
+	// It should be the aspect type reference in the format `{project_number}.{location_id}.{aspect_type_id}`.
+	AspectKey string `pulumi:"aspectKey"`
+}
+
+// EntryLinkAspectInput is an input type that accepts EntryLinkAspectArgs and EntryLinkAspectOutput values.
+// You can construct a concrete instance of `EntryLinkAspectInput` via:
+//
+//	EntryLinkAspectArgs{...}
+type EntryLinkAspectInput interface {
+	pulumi.Input
+
+	ToEntryLinkAspectOutput() EntryLinkAspectOutput
+	ToEntryLinkAspectOutputWithContext(context.Context) EntryLinkAspectOutput
+}
+
+type EntryLinkAspectArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	Aspect EntryLinkAspectAspectInput `pulumi:"aspect"`
+	// The map keys of the Aspects which the service should modify.
+	// It should be the aspect type reference in the format `{project_number}.{location_id}.{aspect_type_id}`.
+	AspectKey pulumi.StringInput `pulumi:"aspectKey"`
+}
+
+func (EntryLinkAspectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryLinkAspect)(nil)).Elem()
+}
+
+func (i EntryLinkAspectArgs) ToEntryLinkAspectOutput() EntryLinkAspectOutput {
+	return i.ToEntryLinkAspectOutputWithContext(context.Background())
+}
+
+func (i EntryLinkAspectArgs) ToEntryLinkAspectOutputWithContext(ctx context.Context) EntryLinkAspectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryLinkAspectOutput)
+}
+
+// EntryLinkAspectArrayInput is an input type that accepts EntryLinkAspectArray and EntryLinkAspectArrayOutput values.
+// You can construct a concrete instance of `EntryLinkAspectArrayInput` via:
+//
+//	EntryLinkAspectArray{ EntryLinkAspectArgs{...} }
+type EntryLinkAspectArrayInput interface {
+	pulumi.Input
+
+	ToEntryLinkAspectArrayOutput() EntryLinkAspectArrayOutput
+	ToEntryLinkAspectArrayOutputWithContext(context.Context) EntryLinkAspectArrayOutput
+}
+
+type EntryLinkAspectArray []EntryLinkAspectInput
+
+func (EntryLinkAspectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryLinkAspect)(nil)).Elem()
+}
+
+func (i EntryLinkAspectArray) ToEntryLinkAspectArrayOutput() EntryLinkAspectArrayOutput {
+	return i.ToEntryLinkAspectArrayOutputWithContext(context.Background())
+}
+
+func (i EntryLinkAspectArray) ToEntryLinkAspectArrayOutputWithContext(ctx context.Context) EntryLinkAspectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryLinkAspectArrayOutput)
+}
+
+type EntryLinkAspectOutput struct{ *pulumi.OutputState }
+
+func (EntryLinkAspectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryLinkAspect)(nil)).Elem()
+}
+
+func (o EntryLinkAspectOutput) ToEntryLinkAspectOutput() EntryLinkAspectOutput {
+	return o
+}
+
+func (o EntryLinkAspectOutput) ToEntryLinkAspectOutputWithContext(ctx context.Context) EntryLinkAspectOutput {
+	return o
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o EntryLinkAspectOutput) Aspect() EntryLinkAspectAspectOutput {
+	return o.ApplyT(func(v EntryLinkAspect) EntryLinkAspectAspect { return v.Aspect }).(EntryLinkAspectAspectOutput)
+}
+
+// The map keys of the Aspects which the service should modify.
+// It should be the aspect type reference in the format `{project_number}.{location_id}.{aspect_type_id}`.
+func (o EntryLinkAspectOutput) AspectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v EntryLinkAspect) string { return v.AspectKey }).(pulumi.StringOutput)
+}
+
+type EntryLinkAspectArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryLinkAspectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryLinkAspect)(nil)).Elem()
+}
+
+func (o EntryLinkAspectArrayOutput) ToEntryLinkAspectArrayOutput() EntryLinkAspectArrayOutput {
+	return o
+}
+
+func (o EntryLinkAspectArrayOutput) ToEntryLinkAspectArrayOutputWithContext(ctx context.Context) EntryLinkAspectArrayOutput {
+	return o
+}
+
+func (o EntryLinkAspectArrayOutput) Index(i pulumi.IntInput) EntryLinkAspectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryLinkAspect {
+		return vs[0].([]EntryLinkAspect)[vs[1].(int)]
+	}).(EntryLinkAspectOutput)
+}
+
+type EntryLinkAspectAspect struct {
+	// (Output)
+	// The resource name of the type used to create this Aspect.
+	AspectType *string `pulumi:"aspectType"`
+	// (Output)
+	// The time when the Aspect was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+	Data string `pulumi:"data"`
+	// (Output)
+	// The path in the entry link under which the aspect is attached.
+	Path *string `pulumi:"path"`
+	// (Output)
+	// The time when the Aspect was last modified.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// EntryLinkAspectAspectInput is an input type that accepts EntryLinkAspectAspectArgs and EntryLinkAspectAspectOutput values.
+// You can construct a concrete instance of `EntryLinkAspectAspectInput` via:
+//
+//	EntryLinkAspectAspectArgs{...}
+type EntryLinkAspectAspectInput interface {
+	pulumi.Input
+
+	ToEntryLinkAspectAspectOutput() EntryLinkAspectAspectOutput
+	ToEntryLinkAspectAspectOutputWithContext(context.Context) EntryLinkAspectAspectOutput
+}
+
+type EntryLinkAspectAspectArgs struct {
+	// (Output)
+	// The resource name of the type used to create this Aspect.
+	AspectType pulumi.StringPtrInput `pulumi:"aspectType"`
+	// (Output)
+	// The time when the Aspect was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+	Data pulumi.StringInput `pulumi:"data"`
+	// (Output)
+	// The path in the entry link under which the aspect is attached.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// (Output)
+	// The time when the Aspect was last modified.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (EntryLinkAspectAspectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryLinkAspectAspect)(nil)).Elem()
+}
+
+func (i EntryLinkAspectAspectArgs) ToEntryLinkAspectAspectOutput() EntryLinkAspectAspectOutput {
+	return i.ToEntryLinkAspectAspectOutputWithContext(context.Background())
+}
+
+func (i EntryLinkAspectAspectArgs) ToEntryLinkAspectAspectOutputWithContext(ctx context.Context) EntryLinkAspectAspectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryLinkAspectAspectOutput)
+}
+
+type EntryLinkAspectAspectOutput struct{ *pulumi.OutputState }
+
+func (EntryLinkAspectAspectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryLinkAspectAspect)(nil)).Elem()
+}
+
+func (o EntryLinkAspectAspectOutput) ToEntryLinkAspectAspectOutput() EntryLinkAspectAspectOutput {
+	return o
+}
+
+func (o EntryLinkAspectAspectOutput) ToEntryLinkAspectAspectOutputWithContext(ctx context.Context) EntryLinkAspectAspectOutput {
+	return o
+}
+
+// (Output)
+// The resource name of the type used to create this Aspect.
+func (o EntryLinkAspectAspectOutput) AspectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryLinkAspectAspect) *string { return v.AspectType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the Aspect was created.
+func (o EntryLinkAspectAspectOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryLinkAspectAspect) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+func (o EntryLinkAspectAspectOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EntryLinkAspectAspect) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The path in the entry link under which the aspect is attached.
+func (o EntryLinkAspectAspectOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryLinkAspectAspect) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the Aspect was last modified.
+func (o EntryLinkAspectAspectOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntryLinkAspectAspect) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
 type EntryLinkEntryReference struct {
 	// The relative resource name of the referenced Entry, of the form:
 	// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}
@@ -16439,6 +16651,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamBindingConditionPtrInput)(nil)).Elem(), EntryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamMemberConditionInput)(nil)).Elem(), EntryGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupIamMemberConditionPtrInput)(nil)).Elem(), EntryGroupIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkAspectInput)(nil)).Elem(), EntryLinkAspectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkAspectArrayInput)(nil)).Elem(), EntryLinkAspectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkAspectAspectInput)(nil)).Elem(), EntryLinkAspectAspectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkEntryReferenceInput)(nil)).Elem(), EntryLinkEntryReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryLinkEntryReferenceArrayInput)(nil)).Elem(), EntryLinkEntryReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeIamBindingConditionInput)(nil)).Elem(), EntryTypeIamBindingConditionArgs{})
@@ -16645,6 +16860,9 @@ func init() {
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(EntryLinkAspectOutput{})
+	pulumi.RegisterOutputType(EntryLinkAspectArrayOutput{})
+	pulumi.RegisterOutputType(EntryLinkAspectAspectOutput{})
 	pulumi.RegisterOutputType(EntryLinkEntryReferenceOutput{})
 	pulumi.RegisterOutputType(EntryLinkEntryReferenceArrayOutput{})
 	pulumi.RegisterOutputType(EntryTypeIamBindingConditionOutput{})

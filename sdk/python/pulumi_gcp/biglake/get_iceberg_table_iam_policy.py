@@ -118,6 +118,18 @@ def get_iceberg_table_iam_policy(catalog: Optional[_builtins.str] = None,
     """
     Retrieves the current IAM policy data for icebergtable
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.biglake.get_iceberg_table_iam_policy(project=my_iceberg_table["project"],
+        catalog=my_iceberg_table["catalog"],
+        namespace=my_iceberg_table["namespace"],
+        name=my_iceberg_table["name"])
+    ```
+
 
     :param _builtins.str catalog: The name of the IcebergCatalog.
            Used to find the parent resource to bind the IAM policy to
@@ -150,6 +162,18 @@ def get_iceberg_table_iam_policy_output(catalog: Optional[pulumi.Input[_builtins
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIcebergTableIamPolicyResult]:
     """
     Retrieves the current IAM policy data for icebergtable
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.biglake.get_iceberg_table_iam_policy(project=my_iceberg_table["project"],
+        catalog=my_iceberg_table["catalog"],
+        namespace=my_iceberg_table["namespace"],
+        name=my_iceberg_table["name"])
+    ```
 
 
     :param _builtins.str catalog: The name of the IcebergCatalog.

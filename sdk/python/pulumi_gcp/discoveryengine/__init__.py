@@ -13,6 +13,8 @@ from .cmek_config import *
 from .control import *
 from .data_connector import *
 from .data_store import *
+from .get_data_store import *
+from .get_data_stores import *
 from .license_config import *
 from .recommendation_engine import *
 from .schema import *

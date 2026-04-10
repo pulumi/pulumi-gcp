@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := modelarmor.NewTemplate(ctx, "template-basic", &modelarmor.TemplateArgs{
-//				Location:         pulumi.String("<no value>"),
-//				TemplateId:       pulumi.String("<no value>"),
+//				Location:         pulumi.String("us-central1"),
+//				TemplateId:       pulumi.String("modelarmor1"),
 //				FilterConfig:     &modelarmor.TemplateFilterConfigArgs{},
 //				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{},
 //			})
@@ -45,6 +45,159 @@ import (
 //	}
 //
 // ```
+// ### Modelarmor Template Filter Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := modelarmor.NewTemplate(ctx, "template-filter-config", &modelarmor.TemplateArgs{
+//				Location:   pulumi.String("us-central1"),
+//				TemplateId: pulumi.String("modelarmor2"),
+//				FilterConfig: &modelarmor.TemplateFilterConfigArgs{
+//					RaiSettings: &modelarmor.TemplateFilterConfigRaiSettingsArgs{
+//						RaiFilters: modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArray{
+//							&modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArgs{
+//								FilterType:      pulumi.String("HATE_SPEECH"),
+//								ConfidenceLevel: pulumi.String("HIGH"),
+//							},
+//						},
+//					},
+//					SdpSettings: &modelarmor.TemplateFilterConfigSdpSettingsArgs{
+//						BasicConfig: &modelarmor.TemplateFilterConfigSdpSettingsBasicConfigArgs{
+//							FilterEnforcement: pulumi.String("ENABLED"),
+//						},
+//					},
+//					PiAndJailbreakFilterSettings: &modelarmor.TemplateFilterConfigPiAndJailbreakFilterSettingsArgs{
+//						FilterEnforcement: pulumi.String("ENABLED"),
+//						ConfidenceLevel:   pulumi.String("MEDIUM_AND_ABOVE"),
+//					},
+//					MaliciousUriFilterSettings: &modelarmor.TemplateFilterConfigMaliciousUriFilterSettingsArgs{
+//						FilterEnforcement: pulumi.String("ENABLED"),
+//					},
+//				},
+//				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
+//					MultiLanguageDetection: &modelarmor.TemplateTemplateMetadataMultiLanguageDetectionArgs{
+//						EnableMultiLanguageDetection: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Modelarmor Template Template Metadata
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := modelarmor.NewTemplate(ctx, "template-template-metadata", &modelarmor.TemplateArgs{
+//				Location:   pulumi.String("us-central1"),
+//				TemplateId: pulumi.String("modelarmor3"),
+//				FilterConfig: &modelarmor.TemplateFilterConfigArgs{
+//					RaiSettings: &modelarmor.TemplateFilterConfigRaiSettingsArgs{
+//						RaiFilters: modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArray{
+//							&modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArgs{
+//								FilterType:      pulumi.String("HARASSMENT"),
+//								ConfidenceLevel: pulumi.String("MEDIUM_AND_ABOVE"),
+//							},
+//						},
+//					},
+//				},
+//				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
+//					CustomLlmResponseSafetyErrorMessage: pulumi.String("This is a custom error message for LLM response"),
+//					LogSanitizeOperations:               pulumi.Bool(false),
+//					LogTemplateOperations:               pulumi.Bool(true),
+//					MultiLanguageDetection: &modelarmor.TemplateTemplateMetadataMultiLanguageDetectionArgs{
+//						EnableMultiLanguageDetection: pulumi.Bool(true),
+//					},
+//					IgnorePartialInvocationFailures:  pulumi.Bool(false),
+//					CustomPromptSafetyErrorCode:      pulumi.Int(400),
+//					CustomPromptSafetyErrorMessage:   pulumi.String("This is a custom error message for prompt"),
+//					CustomLlmResponseSafetyErrorCode: pulumi.Int(401),
+//					EnforcementType:                  pulumi.String("INSPECT_ONLY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Modelarmor Template Label
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := modelarmor.NewTemplate(ctx, "template-label-advanced-config", &modelarmor.TemplateArgs{
+//				Location:   pulumi.String("us-central1"),
+//				TemplateId: pulumi.String("modelarmor4"),
+//				Labels: pulumi.StringMap{
+//					"test-label": pulumi.String("template-test-label"),
+//				},
+//				FilterConfig: &modelarmor.TemplateFilterConfigArgs{
+//					RaiSettings: &modelarmor.TemplateFilterConfigRaiSettingsArgs{
+//						RaiFilters: modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArray{
+//							&modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArgs{
+//								FilterType:      pulumi.String("DANGEROUS"),
+//								ConfidenceLevel: pulumi.String("MEDIUM_AND_ABOVE"),
+//							},
+//						},
+//					},
+//					SdpSettings: &modelarmor.TemplateFilterConfigSdpSettingsArgs{
+//						AdvancedConfig: &modelarmor.TemplateFilterConfigSdpSettingsAdvancedConfigArgs{
+//							InspectTemplate:    pulumi.String("projects/llm-firewall-demo/locations/us-central1/inspectTemplates/t3"),
+//							DeidentifyTemplate: pulumi.String("projects/llm-firewall-demo/locations/us-central1/deidentifyTemplates/t2"),
+//						},
+//					},
+//				},
+//				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
+//					MultiLanguageDetection: &modelarmor.TemplateTemplateMetadataMultiLanguageDetectionArgs{
+//						EnableMultiLanguageDetection: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Template can be imported using any of these accepted formats:

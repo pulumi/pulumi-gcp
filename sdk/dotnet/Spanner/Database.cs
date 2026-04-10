@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Spanner
     /// {
     ///     var main = new Gcp.Spanner.Instance("main", new()
     ///     {
+    ///         Name = "my-instance",
     ///         Config = "regional-europe-west1",
     ///         DisplayName = "main-instance",
     ///         NumNodes = 1,

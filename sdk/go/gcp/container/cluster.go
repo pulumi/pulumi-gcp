@@ -185,6 +185,13 @@ type Cluster struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigOutput `pulumi:"authenticatorGroupsConfig"`
+	// The customer
+	// allowlist Cloud Storage paths for the cluster. These paths are used with the
+	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+	// Autopilot clusters. See the Cluster API's
+	// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+	// documentation for more details.
+	AutopilotPrivilegedAdmissions pulumi.StringArrayOutput `pulumi:"autopilotPrivilegedAdmissions"`
 	// Configuration options for the Binary
 	// Authorization feature. Structure is documented below.
 	BinaryAuthorization ClusterBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
@@ -553,6 +560,13 @@ type clusterState struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig *ClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// The customer
+	// allowlist Cloud Storage paths for the cluster. These paths are used with the
+	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+	// Autopilot clusters. See the Cluster API's
+	// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+	// documentation for more details.
+	AutopilotPrivilegedAdmissions []string `pulumi:"autopilotPrivilegedAdmissions"`
 	// Configuration options for the Binary
 	// Authorization feature. Structure is documented below.
 	BinaryAuthorization *ClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
@@ -887,6 +901,13 @@ type ClusterState struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigPtrInput
+	// The customer
+	// allowlist Cloud Storage paths for the cluster. These paths are used with the
+	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+	// Autopilot clusters. See the Cluster API's
+	// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+	// documentation for more details.
+	AutopilotPrivilegedAdmissions pulumi.StringArrayInput
 	// Configuration options for the Binary
 	// Authorization feature. Structure is documented below.
 	BinaryAuthorization ClusterBinaryAuthorizationPtrInput
@@ -1225,6 +1246,13 @@ type clusterArgs struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig *ClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// The customer
+	// allowlist Cloud Storage paths for the cluster. These paths are used with the
+	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+	// Autopilot clusters. See the Cluster API's
+	// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+	// documentation for more details.
+	AutopilotPrivilegedAdmissions []string `pulumi:"autopilotPrivilegedAdmissions"`
 	// Configuration options for the Binary
 	// Authorization feature. Structure is documented below.
 	BinaryAuthorization *ClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
@@ -1543,6 +1571,13 @@ type ClusterArgs struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigPtrInput
+	// The customer
+	// allowlist Cloud Storage paths for the cluster. These paths are used with the
+	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+	// Autopilot clusters. See the Cluster API's
+	// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+	// documentation for more details.
+	AutopilotPrivilegedAdmissions pulumi.StringArrayInput
 	// Configuration options for the Binary
 	// Authorization feature. Structure is documented below.
 	BinaryAuthorization ClusterBinaryAuthorizationPtrInput
@@ -1956,6 +1991,16 @@ func (o ClusterOutput) AnonymousAuthenticationConfig() ClusterAnonymousAuthentic
 // Structure is documented below.
 func (o ClusterOutput) AuthenticatorGroupsConfig() ClusterAuthenticatorGroupsConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAuthenticatorGroupsConfigOutput { return v.AuthenticatorGroupsConfig }).(ClusterAuthenticatorGroupsConfigOutput)
+}
+
+// The customer
+// allowlist Cloud Storage paths for the cluster. These paths are used with the
+// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+// Autopilot clusters. See the Cluster API's
+// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+// documentation for more details.
+func (o ClusterOutput) AutopilotPrivilegedAdmissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.AutopilotPrivilegedAdmissions }).(pulumi.StringArrayOutput)
 }
 
 // Configuration options for the Binary

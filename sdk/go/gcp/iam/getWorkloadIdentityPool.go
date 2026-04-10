@@ -66,9 +66,10 @@ type LookupWorkloadIdentityPoolArgs struct {
 
 // A collection of values returned by getWorkloadIdentityPool.
 type LookupWorkloadIdentityPoolResult struct {
-	Description string `pulumi:"description"`
-	Disabled    bool   `pulumi:"disabled"`
-	DisplayName string `pulumi:"displayName"`
+	AttestationRules []GetWorkloadIdentityPoolAttestationRule `pulumi:"attestationRules"`
+	Description      string                                   `pulumi:"description"`
+	Disabled         bool                                     `pulumi:"disabled"`
+	DisplayName      string                                   `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                               string                                                   `pulumi:"id"`
 	InlineCertificateIssuanceConfigs []GetWorkloadIdentityPoolInlineCertificateIssuanceConfig `pulumi:"inlineCertificateIssuanceConfigs"`
@@ -118,6 +119,12 @@ func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResu
 
 func (o LookupWorkloadIdentityPoolResultOutput) ToLookupWorkloadIdentityPoolResultOutputWithContext(ctx context.Context) LookupWorkloadIdentityPoolResultOutput {
 	return o
+}
+
+func (o LookupWorkloadIdentityPoolResultOutput) AttestationRules() GetWorkloadIdentityPoolAttestationRuleArrayOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolResult) []GetWorkloadIdentityPoolAttestationRule {
+		return v.AttestationRules
+	}).(GetWorkloadIdentityPoolAttestationRuleArrayOutput)
 }
 
 func (o LookupWorkloadIdentityPoolResultOutput) Description() pulumi.StringOutput {

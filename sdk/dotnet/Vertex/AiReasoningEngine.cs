@@ -456,6 +456,92 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Reasoning Engine Context Spec
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "re-ctx-spec",
+    ///         Description = "Reasoning engine with context spec",
+    ///         Region = "us-central1",
+    ///         ContextSpec = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecArgs
+    ///         {
+    ///             MemoryBankConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs
+    ///             {
+    ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
+    ///                 {
+    ///                     Model = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+    ///                 },
+    ///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
+    ///                 {
+    ///                     EmbeddingModel = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/text-embedding-005",
+    ///                 },
+    ///                 DisableMemoryRevisions = false,
+    ///                 TtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs
+    ///                 {
+    ///                     DefaultTtl = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Reasoning Engine Granular Ttl
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "re-gran-ttl",
+    ///         Description = "Reasoning engine with granular ttl",
+    ///         Region = "us-central1",
+    ///         ContextSpec = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecArgs
+    ///         {
+    ///             MemoryBankConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs
+    ///             {
+    ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
+    ///                 {
+    ///                     Model = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+    ///                 },
+    ///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
+    ///                 {
+    ///                     EmbeddingModel = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/text-embedding-005",
+    ///                 },
+    ///                 DisableMemoryRevisions = false,
+    ///                 TtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs
+    ///                 {
+    ///                     MemoryRevisionDefaultTtl = "86400s",
+    ///                     GranularTtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs
+    ///                     {
+    ///                         CreateTtl = "86400s",
+    ///                         GenerateCreatedTtl = "86400s",
+    ///                         GenerateUpdatedTtl = "86400s",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -478,6 +564,14 @@ namespace Pulumi.Gcp.Vertex
     [GcpResourceType("gcp:vertex/aiReasoningEngine:AiReasoningEngine")]
     public partial class AiReasoningEngine : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Configuration for how Agent Engine sub-resources should manage context.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("contextSpec")]
+        public Output<Outputs.AiReasoningEngineContextSpec?> ContextSpec { get; private set; } = null!;
+
         /// <summary>
         /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
         /// with nanosecond resolution and up to nine fractional digits.
@@ -593,6 +687,14 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiReasoningEngineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Configuration for how Agent Engine sub-resources should manage context.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("contextSpec")]
+        public Input<Inputs.AiReasoningEngineContextSpecArgs>? ContextSpec { get; set; }
+
+        /// <summary>
         /// Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         /// </summary>
         [Input("deletionPolicy")]
@@ -647,6 +749,14 @@ namespace Pulumi.Gcp.Vertex
 
     public sealed class AiReasoningEngineState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Configuration for how Agent Engine sub-resources should manage context.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("contextSpec")]
+        public Input<Inputs.AiReasoningEngineContextSpecGetArgs>? ContextSpec { get; set; }
+
         /// <summary>
         /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
         /// with nanosecond resolution and up to nine fractional digits.

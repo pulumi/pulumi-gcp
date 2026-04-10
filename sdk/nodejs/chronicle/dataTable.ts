@@ -49,7 +49,6 @@ import * as utilities from "../utilities";
  * export const dataTableUuid = example.dataTableUuid;
  * export const dataTableDescription = example.description;
  * export const dataTableCreateTime = example.createTime;
- * export const dataTableTtl = example.rowTimeToLive;
  * ```
  * ### Chronicle Data Table With Optional Fields
  *
@@ -94,10 +93,6 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [testScopeAllowEveryone],
  * });
- * export const dataTableName = exampleDt.name;
- * export const dataTableId = exampleDt.id;
- * export const dataTableCreateTime = exampleDt.createTime;
- * export const dataTableColumnInfo = exampleDt.columnInfos;
  * ```
  *
  * ## Import

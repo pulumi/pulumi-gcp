@@ -135,6 +135,10 @@ __all__ = [
     'EntryGroupIamBindingConditionArgsDict',
     'EntryGroupIamMemberConditionArgs',
     'EntryGroupIamMemberConditionArgsDict',
+    'EntryLinkAspectArgs',
+    'EntryLinkAspectArgsDict',
+    'EntryLinkAspectAspectArgs',
+    'EntryLinkAspectAspectArgsDict',
     'EntryLinkEntryReferenceArgs',
     'EntryLinkEntryReferenceArgsDict',
     'EntryTypeIamBindingConditionArgs',
@@ -4046,6 +4050,179 @@ class EntryGroupIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class EntryLinkAspectArgsDict(TypedDict):
+    aspect: pulumi.Input['EntryLinkAspectAspectArgsDict']
+    """
+    A nested object resource.
+    Structure is documented below.
+    """
+    aspect_key: pulumi.Input[_builtins.str]
+    """
+    The map keys of the Aspects which the service should modify.
+    It should be the aspect type reference in the format `{project_number}.{location_id}.{aspect_type_id}`.
+    """
+
+@pulumi.input_type
+class EntryLinkAspectArgs:
+    def __init__(__self__, *,
+                 aspect: pulumi.Input['EntryLinkAspectAspectArgs'],
+                 aspect_key: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input['EntryLinkAspectAspectArgs'] aspect: A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] aspect_key: The map keys of the Aspects which the service should modify.
+               It should be the aspect type reference in the format `{project_number}.{location_id}.{aspect_type_id}`.
+        """
+        pulumi.set(__self__, "aspect", aspect)
+        pulumi.set(__self__, "aspect_key", aspect_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def aspect(self) -> pulumi.Input['EntryLinkAspectAspectArgs']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aspect")
+
+    @aspect.setter
+    def aspect(self, value: pulumi.Input['EntryLinkAspectAspectArgs']):
+        pulumi.set(self, "aspect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aspectKey")
+    def aspect_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The map keys of the Aspects which the service should modify.
+        It should be the aspect type reference in the format `{project_number}.{location_id}.{aspect_type_id}`.
+        """
+        return pulumi.get(self, "aspect_key")
+
+    @aspect_key.setter
+    def aspect_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "aspect_key", value)
+
+
+class EntryLinkAspectAspectArgsDict(TypedDict):
+    data: pulumi.Input[_builtins.str]
+    """
+    The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+    """
+    aspect_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of the type used to create this Aspect.
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time when the Aspect was created.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The path in the entry link under which the aspect is attached.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The time when the Aspect was last modified.
+    """
+
+@pulumi.input_type
+class EntryLinkAspectAspectArgs:
+    def __init__(__self__, *,
+                 data: pulumi.Input[_builtins.str],
+                 aspect_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] data: The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+        :param pulumi.Input[_builtins.str] aspect_type: (Output)
+               The resource name of the type used to create this Aspect.
+        :param pulumi.Input[_builtins.str] create_time: (Output)
+               The time when the Aspect was created.
+        :param pulumi.Input[_builtins.str] path: (Output)
+               The path in the entry link under which the aspect is attached.
+        :param pulumi.Input[_builtins.str] update_time: (Output)
+               The time when the Aspect was last modified.
+        """
+        pulumi.set(__self__, "data", data)
+        if aspect_type is not None:
+            pulumi.set(__self__, "aspect_type", aspect_type)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> pulumi.Input[_builtins.str]:
+        """
+        The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aspectType")
+    def aspect_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The resource name of the type used to create this Aspect.
+        """
+        return pulumi.get(self, "aspect_type")
+
+    @aspect_type.setter
+    def aspect_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aspect_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The time when the Aspect was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The path in the entry link under which the aspect is attached.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The time when the Aspect was last modified.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class EntryLinkEntryReferenceArgsDict(TypedDict):

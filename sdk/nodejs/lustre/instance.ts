@@ -93,14 +93,17 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      */
     declare public readonly accessRulesOptions: pulumi.Output<outputs.lustre.InstanceAccessRulesOptions | undefined>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      */
     declare public readonly capacityGib: pulumi.Output<string>;
     /**
@@ -111,6 +114,11 @@ export class Instance extends pulumi.CustomResource {
      * A user-readable description of the instance.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     */
+    declare public readonly dynamicTierOptions: pulumi.Output<outputs.lustre.InstanceDynamicTierOptions | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -135,7 +143,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * The KMS key id to use for encryption of the Lustre instance.
+     * The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      */
     declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
@@ -149,7 +162,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Defines a maintenance policy for a resource.
      * Structure is documented below.
      */
     declare public readonly maintenancePolicy: pulumi.Output<outputs.lustre.InstanceMaintenancePolicy | undefined>;
@@ -168,10 +181,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string>;
     /**
-     * The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      */
-    declare public readonly perUnitStorageThroughput: pulumi.Output<string>;
+    declare public readonly perUnitStorageThroughput: pulumi.Output<string | undefined>;
     /**
      * The placement policy name for the instance in the format of
      * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
@@ -189,13 +207,32 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of the instance.
-     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+     * Possible values:
+     * ACTIVE
+     * CREATING
+     * DELETING
+     * UPGRADING
+     * REPAIRING
+     * STOPPED
+     * UPDATING
+     * SUSPENDED
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * The reason why the instance is in a certain state.
+     * The reason why the instance is in a certain state (e.g. SUSPENDED).
      */
     declare public /*out*/ readonly stateReason: pulumi.Output<string>;
+    /**
+     * Unique ID of the resource.
+     * This is unrelated to the access rules which allow specifying the root
+     * squash uid.
+     */
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
+    /**
+     * Represents a scheduled maintenance event.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly upcomingMaintenanceSchedules: pulumi.Output<outputs.lustre.InstanceUpcomingMaintenanceSchedule[]>;
     /**
      * Timestamp when the instance was last updated.
      */
@@ -218,6 +255,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
+            resourceInputs["dynamicTierOptions"] = state?.dynamicTierOptions;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["filesystem"] = state?.filesystem;
             resourceInputs["gkeSupportEnabled"] = state?.gkeSupportEnabled;
@@ -235,6 +273,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateReason"] = state?.stateReason;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["upcomingMaintenanceSchedules"] = state?.upcomingMaintenanceSchedules;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -253,12 +293,10 @@ export class Instance extends pulumi.CustomResource {
             if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if (args?.perUnitStorageThroughput === undefined && !opts.urn) {
-                throw new Error("Missing required property 'perUnitStorageThroughput'");
-            }
             resourceInputs["accessRulesOptions"] = args?.accessRulesOptions;
             resourceInputs["capacityGib"] = args?.capacityGib;
             resourceInputs["description"] = args?.description;
+            resourceInputs["dynamicTierOptions"] = args?.dynamicTierOptions;
             resourceInputs["filesystem"] = args?.filesystem;
             resourceInputs["gkeSupportEnabled"] = args?.gkeSupportEnabled;
             resourceInputs["instanceId"] = args?.instanceId;
@@ -277,6 +315,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateReason"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["upcomingMaintenanceSchedules"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -291,14 +331,17 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      */
     accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      */
     capacityGib?: pulumi.Input<string>;
     /**
@@ -309,6 +352,11 @@ export interface InstanceState {
      * A user-readable description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     */
+    dynamicTierOptions?: pulumi.Input<inputs.lustre.InstanceDynamicTierOptions>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -333,7 +381,12 @@ export interface InstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The KMS key id to use for encryption of the Lustre instance.
+     * The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      */
     kmsKey?: pulumi.Input<string>;
     /**
@@ -347,7 +400,7 @@ export interface InstanceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Defines a maintenance policy for a resource.
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy>;
@@ -366,8 +419,13 @@ export interface InstanceState {
      */
     network?: pulumi.Input<string>;
     /**
-     * The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      */
     perUnitStorageThroughput?: pulumi.Input<string>;
     /**
@@ -387,13 +445,32 @@ export interface InstanceState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The state of the instance.
-     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+     * Possible values:
+     * ACTIVE
+     * CREATING
+     * DELETING
+     * UPGRADING
+     * REPAIRING
+     * STOPPED
+     * UPDATING
+     * SUSPENDED
      */
     state?: pulumi.Input<string>;
     /**
-     * The reason why the instance is in a certain state.
+     * The reason why the instance is in a certain state (e.g. SUSPENDED).
      */
     stateReason?: pulumi.Input<string>;
+    /**
+     * Unique ID of the resource.
+     * This is unrelated to the access rules which allow specifying the root
+     * squash uid.
+     */
+    uid?: pulumi.Input<string>;
+    /**
+     * Represents a scheduled maintenance event.
+     * Structure is documented below.
+     */
+    upcomingMaintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.lustre.InstanceUpcomingMaintenanceSchedule>[]>;
     /**
      * Timestamp when the instance was last updated.
      */
@@ -405,20 +482,28 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Access control rules for the Lustre instance. Configures default root
-     * squashing behavior and specific access rules based on IP addresses.
+     * IP-based access rules for the Managed Lustre instance. These options
+     * define the root user squash configuration.
      * Structure is documented below.
      */
     accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
-     * are from `18000` to `954000`, in increments of 9000.
+     * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for specific minimums, maximums, and step sizes for each performance tier.
      */
     capacityGib: pulumi.Input<string>;
     /**
      * A user-readable description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Dynamic tier options for a Managed Lustre instance.
+     * Structure is documented below.
+     */
+    dynamicTierOptions?: pulumi.Input<inputs.lustre.InstanceDynamicTierOptions>;
     /**
      * The filesystem name for this instance. This name is used by client-side
      * tools, including when mounting the instance. Must be eight characters or
@@ -439,7 +524,12 @@ export interface InstanceArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The KMS key id to use for encryption of the Lustre instance.
+     * The Cloud KMS key name to use for data encryption.
+     * If not set, the instance will use Google-managed encryption keys.
+     * If set, the instance will use customer-managed encryption keys.
+     * The key must be in the same region as the instance.
+     * The key format is:
+     * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      */
     kmsKey?: pulumi.Input<string>;
     /**
@@ -453,7 +543,7 @@ export interface InstanceArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * The maintenance policy for the instance to determine when to allow or exclude the instance from maintenance updates.
+     * Defines a maintenance policy for a resource.
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy>;
@@ -464,10 +554,15 @@ export interface InstanceArgs {
      */
     network: pulumi.Input<string>;
     /**
-     * The throughput of the instance in MB/s/TiB.
-     * Valid values are 125, 250, 500, 1000.
+     * The throughput of the instance in MBps per TiB. Valid values are 125, 250,
+     * 500, 1000.
+     * See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * If the instance is using the Dynamic tier, this field must not be set or
+     * must be set to zero.
      */
-    perUnitStorageThroughput: pulumi.Input<string>;
+    perUnitStorageThroughput?: pulumi.Input<string>;
     /**
      * The placement policy name for the instance in the format of
      * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}

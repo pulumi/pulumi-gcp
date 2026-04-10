@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineState;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpec;
 import java.lang.String;
@@ -502,6 +503,128 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Vertex Ai Reasoning Engine Context Spec
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("re-ctx-spec")
+ *             .description("Reasoning engine with context spec")
+ *             .region("us-central1")
+ *             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
+ *                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
+ *                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
+ *                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+ *                         .build())
+ *                     .similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs.builder()
+ *                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
+ *                         .build())
+ *                     .disableMemoryRevisions(false)
+ *                     .ttlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs.builder()
+ *                         .defaultTtl("86400s")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Vertex Ai Reasoning Engine Granular Ttl
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("re-gran-ttl")
+ *             .description("Reasoning engine with granular ttl")
+ *             .region("us-central1")
+ *             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
+ *                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
+ *                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
+ *                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+ *                         .build())
+ *                     .similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs.builder()
+ *                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
+ *                         .build())
+ *                     .disableMemoryRevisions(false)
+ *                     .ttlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs.builder()
+ *                         .memoryRevisionDefaultTtl("86400s")
+ *                         .granularTtlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs.builder()
+ *                             .createTtl("86400s")
+ *                             .generateCreatedTtl("86400s")
+ *                             .generateUpdatedTtl("86400s")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -524,6 +647,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:vertex/aiReasoningEngine:AiReasoningEngine")
 public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
+    /**
+     * (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="contextSpec", refs={AiReasoningEngineContextSpec.class}, tree="[0]")
+    private Output</* @Nullable */ AiReasoningEngineContextSpec> contextSpec;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiReasoningEngineContextSpec>> contextSpec() {
+        return Codegen.optional(this.contextSpec);
+    }
     /**
      * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format,
      * with nanosecond resolution and up to nine fractional digits.

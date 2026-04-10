@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionMessageTransformAiInference;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionMessageTransformJavascriptUdf;
 import java.lang.Boolean;
 import java.util.List;
@@ -12,6 +13,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubscriptionMessageTransform {
+    /**
+     * @return AI Inference. Specifies the Vertex AI endpoint that inference
+     * requests built from the Pub/Sub message data and provided parameters will
+     * be sent to.
+     * 
+     */
+    private List<GetSubscriptionMessageTransformAiInference> aiInferences;
     /**
      * @return Controls whether or not to use this transform. If not set or &#39;false&#39;,
      * the transform will be applied to messages. Default: &#39;true&#39;.
@@ -26,6 +34,15 @@ public final class GetSubscriptionMessageTransform {
     private List<GetSubscriptionMessageTransformJavascriptUdf> javascriptUdfs;
 
     private GetSubscriptionMessageTransform() {}
+    /**
+     * @return AI Inference. Specifies the Vertex AI endpoint that inference
+     * requests built from the Pub/Sub message data and provided parameters will
+     * be sent to.
+     * 
+     */
+    public List<GetSubscriptionMessageTransformAiInference> aiInferences() {
+        return this.aiInferences;
+    }
     /**
      * @return Controls whether or not to use this transform. If not set or &#39;false&#39;,
      * the transform will be applied to messages. Default: &#39;true&#39;.
@@ -52,15 +69,28 @@ public final class GetSubscriptionMessageTransform {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetSubscriptionMessageTransformAiInference> aiInferences;
         private Boolean disabled;
         private List<GetSubscriptionMessageTransformJavascriptUdf> javascriptUdfs;
         public Builder() {}
         public Builder(GetSubscriptionMessageTransform defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiInferences = defaults.aiInferences;
     	      this.disabled = defaults.disabled;
     	      this.javascriptUdfs = defaults.javascriptUdfs;
         }
 
+        @CustomType.Setter
+        public Builder aiInferences(List<GetSubscriptionMessageTransformAiInference> aiInferences) {
+            if (aiInferences == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionMessageTransform", "aiInferences");
+            }
+            this.aiInferences = aiInferences;
+            return this;
+        }
+        public Builder aiInferences(GetSubscriptionMessageTransformAiInference... aiInferences) {
+            return aiInferences(List.of(aiInferences));
+        }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             if (disabled == null) {
@@ -82,6 +112,7 @@ public final class GetSubscriptionMessageTransform {
         }
         public GetSubscriptionMessageTransform build() {
             final var _resultValue = new GetSubscriptionMessageTransform();
+            _resultValue.aiInferences = aiInferences;
             _resultValue.disabled = disabled;
             _resultValue.javascriptUdfs = javascriptUdfs;
             return _resultValue;

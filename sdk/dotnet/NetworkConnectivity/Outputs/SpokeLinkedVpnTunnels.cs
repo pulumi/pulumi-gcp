@@ -14,8 +14,20 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     public sealed class SpokeLinkedVpnTunnels
     {
         /// <summary>
-        /// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeExportRanges;
+        /// <summary>
+        /// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeImportRanges;
+        /// <summary>
+        /// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeExportRanges;
+        /// <summary>
+        /// Hub routes fully encompassed by include import ranges are included during import from hub.
+        /// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         /// </summary>
         public readonly ImmutableArray<string> IncludeImportRanges;
         /// <summary>
@@ -29,12 +41,21 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
 
         [OutputConstructor]
         private SpokeLinkedVpnTunnels(
+            ImmutableArray<string> excludeExportRanges,
+
+            ImmutableArray<string> excludeImportRanges,
+
+            ImmutableArray<string> includeExportRanges,
+
             ImmutableArray<string> includeImportRanges,
 
             bool siteToSiteDataTransfer,
 
             ImmutableArray<string> uris)
         {
+            ExcludeExportRanges = excludeExportRanges;
+            ExcludeImportRanges = excludeImportRanges;
+            IncludeExportRanges = includeExportRanges;
             IncludeImportRanges = includeImportRanges;
             SiteToSiteDataTransfer = siteToSiteDataTransfer;
             Uris = uris;

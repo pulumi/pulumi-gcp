@@ -40,27 +40,30 @@ type LookupInstanceResult struct {
 	CapacityGib        string                         `pulumi:"capacityGib"`
 	CreateTime         string                         `pulumi:"createTime"`
 	Description        string                         `pulumi:"description"`
+	DynamicTierOptions []GetInstanceDynamicTierOption `pulumi:"dynamicTierOptions"`
 	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
 	Filesystem         string                         `pulumi:"filesystem"`
 	GkeSupportEnabled  bool                           `pulumi:"gkeSupportEnabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                         `pulumi:"id"`
-	InstanceId               string                         `pulumi:"instanceId"`
-	KmsKey                   string                         `pulumi:"kmsKey"`
-	Labels                   map[string]string              `pulumi:"labels"`
-	Location                 string                         `pulumi:"location"`
-	MaintenancePolicies      []GetInstanceMaintenancePolicy `pulumi:"maintenancePolicies"`
-	MountPoint               string                         `pulumi:"mountPoint"`
-	Name                     string                         `pulumi:"name"`
-	Network                  string                         `pulumi:"network"`
-	PerUnitStorageThroughput string                         `pulumi:"perUnitStorageThroughput"`
-	PlacementPolicy          string                         `pulumi:"placementPolicy"`
-	Project                  *string                        `pulumi:"project"`
-	PulumiLabels             map[string]string              `pulumi:"pulumiLabels"`
-	State                    string                         `pulumi:"state"`
-	StateReason              string                         `pulumi:"stateReason"`
-	UpdateTime               string                         `pulumi:"updateTime"`
-	Zone                     *string                        `pulumi:"zone"`
+	Id                           string                                   `pulumi:"id"`
+	InstanceId                   string                                   `pulumi:"instanceId"`
+	KmsKey                       string                                   `pulumi:"kmsKey"`
+	Labels                       map[string]string                        `pulumi:"labels"`
+	Location                     string                                   `pulumi:"location"`
+	MaintenancePolicies          []GetInstanceMaintenancePolicy           `pulumi:"maintenancePolicies"`
+	MountPoint                   string                                   `pulumi:"mountPoint"`
+	Name                         string                                   `pulumi:"name"`
+	Network                      string                                   `pulumi:"network"`
+	PerUnitStorageThroughput     string                                   `pulumi:"perUnitStorageThroughput"`
+	PlacementPolicy              string                                   `pulumi:"placementPolicy"`
+	Project                      *string                                  `pulumi:"project"`
+	PulumiLabels                 map[string]string                        `pulumi:"pulumiLabels"`
+	State                        string                                   `pulumi:"state"`
+	StateReason                  string                                   `pulumi:"stateReason"`
+	Uid                          string                                   `pulumi:"uid"`
+	UpcomingMaintenanceSchedules []GetInstanceUpcomingMaintenanceSchedule `pulumi:"upcomingMaintenanceSchedules"`
+	UpdateTime                   string                                   `pulumi:"updateTime"`
+	Zone                         *string                                  `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -115,6 +118,10 @@ func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DynamicTierOptions() GetInstanceDynamicTierOptionArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceDynamicTierOption { return v.DynamicTierOptions }).(GetInstanceDynamicTierOptionArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
@@ -188,6 +195,16 @@ func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.StateReason }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) UpcomingMaintenanceSchedules() GetInstanceUpcomingMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceUpcomingMaintenanceSchedule {
+		return v.UpcomingMaintenanceSchedules
+	}).(GetInstanceUpcomingMaintenanceScheduleArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) UpdateTime() pulumi.StringOutput {

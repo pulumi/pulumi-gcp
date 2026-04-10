@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "gcp:organizations/project:Project":
 		r = &Project{}
+	case "gcp:organizations/serviceIdentity:ServiceIdentity":
+		r = &ServiceIdentity{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -95,6 +97,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"organizations/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"organizations/serviceIdentity",
 		&module{version},
 	)
 }

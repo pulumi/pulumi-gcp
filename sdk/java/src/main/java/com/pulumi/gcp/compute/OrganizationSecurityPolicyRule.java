@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_56730")
+ *             .shortName("tf-test_72490")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_95154")
+ *             .shortName("tf-test_89605")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());

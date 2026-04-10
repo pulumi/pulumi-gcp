@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("my-bucket-_15222"),
+//				Name:                     pulumi.String("my-bucket"),
 //				Location:                 pulumi.String("us-central1"),
 //				ForceDestroy:             pulumi.Bool(true),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -51,7 +51,7 @@ import (
 //			}
 //			namespace, err := biglake.NewIcebergNamespace(ctx, "namespace", &biglake.IcebergNamespaceArgs{
 //				Catalog:     catalog.Name,
-//				NamespaceId: pulumi.String("my_namespace__81126"),
+//				NamespaceId: pulumi.String("my_namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,11 +59,11 @@ import (
 //			_, err = biglake.NewIcebergTable(ctx, "my_iceberg_table", &biglake.IcebergTableArgs{
 //				Catalog:   catalog.Name,
 //				Namespace: namespace.NamespaceId,
-//				Name:      pulumi.String("my_table__88717"),
+//				Name:      pulumi.String("my_table"),
 //				Location: pulumi.All(bucket.Name, namespace.NamespaceId).ApplyT(func(_args []interface{}) (string, error) {
 //					name := _args[0].(string)
 //					namespaceId := _args[1].(string)
-//					return fmt.Sprintf("gs://%v/%v/my_table__85794", name, namespaceId), nil
+//					return fmt.Sprintf("gs://%v/%v/my_table", name, namespaceId), nil
 //				}).(pulumi.StringOutput),
 //				Schema: &biglake.IcebergTableSchemaArgs{
 //					Type: pulumi.String("struct"),
@@ -120,7 +120,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("my-bucket-_21197"),
+//				Name:                     pulumi.String("my-bucket"),
 //				Location:                 pulumi.String("us-central1"),
 //				ForceDestroy:             pulumi.Bool(true),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
@@ -137,7 +137,7 @@ import (
 //			}
 //			namespace, err := biglake.NewIcebergNamespace(ctx, "namespace", &biglake.IcebergNamespaceArgs{
 //				Catalog:     catalog.Name,
-//				NamespaceId: pulumi.String("my_namespace__52865"),
+//				NamespaceId: pulumi.String("my_namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -145,7 +145,7 @@ import (
 //			_, err = biglake.NewIcebergTable(ctx, "my_iceberg_table", &biglake.IcebergTableArgs{
 //				Catalog:   catalog.Name,
 //				Namespace: namespace.NamespaceId,
-//				Name:      pulumi.String("my_table__85840"),
+//				Name:      pulumi.String("my_table"),
 //				Schema: &biglake.IcebergTableSchemaArgs{
 //					Type: pulumi.String("struct"),
 //					Fields: biglake.IcebergTableSchemaFieldArray{

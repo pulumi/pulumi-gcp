@@ -6,10 +6,12 @@ package com.pulumi.gcp.iam;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolAttestationRuleArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +20,27 @@ import javax.annotation.Nullable;
 public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkloadIdentityPoolArgs Empty = new WorkloadIdentityPoolArgs();
+
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="attestationRules")
+    private @Nullable Output<List<WorkloadIdentityPoolAttestationRuleArgs>> attestationRules;
+
+    /**
+     * @return Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkloadIdentityPoolAttestationRuleArgs>>> attestationRules() {
+        return Optional.ofNullable(this.attestationRules);
+    }
 
     /**
      * A description of the pool. Cannot exceed 256 characters.
@@ -214,6 +237,7 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     private WorkloadIdentityPoolArgs() {}
 
     private WorkloadIdentityPoolArgs(WorkloadIdentityPoolArgs $) {
+        this.attestationRules = $.attestationRules;
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
@@ -240,6 +264,46 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
 
         public Builder(WorkloadIdentityPoolArgs defaults) {
             $ = new WorkloadIdentityPoolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attestationRules Defines which workloads can receive an identity within a pool. When an AttestationRule is
+         * defined under a managed identity, matching workloads may receive that identity. A maximum of
+         * 50 AttestationRules can be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attestationRules(@Nullable Output<List<WorkloadIdentityPoolAttestationRuleArgs>> attestationRules) {
+            $.attestationRules = attestationRules;
+            return this;
+        }
+
+        /**
+         * @param attestationRules Defines which workloads can receive an identity within a pool. When an AttestationRule is
+         * defined under a managed identity, matching workloads may receive that identity. A maximum of
+         * 50 AttestationRules can be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attestationRules(List<WorkloadIdentityPoolAttestationRuleArgs> attestationRules) {
+            return attestationRules(Output.of(attestationRules));
+        }
+
+        /**
+         * @param attestationRules Defines which workloads can receive an identity within a pool. When an AttestationRule is
+         * defined under a managed identity, matching workloads may receive that identity. A maximum of
+         * 50 AttestationRules can be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attestationRules(WorkloadIdentityPoolAttestationRuleArgs... attestationRules) {
+            return attestationRules(List.of(attestationRules));
         }
 
         /**

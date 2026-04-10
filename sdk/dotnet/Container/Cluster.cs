@@ -177,6 +177,17 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterAuthenticatorGroupsConfig> AuthenticatorGroupsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The customer
+        /// allowlist Cloud Storage paths for the cluster. These paths are used with the
+        /// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+        /// Autopilot clusters. See the Cluster API's
+        /// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+        /// documentation for more details.
+        /// </summary>
+        [Output("autopilotPrivilegedAdmissions")]
+        public Output<ImmutableArray<string>> AutopilotPrivilegedAdmissions { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration options for the Binary
         /// Authorization feature. Structure is documented below.
         /// </summary>
@@ -918,6 +929,23 @@ namespace Pulumi.Gcp.Container
         [Input("authenticatorGroupsConfig")]
         public Input<Inputs.ClusterAuthenticatorGroupsConfigArgs>? AuthenticatorGroupsConfig { get; set; }
 
+        [Input("autopilotPrivilegedAdmissions")]
+        private InputList<string>? _autopilotPrivilegedAdmissions;
+
+        /// <summary>
+        /// The customer
+        /// allowlist Cloud Storage paths for the cluster. These paths are used with the
+        /// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+        /// Autopilot clusters. See the Cluster API's
+        /// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+        /// documentation for more details.
+        /// </summary>
+        public InputList<string> AutopilotPrivilegedAdmissions
+        {
+            get => _autopilotPrivilegedAdmissions ?? (_autopilotPrivilegedAdmissions = new InputList<string>());
+            set => _autopilotPrivilegedAdmissions = value;
+        }
+
         /// <summary>
         /// Configuration options for the Binary
         /// Authorization feature. Structure is documented below.
@@ -1583,6 +1611,23 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("authenticatorGroupsConfig")]
         public Input<Inputs.ClusterAuthenticatorGroupsConfigGetArgs>? AuthenticatorGroupsConfig { get; set; }
+
+        [Input("autopilotPrivilegedAdmissions")]
+        private InputList<string>? _autopilotPrivilegedAdmissions;
+
+        /// <summary>
+        /// The customer
+        /// allowlist Cloud Storage paths for the cluster. These paths are used with the
+        /// `--autopilot-privileged-admission` flag to authorize privileged workloads in
+        /// Autopilot clusters. See the Cluster API's
+        /// [PrivilegedAdmissionConfig](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#privilegedadmissionconfig)
+        /// documentation for more details.
+        /// </summary>
+        public InputList<string> AutopilotPrivilegedAdmissions
+        {
+            get => _autopilotPrivilegedAdmissions ?? (_autopilotPrivilegedAdmissions = new InputList<string>());
+            set => _autopilotPrivilegedAdmissions = value;
+        }
 
         /// <summary>
         /// Configuration options for the Binary

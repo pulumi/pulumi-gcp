@@ -5996,6 +5996,130 @@ func (o GetManagedZonesManagedZoneArrayOutput) Index(i pulumi.IntInput) GetManag
 	}).(GetManagedZonesManagedZoneOutput)
 }
 
+type GetRecordSetsRrset struct {
+	// The name of the record set to filter by.
+	Name string `pulumi:"name"`
+	// A list of the record set's data (e.g., IP addresses, target names).
+	Rrdatas []string `pulumi:"rrdatas"`
+	// The time-to-live of this record set (seconds).
+	Ttl int `pulumi:"ttl"`
+	// The type of the record set to filter by.
+	Type string `pulumi:"type"`
+}
+
+// GetRecordSetsRrsetInput is an input type that accepts GetRecordSetsRrsetArgs and GetRecordSetsRrsetOutput values.
+// You can construct a concrete instance of `GetRecordSetsRrsetInput` via:
+//
+//	GetRecordSetsRrsetArgs{...}
+type GetRecordSetsRrsetInput interface {
+	pulumi.Input
+
+	ToGetRecordSetsRrsetOutput() GetRecordSetsRrsetOutput
+	ToGetRecordSetsRrsetOutputWithContext(context.Context) GetRecordSetsRrsetOutput
+}
+
+type GetRecordSetsRrsetArgs struct {
+	// The name of the record set to filter by.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of the record set's data (e.g., IP addresses, target names).
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+	// The time-to-live of this record set (seconds).
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The type of the record set to filter by.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRecordSetsRrsetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordSetsRrset)(nil)).Elem()
+}
+
+func (i GetRecordSetsRrsetArgs) ToGetRecordSetsRrsetOutput() GetRecordSetsRrsetOutput {
+	return i.ToGetRecordSetsRrsetOutputWithContext(context.Background())
+}
+
+func (i GetRecordSetsRrsetArgs) ToGetRecordSetsRrsetOutputWithContext(ctx context.Context) GetRecordSetsRrsetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordSetsRrsetOutput)
+}
+
+// GetRecordSetsRrsetArrayInput is an input type that accepts GetRecordSetsRrsetArray and GetRecordSetsRrsetArrayOutput values.
+// You can construct a concrete instance of `GetRecordSetsRrsetArrayInput` via:
+//
+//	GetRecordSetsRrsetArray{ GetRecordSetsRrsetArgs{...} }
+type GetRecordSetsRrsetArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordSetsRrsetArrayOutput() GetRecordSetsRrsetArrayOutput
+	ToGetRecordSetsRrsetArrayOutputWithContext(context.Context) GetRecordSetsRrsetArrayOutput
+}
+
+type GetRecordSetsRrsetArray []GetRecordSetsRrsetInput
+
+func (GetRecordSetsRrsetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordSetsRrset)(nil)).Elem()
+}
+
+func (i GetRecordSetsRrsetArray) ToGetRecordSetsRrsetArrayOutput() GetRecordSetsRrsetArrayOutput {
+	return i.ToGetRecordSetsRrsetArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordSetsRrsetArray) ToGetRecordSetsRrsetArrayOutputWithContext(ctx context.Context) GetRecordSetsRrsetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordSetsRrsetArrayOutput)
+}
+
+type GetRecordSetsRrsetOutput struct{ *pulumi.OutputState }
+
+func (GetRecordSetsRrsetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordSetsRrset)(nil)).Elem()
+}
+
+func (o GetRecordSetsRrsetOutput) ToGetRecordSetsRrsetOutput() GetRecordSetsRrsetOutput {
+	return o
+}
+
+func (o GetRecordSetsRrsetOutput) ToGetRecordSetsRrsetOutputWithContext(ctx context.Context) GetRecordSetsRrsetOutput {
+	return o
+}
+
+// The name of the record set to filter by.
+func (o GetRecordSetsRrsetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordSetsRrset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of the record set's data (e.g., IP addresses, target names).
+func (o GetRecordSetsRrsetOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRecordSetsRrset) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+// The time-to-live of this record set (seconds).
+func (o GetRecordSetsRrsetOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordSetsRrset) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of the record set to filter by.
+func (o GetRecordSetsRrsetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordSetsRrset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRecordSetsRrsetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordSetsRrsetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordSetsRrset)(nil)).Elem()
+}
+
+func (o GetRecordSetsRrsetArrayOutput) ToGetRecordSetsRrsetArrayOutput() GetRecordSetsRrsetArrayOutput {
+	return o
+}
+
+func (o GetRecordSetsRrsetArrayOutput) ToGetRecordSetsRrsetArrayOutputWithContext(ctx context.Context) GetRecordSetsRrsetArrayOutput {
+	return o
+}
+
+func (o GetRecordSetsRrsetArrayOutput) Index(i pulumi.IntInput) GetRecordSetsRrsetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordSetsRrset {
+		return vs[0].([]GetRecordSetsRrset)[vs[1].(int)]
+	}).(GetRecordSetsRrsetOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionPtrInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
@@ -6079,6 +6203,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedZonesManagedZoneInput)(nil)).Elem(), GetManagedZonesManagedZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedZonesManagedZoneArrayInput)(nil)).Elem(), GetManagedZonesManagedZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordSetsRrsetInput)(nil)).Elem(), GetRecordSetsRrsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordSetsRrsetArrayInput)(nil)).Elem(), GetRecordSetsRrsetArray{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamMemberConditionOutput{})
@@ -6161,4 +6287,6 @@ func init() {
 	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedZonesManagedZoneOutput{})
 	pulumi.RegisterOutputType(GetManagedZonesManagedZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetRecordSetsRrsetOutput{})
+	pulumi.RegisterOutputType(GetRecordSetsRrsetArrayOutput{})
 }

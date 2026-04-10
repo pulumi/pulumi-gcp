@@ -11,38 +11,46 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate {
     /**
-     * @return Day of a month. Must be from 1 to 31 and valid for the year and month.
+     * @return Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+     * to specify a year by itself or a year and month where the day isn&#39;t
+     * significant.
      * 
      */
     private Integer day;
     /**
-     * @return Month of a year. Must be from 1 to 12.
+     * @return Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+     * month and day.
      * 
      */
     private Integer month;
     /**
-     * @return Year of the date. Must be from 1 to 9999, or 0 for recurring.
+     * @return Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+     * a year.
      * 
      */
     private Integer year;
 
     private GetInstanceMaintenancePolicyMaintenanceExclusionWindowEndDate() {}
     /**
-     * @return Day of a month. Must be from 1 to 31 and valid for the year and month.
+     * @return Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+     * to specify a year by itself or a year and month where the day isn&#39;t
+     * significant.
      * 
      */
     public Integer day() {
         return this.day;
     }
     /**
-     * @return Month of a year. Must be from 1 to 12.
+     * @return Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+     * month and day.
      * 
      */
     public Integer month() {
         return this.month;
     }
     /**
-     * @return Year of the date. Must be from 1 to 9999, or 0 for recurring.
+     * @return Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+     * a year.
      * 
      */
     public Integer year() {

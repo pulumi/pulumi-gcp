@@ -318,9 +318,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         Represents a namespace for a workload identity pool. Namespaces are used to segment identities
         within the pool.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about WorkloadIdentityPoolNamespace, see:
 
         * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces)
@@ -404,9 +401,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         """
         Represents a namespace for a workload identity pool. Namespaces are used to segment identities
         within the pool.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         To get more information about WorkloadIdentityPoolNamespace, see:
 

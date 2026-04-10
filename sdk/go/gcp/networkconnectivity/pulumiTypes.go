@@ -2836,8 +2836,14 @@ func (o SpokeGatewayIpRangeReservationArrayOutput) Index(i pulumi.IntInput) Spok
 }
 
 type SpokeLinkedInterconnectAttachments struct {
-	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-	// The only allowed value for now is "ALL_IPV4_RANGES".
+	// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+	ExcludeImportRanges []string `pulumi:"excludeImportRanges"`
+	// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+	IncludeExportRanges []string `pulumi:"includeExportRanges"`
+	// Hub routes fully encompassed by include import ranges are included during import from hub.
+	// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 	IncludeImportRanges []string `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -2857,8 +2863,14 @@ type SpokeLinkedInterconnectAttachmentsInput interface {
 }
 
 type SpokeLinkedInterconnectAttachmentsArgs struct {
-	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-	// The only allowed value for now is "ALL_IPV4_RANGES".
+	// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+	ExcludeImportRanges pulumi.StringArrayInput `pulumi:"excludeImportRanges"`
+	// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+	IncludeExportRanges pulumi.StringArrayInput `pulumi:"includeExportRanges"`
+	// Hub routes fully encompassed by include import ranges are included during import from hub.
+	// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 	IncludeImportRanges pulumi.StringArrayInput `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
@@ -2943,8 +2955,23 @@ func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttac
 	}).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
-// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-// The only allowed value for now is "ALL_IPV4_RANGES".
+// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+func (o SpokeLinkedInterconnectAttachmentsOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+func (o SpokeLinkedInterconnectAttachmentsOutput) ExcludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.ExcludeImportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+func (o SpokeLinkedInterconnectAttachmentsOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.IncludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Hub routes fully encompassed by include import ranges are included during import from hub.
+// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 func (o SpokeLinkedInterconnectAttachmentsOutput) IncludeImportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.IncludeImportRanges }).(pulumi.StringArrayOutput)
 }
@@ -2983,8 +3010,38 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Elem() SpokeLinkedInterconn
 	}).(SpokeLinkedInterconnectAttachmentsOutput)
 }
 
-// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-// The only allowed value for now is "ALL_IPV4_RANGES".
+// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ExcludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeImportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hub routes fully encompassed by include import ranges are included during import from hub.
+// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) IncludeImportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
 		if v == nil {
@@ -3232,8 +3289,14 @@ func (o SpokeLinkedProducerVpcNetworkPtrOutput) ProducerNetwork() pulumi.StringP
 }
 
 type SpokeLinkedRouterApplianceInstances struct {
-	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-	// The only allowed value for now is "ALL_IPV4_RANGES".
+	// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+	ExcludeImportRanges []string `pulumi:"excludeImportRanges"`
+	// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+	IncludeExportRanges []string `pulumi:"includeExportRanges"`
+	// Hub routes fully encompassed by include import ranges are included during import from hub.
+	// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 	IncludeImportRanges []string `pulumi:"includeImportRanges"`
 	// The list of router appliance instances
 	// Structure is documented below.
@@ -3254,8 +3317,14 @@ type SpokeLinkedRouterApplianceInstancesInput interface {
 }
 
 type SpokeLinkedRouterApplianceInstancesArgs struct {
-	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-	// The only allowed value for now is "ALL_IPV4_RANGES".
+	// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+	ExcludeImportRanges pulumi.StringArrayInput `pulumi:"excludeImportRanges"`
+	// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+	IncludeExportRanges pulumi.StringArrayInput `pulumi:"includeExportRanges"`
+	// Hub routes fully encompassed by include import ranges are included during import from hub.
+	// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 	IncludeImportRanges pulumi.StringArrayInput `pulumi:"includeImportRanges"`
 	// The list of router appliance instances
 	// Structure is documented below.
@@ -3341,8 +3410,23 @@ func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceI
 	}).(SpokeLinkedRouterApplianceInstancesPtrOutput)
 }
 
-// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-// The only allowed value for now is "ALL_IPV4_RANGES".
+// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+func (o SpokeLinkedRouterApplianceInstancesOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+func (o SpokeLinkedRouterApplianceInstancesOutput) ExcludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []string { return v.ExcludeImportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+func (o SpokeLinkedRouterApplianceInstancesOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []string { return v.IncludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Hub routes fully encompassed by include import ranges are included during import from hub.
+// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 func (o SpokeLinkedRouterApplianceInstancesOutput) IncludeImportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []string { return v.IncludeImportRanges }).(pulumi.StringArrayOutput)
 }
@@ -3384,8 +3468,38 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterAp
 	}).(SpokeLinkedRouterApplianceInstancesOutput)
 }
 
-// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-// The only allowed value for now is "ALL_IPV4_RANGES".
+// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ExcludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeImportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hub routes fully encompassed by include import ranges are included during import from hub.
+// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) IncludeImportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []string {
 		if v == nil {
@@ -3698,8 +3812,14 @@ func (o SpokeLinkedVpcNetworkPtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type SpokeLinkedVpnTunnels struct {
-	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-	// The only allowed value for now is "ALL_IPV4_RANGES".
+	// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+	ExcludeImportRanges []string `pulumi:"excludeImportRanges"`
+	// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+	IncludeExportRanges []string `pulumi:"includeExportRanges"`
+	// Hub routes fully encompassed by include import ranges are included during import from hub.
+	// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 	IncludeImportRanges []string `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -3719,8 +3839,14 @@ type SpokeLinkedVpnTunnelsInput interface {
 }
 
 type SpokeLinkedVpnTunnelsArgs struct {
-	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-	// The only allowed value for now is "ALL_IPV4_RANGES".
+	// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+	ExcludeImportRanges pulumi.StringArrayInput `pulumi:"excludeImportRanges"`
+	// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+	IncludeExportRanges pulumi.StringArrayInput `pulumi:"includeExportRanges"`
+	// Hub routes fully encompassed by include import ranges are included during import from hub.
+	// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 	IncludeImportRanges pulumi.StringArrayInput `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
@@ -3805,8 +3931,23 @@ func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext
 	}).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
-// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-// The only allowed value for now is "ALL_IPV4_RANGES".
+// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+func (o SpokeLinkedVpnTunnelsOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpnTunnels) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+func (o SpokeLinkedVpnTunnelsOutput) ExcludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpnTunnels) []string { return v.ExcludeImportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+func (o SpokeLinkedVpnTunnelsOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpnTunnels) []string { return v.IncludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// Hub routes fully encompassed by include import ranges are included during import from hub.
+// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 func (o SpokeLinkedVpnTunnelsOutput) IncludeImportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedVpnTunnels) []string { return v.IncludeImportRanges }).(pulumi.StringArrayOutput)
 }
@@ -3845,8 +3986,38 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Elem() SpokeLinkedVpnTunnelsOutput {
 	}).(SpokeLinkedVpnTunnelsOutput)
 }
 
-// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-// The only allowed value for now is "ALL_IPV4_RANGES".
+// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+func (o SpokeLinkedVpnTunnelsPtrOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+func (o SpokeLinkedVpnTunnelsPtrOutput) ExcludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeImportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+func (o SpokeLinkedVpnTunnelsPtrOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hub routes fully encompassed by include import ranges are included during import from hub.
+// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
 func (o SpokeLinkedVpnTunnelsPtrOutput) IncludeImportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) []string {
 		if v == nil {

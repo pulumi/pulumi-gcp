@@ -285,6 +285,42 @@ import * as utilities from "../utilities";
  *     tagValue: tagValue.id,
  * });
  * ```
+ * ### Pubsub Topic Ai Inference
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const geminiQueryServiceAccount = new gcp.serviceaccount.Account("gemini_query_service_account", {
+ *     accountId: "example-sa",
+ *     displayName: "Gemini Query Service Account",
+ * });
+ * const geminiInferenceGet = new gcp.projects.IAMMember("gemini_inference_get", {
+ *     project: "my-project-name",
+ *     role: "roles/aiplatform.user",
+ *     member: pulumi.interpolate`serviceAccount:${geminiQueryServiceAccount.email}`,
+ * });
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [geminiInferenceGet],
+ * });
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     messageTransforms: [{
+ *         aiInference: {
+ *             endpoint: "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+ *             unstructuredInference: {
+ *                 parameters: {
+ *                     max_tokens: "25000",
+ *                 },
+ *             },
+ *             serviceAccountEmail: geminiQueryServiceAccount.email,
+ *         },
+ *     }],
+ * }, {
+ *     dependsOn: [wait120Seconds],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -12,12 +12,48 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 
     public sealed class SpokeLinkedRouterApplianceInstancesGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("excludeExportRanges")]
+        private InputList<string>? _excludeExportRanges;
+
+        /// <summary>
+        /// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
+        /// </summary>
+        public InputList<string> ExcludeExportRanges
+        {
+            get => _excludeExportRanges ?? (_excludeExportRanges = new InputList<string>());
+            set => _excludeExportRanges = value;
+        }
+
+        [Input("excludeImportRanges")]
+        private InputList<string>? _excludeImportRanges;
+
+        /// <summary>
+        /// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
+        /// </summary>
+        public InputList<string> ExcludeImportRanges
+        {
+            get => _excludeImportRanges ?? (_excludeImportRanges = new InputList<string>());
+            set => _excludeImportRanges = value;
+        }
+
+        [Input("includeExportRanges")]
+        private InputList<string>? _includeExportRanges;
+
+        /// <summary>
+        /// Dynamic routes fully encompassed by include export ranges are included during export to hub.
+        /// </summary>
+        public InputList<string> IncludeExportRanges
+        {
+            get => _includeExportRanges ?? (_includeExportRanges = new InputList<string>());
+            set => _includeExportRanges = value;
+        }
+
         [Input("includeImportRanges")]
         private InputList<string>? _includeImportRanges;
 
         /// <summary>
-        /// IP ranges allowed to be included during import from hub (does not control transit connectivity).
-        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// Hub routes fully encompassed by include import ranges are included during import from hub.
+        /// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
         /// </summary>
         public InputList<string> IncludeImportRanges
         {

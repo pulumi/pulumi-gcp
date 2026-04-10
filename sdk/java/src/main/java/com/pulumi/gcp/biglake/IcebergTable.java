@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name("my-bucket-_15222")
+ *             .name("my-bucket")
  *             .location("us-central1")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
@@ -67,17 +67,17 @@ import javax.annotation.Nullable;
  * 
  *         var namespace = new IcebergNamespace("namespace", IcebergNamespaceArgs.builder()
  *             .catalog(catalog.name())
- *             .namespaceId("my_namespace__81126")
+ *             .namespaceId("my_namespace")
  *             .build());
  * 
  *         var myIcebergTable = new IcebergTable("myIcebergTable", IcebergTableArgs.builder()
  *             .catalog(catalog.name())
  *             .namespace(namespace.namespaceId())
- *             .name("my_table__88717")
+ *             .name("my_table")
  *             .location(Output.tuple(bucket.name(), namespace.namespaceId()).applyValue(values -> {
  *                 var name = values.t1;
  *                 var namespaceId = values.t2;
- *                 return String.format("gs://%s/%s/my_table__85794", name,namespaceId);
+ *                 return String.format("gs://%s/%s/my_table", name,namespaceId);
  *             }))
  *             .schema(IcebergTableSchemaArgs.builder()
  *                 .type("struct")
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name("my-bucket-_21197")
+ *             .name("my-bucket")
  *             .location("us-central1")
  *             .forceDestroy(true)
  *             .uniformBucketLevelAccess(true)
@@ -155,13 +155,13 @@ import javax.annotation.Nullable;
  * 
  *         var namespace = new IcebergNamespace("namespace", IcebergNamespaceArgs.builder()
  *             .catalog(catalog.name())
- *             .namespaceId("my_namespace__52865")
+ *             .namespaceId("my_namespace")
  *             .build());
  * 
  *         var myIcebergTable = new IcebergTable("myIcebergTable", IcebergTableArgs.builder()
  *             .catalog(catalog.name())
  *             .namespace(namespace.namespaceId())
- *             .name("my_table__85840")
+ *             .name("my_table")
  *             .schema(IcebergTableSchemaArgs.builder()
  *                 .type("struct")
  *                 .fields(IcebergTableSchemaFieldArgs.builder()

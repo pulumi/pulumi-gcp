@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteActionCachePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteActionCorsPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration;
@@ -19,6 +20,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class URLMapPathMatcherPathRuleRouteAction {
+    /**
+     * @return (Optional, Beta)
+     * Specifies the cache policy configuration for matched traffic. Available
+     * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+     * property must be specified. This policy cannot be specified if any target
+     * backend has Identity-Aware Proxy enabled.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapPathMatcherPathRuleRouteActionCachePolicy cachePolicy;
     /**
      * @return The specification for allowing client side cross-origin requests. Please see W3C
      * Recommendation for Cross Origin Resource Sharing
@@ -94,6 +105,18 @@ public final class URLMapPathMatcherPathRuleRouteAction {
     private @Nullable List<URLMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices;
 
     private URLMapPathMatcherPathRuleRouteAction() {}
+    /**
+     * @return (Optional, Beta)
+     * Specifies the cache policy configuration for matched traffic. Available
+     * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+     * property must be specified. This policy cannot be specified if any target
+     * backend has Identity-Aware Proxy enabled.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapPathMatcherPathRuleRouteActionCachePolicy> cachePolicy() {
+        return Optional.ofNullable(this.cachePolicy);
+    }
     /**
      * @return The specification for allowing client side cross-origin requests. Please see W3C
      * Recommendation for Cross Origin Resource Sharing
@@ -193,6 +216,7 @@ public final class URLMapPathMatcherPathRuleRouteAction {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable URLMapPathMatcherPathRuleRouteActionCachePolicy cachePolicy;
         private @Nullable URLMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy;
         private @Nullable URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
         private @Nullable URLMapPathMatcherPathRuleRouteActionMaxStreamDuration maxStreamDuration;
@@ -204,6 +228,7 @@ public final class URLMapPathMatcherPathRuleRouteAction {
         public Builder() {}
         public Builder(URLMapPathMatcherPathRuleRouteAction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cachePolicy = defaults.cachePolicy;
     	      this.corsPolicy = defaults.corsPolicy;
     	      this.faultInjectionPolicy = defaults.faultInjectionPolicy;
     	      this.maxStreamDuration = defaults.maxStreamDuration;
@@ -214,6 +239,12 @@ public final class URLMapPathMatcherPathRuleRouteAction {
     	      this.weightedBackendServices = defaults.weightedBackendServices;
         }
 
+        @CustomType.Setter
+        public Builder cachePolicy(@Nullable URLMapPathMatcherPathRuleRouteActionCachePolicy cachePolicy) {
+
+            this.cachePolicy = cachePolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder corsPolicy(@Nullable URLMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy) {
 
@@ -267,6 +298,7 @@ public final class URLMapPathMatcherPathRuleRouteAction {
         }
         public URLMapPathMatcherPathRuleRouteAction build() {
             final var _resultValue = new URLMapPathMatcherPathRuleRouteAction();
+            _resultValue.cachePolicy = cachePolicy;
             _resultValue.corsPolicy = corsPolicy;
             _resultValue.faultInjectionPolicy = faultInjectionPolicy;
             _resultValue.maxStreamDuration = maxStreamDuration;

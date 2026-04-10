@@ -19,11 +19,14 @@ import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
 import com.pulumi.gcp.dns.inputs.GetManagedZonesPlainArgs;
 import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
 import com.pulumi.gcp.dns.inputs.GetRecordSetPlainArgs;
+import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+import com.pulumi.gcp.dns.inputs.GetRecordSetsPlainArgs;
 import com.pulumi.gcp.dns.outputs.GetKeysResult;
 import com.pulumi.gcp.dns.outputs.GetManagedZoneIamPolicyResult;
 import com.pulumi.gcp.dns.outputs.GetManagedZoneResult;
 import com.pulumi.gcp.dns.outputs.GetManagedZonesResult;
 import com.pulumi.gcp.dns.outputs.GetRecordSetResult;
+import com.pulumi.gcp.dns.outputs.GetRecordSetsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DnsFunctions {
@@ -1350,5 +1353,270 @@ public final class DnsFunctions {
      */
     public static CompletableFuture<GetRecordSetResult> getRecordSetPlain(GetRecordSetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dns/getRecordSet:getRecordSet", TypeShape.of(GetRecordSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
+     * 
+     * To get more information about Cloud DNS Record Sets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets/list)
+     * * [How-to Guides](https://cloud.google.com/dns/docs/records)
+     * 
+     * &gt; **Note:** Filtering by `type` when `name` is not set is performed client-side.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("my-zone-name")
+     *             .build());
+     * 
+     *         final var example = DnsFunctions.getRecordSets(GetRecordSetsArgs.builder()
+     *             .managedZone(envDnsZone.name())
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRecordSetsResult> getRecordSets(GetRecordSetsArgs args) {
+        return getRecordSets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
+     * 
+     * To get more information about Cloud DNS Record Sets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets/list)
+     * * [How-to Guides](https://cloud.google.com/dns/docs/records)
+     * 
+     * &gt; **Note:** Filtering by `type` when `name` is not set is performed client-side.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("my-zone-name")
+     *             .build());
+     * 
+     *         final var example = DnsFunctions.getRecordSets(GetRecordSetsArgs.builder()
+     *             .managedZone(envDnsZone.name())
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRecordSetsResult> getRecordSetsPlain(GetRecordSetsPlainArgs args) {
+        return getRecordSetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
+     * 
+     * To get more information about Cloud DNS Record Sets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets/list)
+     * * [How-to Guides](https://cloud.google.com/dns/docs/records)
+     * 
+     * &gt; **Note:** Filtering by `type` when `name` is not set is performed client-side.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("my-zone-name")
+     *             .build());
+     * 
+     *         final var example = DnsFunctions.getRecordSets(GetRecordSetsArgs.builder()
+     *             .managedZone(envDnsZone.name())
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRecordSetsResult> getRecordSets(GetRecordSetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dns/getRecordSets:getRecordSets", TypeShape.of(GetRecordSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
+     * 
+     * To get more information about Cloud DNS Record Sets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets/list)
+     * * [How-to Guides](https://cloud.google.com/dns/docs/records)
+     * 
+     * &gt; **Note:** Filtering by `type` when `name` is not set is performed client-side.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("my-zone-name")
+     *             .build());
+     * 
+     *         final var example = DnsFunctions.getRecordSets(GetRecordSetsArgs.builder()
+     *             .managedZone(envDnsZone.name())
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRecordSetsResult> getRecordSets(GetRecordSetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dns/getRecordSets:getRecordSets", TypeShape.of(GetRecordSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
+     * 
+     * To get more information about Cloud DNS Record Sets, see:
+     * 
+     * * [API documentation](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets/list)
+     * * [How-to Guides](https://cloud.google.com/dns/docs/records)
+     * 
+     * &gt; **Note:** Filtering by `type` when `name` is not set is performed client-side.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("my-zone-name")
+     *             .build());
+     * 
+     *         final var example = DnsFunctions.getRecordSets(GetRecordSetsArgs.builder()
+     *             .managedZone(envDnsZone.name())
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRecordSetsResult> getRecordSetsPlain(GetRecordSetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dns/getRecordSets:getRecordSets", TypeShape.of(GetRecordSetsResult.class), args, Utilities.withVersion(options));
     }
 }

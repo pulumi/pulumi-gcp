@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcherPathRuleRouteAction
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the cache policy configuration for matched traffic. Available
+        /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+        /// property must be specified. This policy cannot be specified if any target
+        /// backend has Identity-Aware Proxy enabled.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherPathRuleRouteActionCachePolicy? CachePolicy;
+        /// <summary>
         /// The specification for allowing client side cross-origin requests. Please see W3C
         /// Recommendation for Cross Origin Resource Sharing
         /// Structure is documented below.
@@ -81,6 +90,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private URLMapPathMatcherPathRuleRouteAction(
+            Outputs.URLMapPathMatcherPathRuleRouteActionCachePolicy? cachePolicy,
+
             Outputs.URLMapPathMatcherPathRuleRouteActionCorsPolicy? corsPolicy,
 
             Outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy? faultInjectionPolicy,
@@ -97,6 +108,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.URLMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices)
         {
+            CachePolicy = cachePolicy;
             CorsPolicy = corsPolicy;
             FaultInjectionPolicy = faultInjectionPolicy;
             MaxStreamDuration = maxStreamDuration;

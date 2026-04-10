@@ -5,6 +5,7 @@ package com.pulumi.gcp.lustre.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.lustre.inputs.InstanceMaintenancePolicyMaintenanceExclusionWindowArgs;
 import com.pulumi.gcp.lustre.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs;
 import java.util.Objects;
@@ -34,20 +35,22 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The weekly maintenance windows for the instance. Currently limited to 1 window.
+     * The weekly maintenance windows for the instance. Currently limited to 1
+     * window.
      * Structure is documented below.
      * 
      */
-    @Import(name="weeklyMaintenanceWindows")
-    private @Nullable Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs> weeklyMaintenanceWindows;
+    @Import(name="weeklyMaintenanceWindows", required=true)
+    private Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs> weeklyMaintenanceWindows;
 
     /**
-     * @return The weekly maintenance windows for the instance. Currently limited to 1 window.
+     * @return The weekly maintenance windows for the instance. Currently limited to 1
+     * window.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs>> weeklyMaintenanceWindows() {
-        return Optional.ofNullable(this.weeklyMaintenanceWindows);
+    public Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs> weeklyMaintenanceWindows() {
+        return this.weeklyMaintenanceWindows;
     }
 
     private InstanceMaintenancePolicyArgs() {}
@@ -99,19 +102,21 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param weeklyMaintenanceWindows The weekly maintenance windows for the instance. Currently limited to 1 window.
+         * @param weeklyMaintenanceWindows The weekly maintenance windows for the instance. Currently limited to 1
+         * window.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder weeklyMaintenanceWindows(@Nullable Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs> weeklyMaintenanceWindows) {
+        public Builder weeklyMaintenanceWindows(Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs> weeklyMaintenanceWindows) {
             $.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
             return this;
         }
 
         /**
-         * @param weeklyMaintenanceWindows The weekly maintenance windows for the instance. Currently limited to 1 window.
+         * @param weeklyMaintenanceWindows The weekly maintenance windows for the instance. Currently limited to 1
+         * window.
          * Structure is documented below.
          * 
          * @return builder
@@ -122,6 +127,9 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         public InstanceMaintenancePolicyArgs build() {
+            if ($.weeklyMaintenanceWindows == null) {
+                throw new MissingRequiredPropertyException("InstanceMaintenancePolicyArgs", "weeklyMaintenanceWindows");
+            }
             return $;
         }
     }

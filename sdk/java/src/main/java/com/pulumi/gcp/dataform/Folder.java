@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderBasic = new Folder("dataformFolderBasic", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Basic Folder-_16511")
+ *             .displayName("Basic Folder-_39249")
  *             .build());
  * 
  *     }

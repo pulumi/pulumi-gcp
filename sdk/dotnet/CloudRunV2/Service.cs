@@ -919,7 +919,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var sourcebucket = new Gcp.Storage.Bucket("sourcebucket", new()
     ///     {
-    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-tf-test-gcf-source_89605",
+    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-tf-test-gcf-source_91042",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -960,6 +960,57 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             Object = sourceTar.Name,
     ///                             Generation = sourceTar.Generation,
     ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Service Emptydir Disk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         LaunchStage = "ALPHA",
+    ///         DeletionProtection = true,
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     VolumeMounts = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+    ///                         {
+    ///                             Name = "empty-dir-volume",
+    ///                             MountPath = "/mnt",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Volumes = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+    ///                 {
+    ///                     Name = "empty-dir-volume",
+    ///                     EmptyDir = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeEmptyDirArgs
+    ///                     {
+    ///                         Medium = "DISK",
+    ///                         SizeLimit = "10Gi",
     ///                     },
     ///                 },
     ///             },

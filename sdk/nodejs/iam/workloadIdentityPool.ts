@@ -98,6 +98,9 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     },
+ *     attestationRules: [{
+ *         googleCloudResource: "//run.googleapis.com/projects/1111111111111/type/Service/*",
+ *     }],
  * });
  * ```
  * ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
@@ -201,6 +204,13 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
     }
 
     /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     */
+    declare public readonly attestationRules: pulumi.Output<outputs.iam.WorkloadIdentityPoolAttestationRule[] | undefined>;
+    /**
      * A description of the pool. Cannot exceed 256 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -299,6 +309,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolState | undefined;
+            resourceInputs["attestationRules"] = state?.attestationRules;
             resourceInputs["description"] = state?.description;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["displayName"] = state?.displayName;
@@ -314,6 +325,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             if (args?.workloadIdentityPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
+            resourceInputs["attestationRules"] = args?.attestationRules;
             resourceInputs["description"] = args?.description;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["displayName"] = args?.displayName;
@@ -334,6 +346,13 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkloadIdentityPool resources.
  */
 export interface WorkloadIdentityPoolState {
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     */
+    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolAttestationRule>[]>;
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
@@ -425,6 +444,13 @@ export interface WorkloadIdentityPoolState {
  * The set of arguments for constructing a WorkloadIdentityPool resource.
  */
 export interface WorkloadIdentityPoolArgs {
+    /**
+     * Defines which workloads can receive an identity within a pool. When an AttestationRule is
+     * defined under a managed identity, matching workloads may receive that identity. A maximum of
+     * 50 AttestationRules can be set.
+     * Structure is documented below.
+     */
+    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolAttestationRule>[]>;
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */

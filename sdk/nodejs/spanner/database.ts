@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const main = new gcp.spanner.Instance("main", {
+ *     name: "my-instance",
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
  *     numNodes: 1,

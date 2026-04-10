@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigWorkerConfigDiskConfig
     {
         /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        /// </summary>
+        public readonly int? BootDiskProvisionedIops;
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        /// </summary>
+        public readonly int? BootDiskProvisionedThroughput;
+        /// <summary>
         /// Size of the primary disk attached to each worker node, specified
         /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
         /// computed value if not set (currently 500GB). Note: If SSDs are not
@@ -37,6 +45,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private ClusterClusterConfigWorkerConfigDiskConfig(
+            int? bootDiskProvisionedIops,
+
+            int? bootDiskProvisionedThroughput,
+
             int? bootDiskSizeGb,
 
             string? bootDiskType,
@@ -45,6 +57,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             int? numLocalSsds)
         {
+            BootDiskProvisionedIops = bootDiskProvisionedIops;
+            BootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             BootDiskSizeGb = bootDiskSizeGb;
             BootDiskType = bootDiskType;
             LocalSsdInterface = localSsdInterface;

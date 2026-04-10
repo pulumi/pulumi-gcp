@@ -25,25 +25,25 @@ import * as utilities from "../utilities";
  *
  * const entry_group_basic = new gcp.dataplex.EntryGroup("entry-group-basic", {
  *     location: "us-central1",
- *     entryGroupId: "tf-test-entry-group_33395",
+ *     entryGroupId: "tf-test-entry-group_13293",
  *     project: "1111111111111",
  * });
  * const entry_type_basic = new gcp.dataplex.EntryType("entry-type-basic", {
- *     entryTypeId: "tf-test-entry-type_69391",
+ *     entryTypeId: "tf-test-entry-type_33395",
  *     location: "us-central1",
  *     project: "1111111111111",
  * });
  * const source = new gcp.dataplex.Entry("source", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryId: "tf-test-source-entry_76044",
+ *     entryId: "tf-test-source-entry_40289",
  *     entryType: entry_type_basic.name,
  *     project: "1111111111111",
  * });
  * const target = new gcp.dataplex.Entry("target", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryId: "tf-test-target-entry_8270",
+ *     entryId: "tf-test-target-entry_76044",
  *     entryType: entry_type_basic.name,
  *     project: "1111111111111",
  * });
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     project: "1111111111111",
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryLinkId: "tf-test-entry-link_41150",
+ *     entryLinkId: "tf-test-entry-link_69391",
  *     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/related",
  *     entryReferences: [
  *         {
@@ -72,30 +72,30 @@ import * as utilities from "../utilities";
  *
  * const entry_group_full = new gcp.dataplex.EntryGroup("entry-group-full", {
  *     location: "us-central1",
- *     entryGroupId: "tf-test-entry-group_89313",
+ *     entryGroupId: "tf-test-entry-group_8270",
  *     project: "1111111111111",
  * });
  * const entry_type_full = new gcp.dataplex.EntryType("entry-type-full", {
- *     entryTypeId: "tf-test-entry-type_9394",
+ *     entryTypeId: "tf-test-entry-type_89313",
  *     location: "us-central1",
  *     project: "1111111111111",
  * });
  * const source = new gcp.dataplex.Entry("source", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_full.entryGroupId,
- *     entryId: "tf-test-source-entry_60646",
+ *     entryId: "tf-test-source-entry_41150",
  *     entryType: entry_type_full.name,
  *     project: "1111111111111",
  * });
  * const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
- *     glossaryId: "tf-test-glossary_11380",
+ *     glossaryId: "tf-test-glossary_60646",
  *     location: "us-central1",
  * });
  * const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
  *     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
  *     glossaryId: termTestIdFull.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-full_35305",
+ *     termId: "tf-test-term-full_9394",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  *     project: "1111111111111",
  *     location: "us-central1",
  *     entryGroupId: entry_group_full.entryGroupId,
- *     entryLinkId: "tf-test-entry-link_62793",
+ *     entryLinkId: "tf-test-entry-link_11380",
  *     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/definition",
  *     entryReferences: [
  *         {
@@ -127,7 +127,6 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait_for_sync],
  * });
  * ```
- *
  * ## Import
  *
  * EntryLink can be imported using any of these accepted formats:
@@ -172,6 +171,11 @@ export class EntryLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === EntryLink.__pulumiType;
     }
 
+    /**
+     * The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     */
+    declare public readonly aspects: pulumi.Output<outputs.dataplex.EntryLinkAspect[] | undefined>;
     /**
      * The time when the Entry Link was created.
      */
@@ -226,6 +230,7 @@ export class EntryLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntryLinkState | undefined;
+            resourceInputs["aspects"] = state?.aspects;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["entryGroupId"] = state?.entryGroupId;
             resourceInputs["entryLinkId"] = state?.entryLinkId;
@@ -252,6 +257,7 @@ export class EntryLink extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["aspects"] = args?.aspects;
             resourceInputs["entryGroupId"] = args?.entryGroupId;
             resourceInputs["entryLinkId"] = args?.entryLinkId;
             resourceInputs["entryLinkType"] = args?.entryLinkType;
@@ -271,6 +277,11 @@ export class EntryLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EntryLink resources.
  */
 export interface EntryLinkState {
+    /**
+     * The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     */
+    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[]>;
     /**
      * The time when the Entry Link was created.
      */
@@ -317,6 +328,11 @@ export interface EntryLinkState {
  * The set of arguments for constructing a EntryLink resource.
  */
 export interface EntryLinkArgs {
+    /**
+     * The Aspects attached to the Entry Link.
+     * Structure is documented below.
+     */
+    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[]>;
     /**
      * The id of the entry group this entry link is in.
      */

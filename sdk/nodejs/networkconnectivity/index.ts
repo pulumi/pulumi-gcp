@@ -55,6 +55,11 @@ export type Spoke = import("./spoke").Spoke;
 export const Spoke: typeof import("./spoke").Spoke = null as any;
 utilities.lazyLoad(exports, ["Spoke"], () => require("./spoke"));
 
+export { TransportArgs, TransportState } from "./transport";
+export type Transport = import("./transport").Transport;
+export const Transport: typeof import("./transport").Transport = null as any;
+utilities.lazyLoad(exports, ["Transport"], () => require("./transport"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -80,6 +85,8 @@ const _module = {
                 return new ServiceConnectionPolicy(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/spoke:Spoke":
                 return new Spoke(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/transport:Transport":
+                return new Transport(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -95,3 +102,4 @@ pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/policyBasedRou
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/regionalEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/serviceConnectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/spoke", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/transport", _module)

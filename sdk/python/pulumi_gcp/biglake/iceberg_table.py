@@ -328,7 +328,7 @@ class IcebergTable(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="my-bucket-_15222",
+            name="my-bucket",
             location="us-central1",
             force_destroy=True,
             uniform_bucket_level_access=True)
@@ -337,15 +337,15 @@ class IcebergTable(pulumi.CustomResource):
             catalog_type="CATALOG_TYPE_GCS_BUCKET")
         namespace = gcp.biglake.IcebergNamespace("namespace",
             catalog=catalog.name,
-            namespace_id="my_namespace__81126")
+            namespace_id="my_namespace")
         my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
             catalog=catalog.name,
             namespace=namespace.namespace_id,
-            name="my_table__88717",
+            name="my_table",
             location=pulumi.Output.all(
                 name=bucket.name,
                 namespace_id=namespace.namespace_id
-        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['name']}/{resolved_outputs['namespace_id']}/my_table__85794")
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['name']}/{resolved_outputs['namespace_id']}/my_table")
         ,
             schema={
                 "type": "struct",
@@ -381,7 +381,7 @@ class IcebergTable(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="my-bucket-_21197",
+            name="my-bucket",
             location="us-central1",
             force_destroy=True,
             uniform_bucket_level_access=True)
@@ -390,11 +390,11 @@ class IcebergTable(pulumi.CustomResource):
             catalog_type="CATALOG_TYPE_GCS_BUCKET")
         namespace = gcp.biglake.IcebergNamespace("namespace",
             catalog=catalog.name,
-            namespace_id="my_namespace__52865")
+            namespace_id="my_namespace")
         my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
             catalog=catalog.name,
             namespace=namespace.namespace_id,
-            name="my_table__85840",
+            name="my_table",
             schema={
                 "type": "struct",
                 "fields": [{
@@ -458,7 +458,7 @@ class IcebergTable(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="my-bucket-_15222",
+            name="my-bucket",
             location="us-central1",
             force_destroy=True,
             uniform_bucket_level_access=True)
@@ -467,15 +467,15 @@ class IcebergTable(pulumi.CustomResource):
             catalog_type="CATALOG_TYPE_GCS_BUCKET")
         namespace = gcp.biglake.IcebergNamespace("namespace",
             catalog=catalog.name,
-            namespace_id="my_namespace__81126")
+            namespace_id="my_namespace")
         my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
             catalog=catalog.name,
             namespace=namespace.namespace_id,
-            name="my_table__88717",
+            name="my_table",
             location=pulumi.Output.all(
                 name=bucket.name,
                 namespace_id=namespace.namespace_id
-        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['name']}/{resolved_outputs['namespace_id']}/my_table__85794")
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['name']}/{resolved_outputs['namespace_id']}/my_table")
         ,
             schema={
                 "type": "struct",
@@ -511,7 +511,7 @@ class IcebergTable(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="my-bucket-_21197",
+            name="my-bucket",
             location="us-central1",
             force_destroy=True,
             uniform_bucket_level_access=True)
@@ -520,11 +520,11 @@ class IcebergTable(pulumi.CustomResource):
             catalog_type="CATALOG_TYPE_GCS_BUCKET")
         namespace = gcp.biglake.IcebergNamespace("namespace",
             catalog=catalog.name,
-            namespace_id="my_namespace__52865")
+            namespace_id="my_namespace")
         my_iceberg_table = gcp.biglake.IcebergTable("my_iceberg_table",
             catalog=catalog.name,
             namespace=namespace.namespace_id,
-            name="my_table__85840",
+            name="my_table",
             schema={
                 "type": "struct",
                 "fields": [{

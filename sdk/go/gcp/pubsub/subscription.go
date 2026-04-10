@@ -494,7 +494,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_24243"),
+//					FilenameSuffix:         pulumi.String("-_21912"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -560,7 +560,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_7495"),
+//					FilenameSuffix:         pulumi.String("-_46731"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -627,7 +627,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_21912"),
+//					FilenameSuffix:         pulumi.String("-_26240"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -705,7 +705,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_46731"),
+//					FilenameSuffix:         pulumi.String("-_35711"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -888,6 +888,83 @@ import (
 // return nil
 // })
 // }
+// ```
+// ### Pubsub Subscription Ai Inference
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			geminiQueryServiceAccount, err := serviceaccount.NewAccount(ctx, "gemini_query_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("example-sa"),
+//				DisplayName: pulumi.String("Gemini Query Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			geminiInferenceGet, err := projects.NewIAMMember(ctx, "gemini_inference_get", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/aiplatform.user"),
+//				Member: geminiQueryServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				geminiInferenceGet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.ID(),
+//				MessageTransforms: pubsub.SubscriptionMessageTransformArray{
+//					&pubsub.SubscriptionMessageTransformArgs{
+//						AiInference: &pubsub.SubscriptionMessageTransformAiInferenceArgs{
+//							Endpoint: pulumi.String("projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"),
+//							UnstructuredInference: &pubsub.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs{
+//								Parameters: pulumi.StringMap{
+//									"max_tokens": pulumi.String("25000"),
+//								},
+//							},
+//							ServiceAccountEmail: geminiQueryServiceAccount.Email,
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

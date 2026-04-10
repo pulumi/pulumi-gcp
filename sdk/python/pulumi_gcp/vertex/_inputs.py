@@ -227,6 +227,18 @@ __all__ = [
     'AiRagEngineConfigRagManagedDbConfigScaledArgsDict',
     'AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs',
     'AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict',
+    'AiReasoningEngineContextSpecArgs',
+    'AiReasoningEngineContextSpecArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict',
     'AiReasoningEngineEncryptionSpecArgs',
     'AiReasoningEngineEncryptionSpecArgsDict',
     'AiReasoningEngineSpecArgs',
@@ -8327,6 +8339,333 @@ class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict(TypedDict):
 class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs:
     def __init__(__self__):
         pass
+
+
+class AiReasoningEngineContextSpecArgsDict(TypedDict):
+    memory_bank_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgsDict']]
+    """
+    Specification for a Memory Bank, which manages memories for the Agent Engine.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecArgs:
+    def __init__(__self__, *,
+                 memory_bank_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs'] memory_bank_config: Specification for a Memory Bank, which manages memories for the Agent Engine.
+               Structure is documented below.
+        """
+        if memory_bank_config is not None:
+            pulumi.set(__self__, "memory_bank_config", memory_bank_config)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryBankConfig")
+    def memory_bank_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs']]:
+        """
+        Specification for a Memory Bank, which manages memories for the Agent Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_bank_config")
+
+    @memory_bank_config.setter
+    def memory_bank_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs']]):
+        pulumi.set(self, "memory_bank_config", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
+    disable_memory_revisions: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, no memory revisions will be created for any requests to the Memory Bank.
+    """
+    generation_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict']]
+    """
+    Configuration for how to generate memories for the Memory Bank.
+    Structure is documented below.
+    """
+    similarity_search_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict']]
+    """
+    Configuration for how to perform similarity search on memories.
+    Structure is documented below.
+    """
+    ttl_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict']]
+    """
+    Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigArgs:
+    def __init__(__self__, *,
+                 disable_memory_revisions: Optional[pulumi.Input[_builtins.bool]] = None,
+                 generation_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']] = None,
+                 similarity_search_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']] = None,
+                 ttl_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disable_memory_revisions: If true, no memory revisions will be created for any requests to the Memory Bank.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs'] generation_config: Configuration for how to generate memories for the Memory Bank.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs'] similarity_search_config: Configuration for how to perform similarity search on memories.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs'] ttl_config: Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+               Structure is documented below.
+        """
+        if disable_memory_revisions is not None:
+            pulumi.set(__self__, "disable_memory_revisions", disable_memory_revisions)
+        if generation_config is not None:
+            pulumi.set(__self__, "generation_config", generation_config)
+        if similarity_search_config is not None:
+            pulumi.set(__self__, "similarity_search_config", similarity_search_config)
+        if ttl_config is not None:
+            pulumi.set(__self__, "ttl_config", ttl_config)
+
+    @_builtins.property
+    @pulumi.getter(name="disableMemoryRevisions")
+    def disable_memory_revisions(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, no memory revisions will be created for any requests to the Memory Bank.
+        """
+        return pulumi.get(self, "disable_memory_revisions")
+
+    @disable_memory_revisions.setter
+    def disable_memory_revisions(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_memory_revisions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="generationConfig")
+    def generation_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]:
+        """
+        Configuration for how to generate memories for the Memory Bank.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_config")
+
+    @generation_config.setter
+    def generation_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]):
+        pulumi.set(self, "generation_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="similaritySearchConfig")
+    def similarity_search_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]:
+        """
+        Configuration for how to perform similarity search on memories.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "similarity_search_config")
+
+    @similarity_search_config.setter
+    def similarity_search_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]):
+        pulumi.set(self, "similarity_search_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ttlConfig")
+    def ttl_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]:
+        """
+        Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ttl_config")
+
+    @ttl_config.setter
+    def ttl_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]):
+        pulumi.set(self, "ttl_config", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict(TypedDict):
+    model: pulumi.Input[_builtins.str]
+    """
+    The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs:
+    def __init__(__self__, *,
+                 model: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] model: The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[_builtins.str]:
+        """
+        The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "model", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict(TypedDict):
+    embedding_model: pulumi.Input[_builtins.str]
+    """
+    The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs:
+    def __init__(__self__, *,
+                 embedding_model: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] embedding_model: The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        pulumi.set(__self__, "embedding_model", embedding_model)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModel")
+    def embedding_model(self) -> pulumi.Input[_builtins.str]:
+        """
+        The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        """
+        return pulumi.get(self, "embedding_model")
+
+    @embedding_model.setter
+    def embedding_model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "embedding_model", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict(TypedDict):
+    default_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default TTL duration of the memories in the Memory Bank.
+    """
+    granular_ttl_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict']]
+    """
+    The granular TTL configuration of the memories in the Memory Bank.
+    Structure is documented below.
+    """
+    memory_revision_default_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default TTL duration of the memory revisions in the Memory Bank.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs:
+    def __init__(__self__, *,
+                 default_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 granular_ttl_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']] = None,
+                 memory_revision_default_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] default_ttl: The default TTL duration of the memories in the Memory Bank.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs'] granular_ttl_config: The granular TTL configuration of the memories in the Memory Bank.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] memory_revision_default_ttl: The default TTL duration of the memory revisions in the Memory Bank.
+        """
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if granular_ttl_config is not None:
+            pulumi.set(__self__, "granular_ttl_config", granular_ttl_config)
+        if memory_revision_default_ttl is not None:
+            pulumi.set(__self__, "memory_revision_default_ttl", memory_revision_default_ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default TTL duration of the memories in the Memory Bank.
+        """
+        return pulumi.get(self, "default_ttl")
+
+    @default_ttl.setter
+    def default_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="granularTtlConfig")
+    def granular_ttl_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]:
+        """
+        The granular TTL configuration of the memories in the Memory Bank.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "granular_ttl_config")
+
+    @granular_ttl_config.setter
+    def granular_ttl_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]):
+        pulumi.set(self, "granular_ttl_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryRevisionDefaultTtl")
+    def memory_revision_default_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default TTL duration of the memory revisions in the Memory Bank.
+        """
+        return pulumi.get(self, "memory_revision_default_ttl")
+
+    @memory_revision_default_ttl.setter
+    def memory_revision_default_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory_revision_default_ttl", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict(TypedDict):
+    create_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The TTL duration for memories uploaded via CreateMemory.
+    """
+    generate_created_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The TTL duration for memories newly generated via GenerateMemories.
+    """
+    generate_updated_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The TTL duration for memories updated via GenerateMemories.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs:
+    def __init__(__self__, *,
+                 create_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 generate_created_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 generate_updated_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create_ttl: The TTL duration for memories uploaded via CreateMemory.
+        :param pulumi.Input[_builtins.str] generate_created_ttl: The TTL duration for memories newly generated via GenerateMemories.
+        :param pulumi.Input[_builtins.str] generate_updated_ttl: The TTL duration for memories updated via GenerateMemories.
+        """
+        if create_ttl is not None:
+            pulumi.set(__self__, "create_ttl", create_ttl)
+        if generate_created_ttl is not None:
+            pulumi.set(__self__, "generate_created_ttl", generate_created_ttl)
+        if generate_updated_ttl is not None:
+            pulumi.set(__self__, "generate_updated_ttl", generate_updated_ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="createTtl")
+    def create_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The TTL duration for memories uploaded via CreateMemory.
+        """
+        return pulumi.get(self, "create_ttl")
+
+    @create_ttl.setter
+    def create_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="generateCreatedTtl")
+    def generate_created_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The TTL duration for memories newly generated via GenerateMemories.
+        """
+        return pulumi.get(self, "generate_created_ttl")
+
+    @generate_created_ttl.setter
+    def generate_created_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "generate_created_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="generateUpdatedTtl")
+    def generate_updated_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The TTL duration for memories updated via GenerateMemories.
+        """
+        return pulumi.get(self, "generate_updated_ttl")
+
+    @generate_updated_ttl.setter
+    def generate_updated_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "generate_updated_ttl", value)
 
 
 class AiReasoningEngineEncryptionSpecArgsDict(TypedDict):

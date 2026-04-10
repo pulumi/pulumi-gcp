@@ -204,21 +204,31 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict(Typ
     The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
     Structure is documented below.
     """
+    persistent_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+    Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+    """
 
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
     def __init__(__self__, *,
                  license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']] = None):
+                 machine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']] = None,
+                 persistent_disk_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] license_type: License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
         :param pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs'] machine_preferences: The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] persistent_disk_type: Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+               Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
         """
         if license_type is not None:
             pulumi.set(__self__, "license_type", license_type)
         if machine_preferences is not None:
             pulumi.set(__self__, "machine_preferences", machine_preferences)
+        if persistent_disk_type is not None:
+            pulumi.set(__self__, "persistent_disk_type", persistent_disk_type)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
@@ -244,6 +254,19 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
     @machine_preferences.setter
     def machine_preferences(self, value: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]):
         pulumi.set(self, "machine_preferences", value)
+
+    @_builtins.property
+    @pulumi.getter(name="persistentDiskType")
+    def persistent_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
+        """
+        return pulumi.get(self, "persistent_disk_type")
+
+    @persistent_disk_type.setter
+    def persistent_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "persistent_disk_type", value)
 
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict(TypedDict):

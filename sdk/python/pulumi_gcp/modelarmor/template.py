@@ -361,11 +361,110 @@ class Template(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         template_basic = gcp.modelarmor.Template("template-basic",
-            location="<no value>",
-            template_id="<no value>",
+            location="us-central1",
+            template_id="modelarmor1",
             filter_config={},
             template_metadata={})
         ```
+        ### Modelarmor Template Filter Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_filter_config = gcp.modelarmor.Template("template-filter-config",
+            location="us-central1",
+            template_id="modelarmor2",
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "HATE_SPEECH",
+                        "confidence_level": "HIGH",
+                    }],
+                },
+                "sdp_settings": {
+                    "basic_config": {
+                        "filter_enforcement": "ENABLED",
+                    },
+                },
+                "pi_and_jailbreak_filter_settings": {
+                    "filter_enforcement": "ENABLED",
+                    "confidence_level": "MEDIUM_AND_ABOVE",
+                },
+                "malicious_uri_filter_settings": {
+                    "filter_enforcement": "ENABLED",
+                },
+            },
+            template_metadata={
+                "multi_language_detection": {
+                    "enable_multi_language_detection": False,
+                },
+            })
+        ```
+        ### Modelarmor Template Template Metadata
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_template_metadata = gcp.modelarmor.Template("template-template-metadata",
+            location="us-central1",
+            template_id="modelarmor3",
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "HARASSMENT",
+                        "confidence_level": "MEDIUM_AND_ABOVE",
+                    }],
+                },
+            },
+            template_metadata={
+                "custom_llm_response_safety_error_message": "This is a custom error message for LLM response",
+                "log_sanitize_operations": False,
+                "log_template_operations": True,
+                "multi_language_detection": {
+                    "enable_multi_language_detection": True,
+                },
+                "ignore_partial_invocation_failures": False,
+                "custom_prompt_safety_error_code": 400,
+                "custom_prompt_safety_error_message": "This is a custom error message for prompt",
+                "custom_llm_response_safety_error_code": 401,
+                "enforcement_type": "INSPECT_ONLY",
+            })
+        ```
+        ### Modelarmor Template Label
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_label_advanced_config = gcp.modelarmor.Template("template-label-advanced-config",
+            location="us-central1",
+            template_id="modelarmor4",
+            labels={
+                "test-label": "template-test-label",
+            },
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "DANGEROUS",
+                        "confidence_level": "MEDIUM_AND_ABOVE",
+                    }],
+                },
+                "sdp_settings": {
+                    "advanced_config": {
+                        "inspect_template": "projects/llm-firewall-demo/locations/us-central1/inspectTemplates/t3",
+                        "deidentify_template": "projects/llm-firewall-demo/locations/us-central1/deidentifyTemplates/t2",
+                    },
+                },
+            },
+            template_metadata={
+                "multi_language_detection": {
+                    "enable_multi_language_detection": False,
+                },
+            })
+        ```
+
         ## Import
 
         Template can be imported using any of these accepted formats:
@@ -418,11 +517,110 @@ class Template(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         template_basic = gcp.modelarmor.Template("template-basic",
-            location="<no value>",
-            template_id="<no value>",
+            location="us-central1",
+            template_id="modelarmor1",
             filter_config={},
             template_metadata={})
         ```
+        ### Modelarmor Template Filter Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_filter_config = gcp.modelarmor.Template("template-filter-config",
+            location="us-central1",
+            template_id="modelarmor2",
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "HATE_SPEECH",
+                        "confidence_level": "HIGH",
+                    }],
+                },
+                "sdp_settings": {
+                    "basic_config": {
+                        "filter_enforcement": "ENABLED",
+                    },
+                },
+                "pi_and_jailbreak_filter_settings": {
+                    "filter_enforcement": "ENABLED",
+                    "confidence_level": "MEDIUM_AND_ABOVE",
+                },
+                "malicious_uri_filter_settings": {
+                    "filter_enforcement": "ENABLED",
+                },
+            },
+            template_metadata={
+                "multi_language_detection": {
+                    "enable_multi_language_detection": False,
+                },
+            })
+        ```
+        ### Modelarmor Template Template Metadata
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_template_metadata = gcp.modelarmor.Template("template-template-metadata",
+            location="us-central1",
+            template_id="modelarmor3",
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "HARASSMENT",
+                        "confidence_level": "MEDIUM_AND_ABOVE",
+                    }],
+                },
+            },
+            template_metadata={
+                "custom_llm_response_safety_error_message": "This is a custom error message for LLM response",
+                "log_sanitize_operations": False,
+                "log_template_operations": True,
+                "multi_language_detection": {
+                    "enable_multi_language_detection": True,
+                },
+                "ignore_partial_invocation_failures": False,
+                "custom_prompt_safety_error_code": 400,
+                "custom_prompt_safety_error_message": "This is a custom error message for prompt",
+                "custom_llm_response_safety_error_code": 401,
+                "enforcement_type": "INSPECT_ONLY",
+            })
+        ```
+        ### Modelarmor Template Label
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_label_advanced_config = gcp.modelarmor.Template("template-label-advanced-config",
+            location="us-central1",
+            template_id="modelarmor4",
+            labels={
+                "test-label": "template-test-label",
+            },
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "DANGEROUS",
+                        "confidence_level": "MEDIUM_AND_ABOVE",
+                    }],
+                },
+                "sdp_settings": {
+                    "advanced_config": {
+                        "inspect_template": "projects/llm-firewall-demo/locations/us-central1/inspectTemplates/t3",
+                        "deidentify_template": "projects/llm-firewall-demo/locations/us-central1/deidentifyTemplates/t2",
+                    },
+                },
+            },
+            template_metadata={
+                "multi_language_detection": {
+                    "enable_multi_language_detection": False,
+                },
+            })
+        ```
+
         ## Import
 
         Template can be imported using any of these accepted formats:

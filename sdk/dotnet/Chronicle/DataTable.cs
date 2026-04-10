@@ -63,7 +63,6 @@ namespace Pulumi.Gcp.Chronicle
     ///         ["dataTableUuid"] = example.DataTableUuid,
     ///         ["dataTableDescription"] = example.Description,
     ///         ["dataTableCreateTime"] = example.CreateTime,
-    ///         ["dataTableTtl"] = example.RowTimeToLive,
     ///     };
     /// });
     /// ```
@@ -133,13 +132,6 @@ namespace Pulumi.Gcp.Chronicle
     ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["dataTableName"] = exampleDt.Name,
-    ///         ["dataTableId"] = exampleDt.Id,
-    ///         ["dataTableCreateTime"] = exampleDt.CreateTime,
-    ///         ["dataTableColumnInfo"] = exampleDt.ColumnInfos,
-    ///     };
     /// });
     /// ```
     /// 

@@ -594,7 +594,6 @@ class DataTable(pulumi.CustomResource):
         pulumi.export("dataTableUuid", example.data_table_uuid)
         pulumi.export("dataTableDescription", example.description)
         pulumi.export("dataTableCreateTime", example.create_time)
-        pulumi.export("dataTableTtl", example.row_time_to_live)
         ```
         ### Chronicle Data Table With Optional Fields
 
@@ -636,10 +635,6 @@ class DataTable(pulumi.CustomResource):
                 "data_access_scopes": [test_scope_allow_everyone.name],
             },
             opts = pulumi.ResourceOptions(depends_on=[test_scope_allow_everyone]))
-        pulumi.export("dataTableName", example_dt.name)
-        pulumi.export("dataTableId", example_dt.id)
-        pulumi.export("dataTableCreateTime", example_dt.create_time)
-        pulumi.export("dataTableColumnInfo", example_dt.column_infos)
         ```
 
         ## Import
@@ -729,7 +724,6 @@ class DataTable(pulumi.CustomResource):
         pulumi.export("dataTableUuid", example.data_table_uuid)
         pulumi.export("dataTableDescription", example.description)
         pulumi.export("dataTableCreateTime", example.create_time)
-        pulumi.export("dataTableTtl", example.row_time_to_live)
         ```
         ### Chronicle Data Table With Optional Fields
 
@@ -771,10 +765,6 @@ class DataTable(pulumi.CustomResource):
                 "data_access_scopes": [test_scope_allow_everyone.name],
             },
             opts = pulumi.ResourceOptions(depends_on=[test_scope_allow_everyone]))
-        pulumi.export("dataTableName", example_dt.name)
-        pulumi.export("dataTableId", example_dt.id)
-        pulumi.export("dataTableCreateTime", example_dt.create_time)
-        pulumi.export("dataTableColumnInfo", example_dt.column_infos)
         ```
 
         ## Import

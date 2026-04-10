@@ -69,6 +69,7 @@ public final class GetClusterResult {
     private Boolean allowNetAdmin;
     private List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
     private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+    private List<String> autopilotPrivilegedAdmissions;
     private List<GetClusterBinaryAuthorization> binaryAuthorizations;
     private List<GetClusterClusterAutoscaling> clusterAutoscalings;
     private String clusterIpv4Cidr;
@@ -174,6 +175,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs() {
         return this.authenticatorGroupsConfigs;
+    }
+    public List<String> autopilotPrivilegedAdmissions() {
+        return this.autopilotPrivilegedAdmissions;
     }
     public List<GetClusterBinaryAuthorization> binaryAuthorizations() {
         return this.binaryAuthorizations;
@@ -457,6 +461,7 @@ public final class GetClusterResult {
         private Boolean allowNetAdmin;
         private List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
         private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+        private List<String> autopilotPrivilegedAdmissions;
         private List<GetClusterBinaryAuthorization> binaryAuthorizations;
         private List<GetClusterClusterAutoscaling> clusterAutoscalings;
         private String clusterIpv4Cidr;
@@ -552,6 +557,7 @@ public final class GetClusterResult {
     	      this.allowNetAdmin = defaults.allowNetAdmin;
     	      this.anonymousAuthenticationConfigs = defaults.anonymousAuthenticationConfigs;
     	      this.authenticatorGroupsConfigs = defaults.authenticatorGroupsConfigs;
+    	      this.autopilotPrivilegedAdmissions = defaults.autopilotPrivilegedAdmissions;
     	      this.binaryAuthorizations = defaults.binaryAuthorizations;
     	      this.clusterAutoscalings = defaults.clusterAutoscalings;
     	      this.clusterIpv4Cidr = defaults.clusterIpv4Cidr;
@@ -682,6 +688,17 @@ public final class GetClusterResult {
         }
         public Builder authenticatorGroupsConfigs(GetClusterAuthenticatorGroupsConfig... authenticatorGroupsConfigs) {
             return authenticatorGroupsConfigs(List.of(authenticatorGroupsConfigs));
+        }
+        @CustomType.Setter
+        public Builder autopilotPrivilegedAdmissions(List<String> autopilotPrivilegedAdmissions) {
+            if (autopilotPrivilegedAdmissions == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "autopilotPrivilegedAdmissions");
+            }
+            this.autopilotPrivilegedAdmissions = autopilotPrivilegedAdmissions;
+            return this;
+        }
+        public Builder autopilotPrivilegedAdmissions(String... autopilotPrivilegedAdmissions) {
+            return autopilotPrivilegedAdmissions(List.of(autopilotPrivilegedAdmissions));
         }
         @CustomType.Setter
         public Builder binaryAuthorizations(List<GetClusterBinaryAuthorization> binaryAuthorizations) {
@@ -1530,6 +1547,7 @@ public final class GetClusterResult {
             _resultValue.allowNetAdmin = allowNetAdmin;
             _resultValue.anonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
             _resultValue.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
+            _resultValue.autopilotPrivilegedAdmissions = autopilotPrivilegedAdmissions;
             _resultValue.binaryAuthorizations = binaryAuthorizations;
             _resultValue.clusterAutoscalings = clusterAutoscalings;
             _resultValue.clusterIpv4Cidr = clusterIpv4Cidr;

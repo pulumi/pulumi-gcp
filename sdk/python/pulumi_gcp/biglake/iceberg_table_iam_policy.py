@@ -252,6 +252,120 @@ class IcebergTableIamPolicy(pulumi.CustomResource):
 
         ## biglake.IcebergTableIamPolicy
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/biglake.editor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.biglake.IcebergTableIamPolicy("policy",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## biglake.IcebergTableIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.biglake.IcebergTableIamBinding("binding",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## biglake.IcebergTableIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.biglake.IcebergTableIamMember("member",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Biglake IcebergTable
+
+        Three different resources help you manage your IAM policy for Biglake IcebergTable. Each of these resources serves a different use case:
+
+        * `biglake.IcebergTableIamPolicy`: Authoritative. Sets the IAM policy for the icebergtable and replaces any existing policy already attached.
+        * `biglake.IcebergTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the icebergtable are preserved.
+        * `biglake.IcebergTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the icebergtable are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `biglake.IcebergTableIamPolicy`: Retrieves the IAM policy for the icebergtable
+
+        > **Note:** `biglake.IcebergTableIamPolicy` **cannot** be used in conjunction with `biglake.IcebergTableIamBinding` and `biglake.IcebergTableIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `biglake.IcebergTableIamBinding` resources **can be** used in conjunction with `biglake.IcebergTableIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## biglake.IcebergTableIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/biglake.editor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.biglake.IcebergTableIamPolicy("policy",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## biglake.IcebergTableIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.biglake.IcebergTableIamBinding("binding",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## biglake.IcebergTableIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.biglake.IcebergTableIamMember("member",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -318,6 +432,120 @@ class IcebergTableIamPolicy(pulumi.CustomResource):
         > **Note:** `biglake.IcebergTableIamBinding` resources **can be** used in conjunction with `biglake.IcebergTableIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## biglake.IcebergTableIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/biglake.editor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.biglake.IcebergTableIamPolicy("policy",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## biglake.IcebergTableIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.biglake.IcebergTableIamBinding("binding",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## biglake.IcebergTableIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.biglake.IcebergTableIamMember("member",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Biglake IcebergTable
+
+        Three different resources help you manage your IAM policy for Biglake IcebergTable. Each of these resources serves a different use case:
+
+        * `biglake.IcebergTableIamPolicy`: Authoritative. Sets the IAM policy for the icebergtable and replaces any existing policy already attached.
+        * `biglake.IcebergTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the icebergtable are preserved.
+        * `biglake.IcebergTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the icebergtable are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `biglake.IcebergTableIamPolicy`: Retrieves the IAM policy for the icebergtable
+
+        > **Note:** `biglake.IcebergTableIamPolicy` **cannot** be used in conjunction with `biglake.IcebergTableIamBinding` and `biglake.IcebergTableIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `biglake.IcebergTableIamBinding` resources **can be** used in conjunction with `biglake.IcebergTableIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## biglake.IcebergTableIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/biglake.editor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.biglake.IcebergTableIamPolicy("policy",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## biglake.IcebergTableIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.biglake.IcebergTableIamBinding("binding",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            members=["user:jane@example.com"])
+        ```
+
+        ## biglake.IcebergTableIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.biglake.IcebergTableIamMember("member",
+            project=my_iceberg_table["project"],
+            catalog=my_iceberg_table["catalog"],
+            namespace=my_iceberg_table["namespace"],
+            name=my_iceberg_table["name"],
+            role="roles/biglake.editor",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

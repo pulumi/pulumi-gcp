@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_24243",
+    ///             FilenameSuffix = "-_21912",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_7495",
+    ///             FilenameSuffix = "-_46731",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -513,7 +513,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_21912",
+    ///             FilenameSuffix = "-_26240",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -578,7 +578,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_46731",
+    ///             FilenameSuffix = "-_35711",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -744,6 +744,78 @@ namespace Pulumi.Gcp.PubSub
     ///                 { namespacedName, shortName },
     ///             };
     ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Ai Inference
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var geminiQueryServiceAccount = new Gcp.ServiceAccount.Account("gemini_query_service_account", new()
+    ///     {
+    ///         AccountId = "example-sa",
+    ///         DisplayName = "Gemini Query Service Account",
+    ///     });
+    /// 
+    ///     var geminiInferenceGet = new Gcp.Projects.IAMMember("gemini_inference_get", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/aiplatform.user",
+    ///         Member = geminiQueryServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             geminiInferenceGet,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
+    ///         MessageTransforms = new[]
+    ///         {
+    ///             new Gcp.PubSub.Inputs.SubscriptionMessageTransformArgs
+    ///             {
+    ///                 AiInference = new Gcp.PubSub.Inputs.SubscriptionMessageTransformAiInferenceArgs
+    ///                 {
+    ///                     Endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+    ///                     UnstructuredInference = new Gcp.PubSub.Inputs.SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs
+    ///                     {
+    ///                         Parameters = 
+    ///                         {
+    ///                             { "max_tokens", "25000" },
+    ///                         },
+    ///                     },
+    ///                     ServiceAccountEmail = geminiQueryServiceAccount.Email,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120Seconds,
+    ///         },
     ///     });
     /// 
     /// });

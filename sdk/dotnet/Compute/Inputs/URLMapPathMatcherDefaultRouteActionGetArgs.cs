@@ -13,6 +13,17 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherDefaultRouteActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the cache policy configuration for matched traffic. Available
+        /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
+        /// property must be specified. This policy cannot be specified if any target
+        /// backend has Identity-Aware Proxy enabled.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cachePolicy")]
+        public Input<Inputs.URLMapPathMatcherDefaultRouteActionCachePolicyGetArgs>? CachePolicy { get; set; }
+
+        /// <summary>
         /// The specification for allowing client side cross-origin requests. Please see
         /// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
         /// Structure is documented below.

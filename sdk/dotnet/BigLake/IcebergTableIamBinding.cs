@@ -26,6 +26,196 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// ## gcp.biglake.IcebergTableIamPolicy
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/biglake.editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigLake.IcebergTableIamPolicy("policy", new()
+    ///     {
+    ///         Project = myIcebergTable.Project,
+    ///         Catalog = myIcebergTable.Catalog,
+    ///         Namespace = myIcebergTable.Namespace,
+    ///         Name = myIcebergTable.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.biglake.IcebergTableIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.BigLake.IcebergTableIamBinding("binding", new()
+    ///     {
+    ///         Project = myIcebergTable.Project,
+    ///         Catalog = myIcebergTable.Catalog,
+    ///         Namespace = myIcebergTable.Namespace,
+    ///         Name = myIcebergTable.Name,
+    ///         Role = "roles/biglake.editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.biglake.IcebergTableIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.BigLake.IcebergTableIamMember("member", new()
+    ///     {
+    ///         Project = myIcebergTable.Project,
+    ///         Catalog = myIcebergTable.Catalog,
+    ///         Namespace = myIcebergTable.Namespace,
+    ///         Name = myIcebergTable.Name,
+    ///         Role = "roles/biglake.editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Biglake IcebergTable
+    /// 
+    /// Three different resources help you manage your IAM policy for Biglake IcebergTable. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.biglake.IcebergTableIamPolicy`: Authoritative. Sets the IAM policy for the icebergtable and replaces any existing policy already attached.
+    /// * `gcp.biglake.IcebergTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the icebergtable are preserved.
+    /// * `gcp.biglake.IcebergTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the icebergtable are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.biglake.IcebergTableIamPolicy`: Retrieves the IAM policy for the icebergtable
+    /// 
+    /// &gt; **Note:** `gcp.biglake.IcebergTableIamPolicy` **cannot** be used in conjunction with `gcp.biglake.IcebergTableIamBinding` and `gcp.biglake.IcebergTableIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.biglake.IcebergTableIamBinding` resources **can be** used in conjunction with `gcp.biglake.IcebergTableIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.biglake.IcebergTableIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/biglake.editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigLake.IcebergTableIamPolicy("policy", new()
+    ///     {
+    ///         Project = myIcebergTable.Project,
+    ///         Catalog = myIcebergTable.Catalog,
+    ///         Namespace = myIcebergTable.Namespace,
+    ///         Name = myIcebergTable.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.biglake.IcebergTableIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.BigLake.IcebergTableIamBinding("binding", new()
+    ///     {
+    ///         Project = myIcebergTable.Project,
+    ///         Catalog = myIcebergTable.Catalog,
+    ///         Namespace = myIcebergTable.Namespace,
+    ///         Name = myIcebergTable.Name,
+    ///         Role = "roles/biglake.editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.biglake.IcebergTableIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.BigLake.IcebergTableIamMember("member", new()
+    ///     {
+    ///         Project = myIcebergTable.Project,
+    ///         Catalog = myIcebergTable.Catalog,
+    ///         Namespace = myIcebergTable.Namespace,
+    ///         Name = myIcebergTable.Name,
+    ///         Role = "roles/biglake.editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:

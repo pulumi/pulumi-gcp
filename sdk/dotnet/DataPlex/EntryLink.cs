@@ -33,13 +33,13 @@ namespace Pulumi.Gcp.DataPlex
     ///     var entry_group_basic = new Gcp.DataPlex.EntryGroup("entry-group-basic", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "tf-test-entry-group_33395",
+    ///         EntryGroupId = "tf-test-entry-group_13293",
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var entry_type_basic = new Gcp.DataPlex.EntryType("entry-type-basic", new()
     ///     {
-    ///         EntryTypeId = "tf-test-entry-type_69391",
+    ///         EntryTypeId = "tf-test-entry-type_33395",
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryId = "tf-test-source-entry_76044",
+    ///         EntryId = "tf-test-source-entry_40289",
     ///         EntryType = entry_type_basic.Name,
     ///         Project = "1111111111111",
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryId = "tf-test-target-entry_8270",
+    ///         EntryId = "tf-test-target-entry_76044",
     ///         EntryType = entry_type_basic.Name,
     ///         Project = "1111111111111",
     ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Project = "1111111111111",
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryLinkId = "tf-test-entry-link_41150",
+    ///         EntryLinkId = "tf-test-entry-link_69391",
     ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/related",
     ///         EntryReferences = new[]
     ///         {
@@ -98,13 +98,13 @@ namespace Pulumi.Gcp.DataPlex
     ///     var entry_group_full = new Gcp.DataPlex.EntryGroup("entry-group-full", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "tf-test-entry-group_89313",
+    ///         EntryGroupId = "tf-test-entry-group_8270",
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var entry_type_full = new Gcp.DataPlex.EntryType("entry-type-full", new()
     ///     {
-    ///         EntryTypeId = "tf-test-entry-type_9394",
+    ///         EntryTypeId = "tf-test-entry-type_89313",
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///     });
@@ -113,14 +113,14 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_full.EntryGroupId,
-    ///         EntryId = "tf-test-source-entry_60646",
+    ///         EntryId = "tf-test-source-entry_41150",
     ///         EntryType = entry_type_full.Name,
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_11380",
+    ///         GlossaryId = "tf-test-glossary_60646",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestIdFull.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-full_35305",
+    ///         TermId = "tf-test-term-full_9394",
     ///         Labels = 
     ///         {
     ///             { "tag", "test-tf" },
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Project = "1111111111111",
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_full.EntryGroupId,
-    ///         EntryLinkId = "tf-test-entry-link_62793",
+    ///         EntryLinkId = "tf-test-entry-link_11380",
     ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/definition",
     ///         EntryReferences = new[]
     ///         {
@@ -193,7 +193,6 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// EntryLink can be imported using any of these accepted formats:
@@ -213,6 +212,13 @@ namespace Pulumi.Gcp.DataPlex
     [GcpResourceType("gcp:dataplex/entryLink:EntryLink")]
     public partial class EntryLink : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The Aspects attached to the Entry Link.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("aspects")]
+        public Output<ImmutableArray<Outputs.EntryLinkAspect>> Aspects { get; private set; } = null!;
+
         /// <summary>
         /// The time when the Entry Link was created.
         /// </summary>
@@ -317,6 +323,19 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class EntryLinkArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aspects")]
+        private InputList<Inputs.EntryLinkAspectArgs>? _aspects;
+
+        /// <summary>
+        /// The Aspects attached to the Entry Link.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.EntryLinkAspectArgs> Aspects
+        {
+            get => _aspects ?? (_aspects = new InputList<Inputs.EntryLinkAspectArgs>());
+            set => _aspects = value;
+        }
+
         /// <summary>
         /// The id of the entry group this entry link is in.
         /// </summary>
@@ -370,6 +389,19 @@ namespace Pulumi.Gcp.DataPlex
 
     public sealed class EntryLinkState : global::Pulumi.ResourceArgs
     {
+        [Input("aspects")]
+        private InputList<Inputs.EntryLinkAspectGetArgs>? _aspects;
+
+        /// <summary>
+        /// The Aspects attached to the Entry Link.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.EntryLinkAspectGetArgs> Aspects
+        {
+            get => _aspects ?? (_aspects = new InputList<Inputs.EntryLinkAspectGetArgs>());
+            set => _aspects = value;
+        }
+
         /// <summary>
         /// The time when the Entry Link was created.
         /// </summary>

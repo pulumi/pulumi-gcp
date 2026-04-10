@@ -936,7 +936,7 @@ import (
 //				return err
 //			}
 //			sourcebucket, err := storage.NewBucket(ctx, "sourcebucket", &storage.BucketArgs{
-//				Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_89605", project.ProjectId),
+//				Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_91042", project.ProjectId),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -972,6 +972,57 @@ import (
 //									Object:     sourceTar.Name,
 //									Generation: sourceTar.Generation,
 //								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Service Emptydir Disk
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				LaunchStage:        pulumi.String("ALPHA"),
+//				DeletionProtection: pulumi.Bool(true),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+//								&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+//									Name:      pulumi.String("empty-dir-volume"),
+//									MountPath: pulumi.String("/mnt"),
+//								},
+//							},
+//						},
+//					},
+//					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+//						&cloudrunv2.ServiceTemplateVolumeArgs{
+//							Name: pulumi.String("empty-dir-volume"),
+//							EmptyDir: &cloudrunv2.ServiceTemplateVolumeEmptyDirArgs{
+//								Medium:    pulumi.String("DISK"),
+//								SizeLimit: pulumi.String("10Gi"),
 //							},
 //						},
 //					},

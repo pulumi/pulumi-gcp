@@ -13,26 +13,44 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
     /**
-     * @return Day of the week for the maintenance window. Possible values: [&#34;SUNDAY&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;]
+     * @return Possible values:
+     * MONDAY
+     * TUESDAY
+     * WEDNESDAY
+     * THURSDAY
+     * FRIDAY
+     * SATURDAY
+     * SUNDAY
      * 
      */
     private String dayOfWeek;
     /**
-     * @return Start time of the maintenance window in UTC.
+     * @return Represents a time of day. The date and time zone are either not significant
+     * or are specified elsewhere. An API may choose to allow leap seconds. Related
+     * types are google.type.Date and &#39;google.protobuf.Timestamp&#39;.
      * 
      */
     private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes;
 
     private GetInstanceMaintenancePolicyWeeklyMaintenanceWindow() {}
     /**
-     * @return Day of the week for the maintenance window. Possible values: [&#34;SUNDAY&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;]
+     * @return Possible values:
+     * MONDAY
+     * TUESDAY
+     * WEDNESDAY
+     * THURSDAY
+     * FRIDAY
+     * SATURDAY
+     * SUNDAY
      * 
      */
     public String dayOfWeek() {
         return this.dayOfWeek;
     }
     /**
-     * @return Start time of the maintenance window in UTC.
+     * @return Represents a time of day. The date and time zone are either not significant
+     * or are specified elsewhere. An API may choose to allow leap seconds. Related
+     * types are google.type.Date and &#39;google.protobuf.Timestamp&#39;.
      * 
      */
     public List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes() {

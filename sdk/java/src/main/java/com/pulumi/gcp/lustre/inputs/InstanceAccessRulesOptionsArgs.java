@@ -20,8 +20,7 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
     public static final InstanceAccessRulesOptionsArgs Empty = new InstanceAccessRulesOptionsArgs();
 
     /**
-     * An array of access rule exceptions. Each rule defines IP address ranges
-     * that should have different squash behavior than the default.
+     * The access rules for the instance.
      * Structure is documented below.
      * 
      */
@@ -29,8 +28,7 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
     private @Nullable Output<List<InstanceAccessRulesOptionsAccessRuleArgs>> accessRules;
 
     /**
-     * @return An array of access rule exceptions. Each rule defines IP address ranges
-     * that should have different squash behavior than the default.
+     * @return The access rules for the instance.
      * Structure is documented below.
      * 
      */
@@ -39,16 +37,20 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The GID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * The user squash GID for the default access rule.
+     * This user squash GID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no GID squash).
      * 
      */
     @Import(name="defaultSquashGid")
     private @Nullable Output<Integer> defaultSquashGid;
 
     /**
-     * @return The GID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash GID for the default access rule.
+     * This user squash GID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no GID squash).
      * 
      */
     public Optional<Output<Integer>> defaultSquashGid() {
@@ -56,18 +58,20 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-     * Other values include &#34;NO_SQUASH&#34;.
-     * Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+     * The squash mode for the default access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     @Import(name="defaultSquashMode", required=true)
     private Output<String> defaultSquashMode;
 
     /**
-     * @return Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-     * Other values include &#34;NO_SQUASH&#34;.
-     * Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+     * @return The squash mode for the default access rule.
+     * Possible values:
+     * NO_SQUASH
+     * ROOT_SQUASH
      * 
      */
     public Output<String> defaultSquashMode() {
@@ -75,16 +79,20 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The UID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * The user squash UID for the default access rule.
+     * This user squash UID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no UID squash).
      * 
      */
     @Import(name="defaultSquashUid")
     private @Nullable Output<Integer> defaultSquashUid;
 
     /**
-     * @return The UID to map the root user to when root squashing is enabled
-     * (e.g., 65534 for nobody).
+     * @return The user squash UID for the default access rule.
+     * This user squash UID applies to all root users connecting from clients
+     * that are not matched by any of the access rules. If not set, the default
+     * is 0 (no UID squash).
      * 
      */
     public Optional<Output<Integer>> defaultSquashUid() {
@@ -119,8 +127,7 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessRules An array of access rule exceptions. Each rule defines IP address ranges
-         * that should have different squash behavior than the default.
+         * @param accessRules The access rules for the instance.
          * Structure is documented below.
          * 
          * @return builder
@@ -132,8 +139,7 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessRules An array of access rule exceptions. Each rule defines IP address ranges
-         * that should have different squash behavior than the default.
+         * @param accessRules The access rules for the instance.
          * Structure is documented below.
          * 
          * @return builder
@@ -144,8 +150,7 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessRules An array of access rule exceptions. Each rule defines IP address ranges
-         * that should have different squash behavior than the default.
+         * @param accessRules The access rules for the instance.
          * Structure is documented below.
          * 
          * @return builder
@@ -156,8 +161,10 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultSquashGid The GID to map the root user to when root squashing is enabled
-         * (e.g., 65534 for nobody).
+         * @param defaultSquashGid The user squash GID for the default access rule.
+         * This user squash GID applies to all root users connecting from clients
+         * that are not matched by any of the access rules. If not set, the default
+         * is 0 (no GID squash).
          * 
          * @return builder
          * 
@@ -168,8 +175,10 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultSquashGid The GID to map the root user to when root squashing is enabled
-         * (e.g., 65534 for nobody).
+         * @param defaultSquashGid The user squash GID for the default access rule.
+         * This user squash GID applies to all root users connecting from clients
+         * that are not matched by any of the access rules. If not set, the default
+         * is 0 (no GID squash).
          * 
          * @return builder
          * 
@@ -179,9 +188,10 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultSquashMode Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-         * Other values include &#34;NO_SQUASH&#34;.
-         * Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+         * @param defaultSquashMode The squash mode for the default access rule.
+         * Possible values:
+         * NO_SQUASH
+         * ROOT_SQUASH
          * 
          * @return builder
          * 
@@ -192,9 +202,10 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultSquashMode Set to &#34;ROOT_SQUASH&#34; to enable root squashing by default.
-         * Other values include &#34;NO_SQUASH&#34;.
-         * Possible values are: `ROOT_SQUASH`, `NO_SQUASH`.
+         * @param defaultSquashMode The squash mode for the default access rule.
+         * Possible values:
+         * NO_SQUASH
+         * ROOT_SQUASH
          * 
          * @return builder
          * 
@@ -204,8 +215,10 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultSquashUid The UID to map the root user to when root squashing is enabled
-         * (e.g., 65534 for nobody).
+         * @param defaultSquashUid The user squash UID for the default access rule.
+         * This user squash UID applies to all root users connecting from clients
+         * that are not matched by any of the access rules. If not set, the default
+         * is 0 (no UID squash).
          * 
          * @return builder
          * 
@@ -216,8 +229,10 @@ public final class InstanceAccessRulesOptionsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultSquashUid The UID to map the root user to when root squashing is enabled
-         * (e.g., 65534 for nobody).
+         * @param defaultSquashUid The user squash UID for the default access rule.
+         * This user squash UID applies to all root users connecting from clients
+         * that are not matched by any of the access rules. If not set, the default
+         * is 0 (no UID squash).
          * 
          * @return builder
          * 

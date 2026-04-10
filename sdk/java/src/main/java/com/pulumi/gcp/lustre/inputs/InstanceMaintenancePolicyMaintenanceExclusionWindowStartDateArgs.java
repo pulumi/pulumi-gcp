@@ -16,14 +16,18 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
     public static final InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs Empty = new InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs();
 
     /**
-     * Day of a month. Must be from 1 to 31 and valid for the year and month.
+     * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+     * to specify a year by itself or a year and month where the day isn&#39;t
+     * significant.
      * 
      */
     @Import(name="day")
     private @Nullable Output<Integer> day;
 
     /**
-     * @return Day of a month. Must be from 1 to 31 and valid for the year and month.
+     * @return Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+     * to specify a year by itself or a year and month where the day isn&#39;t
+     * significant.
      * 
      */
     public Optional<Output<Integer>> day() {
@@ -31,14 +35,16 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
     }
 
     /**
-     * Month of a year. Must be from 1 to 12.
+     * Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+     * month and day.
      * 
      */
     @Import(name="month")
     private @Nullable Output<Integer> month;
 
     /**
-     * @return Month of a year. Must be from 1 to 12.
+     * @return Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+     * month and day.
      * 
      */
     public Optional<Output<Integer>> month() {
@@ -46,14 +52,16 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
     }
 
     /**
-     * Year of the date. Must be from 1 to 9999, or 0 for recurring.
+     * Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+     * a year.
      * 
      */
     @Import(name="year")
     private @Nullable Output<Integer> year;
 
     /**
-     * @return Year of the date. Must be from 1 to 9999, or 0 for recurring.
+     * @return Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+     * a year.
      * 
      */
     public Optional<Output<Integer>> year() {
@@ -87,7 +95,9 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
         }
 
         /**
-         * @param day Day of a month. Must be from 1 to 31 and valid for the year and month.
+         * @param day Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+         * to specify a year by itself or a year and month where the day isn&#39;t
+         * significant.
          * 
          * @return builder
          * 
@@ -98,7 +108,9 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
         }
 
         /**
-         * @param day Day of a month. Must be from 1 to 31 and valid for the year and month.
+         * @param day Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+         * to specify a year by itself or a year and month where the day isn&#39;t
+         * significant.
          * 
          * @return builder
          * 
@@ -108,7 +120,8 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
         }
 
         /**
-         * @param month Month of a year. Must be from 1 to 12.
+         * @param month Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+         * month and day.
          * 
          * @return builder
          * 
@@ -119,7 +132,8 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
         }
 
         /**
-         * @param month Month of a year. Must be from 1 to 12.
+         * @param month Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+         * month and day.
          * 
          * @return builder
          * 
@@ -129,7 +143,8 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
         }
 
         /**
-         * @param year Year of the date. Must be from 1 to 9999, or 0 for recurring.
+         * @param year Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+         * a year.
          * 
          * @return builder
          * 
@@ -140,7 +155,8 @@ public final class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateA
         }
 
         /**
-         * @param year Year of the date. Must be from 1 to 9999, or 0 for recurring.
+         * @param year Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+         * a year.
          * 
          * @return builder
          * 

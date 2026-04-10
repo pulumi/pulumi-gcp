@@ -1108,10 +1108,10 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="backup",
+            name="backup-1",
             location="us-central1")
         backup = gcp.dataproc.MetastoreService("backup",
-            service_id="backup",
+            service_id="backup-1",
             location="us-central1",
             port=9080,
             tier="DEVELOPER",
@@ -1465,10 +1465,10 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="backup",
+            name="backup-1",
             location="us-central1")
         backup = gcp.dataproc.MetastoreService("backup",
-            service_id="backup",
+            service_id="backup-1",
             location="us-central1",
             port=9080,
             tier="DEVELOPER",

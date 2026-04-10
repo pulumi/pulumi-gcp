@@ -140,6 +140,57 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Preference Set Compute Engine Preferences Disk Type
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.migrationcenter.PreferenceSet;
+ * import com.pulumi.gcp.migrationcenter.PreferenceSetArgs;
+ * import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesArgs;
+ * import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs;
+ * import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()
+ *             .location("us-central1")
+ *             .preferenceSetId("preference-set-test")
+ *             .description("Terraform integration test description")
+ *             .displayName("Terraform integration test display")
+ *             .virtualMachinePreferences(PreferenceSetVirtualMachinePreferencesArgs.builder()
+ *                 .sizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE")
+ *                 .targetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE")
+ *                 .computeEnginePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs.builder()
+ *                     .licenseType("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE")
+ *                     .machinePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs.builder()
+ *                         .allowedMachineSeries(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs.builder()
+ *                             .code("C3")
+ *                             .build())
+ *                         .build())
+ *                     .persistentDiskType("PERSISTENT_DISK_TYPE_SSD")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
