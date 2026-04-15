@@ -2094,6 +2094,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iam_workforce_pool":                  {Tok: gcpResource(gcpIAM, "WorkforcePool")},
 			"google_iam_workforce_pool_provider":         {Tok: gcpResource(gcpIAM, "WorkforcePoolProvider")},
 			"google_iam_access_boundary_policy":          {Tok: gcpResource(gcpIAM, "AccessBoundaryPolicy")},
+			"google_workload_identity_service_agent":     {Tok: gcpResource(gcpIAM, "WorkloadIdentityServiceAgent")},
 
 			// apigee
 			"google_apigee_organization":        {Tok: gcpResource(gcpApigee, "Organization")},

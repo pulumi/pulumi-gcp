@@ -1901,6 +1901,10 @@
                 "current": "gcp:apigee/sharedflowDeployment:SharedflowDeployment",
                 "majorVersion": 9
             },
+            "google_apigee_space": {
+                "current": "gcp:apigee/space:Space",
+                "majorVersion": 9
+            },
             "google_apigee_sync_authorization": {
                 "current": "gcp:apigee/syncAuthorization:SyncAuthorization",
                 "majorVersion": 9,
@@ -12025,6 +12029,9 @@
                     "target_pools": {
                         "maxItemsOne": false
                     },
+                    "target_size_policy": {
+                        "maxItemsOne": false
+                    },
                     "update_policy": {
                         "maxItemsOne": true
                     },
@@ -13640,6 +13647,9 @@
                         }
                     },
                     "target_pools": {
+                        "maxItemsOne": false
+                    },
+                    "target_size_policy": {
                         "maxItemsOne": false
                     },
                     "update_policy": {
@@ -17536,6 +17546,9 @@
                     "authenticator_groups_config": {
                         "maxItemsOne": true
                     },
+                    "autopilot_cluster_policy_config": {
+                        "maxItemsOne": true
+                    },
                     "autopilot_privileged_admission": {
                         "maxItemsOne": false
                     },
@@ -17722,6 +17735,9 @@
                                 }
                             }
                         }
+                    },
+                    "managed_machine_learning_diagnostics_config": {
+                        "maxItemsOne": true
                     },
                     "managed_opentelemetry_config": {
                         "maxItemsOne": true
@@ -24561,6 +24577,19 @@
                 "current": "gcp:developerconnect/accountConnector:AccountConnector",
                 "majorVersion": 9,
                 "fields": {
+                    "custom_oauth_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "service_directory_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "provider_oauth_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -24570,6 +24599,9 @@
                                 }
                             }
                         }
+                    },
+                    "proxy_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -30949,6 +30981,31 @@
                     }
                 }
             },
+            "google_iap_agent_registry_iam_binding": {
+                "current": "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iap_agent_registry_iam_member": {
+                "current": "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_iap_agent_registry_iam_policy": {
+                "current": "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy",
+                "majorVersion": 9
+            },
             "google_iap_app_engine_service_iam_binding": {
                 "current": "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding",
                 "majorVersion": 9,
@@ -31005,6 +31062,31 @@
             },
             "google_iap_client": {
                 "current": "gcp:iap/client:Client",
+                "majorVersion": 9
+            },
+            "google_iap_location_web_iam_binding": {
+                "current": "gcp:iap/locationWebIamBinding:LocationWebIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iap_location_web_iam_member": {
+                "current": "gcp:iap/locationWebIamMember:LocationWebIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_iap_location_web_iam_policy": {
+                "current": "gcp:iap/locationWebIamPolicy:LocationWebIamPolicy",
                 "majorVersion": 9
             },
             "google_iap_settings": {
@@ -42979,6 +43061,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "container_spec": {
+                                    "maxItemsOne": true
+                                },
                                 "deployment_spec": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -43026,6 +43111,9 @@
                                                     }
                                                 }
                                             },
+                                            "image_spec": {
+                                                "maxItemsOne": true
+                                            },
                                             "inline_source": {
                                                 "maxItemsOne": true
                                             },
@@ -43039,6 +43127,31 @@
                         }
                     }
                 }
+            },
+            "google_vertex_ai_reasoning_engine_iam_binding": {
+                "current": "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vertex_ai_reasoning_engine_iam_member": {
+                "current": "gcp:vertex/aiReasoningEngineIamMember:AiReasoningEngineIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_vertex_ai_reasoning_engine_iam_policy": {
+                "current": "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy",
+                "majorVersion": 9
             },
             "google_vertex_ai_tensorboard": {
                 "current": "gcp:vertex/aiTensorboard:AiTensorboard",
@@ -43349,6 +43462,15 @@
             "google_workflows_workflow": {
                 "current": "gcp:workflows/workflow:Workflow",
                 "majorVersion": 9
+            },
+            "google_workload_identity_service_agent": {
+                "current": "gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent",
+                "majorVersion": 9,
+                "fields": {
+                    "service_agents": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_workstations_workstation": {
                 "current": "gcp:workstations/workstation:Workstation",
@@ -46979,6 +47101,9 @@
                     "target_pools": {
                         "maxItemsOne": false
                     },
+                    "target_size_policy": {
+                        "maxItemsOne": false
+                    },
                     "update_policy": {
                         "maxItemsOne": false
                     },
@@ -47611,6 +47736,9 @@
                         }
                     },
                     "target_pools": {
+                        "maxItemsOne": false
+                    },
+                    "target_size_policy": {
                         "maxItemsOne": false
                     },
                     "update_policy": {
@@ -48796,6 +48924,9 @@
                     "authenticator_groups_config": {
                         "maxItemsOne": false
                     },
+                    "autopilot_cluster_policy_config": {
+                        "maxItemsOne": false
+                    },
                     "autopilot_privileged_admission": {
                         "maxItemsOne": false
                     },
@@ -48982,6 +49113,9 @@
                                 }
                             }
                         }
+                    },
+                    "managed_machine_learning_diagnostics_config": {
+                        "maxItemsOne": false
                     },
                     "managed_opentelemetry_config": {
                         "maxItemsOne": false
@@ -50823,6 +50957,10 @@
                     }
                 }
             },
+            "google_iap_agent_registry_iam_policy": {
+                "current": "gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy",
+                "majorVersion": 9
+            },
             "google_iap_app_engine_service_iam_policy": {
                 "current": "gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy",
                 "majorVersion": 9
@@ -50833,6 +50971,10 @@
             },
             "google_iap_client": {
                 "current": "gcp:iap/getClient:getClient",
+                "majorVersion": 9
+            },
+            "google_iap_location_web_iam_policy": {
+                "current": "gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy",
                 "majorVersion": 9
             },
             "google_iap_tunnel_dest_group_iam_policy": {
@@ -53898,6 +54040,14 @@
                     }
                 }
             },
+            "google_vertex_ai_reasoning_engine_iam_policy": {
+                "current": "gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy",
+                "majorVersion": 9
+            },
+            "google_vertex_ai_reasoning_engine_query": {
+                "current": "gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery",
+                "majorVersion": 9
+            },
             "google_vmwareengine_announcements": {
                 "current": "gcp:vmwareengine/getAnnouncements:getAnnouncements",
                 "majorVersion": 9,
@@ -55406,6 +55556,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_vertex_ai_reasoning_engine": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_vertex_ai_tensorboard": [
                 "effective_labels",
                 "terraform_labels"
@@ -55801,6 +55955,7 @@
             "gcp:apigee/securityProfileV2:SecurityProfileV2": 0,
             "gcp:apigee/sharedflow:Sharedflow": 0,
             "gcp:apigee/sharedflowDeployment:SharedflowDeployment": 0,
+            "gcp:apigee/space:Space": 0,
             "gcp:apigee/syncAuthorization:SyncAuthorization": 0,
             "gcp:apigee/targetServer:TargetServer": 0,
             "gcp:apihub/apiHubInstance:ApiHubInstance": 0,
@@ -56573,6 +56728,10 @@
             "gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity": 0,
             "gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace": 0,
             "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider": 0,
+            "gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent": 0,
+            "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding": 0,
+            "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember": 0,
+            "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy": 0,
             "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding": 0,
             "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember": 0,
             "gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy": 0,
@@ -56581,6 +56740,9 @@
             "gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy": 0,
             "gcp:iap/brand:Brand": 0,
             "gcp:iap/client:Client": 0,
+            "gcp:iap/locationWebIamBinding:LocationWebIamBinding": 0,
+            "gcp:iap/locationWebIamMember:LocationWebIamMember": 0,
+            "gcp:iap/locationWebIamPolicy:LocationWebIamPolicy": 0,
             "gcp:iap/settings:Settings": 0,
             "gcp:iap/tunnelDestGroup:TunnelDestGroup": 0,
             "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding": 0,
@@ -57048,6 +57210,9 @@
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": 0,
             "gcp:vertex/aiReasoningEngine:AiReasoningEngine": 0,
+            "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding": 0,
+            "gcp:vertex/aiReasoningEngineIamMember:AiReasoningEngineIamMember": 0,
+            "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
             "gcp:vmwareengine/datastore:Datastore": 0,
@@ -57337,9 +57502,11 @@
             "gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool": 0,
             "gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy": 0,
             "gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider": 0,
+            "gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy": 0,
             "gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy": 0,
             "gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy": 0,
             "gcp:iap/getClient:getClient": 0,
+            "gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy": 0,
             "gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy": 0,
             "gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy": 0,
             "gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy": 0,
@@ -57510,6 +57677,8 @@
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": 0,
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": 0,
             "gcp:vertex/getAiIndex:getAiIndex": 0,
+            "gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy": 0,
+            "gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery": 0,
             "gcp:vmwareengine/getAnnouncements:getAnnouncements": 0,
             "gcp:vmwareengine/getCluster:getCluster": 0,
             "gcp:vmwareengine/getDatastore:getDatastore": 0,
