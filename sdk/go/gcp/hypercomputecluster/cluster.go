@@ -37,7 +37,7 @@ import (
 //			}
 //			projectId := project.Name
 //			_, err = hypercomputecluster.NewCluster(ctx, "cluster", &hypercomputecluster.ClusterArgs{
-//				ClusterId:   pulumi.String("my-cluster"),
+//				ClusterId:   pulumi.String("mycluster1"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("Cluster Director instance created through Terraform"),
 //				NetworkResources: hypercomputecluster.ClusterNetworkResourceArray{
@@ -125,9 +125,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// ID of the cluster to create. Must conform to
-	// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-	// alphanumeric, and at most 63 characters).
+	// ID of the cluster to create. Must start with a lowercase letter,
+	// use only lowercase letters and numbers, and be at most 10 characters long.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Compute resources available to the cluster. Keys specify the ID of the
 	// compute resource by which it can be referenced elsewhere, and must conform
@@ -225,9 +224,8 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// ID of the cluster to create. Must conform to
-	// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-	// alphanumeric, and at most 63 characters).
+	// ID of the cluster to create. Must start with a lowercase letter,
+	// use only lowercase letters and numbers, and be at most 10 characters long.
 	ClusterId *string `pulumi:"clusterId"`
 	// Compute resources available to the cluster. Keys specify the ID of the
 	// compute resource by which it can be referenced elsewhere, and must conform
@@ -285,9 +283,8 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// ID of the cluster to create. Must conform to
-	// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-	// alphanumeric, and at most 63 characters).
+	// ID of the cluster to create. Must start with a lowercase letter,
+	// use only lowercase letters and numbers, and be at most 10 characters long.
 	ClusterId pulumi.StringPtrInput
 	// Compute resources available to the cluster. Keys specify the ID of the
 	// compute resource by which it can be referenced elsewhere, and must conform
@@ -349,9 +346,8 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// ID of the cluster to create. Must conform to
-	// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-	// alphanumeric, and at most 63 characters).
+	// ID of the cluster to create. Must start with a lowercase letter,
+	// use only lowercase letters and numbers, and be at most 10 characters long.
 	ClusterId string `pulumi:"clusterId"`
 	// Compute resources available to the cluster. Keys specify the ID of the
 	// compute resource by which it can be referenced elsewhere, and must conform
@@ -394,9 +390,8 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// ID of the cluster to create. Must conform to
-	// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-	// alphanumeric, and at most 63 characters).
+	// ID of the cluster to create. Must start with a lowercase letter,
+	// use only lowercase letters and numbers, and be at most 10 characters long.
 	ClusterId pulumi.StringInput
 	// Compute resources available to the cluster. Keys specify the ID of the
 	// compute resource by which it can be referenced elsewhere, and must conform
@@ -524,9 +519,8 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// ID of the cluster to create. Must conform to
-// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-// alphanumeric, and at most 63 characters).
+// ID of the cluster to create. Must start with a lowercase letter,
+// use only lowercase letters and numbers, and be at most 10 characters long.
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }

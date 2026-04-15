@@ -378,8 +378,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Resource policies for this managed instance group. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Output("resourcePolicies")]
         public Output<Outputs.InstanceGroupManagerResourcePolicies?> ResourcePolicies { get; private set; } = null!;
@@ -436,6 +434,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("targetSizePolicies")]
+        public Output<ImmutableArray<Outputs.InstanceGroupManagerTargetSizePolicy>> TargetSizePolicies { get; private set; } = null!;
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group.
@@ -622,8 +628,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Resource policies for this managed instance group. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Input("resourcePolicies")]
         public Input<Inputs.InstanceGroupManagerResourcePoliciesArgs>? ResourcePolicies { get; set; }
@@ -692,6 +696,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        [Input("targetSizePolicies")]
+        private InputList<Inputs.InstanceGroupManagerTargetSizePolicyArgs>? _targetSizePolicies;
+
+        /// <summary>
+        /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        public InputList<Inputs.InstanceGroupManagerTargetSizePolicyArgs> TargetSizePolicies
+        {
+            get => _targetSizePolicies ?? (_targetSizePolicies = new InputList<Inputs.InstanceGroupManagerTargetSizePolicyArgs>());
+            set => _targetSizePolicies = value;
+        }
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group.
@@ -873,8 +891,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Resource policies for this managed instance group. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Input("resourcePolicies")]
         public Input<Inputs.InstanceGroupManagerResourcePoliciesGetArgs>? ResourcePolicies { get; set; }
@@ -961,6 +977,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        [Input("targetSizePolicies")]
+        private InputList<Inputs.InstanceGroupManagerTargetSizePolicyGetArgs>? _targetSizePolicies;
+
+        /// <summary>
+        /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        /// 
+        /// - - -
+        /// </summary>
+        public InputList<Inputs.InstanceGroupManagerTargetSizePolicyGetArgs> TargetSizePolicies
+        {
+            get => _targetSizePolicies ?? (_targetSizePolicies = new InputList<Inputs.InstanceGroupManagerTargetSizePolicyGetArgs>());
+            set => _targetSizePolicies = value;
+        }
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group.

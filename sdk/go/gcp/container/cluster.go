@@ -185,6 +185,8 @@ type Cluster struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigOutput `pulumi:"authenticatorGroupsConfig"`
+	// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+	AutopilotClusterPolicyConfig ClusterAutopilotClusterPolicyConfigOutput `pulumi:"autopilotClusterPolicyConfig"`
 	// The customer
 	// allowlist Cloud Storage paths for the cluster. These paths are used with the
 	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -322,6 +324,8 @@ type Cluster struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
+	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigOutput `pulumi:"managedMachineLearningDiagnosticsConfig"`
 	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigOutput `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
@@ -560,6 +564,8 @@ type clusterState struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig *ClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+	AutopilotClusterPolicyConfig *ClusterAutopilotClusterPolicyConfig `pulumi:"autopilotClusterPolicyConfig"`
 	// The customer
 	// allowlist Cloud Storage paths for the cluster. These paths are used with the
 	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -697,6 +703,8 @@ type clusterState struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+	ManagedMachineLearningDiagnosticsConfig *ClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfig"`
 	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
@@ -901,6 +909,8 @@ type ClusterState struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigPtrInput
+	// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+	AutopilotClusterPolicyConfig ClusterAutopilotClusterPolicyConfigPtrInput
 	// The customer
 	// allowlist Cloud Storage paths for the cluster. These paths are used with the
 	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -1038,6 +1048,8 @@ type ClusterState struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigPtrInput
 	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
@@ -1246,6 +1258,8 @@ type clusterArgs struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig *ClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+	AutopilotClusterPolicyConfig *ClusterAutopilotClusterPolicyConfig `pulumi:"autopilotClusterPolicyConfig"`
 	// The customer
 	// allowlist Cloud Storage paths for the cluster. These paths are used with the
 	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -1377,6 +1391,8 @@ type clusterArgs struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+	ManagedMachineLearningDiagnosticsConfig *ClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfig"`
 	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
@@ -1571,6 +1587,8 @@ type ClusterArgs struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigPtrInput
+	// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+	AutopilotClusterPolicyConfig ClusterAutopilotClusterPolicyConfigPtrInput
 	// The customer
 	// allowlist Cloud Storage paths for the cluster. These paths are used with the
 	// `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -1702,6 +1720,8 @@ type ClusterArgs struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+	ManagedMachineLearningDiagnosticsConfig ClusterManagedMachineLearningDiagnosticsConfigPtrInput
 	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
@@ -1993,6 +2013,11 @@ func (o ClusterOutput) AuthenticatorGroupsConfig() ClusterAuthenticatorGroupsCon
 	return o.ApplyT(func(v *Cluster) ClusterAuthenticatorGroupsConfigOutput { return v.AuthenticatorGroupsConfig }).(ClusterAuthenticatorGroupsConfigOutput)
 }
 
+// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+func (o ClusterOutput) AutopilotClusterPolicyConfig() ClusterAutopilotClusterPolicyConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAutopilotClusterPolicyConfigOutput { return v.AutopilotClusterPolicyConfig }).(ClusterAutopilotClusterPolicyConfigOutput)
+}
+
 // The customer
 // allowlist Cloud Storage paths for the cluster. These paths are used with the
 // `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -2254,6 +2279,13 @@ func (o ClusterOutput) LoggingService() pulumi.StringOutput {
 // documented below.
 func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(ClusterMaintenancePolicyPtrOutput)
+}
+
+// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+func (o ClusterOutput) ManagedMachineLearningDiagnosticsConfig() ClusterManagedMachineLearningDiagnosticsConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterManagedMachineLearningDiagnosticsConfigOutput {
+		return v.ManagedMachineLearningDiagnosticsConfig
+	}).(ClusterManagedMachineLearningDiagnosticsConfigOutput)
 }
 
 // ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.

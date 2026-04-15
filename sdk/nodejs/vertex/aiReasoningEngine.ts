@@ -73,6 +73,89 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Vertex Ai Reasoning Engine Image Spec
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+ *     displayName: "reasoning-engine",
+ *     description: "Deployed with BYOC Dockerfile through Terraform",
+ *     region: "us-central1",
+ *     spec: {
+ *         sourceCodeSpec: {
+ *             inlineSource: {
+ *                 sourceArchive: std.filebase64({
+ *                     input: "./test-fixtures/agent_src.tar.gz",
+ *                 }).then(invoke => invoke.result),
+ *             },
+ *             imageSpec: {
+ *                 buildArgs: {},
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Vertex Ai Reasoning Engine Byoc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const vertexArReader = new gcp.projects.IAMMember("vertex_ar_reader", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/artifactregistry.reader",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com`),
+ * });
+ * // Provision and retrieve the tenant service agent through another agent
+ * const tenantMdsAiReasoningEngine = new gcp.vertex.AiReasoningEngine("tenant_mds", {
+ *     displayName: "reasoning-engine-mds",
+ *     region: "us-central1",
+ *     spec: {
+ *         sourceCodeSpec: {
+ *             inlineSource: {
+ *                 sourceArchive: std.filebase64({
+ *                     input: "./test-fixtures/mds_agent_src.tar.gz",
+ *                 }).then(invoke => invoke.result),
+ *             },
+ *             pythonSpec: {
+ *                 entrypointModule: "metadata_agent",
+ *                 entrypointObject: "root_agent",
+ *             },
+ *         },
+ *     },
+ * });
+ * const tenantMds = gcp.vertex.getAiReasoningEngineQueryOutput({
+ *     region: "us-central1",
+ *     reasoningEngineId: tenantMdsAiReasoningEngine.name,
+ * });
+ * const tenantArReader = new gcp.projects.IAMMember("tenant_ar_reader", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/artifactregistry.reader",
+ *     member: tenantMds.apply(tenantMds => std.jsondecodeOutput({
+ *         input: tenantMds.output,
+ *     })).apply(invoke => `serviceAccount:${invoke.result?.output}`),
+ * });
+ * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+ *     displayName: "reasoning-engine",
+ *     description: "Deployed with BYOC through Terraform",
+ *     region: "us-central1",
+ *     spec: {
+ *         containerSpec: {
+ *             imageUri: project.then(project => `us-central1-docker.pkg.dev/${project.projectId}/vertex-byoc/byoc-agent:latest`),
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         vertexArReader,
+ *         tenantArReader,
+ *     ],
+ * });
+ * ```
  * ### Vertex Ai Reasoning Engine Psc Interface
  *
  * ```typescript
@@ -420,12 +503,24 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
      * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
      * will be secured by this key.
      * Structure is documented below.
      */
     declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiReasoningEngineEncryptionSpec | undefined>;
+    /**
+     * The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The generated name of the ReasoningEngine, in the format
      * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
@@ -436,6 +531,11 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the reasoning engine. eg us-central1
      */
@@ -469,9 +569,12 @@ export class AiReasoningEngine extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["encryptionSpec"] = state?.encryptionSpec;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["region"] = state?.region;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -485,14 +588,19 @@ export class AiReasoningEngine extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["encryptionSpec"] = args?.encryptionSpec;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AiReasoningEngine.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -525,12 +633,24 @@ export interface AiReasoningEngineState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
      * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
      * will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec>;
+    /**
+     * The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The generated name of the ReasoningEngine, in the format
      * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
@@ -541,6 +661,11 @@ export interface AiReasoningEngineState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the reasoning engine. eg us-central1
      */
@@ -586,6 +711,14 @@ export interface AiReasoningEngineArgs {
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec>;
+    /**
+     * The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

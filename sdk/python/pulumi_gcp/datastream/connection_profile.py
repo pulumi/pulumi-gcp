@@ -931,7 +931,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         instance = gcp.sql.DatabaseInstance("instance",
             name="sql-server",
-            database_version="SQLSERVER_2019_STANDARD",
+            database_version="SQLSERVER_2022_STANDARD",
             region="us-central1",
             root_password="root-password",
             deletion_protection=True,
@@ -1390,7 +1390,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         instance = gcp.sql.DatabaseInstance("instance",
             name="sql-server",
-            database_version="SQLSERVER_2019_STANDARD",
+            database_version="SQLSERVER_2022_STANDARD",
             region="us-central1",
             root_password="root-password",
             deletion_protection=True,

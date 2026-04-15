@@ -16,14 +16,14 @@ public final class SharedflowMetaDataArgs extends com.pulumi.resources.ResourceA
     public static final SharedflowMetaDataArgs Empty = new SharedflowMetaDataArgs();
 
     /**
-     * Time at which the API proxy was created, in milliseconds since epoch.
+     * Time at which the shared flow was created, in milliseconds since epoch.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Time at which the API proxy was created, in milliseconds since epoch.
+     * @return Time at which the shared flow was created, in milliseconds since epoch.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -31,14 +31,14 @@ public final class SharedflowMetaDataArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Time at which the API proxy was most recently modified, in milliseconds since epoch.
+     * Time at which the shared flow was most recently modified, in milliseconds since epoch.
      * 
      */
     @Import(name="lastModifiedAt")
     private @Nullable Output<String> lastModifiedAt;
 
     /**
-     * @return Time at which the API proxy was most recently modified, in milliseconds since epoch.
+     * @return Time at which the shared flow was most recently modified, in milliseconds since epoch.
      * 
      */
     public Optional<Output<String>> lastModifiedAt() {
@@ -87,7 +87,7 @@ public final class SharedflowMetaDataArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt Time at which the API proxy was created, in milliseconds since epoch.
+         * @param createdAt Time at which the shared flow was created, in milliseconds since epoch.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class SharedflowMetaDataArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt Time at which the API proxy was created, in milliseconds since epoch.
+         * @param createdAt Time at which the shared flow was created, in milliseconds since epoch.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class SharedflowMetaDataArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param lastModifiedAt Time at which the API proxy was most recently modified, in milliseconds since epoch.
+         * @param lastModifiedAt Time at which the shared flow was most recently modified, in milliseconds since epoch.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class SharedflowMetaDataArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param lastModifiedAt Time at which the API proxy was most recently modified, in milliseconds since epoch.
+         * @param lastModifiedAt Time at which the shared flow was most recently modified, in milliseconds since epoch.
          * 
          * @return builder
          * 

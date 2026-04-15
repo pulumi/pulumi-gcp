@@ -12,6 +12,7 @@ import com.pulumi.gcp.dataform.RepositoryReleaseConfigArgs;
 import com.pulumi.gcp.dataform.inputs.RepositoryReleaseConfigState;
 import com.pulumi.gcp.dataform.outputs.RepositoryReleaseConfigCodeCompilationConfig;
 import com.pulumi.gcp.dataform.outputs.RepositoryReleaseConfigRecentScheduledReleaseRecord;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -120,6 +121,85 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dataform Repository Release Config Disabled
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
+ * import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
+ * import com.pulumi.gcp.dataform.RepositoryReleaseConfig;
+ * import com.pulumi.gcp.dataform.RepositoryReleaseConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gitRepository = new com.pulumi.gcp.sourcerepo.Repository("gitRepository", com.pulumi.gcp.sourcerepo.RepositoryArgs.builder()
+ *             .name("my/repository")
+ *             .build());
+ * 
+ *         var secret = new Secret("secret", SecretArgs.builder()
+ *             .secretId("my_secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()
+ *             .secret(secret.id())
+ *             .secretData("secret-data")
+ *             .build());
+ * 
+ *         var repository = new com.pulumi.gcp.dataform.Repository("repository", com.pulumi.gcp.dataform.RepositoryArgs.builder()
+ *             .name("dataform_repository")
+ *             .region("us-central1")
+ *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
+ *                 .url(gitRepository.url())
+ *                 .defaultBranch("main")
+ *                 .authenticationTokenSecretVersion(secretVersion.id())
+ *                 .build())
+ *             .workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs.builder()
+ *                 .defaultDatabase("database")
+ *                 .schemaSuffix("_suffix")
+ *                 .tablePrefix("prefix_")
+ *                 .build())
+ *             .build());
+ * 
+ *         var release = new RepositoryReleaseConfig("release", RepositoryReleaseConfigArgs.builder()
+ *             .project(repository.project())
+ *             .region(repository.region())
+ *             .repository(repository.name())
+ *             .name("my_release")
+ *             .gitCommitish("main")
+ *             .cronSchedule("0 7 * * *")
+ *             .timeZone("America/New_York")
+ *             .disabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -171,6 +251,20 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<String>> cronSchedule() {
         return Codegen.optional(this.cronSchedule);
+    }
+    /**
+     * Disables automatic creation of compilation results.
+     * 
+     */
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disabled;
+
+    /**
+     * @return Disables automatic creation of compilation results.
+     * 
+     */
+    public Output<Optional<Boolean>> disabled() {
+        return Codegen.optional(this.disabled);
     }
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.

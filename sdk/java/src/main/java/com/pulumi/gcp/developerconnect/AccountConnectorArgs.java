@@ -6,7 +6,9 @@ package com.pulumi.gcp.developerconnect;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.developerconnect.inputs.AccountConnectorCustomOauthConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.AccountConnectorProviderOauthConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.AccountConnectorProxyConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -19,7 +21,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     public static final AccountConnectorArgs Empty = new AccountConnectorArgs();
 
     /**
-     * Required. The ID to use for the AccountConnector, which will become the final
+     * The ID to use for the AccountConnector, which will become the final
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
@@ -29,7 +31,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     private Output<String> accountConnectorId;
 
     /**
-     * @return Required. The ID to use for the AccountConnector, which will become the final
+     * @return The ID to use for the AccountConnector, which will become the final
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
@@ -40,7 +42,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. Allows users to store small amounts of arbitrary data.
+     * Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
@@ -49,7 +51,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Optional. Allows users to store small amounts of arbitrary data.
+     * @return Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
@@ -59,7 +61,43 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * Message for a customized OAuth config.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customOauthConfig")
+    private @Nullable Output<AccountConnectorCustomOauthConfigArgs> customOauthConfig;
+
+    /**
+     * @return Message for a customized OAuth config.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AccountConnectorCustomOauthConfigArgs>> customOauthConfig() {
+        return Optional.ofNullable(this.customOauthConfig);
+    }
+
+    /**
+     * This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
+     * client has an up-to-date value before proceeding.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
+     * client has an up-to-date value before proceeding.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
+     * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
@@ -68,7 +106,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
@@ -78,14 +116,14 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The location of the resource.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return The location of the resource.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Output<String> location() {
@@ -126,15 +164,35 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.providerOauthConfig);
     }
 
+    /**
+     * The proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="proxyConfig")
+    private @Nullable Output<AccountConnectorProxyConfigArgs> proxyConfig;
+
+    /**
+     * @return The proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AccountConnectorProxyConfigArgs>> proxyConfig() {
+        return Optional.ofNullable(this.proxyConfig);
+    }
+
     private AccountConnectorArgs() {}
 
     private AccountConnectorArgs(AccountConnectorArgs $) {
         this.accountConnectorId = $.accountConnectorId;
         this.annotations = $.annotations;
+        this.customOauthConfig = $.customOauthConfig;
+        this.etag = $.etag;
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
         this.providerOauthConfig = $.providerOauthConfig;
+        this.proxyConfig = $.proxyConfig;
     }
 
     public static Builder builder() {
@@ -156,7 +214,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountConnectorId Required. The ID to use for the AccountConnector, which will become the final
+         * @param accountConnectorId The ID to use for the AccountConnector, which will become the final
          * component of the AccountConnector&#39;s resource name. Its format should adhere
          * to https://google.aip.dev/122#resource-id-segments Names must be unique
          * per-project per-location.
@@ -170,7 +228,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountConnectorId Required. The ID to use for the AccountConnector, which will become the final
+         * @param accountConnectorId The ID to use for the AccountConnector, which will become the final
          * component of the AccountConnector&#39;s resource name. Its format should adhere
          * to https://google.aip.dev/122#resource-id-segments Names must be unique
          * per-project per-location.
@@ -183,7 +241,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Optional. Allows users to store small amounts of arbitrary data.
+         * @param annotations Allows users to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
@@ -196,7 +254,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Optional. Allows users to store small amounts of arbitrary data.
+         * @param annotations Allows users to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
@@ -208,7 +266,55 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param customOauthConfig Message for a customized OAuth config.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customOauthConfig(@Nullable Output<AccountConnectorCustomOauthConfigArgs> customOauthConfig) {
+            $.customOauthConfig = customOauthConfig;
+            return this;
+        }
+
+        /**
+         * @param customOauthConfig Message for a customized OAuth config.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customOauthConfig(AccountConnectorCustomOauthConfigArgs customOauthConfig) {
+            return customOauthConfig(Output.of(customOauthConfig));
+        }
+
+        /**
+         * @param etag This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
+         * client has an up-to-date value before proceeding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
+         * client has an up-to-date value before proceeding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
+        }
+
+        /**
+         * @param labels Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
@@ -221,7 +327,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
@@ -233,7 +339,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location The location of the resource.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -244,7 +350,7 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param location The location of the resource.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -297,6 +403,29 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder providerOauthConfig(AccountConnectorProviderOauthConfigArgs providerOauthConfig) {
             return providerOauthConfig(Output.of(providerOauthConfig));
+        }
+
+        /**
+         * @param proxyConfig The proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyConfig(@Nullable Output<AccountConnectorProxyConfigArgs> proxyConfig) {
+            $.proxyConfig = proxyConfig;
+            return this;
+        }
+
+        /**
+         * @param proxyConfig The proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyConfig(AccountConnectorProxyConfigArgs proxyConfig) {
+            return proxyConfig(Output.of(proxyConfig));
         }
 
         public AccountConnectorArgs build() {

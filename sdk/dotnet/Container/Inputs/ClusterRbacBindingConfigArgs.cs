@@ -14,12 +14,6 @@ namespace Pulumi.Gcp.Container.Inputs
     {
         /// <summary>
         /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
-        /// 
-        /// 
-        /// ## Attributes Reference
-        /// 
-        /// In addition to the arguments listed above, the following computed attributes are
-        /// exported:
         /// </summary>
         [Input("enableInsecureBindingSystemAuthenticated")]
         public Input<bool>? EnableInsecureBindingSystemAuthenticated { get; set; }

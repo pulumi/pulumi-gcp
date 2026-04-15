@@ -1460,6 +1460,13 @@ namespace Pulumi.Gcp
             set => _workflowsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _workloadIdentityCustomEndpoint = new __Value<string?>(() => __config.Get("workloadIdentityCustomEndpoint"));
+        public static string? WorkloadIdentityCustomEndpoint
+        {
+            get => _workloadIdentityCustomEndpoint.Get();
+            set => _workloadIdentityCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _workstationsCustomEndpoint = new __Value<string?>(() => __config.Get("workstationsCustomEndpoint"));
         public static string? WorkstationsCustomEndpoint
         {

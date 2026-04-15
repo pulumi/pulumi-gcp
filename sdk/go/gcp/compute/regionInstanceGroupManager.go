@@ -219,7 +219,6 @@ type RegionInstanceGroupManager struct {
 	// The fingerprint of the instance group manager.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-	// ***
 	InstanceFlexibilityPolicy RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput `pulumi:"instanceFlexibilityPolicy"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
@@ -272,6 +271,10 @@ type RegionInstanceGroupManager struct {
 	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
+	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+	// *
+	// ***
+	TargetSizePolicies RegionInstanceGroupManagerTargetSizePolicyArrayOutput `pulumi:"targetSizePolicies"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntOutput `pulumi:"targetStoppedSize"`
 	// The target number of suspended instances for this managed instance group.
@@ -356,7 +359,6 @@ type regionInstanceGroupManagerState struct {
 	// The fingerprint of the instance group manager.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-	// ***
 	InstanceFlexibilityPolicy *RegionInstanceGroupManagerInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
@@ -409,6 +411,10 @@ type regionInstanceGroupManagerState struct {
 	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
+	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+	// *
+	// ***
+	TargetSizePolicies []RegionInstanceGroupManagerTargetSizePolicy `pulumi:"targetSizePolicies"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
 	// The target number of suspended instances for this managed instance group.
@@ -458,7 +464,6 @@ type RegionInstanceGroupManagerState struct {
 	// The fingerprint of the instance group manager.
 	Fingerprint pulumi.StringPtrInput
 	// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-	// ***
 	InstanceFlexibilityPolicy RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
@@ -511,6 +516,10 @@ type RegionInstanceGroupManagerState struct {
 	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
+	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+	// *
+	// ***
+	TargetSizePolicies RegionInstanceGroupManagerTargetSizePolicyArrayInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
 	// The target number of suspended instances for this managed instance group.
@@ -560,7 +569,6 @@ type regionInstanceGroupManagerArgs struct {
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
 	// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-	// ***
 	InstanceFlexibilityPolicy *RegionInstanceGroupManagerInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy *RegionInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
@@ -605,6 +613,10 @@ type regionInstanceGroupManagerArgs struct {
 	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
+	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+	// *
+	// ***
+	TargetSizePolicies []RegionInstanceGroupManagerTargetSizePolicy `pulumi:"targetSizePolicies"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
 	// The target number of suspended instances for this managed instance group.
@@ -651,7 +663,6 @@ type RegionInstanceGroupManagerArgs struct {
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones pulumi.StringArrayInput
 	// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-	// ***
 	InstanceFlexibilityPolicy RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrInput
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy RegionInstanceGroupManagerInstanceLifecyclePolicyPtrInput
@@ -696,6 +707,10 @@ type RegionInstanceGroupManagerArgs struct {
 	// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
+	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+	// *
+	// ***
+	TargetSizePolicies RegionInstanceGroupManagerTargetSizePolicyArrayInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
 	// The target number of suspended instances for this managed instance group.
@@ -859,7 +874,6 @@ func (o RegionInstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-// ***
 func (o RegionInstanceGroupManagerOutput) InstanceFlexibilityPolicy() RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
 		return v.InstanceFlexibilityPolicy
@@ -978,6 +992,15 @@ func (o RegionInstanceGroupManagerOutput) TargetPools() pulumi.StringArrayOutput
 // `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 func (o RegionInstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
+}
+
+// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+// *
+// ***
+func (o RegionInstanceGroupManagerOutput) TargetSizePolicies() RegionInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerTargetSizePolicyArrayOutput {
+		return v.TargetSizePolicies
+	}).(RegionInstanceGroupManagerTargetSizePolicyArrayOutput)
 }
 
 // The target number of stopped instances for this managed instance group.

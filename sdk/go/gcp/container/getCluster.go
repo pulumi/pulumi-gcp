@@ -72,6 +72,7 @@ type LookupClusterResult struct {
 	AllowNetAdmin                        bool                                      `pulumi:"allowNetAdmin"`
 	AnonymousAuthenticationConfigs       []GetClusterAnonymousAuthenticationConfig `pulumi:"anonymousAuthenticationConfigs"`
 	AuthenticatorGroupsConfigs           []GetClusterAuthenticatorGroupsConfig     `pulumi:"authenticatorGroupsConfigs"`
+	AutopilotClusterPolicyConfigs        []GetClusterAutopilotClusterPolicyConfig  `pulumi:"autopilotClusterPolicyConfigs"`
 	AutopilotPrivilegedAdmissions        []string                                  `pulumi:"autopilotPrivilegedAdmissions"`
 	BinaryAuthorizations                 []GetClusterBinaryAuthorization           `pulumi:"binaryAuthorizations"`
 	ClusterAutoscalings                  []GetClusterClusterAutoscaling            `pulumi:"clusterAutoscalings"`
@@ -106,62 +107,63 @@ type LookupClusterResult struct {
 	GatewayApiConfigs                    []GetClusterGatewayApiConfig              `pulumi:"gatewayApiConfigs"`
 	GkeAutoUpgradeConfigs                []GetClusterGkeAutoUpgradeConfig          `pulumi:"gkeAutoUpgradeConfigs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                              string                                     `pulumi:"id"`
-	IdentityServiceConfigs          []GetClusterIdentityServiceConfig          `pulumi:"identityServiceConfigs"`
-	InTransitEncryptionConfig       string                                     `pulumi:"inTransitEncryptionConfig"`
-	InitialNodeCount                int                                        `pulumi:"initialNodeCount"`
-	IpAllocationPolicies            []GetClusterIpAllocationPolicy             `pulumi:"ipAllocationPolicies"`
-	LabelFingerprint                string                                     `pulumi:"labelFingerprint"`
-	Location                        *string                                    `pulumi:"location"`
-	LoggingConfigs                  []GetClusterLoggingConfig                  `pulumi:"loggingConfigs"`
-	LoggingService                  string                                     `pulumi:"loggingService"`
-	MaintenancePolicies             []GetClusterMaintenancePolicy              `pulumi:"maintenancePolicies"`
-	ManagedOpentelemetryConfigs     []GetClusterManagedOpentelemetryConfig     `pulumi:"managedOpentelemetryConfigs"`
-	MasterAuthorizedNetworksConfigs []GetClusterMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfigs"`
-	MasterAuths                     []GetClusterMasterAuth                     `pulumi:"masterAuths"`
-	MasterVersion                   string                                     `pulumi:"masterVersion"`
-	MeshCertificates                []GetClusterMeshCertificate                `pulumi:"meshCertificates"`
-	MinMasterVersion                string                                     `pulumi:"minMasterVersion"`
-	MonitoringConfigs               []GetClusterMonitoringConfig               `pulumi:"monitoringConfigs"`
-	MonitoringService               string                                     `pulumi:"monitoringService"`
-	Name                            string                                     `pulumi:"name"`
-	Network                         string                                     `pulumi:"network"`
-	NetworkPerformanceConfigs       []GetClusterNetworkPerformanceConfig       `pulumi:"networkPerformanceConfigs"`
-	NetworkPolicies                 []GetClusterNetworkPolicy                  `pulumi:"networkPolicies"`
-	NetworkingMode                  string                                     `pulumi:"networkingMode"`
-	NodeConfigs                     []GetClusterNodeConfig                     `pulumi:"nodeConfigs"`
-	NodeLocations                   []string                                   `pulumi:"nodeLocations"`
-	NodePoolAutoConfigs             []GetClusterNodePoolAutoConfig             `pulumi:"nodePoolAutoConfigs"`
-	NodePoolDefaults                []GetClusterNodePoolDefault                `pulumi:"nodePoolDefaults"`
-	NodePools                       []GetClusterNodePool                       `pulumi:"nodePools"`
-	NodeVersion                     string                                     `pulumi:"nodeVersion"`
-	NotificationConfigs             []GetClusterNotificationConfig             `pulumi:"notificationConfigs"`
-	Operation                       string                                     `pulumi:"operation"`
-	PodAutoscalings                 []GetClusterPodAutoscaling                 `pulumi:"podAutoscalings"`
-	PodSecurityPolicyConfigs        []GetClusterPodSecurityPolicyConfig        `pulumi:"podSecurityPolicyConfigs"`
-	PrivateClusterConfigs           []GetClusterPrivateClusterConfig           `pulumi:"privateClusterConfigs"`
-	PrivateIpv6GoogleAccess         string                                     `pulumi:"privateIpv6GoogleAccess"`
-	Project                         *string                                    `pulumi:"project"`
-	ProtectConfigs                  []GetClusterProtectConfig                  `pulumi:"protectConfigs"`
-	PulumiLabels                    map[string]string                          `pulumi:"pulumiLabels"`
-	RbacBindingConfigs              []GetClusterRbacBindingConfig              `pulumi:"rbacBindingConfigs"`
-	ReleaseChannels                 []GetClusterReleaseChannel                 `pulumi:"releaseChannels"`
-	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
-	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
-	ResourceUsageExportConfigs      []GetClusterResourceUsageExportConfig      `pulumi:"resourceUsageExportConfigs"`
-	SecretManagerConfigs            []GetClusterSecretManagerConfig            `pulumi:"secretManagerConfigs"`
-	SecretSyncConfigs               []GetClusterSecretSyncConfig               `pulumi:"secretSyncConfigs"`
-	SecurityPostureConfigs          []GetClusterSecurityPostureConfig          `pulumi:"securityPostureConfigs"`
-	SelfLink                        string                                     `pulumi:"selfLink"`
-	ServiceExternalIpsConfigs       []GetClusterServiceExternalIpsConfig       `pulumi:"serviceExternalIpsConfigs"`
-	ServicesIpv4Cidr                string                                     `pulumi:"servicesIpv4Cidr"`
-	Subnetwork                      string                                     `pulumi:"subnetwork"`
-	TpuConfigs                      []GetClusterTpuConfig                      `pulumi:"tpuConfigs"`
-	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`
-	UserManagedKeysConfigs          []GetClusterUserManagedKeysConfig          `pulumi:"userManagedKeysConfigs"`
-	VerticalPodAutoscalings         []GetClusterVerticalPodAutoscaling         `pulumi:"verticalPodAutoscalings"`
-	WorkloadAltsConfigs             []GetClusterWorkloadAltsConfig             `pulumi:"workloadAltsConfigs"`
-	WorkloadIdentityConfigs         []GetClusterWorkloadIdentityConfig         `pulumi:"workloadIdentityConfigs"`
+	Id                                       string                                              `pulumi:"id"`
+	IdentityServiceConfigs                   []GetClusterIdentityServiceConfig                   `pulumi:"identityServiceConfigs"`
+	InTransitEncryptionConfig                string                                              `pulumi:"inTransitEncryptionConfig"`
+	InitialNodeCount                         int                                                 `pulumi:"initialNodeCount"`
+	IpAllocationPolicies                     []GetClusterIpAllocationPolicy                      `pulumi:"ipAllocationPolicies"`
+	LabelFingerprint                         string                                              `pulumi:"labelFingerprint"`
+	Location                                 *string                                             `pulumi:"location"`
+	LoggingConfigs                           []GetClusterLoggingConfig                           `pulumi:"loggingConfigs"`
+	LoggingService                           string                                              `pulumi:"loggingService"`
+	MaintenancePolicies                      []GetClusterMaintenancePolicy                       `pulumi:"maintenancePolicies"`
+	ManagedMachineLearningDiagnosticsConfigs []GetClusterManagedMachineLearningDiagnosticsConfig `pulumi:"managedMachineLearningDiagnosticsConfigs"`
+	ManagedOpentelemetryConfigs              []GetClusterManagedOpentelemetryConfig              `pulumi:"managedOpentelemetryConfigs"`
+	MasterAuthorizedNetworksConfigs          []GetClusterMasterAuthorizedNetworksConfig          `pulumi:"masterAuthorizedNetworksConfigs"`
+	MasterAuths                              []GetClusterMasterAuth                              `pulumi:"masterAuths"`
+	MasterVersion                            string                                              `pulumi:"masterVersion"`
+	MeshCertificates                         []GetClusterMeshCertificate                         `pulumi:"meshCertificates"`
+	MinMasterVersion                         string                                              `pulumi:"minMasterVersion"`
+	MonitoringConfigs                        []GetClusterMonitoringConfig                        `pulumi:"monitoringConfigs"`
+	MonitoringService                        string                                              `pulumi:"monitoringService"`
+	Name                                     string                                              `pulumi:"name"`
+	Network                                  string                                              `pulumi:"network"`
+	NetworkPerformanceConfigs                []GetClusterNetworkPerformanceConfig                `pulumi:"networkPerformanceConfigs"`
+	NetworkPolicies                          []GetClusterNetworkPolicy                           `pulumi:"networkPolicies"`
+	NetworkingMode                           string                                              `pulumi:"networkingMode"`
+	NodeConfigs                              []GetClusterNodeConfig                              `pulumi:"nodeConfigs"`
+	NodeLocations                            []string                                            `pulumi:"nodeLocations"`
+	NodePoolAutoConfigs                      []GetClusterNodePoolAutoConfig                      `pulumi:"nodePoolAutoConfigs"`
+	NodePoolDefaults                         []GetClusterNodePoolDefault                         `pulumi:"nodePoolDefaults"`
+	NodePools                                []GetClusterNodePool                                `pulumi:"nodePools"`
+	NodeVersion                              string                                              `pulumi:"nodeVersion"`
+	NotificationConfigs                      []GetClusterNotificationConfig                      `pulumi:"notificationConfigs"`
+	Operation                                string                                              `pulumi:"operation"`
+	PodAutoscalings                          []GetClusterPodAutoscaling                          `pulumi:"podAutoscalings"`
+	PodSecurityPolicyConfigs                 []GetClusterPodSecurityPolicyConfig                 `pulumi:"podSecurityPolicyConfigs"`
+	PrivateClusterConfigs                    []GetClusterPrivateClusterConfig                    `pulumi:"privateClusterConfigs"`
+	PrivateIpv6GoogleAccess                  string                                              `pulumi:"privateIpv6GoogleAccess"`
+	Project                                  *string                                             `pulumi:"project"`
+	ProtectConfigs                           []GetClusterProtectConfig                           `pulumi:"protectConfigs"`
+	PulumiLabels                             map[string]string                                   `pulumi:"pulumiLabels"`
+	RbacBindingConfigs                       []GetClusterRbacBindingConfig                       `pulumi:"rbacBindingConfigs"`
+	ReleaseChannels                          []GetClusterReleaseChannel                          `pulumi:"releaseChannels"`
+	RemoveDefaultNodePool                    bool                                                `pulumi:"removeDefaultNodePool"`
+	ResourceLabels                           map[string]string                                   `pulumi:"resourceLabels"`
+	ResourceUsageExportConfigs               []GetClusterResourceUsageExportConfig               `pulumi:"resourceUsageExportConfigs"`
+	SecretManagerConfigs                     []GetClusterSecretManagerConfig                     `pulumi:"secretManagerConfigs"`
+	SecretSyncConfigs                        []GetClusterSecretSyncConfig                        `pulumi:"secretSyncConfigs"`
+	SecurityPostureConfigs                   []GetClusterSecurityPostureConfig                   `pulumi:"securityPostureConfigs"`
+	SelfLink                                 string                                              `pulumi:"selfLink"`
+	ServiceExternalIpsConfigs                []GetClusterServiceExternalIpsConfig                `pulumi:"serviceExternalIpsConfigs"`
+	ServicesIpv4Cidr                         string                                              `pulumi:"servicesIpv4Cidr"`
+	Subnetwork                               string                                              `pulumi:"subnetwork"`
+	TpuConfigs                               []GetClusterTpuConfig                               `pulumi:"tpuConfigs"`
+	TpuIpv4CidrBlock                         string                                              `pulumi:"tpuIpv4CidrBlock"`
+	UserManagedKeysConfigs                   []GetClusterUserManagedKeysConfig                   `pulumi:"userManagedKeysConfigs"`
+	VerticalPodAutoscalings                  []GetClusterVerticalPodAutoscaling                  `pulumi:"verticalPodAutoscalings"`
+	WorkloadAltsConfigs                      []GetClusterWorkloadAltsConfig                      `pulumi:"workloadAltsConfigs"`
+	WorkloadIdentityConfigs                  []GetClusterWorkloadIdentityConfig                  `pulumi:"workloadIdentityConfigs"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -221,6 +223,12 @@ func (o LookupClusterResultOutput) AnonymousAuthenticationConfigs() GetClusterAn
 
 func (o LookupClusterResultOutput) AuthenticatorGroupsConfigs() GetClusterAuthenticatorGroupsConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfigs }).(GetClusterAuthenticatorGroupsConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) AutopilotClusterPolicyConfigs() GetClusterAutopilotClusterPolicyConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterAutopilotClusterPolicyConfig {
+		return v.AutopilotClusterPolicyConfigs
+	}).(GetClusterAutopilotClusterPolicyConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) AutopilotPrivilegedAdmissions() pulumi.StringArrayOutput {
@@ -396,6 +404,12 @@ func (o LookupClusterResultOutput) LoggingService() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) MaintenancePolicies() GetClusterMaintenancePolicyArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterMaintenancePolicy { return v.MaintenancePolicies }).(GetClusterMaintenancePolicyArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ManagedMachineLearningDiagnosticsConfigs() GetClusterManagedMachineLearningDiagnosticsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterManagedMachineLearningDiagnosticsConfig {
+		return v.ManagedMachineLearningDiagnosticsConfigs
+	}).(GetClusterManagedMachineLearningDiagnosticsConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) ManagedOpentelemetryConfigs() GetClusterManagedOpentelemetryConfigArrayOutput {

@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.HyperComputeCluster
     /// 
     ///     var cluster = new Gcp.HyperComputeCluster.Cluster("cluster", new()
     ///     {
-    ///         ClusterId = "my-cluster",
+    ///         ClusterId = "mycluster1",
     ///         Location = "us-central1",
     ///         Description = "Cluster Director instance created through Terraform",
     ///         NetworkResources = new[]
@@ -134,9 +134,8 @@ namespace Pulumi.Gcp.HyperComputeCluster
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the cluster to create. Must conform to
-        /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        /// alphanumeric, and at most 63 characters).
+        /// ID of the cluster to create. Must start with a lowercase letter,
+        /// use only lowercase letters and numbers, and be at most 10 characters long.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -302,9 +301,8 @@ namespace Pulumi.Gcp.HyperComputeCluster
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the cluster to create. Must conform to
-        /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        /// alphanumeric, and at most 63 characters).
+        /// ID of the cluster to create. Must start with a lowercase letter,
+        /// use only lowercase letters and numbers, and be at most 10 characters long.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -411,9 +409,8 @@ namespace Pulumi.Gcp.HyperComputeCluster
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the cluster to create. Must conform to
-        /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        /// alphanumeric, and at most 63 characters).
+        /// ID of the cluster to create. Must start with a lowercase letter,
+        /// use only lowercase letters and numbers, and be at most 10 characters long.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }

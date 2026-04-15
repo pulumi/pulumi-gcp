@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -65,7 +64,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -116,7 +114,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -181,7 +178,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Volumes = new[]
@@ -282,7 +278,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -329,7 +324,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -388,7 +382,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Volumes = new[]
@@ -468,7 +461,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -531,7 +523,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -604,7 +595,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -679,7 +669,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     {
     ///         Name = "cloudrun-worker-pool",
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
     ///         DeletionProtection = false,
     ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
     ///         {

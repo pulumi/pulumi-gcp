@@ -129,7 +129,10 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfigTtlConfig',
     'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig',
     'AiReasoningEngineEncryptionSpec',
+    'AiReasoningEngineIamBindingCondition',
+    'AiReasoningEngineIamMemberCondition',
     'AiReasoningEngineSpec',
+    'AiReasoningEngineSpecContainerSpec',
     'AiReasoningEngineSpecDeploymentSpec',
     'AiReasoningEngineSpecDeploymentSpecEnv',
     'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig',
@@ -140,6 +143,7 @@ __all__ = [
     'AiReasoningEngineSpecSourceCodeSpec',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig',
+    'AiReasoningEngineSpecSourceCodeSpecImageSpec',
     'AiReasoningEngineSpecSourceCodeSpecInlineSource',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpec',
     'AiTensorboardEncryptionSpec',
@@ -7005,6 +7009,60 @@ class AiReasoningEngineEncryptionSpec(dict):
 
 
 @pulumi.output_type
+class AiReasoningEngineIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiReasoningEngineIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class AiReasoningEngineSpec(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7013,6 +7071,8 @@ class AiReasoningEngineSpec(dict):
             suggest = "agent_framework"
         elif key == "classMethods":
             suggest = "class_methods"
+        elif key == "containerSpec":
+            suggest = "container_spec"
         elif key == "deploymentSpec":
             suggest = "deployment_spec"
         elif key == "effectiveIdentity":
@@ -7040,6 +7100,7 @@ class AiReasoningEngineSpec(dict):
     def __init__(__self__, *,
                  agent_framework: Optional[_builtins.str] = None,
                  class_methods: Optional[_builtins.str] = None,
+                 container_spec: Optional['outputs.AiReasoningEngineSpecContainerSpec'] = None,
                  deployment_spec: Optional['outputs.AiReasoningEngineSpecDeploymentSpec'] = None,
                  effective_identity: Optional[_builtins.str] = None,
                  identity_type: Optional[_builtins.str] = None,
@@ -7050,12 +7111,13 @@ class AiReasoningEngineSpec(dict):
         :param _builtins.str agent_framework: Optional. The OSS agent framework used to develop the agent.
         :param _builtins.str class_methods: Optional. Declarations for object class methods in OpenAPI
                specification format.
+        :param 'AiReasoningEngineSpecContainerSpecArgs' container_spec: Deploy from a container image with a defined entrypoint and commands.
+               Structure is documented below.
         :param 'AiReasoningEngineSpecDeploymentSpecArgs' deployment_spec: Optional. The specification of a Reasoning Engine deployment.
                Structure is documented below.
-        :param _builtins.str effective_identity: (Output, Beta)
+        :param _builtins.str effective_identity: (Output)
                The identity to use for the Reasoning Engine.
-        :param _builtins.str identity_type: (Optional, Beta)
-               Optional. The identity type to use for the Reasoning Engine.
+        :param _builtins.str identity_type: Optional. The identity type to use for the Reasoning Engine.
                If not specified, the `service_account` field will be used if set,
                otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
                Possible values:
@@ -7079,6 +7141,8 @@ class AiReasoningEngineSpec(dict):
             pulumi.set(__self__, "agent_framework", agent_framework)
         if class_methods is not None:
             pulumi.set(__self__, "class_methods", class_methods)
+        if container_spec is not None:
+            pulumi.set(__self__, "container_spec", container_spec)
         if deployment_spec is not None:
             pulumi.set(__self__, "deployment_spec", deployment_spec)
         if effective_identity is not None:
@@ -7110,6 +7174,15 @@ class AiReasoningEngineSpec(dict):
         return pulumi.get(self, "class_methods")
 
     @_builtins.property
+    @pulumi.getter(name="containerSpec")
+    def container_spec(self) -> Optional['outputs.AiReasoningEngineSpecContainerSpec']:
+        """
+        Deploy from a container image with a defined entrypoint and commands.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_spec")
+
+    @_builtins.property
     @pulumi.getter(name="deploymentSpec")
     def deployment_spec(self) -> Optional['outputs.AiReasoningEngineSpecDeploymentSpec']:
         """
@@ -7122,7 +7195,7 @@ class AiReasoningEngineSpec(dict):
     @pulumi.getter(name="effectiveIdentity")
     def effective_identity(self) -> Optional[_builtins.str]:
         """
-        (Output, Beta)
+        (Output)
         The identity to use for the Reasoning Engine.
         """
         return pulumi.get(self, "effective_identity")
@@ -7131,7 +7204,6 @@ class AiReasoningEngineSpec(dict):
     @pulumi.getter(name="identityType")
     def identity_type(self) -> Optional[_builtins.str]:
         """
-        (Optional, Beta)
         Optional. The identity type to use for the Reasoning Engine.
         If not specified, the `service_account` field will be used if set,
         otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
@@ -7174,6 +7246,45 @@ class AiReasoningEngineSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "source_code_spec")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecContainerSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpecContainerSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineSpecContainerSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineSpecContainerSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_uri: _builtins.str):
+        """
+        :param _builtins.str image_uri: The Artifact Registry Docker image URI (e.g.,
+               `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
+               container image that is to be run on each worker replica.
+        """
+        pulumi.set(__self__, "image_uri", image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> _builtins.str:
+        """
+        The Artifact Registry Docker image URI (e.g.,
+        `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
+        container image that is to be run on each worker replica.
+        """
+        return pulumi.get(self, "image_uri")
 
 
 @pulumi.output_type
@@ -7695,6 +7806,8 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
         suggest = None
         if key == "developerConnectSource":
             suggest = "developer_connect_source"
+        elif key == "imageSpec":
+            suggest = "image_spec"
         elif key == "inlineSource":
             suggest = "inline_source"
         elif key == "pythonSpec":
@@ -7713,10 +7826,13 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
 
     def __init__(__self__, *,
                  developer_connect_source: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource'] = None,
+                 image_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec'] = None,
                  inline_source: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource'] = None,
                  python_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec'] = None):
         """
         :param 'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs' developer_connect_source: Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+               Structure is documented below.
+        :param 'AiReasoningEngineSpecSourceCodeSpecImageSpecArgs' image_spec: Configuration for building an image with custom config file.
                Structure is documented below.
         :param 'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs' inline_source: Source code is provided directly in the request.
                Structure is documented below.
@@ -7725,6 +7841,8 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
         """
         if developer_connect_source is not None:
             pulumi.set(__self__, "developer_connect_source", developer_connect_source)
+        if image_spec is not None:
+            pulumi.set(__self__, "image_spec", image_spec)
         if inline_source is not None:
             pulumi.set(__self__, "inline_source", inline_source)
         if python_spec is not None:
@@ -7738,6 +7856,15 @@ class AiReasoningEngineSpecSourceCodeSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "developer_connect_source")
+
+    @_builtins.property
+    @pulumi.getter(name="imageSpec")
+    def image_spec(self) -> Optional['outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec']:
+        """
+        Configuration for building an image with custom config file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_spec")
 
     @_builtins.property
     @pulumi.getter(name="inlineSource")
@@ -7833,6 +7960,42 @@ class AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfig(dict):
         The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
         """
         return pulumi.get(self, "revision")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecSourceCodeSpecImageSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildArgs":
+            suggest = "build_args"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpecSourceCodeSpecImageSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecImageSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecImageSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_args: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] build_args: Build arguments to be used. They will be passed through --build-arg flags.
+        """
+        if build_args is not None:
+            pulumi.set(__self__, "build_args", build_args)
+
+    @_builtins.property
+    @pulumi.getter(name="buildArgs")
+    def build_args(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Build arguments to be used. They will be passed through --build-arg flags.
+        """
+        return pulumi.get(self, "build_args")
 
 
 @pulumi.output_type

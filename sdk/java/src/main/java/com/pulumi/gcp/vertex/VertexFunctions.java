@@ -23,6 +23,10 @@ import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiIndexArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiIndexPlainArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyPlainArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryPlainArgs;
 import com.pulumi.gcp.vertex.outputs.GetAiEndpointIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeatureGroupIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyResult;
@@ -30,6 +34,8 @@ import com.pulumi.gcp.vertex.outputs.GetAiFeatureOnlineStoreIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeaturestoreEntitytypeIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeaturestoreIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexResult;
+import com.pulumi.gcp.vertex.outputs.GetAiReasoningEngineIamPolicyResult;
+import com.pulumi.gcp.vertex.outputs.GetAiReasoningEngineQueryResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class VertexFunctions {
@@ -1372,5 +1378,560 @@ public final class VertexFunctions {
      */
     public static CompletableFuture<GetAiIndexResult> getAiIndexPlain(GetAiIndexPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiIndex:getAiIndex", TypeShape.of(GetAiIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for reasoningengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
+     *             .project(reasoningEngine.project())
+     *             .region(reasoningEngine.region())
+     *             .reasoningEngine(reasoningEngine.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs args) {
+        return getAiReasoningEngineIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for reasoningengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
+     *             .project(reasoningEngine.project())
+     *             .region(reasoningEngine.region())
+     *             .reasoningEngine(reasoningEngine.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicyPlain(GetAiReasoningEngineIamPolicyPlainArgs args) {
+        return getAiReasoningEngineIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for reasoningengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
+     *             .project(reasoningEngine.project())
+     *             .region(reasoningEngine.region())
+     *             .reasoningEngine(reasoningEngine.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy", TypeShape.of(GetAiReasoningEngineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for reasoningengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
+     *             .project(reasoningEngine.project())
+     *             .region(reasoningEngine.region())
+     *             .reasoningEngine(reasoningEngine.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy", TypeShape.of(GetAiReasoningEngineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for reasoningengine
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
+     *             .project(reasoningEngine.project())
+     *             .region(reasoningEngine.region())
+     *             .reasoningEngine(reasoningEngine.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicyPlain(GetAiReasoningEngineIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy", TypeShape.of(GetAiReasoningEngineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the output of a query sent to a Vertex AI Reasoning Engine agent.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.AiReasoningEngine;
+     * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Filebase64Args;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
+     *             .displayName("vertex-mds-_64134")
+     *             .description("Retrieves tenant project number")
+     *             .region("us-central1")
+     *             .spec(AiReasoningEngineSpecArgs.builder()
+     *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+     *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+     *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+     *                             .input("./test-fixtures/mds_agent_src.tar.gz")
+     *                             .build()).result())
+     *                         .build())
+     *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+     *                         .entrypointModule("metadata_agent")
+     *                         .entrypointObject("root_agent")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+     *             .reasoningEngineId(defaultAiReasoningEngine.name())
+     *             .region("us-central1")
+     *             .classMethod("query")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiReasoningEngineQueryResult> getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs args) {
+        return getAiReasoningEngineQuery(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the output of a query sent to a Vertex AI Reasoning Engine agent.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.AiReasoningEngine;
+     * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Filebase64Args;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
+     *             .displayName("vertex-mds-_64134")
+     *             .description("Retrieves tenant project number")
+     *             .region("us-central1")
+     *             .spec(AiReasoningEngineSpecArgs.builder()
+     *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+     *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+     *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+     *                             .input("./test-fixtures/mds_agent_src.tar.gz")
+     *                             .build()).result())
+     *                         .build())
+     *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+     *                         .entrypointModule("metadata_agent")
+     *                         .entrypointObject("root_agent")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+     *             .reasoningEngineId(defaultAiReasoningEngine.name())
+     *             .region("us-central1")
+     *             .classMethod("query")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAiReasoningEngineQueryResult> getAiReasoningEngineQueryPlain(GetAiReasoningEngineQueryPlainArgs args) {
+        return getAiReasoningEngineQueryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the output of a query sent to a Vertex AI Reasoning Engine agent.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.AiReasoningEngine;
+     * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Filebase64Args;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
+     *             .displayName("vertex-mds-_64134")
+     *             .description("Retrieves tenant project number")
+     *             .region("us-central1")
+     *             .spec(AiReasoningEngineSpecArgs.builder()
+     *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+     *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+     *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+     *                             .input("./test-fixtures/mds_agent_src.tar.gz")
+     *                             .build()).result())
+     *                         .build())
+     *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+     *                         .entrypointModule("metadata_agent")
+     *                         .entrypointObject("root_agent")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+     *             .reasoningEngineId(defaultAiReasoningEngine.name())
+     *             .region("us-central1")
+     *             .classMethod("query")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiReasoningEngineQueryResult> getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery", TypeShape.of(GetAiReasoningEngineQueryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the output of a query sent to a Vertex AI Reasoning Engine agent.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.AiReasoningEngine;
+     * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Filebase64Args;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
+     *             .displayName("vertex-mds-_64134")
+     *             .description("Retrieves tenant project number")
+     *             .region("us-central1")
+     *             .spec(AiReasoningEngineSpecArgs.builder()
+     *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+     *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+     *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+     *                             .input("./test-fixtures/mds_agent_src.tar.gz")
+     *                             .build()).result())
+     *                         .build())
+     *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+     *                         .entrypointModule("metadata_agent")
+     *                         .entrypointObject("root_agent")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+     *             .reasoningEngineId(defaultAiReasoningEngine.name())
+     *             .region("us-central1")
+     *             .classMethod("query")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiReasoningEngineQueryResult> getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery", TypeShape.of(GetAiReasoningEngineQueryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the output of a query sent to a Vertex AI Reasoning Engine agent.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.AiReasoningEngine;
+     * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+     * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Filebase64Args;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
+     *             .displayName("vertex-mds-_64134")
+     *             .description("Retrieves tenant project number")
+     *             .region("us-central1")
+     *             .spec(AiReasoningEngineSpecArgs.builder()
+     *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+     *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+     *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+     *                             .input("./test-fixtures/mds_agent_src.tar.gz")
+     *                             .build()).result())
+     *                         .build())
+     *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+     *                         .entrypointModule("metadata_agent")
+     *                         .entrypointObject("root_agent")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+     *             .reasoningEngineId(defaultAiReasoningEngine.name())
+     *             .region("us-central1")
+     *             .classMethod("query")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAiReasoningEngineQueryResult> getAiReasoningEngineQueryPlain(GetAiReasoningEngineQueryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery", TypeShape.of(GetAiReasoningEngineQueryResult.class), args, Utilities.withVersion(options));
     }
 }

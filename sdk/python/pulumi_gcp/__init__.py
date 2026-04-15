@@ -1024,6 +1024,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/space",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/space:Space": "Space"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/syncAuthorization",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -7200,6 +7208,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/workloadIdentityServiceAgent",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent": "WorkloadIdentityServiceAgent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding": "AgentRegistryIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember": "AgentRegistryIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy": "AgentRegistryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iap/appEngineServiceIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
@@ -7260,6 +7300,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.iap",
   "classes": {
    "gcp:iap/client:Client": "Client"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/locationWebIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/locationWebIamBinding:LocationWebIamBinding": "LocationWebIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/locationWebIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/locationWebIamMember:LocationWebIamMember": "LocationWebIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/locationWebIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/locationWebIamPolicy:LocationWebIamPolicy": "LocationWebIamPolicy"
   }
  },
  {
@@ -10996,6 +11060,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiReasoningEngine:AiReasoningEngine": "AiReasoningEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiReasoningEngineIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding": "AiReasoningEngineIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiReasoningEngineIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiReasoningEngineIamMember:AiReasoningEngineIamMember": "AiReasoningEngineIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiReasoningEngineIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy": "AiReasoningEngineIamPolicy"
   }
  },
  {

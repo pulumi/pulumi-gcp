@@ -11,6 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterAddonsConfigLustreCsiDriverConfig {
     /**
+     * @return When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which
+     * 										allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+     * 
+     */
+    private Boolean disableMultiNic;
+    /**
      * @return If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
      * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * 
@@ -23,6 +29,14 @@ public final class GetClusterAddonsConfigLustreCsiDriverConfig {
     private Boolean enabled;
 
     private GetClusterAddonsConfigLustreCsiDriverConfig() {}
+    /**
+     * @return When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which
+     * 										allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+     * 
+     */
+    public Boolean disableMultiNic() {
+        return this.disableMultiNic;
+    }
     /**
      * @return If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
      * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
@@ -48,15 +62,25 @@ public final class GetClusterAddonsConfigLustreCsiDriverConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean disableMultiNic;
         private Boolean enableLegacyLustrePort;
         private Boolean enabled;
         public Builder() {}
         public Builder(GetClusterAddonsConfigLustreCsiDriverConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableMultiNic = defaults.disableMultiNic;
     	      this.enableLegacyLustrePort = defaults.enableLegacyLustrePort;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder disableMultiNic(Boolean disableMultiNic) {
+            if (disableMultiNic == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfigLustreCsiDriverConfig", "disableMultiNic");
+            }
+            this.disableMultiNic = disableMultiNic;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableLegacyLustrePort(Boolean enableLegacyLustrePort) {
             if (enableLegacyLustrePort == null) {
@@ -75,6 +99,7 @@ public final class GetClusterAddonsConfigLustreCsiDriverConfig {
         }
         public GetClusterAddonsConfigLustreCsiDriverConfig build() {
             final var _resultValue = new GetClusterAddonsConfigLustreCsiDriverConfig();
+            _resultValue.disableMultiNic = disableMultiNic;
             _resultValue.enableLegacyLustrePort = enableLegacyLustrePort;
             _resultValue.enabled = enabled;
             return _resultValue;

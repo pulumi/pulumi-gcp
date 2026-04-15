@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec;
 import java.util.Objects;
@@ -19,6 +20,12 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
      * 
      */
     private @Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource;
+    /**
+     * @return Configuration for building an image with custom config file.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecSourceCodeSpecImageSpec imageSpec;
     /**
      * @return Source code is provided directly in the request.
      * Structure is documented below.
@@ -40,6 +47,14 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
      */
     public Optional<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource> developerConnectSource() {
         return Optional.ofNullable(this.developerConnectSource);
+    }
+    /**
+     * @return Configuration for building an image with custom config file.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecSourceCodeSpecImageSpec> imageSpec() {
+        return Optional.ofNullable(this.imageSpec);
     }
     /**
      * @return Source code is provided directly in the request.
@@ -68,12 +83,14 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource;
+        private @Nullable AiReasoningEngineSpecSourceCodeSpecImageSpec imageSpec;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecInlineSource inlineSource;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecPythonSpec pythonSpec;
         public Builder() {}
         public Builder(AiReasoningEngineSpecSourceCodeSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.developerConnectSource = defaults.developerConnectSource;
+    	      this.imageSpec = defaults.imageSpec;
     	      this.inlineSource = defaults.inlineSource;
     	      this.pythonSpec = defaults.pythonSpec;
         }
@@ -82,6 +99,12 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
         public Builder developerConnectSource(@Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource) {
 
             this.developerConnectSource = developerConnectSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageSpec(@Nullable AiReasoningEngineSpecSourceCodeSpecImageSpec imageSpec) {
+
+            this.imageSpec = imageSpec;
             return this;
         }
         @CustomType.Setter
@@ -99,6 +122,7 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
         public AiReasoningEngineSpecSourceCodeSpec build() {
             final var _resultValue = new AiReasoningEngineSpecSourceCodeSpec();
             _resultValue.developerConnectSource = developerConnectSource;
+            _resultValue.imageSpec = imageSpec;
             _resultValue.inlineSource = inlineSource;
             _resultValue.pythonSpec = pythonSpec;
             return _resultValue;

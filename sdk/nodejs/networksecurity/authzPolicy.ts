@@ -158,7 +158,7 @@ export class AuthzPolicy extends pulumi.CustomResource {
      * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
      * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
      */
-    declare public readonly policyProfile: pulumi.Output<string | undefined>;
+    declare public readonly policyProfile: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

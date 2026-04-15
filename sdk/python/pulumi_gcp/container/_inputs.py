@@ -199,6 +199,8 @@ __all__ = [
     'ClusterAnonymousAuthenticationConfigArgsDict',
     'ClusterAuthenticatorGroupsConfigArgs',
     'ClusterAuthenticatorGroupsConfigArgsDict',
+    'ClusterAutopilotClusterPolicyConfigArgs',
+    'ClusterAutopilotClusterPolicyConfigArgsDict',
     'ClusterBinaryAuthorizationArgs',
     'ClusterBinaryAuthorizationArgsDict',
     'ClusterClusterAutoscalingArgs',
@@ -275,6 +277,8 @@ __all__ = [
     'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgsDict',
     'ClusterMaintenancePolicyRecurringWindowArgs',
     'ClusterMaintenancePolicyRecurringWindowArgsDict',
+    'ClusterManagedMachineLearningDiagnosticsConfigArgs',
+    'ClusterManagedMachineLearningDiagnosticsConfigArgsDict',
     'ClusterManagedOpentelemetryConfigArgs',
     'ClusterManagedOpentelemetryConfigArgsDict',
     'ClusterMasterAuthArgs',
@@ -4570,10 +4574,8 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     which allows the usage of a Lustre instances as volumes.
     It is disabled by default for Standard clusters; set `enabled = true` to enable.
     It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
-    Lustre CSI Driver Config has optional subfield
-    `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
-    This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
     See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+    Lustre CSI Driver Config has optional subfields:
     """
     network_policy_config: NotRequired[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgsDict']]
     """
@@ -4687,10 +4689,8 @@ class ClusterAddonsConfigArgs:
                which allows the usage of a Lustre instances as volumes.
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
-               Lustre CSI Driver Config has optional subfield
-               `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
-               This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
                See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+               Lustre CSI Driver Config has optional subfields:
         :param pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_config: Whether we should enable the network policy addon
                for the master.  This must be enabled in order to enable network policy for the nodes.
                To enable this, you must also define a `network_policy` block,
@@ -4925,10 +4925,8 @@ class ClusterAddonsConfigArgs:
         which allows the usage of a Lustre instances as volumes.
         It is disabled by default for Standard clusters; set `enabled = true` to enable.
         It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
-        Lustre CSI Driver Config has optional subfield
-        `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
-        This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+        Lustre CSI Driver Config has optional subfields:
         """
         return pulumi.get(self, "lustre_csi_driver_config")
 
@@ -5343,23 +5341,31 @@ class ClusterAddonsConfigLustreCsiDriverConfigArgsDict(TypedDict):
     """
     Whether the Lustre CSI driver is enabled for this cluster.
     """
+    disable_multi_nic: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+    """
     enable_legacy_lustre_port: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-    										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+    which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+    This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
     """
 
 @pulumi.input_type
 class ClusterAddonsConfigLustreCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
+                 disable_multi_nic: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_legacy_lustre_port: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether the Lustre CSI driver is enabled for this cluster.
-        :param pulumi.Input[_builtins.bool] enable_legacy_lustre_port: If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-               										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        :param pulumi.Input[_builtins.bool] disable_multi_nic: When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+        :param pulumi.Input[_builtins.bool] enable_legacy_lustre_port: which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+               This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if disable_multi_nic is not None:
+            pulumi.set(__self__, "disable_multi_nic", disable_multi_nic)
         if enable_legacy_lustre_port is not None:
             pulumi.set(__self__, "enable_legacy_lustre_port", enable_legacy_lustre_port)
 
@@ -5376,11 +5382,23 @@ class ClusterAddonsConfigLustreCsiDriverConfigArgs:
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableMultiNic")
+    def disable_multi_nic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+        """
+        return pulumi.get(self, "disable_multi_nic")
+
+    @disable_multi_nic.setter
+    def disable_multi_nic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_multi_nic", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableLegacyLustrePort")
     def enable_legacy_lustre_port(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-        										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         """
         return pulumi.get(self, "enable_legacy_lustre_port")
 
@@ -5661,6 +5679,113 @@ class ClusterAuthenticatorGroupsConfigArgs:
     @security_group.setter
     def security_group(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "security_group", value)
+
+
+class ClusterAutopilotClusterPolicyConfigArgsDict(TypedDict):
+    no_standard_node_pools: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block non autopilot managed node pools in the cluster.
+
+
+    ## Attributes Reference
+
+    In addition to the arguments listed above, the following computed attributes are
+    exported:
+    """
+    no_system_impersonation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block impersonation of system accounts in the cluster.
+    """
+    no_system_mutation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block mutation of resources in system namespaces and non-namespaced system resources.
+    """
+    no_unsafe_webhooks: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to block unsafe webhooks in the cluster.
+    """
+
+@pulumi.input_type
+class ClusterAutopilotClusterPolicyConfigArgs:
+    def __init__(__self__, *,
+                 no_standard_node_pools: Optional[pulumi.Input[_builtins.bool]] = None,
+                 no_system_impersonation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 no_system_mutation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 no_unsafe_webhooks: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] no_standard_node_pools: Whether to block non autopilot managed node pools in the cluster.
+               
+               
+               ## Attributes Reference
+               
+               In addition to the arguments listed above, the following computed attributes are
+               exported:
+        :param pulumi.Input[_builtins.bool] no_system_impersonation: Whether to block impersonation of system accounts in the cluster.
+        :param pulumi.Input[_builtins.bool] no_system_mutation: Whether to block mutation of resources in system namespaces and non-namespaced system resources.
+        :param pulumi.Input[_builtins.bool] no_unsafe_webhooks: Whether to block unsafe webhooks in the cluster.
+        """
+        if no_standard_node_pools is not None:
+            pulumi.set(__self__, "no_standard_node_pools", no_standard_node_pools)
+        if no_system_impersonation is not None:
+            pulumi.set(__self__, "no_system_impersonation", no_system_impersonation)
+        if no_system_mutation is not None:
+            pulumi.set(__self__, "no_system_mutation", no_system_mutation)
+        if no_unsafe_webhooks is not None:
+            pulumi.set(__self__, "no_unsafe_webhooks", no_unsafe_webhooks)
+
+    @_builtins.property
+    @pulumi.getter(name="noStandardNodePools")
+    def no_standard_node_pools(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to block non autopilot managed node pools in the cluster.
+
+
+        ## Attributes Reference
+
+        In addition to the arguments listed above, the following computed attributes are
+        exported:
+        """
+        return pulumi.get(self, "no_standard_node_pools")
+
+    @no_standard_node_pools.setter
+    def no_standard_node_pools(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_standard_node_pools", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noSystemImpersonation")
+    def no_system_impersonation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to block impersonation of system accounts in the cluster.
+        """
+        return pulumi.get(self, "no_system_impersonation")
+
+    @no_system_impersonation.setter
+    def no_system_impersonation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_system_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noSystemMutation")
+    def no_system_mutation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to block mutation of resources in system namespaces and non-namespaced system resources.
+        """
+        return pulumi.get(self, "no_system_mutation")
+
+    @no_system_mutation.setter
+    def no_system_mutation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_system_mutation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noUnsafeWebhooks")
+    def no_unsafe_webhooks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to block unsafe webhooks in the cluster.
+        """
+        return pulumi.get(self, "no_unsafe_webhooks")
+
+    @no_unsafe_webhooks.setter
+    def no_unsafe_webhooks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_unsafe_webhooks", value)
 
 
 class ClusterBinaryAuthorizationArgsDict(TypedDict):
@@ -8402,6 +8527,35 @@ class ClusterMaintenancePolicyRecurringWindowArgs:
     @start_time.setter
     def start_time(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "start_time", value)
+
+
+class ClusterManagedMachineLearningDiagnosticsConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not the managed ML diagnostics feature is enabled. To disable the feature, explicitly set this to `false`.
+    """
+
+@pulumi.input_type
+class ClusterManagedMachineLearningDiagnosticsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether or not the managed ML diagnostics feature is enabled. To disable the feature, explicitly set this to `false`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not the managed ML diagnostics feature is enabled. To disable the feature, explicitly set this to `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 class ClusterManagedOpentelemetryConfigArgsDict(TypedDict):
@@ -20087,12 +20241,6 @@ class ClusterRbacBindingConfigArgsDict(TypedDict):
     enable_insecure_binding_system_authenticated: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
-
-
-    ## Attributes Reference
-
-    In addition to the arguments listed above, the following computed attributes are
-    exported:
     """
     enable_insecure_binding_system_unauthenticated: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -20106,12 +20254,6 @@ class ClusterRbacBindingConfigArgs:
                  enable_insecure_binding_system_unauthenticated: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_insecure_binding_system_authenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
-               
-               
-               ## Attributes Reference
-               
-               In addition to the arguments listed above, the following computed attributes are
-               exported:
         :param pulumi.Input[_builtins.bool] enable_insecure_binding_system_unauthenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
         """
         if enable_insecure_binding_system_authenticated is not None:
@@ -20124,12 +20266,6 @@ class ClusterRbacBindingConfigArgs:
     def enable_insecure_binding_system_authenticated(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
-
-
-        ## Attributes Reference
-
-        In addition to the arguments listed above, the following computed attributes are
-        exported:
         """
         return pulumi.get(self, "enable_insecure_binding_system_authenticated")
 

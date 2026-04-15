@@ -177,6 +177,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterAuthenticatorGroupsConfig> AuthenticatorGroupsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        /// </summary>
+        [Output("autopilotClusterPolicyConfig")]
+        public Output<Outputs.ClusterAutopilotClusterPolicyConfig> AutopilotClusterPolicyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The customer
         /// allowlist Cloud Storage paths for the cluster. These paths are used with the
         /// `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -478,6 +484,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<Outputs.ClusterMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        /// </summary>
+        [Output("managedMachineLearningDiagnosticsConfig")]
+        public Output<Outputs.ClusterManagedMachineLearningDiagnosticsConfig> ManagedMachineLearningDiagnosticsConfig { get; private set; } = null!;
 
         /// <summary>
         /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
@@ -929,6 +941,12 @@ namespace Pulumi.Gcp.Container
         [Input("authenticatorGroupsConfig")]
         public Input<Inputs.ClusterAuthenticatorGroupsConfigArgs>? AuthenticatorGroupsConfig { get; set; }
 
+        /// <summary>
+        /// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        /// </summary>
+        [Input("autopilotClusterPolicyConfig")]
+        public Input<Inputs.ClusterAutopilotClusterPolicyConfigArgs>? AutopilotClusterPolicyConfig { get; set; }
+
         [Input("autopilotPrivilegedAdmissions")]
         private InputList<string>? _autopilotPrivilegedAdmissions;
 
@@ -1219,6 +1237,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        /// </summary>
+        [Input("managedMachineLearningDiagnosticsConfig")]
+        public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>
         /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
@@ -1612,6 +1636,12 @@ namespace Pulumi.Gcp.Container
         [Input("authenticatorGroupsConfig")]
         public Input<Inputs.ClusterAuthenticatorGroupsConfigGetArgs>? AuthenticatorGroupsConfig { get; set; }
 
+        /// <summary>
+        /// Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        /// </summary>
+        [Input("autopilotClusterPolicyConfig")]
+        public Input<Inputs.ClusterAutopilotClusterPolicyConfigGetArgs>? AutopilotClusterPolicyConfig { get; set; }
+
         [Input("autopilotPrivilegedAdmissions")]
         private InputList<string>? _autopilotPrivilegedAdmissions;
 
@@ -1930,6 +1960,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.ClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        /// </summary>
+        [Input("managedMachineLearningDiagnosticsConfig")]
+        public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigGetArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>
         /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.

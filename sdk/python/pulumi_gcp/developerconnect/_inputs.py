@@ -15,8 +15,14 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AccountConnectorCustomOauthConfigArgs',
+    'AccountConnectorCustomOauthConfigArgsDict',
+    'AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs',
+    'AccountConnectorCustomOauthConfigServiceDirectoryConfigArgsDict',
     'AccountConnectorProviderOauthConfigArgs',
     'AccountConnectorProviderOauthConfigArgsDict',
+    'AccountConnectorProxyConfigArgs',
+    'AccountConnectorProxyConfigArgsDict',
     'ConnectionBitbucketCloudConfigArgs',
     'ConnectionBitbucketCloudConfigArgsDict',
     'ConnectionBitbucketCloudConfigAuthorizerCredentialArgs',
@@ -85,18 +91,301 @@ __all__ = [
     'InsightsConfigTargetProjectsArgsDict',
 ]
 
+class AccountConnectorCustomOauthConfigArgsDict(TypedDict):
+    auth_uri: pulumi.Input[_builtins.str]
+    """
+    The OAuth2 authrization server URL.
+    """
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID of the OAuth application.
+    """
+    client_secret: pulumi.Input[_builtins.str]
+    """
+    Input only. The client secret of the OAuth application.
+    It will be provided as plain text, but encrypted and stored in developer
+    connect. As INPUT_ONLY field, it will not be included in the output.
+    """
+    host_uri: pulumi.Input[_builtins.str]
+    """
+    The host URI of the OAuth application.
+    """
+    scm_provider: pulumi.Input[_builtins.str]
+    """
+    The type of the SCM provider.
+    Possible values:
+    SCM_PROVIDER_UNKNOWN
+    GITHUB_ENTERPRISE
+    GITLAB_ENTERPRISE
+    BITBUCKET_DATA_CENTER
+    """
+    scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The scopes to be requested during OAuth.
+    """
+    token_uri: pulumi.Input[_builtins.str]
+    """
+    The OAuth2 token request URL.
+    """
+    pkce_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disable PKCE for this OAuth config. PKCE is enabled by default.
+    """
+    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    SCM server version installed at the host URI.
+    """
+    service_directory_config: NotRequired[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgsDict']]
+    """
+    ServiceDirectoryConfig represents Service Directory configuration for a
+    connection.
+    Structure is documented below.
+    """
+    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSL certificate to use for requests to a private service.
+    """
+
+@pulumi.input_type
+class AccountConnectorCustomOauthConfigArgs:
+    def __init__(__self__, *,
+                 auth_uri: pulumi.Input[_builtins.str],
+                 client_id: pulumi.Input[_builtins.str],
+                 client_secret: pulumi.Input[_builtins.str],
+                 host_uri: pulumi.Input[_builtins.str],
+                 scm_provider: pulumi.Input[_builtins.str],
+                 scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 token_uri: pulumi.Input[_builtins.str],
+                 pkce_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_directory_config: Optional[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] auth_uri: The OAuth2 authrization server URL.
+        :param pulumi.Input[_builtins.str] client_id: The client ID of the OAuth application.
+        :param pulumi.Input[_builtins.str] client_secret: Input only. The client secret of the OAuth application.
+               It will be provided as plain text, but encrypted and stored in developer
+               connect. As INPUT_ONLY field, it will not be included in the output.
+        :param pulumi.Input[_builtins.str] host_uri: The host URI of the OAuth application.
+        :param pulumi.Input[_builtins.str] scm_provider: The type of the SCM provider.
+               Possible values:
+               SCM_PROVIDER_UNKNOWN
+               GITHUB_ENTERPRISE
+               GITLAB_ENTERPRISE
+               BITBUCKET_DATA_CENTER
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes to be requested during OAuth.
+        :param pulumi.Input[_builtins.str] token_uri: The OAuth2 token request URL.
+        :param pulumi.Input[_builtins.bool] pkce_disabled: Disable PKCE for this OAuth config. PKCE is enabled by default.
+        :param pulumi.Input[_builtins.str] server_version: (Output)
+               SCM server version installed at the host URI.
+        :param pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs'] service_directory_config: ServiceDirectoryConfig represents Service Directory configuration for a
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] ssl_ca_certificate: SSL certificate to use for requests to a private service.
+        """
+        pulumi.set(__self__, "auth_uri", auth_uri)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "host_uri", host_uri)
+        pulumi.set(__self__, "scm_provider", scm_provider)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "token_uri", token_uri)
+        if pkce_disabled is not None:
+            pulumi.set(__self__, "pkce_disabled", pkce_disabled)
+        if server_version is not None:
+            pulumi.set(__self__, "server_version", server_version)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca_certificate is not None:
+            pulumi.set(__self__, "ssl_ca_certificate", ssl_ca_certificate)
+
+    @_builtins.property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OAuth2 authrization server URL.
+        """
+        return pulumi.get(self, "auth_uri")
+
+    @auth_uri.setter
+    def auth_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "auth_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client ID of the OAuth application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[_builtins.str]:
+        """
+        Input only. The client secret of the OAuth application.
+        It will be provided as plain text, but encrypted and stored in developer
+        connect. As INPUT_ONLY field, it will not be included in the output.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The host URI of the OAuth application.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @host_uri.setter
+    def host_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scmProvider")
+    def scm_provider(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the SCM provider.
+        Possible values:
+        SCM_PROVIDER_UNKNOWN
+        GITHUB_ENTERPRISE
+        GITLAB_ENTERPRISE
+        BITBUCKET_DATA_CENTER
+        """
+        return pulumi.get(self, "scm_provider")
+
+    @scm_provider.setter
+    def scm_provider(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "scm_provider", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The scopes to be requested during OAuth.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OAuth2 token request URL.
+        """
+        return pulumi.get(self, "token_uri")
+
+    @token_uri.setter
+    def token_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pkceDisabled")
+    def pkce_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disable PKCE for this OAuth config. PKCE is enabled by default.
+        """
+        return pulumi.get(self, "pkce_disabled")
+
+    @pkce_disabled.setter
+    def pkce_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "pkce_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverVersion")
+    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        SCM server version installed at the host URI.
+        """
+        return pulumi.get(self, "server_version")
+
+    @server_version.setter
+    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "server_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]:
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslCaCertificate")
+    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        SSL certificate to use for requests to a private service.
+        """
+        return pulumi.get(self, "ssl_ca_certificate")
+
+    @ssl_ca_certificate.setter
+    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssl_ca_certificate", value)
+
+
+class AccountConnectorCustomOauthConfigServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The Service Directory service name.
+    Format:
+    projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+    """
+
+@pulumi.input_type
+class AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] service: The Service Directory service name.
+               Format:
+               projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Service Directory service name.
+        Format:
+        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service", value)
+
+
 class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
     scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    Required. User selected scopes to apply to the Oauth config
+    User selected scopes to apply to the Oauth config
     In the event of changing scopes, user records under AccountConnector will
     be deleted and users will re-auth again.
     """
     system_provider_id: NotRequired[pulumi.Input[_builtins.str]]
     """
-    List of providers that are owned by Developer Connect. Creation of
-    new non-SCM providers Account Connectors is not possible at this
-    time.
     Possible values:
     GITHUB
     GITLAB
@@ -105,6 +394,7 @@ class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
     ROVO
     NEW_RELIC
     DATASTAX
+    DYNATRACE
     """
 
 @pulumi.input_type
@@ -113,13 +403,10 @@ class AccountConnectorProviderOauthConfigArgs:
                  scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  system_provider_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Required. User selected scopes to apply to the Oauth config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: User selected scopes to apply to the Oauth config
                In the event of changing scopes, user records under AccountConnector will
                be deleted and users will re-auth again.
-        :param pulumi.Input[_builtins.str] system_provider_id: List of providers that are owned by Developer Connect. Creation of
-               new non-SCM providers Account Connectors is not possible at this
-               time.
-               Possible values:
+        :param pulumi.Input[_builtins.str] system_provider_id: Possible values:
                GITHUB
                GITLAB
                GOOGLE
@@ -127,6 +414,7 @@ class AccountConnectorProviderOauthConfigArgs:
                ROVO
                NEW_RELIC
                DATASTAX
+               DYNATRACE
         """
         pulumi.set(__self__, "scopes", scopes)
         if system_provider_id is not None:
@@ -136,7 +424,7 @@ class AccountConnectorProviderOauthConfigArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Required. User selected scopes to apply to the Oauth config
+        User selected scopes to apply to the Oauth config
         In the event of changing scopes, user records under AccountConnector will
         be deleted and users will re-auth again.
         """
@@ -150,9 +438,6 @@ class AccountConnectorProviderOauthConfigArgs:
     @pulumi.getter(name="systemProviderId")
     def system_provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        List of providers that are owned by Developer Connect. Creation of
-        new non-SCM providers Account Connectors is not possible at this
-        time.
         Possible values:
         GITHUB
         GITLAB
@@ -161,12 +446,45 @@ class AccountConnectorProviderOauthConfigArgs:
         ROVO
         NEW_RELIC
         DATASTAX
+        DYNATRACE
         """
         return pulumi.get(self, "system_provider_id")
 
     @system_provider_id.setter
     def system_provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "system_provider_id", value)
+
+
+class AccountConnectorProxyConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Setting this to true allows the git and http proxies to perform actions on
+    behalf of the user configured under the account connector.
+    """
+
+@pulumi.input_type
+class AccountConnectorProxyConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Setting this to true allows the git and http proxies to perform actions on
+               behalf of the user configured under the account connector.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Setting this to true allows the git and http proxies to perform actions on
+        behalf of the user configured under the account connector.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 class ConnectionBitbucketCloudConfigArgsDict(TypedDict):

@@ -593,7 +593,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "sql-server",
-    ///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+    ///         DatabaseVersion = "SQLSERVER_2022_STANDARD",
     ///         Region = "us-central1",
     ///         RootPassword = "root-password",
     ///         DeletionProtection = true,
@@ -734,7 +734,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "sql-server",
-    ///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+    ///         DatabaseVersion = "SQLSERVER_2022_STANDARD",
     ///         Region = "us-central1",
     ///         RootPassword = "root-password",
     ///         DeletionProtection = true,

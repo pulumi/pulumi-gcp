@@ -5,7 +5,7 @@ Subject: [PATCH] docs patching
 
 
 diff --git a/website/docs/r/apigee_instance.html.markdown b/website/docs/r/apigee_instance.html.markdown
-index 5771639fb..5cf46ae5d 100644
+index 4e1826fc0..29bf3b942 100644
 --- a/website/docs/r/apigee_instance.html.markdown
 +++ b/website/docs/r/apigee_instance.html.markdown
 @@ -197,7 +197,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -27,7 +27,7 @@ index 5771639fb..5cf46ae5d 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index ef2be7ef6..4cb8fc1c2 100644
+index 5d9b71790..1b6dd2aec 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
 @@ -147,7 +147,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -57,7 +57,7 @@ index 78bf7098c..c145a601c 100644
  ~> **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
  state as plain-text. [Read more about sensitive data in state](https://developer.hashicorp.com/terraform/language/manage-sensitive-data).
 diff --git a/website/docs/r/app_engine_flexible_app_version.html.markdown b/website/docs/r/app_engine_flexible_app_version.html.markdown
-index 952cc7fd4..c2a5c5a81 100644
+index d21450c77..49cfeb330 100644
 --- a/website/docs/r/app_engine_flexible_app_version.html.markdown
 +++ b/website/docs/r/app_engine_flexible_app_version.html.markdown
 @@ -250,7 +250,7 @@ The following arguments are supported:
@@ -70,7 +70,7 @@ index 952cc7fd4..c2a5c5a81 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 014869b7d..79b998d64 100644
+index afcea27a5..7c10c28e5 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
 @@ -784,8 +784,8 @@ The following arguments are supported:
@@ -238,7 +238,7 @@ index 7ddcf65cf..ba72b1e45 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/certificate_manager_certificate.html.markdown b/website/docs/r/certificate_manager_certificate.html.markdown
-index dd4eea786..e52adcfb7 100644
+index 82fe32303..ce14f4e7f 100644
 --- a/website/docs/r/certificate_manager_certificate.html.markdown
 +++ b/website/docs/r/certificate_manager_certificate.html.markdown
 @@ -163,19 +163,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
@@ -294,7 +294,7 @@ index dd4eea786..e52adcfb7 100644
  * `pem_private_key` -
    (Optional)
 diff --git a/website/docs/r/cloud_run_domain_mapping.html.markdown b/website/docs/r/cloud_run_domain_mapping.html.markdown
-index f4794cf4d..982b4019c 100644
+index 0174d12a4..603e0ef4e 100644
 --- a/website/docs/r/cloud_run_domain_mapping.html.markdown
 +++ b/website/docs/r/cloud_run_domain_mapping.html.markdown
 @@ -161,7 +161,7 @@ The following arguments are supported:
@@ -307,7 +307,7 @@ index f4794cf4d..982b4019c 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 5cdc4ba38..90c951a2c 100644
+index e4c44c5c1..44b42f491 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -33,8 +33,63 @@ To get more information about Service, see:
@@ -413,7 +413,7 @@ index 5cdc4ba38..90c951a2c 100644
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Service:
 diff --git a/website/docs/r/cloud_scheduler_job.html.markdown b/website/docs/r/cloud_scheduler_job.html.markdown
-index 2f31f2949..2454da6e7 100644
+index 428701186..5169fef3e 100644
 --- a/website/docs/r/cloud_scheduler_job.html.markdown
 +++ b/website/docs/r/cloud_scheduler_job.html.markdown
 @@ -277,7 +277,7 @@ The following arguments are supported:
@@ -426,7 +426,7 @@ index 2f31f2949..2454da6e7 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 871466414..b12e13a4b 100644
+index 0ffb0c070..a666d0264 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -45,24 +45,21 @@ To get more information about Environments, see:
@@ -493,7 +493,7 @@ index 47be7baa3..a3c9d9f61 100644
      * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 4438c5b26..487351d8b 100644
+index fd5147839..ae0de0fa0 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -212,7 +212,7 @@ The following arguments are supported:
@@ -506,7 +506,7 @@ index 4438c5b26..487351d8b 100644
    You can add `lifecycle.prevent_destroy` in the config to prevent destroying
    and recreating.
 diff --git a/website/docs/r/compute_disk_resource_policy_attachment.html.markdown b/website/docs/r/compute_disk_resource_policy_attachment.html.markdown
-index 7cb3f4be6..040254c1b 100644
+index ce3ada005..65c903304 100644
 --- a/website/docs/r/compute_disk_resource_policy_attachment.html.markdown
 +++ b/website/docs/r/compute_disk_resource_policy_attachment.html.markdown
 @@ -24,16 +24,17 @@ description: |-
@@ -663,7 +663,7 @@ index d331034d3..c902472f8 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index e3365327f..55a2646f7 100644
+index 493b3e47f..5affc86e4 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
 @@ -234,7 +234,7 @@ The following arguments are supported:
@@ -779,7 +779,7 @@ index 63eab4f70..648f21928 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/compute_node_group.html.markdown b/website/docs/r/compute_node_group.html.markdown
-index fffbcf0b1..ec148994c 100644
+index 4204269a9..0fe5c0a99 100644
 --- a/website/docs/r/compute_node_group.html.markdown
 +++ b/website/docs/r/compute_node_group.html.markdown
 @@ -30,6 +30,11 @@ To get more information about NodeGroup, see:
@@ -817,7 +817,7 @@ index fffbcf0b1..ec148994c 100644
    maintenance_window {
      start_time = "08:00"
 diff --git a/website/docs/r/compute_organization_security_policy_association.html.markdown b/website/docs/r/compute_organization_security_policy_association.html.markdown
-index 41de44591..b5a943b1c 100644
+index c0677f54f..49dec75a3 100644
 --- a/website/docs/r/compute_organization_security_policy_association.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_association.html.markdown
 @@ -35,19 +35,19 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
@@ -844,7 +844,7 @@ index 41de44591..b5a943b1c 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index 021d99323..e51dd60c9 100644
+index 830de5283..025e0610a 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
 @@ -82,7 +82,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
@@ -857,7 +857,7 @@ index 021d99323..e51dd60c9 100644
    type         = "FIREWALL"
  }
 diff --git a/website/docs/r/compute_per_instance_config.html.markdown b/website/docs/r/compute_per_instance_config.html.markdown
-index 0fe3e385e..efaefb77d 100644
+index b5acf4406..acc78c956 100644
 --- a/website/docs/r/compute_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_per_instance_config.html.markdown
 @@ -62,7 +62,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -883,7 +883,7 @@ index fd50d7ada..5f5ff68d4 100644
  
  ## Example Usage
 diff --git a/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown b/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown
-index 29759b8c5..c55b98cdb 100644
+index 355532d3c..ead72a6be 100644
 --- a/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown
 +++ b/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown
 @@ -24,7 +24,7 @@ description: |-
@@ -908,7 +908,7 @@ index 29759b8c5..c55b98cdb 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index a9470c82d..bb0c5f432 100644
+index b998a95db..dcb912b8f 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -179,7 +179,7 @@ The following arguments are supported:
@@ -921,7 +921,7 @@ index a9470c82d..bb0c5f432 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 4e8791a8e..e5c6084a5 100644
+index 6578b851a..71f6e74f7 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -25,15 +25,6 @@ description: |-
@@ -941,7 +941,7 @@ index 4e8791a8e..e5c6084a5 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
 diff --git a/website/docs/r/compute_region_per_instance_config.html.markdown b/website/docs/r/compute_region_per_instance_config.html.markdown
-index 1e3372cf3..415c7fcd3 100644
+index b5988a793..27383a456 100644
 --- a/website/docs/r/compute_region_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_region_per_instance_config.html.markdown
 @@ -63,7 +63,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -954,7 +954,7 @@ index 1e3372cf3..415c7fcd3 100644
  
    version {
 diff --git a/website/docs/r/compute_region_ssl_certificate.html.markdown b/website/docs/r/compute_region_ssl_certificate.html.markdown
-index 171ccde4b..37e2d5b64 100644
+index 5e9be8f10..8b9ebe4fc 100644
 --- a/website/docs/r/compute_region_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_region_ssl_certificate.html.markdown
 @@ -129,7 +129,7 @@ resource "random_id" "certificate" {
@@ -1232,7 +1232,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 6067ce553..19af1a581 100644
+index 3862dc1ba..603e9c3ed 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1245,7 +1245,7 @@ index 6067ce553..19af1a581 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_snapshot.html.markdown b/website/docs/r/compute_snapshot.html.markdown
-index c043eb3dc..a355d1d7f 100644
+index 416393f2a..7837e9d9f 100644
 --- a/website/docs/r/compute_snapshot.html.markdown
 +++ b/website/docs/r/compute_snapshot.html.markdown
 @@ -9,7 +9,7 @@
@@ -1258,7 +1258,7 @@ index c043eb3dc..a355d1d7f 100644
  #     overwritten during the next generation cycle.
  #
 diff --git a/website/docs/r/compute_ssl_certificate.html.markdown b/website/docs/r/compute_ssl_certificate.html.markdown
-index e004d279a..b2d9cac0f 100644
+index f4a3fd854..1b7500a75 100644
 --- a/website/docs/r/compute_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_ssl_certificate.html.markdown
 @@ -125,12 +125,8 @@ resource "random_id" "certificate" {
@@ -1277,7 +1277,7 @@ index e004d279a..b2d9cac0f 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 31b0e2dd3..080fbdced 100644
+index 3f9946674..2565d388e 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -414,9 +414,6 @@ The following arguments are supported:
@@ -1319,7 +1319,7 @@ index 19e798c12..35d919713 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 25ed41222..530a54920 100644
+index 91c685977..a01957355 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,9 +27,7 @@ To get more information about GKE clusters, see:
@@ -1359,7 +1359,7 @@ index 25ed41222..530a54920 100644
  ## Argument Reference
  
  * `name` - (Required) The name of the cluster, unique within the project and
-@@ -252,8 +269,7 @@ Structure is [documented below](#nested_master_auth).
+@@ -257,8 +274,7 @@ Structure is [documented below](#nested_master_auth).
      If unset, the cluster's version will be set by GKE to the version of the most recent
      official release (which is not necessarily the latest version).  Most users will find
      the `google_container_engine_versions` data source useful - it indicates which versions
@@ -1369,7 +1369,7 @@ index 25ed41222..530a54920 100644
      [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      describe the various acceptable formats for this field.
  
-@@ -283,8 +299,11 @@ region are guaranteed to support the same version.
+@@ -288,8 +304,11 @@ region are guaranteed to support the same version.
  * `node_config` -  (Optional) Parameters used in creating the default node pool.
      Generally, this field should not be used at the same time as a
      `google_container_node_pool` or a `node_pool` block; this configuration
@@ -1383,7 +1383,7 @@ index 25ed41222..530a54920 100644
  
  * `node_pool` - (Optional) List of node pools associated with this cluster.
      See [google_container_node_pool](container_node_pool.html) for schema.
-@@ -303,9 +322,9 @@ region are guaranteed to support the same version.
+@@ -308,9 +327,9 @@ region are guaranteed to support the same version.
      or set to the same value as `min_master_version` on create. Defaults to the default
      version set by GKE which is not necessarily the latest version. This only affects
      nodes in the default node pool. While a fuzzy version can be specified, it's
@@ -1395,7 +1395,7 @@ index 25ed41222..530a54920 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -353,7 +372,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -358,7 +377,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1404,7 +1404,7 @@ index 25ed41222..530a54920 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -1031,10 +1050,6 @@ gvnic {
+@@ -1041,10 +1060,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1415,7 +1415,7 @@ index 25ed41222..530a54920 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -1061,7 +1076,7 @@ gvnic {
+@@ -1071,7 +1086,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1424,7 +1424,7 @@ index 25ed41222..530a54920 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1103,13 +1118,14 @@ gvnic {
+@@ -1113,13 +1128,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1446,7 +1446,7 @@ index 25ed41222..530a54920 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1433,7 +1449,7 @@ for more details. This field only applies to private clusters, when
+@@ -1443,7 +1459,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1455,7 +1455,7 @@ index 25ed41222..530a54920 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1546,9 +1562,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1556,9 +1572,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1532,7 +1532,7 @@ index de93efb3f..010780ea3 100644
  * `placement_policy` - (Optional) Specifies a custom placement policy for the
    nodes.
 diff --git a/website/docs/r/data_catalog_entry_group.html.markdown b/website/docs/r/data_catalog_entry_group.html.markdown
-index 9a67dd89f..ea7981afe 100644
+index fc160da55..4a016a981 100644
 --- a/website/docs/r/data_catalog_entry_group.html.markdown
 +++ b/website/docs/r/data_catalog_entry_group.html.markdown
 @@ -56,8 +56,8 @@ resource "google_data_catalog_entry_group" "basic_entry_group" {
@@ -1738,7 +1738,7 @@ index 23c90a0f9..0d0d5dd97 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/deployment_manager_deployment.html.markdown b/website/docs/r/deployment_manager_deployment.html.markdown
-index 1858e1545..9b762d31c 100644
+index 7136f58a2..7a4cd1d7d 100644
 --- a/website/docs/r/deployment_manager_deployment.html.markdown
 +++ b/website/docs/r/deployment_manager_deployment.html.markdown
 @@ -27,15 +27,13 @@ a configuration file
@@ -1770,7 +1770,7 @@ index 1858e1545..9b762d31c 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs.
 diff --git a/website/docs/r/dialogflow_agent.html.markdown b/website/docs/r/dialogflow_agent.html.markdown
-index faf966d96..dd5f5d32a 100644
+index 5a68c8823..6b5c5f322 100644
 --- a/website/docs/r/dialogflow_agent.html.markdown
 +++ b/website/docs/r/dialogflow_agent.html.markdown
 @@ -148,8 +148,7 @@ The following arguments are supported:
@@ -1784,7 +1784,7 @@ index faf966d96..dd5f5d32a 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 4097b156c..f0f977683 100644
+index 13625d53e..f250a1974 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -44,16 +44,12 @@ To get more information about ManagedZone, see:
@@ -1818,7 +1818,7 @@ index 4097b156c..f0f977683 100644
  * `dnssec_config` -
    (Optional)
 diff --git a/website/docs/r/dns_policy.html.markdown b/website/docs/r/dns_policy.html.markdown
-index 8d9e7ad0f..509577d86 100644
+index 52a96f45e..c674e7e1b 100644
 --- a/website/docs/r/dns_policy.html.markdown
 +++ b/website/docs/r/dns_policy.html.markdown
 @@ -95,7 +95,7 @@ The following arguments are supported:
@@ -2536,7 +2536,7 @@ index d15349cea..98d6de8a5 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_brand.html.markdown b/website/docs/r/iap_brand.html.markdown
-index 4af23e896..553cdbadb 100644
+index 22c2eae0e..e5e48f4bb 100644
 --- a/website/docs/r/iap_brand.html.markdown
 +++ b/website/docs/r/iap_brand.html.markdown
 @@ -32,7 +32,6 @@ project and the underlying Google API doesn't not support DELETE or PATCH method
@@ -2637,7 +2637,7 @@ index a35563903..6046d126e 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index 89bc9bb60..0c982cbf0 100644
+index 68ea0b346..56c6856ca 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -25,9 +25,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -2653,7 +2653,7 @@ index 89bc9bb60..0c982cbf0 100644
  For this reason, it is strongly recommended that you add
  [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
 diff --git a/website/docs/r/kms_key_ring.html.markdown b/website/docs/r/kms_key_ring.html.markdown
-index 63c10bc2f..37619ae96 100644
+index 7acc6bb62..57762a49f 100644
 --- a/website/docs/r/kms_key_ring.html.markdown
 +++ b/website/docs/r/kms_key_ring.html.markdown
 @@ -25,7 +25,7 @@ A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
@@ -2666,7 +2666,7 @@ index 63c10bc2f..37619ae96 100644
  
  
 diff --git a/website/docs/r/kms_key_ring_import_job.html.markdown b/website/docs/r/kms_key_ring_import_job.html.markdown
-index 1eab09bb7..8453a5ae1 100644
+index ec2d0bba0..61932f0d5 100644
 --- a/website/docs/r/kms_key_ring_import_job.html.markdown
 +++ b/website/docs/r/kms_key_ring_import_job.html.markdown
 @@ -29,7 +29,7 @@ was wrapped with the `KeyRingImportJob`'s public key.
@@ -2796,7 +2796,7 @@ index c2ce72023..23818b46a 100644
  ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  
 diff --git a/website/docs/r/monitoring_notification_channel.html.markdown b/website/docs/r/monitoring_notification_channel.html.markdown
-index 1158a2d5a..8690e3ec3 100644
+index c6b7c0ada..418f260a6 100644
 --- a/website/docs/r/monitoring_notification_channel.html.markdown
 +++ b/website/docs/r/monitoring_notification_channel.html.markdown
 @@ -32,7 +32,7 @@ and labels to configure that channel. Each `type` has specific labels that need
@@ -2818,7 +2818,7 @@ index 1158a2d5a..8690e3ec3 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index 7c5a0fe0d..451daf51f 100644
+index 59281e2d1..bcf43569f 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -55,7 +55,7 @@ resource "google_monitoring_slo" "appeng_slo" {
@@ -2876,7 +2876,7 @@ index 7c5a0fe0d..451daf51f 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
-index 9e153fd3f..3659cefc2 100644
+index d52b74128..8022d5831 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
 +++ b/website/docs/r/notebooks_instance.html.markdown
 @@ -90,7 +90,6 @@ resource "google_notebooks_instance" "instance" {
@@ -2888,7 +2888,7 @@ index 9e153fd3f..3659cefc2 100644
    container_image {
      repository = "gcr.io/deeplearning-platform-release/base-cpu"
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index cca4f82d8..2eb43efd3 100644
+index 95b85b9fd..5aa4c4156 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -69,7 +69,7 @@ resource "google_redis_instance" "cache" {
@@ -2910,7 +2910,7 @@ index cca4f82d8..2eb43efd3 100644
    depends_on = [google_service_networking_connection.private_service_connection]
  
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
-index 38794a30a..4cb4d9ebb 100644
+index eba66de0f..8b0a4bf5c 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
 +++ b/website/docs/r/security_scanner_scan_config.html.markdown
 @@ -52,7 +52,7 @@ resource "google_compute_address" "scanner_static_ip" {
@@ -2923,7 +2923,7 @@ index 38794a30a..4cb4d9ebb 100644
    target_platforms = ["COMPUTE"]
  }
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
-index 9c5fe1aef..c5e7aefb3 100644
+index c7632aeb5..d779ad0d0 100644
 --- a/website/docs/r/spanner_database.html.markdown
 +++ b/website/docs/r/spanner_database.html.markdown
 @@ -31,12 +31,10 @@ To get more information about Database, see:
@@ -2957,7 +2957,7 @@ index 9c5fe1aef..c5e7aefb3 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index eac5a9189..9c12a6646 100644
+index 5cef58cb3..0aa420fe5 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3086,7 +3086,7 @@ index fe08881eb..8fe8ce718 100644
  * `google_managed_encryption_enforcement_config`: (Optional) If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below [documented below](#nested_google_managed_encryption_enforcement_config).
  
 diff --git a/website/docs/r/storage_bucket_access_control.html.markdown b/website/docs/r/storage_bucket_access_control.html.markdown
-index f52b64d93..dd35ea72a 100644
+index 64536ba5c..7d34009b6 100644
 --- a/website/docs/r/storage_bucket_access_control.html.markdown
 +++ b/website/docs/r/storage_bucket_access_control.html.markdown
 @@ -23,8 +23,7 @@ description: |-
@@ -3141,7 +3141,7 @@ index 88716aaac..ad7afa067 100644
  * `source` - (Optional) A path to the data you want to upload. Must be defined
      if `content` is not.
 diff --git a/website/docs/r/storage_hmac_key.html.markdown b/website/docs/r/storage_hmac_key.html.markdown
-index 0b4a1c618..264cbc143 100644
+index 58c3f6449..0abf3b62f 100644
 --- a/website/docs/r/storage_hmac_key.html.markdown
 +++ b/website/docs/r/storage_hmac_key.html.markdown
 @@ -54,7 +54,7 @@ resource "google_service_account" "service_account" {

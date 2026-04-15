@@ -111,6 +111,8 @@ __all__ = [
     'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict',
     'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs',
     'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict',
+    'WorkloadIdentityServiceAgentServiceAgentArgs',
+    'WorkloadIdentityServiceAgentServiceAgentArgsDict',
 ]
 
 class AccessBoundaryPolicyRuleArgsDict(TypedDict):
@@ -3402,5 +3404,134 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs:
     @pem_certificate.setter
     def pem_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pem_certificate", value)
+
+
+class WorkloadIdentityServiceAgentServiceAgentArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
+    principal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
+    service_producer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    """
+
+@pulumi.input_type
+class WorkloadIdentityServiceAgentServiceAgentArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal: Optional[pulumi.Input[_builtins.str]] = None,
+                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_producer: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] container: (Output)
+        :param pulumi.Input[_builtins.str] name: (Output)
+        :param pulumi.Input[_builtins.str] principal: (Output)
+        :param pulumi.Input[_builtins.str] role: (Output)
+        :param pulumi.Input[_builtins.str] service_producer: (Output)
+        :param pulumi.Input[_builtins.str] state: (Output)
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if service_producer is not None:
+            pulumi.set(__self__, "service_producer", service_producer)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "container", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceProducer")
+    def service_producer(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "service_producer")
+
+    @service_producer.setter
+    def service_producer(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_producer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 

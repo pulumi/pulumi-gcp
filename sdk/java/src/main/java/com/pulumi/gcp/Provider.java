@@ -1187,6 +1187,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> workflowsCustomEndpoint() {
         return Codegen.optional(this.workflowsCustomEndpoint);
     }
+    @Export(name="workloadIdentityCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workloadIdentityCustomEndpoint;
+
+    public Output<Optional<String>> workloadIdentityCustomEndpoint() {
+        return Codegen.optional(this.workloadIdentityCustomEndpoint);
+    }
     @Export(name="workstationsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workstationsCustomEndpoint;
 

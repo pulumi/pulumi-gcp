@@ -101,6 +101,127 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Reasoning Engine Image Spec
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "reasoning-engine",
+    ///         Description = "Deployed with BYOC Dockerfile through Terraform",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+    ///             {
+    ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+    ///                 {
+    ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "./test-fixtures/agent_src.tar.gz",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
+    ///                 },
+    ///                 ImageSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs
+    ///                 {
+    ///                     BuildArgs = null,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Reasoning Engine Byoc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var vertexArReader = new Gcp.Projects.IAMMember("vertex_ar_reader", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/artifactregistry.reader",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-aiplatform-re.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     // Provision and retrieve the tenant service agent through another agent
+    ///     var tenantMdsAiReasoningEngine = new Gcp.Vertex.AiReasoningEngine("tenant_mds", new()
+    ///     {
+    ///         DisplayName = "reasoning-engine-mds",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+    ///             {
+    ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+    ///                 {
+    ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
+    ///                 },
+    ///                 PythonSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+    ///                 {
+    ///                     EntrypointModule = "metadata_agent",
+    ///                     EntrypointObject = "root_agent",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var tenantMds = Gcp.Vertex.GetAiReasoningEngineQuery.Invoke(new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         ReasoningEngineId = tenantMdsAiReasoningEngine.Name,
+    ///     });
+    /// 
+    ///     var tenantArReader = new Gcp.Projects.IAMMember("tenant_ar_reader", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/artifactregistry.reader",
+    ///         Member = Std.Index.Jsondecode.Invoke(new()
+    ///         {
+    ///             Input = tenantMds.Apply(getAiReasoningEngineQueryResult =&gt; getAiReasoningEngineQueryResult.Output),
+    ///         }).Apply(invoke =&gt; $"serviceAccount:{invoke.Result?.Output}"),
+    ///     });
+    /// 
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "reasoning-engine",
+    ///         Description = "Deployed with BYOC through Terraform",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             ContainerSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecContainerSpecArgs
+    ///             {
+    ///                 ImageUri = $"us-central1-docker.pkg.dev/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/vertex-byoc/byoc-agent:latest",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vertexArReader,
+    ///             tenantArReader,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Reasoning Engine Psc Interface
     /// 
     /// ```csharp
@@ -598,6 +719,12 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
         /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
         /// will be secured by this key.
@@ -605,6 +732,16 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("encryptionSpec")]
         public Output<Outputs.AiReasoningEngineEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels associated with this ReasoningEngine. You can use these to
+        /// organize and group your ReasoningEngines.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The generated name of the ReasoningEngine, in the format
@@ -619,6 +756,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        ///  and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The region of the reasoning engine. eg us-central1
@@ -663,6 +807,11 @@ namespace Pulumi.Gcp.Vertex
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -720,6 +869,22 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("encryptionSpec")]
         public Input<Inputs.AiReasoningEngineEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The labels associated with this ReasoningEngine. You can use these to
+        /// organize and group your ReasoningEngines.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -782,6 +947,22 @@ namespace Pulumi.Gcp.Vertex
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
         /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
@@ -790,6 +971,22 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("encryptionSpec")]
         public Input<Inputs.AiReasoningEngineEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The labels associated with this ReasoningEngine. You can use these to
+        /// organize and group your ReasoningEngines.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The generated name of the ReasoningEngine, in the format
@@ -804,6 +1001,23 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        ///  and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// The region of the reasoning engine. eg us-central1

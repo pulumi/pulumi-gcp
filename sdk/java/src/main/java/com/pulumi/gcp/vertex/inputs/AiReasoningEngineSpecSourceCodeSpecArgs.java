@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
 import java.util.Objects;
@@ -32,6 +33,23 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
      */
     public Optional<Output<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs>> developerConnectSource() {
         return Optional.ofNullable(this.developerConnectSource);
+    }
+
+    /**
+     * Configuration for building an image with custom config file.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="imageSpec")
+    private @Nullable Output<AiReasoningEngineSpecSourceCodeSpecImageSpecArgs> imageSpec;
+
+    /**
+     * @return Configuration for building an image with custom config file.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecSourceCodeSpecImageSpecArgs>> imageSpec() {
+        return Optional.ofNullable(this.imageSpec);
     }
 
     /**
@@ -72,6 +90,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
 
     private AiReasoningEngineSpecSourceCodeSpecArgs(AiReasoningEngineSpecSourceCodeSpecArgs $) {
         this.developerConnectSource = $.developerConnectSource;
+        this.imageSpec = $.imageSpec;
         this.inlineSource = $.inlineSource;
         this.pythonSpec = $.pythonSpec;
     }
@@ -115,6 +134,29 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
          */
         public Builder developerConnectSource(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs developerConnectSource) {
             return developerConnectSource(Output.of(developerConnectSource));
+        }
+
+        /**
+         * @param imageSpec Configuration for building an image with custom config file.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageSpec(@Nullable Output<AiReasoningEngineSpecSourceCodeSpecImageSpecArgs> imageSpec) {
+            $.imageSpec = imageSpec;
+            return this;
+        }
+
+        /**
+         * @param imageSpec Configuration for building an image with custom config file.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageSpec(AiReasoningEngineSpecSourceCodeSpecImageSpecArgs imageSpec) {
+            return imageSpec(Output.of(imageSpec));
         }
 
         /**

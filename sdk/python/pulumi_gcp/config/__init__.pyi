@@ -423,6 +423,8 @@ workbenchCustomEndpoint: Optional[str]
 
 workflowsCustomEndpoint: Optional[str]
 
+workloadIdentityCustomEndpoint: Optional[str]
+
 workstationsCustomEndpoint: Optional[str]
 
 zone: Optional[str]

@@ -928,7 +928,7 @@ class AuthzPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="policyProfile")
-    def policy_profile(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def policy_profile(self) -> pulumi.Output[_builtins.str]:
         """
         Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
         authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are

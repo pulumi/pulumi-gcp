@@ -14,6 +14,8 @@ import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpec;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -140,6 +142,158 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * }
+ * </pre>
+ * ### Vertex Ai Reasoning Engine Image Spec
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("reasoning-engine")
+ *             .description("Deployed with BYOC Dockerfile through Terraform")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+ *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+ *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+ *                             .input("./test-fixtures/agent_src.tar.gz")
+ *                             .build()).result())
+ *                         .build())
+ *                     .imageSpec(AiReasoningEngineSpecSourceCodeSpecImageSpecArgs.builder()
+ *                         .buildArgs(Map.ofEntries(
+ *                         ))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Vertex Ai Reasoning Engine Byoc
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import com.pulumi.gcp.vertex.VertexFunctions;
+ * import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+ * import com.pulumi.std.inputs.JsondecodeArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecContainerSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var vertexArReader = new IAMMember("vertexArReader", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/artifactregistry.reader")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         // Provision and retrieve the tenant service agent through another agent
+ *         var tenantMdsAiReasoningEngine = new AiReasoningEngine("tenantMdsAiReasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("reasoning-engine-mds")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+ *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+ *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+ *                             .input("./test-fixtures/mds_agent_src.tar.gz")
+ *                             .build()).result())
+ *                         .build())
+ *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+ *                         .entrypointModule("metadata_agent")
+ *                         .entrypointObject("root_agent")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var tenantMds = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+ *             .region("us-central1")
+ *             .reasoningEngineId(tenantMdsAiReasoningEngine.name())
+ *             .build());
+ * 
+ *         var tenantArReader = new IAMMember("tenantArReader", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/artifactregistry.reader")
+ *             .member(tenantMds.applyValue(_tenantMds -> StdFunctions.jsondecode(JsondecodeArgs.builder()
+ *                 .input(_tenantMds.output())
+ *                 .build())).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
+ *             .build());
+ * 
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("reasoning-engine")
+ *             .description("Deployed with BYOC through Terraform")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .containerSpec(AiReasoningEngineSpecContainerSpecArgs.builder()
+ *                     .imageUri(String.format("us-central1-docker.pkg.dev/%s/vertex-byoc/byoc-agent:latest", project.projectId()))
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     vertexArReader,
+ *                     tenantArReader)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * ### Vertex Ai Reasoning Engine Psc Interface
@@ -724,6 +878,20 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
      * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
      * will be secured by this key.
@@ -742,6 +910,28 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AiReasoningEngineEncryptionSpec>> encryptionSpec() {
         return Codegen.optional(this.encryptionSpec);
+    }
+    /**
+     * The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The generated name of the ReasoningEngine, in the format
@@ -774,6 +964,22 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * The region of the reasoning engine. eg us-central1
@@ -861,6 +1067,10 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -19,9 +19,9 @@ __all__ = ['GatewayArgs', 'Gateway']
 @pulumi.input_type
 class GatewayArgs:
     def __init__(__self__, *,
-                 ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
                  type: pulumi.Input[_builtins.str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,6 +32,7 @@ class GatewayArgs:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  scope: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,15 +41,16 @@ class GatewayArgs:
         """
         The set of arguments for constructing a Gateway resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
-               The proxy binds to the specified ports.
-               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[_builtins.str] type: Immutable. The type of the customer managed gateway.
                Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
                When no address is provided, an IP from the subnetwork is allocated.
                This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
+        :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
+               By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+               it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[_builtins.bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
@@ -73,6 +75,9 @@ class GatewayArgs:
         :param pulumi.Input[_builtins.str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: 'projects/*/global/networks/network-1'.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
+               The proxy binds to the specified ports.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
@@ -85,10 +90,11 @@ class GatewayArgs:
                For example: projects/*/regions/us-central1/subnetworks/network-1.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
-        pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "type", type)
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
+        if all_ports is not None:
+            pulumi.set(__self__, "all_ports", all_ports)
         if certificate_urls is not None:
             pulumi.set(__self__, "certificate_urls", certificate_urls)
         if delete_swg_autogen_router_on_destroy is not None:
@@ -109,6 +115,8 @@ class GatewayArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -119,20 +127,6 @@ class GatewayArgs:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-
-    @_builtins.property
-    @pulumi.getter
-    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
-        """
-        One or more port numbers (1-65535), on which the Gateway will receive traffic.
-        The proxy binds to the specified ports.
-        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
-        """
-        return pulumi.get(self, "ports")
-
-    @ports.setter
-    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]):
-        pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +155,21 @@ class GatewayArgs:
     @addresses.setter
     def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allPorts")
+    def all_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Configures this gateway to ​listen on all ports.
+        By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+        it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+        This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "all_ports")
+
+    @all_ports.setter
+    def all_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "all_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
@@ -298,6 +307,20 @@ class GatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        One or more port numbers (1-65535), on which the Gateway will receive traffic.
+        The proxy binds to the specified ports.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "ports", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -367,6 +390,7 @@ class GatewayArgs:
 class _GatewayState:
     def __init__(__self__, *,
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -396,6 +420,10 @@ class _GatewayState:
                When no address is provided, an IP from the subnetwork is allocated.
                This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
+        :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
+               By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+               it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -445,6 +473,8 @@ class _GatewayState:
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
+        if all_ports is not None:
+            pulumi.set(__self__, "all_ports", all_ports)
         if certificate_urls is not None:
             pulumi.set(__self__, "certificate_urls", certificate_urls)
         if create_time is not None:
@@ -504,6 +534,21 @@ class _GatewayState:
     @addresses.setter
     def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allPorts")
+    def all_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Configures this gateway to ​listen on all ports.
+        By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+        it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+        This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "all_ports")
+
+    @all_ports.setter
+    def all_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "all_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
@@ -801,6 +846,7 @@ class Gateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1010,6 +1056,10 @@ class Gateway(pulumi.CustomResource):
                When no address is provided, an IP from the subnetwork is allocated.
                This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
+        :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
+               By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+               it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[_builtins.bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
@@ -1258,6 +1308,7 @@ class Gateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1285,6 +1336,7 @@ class Gateway(pulumi.CustomResource):
             __props__ = GatewayArgs.__new__(GatewayArgs)
 
             __props__.__dict__["addresses"] = addresses
+            __props__.__dict__["all_ports"] = all_ports
             __props__.__dict__["certificate_urls"] = certificate_urls
             __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
             __props__.__dict__["description"] = description
@@ -1295,8 +1347,6 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if ports is None and not opts.urn:
-                raise TypeError("Missing required property 'ports'")
             __props__.__dict__["ports"] = ports
             __props__.__dict__["project"] = project
             __props__.__dict__["routing_mode"] = routing_mode
@@ -1324,6 +1374,7 @@ class Gateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
             certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1357,6 +1408,10 @@ class Gateway(pulumi.CustomResource):
                When no address is provided, an IP from the subnetwork is allocated.
                This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
                Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
+        :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
+               By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+               it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -1409,6 +1464,7 @@ class Gateway(pulumi.CustomResource):
         __props__ = _GatewayState.__new__(_GatewayState)
 
         __props__.__dict__["addresses"] = addresses
+        __props__.__dict__["all_ports"] = all_ports
         __props__.__dict__["certificate_urls"] = certificate_urls
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
@@ -1443,6 +1499,17 @@ class Gateway(pulumi.CustomResource):
         Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         """
         return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="allPorts")
+    def all_ports(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Configures this gateway to ​listen on all ports.
+        By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+        it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+        This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "all_ports")
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
@@ -1556,7 +1623,7 @@ class Gateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> pulumi.Output[Sequence[_builtins.int]]:
+    def ports(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
         The proxy binds to the specified ports.

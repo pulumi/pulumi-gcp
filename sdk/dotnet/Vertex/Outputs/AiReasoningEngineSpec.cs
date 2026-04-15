@@ -23,17 +23,21 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly string? ClassMethods;
         /// <summary>
+        /// Deploy from a container image with a defined entrypoint and commands.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecContainerSpec? ContainerSpec;
+        /// <summary>
         /// Optional. The specification of a Reasoning Engine deployment.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecDeploymentSpec? DeploymentSpec;
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// The identity to use for the Reasoning Engine.
         /// </summary>
         public readonly string? EffectiveIdentity;
         /// <summary>
-        /// (Optional, Beta)
         /// Optional. The identity type to use for the Reasoning Engine.
         /// If not specified, the `ServiceAccount` field will be used if set,
         /// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
@@ -71,6 +75,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             string? classMethods,
 
+            Outputs.AiReasoningEngineSpecContainerSpec? containerSpec,
+
             Outputs.AiReasoningEngineSpecDeploymentSpec? deploymentSpec,
 
             string? effectiveIdentity,
@@ -85,6 +91,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         {
             AgentFramework = agentFramework;
             ClassMethods = classMethods;
+            ContainerSpec = containerSpec;
             DeploymentSpec = deploymentSpec;
             EffectiveIdentity = effectiveIdentity;
             IdentityType = identityType;

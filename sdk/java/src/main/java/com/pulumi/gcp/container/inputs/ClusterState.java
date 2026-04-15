@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAnonymousAuthenticationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAuthenticatorGroupsConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAutopilotClusterPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterTelemetryArgs;
@@ -26,6 +27,7 @@ import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyArgs;
+import com.pulumi.gcp.container.inputs.ClusterManagedMachineLearningDiagnosticsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterManagedOpentelemetryConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
@@ -136,6 +138,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterAuthenticatorGroupsConfigArgs>> authenticatorGroupsConfig() {
         return Optional.ofNullable(this.authenticatorGroupsConfig);
+    }
+
+    /**
+     * Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     * 
+     */
+    @Import(name="autopilotClusterPolicyConfig")
+    private @Nullable Output<ClusterAutopilotClusterPolicyConfigArgs> autopilotClusterPolicyConfig;
+
+    /**
+     * @return Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterAutopilotClusterPolicyConfigArgs>> autopilotClusterPolicyConfig() {
+        return Optional.ofNullable(this.autopilotClusterPolicyConfig);
     }
 
     /**
@@ -876,6 +893,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
         return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
+     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * 
+     */
+    @Import(name="managedMachineLearningDiagnosticsConfig")
+    private @Nullable Output<ClusterManagedMachineLearningDiagnosticsConfigArgs> managedMachineLearningDiagnosticsConfig;
+
+    /**
+     * @return ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterManagedMachineLearningDiagnosticsConfigArgs>> managedMachineLearningDiagnosticsConfig() {
+        return Optional.ofNullable(this.managedMachineLearningDiagnosticsConfig);
     }
 
     /**
@@ -1761,6 +1793,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.allowNetAdmin = $.allowNetAdmin;
         this.anonymousAuthenticationConfig = $.anonymousAuthenticationConfig;
         this.authenticatorGroupsConfig = $.authenticatorGroupsConfig;
+        this.autopilotClusterPolicyConfig = $.autopilotClusterPolicyConfig;
         this.autopilotPrivilegedAdmissions = $.autopilotPrivilegedAdmissions;
         this.binaryAuthorization = $.binaryAuthorization;
         this.clusterAutoscaling = $.clusterAutoscaling;
@@ -1803,6 +1836,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.loggingConfig = $.loggingConfig;
         this.loggingService = $.loggingService;
         this.maintenancePolicy = $.maintenancePolicy;
+        this.managedMachineLearningDiagnosticsConfig = $.managedMachineLearningDiagnosticsConfig;
         this.managedOpentelemetryConfig = $.managedOpentelemetryConfig;
         this.masterAuth = $.masterAuth;
         this.masterAuthorizedNetworksConfig = $.masterAuthorizedNetworksConfig;
@@ -1961,6 +1995,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authenticatorGroupsConfig(ClusterAuthenticatorGroupsConfigArgs authenticatorGroupsConfig) {
             return authenticatorGroupsConfig(Output.of(authenticatorGroupsConfig));
+        }
+
+        /**
+         * @param autopilotClusterPolicyConfig Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotClusterPolicyConfig(@Nullable Output<ClusterAutopilotClusterPolicyConfigArgs> autopilotClusterPolicyConfig) {
+            $.autopilotClusterPolicyConfig = autopilotClusterPolicyConfig;
+            return this;
+        }
+
+        /**
+         * @param autopilotClusterPolicyConfig Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotClusterPolicyConfig(ClusterAutopilotClusterPolicyConfigArgs autopilotClusterPolicyConfig) {
+            return autopilotClusterPolicyConfig(Output.of(autopilotClusterPolicyConfig));
         }
 
         /**
@@ -2968,6 +3023,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(ClusterMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param managedMachineLearningDiagnosticsConfig ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedMachineLearningDiagnosticsConfig(@Nullable Output<ClusterManagedMachineLearningDiagnosticsConfigArgs> managedMachineLearningDiagnosticsConfig) {
+            $.managedMachineLearningDiagnosticsConfig = managedMachineLearningDiagnosticsConfig;
+            return this;
+        }
+
+        /**
+         * @param managedMachineLearningDiagnosticsConfig ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedMachineLearningDiagnosticsConfig(ClusterManagedMachineLearningDiagnosticsConfigArgs managedMachineLearningDiagnosticsConfig) {
+            return managedMachineLearningDiagnosticsConfig(Output.of(managedMachineLearningDiagnosticsConfig));
         }
 
         /**

@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// (Optional, Beta)
         /// List of regions where the subscriber wants dataset replicas.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaLocations;

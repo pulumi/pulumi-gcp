@@ -4046,11 +4046,11 @@ class SecurityProfileV2ProfileAssessmentConfigArgs:
 class SharedflowMetaDataArgsDict(TypedDict):
     created_at: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Time at which the API proxy was created, in milliseconds since epoch.
+    Time at which the shared flow was created, in milliseconds since epoch.
     """
     last_modified_at: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Time at which the API proxy was most recently modified, in milliseconds since epoch.
+    Time at which the shared flow was most recently modified, in milliseconds since epoch.
     """
     sub_type: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -4064,8 +4064,8 @@ class SharedflowMetaDataArgs:
                  last_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
                  sub_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] created_at: Time at which the API proxy was created, in milliseconds since epoch.
-        :param pulumi.Input[_builtins.str] last_modified_at: Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] created_at: Time at which the shared flow was created, in milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] last_modified_at: Time at which the shared flow was most recently modified, in milliseconds since epoch.
         :param pulumi.Input[_builtins.str] sub_type: The type of entity described
         """
         if created_at is not None:
@@ -4079,7 +4079,7 @@ class SharedflowMetaDataArgs:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time at which the API proxy was created, in milliseconds since epoch.
+        Time at which the shared flow was created, in milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
 
@@ -4091,7 +4091,7 @@ class SharedflowMetaDataArgs:
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        Time at which the shared flow was most recently modified, in milliseconds since epoch.
         """
         return pulumi.get(self, "last_modified_at")
 

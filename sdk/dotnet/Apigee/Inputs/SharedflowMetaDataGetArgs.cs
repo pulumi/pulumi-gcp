@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Apigee.Inputs
     public sealed class SharedflowMetaDataGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time at which the API proxy was created, in milliseconds since epoch.
+        /// Time at which the shared flow was created, in milliseconds since epoch.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        /// Time at which the shared flow was most recently modified, in milliseconds since epoch.
         /// </summary>
         [Input("lastModifiedAt")]
         public Input<string>? LastModifiedAt { get; set; }

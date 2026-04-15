@@ -278,7 +278,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * Mode of the storage pool.
      * The operational mode of the storage pool. ONTAP mode enables operations
      * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -290,8 +289,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> mode;
 
     /**
-     * @return (Optional, Beta)
-     * Mode of the storage pool.
+     * @return Mode of the storage pool.
      * The operational mode of the storage pool. ONTAP mode enables operations
      * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
      * If not specified during creation, the mode defaults to DEFAULT.
@@ -403,24 +401,53 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
+     * (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
      * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
      * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
      * 
+     * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     * 
+     * @deprecated
+     * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     * 
      */
+    @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
     @Import(name="scaleTier")
     private @Nullable Output<String> scaleTier;
 
     /**
-     * @return (Optional, Beta)
+     * @return (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
      * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
      * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
      * 
+     * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     * 
+     * @deprecated
+     * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     * 
      */
+    @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
     public Optional<Output<String>> scaleTier() {
         return Optional.ofNullable(this.scaleTier);
+    }
+
+    /**
+     * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+     * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+     * 
+     */
+    @Import(name="scaleType")
+    private @Nullable Output<String> scaleType;
+
+    /**
+     * @return The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+     * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+     * 
+     */
+    public Optional<Output<String>> scaleType() {
+        return Optional.ofNullable(this.scaleType);
     }
 
     /**
@@ -567,6 +594,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.qosType = $.qosType;
         this.replicaZone = $.replicaZone;
         this.scaleTier = $.scaleTier;
+        this.scaleType = $.scaleType;
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
         this.totalThroughputMibps = $.totalThroughputMibps;
@@ -949,8 +977,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode (Optional, Beta)
-         * Mode of the storage pool.
+         * @param mode Mode of the storage pool.
          * The operational mode of the storage pool. ONTAP mode enables operations
          * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
          * If not specified during creation, the mode defaults to DEFAULT.
@@ -965,8 +992,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode (Optional, Beta)
-         * Mode of the storage pool.
+         * @param mode Mode of the storage pool.
          * The operational mode of the storage pool. ONTAP mode enables operations
          * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
          * If not specified during creation, the mode defaults to DEFAULT.
@@ -1116,30 +1142,65 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleTier (Optional, Beta)
+         * @param scaleTier (Optional, Beta, Deprecated)
          * The effective scale tier of the storage pool. If `scaleTier` is not
          * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
          * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
          * 
+         * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+         * 
          */
+        @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
         public Builder scaleTier(@Nullable Output<String> scaleTier) {
             $.scaleTier = scaleTier;
             return this;
         }
 
         /**
-         * @param scaleTier (Optional, Beta)
+         * @param scaleTier (Optional, Beta, Deprecated)
          * The effective scale tier of the storage pool. If `scaleTier` is not
          * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
          * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
          * 
+         * &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+         * 
+         */
+        @Deprecated /* `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead. */
+        public Builder scaleTier(String scaleTier) {
+            return scaleTier(Output.of(scaleTier));
+        }
+
+        /**
+         * @param scaleType The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+         * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+         * 
          * @return builder
          * 
          */
-        public Builder scaleTier(String scaleTier) {
-            return scaleTier(Output.of(scaleTier));
+        public Builder scaleType(@Nullable Output<String> scaleType) {
+            $.scaleType = scaleType;
+            return this;
+        }
+
+        /**
+         * @param scaleType The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+         * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleType(String scaleType) {
+            return scaleType(Output.of(scaleType));
         }
 
         /**

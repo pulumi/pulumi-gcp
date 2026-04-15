@@ -91,6 +91,7 @@ export interface GetInstanceGroupManagerResult {
     readonly statuses: outputs.compute.GetInstanceGroupManagerStatus[];
     readonly targetPools: string[];
     readonly targetSize: number;
+    readonly targetSizePolicies: outputs.compute.GetInstanceGroupManagerTargetSizePolicy[];
     readonly targetStoppedSize: number;
     readonly targetSuspendedSize: number;
     readonly updatePolicies: outputs.compute.GetInstanceGroupManagerUpdatePolicy[];

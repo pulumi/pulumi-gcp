@@ -393,7 +393,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 //				Name:               pulumi.String("sql-server"),
-//				DatabaseVersion:    pulumi.String("SQLSERVER_2019_STANDARD"),
+//				DatabaseVersion:    pulumi.String("SQLSERVER_2022_STANDARD"),
 //				Region:             pulumi.String("us-central1"),
 //				RootPassword:       pulumi.String("root-password"),
 //				DeletionProtection: pulumi.Bool(true),

@@ -252,6 +252,13 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly addresses: pulumi.Output<string[]>;
     /**
+     * Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     */
+    declare public readonly allPorts: pulumi.Output<boolean | undefined>;
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
      */
@@ -318,7 +325,7 @@ export class Gateway extends pulumi.CustomResource {
      * The proxy binds to the specified ports.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      */
-    declare public readonly ports: pulumi.Output<number[]>;
+    declare public readonly ports: pulumi.Output<number[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -378,6 +385,7 @@ export class Gateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
             resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["allPorts"] = state?.allPorts;
             resourceInputs["certificateUrls"] = state?.certificateUrls;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state?.deleteSwgAutogenRouterOnDestroy;
@@ -402,13 +410,11 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if (args?.ports === undefined && !opts.urn) {
-                throw new Error("Missing required property 'ports'");
-            }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["addresses"] = args?.addresses;
+            resourceInputs["allPorts"] = args?.allPorts;
             resourceInputs["certificateUrls"] = args?.certificateUrls;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = args?.deleteSwgAutogenRouterOnDestroy;
             resourceInputs["description"] = args?.description;
@@ -450,6 +456,13 @@ export interface GatewayState {
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     */
+    allPorts?: pulumi.Input<boolean>;
     /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -576,6 +589,13 @@ export interface GatewayArgs {
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     */
+    allPorts?: pulumi.Input<boolean>;
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
      */
@@ -634,7 +654,7 @@ export interface GatewayArgs {
      * The proxy binds to the specified ports.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      */
-    ports: pulumi.Input<pulumi.Input<number>[]>;
+    ports?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

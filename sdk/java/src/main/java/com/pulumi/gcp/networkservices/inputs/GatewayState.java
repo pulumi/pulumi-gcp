@@ -41,6 +41,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Import(name="allPorts")
+    private @Nullable Output<Boolean> allPorts;
+
+    /**
+     * @return Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Optional<Output<Boolean>> allPorts() {
+        return Optional.ofNullable(this.allPorts);
+    }
+
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
@@ -422,6 +443,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     private GatewayState(GatewayState $) {
         this.addresses = $.addresses;
+        this.allPorts = $.allPorts;
         this.certificateUrls = $.certificateUrls;
         this.createTime = $.createTime;
         this.deleteSwgAutogenRouterOnDestroy = $.deleteSwgAutogenRouterOnDestroy;
@@ -502,6 +524,33 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addresses(String... addresses) {
             return addresses(List.of(addresses));
+        }
+
+        /**
+         * @param allPorts Configures this gateway to ​listen on all ports.
+         * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+         * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+         * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allPorts(@Nullable Output<Boolean> allPorts) {
+            $.allPorts = allPorts;
+            return this;
+        }
+
+        /**
+         * @param allPorts Configures this gateway to ​listen on all ports.
+         * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+         * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+         * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allPorts(Boolean allPorts) {
+            return allPorts(Output.of(allPorts));
         }
 
         /**

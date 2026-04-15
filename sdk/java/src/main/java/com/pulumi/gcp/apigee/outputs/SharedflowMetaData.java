@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SharedflowMetaData {
     /**
-     * @return Time at which the API proxy was created, in milliseconds since epoch.
+     * @return Time at which the shared flow was created, in milliseconds since epoch.
      * 
      */
     private @Nullable String createdAt;
     /**
-     * @return Time at which the API proxy was most recently modified, in milliseconds since epoch.
+     * @return Time at which the shared flow was most recently modified, in milliseconds since epoch.
      * 
      */
     private @Nullable String lastModifiedAt;
@@ -29,14 +29,14 @@ public final class SharedflowMetaData {
 
     private SharedflowMetaData() {}
     /**
-     * @return Time at which the API proxy was created, in milliseconds since epoch.
+     * @return Time at which the shared flow was created, in milliseconds since epoch.
      * 
      */
     public Optional<String> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return Time at which the API proxy was most recently modified, in milliseconds since epoch.
+     * @return Time at which the shared flow was most recently modified, in milliseconds since epoch.
      * 
      */
     public Optional<String> lastModifiedAt() {

@@ -23,18 +23,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
-     * ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * @return ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -340,9 +338,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId ID of the cluster to create. Must conform to
-         * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-         * alphanumeric, and at most 63 characters).
+         * @param clusterId ID of the cluster to create. Must start with a lowercase letter,
+         * use only lowercase letters and numbers, and be at most 10 characters long.
          * 
          * @return builder
          * 
@@ -353,9 +350,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId ID of the cluster to create. Must conform to
-         * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-         * alphanumeric, and at most 63 characters).
+         * @param clusterId ID of the cluster to create. Must start with a lowercase letter,
+         * use only lowercase letters and numbers, and be at most 10 characters long.
          * 
          * @return builder
          * 

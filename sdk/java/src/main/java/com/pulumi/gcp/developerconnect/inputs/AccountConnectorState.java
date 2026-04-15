@@ -5,7 +5,9 @@ package com.pulumi.gcp.developerconnect.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.developerconnect.inputs.AccountConnectorCustomOauthConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.AccountConnectorProviderOauthConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.AccountConnectorProxyConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +20,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     public static final AccountConnectorState Empty = new AccountConnectorState();
 
     /**
-     * Required. The ID to use for the AccountConnector, which will become the final
+     * The ID to use for the AccountConnector, which will become the final
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
@@ -28,7 +30,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> accountConnectorId;
 
     /**
-     * @return Required. The ID to use for the AccountConnector, which will become the final
+     * @return The ID to use for the AccountConnector, which will become the final
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
@@ -39,7 +41,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Allows users to store small amounts of arbitrary data.
+     * Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
@@ -48,7 +50,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Optional. Allows users to store small amounts of arbitrary data.
+     * @return Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
@@ -58,18 +60,35 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Output only. The timestamp when the userConnection was created.
+     * The timestamp when the accountConnector was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. The timestamp when the userConnection was created.
+     * @return The timestamp when the accountConnector was created.
      * 
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Message for a customized OAuth config.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customOauthConfig")
+    private @Nullable Output<AccountConnectorCustomOauthConfigArgs> customOauthConfig;
+
+    /**
+     * @return Message for a customized OAuth config.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AccountConnectorCustomOauthConfigArgs>> customOauthConfig() {
+        return Optional.ofNullable(this.customOauthConfig);
     }
 
     /**
@@ -103,7 +122,26 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Labels as key value pairs
+     * This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
+     * client has an up-to-date value before proceeding.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
+     * client has an up-to-date value before proceeding.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
+     * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
@@ -112,7 +150,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
@@ -122,14 +160,14 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The location of the resource.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location of the resource.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Optional<Output<String>> location() {
@@ -137,7 +175,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Identifier. The resource name of the userConnection, in the format
+     * Identifier. The resource name of the accountConnector, in the format
      * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
      * 
      */
@@ -145,7 +183,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return Identifier. The resource name of the userConnection, in the format
+     * @return Identifier. The resource name of the accountConnector, in the format
      * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
      * 
      */
@@ -154,14 +192,14 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Output only. Start OAuth flow by clicking on this URL.
+     * Start OAuth flow by clicking on this URL.
      * 
      */
     @Import(name="oauthStartUri")
     private @Nullable Output<String> oauthStartUri;
 
     /**
-     * @return Output only. Start OAuth flow by clicking on this URL.
+     * @return Start OAuth flow by clicking on this URL.
      * 
      */
     public Optional<Output<String>> oauthStartUri() {
@@ -203,6 +241,23 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="proxyConfig")
+    private @Nullable Output<AccountConnectorProxyConfigArgs> proxyConfig;
+
+    /**
+     * @return The proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AccountConnectorProxyConfigArgs>> proxyConfig() {
+        return Optional.ofNullable(this.proxyConfig);
+    }
+
+    /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      * 
@@ -220,14 +275,14 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Output only. The timestamp when the userConnection was updated.
+     * The timestamp when the accountConnector was updated.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. The timestamp when the userConnection was updated.
+     * @return The timestamp when the accountConnector was updated.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -240,14 +295,17 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         this.accountConnectorId = $.accountConnectorId;
         this.annotations = $.annotations;
         this.createTime = $.createTime;
+        this.customOauthConfig = $.customOauthConfig;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
+        this.etag = $.etag;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.oauthStartUri = $.oauthStartUri;
         this.project = $.project;
         this.providerOauthConfig = $.providerOauthConfig;
+        this.proxyConfig = $.proxyConfig;
         this.pulumiLabels = $.pulumiLabels;
         this.updateTime = $.updateTime;
     }
@@ -271,7 +329,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountConnectorId Required. The ID to use for the AccountConnector, which will become the final
+         * @param accountConnectorId The ID to use for the AccountConnector, which will become the final
          * component of the AccountConnector&#39;s resource name. Its format should adhere
          * to https://google.aip.dev/122#resource-id-segments Names must be unique
          * per-project per-location.
@@ -285,7 +343,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountConnectorId Required. The ID to use for the AccountConnector, which will become the final
+         * @param accountConnectorId The ID to use for the AccountConnector, which will become the final
          * component of the AccountConnector&#39;s resource name. Its format should adhere
          * to https://google.aip.dev/122#resource-id-segments Names must be unique
          * per-project per-location.
@@ -298,7 +356,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param annotations Optional. Allows users to store small amounts of arbitrary data.
+         * @param annotations Allows users to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
@@ -311,7 +369,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param annotations Optional. Allows users to store small amounts of arbitrary data.
+         * @param annotations Allows users to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
@@ -323,7 +381,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime Output only. The timestamp when the userConnection was created.
+         * @param createTime The timestamp when the accountConnector was created.
          * 
          * @return builder
          * 
@@ -334,13 +392,36 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime Output only. The timestamp when the userConnection was created.
+         * @param createTime The timestamp when the accountConnector was created.
          * 
          * @return builder
          * 
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param customOauthConfig Message for a customized OAuth config.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customOauthConfig(@Nullable Output<AccountConnectorCustomOauthConfigArgs> customOauthConfig) {
+            $.customOauthConfig = customOauthConfig;
+            return this;
+        }
+
+        /**
+         * @param customOauthConfig Message for a customized OAuth config.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customOauthConfig(AccountConnectorCustomOauthConfigArgs customOauthConfig) {
+            return customOauthConfig(Output.of(customOauthConfig));
         }
 
         /**
@@ -386,7 +467,32 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param etag This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
+         * client has an up-to-date value before proceeding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
+         * client has an up-to-date value before proceeding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
+        }
+
+        /**
+         * @param labels Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
@@ -399,7 +505,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs
+         * @param labels Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
@@ -411,7 +517,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param location The location of the resource.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -422,7 +528,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param location The location of the resource.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -432,7 +538,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Identifier. The resource name of the userConnection, in the format
+         * @param name Identifier. The resource name of the accountConnector, in the format
          * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
          * 
          * @return builder
@@ -444,7 +550,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Identifier. The resource name of the userConnection, in the format
+         * @param name Identifier. The resource name of the accountConnector, in the format
          * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
          * 
          * @return builder
@@ -455,7 +561,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oauthStartUri Output only. Start OAuth flow by clicking on this URL.
+         * @param oauthStartUri Start OAuth flow by clicking on this URL.
          * 
          * @return builder
          * 
@@ -466,7 +572,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oauthStartUri Output only. Start OAuth flow by clicking on this URL.
+         * @param oauthStartUri Start OAuth flow by clicking on this URL.
          * 
          * @return builder
          * 
@@ -522,6 +628,29 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param proxyConfig The proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyConfig(@Nullable Output<AccountConnectorProxyConfigArgs> proxyConfig) {
+            $.proxyConfig = proxyConfig;
+            return this;
+        }
+
+        /**
+         * @param proxyConfig The proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyConfig(AccountConnectorProxyConfigArgs proxyConfig) {
+            return proxyConfig(Output.of(proxyConfig));
+        }
+
+        /**
          * @param pulumiLabels The combination of labels configured directly on the resource
          *  and default labels configured on the provider.
          * 
@@ -545,7 +674,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateTime Output only. The timestamp when the userConnection was updated.
+         * @param updateTime The timestamp when the accountConnector was updated.
          * 
          * @return builder
          * 
@@ -556,7 +685,7 @@ public final class AccountConnectorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateTime Output only. The timestamp when the userConnection was updated.
+         * @param updateTime The timestamp when the accountConnector was updated.
          * 
          * @return builder
          * 

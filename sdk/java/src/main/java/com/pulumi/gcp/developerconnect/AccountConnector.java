@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.developerconnect.AccountConnectorArgs;
 import com.pulumi.gcp.developerconnect.inputs.AccountConnectorState;
+import com.pulumi.gcp.developerconnect.outputs.AccountConnectorCustomOauthConfig;
 import com.pulumi.gcp.developerconnect.outputs.AccountConnectorProviderOauthConfig;
+import com.pulumi.gcp.developerconnect.outputs.AccountConnectorProxyConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
  *             .location("us-central1")
- *             .accountConnectorId("tf-test-ac")
+ *             .accountConnectorId("my-ac")
  *             .providerOauthConfig(AccountConnectorProviderOauthConfigArgs.builder()
  *                 .systemProviderId("GITHUB")
  *                 .scopes("repo")
@@ -87,10 +89,235 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
  *             .location("us-central1")
- *             .accountConnectorId("tf-test-ac")
+ *             .accountConnectorId("my-ac")
  *             .providerOauthConfig(AccountConnectorProviderOauthConfigArgs.builder()
  *                 .systemProviderId("GITLAB")
  *                 .scopes("api")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Developer Connect Account Connector Ghe
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.developerconnect.AccountConnector;
+ * import com.pulumi.gcp.developerconnect.AccountConnectorArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.AccountConnectorCustomOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gheAcClientId = new Secret("gheAcClientId", SecretArgs.builder()
+ *             .secretId("ghe-ac-id")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var gheAcClientIdVersion = new SecretVersion("gheAcClientIdVersion", SecretVersionArgs.builder()
+ *             .secret(gheAcClientId.name())
+ *             .secretData("dummy-client-id")
+ *             .build());
+ * 
+ *         var gheAcClientSecret = new Secret("gheAcClientSecret", SecretArgs.builder()
+ *             .secretId("ghe-ac-sec")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var gheAcClientSecretVersion = new SecretVersion("gheAcClientSecretVersion", SecretVersionArgs.builder()
+ *             .secret(gheAcClientSecret.name())
+ *             .secretData("dummy-client-secret")
+ *             .build());
+ * 
+ *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
+ *             .location("us-central1")
+ *             .accountConnectorId("my-ac")
+ *             .customOauthConfig(AccountConnectorCustomOauthConfigArgs.builder()
+ *                 .authUri("https://ghe.proctor-staging-test.com/login/oauth/authorize")
+ *                 .clientId(gheAcClientIdVersion.secretData())
+ *                 .clientSecret(gheAcClientSecretVersion.secretData())
+ *                 .tokenUri("https://ghe.proctor-staging-test.com/login/oauth/access_token")
+ *                 .hostUri("https://ghe.proctor-staging-test.com")
+ *                 .scmProvider("GITHUB_ENTERPRISE")
+ *                 .scopes("repo")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Developer Connect Account Connector Gle
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.developerconnect.AccountConnector;
+ * import com.pulumi.gcp.developerconnect.AccountConnectorArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.AccountConnectorCustomOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gleAcClientId = new Secret("gleAcClientId", SecretArgs.builder()
+ *             .secretId("gle-ac-id")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var gleAcClientIdVersion = new SecretVersion("gleAcClientIdVersion", SecretVersionArgs.builder()
+ *             .secret(gleAcClientId.name())
+ *             .secretData("dummy-client-id")
+ *             .build());
+ * 
+ *         var gleAcClientSecret = new Secret("gleAcClientSecret", SecretArgs.builder()
+ *             .secretId("gle-ac-sec")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var gleAcClientSecretVersion = new SecretVersion("gleAcClientSecretVersion", SecretVersionArgs.builder()
+ *             .secret(gleAcClientSecret.name())
+ *             .secretData("dummy-client-secret")
+ *             .build());
+ * 
+ *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
+ *             .location("us-central1")
+ *             .accountConnectorId("my-ac")
+ *             .customOauthConfig(AccountConnectorCustomOauthConfigArgs.builder()
+ *                 .authUri("https://gle-us-central1.gcb-test.com/oauth/authorize")
+ *                 .clientId(gleAcClientIdVersion.secretData())
+ *                 .clientSecret(gleAcClientSecretVersion.secretData())
+ *                 .tokenUri("https://gle-us-central1.gcb-test.com/oauth/token")
+ *                 .hostUri("https://gle-us-central1.gcb-test.com")
+ *                 .scmProvider("GITLAB_ENTERPRISE")
+ *                 .scopes("api")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Developer Connect Account Connector Bbdc
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.developerconnect.AccountConnector;
+ * import com.pulumi.gcp.developerconnect.AccountConnectorArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.AccountConnectorCustomOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bbdcAcPrivClientId = new Secret("bbdcAcPrivClientId", SecretArgs.builder()
+ *             .secretId("bbdc-ac-id")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bbdcAcPrivClientIdVersion = new SecretVersion("bbdcAcPrivClientIdVersion", SecretVersionArgs.builder()
+ *             .secret(bbdcAcPrivClientId.name())
+ *             .secretData("dummy-client-id")
+ *             .build());
+ * 
+ *         var bbdcAcPrivClientSecret = new Secret("bbdcAcPrivClientSecret", SecretArgs.builder()
+ *             .secretId("bbdc-ac-sec")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bbdcAcPrivClientSecretVersion = new SecretVersion("bbdcAcPrivClientSecretVersion", SecretVersionArgs.builder()
+ *             .secret(bbdcAcPrivClientSecret.name())
+ *             .secretData("dummy-client-secret")
+ *             .build());
+ * 
+ *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
+ *             .location("us-central1")
+ *             .accountConnectorId("my-ac")
+ *             .customOauthConfig(AccountConnectorCustomOauthConfigArgs.builder()
+ *                 .authUri("https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/authorize")
+ *                 .clientId(bbdcAcPrivClientIdVersion.secretData())
+ *                 .clientSecret(bbdcAcPrivClientSecretVersion.secretData())
+ *                 .tokenUri("https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/token")
+ *                 .hostUri("https://bitbucket-us-central.gcb-test.com")
+ *                 .scmProvider("BITBUCKET_DATA_CENTER")
+ *                 .scopes("REPO_ADMIN")
  *                 .build())
  *             .build());
  * 
@@ -119,7 +346,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:developerconnect/accountConnector:AccountConnector")
 public class AccountConnector extends com.pulumi.resources.CustomResource {
     /**
-     * Required. The ID to use for the AccountConnector, which will become the final
+     * The ID to use for the AccountConnector, which will become the final
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
@@ -129,7 +356,7 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
     private Output<String> accountConnectorId;
 
     /**
-     * @return Required. The ID to use for the AccountConnector, which will become the final
+     * @return The ID to use for the AccountConnector, which will become the final
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
@@ -139,7 +366,7 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return this.accountConnectorId;
     }
     /**
-     * Optional. Allows users to store small amounts of arbitrary data.
+     * Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
@@ -148,7 +375,7 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Optional. Allows users to store small amounts of arbitrary data.
+     * @return Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
@@ -157,18 +384,34 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.annotations);
     }
     /**
-     * Output only. The timestamp when the userConnection was created.
+     * The timestamp when the accountConnector was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. The timestamp when the userConnection was created.
+     * @return The timestamp when the accountConnector was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Message for a customized OAuth config.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="customOauthConfig", refs={AccountConnectorCustomOauthConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AccountConnectorCustomOauthConfig> customOauthConfig;
+
+    /**
+     * @return Message for a customized OAuth config.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AccountConnectorCustomOauthConfig>> customOauthConfig() {
+        return Codegen.optional(this.customOauthConfig);
     }
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -199,7 +442,25 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Labels as key value pairs
+     * This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
+     * client has an up-to-date value before proceeding.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> etag;
+
+    /**
+     * @return This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
+     * client has an up-to-date value before proceeding.
+     * 
+     */
+    public Output<Optional<String>> etag() {
+        return Codegen.optional(this.etag);
+    }
+    /**
+     * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
@@ -208,7 +469,7 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs
+     * @return Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
@@ -217,21 +478,21 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The location of the resource.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return The location of the resource.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * Identifier. The resource name of the userConnection, in the format
+     * Identifier. The resource name of the accountConnector, in the format
      * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
      * 
      */
@@ -239,7 +500,7 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Identifier. The resource name of the userConnection, in the format
+     * @return Identifier. The resource name of the accountConnector, in the format
      * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
      * 
      */
@@ -247,14 +508,14 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Output only. Start OAuth flow by clicking on this URL.
+     * Start OAuth flow by clicking on this URL.
      * 
      */
     @Export(name="oauthStartUri", refs={String.class}, tree="[0]")
     private Output<String> oauthStartUri;
 
     /**
-     * @return Output only. Start OAuth flow by clicking on this URL.
+     * @return Start OAuth flow by clicking on this URL.
      * 
      */
     public Output<String> oauthStartUri() {
@@ -293,6 +554,22 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.providerOauthConfig);
     }
     /**
+     * The proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="proxyConfig", refs={AccountConnectorProxyConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AccountConnectorProxyConfig> proxyConfig;
+
+    /**
+     * @return The proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AccountConnectorProxyConfig>> proxyConfig() {
+        return Codegen.optional(this.proxyConfig);
+    }
+    /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      * 
@@ -309,14 +586,14 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. The timestamp when the userConnection was updated.
+     * The timestamp when the accountConnector was updated.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. The timestamp when the userConnection was updated.
+     * @return The timestamp when the accountConnector was updated.
      * 
      */
     public Output<String> updateTime() {

@@ -256,6 +256,8 @@ class Sharedflow(pulumi.CustomResource):
         * How-to Guides
             * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
 
+        ## Example Usage
+
         ## Import
 
         SharedFlow can be imported using any of these accepted formats:
@@ -294,6 +296,8 @@ class Sharedflow(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
         * How-to Guides
             * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+
+        ## Example Usage
 
         ## Import
 

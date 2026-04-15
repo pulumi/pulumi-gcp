@@ -340,6 +340,15 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
         /// <summary>
+        /// Configures this gateway to ​listen on all ports.
+        /// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+        /// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+        /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Output("allPorts")]
+        public Output<bool?> AllPorts { get; private set; } = null!;
+
+        /// <summary>
         /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
         /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
@@ -561,6 +570,15 @@ namespace Pulumi.Gcp.NetworkServices
             set => _addresses = value;
         }
 
+        /// <summary>
+        /// Configures this gateway to ​listen on all ports.
+        /// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+        /// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+        /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Input("allPorts")]
+        public Input<bool>? AllPorts { get; set; }
+
         [Input("certificateUrls")]
         private InputList<string>? _certificateUrls;
 
@@ -647,7 +665,7 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        [Input("ports", required: true)]
+        [Input("ports")]
         private InputList<int>? _ports;
 
         /// <summary>
@@ -726,6 +744,15 @@ namespace Pulumi.Gcp.NetworkServices
             get => _addresses ?? (_addresses = new InputList<string>());
             set => _addresses = value;
         }
+
+        /// <summary>
+        /// Configures this gateway to ​listen on all ports.
+        /// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+        /// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+        /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Input("allPorts")]
+        public Input<bool>? AllPorts { get; set; }
 
         [Input("certificateUrls")]
         private InputList<string>? _certificateUrls;

@@ -20,7 +20,7 @@ public final class ListingBigqueryDataset {
      */
     private String dataset;
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * Server owned effective state of replicas. Contains both primary and secondary replicas.
      * Each replica includes a system-computed (output-only) state and primary designation.
      * Structure is documented below.
@@ -28,8 +28,7 @@ public final class ListingBigqueryDataset {
      */
     private @Nullable List<ListingBigqueryDatasetEffectiveReplica> effectiveReplicas;
     /**
-     * @return (Optional, Beta)
-     * A list of regions where the publisher has created shared dataset replicas.
+     * @return A list of regions where the publisher has created shared dataset replicas.
      * 
      */
     private @Nullable List<String> replicaLocations;
@@ -49,7 +48,7 @@ public final class ListingBigqueryDataset {
         return this.dataset;
     }
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * Server owned effective state of replicas. Contains both primary and secondary replicas.
      * Each replica includes a system-computed (output-only) state and primary designation.
      * Structure is documented below.
@@ -59,8 +58,7 @@ public final class ListingBigqueryDataset {
         return this.effectiveReplicas == null ? List.of() : this.effectiveReplicas;
     }
     /**
-     * @return (Optional, Beta)
-     * A list of regions where the publisher has created shared dataset replicas.
+     * @return A list of regions where the publisher has created shared dataset replicas.
      * 
      */
     public List<String> replicaLocations() {

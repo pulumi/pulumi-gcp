@@ -13,14 +13,525 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AccountConnectorCustomOauthConfig struct {
+	// The OAuth2 authrization server URL.
+	AuthUri string `pulumi:"authUri"`
+	// The client ID of the OAuth application.
+	ClientId string `pulumi:"clientId"`
+	// Input only. The client secret of the OAuth application.
+	// It will be provided as plain text, but encrypted and stored in developer
+	// connect. As INPUT_ONLY field, it will not be included in the output.
+	ClientSecret string `pulumi:"clientSecret"`
+	// The host URI of the OAuth application.
+	HostUri string `pulumi:"hostUri"`
+	// Disable PKCE for this OAuth config. PKCE is enabled by default.
+	PkceDisabled *bool `pulumi:"pkceDisabled"`
+	// The type of the SCM provider.
+	// Possible values:
+	// SCM_PROVIDER_UNKNOWN
+	// GITHUB_ENTERPRISE
+	// GITLAB_ENTERPRISE
+	// BITBUCKET_DATA_CENTER
+	ScmProvider string `pulumi:"scmProvider"`
+	// The scopes to be requested during OAuth.
+	Scopes []string `pulumi:"scopes"`
+	// (Output)
+	// SCM server version installed at the host URI.
+	ServerVersion *string `pulumi:"serverVersion"`
+	// ServiceDirectoryConfig represents Service Directory configuration for a
+	// connection.
+	// Structure is documented below.
+	ServiceDirectoryConfig *AccountConnectorCustomOauthConfigServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// SSL certificate to use for requests to a private service.
+	SslCaCertificate *string `pulumi:"sslCaCertificate"`
+	// The OAuth2 token request URL.
+	TokenUri string `pulumi:"tokenUri"`
+}
+
+// AccountConnectorCustomOauthConfigInput is an input type that accepts AccountConnectorCustomOauthConfigArgs and AccountConnectorCustomOauthConfigOutput values.
+// You can construct a concrete instance of `AccountConnectorCustomOauthConfigInput` via:
+//
+//	AccountConnectorCustomOauthConfigArgs{...}
+type AccountConnectorCustomOauthConfigInput interface {
+	pulumi.Input
+
+	ToAccountConnectorCustomOauthConfigOutput() AccountConnectorCustomOauthConfigOutput
+	ToAccountConnectorCustomOauthConfigOutputWithContext(context.Context) AccountConnectorCustomOauthConfigOutput
+}
+
+type AccountConnectorCustomOauthConfigArgs struct {
+	// The OAuth2 authrization server URL.
+	AuthUri pulumi.StringInput `pulumi:"authUri"`
+	// The client ID of the OAuth application.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Input only. The client secret of the OAuth application.
+	// It will be provided as plain text, but encrypted and stored in developer
+	// connect. As INPUT_ONLY field, it will not be included in the output.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// The host URI of the OAuth application.
+	HostUri pulumi.StringInput `pulumi:"hostUri"`
+	// Disable PKCE for this OAuth config. PKCE is enabled by default.
+	PkceDisabled pulumi.BoolPtrInput `pulumi:"pkceDisabled"`
+	// The type of the SCM provider.
+	// Possible values:
+	// SCM_PROVIDER_UNKNOWN
+	// GITHUB_ENTERPRISE
+	// GITLAB_ENTERPRISE
+	// BITBUCKET_DATA_CENTER
+	ScmProvider pulumi.StringInput `pulumi:"scmProvider"`
+	// The scopes to be requested during OAuth.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// (Output)
+	// SCM server version installed at the host URI.
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
+	// ServiceDirectoryConfig represents Service Directory configuration for a
+	// connection.
+	// Structure is documented below.
+	ServiceDirectoryConfig AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// SSL certificate to use for requests to a private service.
+	SslCaCertificate pulumi.StringPtrInput `pulumi:"sslCaCertificate"`
+	// The OAuth2 token request URL.
+	TokenUri pulumi.StringInput `pulumi:"tokenUri"`
+}
+
+func (AccountConnectorCustomOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorCustomOauthConfig)(nil)).Elem()
+}
+
+func (i AccountConnectorCustomOauthConfigArgs) ToAccountConnectorCustomOauthConfigOutput() AccountConnectorCustomOauthConfigOutput {
+	return i.ToAccountConnectorCustomOauthConfigOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorCustomOauthConfigArgs) ToAccountConnectorCustomOauthConfigOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorCustomOauthConfigOutput)
+}
+
+func (i AccountConnectorCustomOauthConfigArgs) ToAccountConnectorCustomOauthConfigPtrOutput() AccountConnectorCustomOauthConfigPtrOutput {
+	return i.ToAccountConnectorCustomOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorCustomOauthConfigArgs) ToAccountConnectorCustomOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorCustomOauthConfigOutput).ToAccountConnectorCustomOauthConfigPtrOutputWithContext(ctx)
+}
+
+// AccountConnectorCustomOauthConfigPtrInput is an input type that accepts AccountConnectorCustomOauthConfigArgs, AccountConnectorCustomOauthConfigPtr and AccountConnectorCustomOauthConfigPtrOutput values.
+// You can construct a concrete instance of `AccountConnectorCustomOauthConfigPtrInput` via:
+//
+//	        AccountConnectorCustomOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountConnectorCustomOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToAccountConnectorCustomOauthConfigPtrOutput() AccountConnectorCustomOauthConfigPtrOutput
+	ToAccountConnectorCustomOauthConfigPtrOutputWithContext(context.Context) AccountConnectorCustomOauthConfigPtrOutput
+}
+
+type accountConnectorCustomOauthConfigPtrType AccountConnectorCustomOauthConfigArgs
+
+func AccountConnectorCustomOauthConfigPtr(v *AccountConnectorCustomOauthConfigArgs) AccountConnectorCustomOauthConfigPtrInput {
+	return (*accountConnectorCustomOauthConfigPtrType)(v)
+}
+
+func (*accountConnectorCustomOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorCustomOauthConfig)(nil)).Elem()
+}
+
+func (i *accountConnectorCustomOauthConfigPtrType) ToAccountConnectorCustomOauthConfigPtrOutput() AccountConnectorCustomOauthConfigPtrOutput {
+	return i.ToAccountConnectorCustomOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *accountConnectorCustomOauthConfigPtrType) ToAccountConnectorCustomOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorCustomOauthConfigPtrOutput)
+}
+
+type AccountConnectorCustomOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorCustomOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorCustomOauthConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorCustomOauthConfigOutput) ToAccountConnectorCustomOauthConfigOutput() AccountConnectorCustomOauthConfigOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigOutput) ToAccountConnectorCustomOauthConfigOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigOutput) ToAccountConnectorCustomOauthConfigPtrOutput() AccountConnectorCustomOauthConfigPtrOutput {
+	return o.ToAccountConnectorCustomOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AccountConnectorCustomOauthConfigOutput) ToAccountConnectorCustomOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountConnectorCustomOauthConfig) *AccountConnectorCustomOauthConfig {
+		return &v
+	}).(AccountConnectorCustomOauthConfigPtrOutput)
+}
+
+// The OAuth2 authrization server URL.
+func (o AccountConnectorCustomOauthConfigOutput) AuthUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) string { return v.AuthUri }).(pulumi.StringOutput)
+}
+
+// The client ID of the OAuth application.
+func (o AccountConnectorCustomOauthConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Input only. The client secret of the OAuth application.
+// It will be provided as plain text, but encrypted and stored in developer
+// connect. As INPUT_ONLY field, it will not be included in the output.
+func (o AccountConnectorCustomOauthConfigOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// The host URI of the OAuth application.
+func (o AccountConnectorCustomOauthConfigOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// Disable PKCE for this OAuth config. PKCE is enabled by default.
+func (o AccountConnectorCustomOauthConfigOutput) PkceDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) *bool { return v.PkceDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of the SCM provider.
+// Possible values:
+// SCM_PROVIDER_UNKNOWN
+// GITHUB_ENTERPRISE
+// GITLAB_ENTERPRISE
+// BITBUCKET_DATA_CENTER
+func (o AccountConnectorCustomOauthConfigOutput) ScmProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) string { return v.ScmProvider }).(pulumi.StringOutput)
+}
+
+// The scopes to be requested during OAuth.
+func (o AccountConnectorCustomOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// SCM server version installed at the host URI.
+func (o AccountConnectorCustomOauthConfigOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a
+// connection.
+// Structure is documented below.
+func (o AccountConnectorCustomOauthConfigOutput) ServiceDirectoryConfig() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) *AccountConnectorCustomOauthConfigServiceDirectoryConfig {
+		return v.ServiceDirectoryConfig
+	}).(AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput)
+}
+
+// SSL certificate to use for requests to a private service.
+func (o AccountConnectorCustomOauthConfigOutput) SslCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) *string { return v.SslCaCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The OAuth2 token request URL.
+func (o AccountConnectorCustomOauthConfigOutput) TokenUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfig) string { return v.TokenUri }).(pulumi.StringOutput)
+}
+
+type AccountConnectorCustomOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorCustomOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorCustomOauthConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorCustomOauthConfigPtrOutput) ToAccountConnectorCustomOauthConfigPtrOutput() AccountConnectorCustomOauthConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigPtrOutput) ToAccountConnectorCustomOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigPtrOutput) Elem() AccountConnectorCustomOauthConfigOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) AccountConnectorCustomOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AccountConnectorCustomOauthConfig
+		return ret
+	}).(AccountConnectorCustomOauthConfigOutput)
+}
+
+// The OAuth2 authrization server URL.
+func (o AccountConnectorCustomOauthConfigPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client ID of the OAuth application.
+func (o AccountConnectorCustomOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The client secret of the OAuth application.
+// It will be provided as plain text, but encrypted and stored in developer
+// connect. As INPUT_ONLY field, it will not be included in the output.
+func (o AccountConnectorCustomOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host URI of the OAuth application.
+func (o AccountConnectorCustomOauthConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disable PKCE for this OAuth config. PKCE is enabled by default.
+func (o AccountConnectorCustomOauthConfigPtrOutput) PkceDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PkceDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The type of the SCM provider.
+// Possible values:
+// SCM_PROVIDER_UNKNOWN
+// GITHUB_ENTERPRISE
+// GITLAB_ENTERPRISE
+// BITBUCKET_DATA_CENTER
+func (o AccountConnectorCustomOauthConfigPtrOutput) ScmProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScmProvider
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scopes to be requested during OAuth.
+func (o AccountConnectorCustomOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// SCM server version installed at the host URI.
+func (o AccountConnectorCustomOauthConfigPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a
+// connection.
+// Structure is documented below.
+func (o AccountConnectorCustomOauthConfigPtrOutput) ServiceDirectoryConfig() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *AccountConnectorCustomOauthConfigServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput)
+}
+
+// SSL certificate to use for requests to a private service.
+func (o AccountConnectorCustomOauthConfigPtrOutput) SslCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OAuth2 token request URL.
+func (o AccountConnectorCustomOauthConfigPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccountConnectorCustomOauthConfigServiceDirectoryConfig struct {
+	// The Service Directory service name.
+	// Format:
+	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service string `pulumi:"service"`
+}
+
+// AccountConnectorCustomOauthConfigServiceDirectoryConfigInput is an input type that accepts AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs and AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `AccountConnectorCustomOauthConfigServiceDirectoryConfigInput` via:
+//
+//	AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs{...}
+type AccountConnectorCustomOauthConfigServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput
+	ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutputWithContext(context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput
+}
+
+type AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs struct {
+	// The Service Directory service name.
+	// Format:
+	// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorCustomOauthConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput {
+	return i.ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput)
+}
+
+func (i AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return i.ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput).ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrInput is an input type that accepts AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs, AccountConnectorCustomOauthConfigServiceDirectoryConfigPtr and AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrInput` via:
+//
+//	        AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput
+	ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput
+}
+
+type accountConnectorCustomOauthConfigServiceDirectoryConfigPtrType AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs
+
+func AccountConnectorCustomOauthConfigServiceDirectoryConfigPtr(v *AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs) AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrInput {
+	return (*accountConnectorCustomOauthConfigServiceDirectoryConfigPtrType)(v)
+}
+
+func (*accountConnectorCustomOauthConfigServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorCustomOauthConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *accountConnectorCustomOauthConfigServiceDirectoryConfigPtrType) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return i.ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *accountConnectorCustomOauthConfigServiceDirectoryConfigPtrType) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput)
+}
+
+type AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorCustomOauthConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return o.ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountConnectorCustomOauthConfigServiceDirectoryConfig) *AccountConnectorCustomOauthConfigServiceDirectoryConfig {
+		return &v
+	}).(AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput)
+}
+
+// The Service Directory service name.
+// Format:
+// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AccountConnectorCustomOauthConfigServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorCustomOauthConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput() AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput) ToAccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput) Elem() AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfigServiceDirectoryConfig) AccountConnectorCustomOauthConfigServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AccountConnectorCustomOauthConfigServiceDirectoryConfig
+		return ret
+	}).(AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput)
+}
+
+// The Service Directory service name.
+// Format:
+// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorCustomOauthConfigServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccountConnectorProviderOauthConfig struct {
-	// Required. User selected scopes to apply to the Oauth config
+	// User selected scopes to apply to the Oauth config
 	// In the event of changing scopes, user records under AccountConnector will
 	// be deleted and users will re-auth again.
 	Scopes []string `pulumi:"scopes"`
-	// List of providers that are owned by Developer Connect. Creation of
-	// new non-SCM providers Account Connectors is not possible at this
-	// time.
 	// Possible values:
 	// GITHUB
 	// GITLAB
@@ -29,6 +540,7 @@ type AccountConnectorProviderOauthConfig struct {
 	// ROVO
 	// NEW_RELIC
 	// DATASTAX
+	// DYNATRACE
 	SystemProviderId *string `pulumi:"systemProviderId"`
 }
 
@@ -44,13 +556,10 @@ type AccountConnectorProviderOauthConfigInput interface {
 }
 
 type AccountConnectorProviderOauthConfigArgs struct {
-	// Required. User selected scopes to apply to the Oauth config
+	// User selected scopes to apply to the Oauth config
 	// In the event of changing scopes, user records under AccountConnector will
 	// be deleted and users will re-auth again.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// List of providers that are owned by Developer Connect. Creation of
-	// new non-SCM providers Account Connectors is not possible at this
-	// time.
 	// Possible values:
 	// GITHUB
 	// GITLAB
@@ -59,6 +568,7 @@ type AccountConnectorProviderOauthConfigArgs struct {
 	// ROVO
 	// NEW_RELIC
 	// DATASTAX
+	// DYNATRACE
 	SystemProviderId pulumi.StringPtrInput `pulumi:"systemProviderId"`
 }
 
@@ -139,16 +649,13 @@ func (o AccountConnectorProviderOauthConfigOutput) ToAccountConnectorProviderOau
 	}).(AccountConnectorProviderOauthConfigPtrOutput)
 }
 
-// Required. User selected scopes to apply to the Oauth config
+// User selected scopes to apply to the Oauth config
 // In the event of changing scopes, user records under AccountConnector will
 // be deleted and users will re-auth again.
 func (o AccountConnectorProviderOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccountConnectorProviderOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// List of providers that are owned by Developer Connect. Creation of
-// new non-SCM providers Account Connectors is not possible at this
-// time.
 // Possible values:
 // GITHUB
 // GITLAB
@@ -157,6 +664,7 @@ func (o AccountConnectorProviderOauthConfigOutput) Scopes() pulumi.StringArrayOu
 // ROVO
 // NEW_RELIC
 // DATASTAX
+// DYNATRACE
 func (o AccountConnectorProviderOauthConfigOutput) SystemProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountConnectorProviderOauthConfig) *string { return v.SystemProviderId }).(pulumi.StringPtrOutput)
 }
@@ -185,7 +693,7 @@ func (o AccountConnectorProviderOauthConfigPtrOutput) Elem() AccountConnectorPro
 	}).(AccountConnectorProviderOauthConfigOutput)
 }
 
-// Required. User selected scopes to apply to the Oauth config
+// User selected scopes to apply to the Oauth config
 // In the event of changing scopes, user records under AccountConnector will
 // be deleted and users will re-auth again.
 func (o AccountConnectorProviderOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
@@ -197,9 +705,6 @@ func (o AccountConnectorProviderOauthConfigPtrOutput) Scopes() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of providers that are owned by Developer Connect. Creation of
-// new non-SCM providers Account Connectors is not possible at this
-// time.
 // Possible values:
 // GITHUB
 // GITLAB
@@ -208,6 +713,7 @@ func (o AccountConnectorProviderOauthConfigPtrOutput) Scopes() pulumi.StringArra
 // ROVO
 // NEW_RELIC
 // DATASTAX
+// DYNATRACE
 func (o AccountConnectorProviderOauthConfigPtrOutput) SystemProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountConnectorProviderOauthConfig) *string {
 		if v == nil {
@@ -215,6 +721,147 @@ func (o AccountConnectorProviderOauthConfigPtrOutput) SystemProviderId() pulumi.
 		}
 		return v.SystemProviderId
 	}).(pulumi.StringPtrOutput)
+}
+
+type AccountConnectorProxyConfig struct {
+	// Setting this to true allows the git and http proxies to perform actions on
+	// behalf of the user configured under the account connector.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AccountConnectorProxyConfigInput is an input type that accepts AccountConnectorProxyConfigArgs and AccountConnectorProxyConfigOutput values.
+// You can construct a concrete instance of `AccountConnectorProxyConfigInput` via:
+//
+//	AccountConnectorProxyConfigArgs{...}
+type AccountConnectorProxyConfigInput interface {
+	pulumi.Input
+
+	ToAccountConnectorProxyConfigOutput() AccountConnectorProxyConfigOutput
+	ToAccountConnectorProxyConfigOutputWithContext(context.Context) AccountConnectorProxyConfigOutput
+}
+
+type AccountConnectorProxyConfigArgs struct {
+	// Setting this to true allows the git and http proxies to perform actions on
+	// behalf of the user configured under the account connector.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AccountConnectorProxyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorProxyConfig)(nil)).Elem()
+}
+
+func (i AccountConnectorProxyConfigArgs) ToAccountConnectorProxyConfigOutput() AccountConnectorProxyConfigOutput {
+	return i.ToAccountConnectorProxyConfigOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorProxyConfigArgs) ToAccountConnectorProxyConfigOutputWithContext(ctx context.Context) AccountConnectorProxyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorProxyConfigOutput)
+}
+
+func (i AccountConnectorProxyConfigArgs) ToAccountConnectorProxyConfigPtrOutput() AccountConnectorProxyConfigPtrOutput {
+	return i.ToAccountConnectorProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorProxyConfigArgs) ToAccountConnectorProxyConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorProxyConfigOutput).ToAccountConnectorProxyConfigPtrOutputWithContext(ctx)
+}
+
+// AccountConnectorProxyConfigPtrInput is an input type that accepts AccountConnectorProxyConfigArgs, AccountConnectorProxyConfigPtr and AccountConnectorProxyConfigPtrOutput values.
+// You can construct a concrete instance of `AccountConnectorProxyConfigPtrInput` via:
+//
+//	        AccountConnectorProxyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountConnectorProxyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAccountConnectorProxyConfigPtrOutput() AccountConnectorProxyConfigPtrOutput
+	ToAccountConnectorProxyConfigPtrOutputWithContext(context.Context) AccountConnectorProxyConfigPtrOutput
+}
+
+type accountConnectorProxyConfigPtrType AccountConnectorProxyConfigArgs
+
+func AccountConnectorProxyConfigPtr(v *AccountConnectorProxyConfigArgs) AccountConnectorProxyConfigPtrInput {
+	return (*accountConnectorProxyConfigPtrType)(v)
+}
+
+func (*accountConnectorProxyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorProxyConfig)(nil)).Elem()
+}
+
+func (i *accountConnectorProxyConfigPtrType) ToAccountConnectorProxyConfigPtrOutput() AccountConnectorProxyConfigPtrOutput {
+	return i.ToAccountConnectorProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *accountConnectorProxyConfigPtrType) ToAccountConnectorProxyConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorProxyConfigPtrOutput)
+}
+
+type AccountConnectorProxyConfigOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorProxyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorProxyConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorProxyConfigOutput) ToAccountConnectorProxyConfigOutput() AccountConnectorProxyConfigOutput {
+	return o
+}
+
+func (o AccountConnectorProxyConfigOutput) ToAccountConnectorProxyConfigOutputWithContext(ctx context.Context) AccountConnectorProxyConfigOutput {
+	return o
+}
+
+func (o AccountConnectorProxyConfigOutput) ToAccountConnectorProxyConfigPtrOutput() AccountConnectorProxyConfigPtrOutput {
+	return o.ToAccountConnectorProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AccountConnectorProxyConfigOutput) ToAccountConnectorProxyConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProxyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountConnectorProxyConfig) *AccountConnectorProxyConfig {
+		return &v
+	}).(AccountConnectorProxyConfigPtrOutput)
+}
+
+// Setting this to true allows the git and http proxies to perform actions on
+// behalf of the user configured under the account connector.
+func (o AccountConnectorProxyConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountConnectorProxyConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AccountConnectorProxyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorProxyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorProxyConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorProxyConfigPtrOutput) ToAccountConnectorProxyConfigPtrOutput() AccountConnectorProxyConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorProxyConfigPtrOutput) ToAccountConnectorProxyConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProxyConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorProxyConfigPtrOutput) Elem() AccountConnectorProxyConfigOutput {
+	return o.ApplyT(func(v *AccountConnectorProxyConfig) AccountConnectorProxyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AccountConnectorProxyConfig
+		return ret
+	}).(AccountConnectorProxyConfigOutput)
+}
+
+// Setting this to true allows the git and http proxies to perform actions on
+// behalf of the user configured under the account connector.
+func (o AccountConnectorProxyConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorProxyConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionBitbucketCloudConfig struct {
@@ -6042,8 +6689,14 @@ func (o InsightsConfigTargetProjectsPtrOutput) ProjectIds() pulumi.StringArrayOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorCustomOauthConfigInput)(nil)).Elem(), AccountConnectorCustomOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorCustomOauthConfigPtrInput)(nil)).Elem(), AccountConnectorCustomOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorCustomOauthConfigServiceDirectoryConfigInput)(nil)).Elem(), AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigPtrInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProxyConfigInput)(nil)).Elem(), AccountConnectorProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProxyConfigPtrInput)(nil)).Elem(), AccountConnectorProxyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigInput)(nil)).Elem(), ConnectionBitbucketCloudConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigPtrInput)(nil)).Elem(), ConnectionBitbucketCloudConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigAuthorizerCredentialInput)(nil)).Elem(), ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{})
@@ -6110,8 +6763,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkloadPtrInput)(nil)).Elem(), InsightsConfigRuntimeConfigGkeWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigTargetProjectsInput)(nil)).Elem(), InsightsConfigTargetProjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigTargetProjectsPtrInput)(nil)).Elem(), InsightsConfigTargetProjectsArgs{})
+	pulumi.RegisterOutputType(AccountConnectorCustomOauthConfigOutput{})
+	pulumi.RegisterOutputType(AccountConnectorCustomOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(AccountConnectorCustomOauthConfigServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(AccountConnectorCustomOauthConfigServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigOutput{})
 	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(AccountConnectorProxyConfigOutput{})
+	pulumi.RegisterOutputType(AccountConnectorProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput{})

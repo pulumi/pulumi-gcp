@@ -93,6 +93,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiRagEngineConfig{}
 	case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
 		r = &AiReasoningEngine{}
+	case "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding":
+		r = &AiReasoningEngineIamBinding{}
+	case "gcp:vertex/aiReasoningEngineIamMember:AiReasoningEngineIamMember":
+		r = &AiReasoningEngineIamMember{}
+	case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
+		r = &AiReasoningEngineIamPolicy{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
 		r = &AiTensorboard{}
 	default:
@@ -286,6 +292,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiReasoningEngine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiReasoningEngineIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiReasoningEngineIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiReasoningEngineIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

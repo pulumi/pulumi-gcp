@@ -152,6 +152,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly authenticatorGroupsConfig: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
+     * Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     */
+    declare public readonly autopilotClusterPolicyConfig: pulumi.Output<outputs.container.ClusterAutopilotClusterPolicyConfig>;
+    /**
      * The customer
      * allowlist Cloud Storage paths for the cluster. These paths are used with the
      * `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -372,6 +376,10 @@ export class Cluster extends pulumi.CustomResource {
      * documented below.
      */
     declare public readonly maintenancePolicy: pulumi.Output<outputs.container.ClusterMaintenancePolicy | undefined>;
+    /**
+     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     */
+    declare public readonly managedMachineLearningDiagnosticsConfig: pulumi.Output<outputs.container.ClusterManagedMachineLearningDiagnosticsConfig>;
     /**
      * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      */
@@ -668,6 +676,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["allowNetAdmin"] = state?.allowNetAdmin;
             resourceInputs["anonymousAuthenticationConfig"] = state?.anonymousAuthenticationConfig;
             resourceInputs["authenticatorGroupsConfig"] = state?.authenticatorGroupsConfig;
+            resourceInputs["autopilotClusterPolicyConfig"] = state?.autopilotClusterPolicyConfig;
             resourceInputs["autopilotPrivilegedAdmissions"] = state?.autopilotPrivilegedAdmissions;
             resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
             resourceInputs["clusterAutoscaling"] = state?.clusterAutoscaling;
@@ -710,6 +719,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["loggingConfig"] = state?.loggingConfig;
             resourceInputs["loggingService"] = state?.loggingService;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["managedMachineLearningDiagnosticsConfig"] = state?.managedMachineLearningDiagnosticsConfig;
             resourceInputs["managedOpentelemetryConfig"] = state?.managedOpentelemetryConfig;
             resourceInputs["masterAuth"] = state?.masterAuth;
             resourceInputs["masterAuthorizedNetworksConfig"] = state?.masterAuthorizedNetworksConfig;
@@ -762,6 +772,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["allowNetAdmin"] = args?.allowNetAdmin;
             resourceInputs["anonymousAuthenticationConfig"] = args?.anonymousAuthenticationConfig;
             resourceInputs["authenticatorGroupsConfig"] = args?.authenticatorGroupsConfig;
+            resourceInputs["autopilotClusterPolicyConfig"] = args?.autopilotClusterPolicyConfig;
             resourceInputs["autopilotPrivilegedAdmissions"] = args?.autopilotPrivilegedAdmissions;
             resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
             resourceInputs["clusterAutoscaling"] = args?.clusterAutoscaling;
@@ -801,6 +812,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["loggingConfig"] = args?.loggingConfig;
             resourceInputs["loggingService"] = args?.loggingService;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["managedMachineLearningDiagnosticsConfig"] = args?.managedMachineLearningDiagnosticsConfig;
             resourceInputs["managedOpentelemetryConfig"] = args?.managedOpentelemetryConfig;
             resourceInputs["masterAuth"] = args?.masterAuth;
             resourceInputs["masterAuthorizedNetworksConfig"] = args?.masterAuthorizedNetworksConfig;
@@ -883,6 +895,10 @@ export interface ClusterState {
      * Structure is documented below.
      */
     authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
+    /**
+     * Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     */
+    autopilotClusterPolicyConfig?: pulumi.Input<inputs.container.ClusterAutopilotClusterPolicyConfig>;
     /**
      * The customer
      * allowlist Cloud Storage paths for the cluster. These paths are used with the
@@ -1104,6 +1120,10 @@ export interface ClusterState {
      * documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy>;
+    /**
+     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     */
+    managedMachineLearningDiagnosticsConfig?: pulumi.Input<inputs.container.ClusterManagedMachineLearningDiagnosticsConfig>;
     /**
      * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      */
@@ -1410,6 +1430,10 @@ export interface ClusterArgs {
      */
     authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
+     * Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     */
+    autopilotClusterPolicyConfig?: pulumi.Input<inputs.container.ClusterAutopilotClusterPolicyConfig>;
+    /**
      * The customer
      * allowlist Cloud Storage paths for the cluster. These paths are used with the
      * `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -1618,6 +1642,10 @@ export interface ClusterArgs {
      * documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy>;
+    /**
+     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     */
+    managedMachineLearningDiagnosticsConfig?: pulumi.Input<inputs.container.ClusterManagedMachineLearningDiagnosticsConfig>;
     /**
      * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      */

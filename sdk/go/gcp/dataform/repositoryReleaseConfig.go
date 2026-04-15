@@ -109,6 +109,79 @@ import (
 //	}
 //
 // ```
+// ### Dataform Repository Release Config Disabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
+//				Name: pulumi.String("my/repository"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("my_secret"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			repository, err := dataform.NewRepository(ctx, "repository", &dataform.RepositoryArgs{
+//				Name:   pulumi.String("dataform_repository"),
+//				Region: pulumi.String("us-central1"),
+//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
+//					Url:                              gitRepository.Url,
+//					DefaultBranch:                    pulumi.String("main"),
+//					AuthenticationTokenSecretVersion: secretVersion.ID(),
+//				},
+//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
+//					DefaultDatabase: pulumi.String("database"),
+//					SchemaSuffix:    pulumi.String("_suffix"),
+//					TablePrefix:     pulumi.String("prefix_"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataform.NewRepositoryReleaseConfig(ctx, "release", &dataform.RepositoryReleaseConfigArgs{
+//				Project:      repository.Project,
+//				Region:       repository.Region,
+//				Repository:   repository.Name,
+//				Name:         pulumi.String("my_release"),
+//				GitCommitish: pulumi.String("main"),
+//				CronSchedule: pulumi.String("0 7 * * *"),
+//				TimeZone:     pulumi.String("America/New_York"),
+//				Disabled:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -135,6 +208,8 @@ type RepositoryReleaseConfig struct {
 	CodeCompilationConfig RepositoryReleaseConfigCodeCompilationConfigPtrOutput `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
+	// Disables automatic creation of compilation results.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
 	GitCommitish pulumi.StringOutput `pulumi:"gitCommitish"`
 	// The release's name.
@@ -191,6 +266,8 @@ type repositoryReleaseConfigState struct {
 	CodeCompilationConfig *RepositoryReleaseConfigCodeCompilationConfig `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
+	// Disables automatic creation of compilation results.
+	Disabled *bool `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
 	GitCommitish *string `pulumi:"gitCommitish"`
 	// The release's name.
@@ -215,6 +292,8 @@ type RepositoryReleaseConfigState struct {
 	CodeCompilationConfig RepositoryReleaseConfigCodeCompilationConfigPtrInput
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
+	// Disables automatic creation of compilation results.
+	Disabled pulumi.BoolPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
 	GitCommitish pulumi.StringPtrInput
 	// The release's name.
@@ -243,6 +322,8 @@ type repositoryReleaseConfigArgs struct {
 	CodeCompilationConfig *RepositoryReleaseConfigCodeCompilationConfig `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
+	// Disables automatic creation of compilation results.
+	Disabled *bool `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
 	GitCommitish string `pulumi:"gitCommitish"`
 	// The release's name.
@@ -265,6 +346,8 @@ type RepositoryReleaseConfigArgs struct {
 	CodeCompilationConfig RepositoryReleaseConfigCodeCompilationConfigPtrInput
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
+	// Disables automatic creation of compilation results.
+	Disabled pulumi.BoolPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
 	GitCommitish pulumi.StringInput
 	// The release's name.
@@ -378,6 +461,11 @@ func (o RepositoryReleaseConfigOutput) CodeCompilationConfig() RepositoryRelease
 // Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 func (o RepositoryReleaseConfigOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringPtrOutput { return v.CronSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Disables automatic creation of compilation results.
+func (o RepositoryReleaseConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.

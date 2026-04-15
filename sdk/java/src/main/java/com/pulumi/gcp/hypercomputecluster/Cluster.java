@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         final var projectId = project.name();
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
- *             .clusterId("my-cluster")
+ *             .clusterId("mycluster1")
  *             .location("us-central1")
  *             .description("Cluster Director instance created through Terraform")
  *             .networkResources(ClusterNetworkResourceArgs.builder()
@@ -145,18 +145,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:hypercomputecluster/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      * 
      */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
-     * @return ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * @return ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      * 
      */
     public Output<String> clusterId() {

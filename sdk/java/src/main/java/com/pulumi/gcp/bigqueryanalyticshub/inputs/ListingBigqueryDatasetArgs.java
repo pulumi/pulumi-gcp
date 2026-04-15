@@ -35,7 +35,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Output, Beta)
+     * (Output)
      * Server owned effective state of replicas. Contains both primary and secondary replicas.
      * Each replica includes a system-computed (output-only) state and primary designation.
      * Structure is documented below.
@@ -45,7 +45,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<ListingBigqueryDatasetEffectiveReplicaArgs>> effectiveReplicas;
 
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * Server owned effective state of replicas. Contains both primary and secondary replicas.
      * Each replica includes a system-computed (output-only) state and primary designation.
      * Structure is documented below.
@@ -56,7 +56,6 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Beta)
      * A list of regions where the publisher has created shared dataset replicas.
      * 
      */
@@ -64,8 +63,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> replicaLocations;
 
     /**
-     * @return (Optional, Beta)
-     * A list of regions where the publisher has created shared dataset replicas.
+     * @return A list of regions where the publisher has created shared dataset replicas.
      * 
      */
     public Optional<Output<List<String>>> replicaLocations() {
@@ -138,7 +136,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveReplicas (Output, Beta)
+         * @param effectiveReplicas (Output)
          * Server owned effective state of replicas. Contains both primary and secondary replicas.
          * Each replica includes a system-computed (output-only) state and primary designation.
          * Structure is documented below.
@@ -152,7 +150,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveReplicas (Output, Beta)
+         * @param effectiveReplicas (Output)
          * Server owned effective state of replicas. Contains both primary and secondary replicas.
          * Each replica includes a system-computed (output-only) state and primary designation.
          * Structure is documented below.
@@ -165,7 +163,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveReplicas (Output, Beta)
+         * @param effectiveReplicas (Output)
          * Server owned effective state of replicas. Contains both primary and secondary replicas.
          * Each replica includes a system-computed (output-only) state and primary designation.
          * Structure is documented below.
@@ -178,8 +176,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param replicaLocations (Optional, Beta)
-         * A list of regions where the publisher has created shared dataset replicas.
+         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
          * 
          * @return builder
          * 
@@ -190,8 +187,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param replicaLocations (Optional, Beta)
-         * A list of regions where the publisher has created shared dataset replicas.
+         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
          * 
          * @return builder
          * 
@@ -201,8 +197,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param replicaLocations (Optional, Beta)
-         * A list of regions where the publisher has created shared dataset replicas.
+         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
          * 
          * @return builder
          * 

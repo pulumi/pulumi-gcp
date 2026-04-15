@@ -25,6 +25,7 @@ class ClusterArgs:
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 autopilot_cluster_policy_config: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']] = None,
                  autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
@@ -64,6 +65,7 @@ class ClusterArgs:
                  logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']] = None,
                  managed_opentelemetry_config: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
@@ -116,6 +118,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs'] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
                allowlist Cloud Storage paths for the cluster. These paths are used with the
                `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -206,6 +209,7 @@ class ClusterArgs:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
         :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -352,6 +356,8 @@ class ClusterArgs:
             pulumi.set(__self__, "anonymous_authentication_config", anonymous_authentication_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if autopilot_cluster_policy_config is not None:
+            pulumi.set(__self__, "autopilot_cluster_policy_config", autopilot_cluster_policy_config)
         if autopilot_privileged_admissions is not None:
             pulumi.set(__self__, "autopilot_privileged_admissions", autopilot_privileged_admissions)
         if binary_authorization is not None:
@@ -433,6 +439,8 @@ class ClusterArgs:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if managed_machine_learning_diagnostics_config is not None:
+            pulumi.set(__self__, "managed_machine_learning_diagnostics_config", managed_machine_learning_diagnostics_config)
         if managed_opentelemetry_config is not None:
             pulumi.set(__self__, "managed_opentelemetry_config", managed_opentelemetry_config)
         if master_auth is not None:
@@ -566,6 +574,18 @@ class ClusterArgs:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotClusterPolicyConfig")
+    def autopilot_cluster_policy_config(self) -> Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]:
+        """
+        Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        """
+        return pulumi.get(self, "autopilot_cluster_policy_config")
+
+    @autopilot_cluster_policy_config.setter
+    def autopilot_cluster_policy_config(self, value: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]):
+        pulumi.set(self, "autopilot_cluster_policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autopilotPrivilegedAdmissions")
@@ -1086,6 +1106,18 @@ class ClusterArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
+    def managed_machine_learning_diagnostics_config(self) -> Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
+        """
+        ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_machine_learning_diagnostics_config")
+
+    @managed_machine_learning_diagnostics_config.setter
+    def managed_machine_learning_diagnostics_config(self, value: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]):
+        pulumi.set(self, "managed_machine_learning_diagnostics_config", value)
 
     @_builtins.property
     @pulumi.getter(name="managedOpentelemetryConfig")
@@ -1672,6 +1704,7 @@ class _ClusterState:
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 autopilot_cluster_policy_config: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']] = None,
                  autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
@@ -1714,6 +1747,7 @@ class _ClusterState:
                  logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']] = None,
                  managed_opentelemetry_config: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
@@ -1772,6 +1806,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs'] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
                allowlist Cloud Storage paths for the cluster. These paths are used with the
                `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -1865,6 +1900,7 @@ class _ClusterState:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
         :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -2016,6 +2052,8 @@ class _ClusterState:
             pulumi.set(__self__, "anonymous_authentication_config", anonymous_authentication_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if autopilot_cluster_policy_config is not None:
+            pulumi.set(__self__, "autopilot_cluster_policy_config", autopilot_cluster_policy_config)
         if autopilot_privileged_admissions is not None:
             pulumi.set(__self__, "autopilot_privileged_admissions", autopilot_privileged_admissions)
         if binary_authorization is not None:
@@ -2103,6 +2141,8 @@ class _ClusterState:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if managed_machine_learning_diagnostics_config is not None:
+            pulumi.set(__self__, "managed_machine_learning_diagnostics_config", managed_machine_learning_diagnostics_config)
         if managed_opentelemetry_config is not None:
             pulumi.set(__self__, "managed_opentelemetry_config", managed_opentelemetry_config)
         if master_auth is not None:
@@ -2248,6 +2288,18 @@ class _ClusterState:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotClusterPolicyConfig")
+    def autopilot_cluster_policy_config(self) -> Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]:
+        """
+        Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        """
+        return pulumi.get(self, "autopilot_cluster_policy_config")
+
+    @autopilot_cluster_policy_config.setter
+    def autopilot_cluster_policy_config(self, value: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]):
+        pulumi.set(self, "autopilot_cluster_policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autopilotPrivilegedAdmissions")
@@ -2804,6 +2856,18 @@ class _ClusterState:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
+    def managed_machine_learning_diagnostics_config(self) -> Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
+        """
+        ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_machine_learning_diagnostics_config")
+
+    @managed_machine_learning_diagnostics_config.setter
+    def managed_machine_learning_diagnostics_config(self, value: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]):
+        pulumi.set(self, "managed_machine_learning_diagnostics_config", value)
 
     @_builtins.property
     @pulumi.getter(name="managedOpentelemetryConfig")
@@ -3462,6 +3526,7 @@ class Cluster(pulumi.CustomResource):
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+                 autopilot_cluster_policy_config: Optional[pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
                  autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
@@ -3501,6 +3566,7 @@ class Cluster(pulumi.CustomResource):
                  logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
                  managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
                  master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
@@ -3643,6 +3709,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
                allowlist Cloud Storage paths for the cluster. These paths are used with the
                `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -3733,6 +3800,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -3986,6 +4054,7 @@ class Cluster(pulumi.CustomResource):
                  allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+                 autopilot_cluster_policy_config: Optional[pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
                  autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
@@ -4025,6 +4094,7 @@ class Cluster(pulumi.CustomResource):
                  logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
                  managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
                  master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
@@ -4078,6 +4148,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["allow_net_admin"] = allow_net_admin
             __props__.__dict__["anonymous_authentication_config"] = anonymous_authentication_config
             __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+            __props__.__dict__["autopilot_cluster_policy_config"] = autopilot_cluster_policy_config
             __props__.__dict__["autopilot_privileged_admissions"] = autopilot_privileged_admissions
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
@@ -4117,6 +4188,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["managed_machine_learning_diagnostics_config"] = managed_machine_learning_diagnostics_config
             __props__.__dict__["managed_opentelemetry_config"] = managed_opentelemetry_config
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
@@ -4182,6 +4254,7 @@ class Cluster(pulumi.CustomResource):
             allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
             anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
             authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+            autopilot_cluster_policy_config: Optional[pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
             autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
             cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
@@ -4224,6 +4297,7 @@ class Cluster(pulumi.CustomResource):
             logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
             logging_service: Optional[pulumi.Input[_builtins.str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+            managed_machine_learning_diagnostics_config: Optional[pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
             managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
             master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
             master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
@@ -4286,6 +4360,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']] autopilot_cluster_policy_config: Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] autopilot_privileged_admissions: The customer
                allowlist Cloud Storage paths for the cluster. These paths are used with the
                `--autopilot-privileged-admission` flag to authorize privileged workloads in
@@ -4379,6 +4454,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -4530,6 +4606,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["allow_net_admin"] = allow_net_admin
         __props__.__dict__["anonymous_authentication_config"] = anonymous_authentication_config
         __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+        __props__.__dict__["autopilot_cluster_policy_config"] = autopilot_cluster_policy_config
         __props__.__dict__["autopilot_privileged_admissions"] = autopilot_privileged_admissions
         __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
@@ -4572,6 +4649,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["logging_service"] = logging_service
         __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["managed_machine_learning_diagnostics_config"] = managed_machine_learning_diagnostics_config
         __props__.__dict__["managed_opentelemetry_config"] = managed_opentelemetry_config
         __props__.__dict__["master_auth"] = master_auth
         __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
@@ -4656,6 +4734,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "authenticator_groups_config")
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotClusterPolicyConfig")
+    def autopilot_cluster_policy_config(self) -> pulumi.Output['outputs.ClusterAutopilotClusterPolicyConfig']:
+        """
+        Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+        """
+        return pulumi.get(self, "autopilot_cluster_policy_config")
 
     @_builtins.property
     @pulumi.getter(name="autopilotPrivilegedAdmissions")
@@ -5044,6 +5130,14 @@ class Cluster(pulumi.CustomResource):
         documented below.
         """
         return pulumi.get(self, "maintenance_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
+    def managed_machine_learning_diagnostics_config(self) -> pulumi.Output['outputs.ClusterManagedMachineLearningDiagnosticsConfig']:
+        """
+        ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_machine_learning_diagnostics_config")
 
     @_builtins.property
     @pulumi.getter(name="managedOpentelemetryConfig")

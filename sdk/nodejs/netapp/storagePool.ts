@@ -197,7 +197,6 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Mode of the storage pool.
      * The operational mode of the storage pool. ONTAP mode enables operations
      * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -235,12 +234,21 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly replicaZone: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
+     * (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
      * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
      * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     *
+     * > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     *
+     * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
      */
     declare public readonly scaleTier: pulumi.Output<string>;
+    /**
+     * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+     * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+     */
+    declare public readonly scaleType: pulumi.Output<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -313,6 +321,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["qosType"] = state?.qosType;
             resourceInputs["replicaZone"] = state?.replicaZone;
             resourceInputs["scaleTier"] = state?.scaleTier;
+            resourceInputs["scaleType"] = state?.scaleType;
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["totalIops"] = state?.totalIops;
             resourceInputs["totalThroughputMibps"] = state?.totalThroughputMibps;
@@ -352,6 +361,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["qosType"] = args?.qosType;
             resourceInputs["replicaZone"] = args?.replicaZone;
             resourceInputs["scaleTier"] = args?.scaleTier;
+            resourceInputs["scaleType"] = args?.scaleType;
             resourceInputs["serviceLevel"] = args?.serviceLevel;
             resourceInputs["totalIops"] = args?.totalIops;
             resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
@@ -451,7 +461,6 @@ export interface StoragePoolState {
      */
     location?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Mode of the storage pool.
      * The operational mode of the storage pool. ONTAP mode enables operations
      * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -489,12 +498,21 @@ export interface StoragePoolState {
      */
     replicaZone?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
+     * (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
      * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
      * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     *
+     * > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     *
+     * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
      */
     scaleTier?: pulumi.Input<string>;
+    /**
+     * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+     * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+     */
+    scaleType?: pulumi.Input<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -589,7 +607,6 @@ export interface StoragePoolArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Mode of the storage pool.
      * The operational mode of the storage pool. ONTAP mode enables operations
      * via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -622,12 +639,21 @@ export interface StoragePoolArgs {
      */
     replicaZone?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
+     * (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
      * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
      * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+     *
+     * > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+     *
+     * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
      */
     scaleTier?: pulumi.Input<string>;
+    /**
+     * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+     * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+     */
+    scaleType?: pulumi.Input<string>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.

@@ -43,6 +43,7 @@ from .security_monitoring_condition import *
 from .security_profile_v2 import *
 from .sharedflow import *
 from .sharedflow_deployment import *
+from .space import *
 from .sync_authorization import *
 from .target_server import *
 from ._inputs import *

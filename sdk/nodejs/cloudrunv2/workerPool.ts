@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -45,7 +44,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [
  *             {
@@ -80,7 +78,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -123,7 +120,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         volumes: [{
  *             name: "cloudsql",
@@ -180,7 +176,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -209,7 +204,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -248,7 +242,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         volumes: [{
  *             name: "a-volume",
@@ -292,7 +285,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [
  *             {
@@ -333,7 +325,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -375,7 +366,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool:latest",
@@ -420,7 +410,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.WorkerPool("default", {
  *     name: "cloudrun-worker-pool",
  *     location: "us-central1",
- *     launchStage: "BETA",
  *     deletionProtection: false,
  *     template: {
  *         annotations: {},

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const projectId = project.then(project => project.name);
  * const cluster = new gcp.hypercomputecluster.Cluster("cluster", {
- *     clusterId: "my-cluster",
+ *     clusterId: "mycluster1",
  *     location: "us-central1",
  *     description: "Cluster Director instance created through Terraform",
  *     networkResources: [{
@@ -118,9 +118,8 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      */
     declare public readonly clusterId: pulumi.Output<string>;
     /**
@@ -269,9 +268,8 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      */
     clusterId?: pulumi.Input<string>;
     /**
@@ -362,9 +360,8 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * ID of the cluster to create. Must conform to
-     * [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-     * alphanumeric, and at most 63 characters).
+     * ID of the cluster to create. Must start with a lowercase letter,
+     * use only lowercase letters and numbers, and be at most 10 characters long.
      */
     clusterId: pulumi.Input<string>;
     /**

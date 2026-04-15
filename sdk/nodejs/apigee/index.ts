@@ -190,6 +190,11 @@ export type SharedflowDeployment = import("./sharedflowDeployment").SharedflowDe
 export const SharedflowDeployment: typeof import("./sharedflowDeployment").SharedflowDeployment = null as any;
 utilities.lazyLoad(exports, ["SharedflowDeployment"], () => require("./sharedflowDeployment"));
 
+export { SpaceArgs, SpaceState } from "./space";
+export type Space = import("./space").Space;
+export const Space: typeof import("./space").Space = null as any;
+utilities.lazyLoad(exports, ["Space"], () => require("./space"));
+
 export { SyncAuthorizationArgs, SyncAuthorizationState } from "./syncAuthorization";
 export type SyncAuthorization = import("./syncAuthorization").SyncAuthorization;
 export const SyncAuthorization: typeof import("./syncAuthorization").SyncAuthorization = null as any;
@@ -277,6 +282,8 @@ const _module = {
                 return new Sharedflow(name, <any>undefined, { urn })
             case "gcp:apigee/sharedflowDeployment:SharedflowDeployment":
                 return new SharedflowDeployment(name, <any>undefined, { urn })
+            case "gcp:apigee/space:Space":
+                return new Space(name, <any>undefined, { urn })
             case "gcp:apigee/syncAuthorization:SyncAuthorization":
                 return new SyncAuthorization(name, <any>undefined, { urn })
             case "gcp:apigee/targetServer:TargetServer":
@@ -322,5 +329,6 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/securityMonitoringCondition
 pulumi.runtime.registerResourceModule("gcp", "apigee/securityProfileV2", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflowDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/space", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/syncAuthorization", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/targetServer", _module)

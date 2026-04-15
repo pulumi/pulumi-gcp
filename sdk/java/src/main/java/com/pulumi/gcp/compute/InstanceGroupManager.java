@@ -21,6 +21,7 @@ import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulInternalIp;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatus;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerTargetSizePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerUpdatePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerVersion;
 import java.lang.Boolean;
@@ -564,16 +565,12 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="resourcePolicies", refs={InstanceGroupManagerResourcePolicies.class}, tree="[0]")
     private Output</* @Nullable */ InstanceGroupManagerResourcePolicies> resourcePolicies;
 
     /**
      * @return Resource policies for this managed instance group. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<Optional<InstanceGroupManagerResourcePolicies>> resourcePolicies() {
@@ -700,6 +697,24 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> targetSize() {
         return this.targetSize;
+    }
+    /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="targetSizePolicies", refs={List.class,InstanceGroupManagerTargetSizePolicy.class}, tree="[0,1]")
+    private Output<List<InstanceGroupManagerTargetSizePolicy>> targetSizePolicies;
+
+    /**
+     * @return The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Output<List<InstanceGroupManagerTargetSizePolicy>> targetSizePolicies() {
+        return this.targetSizePolicies;
     }
     /**
      * The target number of stopped instances for this managed instance group.

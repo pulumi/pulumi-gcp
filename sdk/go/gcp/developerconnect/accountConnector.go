@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
 //				Location:           pulumi.String("us-central1"),
-//				AccountConnectorId: pulumi.String("tf-test-ac"),
+//				AccountConnectorId: pulumi.String("my-ac"),
 //				ProviderOauthConfig: &developerconnect.AccountConnectorProviderOauthConfigArgs{
 //					SystemProviderId: pulumi.String("GITHUB"),
 //					Scopes: pulumi.StringArray{
@@ -64,11 +64,221 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
 //				Location:           pulumi.String("us-central1"),
-//				AccountConnectorId: pulumi.String("tf-test-ac"),
+//				AccountConnectorId: pulumi.String("my-ac"),
 //				ProviderOauthConfig: &developerconnect.AccountConnectorProviderOauthConfigArgs{
 //					SystemProviderId: pulumi.String("GITLAB"),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("api"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Account Connector Ghe
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gheAcClientId, err := secretmanager.NewSecret(ctx, "ghe_ac_client_id", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("ghe-ac-id"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gheAcClientIdVersion, err := secretmanager.NewSecretVersion(ctx, "ghe_ac_client_id_version", &secretmanager.SecretVersionArgs{
+//				Secret:     gheAcClientId.Name,
+//				SecretData: pulumi.String("dummy-client-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gheAcClientSecret, err := secretmanager.NewSecret(ctx, "ghe_ac_client_secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("ghe-ac-sec"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gheAcClientSecretVersion, err := secretmanager.NewSecretVersion(ctx, "ghe_ac_client_secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     gheAcClientSecret.Name,
+//				SecretData: pulumi.String("dummy-client-secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
+//				Location:           pulumi.String("us-central1"),
+//				AccountConnectorId: pulumi.String("my-ac"),
+//				CustomOauthConfig: &developerconnect.AccountConnectorCustomOauthConfigArgs{
+//					AuthUri:      pulumi.String("https://ghe.proctor-staging-test.com/login/oauth/authorize"),
+//					ClientId:     gheAcClientIdVersion.SecretData,
+//					ClientSecret: gheAcClientSecretVersion.SecretData,
+//					TokenUri:     pulumi.String("https://ghe.proctor-staging-test.com/login/oauth/access_token"),
+//					HostUri:      pulumi.String("https://ghe.proctor-staging-test.com"),
+//					ScmProvider:  pulumi.String("GITHUB_ENTERPRISE"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("repo"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Account Connector Gle
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gleAcClientId, err := secretmanager.NewSecret(ctx, "gle_ac_client_id", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("gle-ac-id"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gleAcClientIdVersion, err := secretmanager.NewSecretVersion(ctx, "gle_ac_client_id_version", &secretmanager.SecretVersionArgs{
+//				Secret:     gleAcClientId.Name,
+//				SecretData: pulumi.String("dummy-client-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gleAcClientSecret, err := secretmanager.NewSecret(ctx, "gle_ac_client_secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("gle-ac-sec"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gleAcClientSecretVersion, err := secretmanager.NewSecretVersion(ctx, "gle_ac_client_secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     gleAcClientSecret.Name,
+//				SecretData: pulumi.String("dummy-client-secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
+//				Location:           pulumi.String("us-central1"),
+//				AccountConnectorId: pulumi.String("my-ac"),
+//				CustomOauthConfig: &developerconnect.AccountConnectorCustomOauthConfigArgs{
+//					AuthUri:      pulumi.String("https://gle-us-central1.gcb-test.com/oauth/authorize"),
+//					ClientId:     gleAcClientIdVersion.SecretData,
+//					ClientSecret: gleAcClientSecretVersion.SecretData,
+//					TokenUri:     pulumi.String("https://gle-us-central1.gcb-test.com/oauth/token"),
+//					HostUri:      pulumi.String("https://gle-us-central1.gcb-test.com"),
+//					ScmProvider:  pulumi.String("GITLAB_ENTERPRISE"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("api"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Account Connector Bbdc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bbdcAcPrivClientId, err := secretmanager.NewSecret(ctx, "bbdc_ac_priv_client_id", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("bbdc-ac-id"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bbdcAcPrivClientIdVersion, err := secretmanager.NewSecretVersion(ctx, "bbdc_ac_priv_client_id_version", &secretmanager.SecretVersionArgs{
+//				Secret:     bbdcAcPrivClientId.Name,
+//				SecretData: pulumi.String("dummy-client-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bbdcAcPrivClientSecret, err := secretmanager.NewSecret(ctx, "bbdc_ac_priv_client_secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("bbdc-ac-sec"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bbdcAcPrivClientSecretVersion, err := secretmanager.NewSecretVersion(ctx, "bbdc_ac_priv_client_secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     bbdcAcPrivClientSecret.Name,
+//				SecretData: pulumi.String("dummy-client-secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
+//				Location:           pulumi.String("us-central1"),
+//				AccountConnectorId: pulumi.String("my-ac"),
+//				CustomOauthConfig: &developerconnect.AccountConnectorCustomOauthConfigArgs{
+//					AuthUri:      pulumi.String("https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/authorize"),
+//					ClientId:     bbdcAcPrivClientIdVersion.SecretData,
+//					ClientSecret: bbdcAcPrivClientSecretVersion.SecretData,
+//					TokenUri:     pulumi.String("https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/token"),
+//					HostUri:      pulumi.String("https://bitbucket-us-central.gcb-test.com"),
+//					ScmProvider:  pulumi.String("BITBUCKET_DATA_CENTER"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("REPO_ADMIN"),
 //					},
 //				},
 //			})
@@ -99,31 +309,38 @@ import (
 type AccountConnector struct {
 	pulumi.CustomResourceState
 
-	// Required. The ID to use for the AccountConnector, which will become the final
+	// The ID to use for the AccountConnector, which will become the final
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
 	AccountConnectorId pulumi.StringOutput `pulumi:"accountConnectorId"`
-	// Optional. Allows users to store small amounts of arbitrary data.
+	// Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Output only. The timestamp when the userConnection was created.
+	// The timestamp when the accountConnector was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Message for a customized OAuth config.
+	// Structure is documented below.
+	CustomOauthConfig AccountConnectorCustomOauthConfigPtrOutput `pulumi:"customOauthConfig"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Identifier. The resource name of the userConnection, in the format
+	// Identifier. The resource name of the accountConnector, in the format
 	// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Output only. Start OAuth flow by clicking on this URL.
+	// Start OAuth flow by clicking on this URL.
 	OauthStartUri pulumi.StringOutput `pulumi:"oauthStartUri"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -131,10 +348,13 @@ type AccountConnector struct {
 	// ProviderOAuthConfig is the OAuth config for a provider.
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrOutput `pulumi:"providerOauthConfig"`
+	// The proxy configuration.
+	// Structure is documented below.
+	ProxyConfig AccountConnectorProxyConfigPtrOutput `pulumi:"proxyConfig"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. The timestamp when the userConnection was updated.
+	// The timestamp when the accountConnector was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -179,31 +399,38 @@ func GetAccountConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountConnector resources.
 type accountConnectorState struct {
-	// Required. The ID to use for the AccountConnector, which will become the final
+	// The ID to use for the AccountConnector, which will become the final
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
 	AccountConnectorId *string `pulumi:"accountConnectorId"`
-	// Optional. Allows users to store small amounts of arbitrary data.
+	// Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Output only. The timestamp when the userConnection was created.
+	// The timestamp when the accountConnector was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Message for a customized OAuth config.
+	// Structure is documented below.
+	CustomOauthConfig *AccountConnectorCustomOauthConfig `pulumi:"customOauthConfig"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
-	// Identifier. The resource name of the userConnection, in the format
+	// Identifier. The resource name of the accountConnector, in the format
 	// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
 	Name *string `pulumi:"name"`
-	// Output only. Start OAuth flow by clicking on this URL.
+	// Start OAuth flow by clicking on this URL.
 	OauthStartUri *string `pulumi:"oauthStartUri"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -211,39 +438,49 @@ type accountConnectorState struct {
 	// ProviderOAuthConfig is the OAuth config for a provider.
 	// Structure is documented below.
 	ProviderOauthConfig *AccountConnectorProviderOauthConfig `pulumi:"providerOauthConfig"`
+	// The proxy configuration.
+	// Structure is documented below.
+	ProxyConfig *AccountConnectorProxyConfig `pulumi:"proxyConfig"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. The timestamp when the userConnection was updated.
+	// The timestamp when the accountConnector was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AccountConnectorState struct {
-	// Required. The ID to use for the AccountConnector, which will become the final
+	// The ID to use for the AccountConnector, which will become the final
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
 	AccountConnectorId pulumi.StringPtrInput
-	// Optional. Allows users to store small amounts of arbitrary data.
+	// Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Output only. The timestamp when the userConnection was created.
+	// The timestamp when the accountConnector was created.
 	CreateTime pulumi.StringPtrInput
+	// Message for a customized OAuth config.
+	// Structure is documented below.
+	CustomOauthConfig AccountConnectorCustomOauthConfigPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. Labels as key value pairs
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
+	// Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
-	// Identifier. The resource name of the userConnection, in the format
+	// Identifier. The resource name of the accountConnector, in the format
 	// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
 	Name pulumi.StringPtrInput
-	// Output only. Start OAuth flow by clicking on this URL.
+	// Start OAuth flow by clicking on this URL.
 	OauthStartUri pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -251,10 +488,13 @@ type AccountConnectorState struct {
 	// ProviderOAuthConfig is the OAuth config for a provider.
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrInput
+	// The proxy configuration.
+	// Structure is documented below.
+	ProxyConfig AccountConnectorProxyConfigPtrInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. The timestamp when the userConnection was updated.
+	// The timestamp when the accountConnector was updated.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -263,20 +503,27 @@ func (AccountConnectorState) ElementType() reflect.Type {
 }
 
 type accountConnectorArgs struct {
-	// Required. The ID to use for the AccountConnector, which will become the final
+	// The ID to use for the AccountConnector, which will become the final
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
 	AccountConnectorId string `pulumi:"accountConnectorId"`
-	// Optional. Allows users to store small amounts of arbitrary data.
+	// Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Optional. Labels as key value pairs
+	// Message for a customized OAuth config.
+	// Structure is documented below.
+	CustomOauthConfig *AccountConnectorCustomOauthConfig `pulumi:"customOauthConfig"`
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -284,24 +531,34 @@ type accountConnectorArgs struct {
 	// ProviderOAuthConfig is the OAuth config for a provider.
 	// Structure is documented below.
 	ProviderOauthConfig *AccountConnectorProviderOauthConfig `pulumi:"providerOauthConfig"`
+	// The proxy configuration.
+	// Structure is documented below.
+	ProxyConfig *AccountConnectorProxyConfig `pulumi:"proxyConfig"`
 }
 
 // The set of arguments for constructing a AccountConnector resource.
 type AccountConnectorArgs struct {
-	// Required. The ID to use for the AccountConnector, which will become the final
+	// The ID to use for the AccountConnector, which will become the final
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
 	AccountConnectorId pulumi.StringInput
-	// Optional. Allows users to store small amounts of arbitrary data.
+	// Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Optional. Labels as key value pairs
+	// Message for a customized OAuth config.
+	// Structure is documented below.
+	CustomOauthConfig AccountConnectorCustomOauthConfigPtrInput
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
+	// Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -309,6 +566,9 @@ type AccountConnectorArgs struct {
 	// ProviderOAuthConfig is the OAuth config for a provider.
 	// Structure is documented below.
 	ProviderOauthConfig AccountConnectorProviderOauthConfigPtrInput
+	// The proxy configuration.
+	// Structure is documented below.
+	ProxyConfig AccountConnectorProxyConfigPtrInput
 }
 
 func (AccountConnectorArgs) ElementType() reflect.Type {
@@ -398,7 +658,7 @@ func (o AccountConnectorOutput) ToAccountConnectorOutputWithContext(ctx context.
 	return o
 }
 
-// Required. The ID to use for the AccountConnector, which will become the final
+// The ID to use for the AccountConnector, which will become the final
 // component of the AccountConnector's resource name. Its format should adhere
 // to https://google.aip.dev/122#resource-id-segments Names must be unique
 // per-project per-location.
@@ -406,16 +666,22 @@ func (o AccountConnectorOutput) AccountConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.AccountConnectorId }).(pulumi.StringOutput)
 }
 
-// Optional. Allows users to store small amounts of arbitrary data.
+// Allows users to store small amounts of arbitrary data.
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AccountConnectorOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Output only. The timestamp when the userConnection was created.
+// The timestamp when the accountConnector was created.
 func (o AccountConnectorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Message for a customized OAuth config.
+// Structure is documented below.
+func (o AccountConnectorOutput) CustomOauthConfig() AccountConnectorCustomOauthConfigPtrOutput {
+	return o.ApplyT(func(v *AccountConnector) AccountConnectorCustomOauthConfigPtrOutput { return v.CustomOauthConfig }).(AccountConnectorCustomOauthConfigPtrOutput)
 }
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -428,25 +694,32 @@ func (o AccountConnectorOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Labels as key value pairs
+// This checksum is computed by the server based on the value of other
+// fields, and may be sent on update and delete requests to ensure the
+// client has an up-to-date value before proceeding.
+func (o AccountConnectorOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnector) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Labels as key value pairs
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AccountConnectorOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The location of the resource.
+// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o AccountConnectorOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Identifier. The resource name of the userConnection, in the format
+// Identifier. The resource name of the accountConnector, in the format
 // `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
 func (o AccountConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Output only. Start OAuth flow by clicking on this URL.
+// Start OAuth flow by clicking on this URL.
 func (o AccountConnectorOutput) OauthStartUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.OauthStartUri }).(pulumi.StringOutput)
 }
@@ -463,6 +736,12 @@ func (o AccountConnectorOutput) ProviderOauthConfig() AccountConnectorProviderOa
 	return o.ApplyT(func(v *AccountConnector) AccountConnectorProviderOauthConfigPtrOutput { return v.ProviderOauthConfig }).(AccountConnectorProviderOauthConfigPtrOutput)
 }
 
+// The proxy configuration.
+// Structure is documented below.
+func (o AccountConnectorOutput) ProxyConfig() AccountConnectorProxyConfigPtrOutput {
+	return o.ApplyT(func(v *AccountConnector) AccountConnectorProxyConfigPtrOutput { return v.ProxyConfig }).(AccountConnectorProxyConfigPtrOutput)
+}
+
 // The combination of labels configured directly on the resource
 //
 //	and default labels configured on the provider.
@@ -470,7 +749,7 @@ func (o AccountConnectorOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. The timestamp when the userConnection was updated.
+// The timestamp when the accountConnector was updated.
 func (o AccountConnectorOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

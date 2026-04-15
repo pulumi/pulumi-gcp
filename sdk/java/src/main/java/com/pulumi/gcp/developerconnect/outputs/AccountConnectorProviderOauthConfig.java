@@ -14,17 +14,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccountConnectorProviderOauthConfig {
     /**
-     * @return Required. User selected scopes to apply to the Oauth config
+     * @return User selected scopes to apply to the Oauth config
      * In the event of changing scopes, user records under AccountConnector will
      * be deleted and users will re-auth again.
      * 
      */
     private List<String> scopes;
     /**
-     * @return List of providers that are owned by Developer Connect. Creation of
-     * new non-SCM providers Account Connectors is not possible at this
-     * time.
-     * Possible values:
+     * @return Possible values:
      * GITHUB
      * GITLAB
      * GOOGLE
@@ -32,13 +29,14 @@ public final class AccountConnectorProviderOauthConfig {
      * ROVO
      * NEW_RELIC
      * DATASTAX
+     * DYNATRACE
      * 
      */
     private @Nullable String systemProviderId;
 
     private AccountConnectorProviderOauthConfig() {}
     /**
-     * @return Required. User selected scopes to apply to the Oauth config
+     * @return User selected scopes to apply to the Oauth config
      * In the event of changing scopes, user records under AccountConnector will
      * be deleted and users will re-auth again.
      * 
@@ -47,10 +45,7 @@ public final class AccountConnectorProviderOauthConfig {
         return this.scopes;
     }
     /**
-     * @return List of providers that are owned by Developer Connect. Creation of
-     * new non-SCM providers Account Connectors is not possible at this
-     * time.
-     * Possible values:
+     * @return Possible values:
      * GITHUB
      * GITLAB
      * GOOGLE
@@ -58,6 +53,7 @@ public final class AccountConnectorProviderOauthConfig {
      * ROVO
      * NEW_RELIC
      * DATASTAX
+     * DYNATRACE
      * 
      */
     public Optional<String> systemProviderId() {

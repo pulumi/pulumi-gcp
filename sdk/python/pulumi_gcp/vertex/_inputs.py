@@ -241,8 +241,14 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict',
     'AiReasoningEngineEncryptionSpecArgs',
     'AiReasoningEngineEncryptionSpecArgsDict',
+    'AiReasoningEngineIamBindingConditionArgs',
+    'AiReasoningEngineIamBindingConditionArgsDict',
+    'AiReasoningEngineIamMemberConditionArgs',
+    'AiReasoningEngineIamMemberConditionArgsDict',
     'AiReasoningEngineSpecArgs',
     'AiReasoningEngineSpecArgsDict',
+    'AiReasoningEngineSpecContainerSpecArgs',
+    'AiReasoningEngineSpecContainerSpecArgsDict',
     'AiReasoningEngineSpecDeploymentSpecArgs',
     'AiReasoningEngineSpecDeploymentSpecArgsDict',
     'AiReasoningEngineSpecDeploymentSpecEnvArgs',
@@ -263,6 +269,8 @@ __all__ = [
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgsDict',
+    'AiReasoningEngineSpecSourceCodeSpecImageSpecArgs',
+    'AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs',
     'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs',
@@ -8708,6 +8716,94 @@ class AiReasoningEngineEncryptionSpecArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
+class AiReasoningEngineIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class AiReasoningEngineIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AiReasoningEngineIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class AiReasoningEngineIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
 class AiReasoningEngineSpecArgsDict(TypedDict):
     agent_framework: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -8718,6 +8814,11 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     Optional. Declarations for object class methods in OpenAPI
     specification format.
     """
+    container_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecContainerSpecArgsDict']]
+    """
+    Deploy from a container image with a defined entrypoint and commands.
+    Structure is documented below.
+    """
     deployment_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgsDict']]
     """
     Optional. The specification of a Reasoning Engine deployment.
@@ -8725,12 +8826,11 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     """
     effective_identity: NotRequired[pulumi.Input[_builtins.str]]
     """
-    (Output, Beta)
+    (Output)
     The identity to use for the Reasoning Engine.
     """
     identity_type: NotRequired[pulumi.Input[_builtins.str]]
     """
-    (Optional, Beta)
     Optional. The identity type to use for the Reasoning Engine.
     If not specified, the `service_account` field will be used if set,
     otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
@@ -8766,6 +8866,7 @@ class AiReasoningEngineSpecArgs:
     def __init__(__self__, *,
                  agent_framework: Optional[pulumi.Input[_builtins.str]] = None,
                  class_methods: Optional[pulumi.Input[_builtins.str]] = None,
+                 container_spec: Optional[pulumi.Input['AiReasoningEngineSpecContainerSpecArgs']] = None,
                  deployment_spec: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs']] = None,
                  effective_identity: Optional[pulumi.Input[_builtins.str]] = None,
                  identity_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -8776,12 +8877,13 @@ class AiReasoningEngineSpecArgs:
         :param pulumi.Input[_builtins.str] agent_framework: Optional. The OSS agent framework used to develop the agent.
         :param pulumi.Input[_builtins.str] class_methods: Optional. Declarations for object class methods in OpenAPI
                specification format.
+        :param pulumi.Input['AiReasoningEngineSpecContainerSpecArgs'] container_spec: Deploy from a container image with a defined entrypoint and commands.
+               Structure is documented below.
         :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs'] deployment_spec: Optional. The specification of a Reasoning Engine deployment.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] effective_identity: (Output, Beta)
+        :param pulumi.Input[_builtins.str] effective_identity: (Output)
                The identity to use for the Reasoning Engine.
-        :param pulumi.Input[_builtins.str] identity_type: (Optional, Beta)
-               Optional. The identity type to use for the Reasoning Engine.
+        :param pulumi.Input[_builtins.str] identity_type: Optional. The identity type to use for the Reasoning Engine.
                If not specified, the `service_account` field will be used if set,
                otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
                Possible values:
@@ -8805,6 +8907,8 @@ class AiReasoningEngineSpecArgs:
             pulumi.set(__self__, "agent_framework", agent_framework)
         if class_methods is not None:
             pulumi.set(__self__, "class_methods", class_methods)
+        if container_spec is not None:
+            pulumi.set(__self__, "container_spec", container_spec)
         if deployment_spec is not None:
             pulumi.set(__self__, "deployment_spec", deployment_spec)
         if effective_identity is not None:
@@ -8844,6 +8948,19 @@ class AiReasoningEngineSpecArgs:
         pulumi.set(self, "class_methods", value)
 
     @_builtins.property
+    @pulumi.getter(name="containerSpec")
+    def container_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecContainerSpecArgs']]:
+        """
+        Deploy from a container image with a defined entrypoint and commands.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_spec")
+
+    @container_spec.setter
+    def container_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecContainerSpecArgs']]):
+        pulumi.set(self, "container_spec", value)
+
+    @_builtins.property
     @pulumi.getter(name="deploymentSpec")
     def deployment_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs']]:
         """
@@ -8860,7 +8977,7 @@ class AiReasoningEngineSpecArgs:
     @pulumi.getter(name="effectiveIdentity")
     def effective_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Output, Beta)
+        (Output)
         The identity to use for the Reasoning Engine.
         """
         return pulumi.get(self, "effective_identity")
@@ -8873,7 +8990,6 @@ class AiReasoningEngineSpecArgs:
     @pulumi.getter(name="identityType")
     def identity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, Beta)
         Optional. The identity type to use for the Reasoning Engine.
         If not specified, the `service_account` field will be used if set,
         otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
@@ -8932,6 +9048,40 @@ class AiReasoningEngineSpecArgs:
     @source_code_spec.setter
     def source_code_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecArgs']]):
         pulumi.set(self, "source_code_spec", value)
+
+
+class AiReasoningEngineSpecContainerSpecArgsDict(TypedDict):
+    image_uri: pulumi.Input[_builtins.str]
+    """
+    The Artifact Registry Docker image URI (e.g.,
+    `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
+    container image that is to be run on each worker replica.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecContainerSpecArgs:
+    def __init__(__self__, *,
+                 image_uri: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] image_uri: The Artifact Registry Docker image URI (e.g.,
+               `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
+               container image that is to be run on each worker replica.
+        """
+        pulumi.set(__self__, "image_uri", image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Artifact Registry Docker image URI (e.g.,
+        `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
+        container image that is to be run on each worker replica.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image_uri", value)
 
 
 class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
@@ -9588,6 +9738,11 @@ class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
     Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
     Structure is documented below.
     """
+    image_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict']]
+    """
+    Configuration for building an image with custom config file.
+    Structure is documented below.
+    """
     inline_source: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict']]
     """
     Source code is provided directly in the request.
@@ -9603,10 +9758,13 @@ class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
 class AiReasoningEngineSpecSourceCodeSpecArgs:
     def __init__(__self__, *,
                  developer_connect_source: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']] = None,
+                 image_spec: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']] = None,
                  inline_source: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']] = None,
                  python_spec: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']] = None):
         """
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs'] developer_connect_source: Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs'] image_spec: Configuration for building an image with custom config file.
                Structure is documented below.
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs'] inline_source: Source code is provided directly in the request.
                Structure is documented below.
@@ -9615,6 +9773,8 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
         """
         if developer_connect_source is not None:
             pulumi.set(__self__, "developer_connect_source", developer_connect_source)
+        if image_spec is not None:
+            pulumi.set(__self__, "image_spec", image_spec)
         if inline_source is not None:
             pulumi.set(__self__, "inline_source", inline_source)
         if python_spec is not None:
@@ -9632,6 +9792,19 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
     @developer_connect_source.setter
     def developer_connect_source(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]):
         pulumi.set(self, "developer_connect_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageSpec")
+    def image_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]:
+        """
+        Configuration for building an image with custom config file.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_spec")
+
+    @image_spec.setter
+    def image_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]):
+        pulumi.set(self, "image_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="inlineSource")
@@ -9755,6 +9928,35 @@ class AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs:
     @revision.setter
     def revision(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "revision", value)
+
+
+class AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict(TypedDict):
+    build_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Build arguments to be used. They will be passed through --build-arg flags.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecSourceCodeSpecImageSpecArgs:
+    def __init__(__self__, *,
+                 build_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_args: Build arguments to be used. They will be passed through --build-arg flags.
+        """
+        if build_args is not None:
+            pulumi.set(__self__, "build_args", build_args)
+
+    @_builtins.property
+    @pulumi.getter(name="buildArgs")
+    def build_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Build arguments to be used. They will be passed through --build-arg flags.
+        """
+        return pulumi.get(self, "build_args")
+
+    @build_args.setter
+    def build_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "build_args", value)
 
 
 class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict(TypedDict):

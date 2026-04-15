@@ -86,10 +86,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// which allows the usage of a Lustre instances as volumes.
         /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
         /// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
-        /// Lustre CSI Driver Config has optional subfield
-        /// `EnableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
-        /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         /// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+        /// Lustre CSI Driver Config has optional subfields:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigLustreCsiDriverConfig? LustreCsiDriverConfig;
         /// <summary>

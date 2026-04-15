@@ -3115,8 +3115,8 @@ class SharedflowMetaData(dict):
                  last_modified_at: Optional[_builtins.str] = None,
                  sub_type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str created_at: Time at which the API proxy was created, in milliseconds since epoch.
-        :param _builtins.str last_modified_at: Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        :param _builtins.str created_at: Time at which the shared flow was created, in milliseconds since epoch.
+        :param _builtins.str last_modified_at: Time at which the shared flow was most recently modified, in milliseconds since epoch.
         :param _builtins.str sub_type: The type of entity described
         """
         if created_at is not None:
@@ -3130,7 +3130,7 @@ class SharedflowMetaData(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[_builtins.str]:
         """
-        Time at which the API proxy was created, in milliseconds since epoch.
+        Time at which the shared flow was created, in milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
 
@@ -3138,7 +3138,7 @@ class SharedflowMetaData(dict):
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> Optional[_builtins.str]:
         """
-        Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        Time at which the shared flow was most recently modified, in milliseconds since epoch.
         """
         return pulumi.get(self, "last_modified_at")
 

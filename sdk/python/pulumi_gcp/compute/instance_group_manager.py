@@ -39,6 +39,7 @@ class InstanceGroupManagerArgs:
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulInternalIpArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
@@ -81,8 +82,6 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
-               
-               - - -
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -94,6 +93,9 @@ class InstanceGroupManagerArgs:
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -143,6 +145,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_size_policies is not None:
+            pulumi.set(__self__, "target_size_policies", target_size_policies)
         if target_stopped_size is not None:
             pulumi.set(__self__, "target_stopped_size", target_stopped_size)
         if target_suspended_size is not None:
@@ -314,8 +318,6 @@ class InstanceGroupManagerArgs:
     def resource_policies(self) -> Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "resource_policies")
 
@@ -399,6 +401,20 @@ class InstanceGroupManagerArgs:
     @target_size.setter
     def target_size(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "target_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]]:
+        """
+        The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+
+        - - -
+        """
+        return pulumi.get(self, "target_size_policies")
+
+    @target_size_policies.setter
+    def target_size_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]]):
+        pulumi.set(self, "target_size_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
@@ -508,6 +524,7 @@ class _InstanceGroupManagerState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
@@ -552,8 +569,6 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -567,6 +582,9 @@ class _InstanceGroupManagerState:
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -633,6 +651,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_size_policies is not None:
+            pulumi.set(__self__, "target_size_policies", target_size_policies)
         if target_stopped_size is not None:
             pulumi.set(__self__, "target_stopped_size", target_stopped_size)
         if target_suspended_size is not None:
@@ -849,8 +869,6 @@ class _InstanceGroupManagerState:
     def resource_policies(self) -> Optional[pulumi.Input['InstanceGroupManagerResourcePoliciesArgs']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "resource_policies")
 
@@ -958,6 +976,20 @@ class _InstanceGroupManagerState:
     @target_size.setter
     def target_size(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "target_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]]:
+        """
+        The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+
+        - - -
+        """
+        return pulumi.get(self, "target_size_policies")
+
+    @target_size_policies.setter
+    def target_size_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]]):
+        pulumi.set(self, "target_size_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
@@ -1077,6 +1109,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulInternalIpArgs', 'InstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']]] = None,
@@ -1289,8 +1322,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1302,6 +1333,9 @@ class InstanceGroupManager(pulumi.CustomResource):
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -1530,6 +1564,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulInternalIpArgs', 'InstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']]] = None,
@@ -1565,6 +1600,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
+            __props__.__dict__["target_size_policies"] = target_size_policies
             __props__.__dict__["target_stopped_size"] = target_stopped_size
             __props__.__dict__["target_suspended_size"] = target_suspended_size
             __props__.__dict__["update_policy"] = update_policy
@@ -1615,6 +1651,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatusArgs', 'InstanceGroupManagerStatusArgsDict']]]]] = None,
             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_size: Optional[pulumi.Input[_builtins.int]] = None,
+            target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
             target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
             target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
             update_policy: Optional[pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']]] = None,
@@ -1663,8 +1700,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['InstanceGroupManagerResourcePoliciesArgs', 'InstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -1678,6 +1713,9 @@ class InstanceGroupManager(pulumi.CustomResource):
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -1724,6 +1762,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["target_pools"] = target_pools
         __props__.__dict__["target_size"] = target_size
+        __props__.__dict__["target_size_policies"] = target_size_policies
         __props__.__dict__["target_stopped_size"] = target_stopped_size
         __props__.__dict__["target_suspended_size"] = target_suspended_size
         __props__.__dict__["update_policy"] = update_policy
@@ -1874,8 +1913,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def resource_policies(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerResourcePolicies']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "resource_policies")
 
@@ -1947,6 +1984,16 @@ class InstanceGroupManager(pulumi.CustomResource):
         `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
+
+    @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerTargetSizePolicy']]:
+        """
+        The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+
+        - - -
+        """
+        return pulumi.get(self, "target_size_policies")
 
     @_builtins.property
     @pulumi.getter(name="targetStoppedSize")

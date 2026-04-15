@@ -655,6 +655,9 @@ func GetWorkbenchCustomEndpoint(ctx *pulumi.Context) string {
 func GetWorkflowsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:workflowsCustomEndpoint")
 }
+func GetWorkloadIdentityCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:workloadIdentityCustomEndpoint")
+}
 func GetWorkstationsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:workstationsCustomEndpoint")
 }

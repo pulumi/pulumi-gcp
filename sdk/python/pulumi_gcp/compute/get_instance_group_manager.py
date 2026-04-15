@@ -27,7 +27,7 @@ class GetInstanceGroupManagerResult:
     """
     A collection of values returned by getInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, resource_policies=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, resource_policies=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_size_policies=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -103,6 +103,9 @@ class GetInstanceGroupManagerResult:
         if target_size and not isinstance(target_size, int):
             raise TypeError("Expected argument 'target_size' to be a int")
         pulumi.set(__self__, "target_size", target_size)
+        if target_size_policies and not isinstance(target_size_policies, list):
+            raise TypeError("Expected argument 'target_size_policies' to be a list")
+        pulumi.set(__self__, "target_size_policies", target_size_policies)
         if target_stopped_size and not isinstance(target_stopped_size, int):
             raise TypeError("Expected argument 'target_stopped_size' to be a int")
         pulumi.set(__self__, "target_stopped_size", target_stopped_size)
@@ -254,6 +257,11 @@ class GetInstanceGroupManagerResult:
         return pulumi.get(self, "target_size")
 
     @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> Sequence['outputs.GetInstanceGroupManagerTargetSizePolicyResult']:
+        return pulumi.get(self, "target_size_policies")
+
+    @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
     def target_stopped_size(self) -> _builtins.int:
         return pulumi.get(self, "target_stopped_size")
@@ -320,6 +328,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             statuses=self.statuses,
             target_pools=self.target_pools,
             target_size=self.target_size,
+            target_size_policies=self.target_size_policies,
             target_stopped_size=self.target_stopped_size,
             target_suspended_size=self.target_suspended_size,
             update_policies=self.update_policies,
@@ -390,6 +399,7 @@ def get_instance_group_manager(name: Optional[_builtins.str] = None,
         statuses=pulumi.get(__ret__, 'statuses'),
         target_pools=pulumi.get(__ret__, 'target_pools'),
         target_size=pulumi.get(__ret__, 'target_size'),
+        target_size_policies=pulumi.get(__ret__, 'target_size_policies'),
         target_stopped_size=pulumi.get(__ret__, 'target_stopped_size'),
         target_suspended_size=pulumi.get(__ret__, 'target_suspended_size'),
         update_policies=pulumi.get(__ret__, 'update_policies'),
@@ -457,6 +467,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[_buil
         statuses=pulumi.get(__response__, 'statuses'),
         target_pools=pulumi.get(__response__, 'target_pools'),
         target_size=pulumi.get(__response__, 'target_size'),
+        target_size_policies=pulumi.get(__response__, 'target_size_policies'),
         target_stopped_size=pulumi.get(__response__, 'target_stopped_size'),
         target_suspended_size=pulumi.get(__response__, 'target_suspended_size'),
         update_policies=pulumi.get(__response__, 'update_policies'),

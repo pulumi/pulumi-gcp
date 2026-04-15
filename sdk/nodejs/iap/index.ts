@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AgentRegistryIamBindingArgs, AgentRegistryIamBindingState } from "./agentRegistryIamBinding";
+export type AgentRegistryIamBinding = import("./agentRegistryIamBinding").AgentRegistryIamBinding;
+export const AgentRegistryIamBinding: typeof import("./agentRegistryIamBinding").AgentRegistryIamBinding = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryIamBinding"], () => require("./agentRegistryIamBinding"));
+
+export { AgentRegistryIamMemberArgs, AgentRegistryIamMemberState } from "./agentRegistryIamMember";
+export type AgentRegistryIamMember = import("./agentRegistryIamMember").AgentRegistryIamMember;
+export const AgentRegistryIamMember: typeof import("./agentRegistryIamMember").AgentRegistryIamMember = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryIamMember"], () => require("./agentRegistryIamMember"));
+
+export { AgentRegistryIamPolicyArgs, AgentRegistryIamPolicyState } from "./agentRegistryIamPolicy";
+export type AgentRegistryIamPolicy = import("./agentRegistryIamPolicy").AgentRegistryIamPolicy;
+export const AgentRegistryIamPolicy: typeof import("./agentRegistryIamPolicy").AgentRegistryIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryIamPolicy"], () => require("./agentRegistryIamPolicy"));
+
 export { AppEngineServiceIamBindingArgs, AppEngineServiceIamBindingState } from "./appEngineServiceIamBinding";
 export type AppEngineServiceIamBinding = import("./appEngineServiceIamBinding").AppEngineServiceIamBinding;
 export const AppEngineServiceIamBinding: typeof import("./appEngineServiceIamBinding").AppEngineServiceIamBinding = null as any;
@@ -45,6 +60,11 @@ export type Client = import("./client").Client;
 export const Client: typeof import("./client").Client = null as any;
 utilities.lazyLoad(exports, ["Client"], () => require("./client"));
 
+export { GetAgentRegistryIamPolicyArgs, GetAgentRegistryIamPolicyResult, GetAgentRegistryIamPolicyOutputArgs } from "./getAgentRegistryIamPolicy";
+export const getAgentRegistryIamPolicy: typeof import("./getAgentRegistryIamPolicy").getAgentRegistryIamPolicy = null as any;
+export const getAgentRegistryIamPolicyOutput: typeof import("./getAgentRegistryIamPolicy").getAgentRegistryIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentRegistryIamPolicy","getAgentRegistryIamPolicyOutput"], () => require("./getAgentRegistryIamPolicy"));
+
 export { GetAppEngineServiceIamPolicyArgs, GetAppEngineServiceIamPolicyResult, GetAppEngineServiceIamPolicyOutputArgs } from "./getAppEngineServiceIamPolicy";
 export const getAppEngineServiceIamPolicy: typeof import("./getAppEngineServiceIamPolicy").getAppEngineServiceIamPolicy = null as any;
 export const getAppEngineServiceIamPolicyOutput: typeof import("./getAppEngineServiceIamPolicy").getAppEngineServiceIamPolicyOutput = null as any;
@@ -59,6 +79,11 @@ export { GetClientArgs, GetClientResult, GetClientOutputArgs } from "./getClient
 export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
+
+export { GetLocationWebIamPolicyArgs, GetLocationWebIamPolicyResult, GetLocationWebIamPolicyOutputArgs } from "./getLocationWebIamPolicy";
+export const getLocationWebIamPolicy: typeof import("./getLocationWebIamPolicy").getLocationWebIamPolicy = null as any;
+export const getLocationWebIamPolicyOutput: typeof import("./getLocationWebIamPolicy").getLocationWebIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLocationWebIamPolicy","getLocationWebIamPolicyOutput"], () => require("./getLocationWebIamPolicy"));
 
 export { GetTunnelDestGroupIamPolicyArgs, GetTunnelDestGroupIamPolicyResult, GetTunnelDestGroupIamPolicyOutputArgs } from "./getTunnelDestGroupIamPolicy";
 export const getTunnelDestGroupIamPolicy: typeof import("./getTunnelDestGroupIamPolicy").getTunnelDestGroupIamPolicy = null as any;
@@ -114,6 +139,21 @@ export { GetWebTypeComputeIamPolicyArgs, GetWebTypeComputeIamPolicyResult, GetWe
 export const getWebTypeComputeIamPolicy: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicy = null as any;
 export const getWebTypeComputeIamPolicyOutput: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebTypeComputeIamPolicy","getWebTypeComputeIamPolicyOutput"], () => require("./getWebTypeComputeIamPolicy"));
+
+export { LocationWebIamBindingArgs, LocationWebIamBindingState } from "./locationWebIamBinding";
+export type LocationWebIamBinding = import("./locationWebIamBinding").LocationWebIamBinding;
+export const LocationWebIamBinding: typeof import("./locationWebIamBinding").LocationWebIamBinding = null as any;
+utilities.lazyLoad(exports, ["LocationWebIamBinding"], () => require("./locationWebIamBinding"));
+
+export { LocationWebIamMemberArgs, LocationWebIamMemberState } from "./locationWebIamMember";
+export type LocationWebIamMember = import("./locationWebIamMember").LocationWebIamMember;
+export const LocationWebIamMember: typeof import("./locationWebIamMember").LocationWebIamMember = null as any;
+utilities.lazyLoad(exports, ["LocationWebIamMember"], () => require("./locationWebIamMember"));
+
+export { LocationWebIamPolicyArgs, LocationWebIamPolicyState } from "./locationWebIamPolicy";
+export type LocationWebIamPolicy = import("./locationWebIamPolicy").LocationWebIamPolicy;
+export const LocationWebIamPolicy: typeof import("./locationWebIamPolicy").LocationWebIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LocationWebIamPolicy"], () => require("./locationWebIamPolicy"));
 
 export { SettingsArgs, SettingsState } from "./settings";
 export type Settings = import("./settings").Settings;
@@ -295,6 +335,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding":
+                return new AgentRegistryIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember":
+                return new AgentRegistryIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy":
+                return new AgentRegistryIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding":
                 return new AppEngineServiceIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember":
@@ -311,6 +357,12 @@ const _module = {
                 return new Brand(name, <any>undefined, { urn })
             case "gcp:iap/client:Client":
                 return new Client(name, <any>undefined, { urn })
+            case "gcp:iap/locationWebIamBinding:LocationWebIamBinding":
+                return new LocationWebIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/locationWebIamMember:LocationWebIamMember":
+                return new LocationWebIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/locationWebIamPolicy:LocationWebIamPolicy":
+                return new LocationWebIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/settings:Settings":
                 return new Settings(name, <any>undefined, { urn })
             case "gcp:iap/tunnelDestGroup:TunnelDestGroup":
@@ -386,6 +438,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamPolicy", _module)
@@ -394,6 +449,9 @@ pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamMember", _m
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/brand", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/client", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/locationWebIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/locationWebIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/locationWebIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/settings", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroupIamBinding", _module)
