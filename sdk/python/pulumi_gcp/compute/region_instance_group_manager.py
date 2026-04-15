@@ -42,6 +42,7 @@ class RegionInstanceGroupManagerArgs:
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
@@ -70,7 +71,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-               - - -
         :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[_builtins.str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -101,6 +101,9 @@ class RegionInstanceGroupManagerArgs:
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               *
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
@@ -152,6 +155,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_size_policies is not None:
+            pulumi.set(__self__, "target_size_policies", target_size_policies)
         if target_stopped_size is not None:
             pulumi.set(__self__, "target_stopped_size", target_stopped_size)
         if target_suspended_size is not None:
@@ -264,7 +269,6 @@ class RegionInstanceGroupManagerArgs:
     def instance_flexibility_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
         """
         The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-        - - -
         """
         return pulumi.get(self, "instance_flexibility_policy")
 
@@ -446,6 +450,20 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "target_size", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]:
+        """
+        The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        *
+        - - -
+        """
+        return pulumi.get(self, "target_size_policies")
+
+    @target_size_policies.setter
+    def target_size_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]):
+        pulumi.set(self, "target_size_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
     def target_stopped_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -540,6 +558,7 @@ class _RegionInstanceGroupManagerState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
@@ -568,7 +587,6 @@ class _RegionInstanceGroupManagerState:
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-               - - -
         :param pulumi.Input[_builtins.str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[_builtins.int] instance_group_manager_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
@@ -603,6 +621,9 @@ class _RegionInstanceGroupManagerState:
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               *
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
@@ -669,6 +690,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_size_policies is not None:
+            pulumi.set(__self__, "target_size_policies", target_size_policies)
         if target_stopped_size is not None:
             pulumi.set(__self__, "target_stopped_size", target_stopped_size)
         if target_suspended_size is not None:
@@ -793,7 +816,6 @@ class _RegionInstanceGroupManagerState:
     def instance_flexibility_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
         """
         The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-        - - -
         """
         return pulumi.get(self, "instance_flexibility_policy")
 
@@ -1023,6 +1045,20 @@ class _RegionInstanceGroupManagerState:
         pulumi.set(self, "target_size", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]:
+        """
+        The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        *
+        - - -
+        """
+        return pulumi.get(self, "target_size_policies")
+
+    @target_size_policies.setter
+    def target_size_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]):
+        pulumi.set(self, "target_size_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
     def target_stopped_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -1128,6 +1164,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
@@ -1274,7 +1311,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-               - - -
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[_builtins.str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -1305,6 +1341,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               *
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
@@ -1480,6 +1519,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
                  target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
                  target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
                  update_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
@@ -1517,6 +1557,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
+            __props__.__dict__["target_size_policies"] = target_size_policies
             __props__.__dict__["target_stopped_size"] = target_stopped_size
             __props__.__dict__["target_suspended_size"] = target_suspended_size
             __props__.__dict__["update_policy"] = update_policy
@@ -1567,6 +1608,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatusArgs', 'RegionInstanceGroupManagerStatusArgsDict']]]]] = None,
             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_size: Optional[pulumi.Input[_builtins.int]] = None,
+            target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
             target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
             target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
             update_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
@@ -1599,7 +1641,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-               - - -
         :param pulumi.Input[_builtins.str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[_builtins.int] instance_group_manager_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
@@ -1634,6 +1675,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+               *
+               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
@@ -1678,6 +1722,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["target_pools"] = target_pools
         __props__.__dict__["target_size"] = target_size
+        __props__.__dict__["target_size_policies"] = target_size_policies
         __props__.__dict__["target_stopped_size"] = target_stopped_size
         __props__.__dict__["target_suspended_size"] = target_suspended_size
         __props__.__dict__["update_policy"] = update_policy
@@ -1765,7 +1810,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def instance_flexibility_policy(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicy']]:
         """
         The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-        - - -
         """
         return pulumi.get(self, "instance_flexibility_policy")
 
@@ -1921,6 +1965,16 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
+
+    @_builtins.property
+    @pulumi.getter(name="targetSizePolicies")
+    def target_size_policies(self) -> pulumi.Output[Sequence['outputs.RegionInstanceGroupManagerTargetSizePolicy']]:
+        """
+        The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        *
+        - - -
+        """
+        return pulumi.get(self, "target_size_policies")
 
     @_builtins.property
     @pulumi.getter(name="targetStoppedSize")

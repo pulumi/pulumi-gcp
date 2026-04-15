@@ -55,7 +55,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
         private InputList<string>? _replicaLocations;
 
         /// <summary>
-        /// (Optional, Beta)
         /// List of regions where the subscriber wants dataset replicas.
         /// </summary>
         public InputList<string> ReplicaLocations

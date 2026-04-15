@@ -42,6 +42,9 @@ from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
 from .ai_rag_engine_config import *
 from .ai_reasoning_engine import *
+from .ai_reasoning_engine_iam_binding import *
+from .ai_reasoning_engine_iam_member import *
+from .ai_reasoning_engine_iam_policy import *
 from .ai_tensorboard import *
 from .get_ai_endpoint_iam_policy import *
 from .get_ai_feature_group_iam_policy import *
@@ -50,5 +53,7 @@ from .get_ai_feature_online_store_iam_policy import *
 from .get_ai_featurestore_entitytype_iam_policy import *
 from .get_ai_featurestore_iam_policy import *
 from .get_ai_index import *
+from .get_ai_reasoning_engine_iam_policy import *
+from .get_ai_reasoning_engine_query import *
 from ._inputs import *
 from . import outputs

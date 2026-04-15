@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkloadIdentityPoolNamespace{}
 	case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
 		r = &WorkloadIdentityPoolProvider{}
+	case "gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent":
+		r = &WorkloadIdentityServiceAgent{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -193,6 +195,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iam/workloadIdentityPoolProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/workloadIdentityServiceAgent",
 		&module{version},
 	)
 }

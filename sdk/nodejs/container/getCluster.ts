@@ -63,6 +63,7 @@ export interface GetClusterResult {
     readonly allowNetAdmin: boolean;
     readonly anonymousAuthenticationConfigs: outputs.container.GetClusterAnonymousAuthenticationConfig[];
     readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
+    readonly autopilotClusterPolicyConfigs: outputs.container.GetClusterAutopilotClusterPolicyConfig[];
     readonly autopilotPrivilegedAdmissions: string[];
     readonly binaryAuthorizations: outputs.container.GetClusterBinaryAuthorization[];
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
@@ -109,6 +110,7 @@ export interface GetClusterResult {
     readonly loggingConfigs: outputs.container.GetClusterLoggingConfig[];
     readonly loggingService: string;
     readonly maintenancePolicies: outputs.container.GetClusterMaintenancePolicy[];
+    readonly managedMachineLearningDiagnosticsConfigs: outputs.container.GetClusterManagedMachineLearningDiagnosticsConfig[];
     readonly managedOpentelemetryConfigs: outputs.container.GetClusterManagedOpentelemetryConfig[];
     readonly masterAuthorizedNetworksConfigs: outputs.container.GetClusterMasterAuthorizedNetworksConfig[];
     readonly masterAuths: outputs.container.GetClusterMasterAuth[];

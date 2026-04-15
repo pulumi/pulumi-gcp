@@ -89,6 +89,7 @@ export interface GetRegionInstanceGroupManagerResult {
     readonly statuses: outputs.compute.GetRegionInstanceGroupManagerStatus[];
     readonly targetPools: string[];
     readonly targetSize: number;
+    readonly targetSizePolicies: outputs.compute.GetRegionInstanceGroupManagerTargetSizePolicy[];
     readonly targetStoppedSize: number;
     readonly targetSuspendedSize: number;
     readonly updatePolicies: outputs.compute.GetRegionInstanceGroupManagerUpdatePolicy[];

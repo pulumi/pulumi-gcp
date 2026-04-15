@@ -18,14 +18,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         /// </summary>
         public readonly string Dataset;
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// Server owned effective state of replicas. Contains both primary and secondary replicas.
         /// Each replica includes a system-computed (output-only) state and primary designation.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ListingBigqueryDatasetEffectiveReplica> EffectiveReplicas;
         /// <summary>
-        /// (Optional, Beta)
         /// A list of regions where the publisher has created shared dataset replicas.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaLocations;

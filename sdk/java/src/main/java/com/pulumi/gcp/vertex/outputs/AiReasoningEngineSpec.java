@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecContainerSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecPackageSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpec;
@@ -26,20 +27,25 @@ public final class AiReasoningEngineSpec {
      */
     private @Nullable String classMethods;
     /**
+     * @return Deploy from a container image with a defined entrypoint and commands.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecContainerSpec containerSpec;
+    /**
      * @return Optional. The specification of a Reasoning Engine deployment.
      * Structure is documented below.
      * 
      */
     private @Nullable AiReasoningEngineSpecDeploymentSpec deploymentSpec;
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The identity to use for the Reasoning Engine.
      * 
      */
     private @Nullable String effectiveIdentity;
     /**
-     * @return (Optional, Beta)
-     * Optional. The identity type to use for the Reasoning Engine.
+     * @return Optional. The identity type to use for the Reasoning Engine.
      * If not specified, the `serviceAccount` field will be used if set,
      * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
      * Possible values:
@@ -91,6 +97,14 @@ public final class AiReasoningEngineSpec {
         return Optional.ofNullable(this.classMethods);
     }
     /**
+     * @return Deploy from a container image with a defined entrypoint and commands.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecContainerSpec> containerSpec() {
+        return Optional.ofNullable(this.containerSpec);
+    }
+    /**
      * @return Optional. The specification of a Reasoning Engine deployment.
      * Structure is documented below.
      * 
@@ -99,7 +113,7 @@ public final class AiReasoningEngineSpec {
         return Optional.ofNullable(this.deploymentSpec);
     }
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The identity to use for the Reasoning Engine.
      * 
      */
@@ -107,8 +121,7 @@ public final class AiReasoningEngineSpec {
         return Optional.ofNullable(this.effectiveIdentity);
     }
     /**
-     * @return (Optional, Beta)
-     * Optional. The identity type to use for the Reasoning Engine.
+     * @return Optional. The identity type to use for the Reasoning Engine.
      * If not specified, the `serviceAccount` field will be used if set,
      * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
      * Possible values:
@@ -162,6 +175,7 @@ public final class AiReasoningEngineSpec {
     public static final class Builder {
         private @Nullable String agentFramework;
         private @Nullable String classMethods;
+        private @Nullable AiReasoningEngineSpecContainerSpec containerSpec;
         private @Nullable AiReasoningEngineSpecDeploymentSpec deploymentSpec;
         private @Nullable String effectiveIdentity;
         private @Nullable String identityType;
@@ -173,6 +187,7 @@ public final class AiReasoningEngineSpec {
     	      Objects.requireNonNull(defaults);
     	      this.agentFramework = defaults.agentFramework;
     	      this.classMethods = defaults.classMethods;
+    	      this.containerSpec = defaults.containerSpec;
     	      this.deploymentSpec = defaults.deploymentSpec;
     	      this.effectiveIdentity = defaults.effectiveIdentity;
     	      this.identityType = defaults.identityType;
@@ -191,6 +206,12 @@ public final class AiReasoningEngineSpec {
         public Builder classMethods(@Nullable String classMethods) {
 
             this.classMethods = classMethods;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerSpec(@Nullable AiReasoningEngineSpecContainerSpec containerSpec) {
+
+            this.containerSpec = containerSpec;
             return this;
         }
         @CustomType.Setter
@@ -233,6 +254,7 @@ public final class AiReasoningEngineSpec {
             final var _resultValue = new AiReasoningEngineSpec();
             _resultValue.agentFramework = agentFramework;
             _resultValue.classMethods = classMethods;
+            _resultValue.containerSpec = containerSpec;
             _resultValue.deploymentSpec = deploymentSpec;
             _resultValue.effectiveIdentity = effectiveIdentity;
             _resultValue.identityType = identityType;

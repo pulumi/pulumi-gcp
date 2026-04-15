@@ -185,6 +185,21 @@ export type AiReasoningEngine = import("./aiReasoningEngine").AiReasoningEngine;
 export const AiReasoningEngine: typeof import("./aiReasoningEngine").AiReasoningEngine = null as any;
 utilities.lazyLoad(exports, ["AiReasoningEngine"], () => require("./aiReasoningEngine"));
 
+export { AiReasoningEngineIamBindingArgs, AiReasoningEngineIamBindingState } from "./aiReasoningEngineIamBinding";
+export type AiReasoningEngineIamBinding = import("./aiReasoningEngineIamBinding").AiReasoningEngineIamBinding;
+export const AiReasoningEngineIamBinding: typeof import("./aiReasoningEngineIamBinding").AiReasoningEngineIamBinding = null as any;
+utilities.lazyLoad(exports, ["AiReasoningEngineIamBinding"], () => require("./aiReasoningEngineIamBinding"));
+
+export { AiReasoningEngineIamMemberArgs, AiReasoningEngineIamMemberState } from "./aiReasoningEngineIamMember";
+export type AiReasoningEngineIamMember = import("./aiReasoningEngineIamMember").AiReasoningEngineIamMember;
+export const AiReasoningEngineIamMember: typeof import("./aiReasoningEngineIamMember").AiReasoningEngineIamMember = null as any;
+utilities.lazyLoad(exports, ["AiReasoningEngineIamMember"], () => require("./aiReasoningEngineIamMember"));
+
+export { AiReasoningEngineIamPolicyArgs, AiReasoningEngineIamPolicyState } from "./aiReasoningEngineIamPolicy";
+export type AiReasoningEngineIamPolicy = import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy;
+export const AiReasoningEngineIamPolicy: typeof import("./aiReasoningEngineIamPolicy").AiReasoningEngineIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AiReasoningEngineIamPolicy"], () => require("./aiReasoningEngineIamPolicy"));
+
 export { AiTensorboardArgs, AiTensorboardState } from "./aiTensorboard";
 export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
@@ -224,6 +239,16 @@ export { GetAiIndexArgs, GetAiIndexResult, GetAiIndexOutputArgs } from "./getAiI
 export const getAiIndex: typeof import("./getAiIndex").getAiIndex = null as any;
 export const getAiIndexOutput: typeof import("./getAiIndex").getAiIndexOutput = null as any;
 utilities.lazyLoad(exports, ["getAiIndex","getAiIndexOutput"], () => require("./getAiIndex"));
+
+export { GetAiReasoningEngineIamPolicyArgs, GetAiReasoningEngineIamPolicyResult, GetAiReasoningEngineIamPolicyOutputArgs } from "./getAiReasoningEngineIamPolicy";
+export const getAiReasoningEngineIamPolicy: typeof import("./getAiReasoningEngineIamPolicy").getAiReasoningEngineIamPolicy = null as any;
+export const getAiReasoningEngineIamPolicyOutput: typeof import("./getAiReasoningEngineIamPolicy").getAiReasoningEngineIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiReasoningEngineIamPolicy","getAiReasoningEngineIamPolicyOutput"], () => require("./getAiReasoningEngineIamPolicy"));
+
+export { GetAiReasoningEngineQueryArgs, GetAiReasoningEngineQueryResult, GetAiReasoningEngineQueryOutputArgs } from "./getAiReasoningEngineQuery";
+export const getAiReasoningEngineQuery: typeof import("./getAiReasoningEngineQuery").getAiReasoningEngineQuery = null as any;
+export const getAiReasoningEngineQueryOutput: typeof import("./getAiReasoningEngineQuery").getAiReasoningEngineQueryOutput = null as any;
+utilities.lazyLoad(exports, ["getAiReasoningEngineQuery","getAiReasoningEngineQueryOutput"], () => require("./getAiReasoningEngineQuery"));
 
 
 const _module = {
@@ -302,6 +327,12 @@ const _module = {
                 return new AiRagEngineConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
                 return new AiReasoningEngine(name, <any>undefined, { urn })
+            case "gcp:vertex/aiReasoningEngineIamBinding:AiReasoningEngineIamBinding":
+                return new AiReasoningEngineIamBinding(name, <any>undefined, { urn })
+            case "gcp:vertex/aiReasoningEngineIamMember:AiReasoningEngineIamMember":
+                return new AiReasoningEngineIamMember(name, <any>undefined, { urn })
+            case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
+                return new AiReasoningEngineIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
                 return new AiTensorboard(name, <any>undefined, { urn })
             default:
@@ -345,4 +376,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedInde
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngine", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiReasoningEngineIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)

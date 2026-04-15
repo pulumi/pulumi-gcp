@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAnonymousAuthenticationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAuthenticatorGroupsConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAutopilotClusterPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterClusterTelemetry;
@@ -26,6 +27,7 @@ import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicy;
+import com.pulumi.gcp.container.outputs.GetClusterManagedMachineLearningDiagnosticsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterManagedOpentelemetryConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfig;
@@ -69,6 +71,7 @@ public final class GetClusterResult {
     private Boolean allowNetAdmin;
     private List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
     private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+    private List<GetClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfigs;
     private List<String> autopilotPrivilegedAdmissions;
     private List<GetClusterBinaryAuthorization> binaryAuthorizations;
     private List<GetClusterClusterAutoscaling> clusterAutoscalings;
@@ -116,6 +119,7 @@ public final class GetClusterResult {
     private List<GetClusterLoggingConfig> loggingConfigs;
     private String loggingService;
     private List<GetClusterMaintenancePolicy> maintenancePolicies;
+    private List<GetClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfigs;
     private List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs;
     private List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
     private List<GetClusterMasterAuth> masterAuths;
@@ -175,6 +179,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs() {
         return this.authenticatorGroupsConfigs;
+    }
+    public List<GetClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfigs() {
+        return this.autopilotClusterPolicyConfigs;
     }
     public List<String> autopilotPrivilegedAdmissions() {
         return this.autopilotPrivilegedAdmissions;
@@ -308,6 +315,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterMaintenancePolicy> maintenancePolicies() {
         return this.maintenancePolicies;
+    }
+    public List<GetClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfigs() {
+        return this.managedMachineLearningDiagnosticsConfigs;
     }
     public List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs() {
         return this.managedOpentelemetryConfigs;
@@ -461,6 +471,7 @@ public final class GetClusterResult {
         private Boolean allowNetAdmin;
         private List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
         private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+        private List<GetClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfigs;
         private List<String> autopilotPrivilegedAdmissions;
         private List<GetClusterBinaryAuthorization> binaryAuthorizations;
         private List<GetClusterClusterAutoscaling> clusterAutoscalings;
@@ -504,6 +515,7 @@ public final class GetClusterResult {
         private List<GetClusterLoggingConfig> loggingConfigs;
         private String loggingService;
         private List<GetClusterMaintenancePolicy> maintenancePolicies;
+        private List<GetClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfigs;
         private List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs;
         private List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
         private List<GetClusterMasterAuth> masterAuths;
@@ -557,6 +569,7 @@ public final class GetClusterResult {
     	      this.allowNetAdmin = defaults.allowNetAdmin;
     	      this.anonymousAuthenticationConfigs = defaults.anonymousAuthenticationConfigs;
     	      this.authenticatorGroupsConfigs = defaults.authenticatorGroupsConfigs;
+    	      this.autopilotClusterPolicyConfigs = defaults.autopilotClusterPolicyConfigs;
     	      this.autopilotPrivilegedAdmissions = defaults.autopilotPrivilegedAdmissions;
     	      this.binaryAuthorizations = defaults.binaryAuthorizations;
     	      this.clusterAutoscalings = defaults.clusterAutoscalings;
@@ -600,6 +613,7 @@ public final class GetClusterResult {
     	      this.loggingConfigs = defaults.loggingConfigs;
     	      this.loggingService = defaults.loggingService;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
+    	      this.managedMachineLearningDiagnosticsConfigs = defaults.managedMachineLearningDiagnosticsConfigs;
     	      this.managedOpentelemetryConfigs = defaults.managedOpentelemetryConfigs;
     	      this.masterAuthorizedNetworksConfigs = defaults.masterAuthorizedNetworksConfigs;
     	      this.masterAuths = defaults.masterAuths;
@@ -688,6 +702,17 @@ public final class GetClusterResult {
         }
         public Builder authenticatorGroupsConfigs(GetClusterAuthenticatorGroupsConfig... authenticatorGroupsConfigs) {
             return authenticatorGroupsConfigs(List.of(authenticatorGroupsConfigs));
+        }
+        @CustomType.Setter
+        public Builder autopilotClusterPolicyConfigs(List<GetClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfigs) {
+            if (autopilotClusterPolicyConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "autopilotClusterPolicyConfigs");
+            }
+            this.autopilotClusterPolicyConfigs = autopilotClusterPolicyConfigs;
+            return this;
+        }
+        public Builder autopilotClusterPolicyConfigs(GetClusterAutopilotClusterPolicyConfig... autopilotClusterPolicyConfigs) {
+            return autopilotClusterPolicyConfigs(List.of(autopilotClusterPolicyConfigs));
         }
         @CustomType.Setter
         public Builder autopilotPrivilegedAdmissions(List<String> autopilotPrivilegedAdmissions) {
@@ -1087,6 +1112,17 @@ public final class GetClusterResult {
         }
         public Builder maintenancePolicies(GetClusterMaintenancePolicy... maintenancePolicies) {
             return maintenancePolicies(List.of(maintenancePolicies));
+        }
+        @CustomType.Setter
+        public Builder managedMachineLearningDiagnosticsConfigs(List<GetClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfigs) {
+            if (managedMachineLearningDiagnosticsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "managedMachineLearningDiagnosticsConfigs");
+            }
+            this.managedMachineLearningDiagnosticsConfigs = managedMachineLearningDiagnosticsConfigs;
+            return this;
+        }
+        public Builder managedMachineLearningDiagnosticsConfigs(GetClusterManagedMachineLearningDiagnosticsConfig... managedMachineLearningDiagnosticsConfigs) {
+            return managedMachineLearningDiagnosticsConfigs(List.of(managedMachineLearningDiagnosticsConfigs));
         }
         @CustomType.Setter
         public Builder managedOpentelemetryConfigs(List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs) {
@@ -1547,6 +1583,7 @@ public final class GetClusterResult {
             _resultValue.allowNetAdmin = allowNetAdmin;
             _resultValue.anonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
             _resultValue.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
+            _resultValue.autopilotClusterPolicyConfigs = autopilotClusterPolicyConfigs;
             _resultValue.autopilotPrivilegedAdmissions = autopilotPrivilegedAdmissions;
             _resultValue.binaryAuthorizations = binaryAuthorizations;
             _resultValue.clusterAutoscalings = clusterAutoscalings;
@@ -1590,6 +1627,7 @@ public final class GetClusterResult {
             _resultValue.loggingConfigs = loggingConfigs;
             _resultValue.loggingService = loggingService;
             _resultValue.maintenancePolicies = maintenancePolicies;
+            _resultValue.managedMachineLearningDiagnosticsConfigs = managedMachineLearningDiagnosticsConfigs;
             _resultValue.managedOpentelemetryConfigs = managedOpentelemetryConfigs;
             _resultValue.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             _resultValue.masterAuths = masterAuths;

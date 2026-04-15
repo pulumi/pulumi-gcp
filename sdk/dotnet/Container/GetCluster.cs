@@ -175,6 +175,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool AllowNetAdmin;
         public readonly ImmutableArray<Outputs.GetClusterAnonymousAuthenticationConfigResult> AnonymousAuthenticationConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterAutopilotClusterPolicyConfigResult> AutopilotClusterPolicyConfigs;
         public readonly ImmutableArray<string> AutopilotPrivilegedAdmissions;
         public readonly ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> BinaryAuthorizations;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
@@ -221,6 +222,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterLoggingConfigResult> LoggingConfigs;
         public readonly string LoggingService;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> MaintenancePolicies;
+        public readonly ImmutableArray<Outputs.GetClusterManagedMachineLearningDiagnosticsConfigResult> ManagedMachineLearningDiagnosticsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterManagedOpentelemetryConfigResult> ManagedOpentelemetryConfigs;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigResult> MasterAuthorizedNetworksConfigs;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthResult> MasterAuths;
@@ -277,6 +279,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterAnonymousAuthenticationConfigResult> anonymousAuthenticationConfigs,
 
             ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> authenticatorGroupsConfigs,
+
+            ImmutableArray<Outputs.GetClusterAutopilotClusterPolicyConfigResult> autopilotClusterPolicyConfigs,
 
             ImmutableArray<string> autopilotPrivilegedAdmissions,
 
@@ -363,6 +367,8 @@ namespace Pulumi.Gcp.Container
             string loggingService,
 
             ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> maintenancePolicies,
+
+            ImmutableArray<Outputs.GetClusterManagedMachineLearningDiagnosticsConfigResult> managedMachineLearningDiagnosticsConfigs,
 
             ImmutableArray<Outputs.GetClusterManagedOpentelemetryConfigResult> managedOpentelemetryConfigs,
 
@@ -460,6 +466,7 @@ namespace Pulumi.Gcp.Container
             AllowNetAdmin = allowNetAdmin;
             AnonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
+            AutopilotClusterPolicyConfigs = autopilotClusterPolicyConfigs;
             AutopilotPrivilegedAdmissions = autopilotPrivilegedAdmissions;
             BinaryAuthorizations = binaryAuthorizations;
             ClusterAutoscalings = clusterAutoscalings;
@@ -503,6 +510,7 @@ namespace Pulumi.Gcp.Container
             LoggingConfigs = loggingConfigs;
             LoggingService = loggingService;
             MaintenancePolicies = maintenancePolicies;
+            ManagedMachineLearningDiagnosticsConfigs = managedMachineLearningDiagnosticsConfigs;
             ManagedOpentelemetryConfigs = managedOpentelemetryConfigs;
             MasterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             MasterAuths = masterAuths;

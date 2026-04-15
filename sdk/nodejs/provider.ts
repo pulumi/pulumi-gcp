@@ -221,6 +221,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly vpcAccessCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly workbenchCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly workflowsCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly workloadIdentityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly workstationsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly zone: pulumi.Output<string | undefined>;
 
@@ -437,6 +438,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["vpcAccessCustomEndpoint"] = args?.vpcAccessCustomEndpoint;
             resourceInputs["workbenchCustomEndpoint"] = args?.workbenchCustomEndpoint;
             resourceInputs["workflowsCustomEndpoint"] = args?.workflowsCustomEndpoint;
+            resourceInputs["workloadIdentityCustomEndpoint"] = args?.workloadIdentityCustomEndpoint;
             resourceInputs["workstationsCustomEndpoint"] = args?.workstationsCustomEndpoint;
             resourceInputs["zone"] = (args?.zone) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
@@ -662,6 +664,7 @@ export interface ProviderArgs {
     vpcAccessCustomEndpoint?: pulumi.Input<string>;
     workbenchCustomEndpoint?: pulumi.Input<string>;
     workflowsCustomEndpoint?: pulumi.Input<string>;
+    workloadIdentityCustomEndpoint?: pulumi.Input<string>;
     workstationsCustomEndpoint?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;
 }

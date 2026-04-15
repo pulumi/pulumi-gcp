@@ -379,7 +379,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "sql-server",
- *     databaseVersion: "SQLSERVER_2019_STANDARD",
+ *     databaseVersion: "SQLSERVER_2022_STANDARD",
  *     region: "us-central1",
  *     rootPassword: "root-password",
  *     deletionProtection: true,
@@ -475,7 +475,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "sql-server",
- *     databaseVersion: "SQLSERVER_2019_STANDARD",
+ *     databaseVersion: "SQLSERVER_2022_STANDARD",
  *     region: "us-central1",
  *     rootPassword: "root-password",
  *     deletionProtection: true,

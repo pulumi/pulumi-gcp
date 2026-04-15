@@ -8182,9 +8182,9 @@ func (o SecurityProfileV2ProfileAssessmentConfigArrayOutput) Index(i pulumi.IntI
 }
 
 type SharedflowMetaData struct {
-	// Time at which the API proxy was created, in milliseconds since epoch.
+	// Time at which the shared flow was created, in milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	// Time at which the shared flow was most recently modified, in milliseconds since epoch.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The type of entity described
 	SubType *string `pulumi:"subType"`
@@ -8202,9 +8202,9 @@ type SharedflowMetaDataInput interface {
 }
 
 type SharedflowMetaDataArgs struct {
-	// Time at which the API proxy was created, in milliseconds since epoch.
+	// Time at which the shared flow was created, in milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	// Time at which the shared flow was most recently modified, in milliseconds since epoch.
 	LastModifiedAt pulumi.StringPtrInput `pulumi:"lastModifiedAt"`
 	// The type of entity described
 	SubType pulumi.StringPtrInput `pulumi:"subType"`
@@ -8261,12 +8261,12 @@ func (o SharedflowMetaDataOutput) ToSharedflowMetaDataOutputWithContext(ctx cont
 	return o
 }
 
-// Time at which the API proxy was created, in milliseconds since epoch.
+// Time at which the shared flow was created, in milliseconds since epoch.
 func (o SharedflowMetaDataOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedflowMetaData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+// Time at which the shared flow was most recently modified, in milliseconds since epoch.
 func (o SharedflowMetaDataOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SharedflowMetaData) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }

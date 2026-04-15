@@ -292,8 +292,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
-     *
-     * - - -
      */
     declare public readonly resourcePolicies: pulumi.Output<outputs.compute.InstanceGroupManagerResourcePolicies | undefined>;
     /**
@@ -333,6 +331,12 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     declare public readonly targetSize: pulumi.Output<number>;
+    /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     *
+     * - - -
+     */
+    declare public readonly targetSizePolicies: pulumi.Output<outputs.compute.InstanceGroupManagerTargetSizePolicy[]>;
     /**
      * The target number of stopped instances for this managed instance group.
      */
@@ -409,6 +413,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["targetPools"] = state?.targetPools;
             resourceInputs["targetSize"] = state?.targetSize;
+            resourceInputs["targetSizePolicies"] = state?.targetSizePolicies;
             resourceInputs["targetStoppedSize"] = state?.targetStoppedSize;
             resourceInputs["targetSuspendedSize"] = state?.targetSuspendedSize;
             resourceInputs["updatePolicy"] = state?.updatePolicy;
@@ -441,6 +446,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["statefulInternalIps"] = args?.statefulInternalIps;
             resourceInputs["targetPools"] = args?.targetPools;
             resourceInputs["targetSize"] = args?.targetSize;
+            resourceInputs["targetSizePolicies"] = args?.targetSizePolicies;
             resourceInputs["targetStoppedSize"] = args?.targetStoppedSize;
             resourceInputs["targetSuspendedSize"] = args?.targetSuspendedSize;
             resourceInputs["updatePolicy"] = args?.updatePolicy;
@@ -543,8 +549,6 @@ export interface InstanceGroupManagerState {
     project?: pulumi.Input<string>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
-     *
-     * - - -
      */
     resourcePolicies?: pulumi.Input<inputs.compute.InstanceGroupManagerResourcePolicies>;
     /**
@@ -584,6 +588,12 @@ export interface InstanceGroupManagerState {
      * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     *
+     * - - -
+     */
+    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerTargetSizePolicy>[]>;
     /**
      * The target number of stopped instances for this managed instance group.
      */
@@ -689,8 +699,6 @@ export interface InstanceGroupManagerArgs {
     project?: pulumi.Input<string>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
-     *
-     * - - -
      */
     resourcePolicies?: pulumi.Input<inputs.compute.InstanceGroupManagerResourcePolicies>;
     /**
@@ -722,6 +730,12 @@ export interface InstanceGroupManagerArgs {
      * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     *
+     * - - -
+     */
+    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerTargetSizePolicy>[]>;
     /**
      * The target number of stopped instances for this managed instance group.
      */

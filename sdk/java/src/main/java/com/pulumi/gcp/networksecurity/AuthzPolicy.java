@@ -280,7 +280,7 @@ public class AuthzPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="policyProfile", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> policyProfile;
+    private Output<String> policyProfile;
 
     /**
      * @return Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
@@ -292,8 +292,8 @@ public class AuthzPolicy extends com.pulumi.resources.CustomResource {
      * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
      * 
      */
-    public Output<Optional<String>> policyProfile() {
-        return Codegen.optional(this.policyProfile);
+    public Output<String> policyProfile() {
+        return this.policyProfile;
     }
     /**
      * The ID of the project in which the resource belongs.

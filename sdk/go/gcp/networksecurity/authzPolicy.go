@@ -144,7 +144,7 @@ type AuthzPolicy struct {
 	// protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
 	// RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
 	// Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
-	PolicyProfile pulumi.StringPtrOutput `pulumi:"policyProfile"`
+	PolicyProfile pulumi.StringOutput `pulumi:"policyProfile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -557,8 +557,8 @@ func (o AuthzPolicyOutput) Name() pulumi.StringOutput {
 // protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
 // RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
 // Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
-func (o AuthzPolicyOutput) PolicyProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringPtrOutput { return v.PolicyProfile }).(pulumi.StringPtrOutput)
+func (o AuthzPolicyOutput) PolicyProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringOutput { return v.PolicyProfile }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

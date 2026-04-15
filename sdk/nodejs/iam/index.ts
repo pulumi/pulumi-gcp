@@ -150,6 +150,11 @@ export type WorkloadIdentityPoolProvider = import("./workloadIdentityPoolProvide
 export const WorkloadIdentityPoolProvider: typeof import("./workloadIdentityPoolProvider").WorkloadIdentityPoolProvider = null as any;
 utilities.lazyLoad(exports, ["WorkloadIdentityPoolProvider"], () => require("./workloadIdentityPoolProvider"));
 
+export { WorkloadIdentityServiceAgentArgs, WorkloadIdentityServiceAgentState } from "./workloadIdentityServiceAgent";
+export type WorkloadIdentityServiceAgent = import("./workloadIdentityServiceAgent").WorkloadIdentityServiceAgent;
+export const WorkloadIdentityServiceAgent: typeof import("./workloadIdentityServiceAgent").WorkloadIdentityServiceAgent = null as any;
+utilities.lazyLoad(exports, ["WorkloadIdentityServiceAgent"], () => require("./workloadIdentityServiceAgent"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -201,6 +206,8 @@ const _module = {
                 return new WorkloadIdentityPoolNamespace(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
                 return new WorkloadIdentityPoolProvider(name, <any>undefined, { urn })
+            case "gcp:iam/workloadIdentityServiceAgent:WorkloadIdentityServiceAgent":
+                return new WorkloadIdentityServiceAgent(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -229,3 +236,4 @@ pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolIamPolicy"
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolManagedIdentity", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolNamespace", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolProvider", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityServiceAgent", _module)

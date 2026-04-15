@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Required. User selected scopes to apply to the Oauth config
+        /// User selected scopes to apply to the Oauth config
         /// In the event of changing scopes, user records under AccountConnector will
         /// be deleted and users will re-auth again.
         /// </summary>
@@ -27,9 +27,6 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
         }
 
         /// <summary>
-        /// List of providers that are owned by Developer Connect. Creation of
-        /// new non-SCM providers Account Connectors is not possible at this
-        /// time.
         /// Possible values:
         /// GITHUB
         /// GITLAB
@@ -38,6 +35,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
         /// ROVO
         /// NEW_RELIC
         /// DATASTAX
+        /// DYNATRACE
         /// </summary>
         [Input("systemProviderId")]
         public Input<string>? SystemProviderId { get; set; }

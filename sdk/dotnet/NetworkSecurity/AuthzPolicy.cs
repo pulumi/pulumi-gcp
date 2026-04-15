@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
         /// </summary>
         [Output("policyProfile")]
-        public Output<string?> PolicyProfile { get; private set; } = null!;
+        public Output<string> PolicyProfile { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

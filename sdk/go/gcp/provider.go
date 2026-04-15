@@ -212,6 +212,7 @@ type Provider struct {
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
 	WorkbenchCustomEndpoint                pulumi.StringPtrOutput `pulumi:"workbenchCustomEndpoint"`
 	WorkflowsCustomEndpoint                pulumi.StringPtrOutput `pulumi:"workflowsCustomEndpoint"`
+	WorkloadIdentityCustomEndpoint         pulumi.StringPtrOutput `pulumi:"workloadIdentityCustomEndpoint"`
 	WorkstationsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"workstationsCustomEndpoint"`
 	Zone                                   pulumi.StringPtrOutput `pulumi:"zone"`
 }
@@ -457,6 +458,7 @@ type providerArgs struct {
 	VpcAccessCustomEndpoint                *string                      `pulumi:"vpcAccessCustomEndpoint"`
 	WorkbenchCustomEndpoint                *string                      `pulumi:"workbenchCustomEndpoint"`
 	WorkflowsCustomEndpoint                *string                      `pulumi:"workflowsCustomEndpoint"`
+	WorkloadIdentityCustomEndpoint         *string                      `pulumi:"workloadIdentityCustomEndpoint"`
 	WorkstationsCustomEndpoint             *string                      `pulumi:"workstationsCustomEndpoint"`
 	Zone                                   *string                      `pulumi:"zone"`
 }
@@ -665,6 +667,7 @@ type ProviderArgs struct {
 	VpcAccessCustomEndpoint                pulumi.StringPtrInput
 	WorkbenchCustomEndpoint                pulumi.StringPtrInput
 	WorkflowsCustomEndpoint                pulumi.StringPtrInput
+	WorkloadIdentityCustomEndpoint         pulumi.StringPtrInput
 	WorkstationsCustomEndpoint             pulumi.StringPtrInput
 	Zone                                   pulumi.StringPtrInput
 }
@@ -1503,6 +1506,10 @@ func (o ProviderOutput) WorkbenchCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) WorkflowsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.WorkflowsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) WorkloadIdentityCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.WorkloadIdentityCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) WorkstationsCustomEndpoint() pulumi.StringPtrOutput {

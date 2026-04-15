@@ -8096,6 +8096,148 @@ func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) Index(
 	}).(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput)
 }
 
+type WorkloadIdentityServiceAgentServiceAgent struct {
+	// (Output)
+	Container *string `pulumi:"container"`
+	// (Output)
+	Name *string `pulumi:"name"`
+	// (Output)
+	Principal *string `pulumi:"principal"`
+	// (Output)
+	Role *string `pulumi:"role"`
+	// (Output)
+	ServiceProducer *string `pulumi:"serviceProducer"`
+	// (Output)
+	State *string `pulumi:"state"`
+}
+
+// WorkloadIdentityServiceAgentServiceAgentInput is an input type that accepts WorkloadIdentityServiceAgentServiceAgentArgs and WorkloadIdentityServiceAgentServiceAgentOutput values.
+// You can construct a concrete instance of `WorkloadIdentityServiceAgentServiceAgentInput` via:
+//
+//	WorkloadIdentityServiceAgentServiceAgentArgs{...}
+type WorkloadIdentityServiceAgentServiceAgentInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityServiceAgentServiceAgentOutput() WorkloadIdentityServiceAgentServiceAgentOutput
+	ToWorkloadIdentityServiceAgentServiceAgentOutputWithContext(context.Context) WorkloadIdentityServiceAgentServiceAgentOutput
+}
+
+type WorkloadIdentityServiceAgentServiceAgentArgs struct {
+	// (Output)
+	Container pulumi.StringPtrInput `pulumi:"container"`
+	// (Output)
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
+	// (Output)
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// (Output)
+	ServiceProducer pulumi.StringPtrInput `pulumi:"serviceProducer"`
+	// (Output)
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (WorkloadIdentityServiceAgentServiceAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityServiceAgentServiceAgent)(nil)).Elem()
+}
+
+func (i WorkloadIdentityServiceAgentServiceAgentArgs) ToWorkloadIdentityServiceAgentServiceAgentOutput() WorkloadIdentityServiceAgentServiceAgentOutput {
+	return i.ToWorkloadIdentityServiceAgentServiceAgentOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityServiceAgentServiceAgentArgs) ToWorkloadIdentityServiceAgentServiceAgentOutputWithContext(ctx context.Context) WorkloadIdentityServiceAgentServiceAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityServiceAgentServiceAgentOutput)
+}
+
+// WorkloadIdentityServiceAgentServiceAgentArrayInput is an input type that accepts WorkloadIdentityServiceAgentServiceAgentArray and WorkloadIdentityServiceAgentServiceAgentArrayOutput values.
+// You can construct a concrete instance of `WorkloadIdentityServiceAgentServiceAgentArrayInput` via:
+//
+//	WorkloadIdentityServiceAgentServiceAgentArray{ WorkloadIdentityServiceAgentServiceAgentArgs{...} }
+type WorkloadIdentityServiceAgentServiceAgentArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityServiceAgentServiceAgentArrayOutput() WorkloadIdentityServiceAgentServiceAgentArrayOutput
+	ToWorkloadIdentityServiceAgentServiceAgentArrayOutputWithContext(context.Context) WorkloadIdentityServiceAgentServiceAgentArrayOutput
+}
+
+type WorkloadIdentityServiceAgentServiceAgentArray []WorkloadIdentityServiceAgentServiceAgentInput
+
+func (WorkloadIdentityServiceAgentServiceAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityServiceAgentServiceAgent)(nil)).Elem()
+}
+
+func (i WorkloadIdentityServiceAgentServiceAgentArray) ToWorkloadIdentityServiceAgentServiceAgentArrayOutput() WorkloadIdentityServiceAgentServiceAgentArrayOutput {
+	return i.ToWorkloadIdentityServiceAgentServiceAgentArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityServiceAgentServiceAgentArray) ToWorkloadIdentityServiceAgentServiceAgentArrayOutputWithContext(ctx context.Context) WorkloadIdentityServiceAgentServiceAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityServiceAgentServiceAgentArrayOutput)
+}
+
+type WorkloadIdentityServiceAgentServiceAgentOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityServiceAgentServiceAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityServiceAgentServiceAgent)(nil)).Elem()
+}
+
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) ToWorkloadIdentityServiceAgentServiceAgentOutput() WorkloadIdentityServiceAgentServiceAgentOutput {
+	return o
+}
+
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) ToWorkloadIdentityServiceAgentServiceAgentOutputWithContext(ctx context.Context) WorkloadIdentityServiceAgentServiceAgentOutput {
+	return o
+}
+
+// (Output)
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) Container() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityServiceAgentServiceAgent) *string { return v.Container }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityServiceAgentServiceAgent) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityServiceAgentServiceAgent) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityServiceAgentServiceAgent) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) ServiceProducer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityServiceAgentServiceAgent) *string { return v.ServiceProducer }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o WorkloadIdentityServiceAgentServiceAgentOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityServiceAgentServiceAgent) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityServiceAgentServiceAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityServiceAgentServiceAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityServiceAgentServiceAgent)(nil)).Elem()
+}
+
+func (o WorkloadIdentityServiceAgentServiceAgentArrayOutput) ToWorkloadIdentityServiceAgentServiceAgentArrayOutput() WorkloadIdentityServiceAgentServiceAgentArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityServiceAgentServiceAgentArrayOutput) ToWorkloadIdentityServiceAgentServiceAgentArrayOutputWithContext(ctx context.Context) WorkloadIdentityServiceAgentServiceAgentArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityServiceAgentServiceAgentArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityServiceAgentServiceAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityServiceAgentServiceAgent {
+		return vs[0].([]WorkloadIdentityServiceAgentServiceAgent)[vs[1].(int)]
+	}).(WorkloadIdentityServiceAgentServiceAgentOutput)
+}
+
 type GetTestablePermissionsPermission struct {
 	// Whether the corresponding API has been enabled for the resource.
 	ApiDisabled bool `pulumi:"apiDisabled"`
@@ -9813,6 +9955,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityServiceAgentServiceAgentInput)(nil)).Elem(), WorkloadIdentityServiceAgentServiceAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityServiceAgentServiceAgentArrayInput)(nil)).Elem(), WorkloadIdentityServiceAgentServiceAgentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionInput)(nil)).Elem(), GetTestablePermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionArrayInput)(nil)).Elem(), GetTestablePermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolAttestationRuleInput)(nil)).Elem(), GetWorkloadIdentityPoolAttestationRuleArgs{})
@@ -9935,6 +10079,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityServiceAgentServiceAgentOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityServiceAgentServiceAgentArrayOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolAttestationRuleOutput{})

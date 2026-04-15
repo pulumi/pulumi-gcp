@@ -98,6 +98,68 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// });
     /// ```
+    /// ### Dataform Repository Release Config Disabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
+    ///     {
+    ///         Name = "my/repository",
+    ///     });
+    /// 
+    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
+    ///     {
+    ///         SecretId = "my_secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secret_version", new()
+    ///     {
+    ///         Secret = secret.Id,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var repository = new Gcp.Dataform.Repository("repository", new()
+    ///     {
+    ///         Name = "dataform_repository",
+    ///         Region = "us-central1",
+    ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
+    ///         {
+    ///             Url = gitRepository.Url,
+    ///             DefaultBranch = "main",
+    ///             AuthenticationTokenSecretVersion = secretVersion.Id,
+    ///         },
+    ///         WorkspaceCompilationOverrides = new Gcp.Dataform.Inputs.RepositoryWorkspaceCompilationOverridesArgs
+    ///         {
+    ///             DefaultDatabase = "database",
+    ///             SchemaSuffix = "_suffix",
+    ///             TablePrefix = "prefix_",
+    ///         },
+    ///     });
+    /// 
+    ///     var release = new Gcp.Dataform.RepositoryReleaseConfig("release", new()
+    ///     {
+    ///         Project = repository.Project,
+    ///         Region = repository.Region,
+    ///         Repository = repository.Name,
+    ///         Name = "my_release",
+    ///         GitCommitish = "main",
+    ///         CronSchedule = "0 7 * * *",
+    ///         TimeZone = "America/New_York",
+    ///         Disabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -132,6 +194,12 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Output("cronSchedule")]
         public Output<string?> CronSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Disables automatic creation of compilation results.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -237,6 +305,12 @@ namespace Pulumi.Gcp.Dataform
         public Input<string>? CronSchedule { get; set; }
 
         /// <summary>
+        /// Disables automatic creation of compilation results.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         /// </summary>
         [Input("gitCommitish", required: true)]
@@ -293,6 +367,12 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }
+
+        /// <summary>
+        /// Disables automatic creation of compilation results.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.

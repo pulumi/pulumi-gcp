@@ -1033,7 +1033,7 @@ class Agent(pulumi.CustomResource):
             display_name="child agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-2.5-flash",
                 "temperature": 0.5,
             },
             llm_agent={})
@@ -1066,7 +1066,7 @@ class Agent(pulumi.CustomResource):
             description="test agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-2.5-flash",
                 "temperature": 0.5,
             },
             before_agent_callbacks=[{
@@ -1365,7 +1365,7 @@ class Agent(pulumi.CustomResource):
             display_name="child agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-2.5-flash",
                 "temperature": 0.5,
             },
             llm_agent={})
@@ -1398,7 +1398,7 @@ class Agent(pulumi.CustomResource):
             description="test agent",
             instruction="You are a helpful assistant for this example.",
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-2.5-flash",
                 "temperature": 0.5,
             },
             before_agent_callbacks=[{

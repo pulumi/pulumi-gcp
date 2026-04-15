@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<string>? ClassMethods { get; set; }
 
         /// <summary>
+        /// Deploy from a container image with a defined entrypoint and commands.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("containerSpec")]
+        public Input<Inputs.AiReasoningEngineSpecContainerSpecArgs>? ContainerSpec { get; set; }
+
+        /// <summary>
         /// Optional. The specification of a Reasoning Engine deployment.
         /// Structure is documented below.
         /// </summary>
@@ -33,14 +40,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<Inputs.AiReasoningEngineSpecDeploymentSpecArgs>? DeploymentSpec { get; set; }
 
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// The identity to use for the Reasoning Engine.
         /// </summary>
         [Input("effectiveIdentity")]
         public Input<string>? EffectiveIdentity { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Optional. The identity type to use for the Reasoning Engine.
         /// If not specified, the `ServiceAccount` field will be used if set,
         /// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.

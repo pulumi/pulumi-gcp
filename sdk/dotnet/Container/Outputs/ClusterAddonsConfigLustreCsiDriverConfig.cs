@@ -14,8 +14,12 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterAddonsConfigLustreCsiDriverConfig
     {
         /// <summary>
-        /// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-        /// 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        /// When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+        /// </summary>
+        public readonly bool? DisableMultiNic;
+        /// <summary>
+        /// which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         /// </summary>
         public readonly bool? EnableLegacyLustrePort;
         /// <summary>
@@ -25,10 +29,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterAddonsConfigLustreCsiDriverConfig(
+            bool? disableMultiNic,
+
             bool? enableLegacyLustrePort,
 
             bool enabled)
         {
+            DisableMultiNic = disableMultiNic;
             EnableLegacyLustrePort = enableLegacyLustrePort;
             Enabled = enabled;
         }

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Apigee.Outputs
     public sealed class SharedflowMetaData
     {
         /// <summary>
-        /// Time at which the API proxy was created, in milliseconds since epoch.
+        /// Time at which the shared flow was created, in milliseconds since epoch.
         /// </summary>
         public readonly string? CreatedAt;
         /// <summary>
-        /// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        /// Time at which the shared flow was most recently modified, in milliseconds since epoch.
         /// </summary>
         public readonly string? LastModifiedAt;
         /// <summary>

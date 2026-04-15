@@ -373,6 +373,11 @@ type Gateway struct {
 	// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
+	// Configures this gateway to ​listen on all ports.
+	// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllPorts pulumi.BoolPtrOutput `pulumi:"allPorts"`
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls pulumi.StringArrayOutput `pulumi:"certificateUrls"`
@@ -450,9 +455,6 @@ func NewGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Ports == nil {
-		return nil, errors.New("invalid value for required argument 'Ports'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -489,6 +491,11 @@ type gatewayState struct {
 	// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 	Addresses []string `pulumi:"addresses"`
+	// Configures this gateway to ​listen on all ports.
+	// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllPorts *bool `pulumi:"allPorts"`
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls []string `pulumi:"certificateUrls"`
@@ -565,6 +572,11 @@ type GatewayState struct {
 	// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 	Addresses pulumi.StringArrayInput
+	// Configures this gateway to ​listen on all ports.
+	// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllPorts pulumi.BoolPtrInput
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls pulumi.StringArrayInput
@@ -645,6 +657,11 @@ type gatewayArgs struct {
 	// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 	Addresses []string `pulumi:"addresses"`
+	// Configures this gateway to ​listen on all ports.
+	// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllPorts *bool `pulumi:"allPorts"`
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls []string `pulumi:"certificateUrls"`
@@ -711,6 +728,11 @@ type GatewayArgs struct {
 	// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 	Addresses pulumi.StringArrayInput
+	// Configures this gateway to ​listen on all ports.
+	// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllPorts pulumi.BoolPtrInput
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls pulumi.StringArrayInput
@@ -863,6 +885,14 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 // Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 func (o GatewayOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Configures this gateway to ​listen on all ports.
+// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+func (o GatewayOutput) AllPorts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AllPorts }).(pulumi.BoolPtrOutput)
 }
 
 // A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.

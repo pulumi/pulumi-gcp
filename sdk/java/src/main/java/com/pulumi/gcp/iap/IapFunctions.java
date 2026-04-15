@@ -9,12 +9,16 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineVersionIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineVersionIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetClientArgs;
 import com.pulumi.gcp.iap.inputs.GetClientPlainArgs;
+import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetTunnelIamPolicyArgs;
@@ -37,9 +41,11 @@ import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyPlainArgs;
+import com.pulumi.gcp.iap.outputs.GetAgentRegistryIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetAppEngineServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetAppEngineVersionIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetClientResult;
+import com.pulumi.gcp.iap.outputs.GetLocationWebIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelDestGroupIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelInstanceIamPolicyResult;
@@ -54,6 +60,221 @@ import com.pulumi.gcp.iap.outputs.GetWebTypeComputeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class IapFunctions {
+    /**
+     * Retrieves the current IAM policy data for agentregistry
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs args) {
+        return getAgentRegistryIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistry
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicyPlain(GetAgentRegistryIamPolicyPlainArgs args) {
+        return getAgentRegistryIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistry
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy", TypeShape.of(GetAgentRegistryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistry
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy", TypeShape.of(GetAgentRegistryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistry
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicyPlain(GetAgentRegistryIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy", TypeShape.of(GetAgentRegistryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for appengineservice
      * 
@@ -713,6 +934,221 @@ public final class IapFunctions {
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for locationweb
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLocationWebIamPolicyResult> getLocationWebIamPolicy(GetLocationWebIamPolicyArgs args) {
+        return getLocationWebIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for locationweb
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLocationWebIamPolicyResult> getLocationWebIamPolicyPlain(GetLocationWebIamPolicyPlainArgs args) {
+        return getLocationWebIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for locationweb
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLocationWebIamPolicyResult> getLocationWebIamPolicy(GetLocationWebIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy", TypeShape.of(GetLocationWebIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for locationweb
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLocationWebIamPolicyResult> getLocationWebIamPolicy(GetLocationWebIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy", TypeShape.of(GetLocationWebIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for locationweb
+     * &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetLocationWebIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLocationWebIamPolicyResult> getLocationWebIamPolicyPlain(GetLocationWebIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy", TypeShape.of(GetLocationWebIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for tunneldestgroup

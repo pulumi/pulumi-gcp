@@ -24,6 +24,7 @@ class RepositoryReleaseConfigArgs:
                  git_commitish: pulumi.Input[_builtins.str],
                  code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,7 @@ class RepositoryReleaseConfigArgs:
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] name: The release's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -48,6 +50,8 @@ class RepositoryReleaseConfigArgs:
             pulumi.set(__self__, "code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -95,6 +99,18 @@ class RepositoryReleaseConfigArgs:
     @cron_schedule.setter
     def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disables automatic creation of compilation results.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -163,6 +179,7 @@ class _RepositoryReleaseConfigState:
     def __init__(__self__, *,
                  code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  git_commitish: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -176,6 +193,7 @@ class _RepositoryReleaseConfigState:
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input[_builtins.str] name: The release's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -190,6 +208,8 @@ class _RepositoryReleaseConfigState:
             pulumi.set(__self__, "code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if git_commitish is not None:
             pulumi.set(__self__, "git_commitish", git_commitish)
         if name is not None:
@@ -229,6 +249,18 @@ class _RepositoryReleaseConfigState:
     @cron_schedule.setter
     def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disables automatic creation of compilation results.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gitCommitish")
@@ -325,6 +357,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_compilation_config: Optional[pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  git_commitish: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -395,6 +428,44 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             })
         ```
+        ### Dataform Repository Release Config Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="my_secret",
+            replication={
+                "auto": {},
+            })
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
+            secret=secret.id,
+            secret_data="secret-data")
+        repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
+            region="us-central1",
+            git_remote_settings={
+                "url": git_repository.url,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
+            },
+            workspace_compilation_overrides={
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
+            })
+        release = gcp.dataform.RepositoryReleaseConfig("release",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            name="my_release",
+            git_commitish="main",
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            disabled=True)
+        ```
 
         ## Import
 
@@ -420,6 +491,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input[_builtins.str] name: The release's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -497,6 +569,44 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             })
         ```
+        ### Dataform Repository Release Config Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="my_secret",
+            replication={
+                "auto": {},
+            })
+        secret_version = gcp.secretmanager.SecretVersion("secret_version",
+            secret=secret.id,
+            secret_data="secret-data")
+        repository = gcp.dataform.Repository("repository",
+            name="dataform_repository",
+            region="us-central1",
+            git_remote_settings={
+                "url": git_repository.url,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
+            },
+            workspace_compilation_overrides={
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
+            })
+        release = gcp.dataform.RepositoryReleaseConfig("release",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            name="my_release",
+            git_commitish="main",
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            disabled=True)
+        ```
 
         ## Import
 
@@ -534,6 +644,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_compilation_config: Optional[pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  git_commitish: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -551,6 +662,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
             __props__.__dict__["code_compilation_config"] = code_compilation_config
             __props__.__dict__["cron_schedule"] = cron_schedule
+            __props__.__dict__["disabled"] = disabled
             if git_commitish is None and not opts.urn:
                 raise TypeError("Missing required property 'git_commitish'")
             __props__.__dict__["git_commitish"] = git_commitish
@@ -572,6 +684,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             code_compilation_config: Optional[pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
             cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
+            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             git_commitish: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -589,6 +702,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input[_builtins.str] name: The release's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -605,6 +719,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         __props__.__dict__["code_compilation_config"] = code_compilation_config
         __props__.__dict__["cron_schedule"] = cron_schedule
+        __props__.__dict__["disabled"] = disabled
         __props__.__dict__["git_commitish"] = git_commitish
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -630,6 +745,14 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         """
         return pulumi.get(self, "cron_schedule")
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Disables automatic creation of compilation results.
+        """
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter(name="gitCommitish")

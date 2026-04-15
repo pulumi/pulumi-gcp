@@ -13,6 +13,388 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AgentRegistryIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// AgentRegistryIamBindingConditionInput is an input type that accepts AgentRegistryIamBindingConditionArgs and AgentRegistryIamBindingConditionOutput values.
+// You can construct a concrete instance of `AgentRegistryIamBindingConditionInput` via:
+//
+//	AgentRegistryIamBindingConditionArgs{...}
+type AgentRegistryIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAgentRegistryIamBindingConditionOutput() AgentRegistryIamBindingConditionOutput
+	ToAgentRegistryIamBindingConditionOutputWithContext(context.Context) AgentRegistryIamBindingConditionOutput
+}
+
+type AgentRegistryIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (AgentRegistryIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentRegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (i AgentRegistryIamBindingConditionArgs) ToAgentRegistryIamBindingConditionOutput() AgentRegistryIamBindingConditionOutput {
+	return i.ToAgentRegistryIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AgentRegistryIamBindingConditionArgs) ToAgentRegistryIamBindingConditionOutputWithContext(ctx context.Context) AgentRegistryIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRegistryIamBindingConditionOutput)
+}
+
+func (i AgentRegistryIamBindingConditionArgs) ToAgentRegistryIamBindingConditionPtrOutput() AgentRegistryIamBindingConditionPtrOutput {
+	return i.ToAgentRegistryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AgentRegistryIamBindingConditionArgs) ToAgentRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRegistryIamBindingConditionOutput).ToAgentRegistryIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AgentRegistryIamBindingConditionPtrInput is an input type that accepts AgentRegistryIamBindingConditionArgs, AgentRegistryIamBindingConditionPtr and AgentRegistryIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AgentRegistryIamBindingConditionPtrInput` via:
+//
+//	        AgentRegistryIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentRegistryIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAgentRegistryIamBindingConditionPtrOutput() AgentRegistryIamBindingConditionPtrOutput
+	ToAgentRegistryIamBindingConditionPtrOutputWithContext(context.Context) AgentRegistryIamBindingConditionPtrOutput
+}
+
+type agentRegistryIamBindingConditionPtrType AgentRegistryIamBindingConditionArgs
+
+func AgentRegistryIamBindingConditionPtr(v *AgentRegistryIamBindingConditionArgs) AgentRegistryIamBindingConditionPtrInput {
+	return (*agentRegistryIamBindingConditionPtrType)(v)
+}
+
+func (*agentRegistryIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentRegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (i *agentRegistryIamBindingConditionPtrType) ToAgentRegistryIamBindingConditionPtrOutput() AgentRegistryIamBindingConditionPtrOutput {
+	return i.ToAgentRegistryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *agentRegistryIamBindingConditionPtrType) ToAgentRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRegistryIamBindingConditionPtrOutput)
+}
+
+type AgentRegistryIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AgentRegistryIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentRegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (o AgentRegistryIamBindingConditionOutput) ToAgentRegistryIamBindingConditionOutput() AgentRegistryIamBindingConditionOutput {
+	return o
+}
+
+func (o AgentRegistryIamBindingConditionOutput) ToAgentRegistryIamBindingConditionOutputWithContext(ctx context.Context) AgentRegistryIamBindingConditionOutput {
+	return o
+}
+
+func (o AgentRegistryIamBindingConditionOutput) ToAgentRegistryIamBindingConditionPtrOutput() AgentRegistryIamBindingConditionPtrOutput {
+	return o.ToAgentRegistryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AgentRegistryIamBindingConditionOutput) ToAgentRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentRegistryIamBindingCondition) *AgentRegistryIamBindingCondition {
+		return &v
+	}).(AgentRegistryIamBindingConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o AgentRegistryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentRegistryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AgentRegistryIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentRegistryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o AgentRegistryIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentRegistryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AgentRegistryIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentRegistryIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentRegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (o AgentRegistryIamBindingConditionPtrOutput) ToAgentRegistryIamBindingConditionPtrOutput() AgentRegistryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AgentRegistryIamBindingConditionPtrOutput) ToAgentRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AgentRegistryIamBindingConditionPtrOutput) Elem() AgentRegistryIamBindingConditionOutput {
+	return o.ApplyT(func(v *AgentRegistryIamBindingCondition) AgentRegistryIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AgentRegistryIamBindingCondition
+		return ret
+	}).(AgentRegistryIamBindingConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o AgentRegistryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRegistryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AgentRegistryIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRegistryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o AgentRegistryIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRegistryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentRegistryIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// AgentRegistryIamMemberConditionInput is an input type that accepts AgentRegistryIamMemberConditionArgs and AgentRegistryIamMemberConditionOutput values.
+// You can construct a concrete instance of `AgentRegistryIamMemberConditionInput` via:
+//
+//	AgentRegistryIamMemberConditionArgs{...}
+type AgentRegistryIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAgentRegistryIamMemberConditionOutput() AgentRegistryIamMemberConditionOutput
+	ToAgentRegistryIamMemberConditionOutputWithContext(context.Context) AgentRegistryIamMemberConditionOutput
+}
+
+type AgentRegistryIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (AgentRegistryIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentRegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (i AgentRegistryIamMemberConditionArgs) ToAgentRegistryIamMemberConditionOutput() AgentRegistryIamMemberConditionOutput {
+	return i.ToAgentRegistryIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AgentRegistryIamMemberConditionArgs) ToAgentRegistryIamMemberConditionOutputWithContext(ctx context.Context) AgentRegistryIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRegistryIamMemberConditionOutput)
+}
+
+func (i AgentRegistryIamMemberConditionArgs) ToAgentRegistryIamMemberConditionPtrOutput() AgentRegistryIamMemberConditionPtrOutput {
+	return i.ToAgentRegistryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AgentRegistryIamMemberConditionArgs) ToAgentRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRegistryIamMemberConditionOutput).ToAgentRegistryIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AgentRegistryIamMemberConditionPtrInput is an input type that accepts AgentRegistryIamMemberConditionArgs, AgentRegistryIamMemberConditionPtr and AgentRegistryIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AgentRegistryIamMemberConditionPtrInput` via:
+//
+//	        AgentRegistryIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentRegistryIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAgentRegistryIamMemberConditionPtrOutput() AgentRegistryIamMemberConditionPtrOutput
+	ToAgentRegistryIamMemberConditionPtrOutputWithContext(context.Context) AgentRegistryIamMemberConditionPtrOutput
+}
+
+type agentRegistryIamMemberConditionPtrType AgentRegistryIamMemberConditionArgs
+
+func AgentRegistryIamMemberConditionPtr(v *AgentRegistryIamMemberConditionArgs) AgentRegistryIamMemberConditionPtrInput {
+	return (*agentRegistryIamMemberConditionPtrType)(v)
+}
+
+func (*agentRegistryIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentRegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (i *agentRegistryIamMemberConditionPtrType) ToAgentRegistryIamMemberConditionPtrOutput() AgentRegistryIamMemberConditionPtrOutput {
+	return i.ToAgentRegistryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *agentRegistryIamMemberConditionPtrType) ToAgentRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentRegistryIamMemberConditionPtrOutput)
+}
+
+type AgentRegistryIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AgentRegistryIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentRegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (o AgentRegistryIamMemberConditionOutput) ToAgentRegistryIamMemberConditionOutput() AgentRegistryIamMemberConditionOutput {
+	return o
+}
+
+func (o AgentRegistryIamMemberConditionOutput) ToAgentRegistryIamMemberConditionOutputWithContext(ctx context.Context) AgentRegistryIamMemberConditionOutput {
+	return o
+}
+
+func (o AgentRegistryIamMemberConditionOutput) ToAgentRegistryIamMemberConditionPtrOutput() AgentRegistryIamMemberConditionPtrOutput {
+	return o.ToAgentRegistryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AgentRegistryIamMemberConditionOutput) ToAgentRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentRegistryIamMemberCondition) *AgentRegistryIamMemberCondition {
+		return &v
+	}).(AgentRegistryIamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o AgentRegistryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentRegistryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AgentRegistryIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentRegistryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o AgentRegistryIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentRegistryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AgentRegistryIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentRegistryIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentRegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (o AgentRegistryIamMemberConditionPtrOutput) ToAgentRegistryIamMemberConditionPtrOutput() AgentRegistryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AgentRegistryIamMemberConditionPtrOutput) ToAgentRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) AgentRegistryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AgentRegistryIamMemberConditionPtrOutput) Elem() AgentRegistryIamMemberConditionOutput {
+	return o.ApplyT(func(v *AgentRegistryIamMemberCondition) AgentRegistryIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AgentRegistryIamMemberCondition
+		return ret
+	}).(AgentRegistryIamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o AgentRegistryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRegistryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AgentRegistryIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRegistryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o AgentRegistryIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentRegistryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppEngineServiceIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -770,6 +1152,388 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) Expression() pulumi.StringP
 // A title for the expression, i.e. a short string describing its purpose.
 func (o AppEngineVersionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type LocationWebIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// LocationWebIamBindingConditionInput is an input type that accepts LocationWebIamBindingConditionArgs and LocationWebIamBindingConditionOutput values.
+// You can construct a concrete instance of `LocationWebIamBindingConditionInput` via:
+//
+//	LocationWebIamBindingConditionArgs{...}
+type LocationWebIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToLocationWebIamBindingConditionOutput() LocationWebIamBindingConditionOutput
+	ToLocationWebIamBindingConditionOutputWithContext(context.Context) LocationWebIamBindingConditionOutput
+}
+
+type LocationWebIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (LocationWebIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationWebIamBindingCondition)(nil)).Elem()
+}
+
+func (i LocationWebIamBindingConditionArgs) ToLocationWebIamBindingConditionOutput() LocationWebIamBindingConditionOutput {
+	return i.ToLocationWebIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i LocationWebIamBindingConditionArgs) ToLocationWebIamBindingConditionOutputWithContext(ctx context.Context) LocationWebIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationWebIamBindingConditionOutput)
+}
+
+func (i LocationWebIamBindingConditionArgs) ToLocationWebIamBindingConditionPtrOutput() LocationWebIamBindingConditionPtrOutput {
+	return i.ToLocationWebIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LocationWebIamBindingConditionArgs) ToLocationWebIamBindingConditionPtrOutputWithContext(ctx context.Context) LocationWebIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationWebIamBindingConditionOutput).ToLocationWebIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// LocationWebIamBindingConditionPtrInput is an input type that accepts LocationWebIamBindingConditionArgs, LocationWebIamBindingConditionPtr and LocationWebIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `LocationWebIamBindingConditionPtrInput` via:
+//
+//	        LocationWebIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocationWebIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToLocationWebIamBindingConditionPtrOutput() LocationWebIamBindingConditionPtrOutput
+	ToLocationWebIamBindingConditionPtrOutputWithContext(context.Context) LocationWebIamBindingConditionPtrOutput
+}
+
+type locationWebIamBindingConditionPtrType LocationWebIamBindingConditionArgs
+
+func LocationWebIamBindingConditionPtr(v *LocationWebIamBindingConditionArgs) LocationWebIamBindingConditionPtrInput {
+	return (*locationWebIamBindingConditionPtrType)(v)
+}
+
+func (*locationWebIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationWebIamBindingCondition)(nil)).Elem()
+}
+
+func (i *locationWebIamBindingConditionPtrType) ToLocationWebIamBindingConditionPtrOutput() LocationWebIamBindingConditionPtrOutput {
+	return i.ToLocationWebIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *locationWebIamBindingConditionPtrType) ToLocationWebIamBindingConditionPtrOutputWithContext(ctx context.Context) LocationWebIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationWebIamBindingConditionPtrOutput)
+}
+
+type LocationWebIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (LocationWebIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationWebIamBindingCondition)(nil)).Elem()
+}
+
+func (o LocationWebIamBindingConditionOutput) ToLocationWebIamBindingConditionOutput() LocationWebIamBindingConditionOutput {
+	return o
+}
+
+func (o LocationWebIamBindingConditionOutput) ToLocationWebIamBindingConditionOutputWithContext(ctx context.Context) LocationWebIamBindingConditionOutput {
+	return o
+}
+
+func (o LocationWebIamBindingConditionOutput) ToLocationWebIamBindingConditionPtrOutput() LocationWebIamBindingConditionPtrOutput {
+	return o.ToLocationWebIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LocationWebIamBindingConditionOutput) ToLocationWebIamBindingConditionPtrOutputWithContext(ctx context.Context) LocationWebIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationWebIamBindingCondition) *LocationWebIamBindingCondition {
+		return &v
+	}).(LocationWebIamBindingConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o LocationWebIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationWebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LocationWebIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationWebIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LocationWebIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationWebIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type LocationWebIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationWebIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationWebIamBindingCondition)(nil)).Elem()
+}
+
+func (o LocationWebIamBindingConditionPtrOutput) ToLocationWebIamBindingConditionPtrOutput() LocationWebIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o LocationWebIamBindingConditionPtrOutput) ToLocationWebIamBindingConditionPtrOutputWithContext(ctx context.Context) LocationWebIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o LocationWebIamBindingConditionPtrOutput) Elem() LocationWebIamBindingConditionOutput {
+	return o.ApplyT(func(v *LocationWebIamBindingCondition) LocationWebIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LocationWebIamBindingCondition
+		return ret
+	}).(LocationWebIamBindingConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o LocationWebIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationWebIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LocationWebIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationWebIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LocationWebIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationWebIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type LocationWebIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// LocationWebIamMemberConditionInput is an input type that accepts LocationWebIamMemberConditionArgs and LocationWebIamMemberConditionOutput values.
+// You can construct a concrete instance of `LocationWebIamMemberConditionInput` via:
+//
+//	LocationWebIamMemberConditionArgs{...}
+type LocationWebIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToLocationWebIamMemberConditionOutput() LocationWebIamMemberConditionOutput
+	ToLocationWebIamMemberConditionOutputWithContext(context.Context) LocationWebIamMemberConditionOutput
+}
+
+type LocationWebIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (LocationWebIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationWebIamMemberCondition)(nil)).Elem()
+}
+
+func (i LocationWebIamMemberConditionArgs) ToLocationWebIamMemberConditionOutput() LocationWebIamMemberConditionOutput {
+	return i.ToLocationWebIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i LocationWebIamMemberConditionArgs) ToLocationWebIamMemberConditionOutputWithContext(ctx context.Context) LocationWebIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationWebIamMemberConditionOutput)
+}
+
+func (i LocationWebIamMemberConditionArgs) ToLocationWebIamMemberConditionPtrOutput() LocationWebIamMemberConditionPtrOutput {
+	return i.ToLocationWebIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LocationWebIamMemberConditionArgs) ToLocationWebIamMemberConditionPtrOutputWithContext(ctx context.Context) LocationWebIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationWebIamMemberConditionOutput).ToLocationWebIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// LocationWebIamMemberConditionPtrInput is an input type that accepts LocationWebIamMemberConditionArgs, LocationWebIamMemberConditionPtr and LocationWebIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `LocationWebIamMemberConditionPtrInput` via:
+//
+//	        LocationWebIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocationWebIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToLocationWebIamMemberConditionPtrOutput() LocationWebIamMemberConditionPtrOutput
+	ToLocationWebIamMemberConditionPtrOutputWithContext(context.Context) LocationWebIamMemberConditionPtrOutput
+}
+
+type locationWebIamMemberConditionPtrType LocationWebIamMemberConditionArgs
+
+func LocationWebIamMemberConditionPtr(v *LocationWebIamMemberConditionArgs) LocationWebIamMemberConditionPtrInput {
+	return (*locationWebIamMemberConditionPtrType)(v)
+}
+
+func (*locationWebIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationWebIamMemberCondition)(nil)).Elem()
+}
+
+func (i *locationWebIamMemberConditionPtrType) ToLocationWebIamMemberConditionPtrOutput() LocationWebIamMemberConditionPtrOutput {
+	return i.ToLocationWebIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *locationWebIamMemberConditionPtrType) ToLocationWebIamMemberConditionPtrOutputWithContext(ctx context.Context) LocationWebIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationWebIamMemberConditionPtrOutput)
+}
+
+type LocationWebIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (LocationWebIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationWebIamMemberCondition)(nil)).Elem()
+}
+
+func (o LocationWebIamMemberConditionOutput) ToLocationWebIamMemberConditionOutput() LocationWebIamMemberConditionOutput {
+	return o
+}
+
+func (o LocationWebIamMemberConditionOutput) ToLocationWebIamMemberConditionOutputWithContext(ctx context.Context) LocationWebIamMemberConditionOutput {
+	return o
+}
+
+func (o LocationWebIamMemberConditionOutput) ToLocationWebIamMemberConditionPtrOutput() LocationWebIamMemberConditionPtrOutput {
+	return o.ToLocationWebIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LocationWebIamMemberConditionOutput) ToLocationWebIamMemberConditionPtrOutputWithContext(ctx context.Context) LocationWebIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationWebIamMemberCondition) *LocationWebIamMemberCondition {
+		return &v
+	}).(LocationWebIamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o LocationWebIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationWebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LocationWebIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationWebIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LocationWebIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationWebIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type LocationWebIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationWebIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationWebIamMemberCondition)(nil)).Elem()
+}
+
+func (o LocationWebIamMemberConditionPtrOutput) ToLocationWebIamMemberConditionPtrOutput() LocationWebIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o LocationWebIamMemberConditionPtrOutput) ToLocationWebIamMemberConditionPtrOutputWithContext(ctx context.Context) LocationWebIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o LocationWebIamMemberConditionPtrOutput) Elem() LocationWebIamMemberConditionOutput {
+	return o.ApplyT(func(v *LocationWebIamMemberCondition) LocationWebIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LocationWebIamMemberCondition
+		return ret
+	}).(LocationWebIamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
+func (o LocationWebIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationWebIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o LocationWebIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationWebIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o LocationWebIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationWebIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -7308,6 +8072,10 @@ func (o WebTypeComputeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentRegistryIamBindingConditionInput)(nil)).Elem(), AgentRegistryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentRegistryIamBindingConditionPtrInput)(nil)).Elem(), AgentRegistryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentRegistryIamMemberConditionInput)(nil)).Elem(), AgentRegistryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentRegistryIamMemberConditionPtrInput)(nil)).Elem(), AgentRegistryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamBindingConditionInput)(nil)).Elem(), AppEngineServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamBindingConditionPtrInput)(nil)).Elem(), AppEngineServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamMemberConditionInput)(nil)).Elem(), AppEngineServiceIamMemberConditionArgs{})
@@ -7316,6 +8084,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingConditionPtrInput)(nil)).Elem(), AppEngineVersionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberConditionInput)(nil)).Elem(), AppEngineVersionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberConditionPtrInput)(nil)).Elem(), AppEngineVersionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationWebIamBindingConditionInput)(nil)).Elem(), LocationWebIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationWebIamBindingConditionPtrInput)(nil)).Elem(), LocationWebIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationWebIamMemberConditionInput)(nil)).Elem(), LocationWebIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationWebIamMemberConditionPtrInput)(nil)).Elem(), LocationWebIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsInput)(nil)).Elem(), SettingsAccessSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsAllowedDomainsSettingsInput)(nil)).Elem(), SettingsAccessSettingsAllowedDomainsSettingsArgs{})
@@ -7384,6 +8156,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamBindingConditionPtrInput)(nil)).Elem(), WebTypeComputeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamMemberConditionInput)(nil)).Elem(), WebTypeComputeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeComputeIamMemberConditionPtrInput)(nil)).Elem(), WebTypeComputeIamMemberConditionArgs{})
+	pulumi.RegisterOutputType(AgentRegistryIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AgentRegistryIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AgentRegistryIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AgentRegistryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamMemberConditionOutput{})
@@ -7392,6 +8168,10 @@ func init() {
 	pulumi.RegisterOutputType(AppEngineVersionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(LocationWebIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(LocationWebIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(LocationWebIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(LocationWebIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SettingsAccessSettingsOutput{})
 	pulumi.RegisterOutputType(SettingsAccessSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SettingsAccessSettingsAllowedDomainsSettingsOutput{})

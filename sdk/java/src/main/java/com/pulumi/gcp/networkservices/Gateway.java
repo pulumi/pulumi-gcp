@@ -379,6 +379,26 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.addresses;
     }
     /**
+     * Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Export(name="allPorts", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allPorts;
+
+    /**
+     * @return Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Output<Optional<Boolean>> allPorts() {
+        return Codegen.optional(this.allPorts);
+    }
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
@@ -581,7 +601,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ports", refs={List.class,Integer.class}, tree="[0,1]")
-    private Output<List<Integer>> ports;
+    private Output</* @Nullable */ List<Integer>> ports;
 
     /**
      * @return One or more port numbers (1-65535), on which the Gateway will receive traffic.
@@ -589,8 +609,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
-    public Output<List<Integer>> ports() {
-        return this.ports;
+    public Output<Optional<List<Integer>>> ports() {
+        return Codegen.optional(this.ports);
     }
     /**
      * The ID of the project in which the resource belongs.

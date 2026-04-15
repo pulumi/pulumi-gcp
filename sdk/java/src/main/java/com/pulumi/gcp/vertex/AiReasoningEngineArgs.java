@@ -10,6 +10,7 @@ import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -105,6 +106,29 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return The labels associated with this ReasoningEngine. You can use these to
+     * organize and group your ReasoningEngines.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -161,6 +185,7 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
         this.description = $.description;
         this.displayName = $.displayName;
         this.encryptionSpec = $.encryptionSpec;
+        this.labels = $.labels;
         this.project = $.project;
         this.region = $.region;
         this.spec = $.spec;
@@ -297,6 +322,35 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder encryptionSpec(AiReasoningEngineEncryptionSpecArgs encryptionSpec) {
             return encryptionSpec(Output.of(encryptionSpec));
+        }
+
+        /**
+         * @param labels The labels associated with this ReasoningEngine. You can use these to
+         * organize and group your ReasoningEngines.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels The labels associated with this ReasoningEngine. You can use these to
+         * organize and group your ReasoningEngines.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

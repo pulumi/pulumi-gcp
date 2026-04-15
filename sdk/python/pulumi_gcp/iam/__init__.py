@@ -35,5 +35,6 @@ from .workload_identity_pool_iam_policy import *
 from .workload_identity_pool_managed_identity import *
 from .workload_identity_pool_namespace import *
 from .workload_identity_pool_provider import *
+from .workload_identity_service_agent import *
 from ._inputs import *
 from . import outputs

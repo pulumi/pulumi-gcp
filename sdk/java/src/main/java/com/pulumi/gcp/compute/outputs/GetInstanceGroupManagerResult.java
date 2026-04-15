@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulInternalIp;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatus;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerTargetSizePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerUpdatePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerVersion;
 import java.lang.Boolean;
@@ -57,6 +58,7 @@ public final class GetInstanceGroupManagerResult {
     private List<GetInstanceGroupManagerStatus> statuses;
     private List<String> targetPools;
     private Integer targetSize;
+    private List<GetInstanceGroupManagerTargetSizePolicy> targetSizePolicies;
     private Integer targetStoppedSize;
     private Integer targetSuspendedSize;
     private List<GetInstanceGroupManagerUpdatePolicy> updatePolicies;
@@ -145,6 +147,9 @@ public final class GetInstanceGroupManagerResult {
     public Integer targetSize() {
         return this.targetSize;
     }
+    public List<GetInstanceGroupManagerTargetSizePolicy> targetSizePolicies() {
+        return this.targetSizePolicies;
+    }
     public Integer targetStoppedSize() {
         return this.targetStoppedSize;
     }
@@ -201,6 +206,7 @@ public final class GetInstanceGroupManagerResult {
         private List<GetInstanceGroupManagerStatus> statuses;
         private List<String> targetPools;
         private Integer targetSize;
+        private List<GetInstanceGroupManagerTargetSizePolicy> targetSizePolicies;
         private Integer targetStoppedSize;
         private Integer targetSuspendedSize;
         private List<GetInstanceGroupManagerUpdatePolicy> updatePolicies;
@@ -236,6 +242,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.statuses = defaults.statuses;
     	      this.targetPools = defaults.targetPools;
     	      this.targetSize = defaults.targetSize;
+    	      this.targetSizePolicies = defaults.targetSizePolicies;
     	      this.targetStoppedSize = defaults.targetStoppedSize;
     	      this.targetSuspendedSize = defaults.targetSuspendedSize;
     	      this.updatePolicies = defaults.updatePolicies;
@@ -476,6 +483,17 @@ public final class GetInstanceGroupManagerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder targetSizePolicies(List<GetInstanceGroupManagerTargetSizePolicy> targetSizePolicies) {
+            if (targetSizePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetSizePolicies");
+            }
+            this.targetSizePolicies = targetSizePolicies;
+            return this;
+        }
+        public Builder targetSizePolicies(GetInstanceGroupManagerTargetSizePolicy... targetSizePolicies) {
+            return targetSizePolicies(List.of(targetSizePolicies));
+        }
+        @CustomType.Setter
         public Builder targetStoppedSize(Integer targetStoppedSize) {
             if (targetStoppedSize == null) {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetStoppedSize");
@@ -562,6 +580,7 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.statuses = statuses;
             _resultValue.targetPools = targetPools;
             _resultValue.targetSize = targetSize;
+            _resultValue.targetSizePolicies = targetSizePolicies;
             _resultValue.targetStoppedSize = targetStoppedSize;
             _resultValue.targetSuspendedSize = targetSuspendedSize;
             _resultValue.updatePolicies = updatePolicies;

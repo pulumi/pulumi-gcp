@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource? DeveloperConnectSource;
         /// <summary>
+        /// Configuration for building an image with custom config file.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec? ImageSpec;
+        /// <summary>
         /// Source code is provided directly in the request.
         /// Structure is documented below.
         /// </summary>
@@ -33,11 +38,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
         private AiReasoningEngineSpecSourceCodeSpec(
             Outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource? developerConnectSource,
 
+            Outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec? imageSpec,
+
             Outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource? inlineSource,
 
             Outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec? pythonSpec)
         {
             DeveloperConnectSource = developerConnectSource;
+            ImageSpec = imageSpec;
             InlineSource = inlineSource;
             PythonSpec = pythonSpec;
         }

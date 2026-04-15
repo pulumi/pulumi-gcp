@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStandbyPolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulExternalIpArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulInternalIpArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerTargetSizePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerUpdatePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
 import java.lang.Boolean;
@@ -222,16 +223,12 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<InstanceGroupManagerResourcePoliciesArgs> resourcePolicies;
 
     /**
      * @return Resource policies for this managed instance group. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<InstanceGroupManagerResourcePoliciesArgs>> resourcePolicies() {
@@ -336,6 +333,25 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> targetSize() {
         return Optional.ofNullable(this.targetSize);
+    }
+
+    /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="targetSizePolicies")
+    private @Nullable Output<List<InstanceGroupManagerTargetSizePolicyArgs>> targetSizePolicies;
+
+    /**
+     * @return The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<List<InstanceGroupManagerTargetSizePolicyArgs>>> targetSizePolicies() {
+        return Optional.ofNullable(this.targetSizePolicies);
     }
 
     /**
@@ -483,6 +499,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         this.statefulInternalIps = $.statefulInternalIps;
         this.targetPools = $.targetPools;
         this.targetSize = $.targetSize;
+        this.targetSizePolicies = $.targetSizePolicies;
         this.targetStoppedSize = $.targetStoppedSize;
         this.targetSuspendedSize = $.targetSuspendedSize;
         this.updatePolicy = $.updatePolicy;
@@ -772,8 +789,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -784,8 +799,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -970,6 +983,43 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          */
         public Builder targetSize(Integer targetSize) {
             return targetSize(Output.of(targetSize));
+        }
+
+        /**
+         * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSizePolicies(@Nullable Output<List<InstanceGroupManagerTargetSizePolicyArgs>> targetSizePolicies) {
+            $.targetSizePolicies = targetSizePolicies;
+            return this;
+        }
+
+        /**
+         * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSizePolicies(List<InstanceGroupManagerTargetSizePolicyArgs> targetSizePolicies) {
+            return targetSizePolicies(Output.of(targetSizePolicies));
+        }
+
+        /**
+         * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSizePolicies(InstanceGroupManagerTargetSizePolicyArgs... targetSizePolicies) {
+            return targetSizePolicies(List.of(targetSizePolicies));
         }
 
         /**

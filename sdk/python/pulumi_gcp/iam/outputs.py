@@ -64,6 +64,7 @@ __all__ = [
     'WorkloadIdentityPoolProviderX509TrustStore',
     'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa',
     'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor',
+    'WorkloadIdentityServiceAgentServiceAgent',
     'GetTestablePermissionsPermissionResult',
     'GetWorkloadIdentityPoolAttestationRuleResult',
     'GetWorkloadIdentityPoolInlineCertificateIssuanceConfigResult',
@@ -2763,6 +2764,102 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor(dict):
         ca certificate(either root or intermediate cert).
         """
         return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class WorkloadIdentityServiceAgentServiceAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceProducer":
+            suggest = "service_producer"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityServiceAgentServiceAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityServiceAgentServiceAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityServiceAgentServiceAgent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 principal: Optional[_builtins.str] = None,
+                 role: Optional[_builtins.str] = None,
+                 service_producer: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str container: (Output)
+        :param _builtins.str name: (Output)
+        :param _builtins.str principal: (Output)
+        :param _builtins.str role: (Output)
+        :param _builtins.str service_producer: (Output)
+        :param _builtins.str state: (Output)
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if service_producer is not None:
+            pulumi.set(__self__, "service_producer", service_producer)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "container")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "principal")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceProducer")
+    def service_producer(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "service_producer")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

@@ -93,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Sharedflow{}
 	case "gcp:apigee/sharedflowDeployment:SharedflowDeployment":
 		r = &SharedflowDeployment{}
+	case "gcp:apigee/space:Space":
+		r = &Space{}
 	case "gcp:apigee/syncAuthorization:SyncAuthorization":
 		r = &SyncAuthorization{}
 	case "gcp:apigee/targetServer:TargetServer":
@@ -288,6 +290,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/sharedflowDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/space",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

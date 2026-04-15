@@ -178,7 +178,6 @@ type StoragePool struct {
 	LdapEnabled pulumi.BoolPtrOutput `pulumi:"ldapEnabled"`
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// (Optional, Beta)
 	// Mode of the storage pool.
 	// The operational mode of the storage pool. ONTAP mode enables operations
 	// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -202,11 +201,18 @@ type StoragePool struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrOutput `pulumi:"replicaZone"`
-	// (Optional, Beta)
+	// (Optional, Beta, Deprecated)
 	// The effective scale tier of the storage pool. If `scaleTier` is not
 	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
 	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+	//
+	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+	//
+	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
 	ScaleTier pulumi.StringOutput `pulumi:"scaleTier"`
+	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+	ScaleType pulumi.StringOutput `pulumi:"scaleType"`
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
@@ -317,7 +323,6 @@ type storagePoolState struct {
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location *string `pulumi:"location"`
-	// (Optional, Beta)
 	// Mode of the storage pool.
 	// The operational mode of the storage pool. ONTAP mode enables operations
 	// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -341,11 +346,18 @@ type storagePoolState struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone *string `pulumi:"replicaZone"`
-	// (Optional, Beta)
+	// (Optional, Beta, Deprecated)
 	// The effective scale tier of the storage pool. If `scaleTier` is not
 	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
 	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+	//
+	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+	//
+	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
 	ScaleTier *string `pulumi:"scaleTier"`
+	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+	ScaleType *string `pulumi:"scaleType"`
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel *string `pulumi:"serviceLevel"`
@@ -410,7 +422,6 @@ type StoragePoolState struct {
 	LdapEnabled pulumi.BoolPtrInput
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Mode of the storage pool.
 	// The operational mode of the storage pool. ONTAP mode enables operations
 	// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -434,11 +445,18 @@ type StoragePoolState struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrInput
-	// (Optional, Beta)
+	// (Optional, Beta, Deprecated)
 	// The effective scale tier of the storage pool. If `scaleTier` is not
 	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
 	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+	//
+	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+	//
+	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
 	ScaleTier pulumi.StringPtrInput
+	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+	ScaleType pulumi.StringPtrInput
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringPtrInput
@@ -497,7 +515,6 @@ type storagePoolArgs struct {
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location string `pulumi:"location"`
-	// (Optional, Beta)
 	// Mode of the storage pool.
 	// The operational mode of the storage pool. ONTAP mode enables operations
 	// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -518,11 +535,18 @@ type storagePoolArgs struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone *string `pulumi:"replicaZone"`
-	// (Optional, Beta)
+	// (Optional, Beta, Deprecated)
 	// The effective scale tier of the storage pool. If `scaleTier` is not
 	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
 	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+	//
+	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+	//
+	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
 	ScaleTier *string `pulumi:"scaleTier"`
+	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+	ScaleType *string `pulumi:"scaleType"`
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel string `pulumi:"serviceLevel"`
@@ -574,7 +598,6 @@ type StoragePoolArgs struct {
 	LdapEnabled pulumi.BoolPtrInput
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringInput
-	// (Optional, Beta)
 	// Mode of the storage pool.
 	// The operational mode of the storage pool. ONTAP mode enables operations
 	// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -595,11 +618,18 @@ type StoragePoolArgs struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrInput
-	// (Optional, Beta)
+	// (Optional, Beta, Deprecated)
 	// The effective scale tier of the storage pool. If `scaleTier` is not
 	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
 	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+	//
+	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+	//
+	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
 	ScaleTier pulumi.StringPtrInput
+	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+	ScaleType pulumi.StringPtrInput
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringInput
@@ -794,7 +824,6 @@ func (o StoragePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Mode of the storage pool.
 // The operational mode of the storage pool. ONTAP mode enables operations
 // via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
@@ -840,12 +869,22 @@ func (o StoragePoolOutput) ReplicaZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.ReplicaZone }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
+// (Optional, Beta, Deprecated)
 // The effective scale tier of the storage pool. If `scaleTier` is not
 // specified during creation, this defaults to `SCALE_TIER_STANDARD`.
 // Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+//
+// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+//
+// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
 func (o StoragePoolOutput) ScaleTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ScaleTier }).(pulumi.StringOutput)
+}
+
+// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+func (o StoragePoolOutput) ScaleType() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ScaleType }).(pulumi.StringOutput)
 }
 
 // Service level of the storage pool.

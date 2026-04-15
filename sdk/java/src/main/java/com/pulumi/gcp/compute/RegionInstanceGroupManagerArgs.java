@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStandbyPolicyArgs
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulExternalIpArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulInternalIpArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerTargetSizePolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerUpdatePolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
 import java.lang.Boolean;
@@ -143,7 +144,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
     /**
      * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-     * ***
      * 
      */
     @Import(name="instanceFlexibilityPolicy")
@@ -151,7 +151,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
     /**
      * @return The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-     * ***
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs>> instanceFlexibilityPolicy() {
@@ -388,6 +387,25 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * *
+     * ***
+     * 
+     */
+    @Import(name="targetSizePolicies")
+    private @Nullable Output<List<RegionInstanceGroupManagerTargetSizePolicyArgs>> targetSizePolicies;
+
+    /**
+     * @return The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * *
+     * ***
+     * 
+     */
+    public Optional<Output<List<RegionInstanceGroupManagerTargetSizePolicyArgs>>> targetSizePolicies() {
+        return Optional.ofNullable(this.targetSizePolicies);
+    }
+
+    /**
      * The target number of stopped instances for this managed instance group.
      * 
      */
@@ -514,6 +532,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         this.statefulInternalIps = $.statefulInternalIps;
         this.targetPools = $.targetPools;
         this.targetSize = $.targetSize;
+        this.targetSizePolicies = $.targetSizePolicies;
         this.targetStoppedSize = $.targetStoppedSize;
         this.targetSuspendedSize = $.targetSuspendedSize;
         this.updatePolicy = $.updatePolicy;
@@ -699,7 +718,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param instanceFlexibilityPolicy The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-         * ***
          * 
          * @return builder
          * 
@@ -711,7 +729,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param instanceFlexibilityPolicy The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-         * ***
          * 
          * @return builder
          * 
@@ -1078,6 +1095,43 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
          */
         public Builder targetSize(Integer targetSize) {
             return targetSize(Output.of(targetSize));
+        }
+
+        /**
+         * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+         * *
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSizePolicies(@Nullable Output<List<RegionInstanceGroupManagerTargetSizePolicyArgs>> targetSizePolicies) {
+            $.targetSizePolicies = targetSizePolicies;
+            return this;
+        }
+
+        /**
+         * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+         * *
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSizePolicies(List<RegionInstanceGroupManagerTargetSizePolicyArgs> targetSizePolicies) {
+            return targetSizePolicies(Output.of(targetSizePolicies));
+        }
+
+        /**
+         * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+         * *
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSizePolicies(RegionInstanceGroupManagerTargetSizePolicyArgs... targetSizePolicies) {
+            return targetSizePolicies(List.of(targetSizePolicies));
         }
 
         /**

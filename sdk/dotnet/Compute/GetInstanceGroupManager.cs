@@ -205,6 +205,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatusResult> Statuses;
         public readonly ImmutableArray<string> TargetPools;
         public readonly int TargetSize;
+        public readonly ImmutableArray<Outputs.GetInstanceGroupManagerTargetSizePolicyResult> TargetSizePolicies;
         public readonly int TargetStoppedSize;
         public readonly int TargetSuspendedSize;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerUpdatePolicyResult> UpdatePolicies;
@@ -265,6 +266,8 @@ namespace Pulumi.Gcp.Compute
 
             int targetSize,
 
+            ImmutableArray<Outputs.GetInstanceGroupManagerTargetSizePolicyResult> targetSizePolicies,
+
             int targetStoppedSize,
 
             int targetSuspendedSize,
@@ -304,6 +307,7 @@ namespace Pulumi.Gcp.Compute
             Statuses = statuses;
             TargetPools = targetPools;
             TargetSize = targetSize;
+            TargetSizePolicies = targetSizePolicies;
             TargetStoppedSize = targetStoppedSize;
             TargetSuspendedSize = targetSuspendedSize;
             UpdatePolicies = updatePolicies;

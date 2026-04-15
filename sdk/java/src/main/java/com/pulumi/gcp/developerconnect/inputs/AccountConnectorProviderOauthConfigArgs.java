@@ -18,7 +18,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
     public static final AccountConnectorProviderOauthConfigArgs Empty = new AccountConnectorProviderOauthConfigArgs();
 
     /**
-     * Required. User selected scopes to apply to the Oauth config
+     * User selected scopes to apply to the Oauth config
      * In the event of changing scopes, user records under AccountConnector will
      * be deleted and users will re-auth again.
      * 
@@ -27,7 +27,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
     private Output<List<String>> scopes;
 
     /**
-     * @return Required. User selected scopes to apply to the Oauth config
+     * @return User selected scopes to apply to the Oauth config
      * In the event of changing scopes, user records under AccountConnector will
      * be deleted and users will re-auth again.
      * 
@@ -37,9 +37,6 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
     }
 
     /**
-     * List of providers that are owned by Developer Connect. Creation of
-     * new non-SCM providers Account Connectors is not possible at this
-     * time.
      * Possible values:
      * GITHUB
      * GITLAB
@@ -48,16 +45,14 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
      * ROVO
      * NEW_RELIC
      * DATASTAX
+     * DYNATRACE
      * 
      */
     @Import(name="systemProviderId")
     private @Nullable Output<String> systemProviderId;
 
     /**
-     * @return List of providers that are owned by Developer Connect. Creation of
-     * new non-SCM providers Account Connectors is not possible at this
-     * time.
-     * Possible values:
+     * @return Possible values:
      * GITHUB
      * GITLAB
      * GOOGLE
@@ -65,6 +60,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
      * ROVO
      * NEW_RELIC
      * DATASTAX
+     * DYNATRACE
      * 
      */
     public Optional<Output<String>> systemProviderId() {
@@ -97,7 +93,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param scopes Required. User selected scopes to apply to the Oauth config
+         * @param scopes User selected scopes to apply to the Oauth config
          * In the event of changing scopes, user records under AccountConnector will
          * be deleted and users will re-auth again.
          * 
@@ -110,7 +106,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param scopes Required. User selected scopes to apply to the Oauth config
+         * @param scopes User selected scopes to apply to the Oauth config
          * In the event of changing scopes, user records under AccountConnector will
          * be deleted and users will re-auth again.
          * 
@@ -122,7 +118,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param scopes Required. User selected scopes to apply to the Oauth config
+         * @param scopes User selected scopes to apply to the Oauth config
          * In the event of changing scopes, user records under AccountConnector will
          * be deleted and users will re-auth again.
          * 
@@ -134,10 +130,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param systemProviderId List of providers that are owned by Developer Connect. Creation of
-         * new non-SCM providers Account Connectors is not possible at this
-         * time.
-         * Possible values:
+         * @param systemProviderId Possible values:
          * GITHUB
          * GITLAB
          * GOOGLE
@@ -145,6 +138,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
          * ROVO
          * NEW_RELIC
          * DATASTAX
+         * DYNATRACE
          * 
          * @return builder
          * 
@@ -155,10 +149,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param systemProviderId List of providers that are owned by Developer Connect. Creation of
-         * new non-SCM providers Account Connectors is not possible at this
-         * time.
-         * Possible values:
+         * @param systemProviderId Possible values:
          * GITHUB
          * GITLAB
          * GOOGLE
@@ -166,6 +157,7 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
          * ROVO
          * NEW_RELIC
          * DATASTAX
+         * DYNATRACE
          * 
          * @return builder
          * 

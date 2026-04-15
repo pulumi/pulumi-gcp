@@ -17,16 +17,31 @@ public final class ClusterAddonsConfigLustreCsiDriverConfigArgs extends com.pulu
     public static final ClusterAddonsConfigLustreCsiDriverConfigArgs Empty = new ClusterAddonsConfigLustreCsiDriverConfigArgs();
 
     /**
-     * If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-     * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+     * 
+     */
+    @Import(name="disableMultiNic")
+    private @Nullable Output<Boolean> disableMultiNic;
+
+    /**
+     * @return When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+     * 
+     */
+    public Optional<Output<Boolean>> disableMultiNic() {
+        return Optional.ofNullable(this.disableMultiNic);
+    }
+
+    /**
+     * which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * 
      */
     @Import(name="enableLegacyLustrePort")
     private @Nullable Output<Boolean> enableLegacyLustrePort;
 
     /**
-     * @return If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-     * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * @return which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * 
      */
     public Optional<Output<Boolean>> enableLegacyLustrePort() {
@@ -51,6 +66,7 @@ public final class ClusterAddonsConfigLustreCsiDriverConfigArgs extends com.pulu
     private ClusterAddonsConfigLustreCsiDriverConfigArgs() {}
 
     private ClusterAddonsConfigLustreCsiDriverConfigArgs(ClusterAddonsConfigLustreCsiDriverConfigArgs $) {
+        this.disableMultiNic = $.disableMultiNic;
         this.enableLegacyLustrePort = $.enableLegacyLustrePort;
         this.enabled = $.enabled;
     }
@@ -74,8 +90,29 @@ public final class ClusterAddonsConfigLustreCsiDriverConfigArgs extends com.pulu
         }
 
         /**
-         * @param enableLegacyLustrePort If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-         * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+         * @param disableMultiNic When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableMultiNic(@Nullable Output<Boolean> disableMultiNic) {
+            $.disableMultiNic = disableMultiNic;
+            return this;
+        }
+
+        /**
+         * @param disableMultiNic When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableMultiNic(Boolean disableMultiNic) {
+            return disableMultiNic(Output.of(disableMultiNic));
+        }
+
+        /**
+         * @param enableLegacyLustrePort which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+         * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
          * 
          * @return builder
          * 
@@ -86,8 +123,8 @@ public final class ClusterAddonsConfigLustreCsiDriverConfigArgs extends com.pulu
         }
 
         /**
-         * @param enableLegacyLustrePort If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-         * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+         * @param enableLegacyLustrePort which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+         * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
          * 
          * @return builder
          * 

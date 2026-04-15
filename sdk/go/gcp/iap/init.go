@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding":
+		r = &AgentRegistryIamBinding{}
+	case "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember":
+		r = &AgentRegistryIamMember{}
+	case "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy":
+		r = &AgentRegistryIamPolicy{}
 	case "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding":
 		r = &AppEngineServiceIamBinding{}
 	case "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember":
@@ -37,6 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Brand{}
 	case "gcp:iap/client:Client":
 		r = &Client{}
+	case "gcp:iap/locationWebIamBinding:LocationWebIamBinding":
+		r = &LocationWebIamBinding{}
+	case "gcp:iap/locationWebIamMember:LocationWebIamMember":
+		r = &LocationWebIamMember{}
+	case "gcp:iap/locationWebIamPolicy:LocationWebIamPolicy":
+		r = &LocationWebIamPolicy{}
 	case "gcp:iap/settings:Settings":
 		r = &Settings{}
 	case "gcp:iap/tunnelDestGroup:TunnelDestGroup":
@@ -122,6 +134,21 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"iap/agentRegistryIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"iap/appEngineServiceIamBinding",
 		&module{version},
 	)
@@ -158,6 +185,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/client",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/locationWebIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/locationWebIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/locationWebIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

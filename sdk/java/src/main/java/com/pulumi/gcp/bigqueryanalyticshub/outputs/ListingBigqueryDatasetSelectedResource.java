@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListingBigqueryDatasetSelectedResource {
     /**
-     * @return (Optional, Beta)
-     * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * @return Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
      * 
      * &lt;a name=&#34;nestedBigqueryDatasetEffectiveReplicas&#34;&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
      * 
@@ -27,8 +26,7 @@ public final class ListingBigqueryDatasetSelectedResource {
 
     private ListingBigqueryDatasetSelectedResource() {}
     /**
-     * @return (Optional, Beta)
-     * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * @return Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
      * 
      * &lt;a name=&#34;nestedBigqueryDatasetEffectiveReplicas&#34;&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
      * 

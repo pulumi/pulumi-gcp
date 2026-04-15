@@ -73,6 +73,48 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dataform Repository Release Config Disabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "my_secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
+ *     secret: secret.id,
+ *     secretData: "secret-data",
+ * });
+ * const repository = new gcp.dataform.Repository("repository", {
+ *     name: "dataform_repository",
+ *     region: "us-central1",
+ *     gitRemoteSettings: {
+ *         url: gitRepository.url,
+ *         defaultBranch: "main",
+ *         authenticationTokenSecretVersion: secretVersion.id,
+ *     },
+ *     workspaceCompilationOverrides: {
+ *         defaultDatabase: "database",
+ *         schemaSuffix: "_suffix",
+ *         tablePrefix: "prefix_",
+ *     },
+ * });
+ * const release = new gcp.dataform.RepositoryReleaseConfig("release", {
+ *     project: repository.project,
+ *     region: repository.region,
+ *     repository: repository.name,
+ *     name: "my_release",
+ *     gitCommitish: "main",
+ *     cronSchedule: "0 7 * * *",
+ *     timeZone: "America/New_York",
+ *     disabled: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -130,6 +172,10 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
      */
     declare public readonly cronSchedule: pulumi.Output<string | undefined>;
     /**
+     * Disables automatic creation of compilation results.
+     */
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
+    /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      */
     declare public readonly gitCommitish: pulumi.Output<string>;
@@ -175,6 +221,7 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
             const state = argsOrState as RepositoryReleaseConfigState | undefined;
             resourceInputs["codeCompilationConfig"] = state?.codeCompilationConfig;
             resourceInputs["cronSchedule"] = state?.cronSchedule;
+            resourceInputs["disabled"] = state?.disabled;
             resourceInputs["gitCommitish"] = state?.gitCommitish;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -189,6 +236,7 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
             }
             resourceInputs["codeCompilationConfig"] = args?.codeCompilationConfig;
             resourceInputs["cronSchedule"] = args?.cronSchedule;
+            resourceInputs["disabled"] = args?.disabled;
             resourceInputs["gitCommitish"] = args?.gitCommitish;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -215,6 +263,10 @@ export interface RepositoryReleaseConfigState {
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
     cronSchedule?: pulumi.Input<string>;
+    /**
+     * Disables automatic creation of compilation results.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      */
@@ -260,6 +312,10 @@ export interface RepositoryReleaseConfigArgs {
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
     cronSchedule?: pulumi.Input<string>;
+    /**
+     * Disables automatic creation of compilation results.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      */

@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
     ///     {
     ///         Location = "us-central1",
-    ///         AccountConnectorId = "tf-test-ac",
+    ///         AccountConnectorId = "my-ac",
     ///         ProviderOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorProviderOauthConfigArgs
     ///         {
     ///             SystemProviderId = "GITHUB",
@@ -53,13 +53,196 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
     ///     {
     ///         Location = "us-central1",
-    ///         AccountConnectorId = "tf-test-ac",
+    ///         AccountConnectorId = "my-ac",
     ///         ProviderOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorProviderOauthConfigArgs
     ///         {
     ///             SystemProviderId = "GITLAB",
     ///             Scopes = new[]
     ///             {
     ///                 "api",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Account Connector Ghe
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gheAcClientId = new Gcp.SecretManager.Secret("ghe_ac_client_id", new()
+    ///     {
+    ///         SecretId = "ghe-ac-id",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var gheAcClientIdVersion = new Gcp.SecretManager.SecretVersion("ghe_ac_client_id_version", new()
+    ///     {
+    ///         Secret = gheAcClientId.Name,
+    ///         SecretData = "dummy-client-id",
+    ///     });
+    /// 
+    ///     var gheAcClientSecret = new Gcp.SecretManager.Secret("ghe_ac_client_secret", new()
+    ///     {
+    ///         SecretId = "ghe-ac-sec",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var gheAcClientSecretVersion = new Gcp.SecretManager.SecretVersion("ghe_ac_client_secret_version", new()
+    ///     {
+    ///         Secret = gheAcClientSecret.Name,
+    ///         SecretData = "dummy-client-secret",
+    ///     });
+    /// 
+    ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AccountConnectorId = "my-ac",
+    ///         CustomOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorCustomOauthConfigArgs
+    ///         {
+    ///             AuthUri = "https://ghe.proctor-staging-test.com/login/oauth/authorize",
+    ///             ClientId = gheAcClientIdVersion.SecretData,
+    ///             ClientSecret = gheAcClientSecretVersion.SecretData,
+    ///             TokenUri = "https://ghe.proctor-staging-test.com/login/oauth/access_token",
+    ///             HostUri = "https://ghe.proctor-staging-test.com",
+    ///             ScmProvider = "GITHUB_ENTERPRISE",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "repo",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Account Connector Gle
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gleAcClientId = new Gcp.SecretManager.Secret("gle_ac_client_id", new()
+    ///     {
+    ///         SecretId = "gle-ac-id",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var gleAcClientIdVersion = new Gcp.SecretManager.SecretVersion("gle_ac_client_id_version", new()
+    ///     {
+    ///         Secret = gleAcClientId.Name,
+    ///         SecretData = "dummy-client-id",
+    ///     });
+    /// 
+    ///     var gleAcClientSecret = new Gcp.SecretManager.Secret("gle_ac_client_secret", new()
+    ///     {
+    ///         SecretId = "gle-ac-sec",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var gleAcClientSecretVersion = new Gcp.SecretManager.SecretVersion("gle_ac_client_secret_version", new()
+    ///     {
+    ///         Secret = gleAcClientSecret.Name,
+    ///         SecretData = "dummy-client-secret",
+    ///     });
+    /// 
+    ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AccountConnectorId = "my-ac",
+    ///         CustomOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorCustomOauthConfigArgs
+    ///         {
+    ///             AuthUri = "https://gle-us-central1.gcb-test.com/oauth/authorize",
+    ///             ClientId = gleAcClientIdVersion.SecretData,
+    ///             ClientSecret = gleAcClientSecretVersion.SecretData,
+    ///             TokenUri = "https://gle-us-central1.gcb-test.com/oauth/token",
+    ///             HostUri = "https://gle-us-central1.gcb-test.com",
+    ///             ScmProvider = "GITLAB_ENTERPRISE",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "api",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Account Connector Bbdc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbdcAcPrivClientId = new Gcp.SecretManager.Secret("bbdc_ac_priv_client_id", new()
+    ///     {
+    ///         SecretId = "bbdc-ac-id",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var bbdcAcPrivClientIdVersion = new Gcp.SecretManager.SecretVersion("bbdc_ac_priv_client_id_version", new()
+    ///     {
+    ///         Secret = bbdcAcPrivClientId.Name,
+    ///         SecretData = "dummy-client-id",
+    ///     });
+    /// 
+    ///     var bbdcAcPrivClientSecret = new Gcp.SecretManager.Secret("bbdc_ac_priv_client_secret", new()
+    ///     {
+    ///         SecretId = "bbdc-ac-sec",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var bbdcAcPrivClientSecretVersion = new Gcp.SecretManager.SecretVersion("bbdc_ac_priv_client_secret_version", new()
+    ///     {
+    ///         Secret = bbdcAcPrivClientSecret.Name,
+    ///         SecretData = "dummy-client-secret",
+    ///     });
+    /// 
+    ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AccountConnectorId = "my-ac",
+    ///         CustomOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorCustomOauthConfigArgs
+    ///         {
+    ///             AuthUri = "https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/authorize",
+    ///             ClientId = bbdcAcPrivClientIdVersion.SecretData,
+    ///             ClientSecret = bbdcAcPrivClientSecretVersion.SecretData,
+    ///             TokenUri = "https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/token",
+    ///             HostUri = "https://bitbucket-us-central.gcb-test.com",
+    ///             ScmProvider = "BITBUCKET_DATA_CENTER",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "REPO_ADMIN",
     ///             },
     ///         },
     ///     });
@@ -87,7 +270,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     public partial class AccountConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The ID to use for the AccountConnector, which will become the final
+        /// The ID to use for the AccountConnector, which will become the final
         /// component of the AccountConnector's resource name. Its format should adhere
         /// to https://google.aip.dev/122#resource-id-segments Names must be unique
         /// per-project per-location.
@@ -96,7 +279,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<string> AccountConnectorId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Allows users to store small amounts of arbitrary data.
+        /// Allows users to store small amounts of arbitrary data.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
@@ -104,10 +287,17 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The timestamp when the userConnection was created.
+        /// The timestamp when the accountConnector was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Message for a customized OAuth config.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("customOauthConfig")]
+        public Output<Outputs.AccountConnectorCustomOauthConfig?> CustomOauthConfig { get; private set; } = null!;
 
         /// <summary>
         /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -122,7 +312,15 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// This checksum is computed by the server based on the value of other
+        /// fields, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string?> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels as key value pairs
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
@@ -130,20 +328,20 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the resource.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier. The resource name of the userConnection, in the format
+        /// Identifier. The resource name of the accountConnector, in the format
         /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Start OAuth flow by clicking on this URL.
+        /// Start OAuth flow by clicking on this URL.
         /// </summary>
         [Output("oauthStartUri")]
         public Output<string> OauthStartUri { get; private set; } = null!;
@@ -163,6 +361,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<Outputs.AccountConnectorProviderOauthConfig?> ProviderOauthConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("proxyConfig")]
+        public Output<Outputs.AccountConnectorProxyConfig?> ProxyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         ///  and default labels configured on the provider.
         /// </summary>
@@ -170,7 +375,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The timestamp when the userConnection was updated.
+        /// The timestamp when the accountConnector was updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -227,7 +432,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     public sealed class AccountConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The ID to use for the AccountConnector, which will become the final
+        /// The ID to use for the AccountConnector, which will become the final
         /// component of the AccountConnector's resource name. Its format should adhere
         /// to https://google.aip.dev/122#resource-id-segments Names must be unique
         /// per-project per-location.
@@ -239,7 +444,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Allows users to store small amounts of arbitrary data.
+        /// Allows users to store small amounts of arbitrary data.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
@@ -249,11 +454,26 @@ namespace Pulumi.Gcp.DeveloperConnect
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Message for a customized OAuth config.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customOauthConfig")]
+        public Input<Inputs.AccountConnectorCustomOauthConfigArgs>? CustomOauthConfig { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other
+        /// fields, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels as key value pairs
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
@@ -264,7 +484,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// The location of the resource.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -283,6 +503,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         [Input("providerOauthConfig")]
         public Input<Inputs.AccountConnectorProviderOauthConfigArgs>? ProviderOauthConfig { get; set; }
 
+        /// <summary>
+        /// The proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyConfig")]
+        public Input<Inputs.AccountConnectorProxyConfigArgs>? ProxyConfig { get; set; }
+
         public AccountConnectorArgs()
         {
         }
@@ -292,7 +519,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     public sealed class AccountConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The ID to use for the AccountConnector, which will become the final
+        /// The ID to use for the AccountConnector, which will become the final
         /// component of the AccountConnector's resource name. Its format should adhere
         /// to https://google.aip.dev/122#resource-id-segments Names must be unique
         /// per-project per-location.
@@ -304,7 +531,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Allows users to store small amounts of arbitrary data.
+        /// Allows users to store small amounts of arbitrary data.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
@@ -315,10 +542,17 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Output only. The timestamp when the userConnection was created.
+        /// The timestamp when the accountConnector was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Message for a customized OAuth config.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customOauthConfig")]
+        public Input<Inputs.AccountConnectorCustomOauthConfigGetArgs>? CustomOauthConfig { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;
@@ -348,11 +582,19 @@ namespace Pulumi.Gcp.DeveloperConnect
             }
         }
 
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other
+        /// fields, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs
+        /// Labels as key value pairs
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
@@ -363,20 +605,20 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// The location of the resource.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the userConnection, in the format
+        /// Identifier. The resource name of the accountConnector, in the format
         /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. Start OAuth flow by clicking on this URL.
+        /// Start OAuth flow by clicking on this URL.
         /// </summary>
         [Input("oauthStartUri")]
         public Input<string>? OauthStartUri { get; set; }
@@ -394,6 +636,13 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// </summary>
         [Input("providerOauthConfig")]
         public Input<Inputs.AccountConnectorProviderOauthConfigGetArgs>? ProviderOauthConfig { get; set; }
+
+        /// <summary>
+        /// The proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyConfig")]
+        public Input<Inputs.AccountConnectorProxyConfigGetArgs>? ProxyConfig { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;
@@ -413,7 +662,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Output only. The timestamp when the userConnection was updated.
+        /// The timestamp when the accountConnector was updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

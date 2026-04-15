@@ -1435,6 +1435,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.workflowsCustomEndpoint);
     }
 
+    @Import(name="workloadIdentityCustomEndpoint")
+    private @Nullable Output<String> workloadIdentityCustomEndpoint;
+
+    public Optional<Output<String>> workloadIdentityCustomEndpoint() {
+        return Optional.ofNullable(this.workloadIdentityCustomEndpoint);
+    }
+
     @Import(name="workstationsCustomEndpoint")
     private @Nullable Output<String> workstationsCustomEndpoint;
 
@@ -1654,6 +1661,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.vpcAccessCustomEndpoint = $.vpcAccessCustomEndpoint;
         this.workbenchCustomEndpoint = $.workbenchCustomEndpoint;
         this.workflowsCustomEndpoint = $.workflowsCustomEndpoint;
+        this.workloadIdentityCustomEndpoint = $.workloadIdentityCustomEndpoint;
         this.workstationsCustomEndpoint = $.workstationsCustomEndpoint;
         this.zone = $.zone;
     }
@@ -3500,6 +3508,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder workflowsCustomEndpoint(String workflowsCustomEndpoint) {
             return workflowsCustomEndpoint(Output.of(workflowsCustomEndpoint));
+        }
+
+        public Builder workloadIdentityCustomEndpoint(@Nullable Output<String> workloadIdentityCustomEndpoint) {
+            $.workloadIdentityCustomEndpoint = workloadIdentityCustomEndpoint;
+            return this;
+        }
+
+        public Builder workloadIdentityCustomEndpoint(String workloadIdentityCustomEndpoint) {
+            return workloadIdentityCustomEndpoint(Output.of(workloadIdentityCustomEndpoint));
         }
 
         public Builder workstationsCustomEndpoint(@Nullable Output<String> workstationsCustomEndpoint) {

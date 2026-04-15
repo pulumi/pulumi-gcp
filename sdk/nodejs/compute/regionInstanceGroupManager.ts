@@ -201,7 +201,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-     * - - -
      */
     declare public readonly instanceFlexibilityPolicy: pulumi.Output<outputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy | undefined>;
     /**
@@ -290,6 +289,12 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     declare public readonly targetSize: pulumi.Output<number>;
     /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * *
+     * - - -
+     */
+    declare public readonly targetSizePolicies: pulumi.Output<outputs.compute.RegionInstanceGroupManagerTargetSizePolicy[]>;
+    /**
      * The target number of stopped instances for this managed instance group.
      */
     declare public readonly targetStoppedSize: pulumi.Output<number>;
@@ -360,6 +365,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["targetPools"] = state?.targetPools;
             resourceInputs["targetSize"] = state?.targetSize;
+            resourceInputs["targetSizePolicies"] = state?.targetSizePolicies;
             resourceInputs["targetStoppedSize"] = state?.targetStoppedSize;
             resourceInputs["targetSuspendedSize"] = state?.targetSuspendedSize;
             resourceInputs["updatePolicy"] = state?.updatePolicy;
@@ -394,6 +400,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["statefulInternalIps"] = args?.statefulInternalIps;
             resourceInputs["targetPools"] = args?.targetPools;
             resourceInputs["targetSize"] = args?.targetSize;
+            resourceInputs["targetSizePolicies"] = args?.targetSizePolicies;
             resourceInputs["targetStoppedSize"] = args?.targetStoppedSize;
             resourceInputs["targetSuspendedSize"] = args?.targetSuspendedSize;
             resourceInputs["updatePolicy"] = args?.updatePolicy;
@@ -460,7 +467,6 @@ export interface RegionInstanceGroupManagerState {
     fingerprint?: pulumi.Input<string>;
     /**
      * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-     * - - -
      */
     instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy>;
     /**
@@ -549,6 +555,12 @@ export interface RegionInstanceGroupManagerState {
      */
     targetSize?: pulumi.Input<number>;
     /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * *
+     * - - -
+     */
+    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[]>;
+    /**
      * The target number of stopped instances for this managed instance group.
      */
     targetStoppedSize?: pulumi.Input<number>;
@@ -621,7 +633,6 @@ export interface RegionInstanceGroupManagerArgs {
     distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-     * - - -
      */
     instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy>;
     /**
@@ -693,6 +704,12 @@ export interface RegionInstanceGroupManagerArgs {
      * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+     * *
+     * - - -
+     */
+    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[]>;
     /**
      * The target number of stopped instances for this managed instance group.
      */

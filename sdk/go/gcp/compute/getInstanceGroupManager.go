@@ -97,6 +97,7 @@ type LookupInstanceGroupManagerResult struct {
 	Statuses                    []GetInstanceGroupManagerStatus                  `pulumi:"statuses"`
 	TargetPools                 []string                                         `pulumi:"targetPools"`
 	TargetSize                  int                                              `pulumi:"targetSize"`
+	TargetSizePolicies          []GetInstanceGroupManagerTargetSizePolicy        `pulumi:"targetSizePolicies"`
 	TargetStoppedSize           int                                              `pulumi:"targetStoppedSize"`
 	TargetSuspendedSize         int                                              `pulumi:"targetSuspendedSize"`
 	UpdatePolicies              []GetInstanceGroupManagerUpdatePolicy            `pulumi:"updatePolicies"`
@@ -259,6 +260,12 @@ func (o LookupInstanceGroupManagerResultOutput) TargetPools() pulumi.StringArray
 
 func (o LookupInstanceGroupManagerResultOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetSize }).(pulumi.IntOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) TargetSizePolicies() GetInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) []GetInstanceGroupManagerTargetSizePolicy {
+		return v.TargetSizePolicies
+	}).(GetInstanceGroupManagerTargetSizePolicyArrayOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) TargetStoppedSize() pulumi.IntOutput {

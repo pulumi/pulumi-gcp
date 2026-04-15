@@ -222,6 +222,7 @@ class ProviderArgs:
                  vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workbench_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 workload_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workstations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -635,6 +636,8 @@ class ProviderArgs:
             pulumi.set(__self__, "workbench_custom_endpoint", workbench_custom_endpoint)
         if workflows_custom_endpoint is not None:
             pulumi.set(__self__, "workflows_custom_endpoint", workflows_custom_endpoint)
+        if workload_identity_custom_endpoint is not None:
+            pulumi.set(__self__, "workload_identity_custom_endpoint", workload_identity_custom_endpoint)
         if workstations_custom_endpoint is not None:
             pulumi.set(__self__, "workstations_custom_endpoint", workstations_custom_endpoint)
         if zone is None:
@@ -2461,6 +2464,15 @@ class ProviderArgs:
         pulumi.set(self, "workflows_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="workloadIdentityCustomEndpoint")
+    def workload_identity_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "workload_identity_custom_endpoint")
+
+    @workload_identity_custom_endpoint.setter
+    def workload_identity_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workload_identity_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="workstationsCustomEndpoint")
     def workstations_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "workstations_custom_endpoint")
@@ -2687,6 +2699,7 @@ class Provider(pulumi.ProviderResource):
                  vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workbench_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 workload_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workstations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -2930,6 +2943,7 @@ class Provider(pulumi.ProviderResource):
                  vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workbench_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 workload_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  workstations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -3147,6 +3161,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
             __props__.__dict__["workbench_custom_endpoint"] = workbench_custom_endpoint
             __props__.__dict__["workflows_custom_endpoint"] = workflows_custom_endpoint
+            __props__.__dict__["workload_identity_custom_endpoint"] = workload_identity_custom_endpoint
             __props__.__dict__["workstations_custom_endpoint"] = workstations_custom_endpoint
             if zone is None:
                 zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
@@ -4128,6 +4143,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="workflowsCustomEndpoint")
     def workflows_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "workflows_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityCustomEndpoint")
+    def workload_identity_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "workload_identity_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="workstationsCustomEndpoint")

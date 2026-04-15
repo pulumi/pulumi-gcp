@@ -1641,6 +1641,14 @@ Object.defineProperty(exports, "workflowsCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const workloadIdentityCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "workloadIdentityCustomEndpoint", {
+    get() {
+        return __config.get("workloadIdentityCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const workstationsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "workstationsCustomEndpoint", {
     get() {

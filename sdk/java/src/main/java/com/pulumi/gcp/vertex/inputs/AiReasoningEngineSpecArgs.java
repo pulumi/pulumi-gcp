@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecContainerSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
@@ -51,6 +52,23 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Deploy from a container image with a defined entrypoint and commands.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="containerSpec")
+    private @Nullable Output<AiReasoningEngineSpecContainerSpecArgs> containerSpec;
+
+    /**
+     * @return Deploy from a container image with a defined entrypoint and commands.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecContainerSpecArgs>> containerSpec() {
+        return Optional.ofNullable(this.containerSpec);
+    }
+
+    /**
      * Optional. The specification of a Reasoning Engine deployment.
      * Structure is documented below.
      * 
@@ -68,7 +86,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Output, Beta)
+     * (Output)
      * The identity to use for the Reasoning Engine.
      * 
      */
@@ -76,7 +94,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> effectiveIdentity;
 
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The identity to use for the Reasoning Engine.
      * 
      */
@@ -85,7 +103,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, Beta)
      * Optional. The identity type to use for the Reasoning Engine.
      * If not specified, the `serviceAccount` field will be used if set,
      * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
@@ -99,8 +116,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> identityType;
 
     /**
-     * @return (Optional, Beta)
-     * Optional. The identity type to use for the Reasoning Engine.
+     * @return Optional. The identity type to use for the Reasoning Engine.
      * If not specified, the `serviceAccount` field will be used if set,
      * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
      * Possible values:
@@ -181,6 +197,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     private AiReasoningEngineSpecArgs(AiReasoningEngineSpecArgs $) {
         this.agentFramework = $.agentFramework;
         this.classMethods = $.classMethods;
+        this.containerSpec = $.containerSpec;
         this.deploymentSpec = $.deploymentSpec;
         this.effectiveIdentity = $.effectiveIdentity;
         this.identityType = $.identityType;
@@ -252,6 +269,29 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param containerSpec Deploy from a container image with a defined entrypoint and commands.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerSpec(@Nullable Output<AiReasoningEngineSpecContainerSpecArgs> containerSpec) {
+            $.containerSpec = containerSpec;
+            return this;
+        }
+
+        /**
+         * @param containerSpec Deploy from a container image with a defined entrypoint and commands.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerSpec(AiReasoningEngineSpecContainerSpecArgs containerSpec) {
+            return containerSpec(Output.of(containerSpec));
+        }
+
+        /**
          * @param deploymentSpec Optional. The specification of a Reasoning Engine deployment.
          * Structure is documented below.
          * 
@@ -275,7 +315,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectiveIdentity (Output, Beta)
+         * @param effectiveIdentity (Output)
          * The identity to use for the Reasoning Engine.
          * 
          * @return builder
@@ -287,7 +327,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectiveIdentity (Output, Beta)
+         * @param effectiveIdentity (Output)
          * The identity to use for the Reasoning Engine.
          * 
          * @return builder
@@ -298,8 +338,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param identityType (Optional, Beta)
-         * Optional. The identity type to use for the Reasoning Engine.
+         * @param identityType Optional. The identity type to use for the Reasoning Engine.
          * If not specified, the `serviceAccount` field will be used if set,
          * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
          * Possible values:
@@ -316,8 +355,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param identityType (Optional, Beta)
-         * Optional. The identity type to use for the Reasoning Engine.
+         * @param identityType Optional. The identity type to use for the Reasoning Engine.
          * If not specified, the `serviceAccount` field will be used if set,
          * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
          * Possible values:

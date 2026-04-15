@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Ces
     ///         Instruction = "You are a helpful assistant for this example.",
     ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.5-flash-001",
+    ///             Model = "gemini-2.5-flash",
     ///             Temperature = 0.5,
     ///         },
     ///         LlmAgent = null,
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Ces
     ///         Instruction = "You are a helpful assistant for this example.",
     ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.5-flash-001",
+    ///             Model = "gemini-2.5-flash",
     ///             Temperature = 0.5,
     ///         },
     ///         BeforeAgentCallbacks = new[]

@@ -13,8 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAddonsConfigLustreCsiDriverConfig {
     /**
-     * @return If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-     * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * @return When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+     * 
+     */
+    private @Nullable Boolean disableMultiNic;
+    /**
+     * @return which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * 
      */
     private @Nullable Boolean enableLegacyLustrePort;
@@ -26,8 +31,15 @@ public final class ClusterAddonsConfigLustreCsiDriverConfig {
 
     private ClusterAddonsConfigLustreCsiDriverConfig() {}
     /**
-     * @return If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
-     * 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * @return When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
+     * 
+     */
+    public Optional<Boolean> disableMultiNic() {
+        return Optional.ofNullable(this.disableMultiNic);
+    }
+    /**
+     * @return which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * 
      */
     public Optional<Boolean> enableLegacyLustrePort() {
@@ -50,15 +62,23 @@ public final class ClusterAddonsConfigLustreCsiDriverConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disableMultiNic;
         private @Nullable Boolean enableLegacyLustrePort;
         private Boolean enabled;
         public Builder() {}
         public Builder(ClusterAddonsConfigLustreCsiDriverConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableMultiNic = defaults.disableMultiNic;
     	      this.enableLegacyLustrePort = defaults.enableLegacyLustrePort;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder disableMultiNic(@Nullable Boolean disableMultiNic) {
+
+            this.disableMultiNic = disableMultiNic;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableLegacyLustrePort(@Nullable Boolean enableLegacyLustrePort) {
 
@@ -75,6 +95,7 @@ public final class ClusterAddonsConfigLustreCsiDriverConfig {
         }
         public ClusterAddonsConfigLustreCsiDriverConfig build() {
             final var _resultValue = new ClusterAddonsConfigLustreCsiDriverConfig();
+            _resultValue.disableMultiNic = disableMultiNic;
             _resultValue.enableLegacyLustrePort = enableLegacyLustrePort;
             _resultValue.enabled = enabled;
             return _resultValue;

@@ -435,7 +435,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("sql-server")
- *             .databaseVersion("SQLSERVER_2019_STANDARD")
+ *             .databaseVersion("SQLSERVER_2022_STANDARD")
  *             .region("us-central1")
  *             .rootPassword("root-password")
  *             .deletionProtection(true)

@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.ClusterState;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfig;
 import com.pulumi.gcp.container.outputs.ClusterAnonymousAuthenticationConfig;
 import com.pulumi.gcp.container.outputs.ClusterAuthenticatorGroupsConfig;
+import com.pulumi.gcp.container.outputs.ClusterAutopilotClusterPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterClusterTelemetry;
@@ -31,6 +32,7 @@ import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.ClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicy;
+import com.pulumi.gcp.container.outputs.ClusterManagedMachineLearningDiagnosticsConfig;
 import com.pulumi.gcp.container.outputs.ClusterManagedOpentelemetryConfig;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthorizedNetworksConfig;
@@ -308,6 +310,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterAuthenticatorGroupsConfig> authenticatorGroupsConfig() {
         return this.authenticatorGroupsConfig;
+    }
+    /**
+     * Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     * 
+     */
+    @Export(name="autopilotClusterPolicyConfig", refs={ClusterAutopilotClusterPolicyConfig.class}, tree="[0]")
+    private Output<ClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfig;
+
+    /**
+     * @return Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
+     * 
+     */
+    public Output<ClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfig() {
+        return this.autopilotClusterPolicyConfig;
     }
     /**
      * The customer
@@ -1002,6 +1018,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterMaintenancePolicy>> maintenancePolicy() {
         return Codegen.optional(this.maintenancePolicy);
+    }
+    /**
+     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * 
+     */
+    @Export(name="managedMachineLearningDiagnosticsConfig", refs={ClusterManagedMachineLearningDiagnosticsConfig.class}, tree="[0]")
+    private Output<ClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfig;
+
+    /**
+     * @return ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * 
+     */
+    public Output<ClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfig() {
+        return this.managedMachineLearningDiagnosticsConfig;
     }
     /**
      * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.

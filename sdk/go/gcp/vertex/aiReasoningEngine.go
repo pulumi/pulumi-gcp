@@ -116,6 +116,147 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Reasoning Engine Image Spec
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "./test-fixtures/agent_src.tar.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("reasoning-engine"),
+//				Description: pulumi.String("Deployed with BYOC Dockerfile through Terraform"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+//						InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+//							SourceArchive: pulumi.String(invokeFilebase64.Result),
+//						},
+//						ImageSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs{
+//							BuildArgs: pulumi.StringMap{},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vertex Ai Reasoning Engine Byoc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// vertexArReader, err := projects.NewIAMMember(ctx, "vertex_ar_reader", &projects.IAMMemberArgs{
+// Project: pulumi.String(pulumi.String(project.ProjectId)),
+// Role: pulumi.String("roles/artifactregistry.reader"),
+// Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.Number),
+// })
+// if err != nil {
+// return err
+// }
+// invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+// Input: "./test-fixtures/mds_agent_src.tar.gz",
+// }, nil)
+// if err != nil {
+// return err
+// }
+// // Provision and retrieve the tenant service agent through another agent
+// tenantMdsAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "tenant_mds", &vertex.AiReasoningEngineArgs{
+// DisplayName: pulumi.String("reasoning-engine-mds"),
+// Region: pulumi.String("us-central1"),
+// Spec: &vertex.AiReasoningEngineSpecArgs{
+// SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+// InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+// SourceArchive: pulumi.String(invokeFilebase64.Result),
+// },
+// PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+// EntrypointModule: pulumi.String("metadata_agent"),
+// EntrypointObject: pulumi.String("root_agent"),
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// tenantMds := vertex.GetAiReasoningEngineQueryOutput(ctx, vertex.GetAiReasoningEngineQueryOutputArgs{
+// Region: pulumi.String("us-central1"),
+// ReasoningEngineId: tenantMdsAiReasoningEngine.Name,
+// }, nil);
+// invokeJsondecode1, err := std.Jsondecode(ctx, &std.JsondecodeArgs{
+// Input: tenantMds.Output,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// tenantArReader, err := projects.NewIAMMember(ctx, "tenant_ar_reader", &projects.IAMMemberArgs{
+// Project: pulumi.String(pulumi.String(project.ProjectId)),
+// Role: pulumi.String("roles/artifactregistry.reader"),
+// Member: tenantMds.ApplyT(func(tenantMds vertex.GetAiReasoningEngineQueryResult) (std.JsondecodeResult, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.JsondecodeResultOutput).ApplyT(func(invoke std.JsondecodeResult) (string, error) {
+// return fmt.Sprintf("serviceAccount:%v", invoke.Result.Output), nil
+// }).(pulumi.StringOutput),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+// DisplayName: pulumi.String("reasoning-engine"),
+// Description: pulumi.String("Deployed with BYOC through Terraform"),
+// Region: pulumi.String("us-central1"),
+// Spec: &vertex.AiReasoningEngineSpecArgs{
+// ContainerSpec: &vertex.AiReasoningEngineSpecContainerSpecArgs{
+// ImageUri: pulumi.Sprintf("us-central1-docker.pkg.dev/%v/vertex-byoc/byoc-agent:latest", project.ProjectId),
+// },
+// },
+// }, pulumi.DependsOn([]pulumi.Resource{
+// vertexArReader,
+// tenantArReader,
+// }))
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 // ### Vertex Ai Reasoning Engine Psc Interface
 //
 // ```go
@@ -612,17 +753,28 @@ type AiReasoningEngine struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the ReasoningEngine.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
 	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
 	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiReasoningEngineEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
+	// The labels associated with this ReasoningEngine. You can use these to
+	// organize and group your ReasoningEngines.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The generated name of the ReasoningEngine, in the format
 	// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the reasoning engine. eg us-central1
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Optional. Configurations of the ReasoningEngine.
@@ -643,6 +795,11 @@ func NewAiReasoningEngine(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiReasoningEngine
 	err := ctx.RegisterResource("gcp:vertex/aiReasoningEngine:AiReasoningEngine", name, args, &resource, opts...)
@@ -679,17 +836,28 @@ type aiReasoningEngineState struct {
 	Description *string `pulumi:"description"`
 	// The display name of the ReasoningEngine.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
 	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
 	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiReasoningEngineEncryptionSpec `pulumi:"encryptionSpec"`
+	// The labels associated with this ReasoningEngine. You can use these to
+	// organize and group your ReasoningEngines.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The generated name of the ReasoningEngine, in the format
 	// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the reasoning engine. eg us-central1
 	Region *string `pulumi:"region"`
 	// Optional. Configurations of the ReasoningEngine.
@@ -714,17 +882,28 @@ type AiReasoningEngineState struct {
 	Description pulumi.StringPtrInput
 	// The display name of the ReasoningEngine.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
 	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
 	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiReasoningEngineEncryptionSpecPtrInput
+	// The labels associated with this ReasoningEngine. You can use these to
+	// organize and group your ReasoningEngines.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The generated name of the ReasoningEngine, in the format
 	// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the reasoning engine. eg us-central1
 	Region pulumi.StringPtrInput
 	// Optional. Configurations of the ReasoningEngine.
@@ -755,6 +934,12 @@ type aiReasoningEngineArgs struct {
 	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiReasoningEngineEncryptionSpec `pulumi:"encryptionSpec"`
+	// The labels associated with this ReasoningEngine. You can use these to
+	// organize and group your ReasoningEngines.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -782,6 +967,12 @@ type AiReasoningEngineArgs struct {
 	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiReasoningEngineEncryptionSpecPtrInput
+	// The labels associated with this ReasoningEngine. You can use these to
+	// organize and group your ReasoningEngines.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -907,12 +1098,26 @@ func (o AiReasoningEngineOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o AiReasoningEngineOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Optional. Customer-managed encryption key spec for a ReasoningEngine.
 // If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
 // will be secured by this key.
 // Structure is documented below.
 func (o AiReasoningEngineOutput) EncryptionSpec() AiReasoningEngineEncryptionSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineEncryptionSpecPtrOutput { return v.EncryptionSpec }).(AiReasoningEngineEncryptionSpecPtrOutput)
+}
+
+// The labels associated with this ReasoningEngine. You can use these to
+// organize and group your ReasoningEngines.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o AiReasoningEngineOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The generated name of the ReasoningEngine, in the format
@@ -925,6 +1130,13 @@ func (o AiReasoningEngineOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AiReasoningEngineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o AiReasoningEngineOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The region of the reasoning engine. eg us-central1

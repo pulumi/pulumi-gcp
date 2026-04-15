@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.Apigee
     /// * How-to Guides
     ///     * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// SharedFlow can be imported using any of these accepted formats:

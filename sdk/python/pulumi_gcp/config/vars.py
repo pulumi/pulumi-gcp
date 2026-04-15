@@ -838,6 +838,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('workflowsCustomEndpoint')
 
     @_builtins.property
+    def workload_identity_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('workloadIdentityCustomEndpoint')
+
+    @_builtins.property
     def workstations_custom_endpoint(self) -> Optional[str]:
         return __config__.get('workstationsCustomEndpoint')
 

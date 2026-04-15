@@ -26,6 +26,7 @@ class AiReasoningEngineArgs:
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_spec: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input['AiReasoningEngineSpecArgs']] = None):
@@ -42,6 +43,11 @@ class AiReasoningEngineArgs:
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
                will be secured by this key.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this ReasoningEngine. You can use these to
+               organize and group your ReasoningEngines.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
@@ -57,6 +63,8 @@ class AiReasoningEngineArgs:
             pulumi.set(__self__, "description", description)
         if encryption_spec is not None:
             pulumi.set(__self__, "encryption_spec", encryption_spec)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -131,6 +139,22 @@ class AiReasoningEngineArgs:
 
     @_builtins.property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels associated with this ReasoningEngine. You can use these to
+        organize and group your ReasoningEngines.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -176,9 +200,12 @@ class _AiReasoningEngineState:
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  encryption_spec: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input['AiReasoningEngineSpecArgs']] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
@@ -193,14 +220,22 @@ class _AiReasoningEngineState:
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AiReasoningEngineEncryptionSpecArgs'] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
                will be secured by this key.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this ReasoningEngine. You can use these to
+               organize and group your ReasoningEngines.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The generated name of the ReasoningEngine, in the format
                projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input['AiReasoningEngineSpecArgs'] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
@@ -217,12 +252,18 @@ class _AiReasoningEngineState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_spec is not None:
             pulumi.set(__self__, "encryption_spec", encryption_spec)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if spec is not None:
@@ -294,6 +335,18 @@ class _AiReasoningEngineState:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]:
         """
@@ -307,6 +360,22 @@ class _AiReasoningEngineState:
     @encryption_spec.setter
     def encryption_spec(self, value: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels associated with this ReasoningEngine. You can use these to
+        organize and group your ReasoningEngines.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -333,6 +402,19 @@ class _AiReasoningEngineState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -384,6 +466,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_spec: Optional[pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
@@ -450,6 +533,75 @@ class AiReasoningEngine(pulumi.CustomResource):
                     },
                 },
             })
+        ```
+        ### Vertex Ai Reasoning Engine Image Spec
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="Deployed with BYOC Dockerfile through Terraform",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "inline_source": {
+                        "source_archive": std.filebase64(input="./test-fixtures/agent_src.tar.gz").result,
+                    },
+                    "image_spec": {
+                        "build_args": {},
+                    },
+                },
+            })
+        ```
+        ### Vertex Ai Reasoning Engine Byoc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        vertex_ar_reader = gcp.projects.IAMMember("vertex_ar_reader",
+            project=project.project_id,
+            role="roles/artifactregistry.reader",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com")
+        # Provision and retrieve the tenant service agent through another agent
+        tenant_mds_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("tenant_mds",
+            display_name="reasoning-engine-mds",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "inline_source": {
+                        "source_archive": std.filebase64(input="./test-fixtures/mds_agent_src.tar.gz").result,
+                    },
+                    "python_spec": {
+                        "entrypoint_module": "metadata_agent",
+                        "entrypoint_object": "root_agent",
+                    },
+                },
+            })
+        tenant_mds = gcp.vertex.get_ai_reasoning_engine_query_output(region="us-central1",
+            reasoning_engine_id=tenant_mds_ai_reasoning_engine.name)
+        tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
+            project=project.project_id,
+            role="roles/artifactregistry.reader",
+            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="Deployed with BYOC through Terraform",
+            region="us-central1",
+            spec={
+                "container_spec": {
+                    "image_uri": f"us-central1-docker.pkg.dev/{project.project_id}/vertex-byoc/byoc-agent:latest",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    vertex_ar_reader,
+                    tenant_ar_reader,
+                ]))
         ```
         ### Vertex Ai Reasoning Engine Psc Interface
 
@@ -759,6 +911,11 @@ class AiReasoningEngine(pulumi.CustomResource):
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
                will be secured by this key.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this ReasoningEngine. You can use these to
+               organize and group your ReasoningEngines.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
@@ -833,6 +990,75 @@ class AiReasoningEngine(pulumi.CustomResource):
                     },
                 },
             })
+        ```
+        ### Vertex Ai Reasoning Engine Image Spec
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="Deployed with BYOC Dockerfile through Terraform",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "inline_source": {
+                        "source_archive": std.filebase64(input="./test-fixtures/agent_src.tar.gz").result,
+                    },
+                    "image_spec": {
+                        "build_args": {},
+                    },
+                },
+            })
+        ```
+        ### Vertex Ai Reasoning Engine Byoc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        project = gcp.organizations.get_project()
+        vertex_ar_reader = gcp.projects.IAMMember("vertex_ar_reader",
+            project=project.project_id,
+            role="roles/artifactregistry.reader",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com")
+        # Provision and retrieve the tenant service agent through another agent
+        tenant_mds_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("tenant_mds",
+            display_name="reasoning-engine-mds",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "inline_source": {
+                        "source_archive": std.filebase64(input="./test-fixtures/mds_agent_src.tar.gz").result,
+                    },
+                    "python_spec": {
+                        "entrypoint_module": "metadata_agent",
+                        "entrypoint_object": "root_agent",
+                    },
+                },
+            })
+        tenant_mds = gcp.vertex.get_ai_reasoning_engine_query_output(region="us-central1",
+            reasoning_engine_id=tenant_mds_ai_reasoning_engine.name)
+        tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
+            project=project.project_id,
+            role="roles/artifactregistry.reader",
+            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="Deployed with BYOC through Terraform",
+            region="us-central1",
+            spec={
+                "container_spec": {
+                    "image_uri": f"us-central1-docker.pkg.dev/{project.project_id}/vertex-byoc/byoc-agent:latest",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    vertex_ar_reader,
+                    tenant_ar_reader,
+                ]))
         ```
         ### Vertex Ai Reasoning Engine Psc Interface
 
@@ -1150,6 +1376,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_spec: Optional[pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
@@ -1169,12 +1396,17 @@ class AiReasoningEngine(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_spec"] = encryption_spec
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AiReasoningEngine, __self__).__init__(
             'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
             resource_name,
@@ -1190,9 +1422,12 @@ class AiReasoningEngine(pulumi.CustomResource):
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             encryption_spec: Optional[pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             spec: Optional[pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiReasoningEngine':
@@ -1211,14 +1446,22 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
                will be secured by this key.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this ReasoningEngine. You can use these to
+               organize and group your ReasoningEngines.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The generated name of the ReasoningEngine, in the format
                projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
@@ -1234,9 +1477,12 @@ class AiReasoningEngine(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_spec"] = encryption_spec
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["spec"] = spec
         __props__.__dict__["update_time"] = update_time
@@ -1286,6 +1532,14 @@ class AiReasoningEngine(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiReasoningEngineEncryptionSpec']]:
         """
@@ -1295,6 +1549,18 @@ class AiReasoningEngine(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The labels associated with this ReasoningEngine. You can use these to
+        organize and group your ReasoningEngines.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -1313,6 +1579,15 @@ class AiReasoningEngine(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter

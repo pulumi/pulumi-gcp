@@ -33,9 +33,8 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
 
-        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must conform to
-               [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-               alphanumeric, and at most 63 characters).
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
+               use only lowercase letters and numbers, and be at most 10 characters long.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterComputeResourceArgs']]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
@@ -87,9 +86,8 @@ class ClusterArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the cluster to create. Must conform to
-        [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        alphanumeric, and at most 63 characters).
+        ID of the cluster to create. Must start with a lowercase letter,
+        use only lowercase letters and numbers, and be at most 10 characters long.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -236,9 +234,8 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
 
-        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must conform to
-               [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-               alphanumeric, and at most 63 characters).
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
+               use only lowercase letters and numbers, and be at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterComputeResourceArgs']]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
@@ -314,9 +311,8 @@ class _ClusterState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the cluster to create. Must conform to
-        [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        alphanumeric, and at most 63 characters).
+        ID of the cluster to create. Must start with a lowercase letter,
+        use only lowercase letters and numbers, and be at most 10 characters long.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -548,7 +544,7 @@ class Cluster(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         project_id = project.name
         cluster = gcp.hypercomputecluster.Cluster("cluster",
-            cluster_id="my-cluster",
+            cluster_id="mycluster1",
             location="us-central1",
             description="Cluster Director instance created through Terraform",
             network_resources=[{
@@ -619,9 +615,8 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must conform to
-               [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-               alphanumeric, and at most 63 characters).
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
+               use only lowercase letters and numbers, and be at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
@@ -672,7 +667,7 @@ class Cluster(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         project_id = project.name
         cluster = gcp.hypercomputecluster.Cluster("cluster",
-            cluster_id="my-cluster",
+            cluster_id="mycluster1",
             location="us-central1",
             description="Cluster Director instance created through Terraform",
             network_resources=[{
@@ -827,9 +822,8 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must conform to
-               [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-               alphanumeric, and at most 63 characters).
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the cluster to create. Must start with a lowercase letter,
+               use only lowercase letters and numbers, and be at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterComputeResourceArgs', 'ClusterComputeResourceArgsDict']]]] compute_resources: Compute resources available to the cluster. Keys specify the ID of the
                compute resource by which it can be referenced elsewhere, and must conform
                to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
@@ -895,9 +889,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the cluster to create. Must conform to
-        [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-        alphanumeric, and at most 63 characters).
+        ID of the cluster to create. Must start with a lowercase letter,
+        use only lowercase letters and numbers, and be at most 10 characters long.
         """
         return pulumi.get(self, "cluster_id")
 

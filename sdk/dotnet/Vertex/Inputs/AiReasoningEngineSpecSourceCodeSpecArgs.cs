@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<Inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs>? DeveloperConnectSource { get; set; }
 
         /// <summary>
+        /// Configuration for building an image with custom config file.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("imageSpec")]
+        public Input<Inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs>? ImageSpec { get; set; }
+
+        /// <summary>
         /// Source code is provided directly in the request.
         /// Structure is documented below.
         /// </summary>

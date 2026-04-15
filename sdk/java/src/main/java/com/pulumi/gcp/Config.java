@@ -628,6 +628,9 @@ public final class Config {
     public Optional<String> workflowsCustomEndpoint() {
         return Codegen.stringProp("workflowsCustomEndpoint").config(config).get();
     }
+    public Optional<String> workloadIdentityCustomEndpoint() {
+        return Codegen.stringProp("workloadIdentityCustomEndpoint").config(config).get();
+    }
     public Optional<String> workstationsCustomEndpoint() {
         return Codegen.stringProp("workstationsCustomEndpoint").config(config).get();
     }

@@ -600,6 +600,9 @@ namespace Pulumi.Gcp
         [Output("workflowsCustomEndpoint")]
         public Output<string?> WorkflowsCustomEndpoint { get; private set; } = null!;
 
+        [Output("workloadIdentityCustomEndpoint")]
+        public Output<string?> WorkloadIdentityCustomEndpoint { get; private set; } = null!;
+
         [Output("workstationsCustomEndpoint")]
         public Output<string?> WorkstationsCustomEndpoint { get; private set; } = null!;
 
@@ -1273,6 +1276,9 @@ namespace Pulumi.Gcp
 
         [Input("workflowsCustomEndpoint")]
         public Input<string>? WorkflowsCustomEndpoint { get; set; }
+
+        [Input("workloadIdentityCustomEndpoint")]
+        public Input<string>? WorkloadIdentityCustomEndpoint { get; set; }
 
         [Input("workstationsCustomEndpoint")]
         public Input<string>? WorkstationsCustomEndpoint { get; set; }

@@ -14,15 +14,12 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
     public sealed class AccountConnectorProviderOauthConfig
     {
         /// <summary>
-        /// Required. User selected scopes to apply to the Oauth config
+        /// User selected scopes to apply to the Oauth config
         /// In the event of changing scopes, user records under AccountConnector will
         /// be deleted and users will re-auth again.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// List of providers that are owned by Developer Connect. Creation of
-        /// new non-SCM providers Account Connectors is not possible at this
-        /// time.
         /// Possible values:
         /// GITHUB
         /// GITLAB
@@ -31,6 +28,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
         /// ROVO
         /// NEW_RELIC
         /// DATASTAX
+        /// DYNATRACE
         /// </summary>
         public readonly string? SystemProviderId;
 

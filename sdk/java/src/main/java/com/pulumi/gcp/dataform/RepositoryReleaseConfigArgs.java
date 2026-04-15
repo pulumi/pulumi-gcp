@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataform.inputs.RepositoryReleaseConfigCodeCompilationConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +48,21 @@ public final class RepositoryReleaseConfigArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> cronSchedule() {
         return Optional.ofNullable(this.cronSchedule);
+    }
+
+    /**
+     * Disables automatic creation of compilation results.
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Disables automatic creation of compilation results.
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -146,6 +162,7 @@ public final class RepositoryReleaseConfigArgs extends com.pulumi.resources.Reso
     private RepositoryReleaseConfigArgs(RepositoryReleaseConfigArgs $) {
         this.codeCompilationConfig = $.codeCompilationConfig;
         this.cronSchedule = $.cronSchedule;
+        this.disabled = $.disabled;
         this.gitCommitish = $.gitCommitish;
         this.name = $.name;
         this.project = $.project;
@@ -214,6 +231,27 @@ public final class RepositoryReleaseConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder cronSchedule(String cronSchedule) {
             return cronSchedule(Output.of(cronSchedule));
+        }
+
+        /**
+         * @param disabled Disables automatic creation of compilation results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Disables automatic creation of compilation results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

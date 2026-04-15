@@ -13,6 +13,889 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodePoolNodeConfig struct {
+	// Specifies options for controlling advanced machine features.
+	AdvancedMachineFeatures []GetClusterNodePoolNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
+	// Boot disk configuration for node pools nodes.
+	BootDisks []GetClusterNodePoolNodeConfigBootDisk `pulumi:"bootDisks"`
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+	ConfidentialNodes []GetClusterNodePoolNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfigs []GetClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType string `pulumi:"diskType"`
+	// List of kubernetes taints applied to each node.
+	EffectiveTaints []GetClusterNodePoolNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
+	// If enabled boot disks are configured with confidential mode.
+	EnableConfidentialStorage bool `pulumi:"enableConfidentialStorage"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+	EphemeralStorageConfigs []GetClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+	EphemeralStorageLocalSsdConfigs []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
+	// Enable or disable NCCL Fast Socket in the node pool.
+	FastSockets []GetClusterNodePoolNodeConfigFastSocket `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart bool `pulumi:"flexStart"`
+	// GCFS configuration for this node.
+	GcfsConfigs []GetClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfigs"`
+	// List of the type and count of accelerator cards attached to the instance.
+	GuestAccelerators []GetClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
+	// Enable or disable gvnic in the node pool.
+	Gvnics []GetClusterNodePoolNodeConfigGvnic `pulumi:"gvnics"`
+	// The maintenance policy for the hosts on which the GKE VMs run on.
+	HostMaintenancePolicies []GetClusterNodePoolNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicies"`
+	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+	ImageType string `pulumi:"imageType"`
+	// Node kubelet configs.
+	KubeletConfigs []GetClusterNodePoolNodeConfigKubeletConfig `pulumi:"kubeletConfigs"`
+	// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+	Labels map[string]string `pulumi:"labels"`
+	// Parameters that can be configured on Linux nodes.
+	LinuxNodeConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfigs"`
+	// Parameters for raw-block local NVMe SSDs.
+	LocalNvmeSsdBlockConfigs []GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfigs"`
+	// The number of local SSD disks to be attached to the node.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode string `pulumi:"localSsdEncryptionMode"`
+	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+	LoggingVariant string `pulumi:"loggingVariant"`
+	// The name of a Google Compute Engine machine type.
+	MachineType string `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration string `pulumi:"maxRunDuration"`
+	// The metadata key/value pairs assigned to instances in the cluster.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+	NodeGroup string `pulumi:"nodeGroup"`
+	// The set of Google API scopes to be made available on all of the node VMs.
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// Whether the nodes are created as preemptible VM instances.
+	Preemptible bool `pulumi:"preemptible"`
+	// The reservation affinity configuration for the node pool.
+	ReservationAffinities []GetClusterNodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinities"`
+	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+	// Sandbox configuration for this node.
+	SandboxConfigs []GetClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks []GetClusterNodePoolNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
+	// The Google Cloud Platform Service Account to be used by the node VMs.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfigs []GetClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
+	// Node affinity options for sole tenant node pools.
+	SoleTenantConfigs []GetClusterNodePoolNodeConfigSoleTenantConfig `pulumi:"soleTenantConfigs"`
+	// Whether the nodes are created as spot VM instances.
+	Spot bool `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools []string `pulumi:"storagePools"`
+	// The list of instance tags applied to all nodes.
+	Tags []string `pulumi:"tags"`
+	// List of Kubernetes taints to be applied to each node.
+	Taints []GetClusterNodePoolNodeConfigTaint `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfigs []GetClusterNodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfigs"`
+	// The workload metadata configuration for this node.
+	WorkloadMetadataConfigs []GetClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
+}
+
+// GetClusterNodePoolNodeConfigInput is an input type that accepts GetClusterNodePoolNodeConfigArgs and GetClusterNodePoolNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigArgs{...}
+type GetClusterNodePoolNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigOutput() GetClusterNodePoolNodeConfigOutput
+	ToGetClusterNodePoolNodeConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigArgs struct {
+	// Specifies options for controlling advanced machine features.
+	AdvancedMachineFeatures GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
+	// Boot disk configuration for node pools nodes.
+	BootDisks GetClusterNodePoolNodeConfigBootDiskArrayInput `pulumi:"bootDisks"`
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+	ConfidentialNodes GetClusterNodePoolNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
+	// Parameters for containerd configuration.
+	ContainerdConfigs GetClusterNodePoolNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// List of kubernetes taints applied to each node.
+	EffectiveTaints GetClusterNodePoolNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
+	// If enabled boot disks are configured with confidential mode.
+	EnableConfidentialStorage pulumi.BoolInput `pulumi:"enableConfidentialStorage"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+	EphemeralStorageConfigs GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+	EphemeralStorageLocalSsdConfigs GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
+	// Enable or disable NCCL Fast Socket in the node pool.
+	FastSockets GetClusterNodePoolNodeConfigFastSocketArrayInput `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolInput `pulumi:"flexStart"`
+	// GCFS configuration for this node.
+	GcfsConfigs GetClusterNodePoolNodeConfigGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
+	// List of the type and count of accelerator cards attached to the instance.
+	GuestAccelerators GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// Enable or disable gvnic in the node pool.
+	Gvnics GetClusterNodePoolNodeConfigGvnicArrayInput `pulumi:"gvnics"`
+	// The maintenance policy for the hosts on which the GKE VMs run on.
+	HostMaintenancePolicies GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayInput `pulumi:"hostMaintenancePolicies"`
+	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+	ImageType pulumi.StringInput `pulumi:"imageType"`
+	// Node kubelet configs.
+	KubeletConfigs GetClusterNodePoolNodeConfigKubeletConfigArrayInput `pulumi:"kubeletConfigs"`
+	// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Parameters that can be configured on Linux nodes.
+	LinuxNodeConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput `pulumi:"linuxNodeConfigs"`
+	// Parameters for raw-block local NVMe SSDs.
+	LocalNvmeSsdBlockConfigs GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput `pulumi:"localNvmeSsdBlockConfigs"`
+	// The number of local SSD disks to be attached to the node.
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode pulumi.StringInput `pulumi:"localSsdEncryptionMode"`
+	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
+	// The name of a Google Compute Engine machine type.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+	MaxRunDuration pulumi.StringInput `pulumi:"maxRunDuration"`
+	// The metadata key/value pairs assigned to instances in the cluster.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
+	// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+	NodeGroup pulumi.StringInput `pulumi:"nodeGroup"`
+	// The set of Google API scopes to be made available on all of the node VMs.
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// Whether the nodes are created as preemptible VM instances.
+	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+	// The reservation affinity configuration for the node pool.
+	ReservationAffinities GetClusterNodePoolNodeConfigReservationAffinityArrayInput `pulumi:"reservationAffinities"`
+	// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+	// Sandbox configuration for this node.
+	SandboxConfigs GetClusterNodePoolNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
+	// Secondary boot disks for preloading data or container images.
+	SecondaryBootDisks GetClusterNodePoolNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
+	// The Google Cloud Platform Service Account to be used by the node VMs.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfigs GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
+	// Node affinity options for sole tenant node pools.
+	SoleTenantConfigs GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput `pulumi:"soleTenantConfigs"`
+	// Whether the nodes are created as spot VM instances.
+	Spot pulumi.BoolInput `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools pulumi.StringArrayInput `pulumi:"storagePools"`
+	// The list of instance tags applied to all nodes.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// List of Kubernetes taints to be applied to each node.
+	Taints GetClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfigs GetClusterNodePoolNodeConfigWindowsNodeConfigArrayInput `pulumi:"windowsNodeConfigs"`
+	// The workload metadata configuration for this node.
+	WorkloadMetadataConfigs GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
+}
+
+func (GetClusterNodePoolNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigArgs) ToGetClusterNodePoolNodeConfigOutput() GetClusterNodePoolNodeConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigArgs) ToGetClusterNodePoolNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigArray and GetClusterNodePoolNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigArray{ GetClusterNodePoolNodeConfigArgs{...} }
+type GetClusterNodePoolNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigArrayOutput() GetClusterNodePoolNodeConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigArray []GetClusterNodePoolNodeConfigInput
+
+func (GetClusterNodePoolNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigArray) ToGetClusterNodePoolNodeConfigArrayOutput() GetClusterNodePoolNodeConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigArray) ToGetClusterNodePoolNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) ToGetClusterNodePoolNodeConfigOutput() GetClusterNodePoolNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) ToGetClusterNodePoolNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigOutput {
+	return o
+}
+
+// Specifies options for controlling advanced machine features.
+func (o GetClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+		return v.AdvancedMachineFeatures
+	}).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput)
+}
+
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+// Boot disk configuration for node pools nodes.
+func (o GetClusterNodePoolNodeConfigOutput) BootDisks() GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigBootDisk { return v.BootDisks }).(GetClusterNodePoolNodeConfigBootDiskArrayOutput)
+}
+
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+func (o GetClusterNodePoolNodeConfigOutput) ConfidentialNodes() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigConfidentialNode {
+		return v.ConfidentialNodes
+	}).(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput)
+}
+
+// Parameters for containerd configuration.
+func (o GetClusterNodePoolNodeConfigOutput) ContainerdConfigs() GetClusterNodePoolNodeConfigContainerdConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigContainerdConfig {
+		return v.ContainerdConfigs
+	}).(GetClusterNodePoolNodeConfigContainerdConfigArrayOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+func (o GetClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+func (o GetClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// List of kubernetes taints applied to each node.
+func (o GetClusterNodePoolNodeConfigOutput) EffectiveTaints() GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEffectiveTaint {
+		return v.EffectiveTaints
+	}).(GetClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
+}
+
+// If enabled boot disks are configured with confidential mode.
+func (o GetClusterNodePoolNodeConfigOutput) EnableConfidentialStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.EnableConfidentialStorage }).(pulumi.BoolOutput)
+}
+
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageConfigs() GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEphemeralStorageConfig {
+		return v.EphemeralStorageConfigs
+	}).(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput)
+}
+
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfigs() GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
+		return v.EphemeralStorageLocalSsdConfigs
+	}).(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayOutput)
+}
+
+// Enable or disable NCCL Fast Socket in the node pool.
+func (o GetClusterNodePoolNodeConfigOutput) FastSockets() GetClusterNodePoolNodeConfigFastSocketArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodePoolNodeConfigFastSocketArrayOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o GetClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.FlexStart }).(pulumi.BoolOutput)
+}
+
+// GCFS configuration for this node.
+func (o GetClusterNodePoolNodeConfigOutput) GcfsConfigs() GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfigs }).(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput)
+}
+
+// List of the type and count of accelerator cards attached to the instance.
+func (o GetClusterNodePoolNodeConfigOutput) GuestAccelerators() GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGuestAccelerator {
+		return v.GuestAccelerators
+	}).(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+}
+
+// Enable or disable gvnic in the node pool.
+func (o GetClusterNodePoolNodeConfigOutput) Gvnics() GetClusterNodePoolNodeConfigGvnicArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGvnic { return v.Gvnics }).(GetClusterNodePoolNodeConfigGvnicArrayOutput)
+}
+
+// The maintenance policy for the hosts on which the GKE VMs run on.
+func (o GetClusterNodePoolNodeConfigOutput) HostMaintenancePolicies() GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigHostMaintenancePolicy {
+		return v.HostMaintenancePolicies
+	}).(GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput)
+}
+
+// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+func (o GetClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
+}
+
+// Node kubelet configs.
+func (o GetClusterNodePoolNodeConfigOutput) KubeletConfigs() GetClusterNodePoolNodeConfigKubeletConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigKubeletConfig {
+		return v.KubeletConfigs
+	}).(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput)
+}
+
+// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+func (o GetClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Parameters that can be configured on Linux nodes.
+func (o GetClusterNodePoolNodeConfigOutput) LinuxNodeConfigs() GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfig {
+		return v.LinuxNodeConfigs
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput)
+}
+
+// Parameters for raw-block local NVMe SSDs.
+func (o GetClusterNodePoolNodeConfigOutput) LocalNvmeSsdBlockConfigs() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return v.LocalNvmeSsdBlockConfigs
+	}).(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput)
+}
+
+// The number of local SSD disks to be attached to the node.
+func (o GetClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+func (o GetClusterNodePoolNodeConfigOutput) LocalSsdEncryptionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.LocalSsdEncryptionMode }).(pulumi.StringOutput)
+}
+
+// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+func (o GetClusterNodePoolNodeConfigOutput) LoggingVariant() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.LoggingVariant }).(pulumi.StringOutput)
+}
+
+// The name of a Google Compute Engine machine type.
+func (o GetClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
+func (o GetClusterNodePoolNodeConfigOutput) MaxRunDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MaxRunDuration }).(pulumi.StringOutput)
+}
+
+// The metadata key/value pairs assigned to instances in the cluster.
+func (o GetClusterNodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+func (o GetClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+func (o GetClusterNodePoolNodeConfigOutput) NodeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.NodeGroup }).(pulumi.StringOutput)
+}
+
+// The set of Google API scopes to be made available on all of the node VMs.
+func (o GetClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+}
+
+// Whether the nodes are created as preemptible VM instances.
+func (o GetClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// The reservation affinity configuration for the node pool.
+func (o GetClusterNodePoolNodeConfigOutput) ReservationAffinities() GetClusterNodePoolNodeConfigReservationAffinityArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigReservationAffinity {
+		return v.ReservationAffinities
+	}).(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput)
+}
+
+// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+func (o GetClusterNodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o GetClusterNodePoolNodeConfigOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+// Sandbox configuration for this node.
+func (o GetClusterNodePoolNodeConfigOutput) SandboxConfigs() GetClusterNodePoolNodeConfigSandboxConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSandboxConfig {
+		return v.SandboxConfigs
+	}).(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput)
+}
+
+// Secondary boot disks for preloading data or container images.
+func (o GetClusterNodePoolNodeConfigOutput) SecondaryBootDisks() GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSecondaryBootDisk {
+		return v.SecondaryBootDisks
+	}).(GetClusterNodePoolNodeConfigSecondaryBootDiskArrayOutput)
+}
+
+// The Google Cloud Platform Service Account to be used by the node VMs.
+func (o GetClusterNodePoolNodeConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Shielded Instance options.
+func (o GetClusterNodePoolNodeConfigOutput) ShieldedInstanceConfigs() GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfigs
+	}).(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput)
+}
+
+// Node affinity options for sole tenant node pools.
+func (o GetClusterNodePoolNodeConfigOutput) SoleTenantConfigs() GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSoleTenantConfig {
+		return v.SoleTenantConfigs
+	}).(GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput)
+}
+
+// Whether the nodes are created as spot VM instances.
+func (o GetClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.Spot }).(pulumi.BoolOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o GetClusterNodePoolNodeConfigOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.StoragePools }).(pulumi.StringArrayOutput)
+}
+
+// The list of instance tags applied to all nodes.
+func (o GetClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// List of Kubernetes taints to be applied to each node.
+func (o GetClusterNodePoolNodeConfigOutput) Taints() GetClusterNodePoolNodeConfigTaintArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigTaint { return v.Taints }).(GetClusterNodePoolNodeConfigTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o GetClusterNodePoolNodeConfigOutput) WindowsNodeConfigs() GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigWindowsNodeConfig {
+		return v.WindowsNodeConfigs
+	}).(GetClusterNodePoolNodeConfigWindowsNodeConfigArrayOutput)
+}
+
+// The workload metadata configuration for this node.
+func (o GetClusterNodePoolNodeConfigOutput) WorkloadMetadataConfigs() GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
+		return v.WorkloadMetadataConfigs
+	}).(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigArrayOutput() GetClusterNodePoolNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeature struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput is an input type that accepts GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs and GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput` via:
+//
+//	GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{...}
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs struct {
+	// Whether the node should have nested virtualization enabled.
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return i.ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput)
+}
+
+// GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput is an input type that accepts GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray and GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{ GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{...} }
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray []GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return o
+}
+
+// Whether the node should have nested virtualization enabled.
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+		return vs[0].([]GetClusterNodePoolNodeConfigAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput)
+}
+
+type GetClusterNodePoolNodeConfigBootDisk struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType string `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb int `pulumi:"sizeGb"`
+}
+
+// GetClusterNodePoolNodeConfigBootDiskInput is an input type that accepts GetClusterNodePoolNodeConfigBootDiskArgs and GetClusterNodePoolNodeConfigBootDiskOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigBootDiskInput` via:
+//
+//	GetClusterNodePoolNodeConfigBootDiskArgs{...}
+type GetClusterNodePoolNodeConfigBootDiskInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigBootDiskOutput() GetClusterNodePoolNodeConfigBootDiskOutput
+	ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(context.Context) GetClusterNodePoolNodeConfigBootDiskOutput
+}
+
+type GetClusterNodePoolNodeConfigBootDiskArgs struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+}
+
+func (GetClusterNodePoolNodeConfigBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArgs) ToGetClusterNodePoolNodeConfigBootDiskOutput() GetClusterNodePoolNodeConfigBootDiskOutput {
+	return i.ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArgs) ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigBootDiskOutput)
+}
+
+// GetClusterNodePoolNodeConfigBootDiskArrayInput is an input type that accepts GetClusterNodePoolNodeConfigBootDiskArray and GetClusterNodePoolNodeConfigBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigBootDiskArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigBootDiskArray{ GetClusterNodePoolNodeConfigBootDiskArgs{...} }
+type GetClusterNodePoolNodeConfigBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigBootDiskArrayOutput() GetClusterNodePoolNodeConfigBootDiskArrayOutput
+	ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigBootDiskArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigBootDiskArray []GetClusterNodePoolNodeConfigBootDiskInput
+
+func (GetClusterNodePoolNodeConfigBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArray) ToGetClusterNodePoolNodeConfigBootDiskArrayOutput() GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArray) ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigBootDiskArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ToGetClusterNodePoolNodeConfigBootDiskOutput() GetClusterNodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskArrayOutput) ToGetClusterNodePoolNodeConfigBootDiskArrayOutput() GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskArrayOutput) ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigBootDisk {
+		return vs[0].([]GetClusterNodePoolNodeConfigBootDisk)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigBootDiskOutput)
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNode struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
+	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolNodeConfigConfidentialNodeInput is an input type that accepts GetClusterNodePoolNodeConfigConfidentialNodeArgs and GetClusterNodePoolNodeConfigConfidentialNodeOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigConfidentialNodeInput` via:
+//
+//	GetClusterNodePoolNodeConfigConfidentialNodeArgs{...}
+type GetClusterNodePoolNodeConfigConfidentialNodeInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigConfidentialNodeOutput() GetClusterNodePoolNodeConfigConfidentialNodeOutput
+	ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeArgs struct {
+	// Defines the type of technology used by the confidential node.
+	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
+	// Whether Confidential Nodes feature is enabled for all nodes in this pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArgs) ToGetClusterNodePoolNodeConfigConfidentialNodeOutput() GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return i.ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArgs) ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigConfidentialNodeOutput)
+}
+
+// GetClusterNodePoolNodeConfigConfidentialNodeArrayInput is an input type that accepts GetClusterNodePoolNodeConfigConfidentialNodeArray and GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigConfidentialNodeArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigConfidentialNodeArray{ GetClusterNodePoolNodeConfigConfidentialNodeArgs{...} }
+type GetClusterNodePoolNodeConfigConfidentialNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutput() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput
+	ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeArray []GetClusterNodePoolNodeConfigConfidentialNodeInput
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArray) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutput() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArray) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeOutput() GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return o
+}
+
+// Defines the type of technology used by the confidential node.
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ConfidentialInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigConfidentialNode) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
+}
+
+// Whether Confidential Nodes feature is enabled for all nodes in this pool.
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigConfidentialNode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutput() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigConfidentialNode {
+		return vs[0].([]GetClusterNodePoolNodeConfigConfidentialNode)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigConfidentialNodeOutput)
+}
+
 type GetClusterNodePoolNodeConfigContainerdConfig struct {
 	// Parameters for private container registries configuration.
 	PrivateRegistryAccessConfigs []GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfigs"`
@@ -8106,6 +8989,14 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDiskInput)(nil)).Elem(), GetClusterNodePoolNodeConfigBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDiskArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigBootDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs{})
@@ -8250,6 +9141,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigBootDiskOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigBootDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput{})

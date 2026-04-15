@@ -13,6 +13,362 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceSchedulingGracefulShutdownMaxDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceSchedulingGracefulShutdownMaxDurationInput is an input type that accepts GetInstanceSchedulingGracefulShutdownMaxDurationArgs and GetInstanceSchedulingGracefulShutdownMaxDurationOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingGracefulShutdownMaxDurationInput` via:
+//
+//	GetInstanceSchedulingGracefulShutdownMaxDurationArgs{...}
+type GetInstanceSchedulingGracefulShutdownMaxDurationInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationOutput() GetInstanceSchedulingGracefulShutdownMaxDurationOutput
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationOutput
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArgs) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutput() GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return i.ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArgs) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingGracefulShutdownMaxDurationOutput)
+}
+
+// GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput is an input type that accepts GetInstanceSchedulingGracefulShutdownMaxDurationArray and GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput` via:
+//
+//	GetInstanceSchedulingGracefulShutdownMaxDurationArray{ GetInstanceSchedulingGracefulShutdownMaxDurationArgs{...} }
+type GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput
+	ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationArray []GetInstanceSchedulingGracefulShutdownMaxDurationInput
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArray) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return i.ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingGracefulShutdownMaxDurationArray) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutput() GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+//
+//	resolution. Durations less than one second are represented
+//	with a 0 seconds field and a positive nanos field. Must
+//	be from 0 to 999,999,999 inclusive.
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingGracefulShutdownMaxDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+//
+//	The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput() GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetInstanceSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingGracefulShutdownMaxDuration {
+		return vs[0].([]GetInstanceSchedulingGracefulShutdownMaxDuration)[vs[1].(int)]
+	}).(GetInstanceSchedulingGracefulShutdownMaxDurationOutput)
+}
+
+type GetInstanceSchedulingLocalSsdRecoveryTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceSchedulingLocalSsdRecoveryTimeoutInput is an input type that accepts GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs and GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingLocalSsdRecoveryTimeoutInput` via:
+//
+//	GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs{...}
+type GetInstanceSchedulingLocalSsdRecoveryTimeoutInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutput() GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput
+	ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutputWithContext(context.Context) GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput
+}
+
+type GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutput() GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput {
+	return i.ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutputWithContext(ctx context.Context) GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput)
+}
+
+// GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput is an input type that accepts GetInstanceSchedulingLocalSsdRecoveryTimeoutArray and GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput` via:
+//
+//	GetInstanceSchedulingLocalSsdRecoveryTimeoutArray{ GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs{...} }
+type GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput() GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput
+	ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(context.Context) GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput
+}
+
+type GetInstanceSchedulingLocalSsdRecoveryTimeoutArray []GetInstanceSchedulingLocalSsdRecoveryTimeoutInput
+
+func (GetInstanceSchedulingLocalSsdRecoveryTimeoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingLocalSsdRecoveryTimeoutArray) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput() GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return i.ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingLocalSsdRecoveryTimeoutArray) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput)
+}
+
+type GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutput() GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutOutputWithContext(ctx context.Context) GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingLocalSsdRecoveryTimeout) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingLocalSsdRecoveryTimeout) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput() GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput) ToGetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingLocalSsdRecoveryTimeout {
+		return vs[0].([]GetInstanceSchedulingLocalSsdRecoveryTimeout)[vs[1].(int)]
+	}).(GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput)
+}
+
+type GetInstanceSchedulingMaxRunDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetInstanceSchedulingMaxRunDurationInput is an input type that accepts GetInstanceSchedulingMaxRunDurationArgs and GetInstanceSchedulingMaxRunDurationOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingMaxRunDurationInput` via:
+//
+//	GetInstanceSchedulingMaxRunDurationArgs{...}
+type GetInstanceSchedulingMaxRunDurationInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingMaxRunDurationOutput() GetInstanceSchedulingMaxRunDurationOutput
+	ToGetInstanceSchedulingMaxRunDurationOutputWithContext(context.Context) GetInstanceSchedulingMaxRunDurationOutput
+}
+
+type GetInstanceSchedulingMaxRunDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetInstanceSchedulingMaxRunDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingMaxRunDurationArgs) ToGetInstanceSchedulingMaxRunDurationOutput() GetInstanceSchedulingMaxRunDurationOutput {
+	return i.ToGetInstanceSchedulingMaxRunDurationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingMaxRunDurationArgs) ToGetInstanceSchedulingMaxRunDurationOutputWithContext(ctx context.Context) GetInstanceSchedulingMaxRunDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingMaxRunDurationOutput)
+}
+
+// GetInstanceSchedulingMaxRunDurationArrayInput is an input type that accepts GetInstanceSchedulingMaxRunDurationArray and GetInstanceSchedulingMaxRunDurationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingMaxRunDurationArrayInput` via:
+//
+//	GetInstanceSchedulingMaxRunDurationArray{ GetInstanceSchedulingMaxRunDurationArgs{...} }
+type GetInstanceSchedulingMaxRunDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingMaxRunDurationArrayOutput() GetInstanceSchedulingMaxRunDurationArrayOutput
+	ToGetInstanceSchedulingMaxRunDurationArrayOutputWithContext(context.Context) GetInstanceSchedulingMaxRunDurationArrayOutput
+}
+
+type GetInstanceSchedulingMaxRunDurationArray []GetInstanceSchedulingMaxRunDurationInput
+
+func (GetInstanceSchedulingMaxRunDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingMaxRunDurationArray) ToGetInstanceSchedulingMaxRunDurationArrayOutput() GetInstanceSchedulingMaxRunDurationArrayOutput {
+	return i.ToGetInstanceSchedulingMaxRunDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingMaxRunDurationArray) ToGetInstanceSchedulingMaxRunDurationArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingMaxRunDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingMaxRunDurationArrayOutput)
+}
+
+type GetInstanceSchedulingMaxRunDurationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingMaxRunDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingMaxRunDurationOutput) ToGetInstanceSchedulingMaxRunDurationOutput() GetInstanceSchedulingMaxRunDurationOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingMaxRunDurationOutput) ToGetInstanceSchedulingMaxRunDurationOutputWithContext(ctx context.Context) GetInstanceSchedulingMaxRunDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetInstanceSchedulingMaxRunDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingMaxRunDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetInstanceSchedulingMaxRunDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingMaxRunDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetInstanceSchedulingMaxRunDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingMaxRunDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingMaxRunDurationArrayOutput) ToGetInstanceSchedulingMaxRunDurationArrayOutput() GetInstanceSchedulingMaxRunDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingMaxRunDurationArrayOutput) ToGetInstanceSchedulingMaxRunDurationArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingMaxRunDurationArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingMaxRunDurationArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingMaxRunDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingMaxRunDuration {
+		return vs[0].([]GetInstanceSchedulingMaxRunDuration)[vs[1].(int)]
+	}).(GetInstanceSchedulingMaxRunDurationOutput)
+}
+
 type GetInstanceSchedulingNodeAffinity struct {
 	Key      string   `pulumi:"key"`
 	Operator string   `pulumi:"operator"`
@@ -13249,6 +13605,103 @@ func (o GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusVersionTarget {
 		return vs[0].([]GetRegionInstanceGroupManagerStatusVersionTarget)[vs[1].(int)]
 	}).(GetRegionInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+type GetRegionInstanceGroupManagerTargetSizePolicy struct {
+	// The mode of target size policy based on which the MIG creates its VMs individually or all at once.
+	Mode string `pulumi:"mode"`
+}
+
+// GetRegionInstanceGroupManagerTargetSizePolicyInput is an input type that accepts GetRegionInstanceGroupManagerTargetSizePolicyArgs and GetRegionInstanceGroupManagerTargetSizePolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerTargetSizePolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerTargetSizePolicyArgs{...}
+type GetRegionInstanceGroupManagerTargetSizePolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerTargetSizePolicyOutput() GetRegionInstanceGroupManagerTargetSizePolicyOutput
+	ToGetRegionInstanceGroupManagerTargetSizePolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerTargetSizePolicyOutput
+}
+
+type GetRegionInstanceGroupManagerTargetSizePolicyArgs struct {
+	// The mode of target size policy based on which the MIG creates its VMs individually or all at once.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetRegionInstanceGroupManagerTargetSizePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerTargetSizePolicyArgs) ToGetRegionInstanceGroupManagerTargetSizePolicyOutput() GetRegionInstanceGroupManagerTargetSizePolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerTargetSizePolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerTargetSizePolicyArgs) ToGetRegionInstanceGroupManagerTargetSizePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerTargetSizePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerTargetSizePolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerTargetSizePolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerTargetSizePolicyArray and GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerTargetSizePolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerTargetSizePolicyArray{ GetRegionInstanceGroupManagerTargetSizePolicyArgs{...} }
+type GetRegionInstanceGroupManagerTargetSizePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutput() GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput
+	ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerTargetSizePolicyArray []GetRegionInstanceGroupManagerTargetSizePolicyInput
+
+func (GetRegionInstanceGroupManagerTargetSizePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerTargetSizePolicyArray) ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutput() GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerTargetSizePolicyArray) ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerTargetSizePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerTargetSizePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerTargetSizePolicyOutput) ToGetRegionInstanceGroupManagerTargetSizePolicyOutput() GetRegionInstanceGroupManagerTargetSizePolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerTargetSizePolicyOutput) ToGetRegionInstanceGroupManagerTargetSizePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerTargetSizePolicyOutput {
+	return o
+}
+
+// The mode of target size policy based on which the MIG creates its VMs individually or all at once.
+func (o GetRegionInstanceGroupManagerTargetSizePolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerTargetSizePolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerTargetSizePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput) ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutput() GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput) ToGetRegionInstanceGroupManagerTargetSizePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerTargetSizePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerTargetSizePolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerTargetSizePolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerTargetSizePolicyOutput)
 }
 
 type GetRegionInstanceGroupManagerUpdatePolicy struct {
@@ -32753,6 +33206,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDurationInput)(nil)).Elem(), GetInstanceSchedulingGracefulShutdownMaxDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingGracefulShutdownMaxDurationArrayInput)(nil)).Elem(), GetInstanceSchedulingGracefulShutdownMaxDurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput)(nil)).Elem(), GetInstanceSchedulingLocalSsdRecoveryTimeoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingMaxRunDurationInput)(nil)).Elem(), GetInstanceSchedulingMaxRunDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingMaxRunDurationArrayInput)(nil)).Elem(), GetInstanceSchedulingMaxRunDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingNodeAffinityInput)(nil)).Elem(), GetInstanceSchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetInstanceSchedulingNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingOnInstanceStopActionInput)(nil)).Elem(), GetInstanceSchedulingOnInstanceStopActionArgs{})
@@ -32949,6 +33408,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTargetInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusVersionTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTargetArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusVersionTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerTargetSizePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerTargetSizePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerTargetSizePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerTargetSizePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerUpdatePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerVersionInput)(nil)).Elem(), GetRegionInstanceGroupManagerVersionArgs{})
@@ -33241,6 +33702,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingGracefulShutdownMaxDurationOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingGracefulShutdownMaxDurationArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingMaxRunDurationOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingMaxRunDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSchedulingOnInstanceStopActionOutput{})
@@ -33437,6 +33904,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusVersionTargetOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerTargetSizePolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerTargetSizePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerUpdatePolicyOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerUpdatePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerVersionOutput{})

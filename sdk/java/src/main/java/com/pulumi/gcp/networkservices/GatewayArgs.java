@@ -42,6 +42,27 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Import(name="allPorts")
+    private @Nullable Output<Boolean> allPorts;
+
+    /**
+     * @return Configures this gateway to ​listen on all ports.
+     * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+     * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Optional<Output<Boolean>> allPorts() {
+        return Optional.ofNullable(this.allPorts);
+    }
+
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
@@ -225,8 +246,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
-    @Import(name="ports", required=true)
-    private Output<List<Integer>> ports;
+    @Import(name="ports")
+    private @Nullable Output<List<Integer>> ports;
 
     /**
      * @return One or more port numbers (1-65535), on which the Gateway will receive traffic.
@@ -234,8 +255,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      * 
      */
-    public Output<List<Integer>> ports() {
-        return this.ports;
+    public Optional<Output<List<Integer>>> ports() {
+        return Optional.ofNullable(this.ports);
     }
 
     /**
@@ -346,6 +367,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     private GatewayArgs(GatewayArgs $) {
         this.addresses = $.addresses;
+        this.allPorts = $.allPorts;
         this.certificateUrls = $.certificateUrls;
         this.deleteSwgAutogenRouterOnDestroy = $.deleteSwgAutogenRouterOnDestroy;
         this.description = $.description;
@@ -421,6 +443,33 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addresses(String... addresses) {
             return addresses(List.of(addresses));
+        }
+
+        /**
+         * @param allPorts Configures this gateway to ​listen on all ports.
+         * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+         * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+         * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allPorts(@Nullable Output<Boolean> allPorts) {
+            $.allPorts = allPorts;
+            return this;
+        }
+
+        /**
+         * @param allPorts Configures this gateway to ​listen on all ports.
+         * By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+         * it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+         * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allPorts(Boolean allPorts) {
+            return allPorts(Output.of(allPorts));
         }
 
         /**
@@ -680,7 +729,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ports(Output<List<Integer>> ports) {
+        public Builder ports(@Nullable Output<List<Integer>> ports) {
             $.ports = ports;
             return this;
         }
@@ -850,9 +899,6 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GatewayArgs build() {
-            if ($.ports == null) {
-                throw new MissingRequiredPropertyException("GatewayArgs", "ports");
-            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GatewayArgs", "type");
             }

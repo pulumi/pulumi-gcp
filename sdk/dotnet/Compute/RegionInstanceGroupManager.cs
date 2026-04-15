@@ -244,7 +244,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-        /// - - -
         /// </summary>
         [Output("instanceFlexibilityPolicy")]
         public Output<Outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicy?> InstanceFlexibilityPolicy { get; private set; } = null!;
@@ -367,6 +366,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        /// *
+        /// - - -
+        /// </summary>
+        [Output("targetSizePolicies")]
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerTargetSizePolicy>> TargetSizePolicies { get; private set; } = null!;
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group.
@@ -511,7 +518,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-        /// - - -
         /// </summary>
         [Input("instanceFlexibilityPolicy")]
         public Input<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
@@ -641,6 +647,20 @@ namespace Pulumi.Gcp.Compute
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
 
+        [Input("targetSizePolicies")]
+        private InputList<Inputs.RegionInstanceGroupManagerTargetSizePolicyArgs>? _targetSizePolicies;
+
+        /// <summary>
+        /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        /// *
+        /// - - -
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerTargetSizePolicyArgs> TargetSizePolicies
+        {
+            get => _targetSizePolicies ?? (_targetSizePolicies = new InputList<Inputs.RegionInstanceGroupManagerTargetSizePolicyArgs>());
+            set => _targetSizePolicies = value;
+        }
+
         /// <summary>
         /// The target number of stopped instances for this managed instance group.
         /// </summary>
@@ -764,7 +784,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
-        /// - - -
         /// </summary>
         [Input("instanceFlexibilityPolicy")]
         public Input<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyGetArgs>? InstanceFlexibilityPolicy { get; set; }
@@ -923,6 +942,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        [Input("targetSizePolicies")]
+        private InputList<Inputs.RegionInstanceGroupManagerTargetSizePolicyGetArgs>? _targetSizePolicies;
+
+        /// <summary>
+        /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+        /// *
+        /// - - -
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerTargetSizePolicyGetArgs> TargetSizePolicies
+        {
+            get => _targetSizePolicies ?? (_targetSizePolicies = new InputList<Inputs.RegionInstanceGroupManagerTargetSizePolicyGetArgs>());
+            set => _targetSizePolicies = value;
+        }
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group.
