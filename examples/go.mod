@@ -4,15 +4,13 @@ go 1.25.8
 
 require (
 	github.com/pulumi/providertest v0.6.0
-	github.com/pulumi/pulumi-gcp/sdk/v6 v6.67.0
+	github.com/pulumi/pulumi-gcp/sdk/v9 v9.20.0
 	github.com/pulumi/pulumi/pkg/v3 v3.228.0
 	github.com/pulumi/pulumi/sdk/v3 v3.228.0
 	github.com/stretchr/testify v1.11.1
 )
 
 replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../sdk
-
-require github.com/pulumi/pulumi-gcp/sdk/v9 v9.0.0-00010101000000-000000000000
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
