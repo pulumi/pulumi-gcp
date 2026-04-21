@@ -3503,8 +3503,8 @@ github.com/hashicorp/terraform-plugin-go v0.31.0 h1:0Fz2r9DQ+kNNl6bx8HRxFd1TfMKU
 github.com/hashicorp/terraform-plugin-go v0.31.0/go.mod h1:A88bDhd/cW7FnwqxQRz3slT+QY6yzbHKc6AOTtmdeS8=
 github.com/hashicorp/terraform-plugin-log v0.10.0 h1:eu2kW6/QBVdN4P3Ju2WiB2W3ObjkAsyfBsL3Wh1fj3g=
 github.com/hashicorp/terraform-plugin-log v0.10.0/go.mod h1:/9RR5Cv2aAbrqcTSdNmY1NRHP4E3ekrXRGjqORpXyB0=
-github.com/hashicorp/terraform-plugin-mux v0.23.0 h1:YEjYA6kle7vJrVWS+WgyrFoYzUnOCJQ0kwGAJ61X9aE=
-github.com/hashicorp/terraform-plugin-mux v0.23.0/go.mod h1:IwuivHNfDVeuDbVvg6fnAYEEEVx881STwJHsl/00UkQ=
+github.com/hashicorp/terraform-plugin-mux v0.23.1 h1:B93b4hEj8cPKh24WJH2dJJAS3a5lxZANykrz4Or3fgo=
+github.com/hashicorp/terraform-plugin-mux v0.23.1/go.mod h1:IwuivHNfDVeuDbVvg6fnAYEEEVx881STwJHsl/00UkQ=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
@@ -3926,8 +3926,8 @@ github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.102.0 h1:5jMf8Tk+nT
 github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.102.0/go.mod h1:s83nigApWw9uBGOLc3LlbJKWOw5IRhIqTe2IJMij9KQ=
 github.com/pulumi/pulumi-java/pkg v1.21.3 h1:Rzti1qvTkY9vFoah3R+K2oUDI71rC/HMOy1YZrQgtgc=
 github.com/pulumi/pulumi-java/pkg v1.21.3/go.mod h1:gmb9so5DANWs4HIhwRKTIIe9aUcMoqcJkd7Nsuu7r1U=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.126.0 h1:k6/SEGQVxcX3DbF77Ghhr/IHfHFs2JfWqUZ+gHzrRUI=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.126.0/go.mod h1:y933dcWs6qekakj1cLaGVQWtqnY75soxBuXnGiN5kQ8=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0 h1:gI9ziJMv1UDENR2G2N9/cpOL5h72dIXKqvTqnlzjPgc=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0/go.mod h1:SWYcV9/uTdXJEbjSQREaUxSNmIs7X5H79j6lFxEyjzY=
 github.com/pulumi/pulumi-yaml v1.30.1 h1:8zXKxz3gZ8t0kXr0NZJMnLjySzajzKMX5JQlPiFWTmQ=
 github.com/pulumi/pulumi-yaml v1.30.1/go.mod h1:O+MmszO4Wjxvi2TBeRowbzxszn1BPTyC5wyyq/r6Dn4=
 github.com/pulumi/pulumi/pkg/v3 v3.228.0 h1:OxTpwvLaiMjxZp6E65DgrDE6faYTbPwxVdsjxMbjwqQ=
