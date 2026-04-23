@@ -313,8 +313,11 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the data source.
-        /// Supported values: `Salesforce`, `Jira`, `Confluence`, `Bigquery`.
+        /// The identifier for the data source.
+        /// This is a partial list of supported connectors. Please refer to the
+        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        /// for the full list of connectors.
+        /// Supported first-party connectors include:
         /// </summary>
         [Output("dataSource")]
         public Output<string> DataSource { get; private set; } = null!;
@@ -587,8 +590,11 @@ namespace Pulumi.Gcp.DiscoveryEngine
         }
 
         /// <summary>
-        /// The name of the data source.
-        /// Supported values: `Salesforce`, `Jira`, `Confluence`, `Bigquery`.
+        /// The identifier for the data source.
+        /// This is a partial list of supported connectors. Please refer to the
+        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        /// for the full list of connectors.
+        /// Supported first-party connectors include:
         /// </summary>
         [Input("dataSource", required: true)]
         public Input<string> DataSource { get; set; } = null!;
@@ -813,8 +819,11 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The name of the data source.
-        /// Supported values: `Salesforce`, `Jira`, `Confluence`, `Bigquery`.
+        /// The identifier for the data source.
+        /// This is a partial list of supported connectors. Please refer to the
+        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        /// for the full list of connectors.
+        /// Supported first-party connectors include:
         /// </summary>
         [Input("dataSource")]
         public Input<string>? DataSource { get; set; }

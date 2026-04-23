@@ -486,7 +486,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_44339",
+            name="tf-test-subnet_40816",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -590,7 +590,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_44339",
+            name="tf-test-subnet_40816",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)

@@ -1914,6 +1914,7 @@ class ClusterClusterConfig(dict):
                  dataproc_metric_config: Optional['outputs.ClusterClusterConfigDataprocMetricConfig'] = None,
                  encryption_config: Optional['outputs.ClusterClusterConfigEncryptionConfig'] = None,
                  endpoint_config: Optional['outputs.ClusterClusterConfigEndpointConfig'] = None,
+                 engine: Optional[_builtins.str] = None,
                  gce_cluster_config: Optional['outputs.ClusterClusterConfigGceClusterConfig'] = None,
                  initialization_actions: Optional[Sequence['outputs.ClusterClusterConfigInitializationAction']] = None,
                  lifecycle_config: Optional['outputs.ClusterClusterConfigLifecycleConfig'] = None,
@@ -1943,6 +1944,7 @@ class ClusterClusterConfig(dict):
                Structure defined below.
         :param 'ClusterClusterConfigEndpointConfigArgs' endpoint_config: The config settings for port access on the cluster.
                Structure defined below.
+        :param _builtins.str engine: The cluster engine.
         :param 'ClusterClusterConfigGceClusterConfigArgs' gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
                instances, applicable to all instances in the cluster. Structure defined below.
         :param Sequence['ClusterClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed.
@@ -1991,6 +1993,8 @@ class ClusterClusterConfig(dict):
             pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_config is not None:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
         if gce_cluster_config is not None:
             pulumi.set(__self__, "gce_cluster_config", gce_cluster_config)
         if initialization_actions is not None:
@@ -2086,6 +2090,14 @@ class ClusterClusterConfig(dict):
         Structure defined below.
         """
         return pulumi.get(self, "endpoint_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def engine(self) -> Optional[_builtins.str]:
+        """
+        The cluster engine.
+        """
+        return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter(name="gceClusterConfig")

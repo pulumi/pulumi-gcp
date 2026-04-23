@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Iam
     ///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
     ///                 {
     ///                     TrustDomain = "example.com",
+    ///                     TrustDefaultSharedCa = false,
     ///                     TrustAnchors = new[]
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
@@ -118,6 +119,7 @@ namespace Pulumi.Gcp.Iam
     ///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
     ///                 {
     ///                     TrustDomain = "example.net",
+    ///                     TrustDefaultSharedCa = false,
     ///                     TrustAnchors = new[]
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
@@ -181,6 +183,7 @@ namespace Pulumi.Gcp.Iam
     ///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
     ///                 {
     ///                     TrustDomain = "example.com",
+    ///                     TrustDefaultSharedCa = true,
     ///                     TrustAnchors = new[]
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
@@ -202,6 +205,7 @@ namespace Pulumi.Gcp.Iam
     ///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
     ///                 {
     ///                     TrustDomain = "example.net",
+    ///                     TrustDefaultSharedCa = true,
     ///                     TrustAnchors = new[]
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs

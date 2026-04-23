@@ -6,9 +6,12 @@ package com.pulumi.gcp.iam.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
@@ -20,6 +23,15 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
      * 
      */
     private List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors;
+    /**
+     * @return If set to True, the trust bundle will include the private ca managed identity regional root
+     * public certificates.
+     * 
+     * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+     * resource.
+     * 
+     */
+    private @Nullable Boolean trustDefaultSharedCa;
     /**
      * @return The identifier for this object. Format specified above.
      * 
@@ -36,6 +48,17 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
      */
     public List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors() {
         return this.trustAnchors;
+    }
+    /**
+     * @return If set to True, the trust bundle will include the private ca managed identity regional root
+     * public certificates.
+     * 
+     * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+     * resource.
+     * 
+     */
+    public Optional<Boolean> trustDefaultSharedCa() {
+        return Optional.ofNullable(this.trustDefaultSharedCa);
     }
     /**
      * @return The identifier for this object. Format specified above.
@@ -55,11 +78,13 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
     @CustomType.Builder
     public static final class Builder {
         private List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors;
+        private @Nullable Boolean trustDefaultSharedCa;
         private String trustDomain;
         public Builder() {}
         public Builder(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.trustAnchors = defaults.trustAnchors;
+    	      this.trustDefaultSharedCa = defaults.trustDefaultSharedCa;
     	      this.trustDomain = defaults.trustDomain;
         }
 
@@ -75,6 +100,12 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
             return trustAnchors(List.of(trustAnchors));
         }
         @CustomType.Setter
+        public Builder trustDefaultSharedCa(@Nullable Boolean trustDefaultSharedCa) {
+
+            this.trustDefaultSharedCa = trustDefaultSharedCa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder trustDomain(String trustDomain) {
             if (trustDomain == null) {
               throw new MissingRequiredPropertyException("WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle", "trustDomain");
@@ -85,6 +116,7 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
         public WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle build() {
             final var _resultValue = new WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle();
             _resultValue.trustAnchors = trustAnchors;
+            _resultValue.trustDefaultSharedCa = trustDefaultSharedCa;
             _resultValue.trustDomain = trustDomain;
             return _resultValue;
         }

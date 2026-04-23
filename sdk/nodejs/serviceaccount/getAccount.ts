@@ -55,7 +55,7 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetAccountArgs {
     /**
-     * The Google service account ID. This be one of:
+     * The Google service account ID. This must be one of:
      *
      * * The name of the service account within the project (e.g. `my-service`)
      *
@@ -161,7 +161,7 @@ export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.Invok
  */
 export interface GetAccountOutputArgs {
     /**
-     * The Google service account ID. This be one of:
+     * The Google service account ID. This must be one of:
      *
      * * The name of the service account within the project (e.g. `my-service`)
      *

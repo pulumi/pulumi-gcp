@@ -51,6 +51,65 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Vectorsearch Collection Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-cmek-collection",
+ *     location: "us-central1",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-cmek-collection",
+ *     keyRing: keyRing.id,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKeyMemberVsSa = new gcp.kms.CryptoKeyIAMMember("crypto_key_member_vs_sa", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-vectorsearch.iam.gserviceaccount.com`),
+ * });
+ * const example_cmek_collection = new gcp.vectorsearch.Collection("example-cmek-collection", {
+ *     location: "us-central1",
+ *     collectionId: "example-cmek-collection",
+ *     displayName: "My Awesome Encrypted Collection",
+ *     description: "This collection stores important data.",
+ *     encryptionSpec: {
+ *         cryptoKeyName: cryptoKey.id,
+ *     },
+ *     labels: {
+ *         env: "dev",
+ *         team: "my-team",
+ *     },
+ *     dataSchema: `{
+ *   \\"type\\": \\"object\\",
+ *   \\"properties\\": {
+ *     \\"title\\": {
+ *       \\"type\\": \\"string\\"
+ *     },
+ *     \\"plot\\": {
+ *       \\"type\\": \\"string\\"
+ *     }
+ *   }
+ * }
+ * `,
+ *     vectorSchemas: [{
+ *         fieldName: "text_embedding",
+ *         denseVector: {
+ *             dimensions: 768,
+ *             vertexEmbeddingConfig: {
+ *                 modelId: "textembedding-gecko@003",
+ *                 taskType: "RETRIEVAL_DOCUMENT",
+ *                 textTemplate: "Title: {title} ---- Plot: {plot}",
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     dependsOn: [cryptoKeyMemberVsSa],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -127,6 +186,12 @@ export class Collection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vectorsearch.CollectionEncryptionSpec | undefined>;
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -182,6 +247,7 @@ export class Collection extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -201,6 +267,7 @@ export class Collection extends pulumi.CustomResource {
             resourceInputs["dataSchema"] = args?.dataSchema;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -252,6 +319,12 @@ export interface CollectionState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vectorsearch.CollectionEncryptionSpec>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -316,6 +389,12 @@ export interface CollectionArgs {
      * User-specified display name of the collection
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vectorsearch.CollectionEncryptionSpec>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

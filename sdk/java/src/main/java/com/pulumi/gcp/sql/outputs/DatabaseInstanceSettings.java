@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsConnectionPoolConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDenyMaintenancePeriod;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsEntraidConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsFinalBackupConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsInsightsConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsIpConfiguration;
@@ -148,6 +149,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable Boolean enableGoogleMlIntegration;
+    /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    private @Nullable DatabaseInstanceSettingsEntraidConfig entraidConfig;
     /**
      * @return Config used to determine the final backup settings for the instance
      * 
@@ -373,6 +379,13 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.enableGoogleMlIntegration);
     }
     /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    public Optional<DatabaseInstanceSettingsEntraidConfig> entraidConfig() {
+        return Optional.ofNullable(this.entraidConfig);
+    }
+    /**
      * @return Config used to determine the final backup settings for the instance
      * 
      */
@@ -491,6 +504,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable String effectiveAvailabilityType;
         private @Nullable Boolean enableDataplexIntegration;
         private @Nullable Boolean enableGoogleMlIntegration;
+        private @Nullable DatabaseInstanceSettingsEntraidConfig entraidConfig;
         private @Nullable DatabaseInstanceSettingsFinalBackupConfig finalBackupConfig;
         private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
         private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
@@ -532,6 +546,7 @@ public final class DatabaseInstanceSettings {
     	      this.effectiveAvailabilityType = defaults.effectiveAvailabilityType;
     	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
+    	      this.entraidConfig = defaults.entraidConfig;
     	      this.finalBackupConfig = defaults.finalBackupConfig;
     	      this.insightsConfig = defaults.insightsConfig;
     	      this.ipConfiguration = defaults.ipConfiguration;
@@ -699,6 +714,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder entraidConfig(@Nullable DatabaseInstanceSettingsEntraidConfig entraidConfig) {
+
+            this.entraidConfig = entraidConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder finalBackupConfig(@Nullable DatabaseInstanceSettingsFinalBackupConfig finalBackupConfig) {
 
             this.finalBackupConfig = finalBackupConfig;
@@ -810,6 +831,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.effectiveAvailabilityType = effectiveAvailabilityType;
             _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
+            _resultValue.entraidConfig = entraidConfig;
             _resultValue.finalBackupConfig = finalBackupConfig;
             _resultValue.insightsConfig = insightsConfig;
             _resultValue.ipConfiguration = ipConfiguration;

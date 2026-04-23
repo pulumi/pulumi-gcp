@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .modelSettings(AppModelSettingsArgs.builder()
- *                 .model("gemini-1.5-flash")
+ *                 .model("gemini-2.5-flash-001")
  *                 .temperature(0.5)
  *                 .build())
  *             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
@@ -376,7 +376,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .modelSettings(AppModelSettingsArgs.builder()
- *                 .model("gemini-1.5-flash")
+ *                 .model("gemini-2.5-flash-001")
  *                 .temperature(0.5)
  *                 .build())
  *             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
@@ -734,15 +734,15 @@ public class App extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="loggingSettings", refs={AppLoggingSettings.class}, tree="[0]")
-    private Output</* @Nullable */ AppLoggingSettings> loggingSettings;
+    private Output<AppLoggingSettings> loggingSettings;
 
     /**
      * @return Settings to describe the logging behaviors for the app.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<AppLoggingSettings>> loggingSettings() {
-        return Codegen.optional(this.loggingSettings);
+    public Output<AppLoggingSettings> loggingSettings() {
+        return this.loggingSettings;
     }
     /**
      * Metadata about the app. This field can be used to store additional

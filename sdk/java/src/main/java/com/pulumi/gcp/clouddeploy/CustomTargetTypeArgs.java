@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
+import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -135,6 +136,23 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tasks")
+    private @Nullable Output<CustomTargetTypeTasksArgs> tasks;
+
+    /**
+     * @return Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CustomTargetTypeTasksArgs>> tasks() {
+        return Optional.ofNullable(this.tasks);
+    }
+
     private CustomTargetTypeArgs() {}
 
     private CustomTargetTypeArgs(CustomTargetTypeArgs $) {
@@ -145,6 +163,7 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.tasks = $.tasks;
     }
 
     public static Builder builder() {
@@ -322,6 +341,29 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param tasks Configures render and deploy for the `CustomTargetType` using tasks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(@Nullable Output<CustomTargetTypeTasksArgs> tasks) {
+            $.tasks = tasks;
+            return this;
+        }
+
+        /**
+         * @param tasks Configures render and deploy for the `CustomTargetType` using tasks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(CustomTargetTypeTasksArgs tasks) {
+            return tasks(Output.of(tasks));
         }
 
         public CustomTargetTypeArgs build() {

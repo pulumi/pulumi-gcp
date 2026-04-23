@@ -83,6 +83,11 @@ export class RolloutSequence extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
+     * Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     */
+    declare public readonly ignoredClustersSelector: pulumi.Output<outputs.gkehub.RolloutSequenceIgnoredClustersSelector | undefined>;
+    /**
      * Labels for this Rollout Sequence.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -139,6 +144,7 @@ export class RolloutSequence extends pulumi.CustomResource {
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["ignoredClustersSelector"] = state?.ignoredClustersSelector;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -156,6 +162,7 @@ export class RolloutSequence extends pulumi.CustomResource {
                 throw new Error("Missing required property 'stages'");
             }
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["ignoredClustersSelector"] = args?.ignoredClustersSelector;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["project"] = args?.project;
             resourceInputs["rolloutSequenceId"] = args?.rolloutSequenceId;
@@ -200,6 +207,11 @@ export interface RolloutSequenceState {
      * etag of the Rollout Sequence.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     */
+    ignoredClustersSelector?: pulumi.Input<inputs.gkehub.RolloutSequenceIgnoredClustersSelector>;
     /**
      * Labels for this Rollout Sequence.
      *
@@ -248,6 +260,11 @@ export interface RolloutSequenceArgs {
      * Human readable display name of the Rollout Sequence.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     */
+    ignoredClustersSelector?: pulumi.Input<inputs.gkehub.RolloutSequenceIgnoredClustersSelector>;
     /**
      * Labels for this Rollout Sequence.
      *

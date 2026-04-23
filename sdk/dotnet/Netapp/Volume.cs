@@ -214,7 +214,6 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool?> LargeCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Configuration for a Large Capacity Volume. A Large Capacity Volume
         /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
         /// internal constituents, and must be created in a large capacity pool.
@@ -542,7 +541,6 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LargeCapacity { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Configuration for a Large Capacity Volume. A Large Capacity Volume
         /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
         /// internal constituents, and must be created in a large capacity pool.
@@ -835,7 +833,6 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LargeCapacity { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Configuration for a Large Capacity Volume. A Large Capacity Volume
         /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
         /// internal constituents, and must be created in a large capacity pool.

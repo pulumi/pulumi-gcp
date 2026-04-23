@@ -178,7 +178,7 @@ export class UnitKind extends pulumi.CustomResource {
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+     * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
      * common data model. Immutable once set.
      */
     declare public readonly saas: pulumi.Output<string>;
@@ -355,7 +355,7 @@ export interface UnitKindState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+     * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
      * common data model. Immutable once set.
      */
     saas?: pulumi.Input<string>;
@@ -436,7 +436,7 @@ export interface UnitKindArgs {
     project?: pulumi.Input<string>;
     /**
      * A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+     * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
      * common data model. Immutable once set.
      */
     saas: pulumi.Input<string>;

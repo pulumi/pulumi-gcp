@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  *         additionalTrustBundles: [
  *             {
  *                 trustDomain: "example.com",
+ *                 trustDefaultSharedCa: false,
  *                 trustAnchors: [
  *                     {
  *                         pemCertificate: std.file({
@@ -83,6 +84,7 @@ import * as utilities from "../utilities";
  *             },
  *             {
  *                 trustDomain: "example.net",
+ *                 trustDefaultSharedCa: false,
  *                 trustAnchors: [
  *                     {
  *                         pemCertificate: std.file({
@@ -126,6 +128,7 @@ import * as utilities from "../utilities";
  *         additionalTrustBundles: [
  *             {
  *                 trustDomain: "example.com",
+ *                 trustDefaultSharedCa: true,
  *                 trustAnchors: [
  *                     {
  *                         pemCertificate: std.file({
@@ -141,6 +144,7 @@ import * as utilities from "../utilities";
  *             },
  *             {
  *                 trustDomain: "example.net",
+ *                 trustDefaultSharedCa: true,
  *                 trustAnchors: [
  *                     {
  *                         pemCertificate: std.file({

@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingConnectionP
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingEntraidConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingFinalBackupConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingInsightsConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingIpConfiguration;
@@ -138,6 +139,11 @@ public final class GetDatabaseInstancesInstanceSetting {
      * 
      */
     private Boolean enableGoogleMlIntegration;
+    /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    private List<GetDatabaseInstancesInstanceSettingEntraidConfig> entraidConfigs;
     /**
      * @return Config used to determine the final backup settings for the instance
      * 
@@ -352,6 +358,13 @@ public final class GetDatabaseInstancesInstanceSetting {
         return this.enableGoogleMlIntegration;
     }
     /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    public List<GetDatabaseInstancesInstanceSettingEntraidConfig> entraidConfigs() {
+        return this.entraidConfigs;
+    }
+    /**
      * @return Config used to determine the final backup settings for the instance
      * 
      */
@@ -467,6 +480,7 @@ public final class GetDatabaseInstancesInstanceSetting {
         private String effectiveAvailabilityType;
         private Boolean enableDataplexIntegration;
         private Boolean enableGoogleMlIntegration;
+        private List<GetDatabaseInstancesInstanceSettingEntraidConfig> entraidConfigs;
         private List<GetDatabaseInstancesInstanceSettingFinalBackupConfig> finalBackupConfigs;
         private List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs;
         private List<GetDatabaseInstancesInstanceSettingIpConfiguration> ipConfigurations;
@@ -508,6 +522,7 @@ public final class GetDatabaseInstancesInstanceSetting {
     	      this.effectiveAvailabilityType = defaults.effectiveAvailabilityType;
     	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
+    	      this.entraidConfigs = defaults.entraidConfigs;
     	      this.finalBackupConfigs = defaults.finalBackupConfigs;
     	      this.insightsConfigs = defaults.insightsConfigs;
     	      this.ipConfigurations = defaults.ipConfigurations;
@@ -738,6 +753,17 @@ public final class GetDatabaseInstancesInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder entraidConfigs(List<GetDatabaseInstancesInstanceSettingEntraidConfig> entraidConfigs) {
+            if (entraidConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "entraidConfigs");
+            }
+            this.entraidConfigs = entraidConfigs;
+            return this;
+        }
+        public Builder entraidConfigs(GetDatabaseInstancesInstanceSettingEntraidConfig... entraidConfigs) {
+            return entraidConfigs(List.of(entraidConfigs));
+        }
+        @CustomType.Setter
         public Builder finalBackupConfigs(List<GetDatabaseInstancesInstanceSettingFinalBackupConfig> finalBackupConfigs) {
             if (finalBackupConfigs == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "finalBackupConfigs");
@@ -899,6 +925,7 @@ public final class GetDatabaseInstancesInstanceSetting {
             _resultValue.effectiveAvailabilityType = effectiveAvailabilityType;
             _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
+            _resultValue.entraidConfigs = entraidConfigs;
             _resultValue.finalBackupConfigs = finalBackupConfigs;
             _resultValue.insightsConfigs = insightsConfigs;
             _resultValue.ipConfigurations = ipConfigurations;

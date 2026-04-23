@@ -255,8 +255,11 @@ export class DataConnector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      */
     declare public readonly dataSource: pulumi.Output<string>;
     /**
@@ -551,8 +554,11 @@ export interface DataConnectorState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      */
     dataSource?: pulumi.Input<string>;
     /**
@@ -721,8 +727,11 @@ export interface DataConnectorArgs {
      */
     connectorModes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      */
     dataSource: pulumi.Input<string>;
     /**

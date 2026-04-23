@@ -7277,6 +7277,560 @@ func (o DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput) Elem() Datasc
 	}).(DatascanDataQualitySpecRuleUniquenessExpectationOutput)
 }
 
+type DatascanExecutionIdentity struct {
+	// The Dataplex service agent associated with the user's project.
+	DataplexServiceAgent *DatascanExecutionIdentityDataplexServiceAgent `pulumi:"dataplexServiceAgent"`
+	// Service account to use to execute a datascan.
+	// Structure is documented below.
+	ServiceAccount *DatascanExecutionIdentityServiceAccount `pulumi:"serviceAccount"`
+	// The credential of the calling user. Supports only ONE_TIME trigger type.
+	UserCredential *DatascanExecutionIdentityUserCredential `pulumi:"userCredential"`
+}
+
+// DatascanExecutionIdentityInput is an input type that accepts DatascanExecutionIdentityArgs and DatascanExecutionIdentityOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityInput` via:
+//
+//	DatascanExecutionIdentityArgs{...}
+type DatascanExecutionIdentityInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityOutput() DatascanExecutionIdentityOutput
+	ToDatascanExecutionIdentityOutputWithContext(context.Context) DatascanExecutionIdentityOutput
+}
+
+type DatascanExecutionIdentityArgs struct {
+	// The Dataplex service agent associated with the user's project.
+	DataplexServiceAgent DatascanExecutionIdentityDataplexServiceAgentPtrInput `pulumi:"dataplexServiceAgent"`
+	// Service account to use to execute a datascan.
+	// Structure is documented below.
+	ServiceAccount DatascanExecutionIdentityServiceAccountPtrInput `pulumi:"serviceAccount"`
+	// The credential of the calling user. Supports only ONE_TIME trigger type.
+	UserCredential DatascanExecutionIdentityUserCredentialPtrInput `pulumi:"userCredential"`
+}
+
+func (DatascanExecutionIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentity)(nil)).Elem()
+}
+
+func (i DatascanExecutionIdentityArgs) ToDatascanExecutionIdentityOutput() DatascanExecutionIdentityOutput {
+	return i.ToDatascanExecutionIdentityOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityArgs) ToDatascanExecutionIdentityOutputWithContext(ctx context.Context) DatascanExecutionIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityOutput)
+}
+
+func (i DatascanExecutionIdentityArgs) ToDatascanExecutionIdentityPtrOutput() DatascanExecutionIdentityPtrOutput {
+	return i.ToDatascanExecutionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityArgs) ToDatascanExecutionIdentityPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityOutput).ToDatascanExecutionIdentityPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionIdentityPtrInput is an input type that accepts DatascanExecutionIdentityArgs, DatascanExecutionIdentityPtr and DatascanExecutionIdentityPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityPtrInput` via:
+//
+//	        DatascanExecutionIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionIdentityPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityPtrOutput() DatascanExecutionIdentityPtrOutput
+	ToDatascanExecutionIdentityPtrOutputWithContext(context.Context) DatascanExecutionIdentityPtrOutput
+}
+
+type datascanExecutionIdentityPtrType DatascanExecutionIdentityArgs
+
+func DatascanExecutionIdentityPtr(v *DatascanExecutionIdentityArgs) DatascanExecutionIdentityPtrInput {
+	return (*datascanExecutionIdentityPtrType)(v)
+}
+
+func (*datascanExecutionIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentity)(nil)).Elem()
+}
+
+func (i *datascanExecutionIdentityPtrType) ToDatascanExecutionIdentityPtrOutput() DatascanExecutionIdentityPtrOutput {
+	return i.ToDatascanExecutionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionIdentityPtrType) ToDatascanExecutionIdentityPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityPtrOutput)
+}
+
+type DatascanExecutionIdentityOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentity)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityOutput) ToDatascanExecutionIdentityOutput() DatascanExecutionIdentityOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityOutput) ToDatascanExecutionIdentityOutputWithContext(ctx context.Context) DatascanExecutionIdentityOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityOutput) ToDatascanExecutionIdentityPtrOutput() DatascanExecutionIdentityPtrOutput {
+	return o.ToDatascanExecutionIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionIdentityOutput) ToDatascanExecutionIdentityPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionIdentity) *DatascanExecutionIdentity {
+		return &v
+	}).(DatascanExecutionIdentityPtrOutput)
+}
+
+// The Dataplex service agent associated with the user's project.
+func (o DatascanExecutionIdentityOutput) DataplexServiceAgent() DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionIdentity) *DatascanExecutionIdentityDataplexServiceAgent {
+		return v.DataplexServiceAgent
+	}).(DatascanExecutionIdentityDataplexServiceAgentPtrOutput)
+}
+
+// Service account to use to execute a datascan.
+// Structure is documented below.
+func (o DatascanExecutionIdentityOutput) ServiceAccount() DatascanExecutionIdentityServiceAccountPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionIdentity) *DatascanExecutionIdentityServiceAccount { return v.ServiceAccount }).(DatascanExecutionIdentityServiceAccountPtrOutput)
+}
+
+// The credential of the calling user. Supports only ONE_TIME trigger type.
+func (o DatascanExecutionIdentityOutput) UserCredential() DatascanExecutionIdentityUserCredentialPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionIdentity) *DatascanExecutionIdentityUserCredential { return v.UserCredential }).(DatascanExecutionIdentityUserCredentialPtrOutput)
+}
+
+type DatascanExecutionIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentity)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityPtrOutput) ToDatascanExecutionIdentityPtrOutput() DatascanExecutionIdentityPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityPtrOutput) ToDatascanExecutionIdentityPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityPtrOutput) Elem() DatascanExecutionIdentityOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentity) DatascanExecutionIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionIdentity
+		return ret
+	}).(DatascanExecutionIdentityOutput)
+}
+
+// The Dataplex service agent associated with the user's project.
+func (o DatascanExecutionIdentityPtrOutput) DataplexServiceAgent() DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentity) *DatascanExecutionIdentityDataplexServiceAgent {
+		if v == nil {
+			return nil
+		}
+		return v.DataplexServiceAgent
+	}).(DatascanExecutionIdentityDataplexServiceAgentPtrOutput)
+}
+
+// Service account to use to execute a datascan.
+// Structure is documented below.
+func (o DatascanExecutionIdentityPtrOutput) ServiceAccount() DatascanExecutionIdentityServiceAccountPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentity) *DatascanExecutionIdentityServiceAccount {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(DatascanExecutionIdentityServiceAccountPtrOutput)
+}
+
+// The credential of the calling user. Supports only ONE_TIME trigger type.
+func (o DatascanExecutionIdentityPtrOutput) UserCredential() DatascanExecutionIdentityUserCredentialPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentity) *DatascanExecutionIdentityUserCredential {
+		if v == nil {
+			return nil
+		}
+		return v.UserCredential
+	}).(DatascanExecutionIdentityUserCredentialPtrOutput)
+}
+
+type DatascanExecutionIdentityDataplexServiceAgent struct {
+}
+
+// DatascanExecutionIdentityDataplexServiceAgentInput is an input type that accepts DatascanExecutionIdentityDataplexServiceAgentArgs and DatascanExecutionIdentityDataplexServiceAgentOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityDataplexServiceAgentInput` via:
+//
+//	DatascanExecutionIdentityDataplexServiceAgentArgs{...}
+type DatascanExecutionIdentityDataplexServiceAgentInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityDataplexServiceAgentOutput() DatascanExecutionIdentityDataplexServiceAgentOutput
+	ToDatascanExecutionIdentityDataplexServiceAgentOutputWithContext(context.Context) DatascanExecutionIdentityDataplexServiceAgentOutput
+}
+
+type DatascanExecutionIdentityDataplexServiceAgentArgs struct {
+}
+
+func (DatascanExecutionIdentityDataplexServiceAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentityDataplexServiceAgent)(nil)).Elem()
+}
+
+func (i DatascanExecutionIdentityDataplexServiceAgentArgs) ToDatascanExecutionIdentityDataplexServiceAgentOutput() DatascanExecutionIdentityDataplexServiceAgentOutput {
+	return i.ToDatascanExecutionIdentityDataplexServiceAgentOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityDataplexServiceAgentArgs) ToDatascanExecutionIdentityDataplexServiceAgentOutputWithContext(ctx context.Context) DatascanExecutionIdentityDataplexServiceAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityDataplexServiceAgentOutput)
+}
+
+func (i DatascanExecutionIdentityDataplexServiceAgentArgs) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutput() DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return i.ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityDataplexServiceAgentArgs) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityDataplexServiceAgentOutput).ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionIdentityDataplexServiceAgentPtrInput is an input type that accepts DatascanExecutionIdentityDataplexServiceAgentArgs, DatascanExecutionIdentityDataplexServiceAgentPtr and DatascanExecutionIdentityDataplexServiceAgentPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityDataplexServiceAgentPtrInput` via:
+//
+//	        DatascanExecutionIdentityDataplexServiceAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionIdentityDataplexServiceAgentPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityDataplexServiceAgentPtrOutput() DatascanExecutionIdentityDataplexServiceAgentPtrOutput
+	ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(context.Context) DatascanExecutionIdentityDataplexServiceAgentPtrOutput
+}
+
+type datascanExecutionIdentityDataplexServiceAgentPtrType DatascanExecutionIdentityDataplexServiceAgentArgs
+
+func DatascanExecutionIdentityDataplexServiceAgentPtr(v *DatascanExecutionIdentityDataplexServiceAgentArgs) DatascanExecutionIdentityDataplexServiceAgentPtrInput {
+	return (*datascanExecutionIdentityDataplexServiceAgentPtrType)(v)
+}
+
+func (*datascanExecutionIdentityDataplexServiceAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentityDataplexServiceAgent)(nil)).Elem()
+}
+
+func (i *datascanExecutionIdentityDataplexServiceAgentPtrType) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutput() DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return i.ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionIdentityDataplexServiceAgentPtrType) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityDataplexServiceAgentPtrOutput)
+}
+
+type DatascanExecutionIdentityDataplexServiceAgentOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityDataplexServiceAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentityDataplexServiceAgent)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentOutput) ToDatascanExecutionIdentityDataplexServiceAgentOutput() DatascanExecutionIdentityDataplexServiceAgentOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentOutput) ToDatascanExecutionIdentityDataplexServiceAgentOutputWithContext(ctx context.Context) DatascanExecutionIdentityDataplexServiceAgentOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentOutput) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutput() DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return o.ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentOutput) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionIdentityDataplexServiceAgent) *DatascanExecutionIdentityDataplexServiceAgent {
+		return &v
+	}).(DatascanExecutionIdentityDataplexServiceAgentPtrOutput)
+}
+
+type DatascanExecutionIdentityDataplexServiceAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityDataplexServiceAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentityDataplexServiceAgent)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentPtrOutput) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutput() DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentPtrOutput) ToDatascanExecutionIdentityDataplexServiceAgentPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityDataplexServiceAgentPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityDataplexServiceAgentPtrOutput) Elem() DatascanExecutionIdentityDataplexServiceAgentOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentityDataplexServiceAgent) DatascanExecutionIdentityDataplexServiceAgent {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionIdentityDataplexServiceAgent
+		return ret
+	}).(DatascanExecutionIdentityDataplexServiceAgentOutput)
+}
+
+type DatascanExecutionIdentityServiceAccount struct {
+	// Service account email.
+	Email string `pulumi:"email"`
+}
+
+// DatascanExecutionIdentityServiceAccountInput is an input type that accepts DatascanExecutionIdentityServiceAccountArgs and DatascanExecutionIdentityServiceAccountOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityServiceAccountInput` via:
+//
+//	DatascanExecutionIdentityServiceAccountArgs{...}
+type DatascanExecutionIdentityServiceAccountInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityServiceAccountOutput() DatascanExecutionIdentityServiceAccountOutput
+	ToDatascanExecutionIdentityServiceAccountOutputWithContext(context.Context) DatascanExecutionIdentityServiceAccountOutput
+}
+
+type DatascanExecutionIdentityServiceAccountArgs struct {
+	// Service account email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (DatascanExecutionIdentityServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentityServiceAccount)(nil)).Elem()
+}
+
+func (i DatascanExecutionIdentityServiceAccountArgs) ToDatascanExecutionIdentityServiceAccountOutput() DatascanExecutionIdentityServiceAccountOutput {
+	return i.ToDatascanExecutionIdentityServiceAccountOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityServiceAccountArgs) ToDatascanExecutionIdentityServiceAccountOutputWithContext(ctx context.Context) DatascanExecutionIdentityServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityServiceAccountOutput)
+}
+
+func (i DatascanExecutionIdentityServiceAccountArgs) ToDatascanExecutionIdentityServiceAccountPtrOutput() DatascanExecutionIdentityServiceAccountPtrOutput {
+	return i.ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityServiceAccountArgs) ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityServiceAccountOutput).ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionIdentityServiceAccountPtrInput is an input type that accepts DatascanExecutionIdentityServiceAccountArgs, DatascanExecutionIdentityServiceAccountPtr and DatascanExecutionIdentityServiceAccountPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityServiceAccountPtrInput` via:
+//
+//	        DatascanExecutionIdentityServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionIdentityServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityServiceAccountPtrOutput() DatascanExecutionIdentityServiceAccountPtrOutput
+	ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(context.Context) DatascanExecutionIdentityServiceAccountPtrOutput
+}
+
+type datascanExecutionIdentityServiceAccountPtrType DatascanExecutionIdentityServiceAccountArgs
+
+func DatascanExecutionIdentityServiceAccountPtr(v *DatascanExecutionIdentityServiceAccountArgs) DatascanExecutionIdentityServiceAccountPtrInput {
+	return (*datascanExecutionIdentityServiceAccountPtrType)(v)
+}
+
+func (*datascanExecutionIdentityServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentityServiceAccount)(nil)).Elem()
+}
+
+func (i *datascanExecutionIdentityServiceAccountPtrType) ToDatascanExecutionIdentityServiceAccountPtrOutput() DatascanExecutionIdentityServiceAccountPtrOutput {
+	return i.ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionIdentityServiceAccountPtrType) ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityServiceAccountPtrOutput)
+}
+
+type DatascanExecutionIdentityServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentityServiceAccount)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityServiceAccountOutput) ToDatascanExecutionIdentityServiceAccountOutput() DatascanExecutionIdentityServiceAccountOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityServiceAccountOutput) ToDatascanExecutionIdentityServiceAccountOutputWithContext(ctx context.Context) DatascanExecutionIdentityServiceAccountOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityServiceAccountOutput) ToDatascanExecutionIdentityServiceAccountPtrOutput() DatascanExecutionIdentityServiceAccountPtrOutput {
+	return o.ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionIdentityServiceAccountOutput) ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionIdentityServiceAccount) *DatascanExecutionIdentityServiceAccount {
+		return &v
+	}).(DatascanExecutionIdentityServiceAccountPtrOutput)
+}
+
+// Service account email.
+func (o DatascanExecutionIdentityServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanExecutionIdentityServiceAccount) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type DatascanExecutionIdentityServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentityServiceAccount)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityServiceAccountPtrOutput) ToDatascanExecutionIdentityServiceAccountPtrOutput() DatascanExecutionIdentityServiceAccountPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityServiceAccountPtrOutput) ToDatascanExecutionIdentityServiceAccountPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityServiceAccountPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityServiceAccountPtrOutput) Elem() DatascanExecutionIdentityServiceAccountOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentityServiceAccount) DatascanExecutionIdentityServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionIdentityServiceAccount
+		return ret
+	}).(DatascanExecutionIdentityServiceAccountOutput)
+}
+
+// Service account email.
+func (o DatascanExecutionIdentityServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentityServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanExecutionIdentityUserCredential struct {
+}
+
+// DatascanExecutionIdentityUserCredentialInput is an input type that accepts DatascanExecutionIdentityUserCredentialArgs and DatascanExecutionIdentityUserCredentialOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityUserCredentialInput` via:
+//
+//	DatascanExecutionIdentityUserCredentialArgs{...}
+type DatascanExecutionIdentityUserCredentialInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityUserCredentialOutput() DatascanExecutionIdentityUserCredentialOutput
+	ToDatascanExecutionIdentityUserCredentialOutputWithContext(context.Context) DatascanExecutionIdentityUserCredentialOutput
+}
+
+type DatascanExecutionIdentityUserCredentialArgs struct {
+}
+
+func (DatascanExecutionIdentityUserCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentityUserCredential)(nil)).Elem()
+}
+
+func (i DatascanExecutionIdentityUserCredentialArgs) ToDatascanExecutionIdentityUserCredentialOutput() DatascanExecutionIdentityUserCredentialOutput {
+	return i.ToDatascanExecutionIdentityUserCredentialOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityUserCredentialArgs) ToDatascanExecutionIdentityUserCredentialOutputWithContext(ctx context.Context) DatascanExecutionIdentityUserCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityUserCredentialOutput)
+}
+
+func (i DatascanExecutionIdentityUserCredentialArgs) ToDatascanExecutionIdentityUserCredentialPtrOutput() DatascanExecutionIdentityUserCredentialPtrOutput {
+	return i.ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionIdentityUserCredentialArgs) ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityUserCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityUserCredentialOutput).ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionIdentityUserCredentialPtrInput is an input type that accepts DatascanExecutionIdentityUserCredentialArgs, DatascanExecutionIdentityUserCredentialPtr and DatascanExecutionIdentityUserCredentialPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionIdentityUserCredentialPtrInput` via:
+//
+//	        DatascanExecutionIdentityUserCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionIdentityUserCredentialPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionIdentityUserCredentialPtrOutput() DatascanExecutionIdentityUserCredentialPtrOutput
+	ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(context.Context) DatascanExecutionIdentityUserCredentialPtrOutput
+}
+
+type datascanExecutionIdentityUserCredentialPtrType DatascanExecutionIdentityUserCredentialArgs
+
+func DatascanExecutionIdentityUserCredentialPtr(v *DatascanExecutionIdentityUserCredentialArgs) DatascanExecutionIdentityUserCredentialPtrInput {
+	return (*datascanExecutionIdentityUserCredentialPtrType)(v)
+}
+
+func (*datascanExecutionIdentityUserCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentityUserCredential)(nil)).Elem()
+}
+
+func (i *datascanExecutionIdentityUserCredentialPtrType) ToDatascanExecutionIdentityUserCredentialPtrOutput() DatascanExecutionIdentityUserCredentialPtrOutput {
+	return i.ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionIdentityUserCredentialPtrType) ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityUserCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionIdentityUserCredentialPtrOutput)
+}
+
+type DatascanExecutionIdentityUserCredentialOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityUserCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionIdentityUserCredential)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityUserCredentialOutput) ToDatascanExecutionIdentityUserCredentialOutput() DatascanExecutionIdentityUserCredentialOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityUserCredentialOutput) ToDatascanExecutionIdentityUserCredentialOutputWithContext(ctx context.Context) DatascanExecutionIdentityUserCredentialOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityUserCredentialOutput) ToDatascanExecutionIdentityUserCredentialPtrOutput() DatascanExecutionIdentityUserCredentialPtrOutput {
+	return o.ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionIdentityUserCredentialOutput) ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityUserCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionIdentityUserCredential) *DatascanExecutionIdentityUserCredential {
+		return &v
+	}).(DatascanExecutionIdentityUserCredentialPtrOutput)
+}
+
+type DatascanExecutionIdentityUserCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionIdentityUserCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionIdentityUserCredential)(nil)).Elem()
+}
+
+func (o DatascanExecutionIdentityUserCredentialPtrOutput) ToDatascanExecutionIdentityUserCredentialPtrOutput() DatascanExecutionIdentityUserCredentialPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityUserCredentialPtrOutput) ToDatascanExecutionIdentityUserCredentialPtrOutputWithContext(ctx context.Context) DatascanExecutionIdentityUserCredentialPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionIdentityUserCredentialPtrOutput) Elem() DatascanExecutionIdentityUserCredentialOutput {
+	return o.ApplyT(func(v *DatascanExecutionIdentityUserCredential) DatascanExecutionIdentityUserCredential {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionIdentityUserCredential
+		return ret
+	}).(DatascanExecutionIdentityUserCredentialOutput)
+}
+
 type DatascanExecutionSpec struct {
 	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
 	Field *string `pulumi:"field"`
@@ -8014,10 +8568,10 @@ func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Cron() pulumi.StringPtrOu
 
 type DatascanExecutionStatus struct {
 	// (Output)
-	// The time when the latest DataScanJob started.
+	// The time when the latest DataScanJob ended.
 	LatestJobEndTime *string `pulumi:"latestJobEndTime"`
 	// (Output)
-	// The time when the latest DataScanJob ended.
+	// The time when the latest DataScanJob started.
 	LatestJobStartTime *string `pulumi:"latestJobStartTime"`
 }
 
@@ -8034,10 +8588,10 @@ type DatascanExecutionStatusInput interface {
 
 type DatascanExecutionStatusArgs struct {
 	// (Output)
-	// The time when the latest DataScanJob started.
+	// The time when the latest DataScanJob ended.
 	LatestJobEndTime pulumi.StringPtrInput `pulumi:"latestJobEndTime"`
 	// (Output)
-	// The time when the latest DataScanJob ended.
+	// The time when the latest DataScanJob started.
 	LatestJobStartTime pulumi.StringPtrInput `pulumi:"latestJobStartTime"`
 }
 
@@ -8093,13 +8647,13 @@ func (o DatascanExecutionStatusOutput) ToDatascanExecutionStatusOutputWithContex
 }
 
 // (Output)
-// The time when the latest DataScanJob started.
+// The time when the latest DataScanJob ended.
 func (o DatascanExecutionStatusOutput) LatestJobEndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanExecutionStatus) *string { return v.LatestJobEndTime }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
-// The time when the latest DataScanJob ended.
+// The time when the latest DataScanJob started.
 func (o DatascanExecutionStatusOutput) LatestJobStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanExecutionStatus) *string { return v.LatestJobStartTime }).(pulumi.StringPtrOutput)
 }
@@ -16624,6 +17178,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleTableConditionExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleUniquenessExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityInput)(nil)).Elem(), DatascanExecutionIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityPtrInput)(nil)).Elem(), DatascanExecutionIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityDataplexServiceAgentInput)(nil)).Elem(), DatascanExecutionIdentityDataplexServiceAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityDataplexServiceAgentPtrInput)(nil)).Elem(), DatascanExecutionIdentityDataplexServiceAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityServiceAccountInput)(nil)).Elem(), DatascanExecutionIdentityServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityServiceAccountPtrInput)(nil)).Elem(), DatascanExecutionIdentityServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityUserCredentialInput)(nil)).Elem(), DatascanExecutionIdentityUserCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityUserCredentialPtrInput)(nil)).Elem(), DatascanExecutionIdentityUserCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecInput)(nil)).Elem(), DatascanExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecPtrInput)(nil)).Elem(), DatascanExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerInput)(nil)).Elem(), DatascanExecutionSpecTriggerArgs{})
@@ -16833,6 +17395,14 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleUniquenessExpectationOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityDataplexServiceAgentOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityDataplexServiceAgentPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityServiceAccountOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityUserCredentialOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionIdentityUserCredentialPtrOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOutput{})

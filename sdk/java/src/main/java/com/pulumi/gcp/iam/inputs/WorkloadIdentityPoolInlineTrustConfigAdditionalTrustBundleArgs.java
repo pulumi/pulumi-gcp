@@ -7,9 +7,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs extends com.pulumi.resources.ResourceArgs {
@@ -38,6 +41,29 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
     }
 
     /**
+     * If set to True, the trust bundle will include the private ca managed identity regional root
+     * public certificates.
+     * 
+     * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+     * resource.
+     * 
+     */
+    @Import(name="trustDefaultSharedCa")
+    private @Nullable Output<Boolean> trustDefaultSharedCa;
+
+    /**
+     * @return If set to True, the trust bundle will include the private ca managed identity regional root
+     * public certificates.
+     * 
+     * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+     * resource.
+     * 
+     */
+    public Optional<Output<Boolean>> trustDefaultSharedCa() {
+        return Optional.ofNullable(this.trustDefaultSharedCa);
+    }
+
+    /**
      * The identifier for this object. Format specified above.
      * 
      */
@@ -56,6 +82,7 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
 
     private WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs $) {
         this.trustAnchors = $.trustAnchors;
+        this.trustDefaultSharedCa = $.trustDefaultSharedCa;
         this.trustDomain = $.trustDomain;
     }
 
@@ -115,6 +142,35 @@ public final class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArg
          */
         public Builder trustAnchors(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs... trustAnchors) {
             return trustAnchors(List.of(trustAnchors));
+        }
+
+        /**
+         * @param trustDefaultSharedCa If set to True, the trust bundle will include the private ca managed identity regional root
+         * public certificates.
+         * 
+         * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+         * resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trustDefaultSharedCa(@Nullable Output<Boolean> trustDefaultSharedCa) {
+            $.trustDefaultSharedCa = trustDefaultSharedCa;
+            return this;
+        }
+
+        /**
+         * @param trustDefaultSharedCa If set to True, the trust bundle will include the private ca managed identity regional root
+         * public certificates.
+         * 
+         * &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+         * resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trustDefaultSharedCa(Boolean trustDefaultSharedCa) {
+            return trustDefaultSharedCa(Output.of(trustDefaultSharedCa));
         }
 
         /**

@@ -104,6 +104,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool EnableGoogleMlIntegration;
         /// <summary>
+        /// The Microsoft Entra ID configuration for the SQL Server instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingEntraidConfigResult> EntraidConfigs;
+        /// <summary>
         /// Config used to determine the final backup settings for the instance
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingFinalBackupConfigResult> FinalBackupConfigs;
@@ -198,6 +202,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool enableGoogleMlIntegration,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingEntraidConfigResult> entraidConfigs,
+
             ImmutableArray<Outputs.GetDatabaseInstanceSettingFinalBackupConfigResult> finalBackupConfigs,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> insightsConfigs,
@@ -250,6 +256,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             EffectiveAvailabilityType = effectiveAvailabilityType;
             EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
+            EntraidConfigs = entraidConfigs;
             FinalBackupConfigs = finalBackupConfigs;
             InsightsConfigs = insightsConfigs;
             IpConfigurations = ipConfigurations;

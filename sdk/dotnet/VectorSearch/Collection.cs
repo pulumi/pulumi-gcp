@@ -68,6 +68,91 @@ namespace Pulumi.Gcp.VectorSearch
     /// 
     /// });
     /// ```
+    /// ### Vectorsearch Collection Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+    ///     {
+    ///         Name = "example-cmek-collection",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+    ///     {
+    ///         Name = "example-cmek-collection",
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKeyMemberVsSa = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member_vs_sa", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-vectorsearch.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var example_cmek_collection = new Gcp.VectorSearch.Collection("example-cmek-collection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         CollectionId = "example-cmek-collection",
+    ///         DisplayName = "My Awesome Encrypted Collection",
+    ///         Description = "This collection stores important data.",
+    ///         EncryptionSpec = new Gcp.VectorSearch.Inputs.CollectionEncryptionSpecArgs
+    ///         {
+    ///             CryptoKeyName = cryptoKey.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "env", "dev" },
+    ///             { "team", "my-team" },
+    ///         },
+    ///         DataSchema = @"{
+    ///   \""type\"": \""object\"",
+    ///   \""properties\"": {
+    ///     \""title\"": {
+    ///       \""type\"": \""string\""
+    ///     },
+    ///     \""plot\"": {
+    ///       \""type\"": \""string\""
+    ///     }
+    ///   }
+    /// }
+    /// ",
+    ///         VectorSchemas = new[]
+    ///         {
+    ///             new Gcp.VectorSearch.Inputs.CollectionVectorSchemaArgs
+    ///             {
+    ///                 FieldName = "text_embedding",
+    ///                 DenseVector = new Gcp.VectorSearch.Inputs.CollectionVectorSchemaDenseVectorArgs
+    ///                 {
+    ///                     Dimensions = 768,
+    ///                     VertexEmbeddingConfig = new Gcp.VectorSearch.Inputs.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs
+    ///                     {
+    ///                         ModelId = "textembedding-gecko@003",
+    ///                         TaskType = "RETRIEVAL_DOCUMENT",
+    ///                         TextTemplate = "Title: {title} ---- Plot: {plot}",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKeyMemberVsSa,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -129,6 +214,14 @@ namespace Pulumi.Gcp.VectorSearch
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents a customer-managed encryption key specification that can be
+        /// applied to a Vector Search collection.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.CollectionEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
 
         /// <summary>
         /// Labels as key value pairs.
@@ -261,6 +354,14 @@ namespace Pulumi.Gcp.VectorSearch
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Represents a customer-managed encryption key specification that can be
+        /// applied to a Vector Search collection.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.CollectionEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -363,6 +464,14 @@ namespace Pulumi.Gcp.VectorSearch
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Represents a customer-managed encryption key specification that can be
+        /// applied to a Vector Search collection.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.CollectionEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

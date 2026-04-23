@@ -13,6 +13,155 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CollectionEncryptionSpec struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// The Cloud KMS key must be in the same region as the resource. It must have
+	// the format
+	// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	CryptoKeyName string `pulumi:"cryptoKeyName"`
+}
+
+// CollectionEncryptionSpecInput is an input type that accepts CollectionEncryptionSpecArgs and CollectionEncryptionSpecOutput values.
+// You can construct a concrete instance of `CollectionEncryptionSpecInput` via:
+//
+//	CollectionEncryptionSpecArgs{...}
+type CollectionEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToCollectionEncryptionSpecOutput() CollectionEncryptionSpecOutput
+	ToCollectionEncryptionSpecOutputWithContext(context.Context) CollectionEncryptionSpecOutput
+}
+
+type CollectionEncryptionSpecArgs struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// The Cloud KMS key must be in the same region as the resource. It must have
+	// the format
+	// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
+}
+
+func (CollectionEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionEncryptionSpec)(nil)).Elem()
+}
+
+func (i CollectionEncryptionSpecArgs) ToCollectionEncryptionSpecOutput() CollectionEncryptionSpecOutput {
+	return i.ToCollectionEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i CollectionEncryptionSpecArgs) ToCollectionEncryptionSpecOutputWithContext(ctx context.Context) CollectionEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionEncryptionSpecOutput)
+}
+
+func (i CollectionEncryptionSpecArgs) ToCollectionEncryptionSpecPtrOutput() CollectionEncryptionSpecPtrOutput {
+	return i.ToCollectionEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionEncryptionSpecArgs) ToCollectionEncryptionSpecPtrOutputWithContext(ctx context.Context) CollectionEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionEncryptionSpecOutput).ToCollectionEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// CollectionEncryptionSpecPtrInput is an input type that accepts CollectionEncryptionSpecArgs, CollectionEncryptionSpecPtr and CollectionEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `CollectionEncryptionSpecPtrInput` via:
+//
+//	        CollectionEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToCollectionEncryptionSpecPtrOutput() CollectionEncryptionSpecPtrOutput
+	ToCollectionEncryptionSpecPtrOutputWithContext(context.Context) CollectionEncryptionSpecPtrOutput
+}
+
+type collectionEncryptionSpecPtrType CollectionEncryptionSpecArgs
+
+func CollectionEncryptionSpecPtr(v *CollectionEncryptionSpecArgs) CollectionEncryptionSpecPtrInput {
+	return (*collectionEncryptionSpecPtrType)(v)
+}
+
+func (*collectionEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionEncryptionSpec)(nil)).Elem()
+}
+
+func (i *collectionEncryptionSpecPtrType) ToCollectionEncryptionSpecPtrOutput() CollectionEncryptionSpecPtrOutput {
+	return i.ToCollectionEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionEncryptionSpecPtrType) ToCollectionEncryptionSpecPtrOutputWithContext(ctx context.Context) CollectionEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionEncryptionSpecPtrOutput)
+}
+
+type CollectionEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (CollectionEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionEncryptionSpec)(nil)).Elem()
+}
+
+func (o CollectionEncryptionSpecOutput) ToCollectionEncryptionSpecOutput() CollectionEncryptionSpecOutput {
+	return o
+}
+
+func (o CollectionEncryptionSpecOutput) ToCollectionEncryptionSpecOutputWithContext(ctx context.Context) CollectionEncryptionSpecOutput {
+	return o
+}
+
+func (o CollectionEncryptionSpecOutput) ToCollectionEncryptionSpecPtrOutput() CollectionEncryptionSpecPtrOutput {
+	return o.ToCollectionEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionEncryptionSpecOutput) ToCollectionEncryptionSpecPtrOutputWithContext(ctx context.Context) CollectionEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionEncryptionSpec) *CollectionEncryptionSpec {
+		return &v
+	}).(CollectionEncryptionSpecPtrOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// The Cloud KMS key must be in the same region as the resource. It must have
+// the format
+// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o CollectionEncryptionSpecOutput) CryptoKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v CollectionEncryptionSpec) string { return v.CryptoKeyName }).(pulumi.StringOutput)
+}
+
+type CollectionEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionEncryptionSpec)(nil)).Elem()
+}
+
+func (o CollectionEncryptionSpecPtrOutput) ToCollectionEncryptionSpecPtrOutput() CollectionEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o CollectionEncryptionSpecPtrOutput) ToCollectionEncryptionSpecPtrOutputWithContext(ctx context.Context) CollectionEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o CollectionEncryptionSpecPtrOutput) Elem() CollectionEncryptionSpecOutput {
+	return o.ApplyT(func(v *CollectionEncryptionSpec) CollectionEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionEncryptionSpec
+		return ret
+	}).(CollectionEncryptionSpecOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// The Cloud KMS key must be in the same region as the resource. It must have
+// the format
+// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o CollectionEncryptionSpecPtrOutput) CryptoKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CryptoKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type CollectionVectorSchema struct {
 	// Message describing a dense vector field.
 	// Structure is documented below.
@@ -639,6 +788,8 @@ func (o CollectionVectorSchemaSparseVectorPtrOutput) Elem() CollectionVectorSche
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionEncryptionSpecInput)(nil)).Elem(), CollectionEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionEncryptionSpecPtrInput)(nil)).Elem(), CollectionEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaInput)(nil)).Elem(), CollectionVectorSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaArrayInput)(nil)).Elem(), CollectionVectorSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaDenseVectorInput)(nil)).Elem(), CollectionVectorSchemaDenseVectorArgs{})
@@ -647,6 +798,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaDenseVectorVertexEmbeddingConfigPtrInput)(nil)).Elem(), CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaSparseVectorInput)(nil)).Elem(), CollectionVectorSchemaSparseVectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaSparseVectorPtrInput)(nil)).Elem(), CollectionVectorSchemaSparseVectorArgs{})
+	pulumi.RegisterOutputType(CollectionEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(CollectionEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaArrayOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaDenseVectorOutput{})

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
 import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeState;
 import com.pulumi.gcp.clouddeploy.outputs.CustomTargetTypeCustomActions;
+import com.pulumi.gcp.clouddeploy.outputs.CustomTargetTypeTasks;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -207,6 +208,57 @@ import javax.annotation.Nullable;
  *                         .repository("projects/example/locations/us-central1/connections/git/repositories/example-repo")
  *                         .path("configs/skaffold.yaml")
  *                         .ref("main")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Clouddeploy Custom Target Type Tasks
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.clouddeploy.CustomTargetType;
+ * import com.pulumi.gcp.clouddeploy.CustomTargetTypeArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksRenderArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksRenderContainerArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksDeployArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksDeployContainerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom_target_type = new CustomTargetType("custom-target-type", CustomTargetTypeArgs.builder()
+ *             .location("us-central1")
+ *             .name("my-custom-target-type")
+ *             .description("My custom target type")
+ *             .tasks(CustomTargetTypeTasksArgs.builder()
+ *                 .render(CustomTargetTypeTasksRenderArgs.builder()
+ *                     .container(CustomTargetTypeTasksRenderContainerArgs.builder()
+ *                         .image("gcr.io/my-project/my-render-image")
+ *                         .build())
+ *                     .build())
+ *                 .deploy(CustomTargetTypeTasksDeployArgs.builder()
+ *                     .container(CustomTargetTypeTasksDeployContainerArgs.builder()
+ *                         .image("gcr.io/my-project/my-deploy-image")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -431,6 +483,22 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tasks", refs={CustomTargetTypeTasks.class}, tree="[0]")
+    private Output</* @Nullable */ CustomTargetTypeTasks> tasks;
+
+    /**
+     * @return Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CustomTargetTypeTasks>> tasks() {
+        return Codegen.optional(this.tasks);
     }
     /**
      * Unique identifier of the `CustomTargetType`.

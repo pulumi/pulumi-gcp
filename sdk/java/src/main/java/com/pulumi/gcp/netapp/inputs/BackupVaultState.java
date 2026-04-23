@@ -67,6 +67,25 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The crypto key version used to encrypt the backup vault.
+     * Format:
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    @Import(name="backupsCryptoKeyVersion")
+    private @Nullable Output<String> backupsCryptoKeyVersion;
+
+    /**
+     * @return The crypto key version used to encrypt the backup vault.
+     * Format:
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public Optional<Output<String>> backupsCryptoKeyVersion() {
+        return Optional.ofNullable(this.backupsCryptoKeyVersion);
+    }
+
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
      * 
      */
@@ -124,6 +143,40 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Encryption state of customer-managed encryption keys (CMEK) backups.
+     * 
+     */
+    @Import(name="encryptionState")
+    private @Nullable Output<String> encryptionState;
+
+    /**
+     * @return Encryption state of customer-managed encryption keys (CMEK) backups.
+     * 
+     */
+    public Optional<Output<String>> encryptionState() {
+        return Optional.ofNullable(this.encryptionState);
+    }
+
+    /**
+     * Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     * 
+     */
+    @Import(name="kmsConfig")
+    private @Nullable Output<String> kmsConfig;
+
+    /**
+     * @return Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     * 
+     */
+    public Optional<Output<String>> kmsConfig() {
+        return Optional.ofNullable(this.kmsConfig);
     }
 
     /**
@@ -262,10 +315,13 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         this.backupRegion = $.backupRegion;
         this.backupRetentionPolicy = $.backupRetentionPolicy;
         this.backupVaultType = $.backupVaultType;
+        this.backupsCryptoKeyVersion = $.backupsCryptoKeyVersion;
         this.createTime = $.createTime;
         this.description = $.description;
         this.destinationBackupVault = $.destinationBackupVault;
         this.effectiveLabels = $.effectiveLabels;
+        this.encryptionState = $.encryptionState;
+        this.kmsConfig = $.kmsConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -362,6 +418,31 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param backupsCryptoKeyVersion The crypto key version used to encrypt the backup vault.
+         * Format:
+         * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupsCryptoKeyVersion(@Nullable Output<String> backupsCryptoKeyVersion) {
+            $.backupsCryptoKeyVersion = backupsCryptoKeyVersion;
+            return this;
+        }
+
+        /**
+         * @param backupsCryptoKeyVersion The crypto key version used to encrypt the backup vault.
+         * Format:
+         * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupsCryptoKeyVersion(String backupsCryptoKeyVersion) {
+            return backupsCryptoKeyVersion(Output.of(backupsCryptoKeyVersion));
+        }
+
+        /**
          * @param createTime Create time of the backup vault. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
          * 
          * @return builder
@@ -443,6 +524,52 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param encryptionState Encryption state of customer-managed encryption keys (CMEK) backups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionState(@Nullable Output<String> encryptionState) {
+            $.encryptionState = encryptionState;
+            return this;
+        }
+
+        /**
+         * @param encryptionState Encryption state of customer-managed encryption keys (CMEK) backups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionState(String encryptionState) {
+            return encryptionState(Output.of(encryptionState));
+        }
+
+        /**
+         * @param kmsConfig Specifies the Key Management System (KMS) configuration to be used for
+         * backup encryption. Format:
+         * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsConfig(@Nullable Output<String> kmsConfig) {
+            $.kmsConfig = kmsConfig;
+            return this;
+        }
+
+        /**
+         * @param kmsConfig Specifies the Key Management System (KMS) configuration to be used for
+         * backup encryption. Format:
+         * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsConfig(String kmsConfig) {
+            return kmsConfig(Output.of(kmsConfig));
         }
 
         /**

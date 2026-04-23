@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     ///     var primary = new Gcp.Iam.WorkloadIdentityServiceAgent("primary", new()
     ///     {
-    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/serviceProducers/healthcare.google.apis.com",
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/serviceProducers/healthcare.googleapis.com",
     ///     });
     /// 
     /// });

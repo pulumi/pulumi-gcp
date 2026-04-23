@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
 import java.lang.String;
 import java.util.List;
@@ -32,6 +33,23 @@ public final class RolloutSequenceArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ignoredClustersSelector")
+    private @Nullable Output<RolloutSequenceIgnoredClustersSelectorArgs> ignoredClustersSelector;
+
+    /**
+     * @return Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RolloutSequenceIgnoredClustersSelectorArgs>> ignoredClustersSelector() {
+        return Optional.ofNullable(this.ignoredClustersSelector);
     }
 
     /**
@@ -108,6 +126,7 @@ public final class RolloutSequenceArgs extends com.pulumi.resources.ResourceArgs
 
     private RolloutSequenceArgs(RolloutSequenceArgs $) {
         this.displayName = $.displayName;
+        this.ignoredClustersSelector = $.ignoredClustersSelector;
         this.labels = $.labels;
         this.project = $.project;
         this.rolloutSequenceId = $.rolloutSequenceId;
@@ -151,6 +170,29 @@ public final class RolloutSequenceArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param ignoredClustersSelector Selector for clusters to exclude from the Rollout Sequence.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoredClustersSelector(@Nullable Output<RolloutSequenceIgnoredClustersSelectorArgs> ignoredClustersSelector) {
+            $.ignoredClustersSelector = ignoredClustersSelector;
+            return this;
+        }
+
+        /**
+         * @param ignoredClustersSelector Selector for clusters to exclude from the Rollout Sequence.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs ignoredClustersSelector) {
+            return ignoredClustersSelector(Output.of(ignoredClustersSelector));
         }
 
         /**

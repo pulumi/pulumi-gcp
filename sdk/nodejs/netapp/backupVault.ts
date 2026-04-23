@@ -93,6 +93,12 @@ export class BackupVault extends pulumi.CustomResource {
      */
     declare public readonly backupVaultType: pulumi.Output<string>;
     /**
+     * The crypto key version used to encrypt the backup vault.
+     * Format:
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    declare public /*out*/ readonly backupsCryptoKeyVersion: pulumi.Output<string>;
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -108,6 +114,16 @@ export class BackupVault extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Encryption state of customer-managed encryption keys (CMEK) backups.
+     */
+    declare public /*out*/ readonly encryptionState: pulumi.Output<string>;
+    /**
+     * Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     */
+    declare public readonly kmsConfig: pulumi.Output<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
@@ -162,10 +178,13 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["backupRegion"] = state?.backupRegion;
             resourceInputs["backupRetentionPolicy"] = state?.backupRetentionPolicy;
             resourceInputs["backupVaultType"] = state?.backupVaultType;
+            resourceInputs["backupsCryptoKeyVersion"] = state?.backupsCryptoKeyVersion;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["destinationBackupVault"] = state?.destinationBackupVault;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionState"] = state?.encryptionState;
+            resourceInputs["kmsConfig"] = state?.kmsConfig;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -183,13 +202,16 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["backupRetentionPolicy"] = args?.backupRetentionPolicy;
             resourceInputs["backupVaultType"] = args?.backupVaultType;
             resourceInputs["description"] = args?.description;
+            resourceInputs["kmsConfig"] = args?.kmsConfig;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
+            resourceInputs["backupsCryptoKeyVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destinationBackupVault"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["encryptionState"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["sourceBackupVault"] = undefined /*out*/;
             resourceInputs["sourceRegion"] = undefined /*out*/;
@@ -221,6 +243,12 @@ export interface BackupVaultState {
      */
     backupVaultType?: pulumi.Input<string>;
     /**
+     * The crypto key version used to encrypt the backup vault.
+     * Format:
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    backupsCryptoKeyVersion?: pulumi.Input<string>;
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
     createTime?: pulumi.Input<string>;
@@ -236,6 +264,16 @@ export interface BackupVaultState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Encryption state of customer-managed encryption keys (CMEK) backups.
+     */
+    encryptionState?: pulumi.Input<string>;
+    /**
+     * Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     */
+    kmsConfig?: pulumi.Input<string>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
@@ -297,6 +335,12 @@ export interface BackupVaultArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     */
+    kmsConfig?: pulumi.Input<string>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *

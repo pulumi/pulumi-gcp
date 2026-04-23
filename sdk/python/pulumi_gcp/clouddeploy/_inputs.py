@@ -49,6 +49,16 @@ __all__ = [
     'CustomTargetTypeIamBindingConditionArgsDict',
     'CustomTargetTypeIamMemberConditionArgs',
     'CustomTargetTypeIamMemberConditionArgsDict',
+    'CustomTargetTypeTasksArgs',
+    'CustomTargetTypeTasksArgsDict',
+    'CustomTargetTypeTasksDeployArgs',
+    'CustomTargetTypeTasksDeployArgsDict',
+    'CustomTargetTypeTasksDeployContainerArgs',
+    'CustomTargetTypeTasksDeployContainerArgsDict',
+    'CustomTargetTypeTasksRenderArgs',
+    'CustomTargetTypeTasksRenderArgsDict',
+    'CustomTargetTypeTasksRenderContainerArgs',
+    'CustomTargetTypeTasksRenderContainerArgsDict',
     'DeliveryPipelineConditionArgs',
     'DeliveryPipelineConditionArgsDict',
     'DeliveryPipelineConditionPipelineReadyConditionArgs',
@@ -1309,6 +1319,300 @@ class CustomTargetTypeIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class CustomTargetTypeTasksArgsDict(TypedDict):
+    deploy: pulumi.Input['CustomTargetTypeTasksDeployArgsDict']
+    """
+    The task responsible for deploy operations.
+    Structure is documented below.
+    """
+    render: NotRequired[pulumi.Input['CustomTargetTypeTasksRenderArgsDict']]
+    """
+    The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class CustomTargetTypeTasksArgs:
+    def __init__(__self__, *,
+                 deploy: pulumi.Input['CustomTargetTypeTasksDeployArgs'],
+                 render: Optional[pulumi.Input['CustomTargetTypeTasksRenderArgs']] = None):
+        """
+        :param pulumi.Input['CustomTargetTypeTasksDeployArgs'] deploy: The task responsible for deploy operations.
+               Structure is documented below.
+        :param pulumi.Input['CustomTargetTypeTasksRenderArgs'] render: The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "deploy", deploy)
+        if render is not None:
+            pulumi.set(__self__, "render", render)
+
+    @_builtins.property
+    @pulumi.getter
+    def deploy(self) -> pulumi.Input['CustomTargetTypeTasksDeployArgs']:
+        """
+        The task responsible for deploy operations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deploy")
+
+    @deploy.setter
+    def deploy(self, value: pulumi.Input['CustomTargetTypeTasksDeployArgs']):
+        pulumi.set(self, "deploy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def render(self) -> Optional[pulumi.Input['CustomTargetTypeTasksRenderArgs']]:
+        """
+        The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "render")
+
+    @render.setter
+    def render(self, value: Optional[pulumi.Input['CustomTargetTypeTasksRenderArgs']]):
+        pulumi.set(self, "render", value)
+
+
+class CustomTargetTypeTasksDeployArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['CustomTargetTypeTasksDeployContainerArgsDict']]
+    """
+    This task is represented by a container that is executed in the Cloud Build execution environment.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class CustomTargetTypeTasksDeployArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['CustomTargetTypeTasksDeployContainerArgs']] = None):
+        """
+        :param pulumi.Input['CustomTargetTypeTasksDeployContainerArgs'] container: This task is represented by a container that is executed in the Cloud Build execution environment.
+               Structure is documented below.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['CustomTargetTypeTasksDeployContainerArgs']]:
+        """
+        This task is represented by a container that is executed in the Cloud Build execution environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['CustomTargetTypeTasksDeployContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class CustomTargetTypeTasksDeployContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class CustomTargetTypeTasksDeployContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
+
+class CustomTargetTypeTasksRenderArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['CustomTargetTypeTasksRenderContainerArgsDict']]
+    """
+    This task is represented by a container that is executed in the Cloud Build execution environment.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class CustomTargetTypeTasksRenderArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['CustomTargetTypeTasksRenderContainerArgs']] = None):
+        """
+        :param pulumi.Input['CustomTargetTypeTasksRenderContainerArgs'] container: This task is represented by a container that is executed in the Cloud Build execution environment.
+               Structure is documented below.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['CustomTargetTypeTasksRenderContainerArgs']]:
+        """
+        This task is represented by a container that is executed in the Cloud Build execution environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['CustomTargetTypeTasksRenderContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class CustomTargetTypeTasksRenderContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class CustomTargetTypeTasksRenderContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
 
 
 class DeliveryPipelineConditionArgsDict(TypedDict):

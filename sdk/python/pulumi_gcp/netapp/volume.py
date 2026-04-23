@@ -81,8 +81,7 @@ class VolumeArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
-        :param pulumi.Input['VolumeLargeCapacityConfigArgs'] large_capacity_config: (Optional, Beta)
-               Configuration for a Large Capacity Volume. A Large Capacity Volume
+        :param pulumi.Input['VolumeLargeCapacityConfigArgs'] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
                supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
                internal constituents, and must be created in a large capacity pool.
                Structure is documented below.
@@ -350,7 +349,6 @@ class VolumeArgs:
     @pulumi.getter(name="largeCapacityConfig")
     def large_capacity_config(self) -> Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']]:
         """
-        (Optional, Beta)
         Configuration for a Large Capacity Volume. A Large Capacity Volume
         supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
         internal constituents, and must be created in a large capacity pool.
@@ -615,8 +613,7 @@ class _VolumeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
-        :param pulumi.Input['VolumeLargeCapacityConfigArgs'] large_capacity_config: (Optional, Beta)
-               Configuration for a Large Capacity Volume. A Large Capacity Volume
+        :param pulumi.Input['VolumeLargeCapacityConfigArgs'] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
                supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
                internal constituents, and must be created in a large capacity pool.
                Structure is documented below.
@@ -1002,7 +999,6 @@ class _VolumeState:
     @pulumi.getter(name="largeCapacityConfig")
     def large_capacity_config(self) -> Optional[pulumi.Input['VolumeLargeCapacityConfigArgs']]:
         """
-        (Optional, Beta)
         Configuration for a Large Capacity Volume. A Large Capacity Volume
         supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
         internal constituents, and must be created in a large capacity pool.
@@ -1470,8 +1466,7 @@ class Volume(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
-        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: (Optional, Beta)
-               Configuration for a Large Capacity Volume. A Large Capacity Volume
+        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
                supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
                internal constituents, and must be created in a large capacity pool.
                Structure is documented below.
@@ -1771,8 +1766,7 @@ class Volume(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
-        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: (Optional, Beta)
-               Configuration for a Large Capacity Volume. A Large Capacity Volume
+        :param pulumi.Input[Union['VolumeLargeCapacityConfigArgs', 'VolumeLargeCapacityConfigArgsDict']] large_capacity_config: Configuration for a Large Capacity Volume. A Large Capacity Volume
                supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
                internal constituents, and must be created in a large capacity pool.
                Structure is documented below.
@@ -2040,7 +2034,6 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="largeCapacityConfig")
     def large_capacity_config(self) -> pulumi.Output[Optional['outputs.VolumeLargeCapacityConfig']]:
         """
-        (Optional, Beta)
         Configuration for a Large Capacity Volume. A Large Capacity Volume
         supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
         internal constituents, and must be created in a large capacity pool.

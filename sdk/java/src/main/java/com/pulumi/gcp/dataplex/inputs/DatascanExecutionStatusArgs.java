@@ -17,7 +17,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
     /**
      * (Output)
-     * The time when the latest DataScanJob started.
+     * The time when the latest DataScanJob ended.
      * 
      */
     @Import(name="latestJobEndTime")
@@ -25,7 +25,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
     /**
      * @return (Output)
-     * The time when the latest DataScanJob started.
+     * The time when the latest DataScanJob ended.
      * 
      */
     public Optional<Output<String>> latestJobEndTime() {
@@ -34,7 +34,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
     /**
      * (Output)
-     * The time when the latest DataScanJob ended.
+     * The time when the latest DataScanJob started.
      * 
      */
     @Import(name="latestJobStartTime")
@@ -42,7 +42,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
     /**
      * @return (Output)
-     * The time when the latest DataScanJob ended.
+     * The time when the latest DataScanJob started.
      * 
      */
     public Optional<Output<String>> latestJobStartTime() {
@@ -76,7 +76,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
         /**
          * @param latestJobEndTime (Output)
-         * The time when the latest DataScanJob started.
+         * The time when the latest DataScanJob ended.
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
         /**
          * @param latestJobEndTime (Output)
-         * The time when the latest DataScanJob started.
+         * The time when the latest DataScanJob ended.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
         /**
          * @param latestJobStartTime (Output)
-         * The time when the latest DataScanJob ended.
+         * The time when the latest DataScanJob started.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class DatascanExecutionStatusArgs extends com.pulumi.resources.Reso
 
         /**
          * @param latestJobStartTime (Output)
-         * The time when the latest DataScanJob ended.
+         * The time when the latest DataScanJob started.
          * 
          * @return builder
          * 

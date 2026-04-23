@@ -4036,6 +4036,8 @@ type ClusterClusterConfig struct {
 	// The config settings for port access on the cluster.
 	// Structure defined below.
 	EndpointConfig *ClusterClusterConfigEndpointConfig `pulumi:"endpointConfig"`
+	// The cluster engine.
+	Engine *string `pulumi:"engine"`
 	// Common config settings for resources of Google Compute Engine cluster
 	// instances, applicable to all instances in the cluster. Structure defined below.
 	GceClusterConfig *ClusterClusterConfigGceClusterConfig `pulumi:"gceClusterConfig"`
@@ -4117,6 +4119,8 @@ type ClusterClusterConfigArgs struct {
 	// The config settings for port access on the cluster.
 	// Structure defined below.
 	EndpointConfig ClusterClusterConfigEndpointConfigPtrInput `pulumi:"endpointConfig"`
+	// The cluster engine.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Common config settings for resources of Google Compute Engine cluster
 	// instances, applicable to all instances in the cluster. Structure defined below.
 	GceClusterConfig ClusterClusterConfigGceClusterConfigPtrInput `pulumi:"gceClusterConfig"`
@@ -4285,6 +4289,11 @@ func (o ClusterClusterConfigOutput) EncryptionConfig() ClusterClusterConfigEncry
 // Structure defined below.
 func (o ClusterClusterConfigOutput) EndpointConfig() ClusterClusterConfigEndpointConfigPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigEndpointConfig { return v.EndpointConfig }).(ClusterClusterConfigEndpointConfigPtrOutput)
+}
+
+// The cluster engine.
+func (o ClusterClusterConfigOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
 
 // Common config settings for resources of Google Compute Engine cluster
@@ -4477,6 +4486,16 @@ func (o ClusterClusterConfigPtrOutput) EndpointConfig() ClusterClusterConfigEndp
 		}
 		return v.EndpointConfig
 	}).(ClusterClusterConfigEndpointConfigPtrOutput)
+}
+
+// The cluster engine.
+func (o ClusterClusterConfigPtrOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Engine
+	}).(pulumi.StringPtrOutput)
 }
 
 // Common config settings for resources of Google Compute Engine cluster

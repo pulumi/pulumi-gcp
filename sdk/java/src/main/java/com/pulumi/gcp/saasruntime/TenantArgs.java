@@ -44,7 +44,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A reference to the consumer resource this SaaS Tenant is representing.
-     * The relationship with a consumer resource can be used by SaaS Runtime for
+     * The relationship with a consumer resource can be used by App Lifecycle Manager for
      * retrieving consumer-defined settings and policies such as maintenance
      * policies (using Unified Maintenance Policy API).
      * 
@@ -54,7 +54,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A reference to the consumer resource this SaaS Tenant is representing.
-     * The relationship with a consumer resource can be used by SaaS Runtime for
+     * The relationship with a consumer resource can be used by App Lifecycle Manager for
      * retrieving consumer-defined settings and policies such as maintenance
      * policies (using Unified Maintenance Policy API).
      * 
@@ -118,8 +118,8 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the
-     * SaaS Runtime common data model.
+     * the producer wants to manage with App Lifecycle Manager. Part of the
+     * App Lifecycle Manager common data model.
      * 
      */
     @Import(name="saas", required=true)
@@ -127,8 +127,8 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the
-     * SaaS Runtime common data model.
+     * the producer wants to manage with App Lifecycle Manager. Part of the
+     * App Lifecycle Manager common data model.
      * 
      */
     public Output<String> saas() {
@@ -213,7 +213,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param consumerResource A reference to the consumer resource this SaaS Tenant is representing.
-         * The relationship with a consumer resource can be used by SaaS Runtime for
+         * The relationship with a consumer resource can be used by App Lifecycle Manager for
          * retrieving consumer-defined settings and policies such as maintenance
          * policies (using Unified Maintenance Policy API).
          * 
@@ -227,7 +227,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param consumerResource A reference to the consumer resource this SaaS Tenant is representing.
-         * The relationship with a consumer resource can be used by SaaS Runtime for
+         * The relationship with a consumer resource can be used by App Lifecycle Manager for
          * retrieving consumer-defined settings and policies such as maintenance
          * policies (using Unified Maintenance Policy API).
          * 
@@ -311,8 +311,8 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param saas A reference to the Saas that defines the product (managed service) that
-         * the producer wants to manage with SaaS Runtime. Part of the
-         * SaaS Runtime common data model.
+         * the producer wants to manage with App Lifecycle Manager. Part of the
+         * App Lifecycle Manager common data model.
          * 
          * @return builder
          * 
@@ -324,8 +324,8 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param saas A reference to the Saas that defines the product (managed service) that
-         * the producer wants to manage with SaaS Runtime. Part of the
-         * SaaS Runtime common data model.
+         * the producer wants to manage with App Lifecycle Manager. Part of the
+         * App Lifecycle Manager common data model.
          * 
          * @return builder
          * 

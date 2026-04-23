@@ -413,7 +413,6 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.largeCapacity);
     }
     /**
-     * (Optional, Beta)
      * Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.
@@ -424,8 +423,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ VolumeLargeCapacityConfig> largeCapacityConfig;
 
     /**
-     * @return (Optional, Beta)
-     * Configuration for a Large Capacity Volume. A Large Capacity Volume
+     * @return Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.
      * Structure is documented below.

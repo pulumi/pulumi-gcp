@@ -86,7 +86,7 @@ type Tenant struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// A reference to the consumer resource this SaaS Tenant is representing.
-	// The relationship with a consumer resource can be used by SaaS Runtime for
+	// The relationship with a consumer resource can be used by App Lifecycle Manager for
 	// retrieving consumer-defined settings and policies such as maintenance
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource pulumi.StringPtrOutput `pulumi:"consumerResource"`
@@ -114,8 +114,8 @@ type Tenant struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the
-	// SaaS Runtime common data model.
+	// the producer wants to manage with App Lifecycle Manager. Part of the
+	// App Lifecycle Manager common data model.
 	Saas pulumi.StringOutput `pulumi:"saas"`
 	// The ID value for the new tenant.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
@@ -183,7 +183,7 @@ type tenantState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A reference to the consumer resource this SaaS Tenant is representing.
-	// The relationship with a consumer resource can be used by SaaS Runtime for
+	// The relationship with a consumer resource can be used by App Lifecycle Manager for
 	// retrieving consumer-defined settings and policies such as maintenance
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource *string `pulumi:"consumerResource"`
@@ -211,8 +211,8 @@ type tenantState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the
-	// SaaS Runtime common data model.
+	// the producer wants to manage with App Lifecycle Manager. Part of the
+	// App Lifecycle Manager common data model.
 	Saas *string `pulumi:"saas"`
 	// The ID value for the new tenant.
 	TenantId *string `pulumi:"tenantId"`
@@ -237,7 +237,7 @@ type TenantState struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A reference to the consumer resource this SaaS Tenant is representing.
-	// The relationship with a consumer resource can be used by SaaS Runtime for
+	// The relationship with a consumer resource can be used by App Lifecycle Manager for
 	// retrieving consumer-defined settings and policies such as maintenance
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource pulumi.StringPtrInput
@@ -265,8 +265,8 @@ type TenantState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the
-	// SaaS Runtime common data model.
+	// the producer wants to manage with App Lifecycle Manager. Part of the
+	// App Lifecycle Manager common data model.
 	Saas pulumi.StringPtrInput
 	// The ID value for the new tenant.
 	TenantId pulumi.StringPtrInput
@@ -295,7 +295,7 @@ type tenantArgs struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A reference to the consumer resource this SaaS Tenant is representing.
-	// The relationship with a consumer resource can be used by SaaS Runtime for
+	// The relationship with a consumer resource can be used by App Lifecycle Manager for
 	// retrieving consumer-defined settings and policies such as maintenance
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource *string `pulumi:"consumerResource"`
@@ -310,8 +310,8 @@ type tenantArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the
-	// SaaS Runtime common data model.
+	// the producer wants to manage with App Lifecycle Manager. Part of the
+	// App Lifecycle Manager common data model.
 	Saas string `pulumi:"saas"`
 	// The ID value for the new tenant.
 	TenantId string `pulumi:"tenantId"`
@@ -327,7 +327,7 @@ type TenantArgs struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A reference to the consumer resource this SaaS Tenant is representing.
-	// The relationship with a consumer resource can be used by SaaS Runtime for
+	// The relationship with a consumer resource can be used by App Lifecycle Manager for
 	// retrieving consumer-defined settings and policies such as maintenance
 	// policies (using Unified Maintenance Policy API).
 	ConsumerResource pulumi.StringPtrInput
@@ -342,8 +342,8 @@ type TenantArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the
-	// SaaS Runtime common data model.
+	// the producer wants to manage with App Lifecycle Manager. Part of the
+	// App Lifecycle Manager common data model.
 	Saas pulumi.StringInput
 	// The ID value for the new tenant.
 	TenantId pulumi.StringInput
@@ -447,7 +447,7 @@ func (o TenantOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // A reference to the consumer resource this SaaS Tenant is representing.
-// The relationship with a consumer resource can be used by SaaS Runtime for
+// The relationship with a consumer resource can be used by App Lifecycle Manager for
 // retrieving consumer-defined settings and policies such as maintenance
 // policies (using Unified Maintenance Policy API).
 func (o TenantOutput) ConsumerResource() pulumi.StringPtrOutput {
@@ -503,8 +503,8 @@ func (o TenantOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // A reference to the Saas that defines the product (managed service) that
-// the producer wants to manage with SaaS Runtime. Part of the
-// SaaS Runtime common data model.
+// the producer wants to manage with App Lifecycle Manager. Part of the
+// App Lifecycle Manager common data model.
 func (o TenantOutput) Saas() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.Saas }).(pulumi.StringOutput)
 }

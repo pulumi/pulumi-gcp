@@ -21,6 +21,14 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> TrustAnchors;
         /// <summary>
+        /// If set to True, the trust bundle will include the private ca managed identity regional root
+        /// public certificates.
+        /// 
+        /// &gt; **Note** `TrustDefaultSharedCa` is only supported for managed identity trust domain
+        /// resource.
+        /// </summary>
+        public readonly bool? TrustDefaultSharedCa;
+        /// <summary>
         /// The identifier for this object. Format specified above.
         /// </summary>
         public readonly string TrustDomain;
@@ -29,9 +37,12 @@ namespace Pulumi.Gcp.Iam.Outputs
         private WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle(
             ImmutableArray<Outputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors,
 
+            bool? trustDefaultSharedCa,
+
             string trustDomain)
         {
             TrustAnchors = trustAnchors;
+            TrustDefaultSharedCa = trustDefaultSharedCa;
             TrustDomain = trustDomain;
         }
     }

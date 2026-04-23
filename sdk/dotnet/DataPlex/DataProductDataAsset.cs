@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
-    ///         DataProductId = "tf-test-dp-_34535",
+    ///         DataProductId = "tf-test-dp-_40785",
     ///         DisplayName = "Parent Data Product",
     ///         OwnerEmails = new[]
     ///         {
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_22375@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_79169@example.com",
     ///                 },
     ///             },
     ///         },
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         DatasetId = "tf_test_dataset__29439",
+    ///         DatasetId = "tf_test_dataset__56529",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
-    ///         DataProductId = "tf-test-dp-_87786",
+    ///         DataProductId = "tf-test-dp-_75413",
     ///         DisplayName = "Full Example Parent DP",
     ///         OwnerEmails = new[]
     ///         {
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         DatasetId = "tf_test_dataset__2067",
+    ///         DatasetId = "tf_test_dataset__55138",
     ///         Location = "us-central1",
     ///     });
     /// 

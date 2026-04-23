@@ -6312,6 +6312,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/storageDefaultBucket",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/storageDefaultBucket:StorageDefaultBucket": "StorageDefaultBucket"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/webApp",
   "fqn": "pulumi_gcp.firebase",
   "classes": {

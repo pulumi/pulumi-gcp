@@ -99,7 +99,7 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountArgs struct {
-	// The Google service account ID. This be one of:
+	// The Google service account ID. This must be one of:
 	//
 	// * The name of the service account within the project (e.g. `my-service`)
 	//
@@ -147,7 +147,7 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountOutputArgs struct {
-	// The Google service account ID. This be one of:
+	// The Google service account ID. This must be one of:
 	//
 	// * The name of the service account within the project (e.g. `my-service`)
 	//

@@ -106,17 +106,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "tf-test-network_34599",
+ *     name: "tf-test-network_94690",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_79513",
+ *     name: "tf-test-subnet_29947",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "tf-test-instance_55500",
+ *     name: "tf-test-instance_28257",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-central1-a",
@@ -134,14 +134,14 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "tf-test-hub_12223",
+ *     name: "tf-test-hub_49175",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "tf-test-name_49547",
+ *     name: "tf-test-name_79411",
  *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -401,8 +401,8 @@ import * as utilities from "../utilities";
  *     hub: starHub.id,
  *     autoAccept: {
  *         autoAcceptProjects: [
- *             "foo_48675",
- *             "bar_42702",
+ *             "foo_2234",
+ *             "bar_29225",
  *         ],
  *     },
  * });
@@ -465,7 +465,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_37426",
+ *     name: "tf-test-subnet_40798",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,

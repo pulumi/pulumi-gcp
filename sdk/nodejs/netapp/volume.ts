@@ -184,7 +184,6 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly largeCapacity: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional, Beta)
      * Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.
@@ -537,7 +536,6 @@ export interface VolumeState {
      */
     largeCapacity?: pulumi.Input<boolean>;
     /**
-     * (Optional, Beta)
      * Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.
@@ -730,7 +728,6 @@ export interface VolumeArgs {
      */
     largeCapacity?: pulumi.Input<boolean>;
     /**
-     * (Optional, Beta)
      * Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.

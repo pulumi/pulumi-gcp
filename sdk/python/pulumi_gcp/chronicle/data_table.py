@@ -555,12 +555,9 @@ class DataTable(pulumi.CustomResource):
         """
         Represents a Chronicle Data Table, a multicolumn structure used to ingest your own data into Google SecOps.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about DataTable, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dataTables)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataTables)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
@@ -685,12 +682,9 @@ class DataTable(pulumi.CustomResource):
         """
         Represents a Chronicle Data Table, a multicolumn structure used to ingest your own data into Google SecOps.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about DataTable, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dataTables)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataTables)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 

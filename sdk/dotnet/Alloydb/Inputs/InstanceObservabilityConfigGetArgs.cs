@@ -55,6 +55,12 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         public Input<bool>? TrackActiveQueries { get; set; }
 
         /// <summary>
+        /// Track client address for an instance. If not set, default value is "off".
+        /// </summary>
+        [Input("trackClientAddress")]
+        public Input<bool>? TrackClientAddress { get; set; }
+
+        /// <summary>
         /// Record wait event types during query execution for an instance.
         /// </summary>
         [Input("trackWaitEventTypes")]

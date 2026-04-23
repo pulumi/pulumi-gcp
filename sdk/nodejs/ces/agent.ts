@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *     displayName: "child agent",
  *     instruction: "You are a helpful assistant for this example.",
  *     modelSettings: {
- *         model: "gemini-2.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     llmAgent: {},
@@ -117,7 +117,7 @@ import * as utilities from "../utilities";
  *     description: "test agent",
  *     instruction: "You are a helpful assistant for this example.",
  *     modelSettings: {
- *         model: "gemini-2.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     beforeAgentCallbacks: [{
@@ -190,7 +190,7 @@ import * as utilities from "../utilities";
  *     app: cesAppForAgent.appId,
  *     displayName: "my-agent",
  *     modelSettings: {
- *         model: "gemini-1.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     remoteDialogflowAgent: {
@@ -236,7 +236,7 @@ import * as utilities from "../utilities";
  *     app: cesAppForAgent.appId,
  *     displayName: "my-agent",
  *     modelSettings: {
- *         model: "gemini-1.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     remoteDialogflowAgent: {

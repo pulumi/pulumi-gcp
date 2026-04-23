@@ -148,7 +148,6 @@ type Volume struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity pulumi.BoolPtrOutput `pulumi:"largeCapacity"`
-	// (Optional, Beta)
 	// Configuration for a Large Capacity Volume. A Large Capacity Volume
 	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
 	// internal constituents, and must be created in a large capacity pool.
@@ -322,7 +321,6 @@ type volumeState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity *bool `pulumi:"largeCapacity"`
-	// (Optional, Beta)
 	// Configuration for a Large Capacity Volume. A Large Capacity Volume
 	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
 	// internal constituents, and must be created in a large capacity pool.
@@ -450,7 +448,6 @@ type VolumeState struct {
 	Labels pulumi.StringMapInput
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity pulumi.BoolPtrInput
-	// (Optional, Beta)
 	// Configuration for a Large Capacity Volume. A Large Capacity Volume
 	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
 	// internal constituents, and must be created in a large capacity pool.
@@ -566,7 +563,6 @@ type volumeArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity *bool `pulumi:"largeCapacity"`
-	// (Optional, Beta)
 	// Configuration for a Large Capacity Volume. A Large Capacity Volume
 	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
 	// internal constituents, and must be created in a large capacity pool.
@@ -655,7 +651,6 @@ type VolumeArgs struct {
 	Labels pulumi.StringMapInput
 	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
 	LargeCapacity pulumi.BoolPtrInput
-	// (Optional, Beta)
 	// Configuration for a Large Capacity Volume. A Large Capacity Volume
 	// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
 	// internal constituents, and must be created in a large capacity pool.
@@ -902,7 +897,6 @@ func (o VolumeOutput) LargeCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.LargeCapacity }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Beta)
 // Configuration for a Large Capacity Volume. A Large Capacity Volume
 // supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
 // internal constituents, and must be created in a large capacity pool.

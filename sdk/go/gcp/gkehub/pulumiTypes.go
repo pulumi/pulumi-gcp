@@ -11322,6 +11322,147 @@ func (o NamespaceStateTypeArrayOutput) Index(i pulumi.IntInput) NamespaceStateTy
 	}).(NamespaceStateTypeOutput)
 }
 
+type RolloutSequenceIgnoredClustersSelector struct {
+	// The label selector must be a valid CEL (Common Expression Language) expression which
+	// evaluates resource.labels.
+	LabelSelector string `pulumi:"labelSelector"`
+}
+
+// RolloutSequenceIgnoredClustersSelectorInput is an input type that accepts RolloutSequenceIgnoredClustersSelectorArgs and RolloutSequenceIgnoredClustersSelectorOutput values.
+// You can construct a concrete instance of `RolloutSequenceIgnoredClustersSelectorInput` via:
+//
+//	RolloutSequenceIgnoredClustersSelectorArgs{...}
+type RolloutSequenceIgnoredClustersSelectorInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceIgnoredClustersSelectorOutput() RolloutSequenceIgnoredClustersSelectorOutput
+	ToRolloutSequenceIgnoredClustersSelectorOutputWithContext(context.Context) RolloutSequenceIgnoredClustersSelectorOutput
+}
+
+type RolloutSequenceIgnoredClustersSelectorArgs struct {
+	// The label selector must be a valid CEL (Common Expression Language) expression which
+	// evaluates resource.labels.
+	LabelSelector pulumi.StringInput `pulumi:"labelSelector"`
+}
+
+func (RolloutSequenceIgnoredClustersSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceIgnoredClustersSelector)(nil)).Elem()
+}
+
+func (i RolloutSequenceIgnoredClustersSelectorArgs) ToRolloutSequenceIgnoredClustersSelectorOutput() RolloutSequenceIgnoredClustersSelectorOutput {
+	return i.ToRolloutSequenceIgnoredClustersSelectorOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceIgnoredClustersSelectorArgs) ToRolloutSequenceIgnoredClustersSelectorOutputWithContext(ctx context.Context) RolloutSequenceIgnoredClustersSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceIgnoredClustersSelectorOutput)
+}
+
+func (i RolloutSequenceIgnoredClustersSelectorArgs) ToRolloutSequenceIgnoredClustersSelectorPtrOutput() RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return i.ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceIgnoredClustersSelectorArgs) ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceIgnoredClustersSelectorOutput).ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(ctx)
+}
+
+// RolloutSequenceIgnoredClustersSelectorPtrInput is an input type that accepts RolloutSequenceIgnoredClustersSelectorArgs, RolloutSequenceIgnoredClustersSelectorPtr and RolloutSequenceIgnoredClustersSelectorPtrOutput values.
+// You can construct a concrete instance of `RolloutSequenceIgnoredClustersSelectorPtrInput` via:
+//
+//	        RolloutSequenceIgnoredClustersSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSequenceIgnoredClustersSelectorPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceIgnoredClustersSelectorPtrOutput() RolloutSequenceIgnoredClustersSelectorPtrOutput
+	ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(context.Context) RolloutSequenceIgnoredClustersSelectorPtrOutput
+}
+
+type rolloutSequenceIgnoredClustersSelectorPtrType RolloutSequenceIgnoredClustersSelectorArgs
+
+func RolloutSequenceIgnoredClustersSelectorPtr(v *RolloutSequenceIgnoredClustersSelectorArgs) RolloutSequenceIgnoredClustersSelectorPtrInput {
+	return (*rolloutSequenceIgnoredClustersSelectorPtrType)(v)
+}
+
+func (*rolloutSequenceIgnoredClustersSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceIgnoredClustersSelector)(nil)).Elem()
+}
+
+func (i *rolloutSequenceIgnoredClustersSelectorPtrType) ToRolloutSequenceIgnoredClustersSelectorPtrOutput() RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return i.ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSequenceIgnoredClustersSelectorPtrType) ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceIgnoredClustersSelectorPtrOutput)
+}
+
+type RolloutSequenceIgnoredClustersSelectorOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceIgnoredClustersSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceIgnoredClustersSelector)(nil)).Elem()
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorOutput) ToRolloutSequenceIgnoredClustersSelectorOutput() RolloutSequenceIgnoredClustersSelectorOutput {
+	return o
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorOutput) ToRolloutSequenceIgnoredClustersSelectorOutputWithContext(ctx context.Context) RolloutSequenceIgnoredClustersSelectorOutput {
+	return o
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorOutput) ToRolloutSequenceIgnoredClustersSelectorPtrOutput() RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return o.ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorOutput) ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSequenceIgnoredClustersSelector) *RolloutSequenceIgnoredClustersSelector {
+		return &v
+	}).(RolloutSequenceIgnoredClustersSelectorPtrOutput)
+}
+
+// The label selector must be a valid CEL (Common Expression Language) expression which
+// evaluates resource.labels.
+func (o RolloutSequenceIgnoredClustersSelectorOutput) LabelSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSequenceIgnoredClustersSelector) string { return v.LabelSelector }).(pulumi.StringOutput)
+}
+
+type RolloutSequenceIgnoredClustersSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceIgnoredClustersSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceIgnoredClustersSelector)(nil)).Elem()
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorPtrOutput) ToRolloutSequenceIgnoredClustersSelectorPtrOutput() RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return o
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorPtrOutput) ToRolloutSequenceIgnoredClustersSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return o
+}
+
+func (o RolloutSequenceIgnoredClustersSelectorPtrOutput) Elem() RolloutSequenceIgnoredClustersSelectorOutput {
+	return o.ApplyT(func(v *RolloutSequenceIgnoredClustersSelector) RolloutSequenceIgnoredClustersSelector {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSequenceIgnoredClustersSelector
+		return ret
+	}).(RolloutSequenceIgnoredClustersSelectorOutput)
+}
+
+// The label selector must be a valid CEL (Common Expression Language) expression which
+// evaluates resource.labels.
+func (o RolloutSequenceIgnoredClustersSelectorPtrOutput) LabelSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSequenceIgnoredClustersSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LabelSelector
+	}).(pulumi.StringPtrOutput)
+}
+
 type RolloutSequenceStage struct {
 	// Filter to select a subset of clusters from the specified Fleet projects.
 	// If not specified, all clusters in the fleet projects are selected.
@@ -16599,6 +16740,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), MembershipRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeInput)(nil)).Elem(), NamespaceStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeArrayInput)(nil)).Elem(), NamespaceStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceIgnoredClustersSelectorInput)(nil)).Elem(), RolloutSequenceIgnoredClustersSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceIgnoredClustersSelectorPtrInput)(nil)).Elem(), RolloutSequenceIgnoredClustersSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageInput)(nil)).Elem(), RolloutSequenceStageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageArrayInput)(nil)).Elem(), RolloutSequenceStageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageClusterSelectorInput)(nil)).Elem(), RolloutSequenceStageClusterSelectorArgs{})
@@ -16825,6 +16968,8 @@ func init() {
 	pulumi.RegisterOutputType(MembershipRbacRoleBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceStateTypeOutput{})
 	pulumi.RegisterOutputType(NamespaceStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceIgnoredClustersSelectorOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceIgnoredClustersSelectorPtrOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageArrayOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageClusterSelectorOutput{})

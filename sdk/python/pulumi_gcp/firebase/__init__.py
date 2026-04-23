@@ -26,6 +26,7 @@ from .apple_app import *
 from .data_connect_service import *
 from .database_instance import *
 from .extensions_instance import *
+from .get_admin_sdk_config import *
 from .get_android_app import *
 from .get_android_app_config import *
 from .get_apple_app import *
@@ -40,6 +41,7 @@ from .hosting_site import *
 from .hosting_version import *
 from .project import *
 from .storage_bucket import *
+from .storage_default_bucket import *
 from .web_app import *
 from ._inputs import *
 from . import outputs

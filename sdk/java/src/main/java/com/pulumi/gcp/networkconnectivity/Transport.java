@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary_network = new Network("primary-network", NetworkArgs.builder()
- *             .name("tf-test-my-vpc-network_67903")
+ *             .name("tf-test-my-vpc-network_82591")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var primary = new Transport("primary", TransportArgs.builder()
- *             .name("tf-test-basic-transport_40816")
+ *             .name("tf-test-basic-transport_24243")
  *             .region("us-east4")
  *             .description("A sample transport")
  *             .remoteProfile(String.format("https://networkconnectivity.googleapis.com/v1beta/%s/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.id()))

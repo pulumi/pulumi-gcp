@@ -280,7 +280,7 @@ public final class UnitKindState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+     * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
      * common data model. Immutable once set.
      * 
      */
@@ -289,7 +289,7 @@ public final class UnitKindState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A reference to the Saas that defines the product (managed service) that
-     * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+     * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
      * common data model. Immutable once set.
      * 
      */
@@ -776,7 +776,7 @@ public final class UnitKindState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param saas A reference to the Saas that defines the product (managed service) that
-         * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+         * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
          * common data model. Immutable once set.
          * 
          * @return builder
@@ -789,7 +789,7 @@ public final class UnitKindState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param saas A reference to the Saas that defines the product (managed service) that
-         * the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+         * the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
          * common data model. Immutable once set.
          * 
          * @return builder

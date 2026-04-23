@@ -31,6 +31,7 @@ class DatascanArgs:
                  data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 execution_identity: Optional[pulumi.Input['DatascanExecutionIdentityArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -51,6 +52,8 @@ class DatascanArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
+        :param pulumi.Input['DatascanExecutionIdentityArgs'] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -74,6 +77,8 @@ class DatascanArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if execution_identity is not None:
+            pulumi.set(__self__, "execution_identity", execution_identity)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -205,6 +210,19 @@ class DatascanArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="executionIdentity")
+    def execution_identity(self) -> Optional[pulumi.Input['DatascanExecutionIdentityArgs']]:
+        """
+        The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_identity")
+
+    @execution_identity.setter
+    def execution_identity(self, value: Optional[pulumi.Input['DatascanExecutionIdentityArgs']]):
+        pulumi.set(self, "execution_identity", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -246,6 +264,7 @@ class _DatascanState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 execution_identity: Optional[pulumi.Input['DatascanExecutionIdentityArgs']] = None,
                  execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
                  execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -274,6 +293,8 @@ class _DatascanState:
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['DatascanExecutionIdentityArgs'] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+               Structure is documented below.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]] execution_statuses: Status of the data scan execution.
@@ -313,6 +334,8 @@ class _DatascanState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if execution_identity is not None:
+            pulumi.set(__self__, "execution_identity", execution_identity)
         if execution_spec is not None:
             pulumi.set(__self__, "execution_spec", execution_spec)
         if execution_statuses is not None:
@@ -459,6 +482,19 @@ class _DatascanState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="executionIdentity")
+    def execution_identity(self) -> Optional[pulumi.Input['DatascanExecutionIdentityArgs']]:
+        """
+        The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_identity")
+
+    @execution_identity.setter
+    def execution_identity(self, value: Optional[pulumi.Input['DatascanExecutionIdentityArgs']]):
+        pulumi.set(self, "execution_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="executionSpec")
@@ -614,6 +650,7 @@ class Datascan(pulumi.CustomResource):
                  data_scan_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 execution_identity: Optional[pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
                  execution_spec: Optional[pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -904,7 +941,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_40785",
+            name="tf-test-bucket-name-_37559",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -932,13 +969,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_79169",
+            name="tf-test-bucket-name-_91980",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_56529",
+            connection_id="tf-test-connection-_37118",
             location="us-central1",
-            friendly_name="tf-test-connection-_75413",
+            friendly_name="tf-test-connection-_80332",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1006,7 +1043,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_55138",
+            name="tf-test-bucket-name-_13293",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1036,11 +1073,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__37559",
+            dataset_id="tf_dataplex_test_dataset_id__40289",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__91980",
+            table_id="tf_dataplex_test_table_id__33395",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1117,11 +1154,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__37118",
+            dataset_id="tf_dataplex_test_dataset_id__76044",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__80332",
+            table_id="tf_dataplex_test_table_id__69391",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1193,6 +1230,138 @@ class Datascan(pulumi.CustomResource):
             data_documentation_spec={},
             project="my-project-name")
         ```
+        ### Dataplex Datascan Execution Identity User Credential
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
+            dataset_id="tf_test_ds__8270",
+            default_table_expiration_ms=3600000,
+            delete_contents_on_destroy=True,
+            project="my-project-name")
+        tf_test_table = gcp.bigquery.Table("tf_test_table",
+            dataset_id=tf_test_dataset.dataset_id,
+            table_id="tf_test_tbl__41150",
+            deletion_protection=False,
+            project="my-project-name",
+            schema=\"\"\"    [
+              {
+                \\"name\\": \\"word\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"REQUIRED\\"
+              },
+              {
+                \\"name\\": \\"word_count\\",
+                \\"type\\": \\"INTEGER\\",
+                \\"mode\\": \\"REQUIRED\\"
+              }
+            ]
+        \"\"\")
+        identity_user_credential = gcp.dataplex.Datascan("identity_user_credential",
+            location="us-central1",
+            data_scan_id="dataplex-id-user-cred",
+            data={
+                "resource": pulumi.Output.all(
+                    dataset_id=tf_test_dataset.dataset_id,
+                    table_id=tf_test_table.table_id
+        ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {},
+                },
+            },
+            execution_identity={
+                "user_credential": {},
+            },
+            data_profile_spec={},
+            project="my-project-name",
+            opts = pulumi.ResourceOptions(depends_on=[tf_test_table]))
+        ```
+        ### Dataplex Datascan Execution Identity Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="tf-test-sa-_89313",
+            display_name="DataScan Service Account",
+            project="my-project-name")
+        dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountTokenCreator",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-dataplex.iam.gserviceaccount.com")
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[dataplex_sa_impersonate]))
+        sa_bq_data_viewer = gcp.projects.IAMMember("sa_bq_data_viewer",
+            project="my-project-name",
+            role="roles/bigquery.dataViewer",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        sa_bq_job_user = gcp.projects.IAMMember("sa_bq_job_user",
+            project="my-project-name",
+            role="roles/bigquery.jobUser",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
+            dataset_id="tf_test_ds__60646",
+            default_table_expiration_ms=3600000,
+            delete_contents_on_destroy=True,
+            project="my-project-name",
+            opts = pulumi.ResourceOptions(depends_on=[
+                    dataplex_sa_impersonate,
+                    sa_bq_data_viewer,
+                    sa_bq_job_user,
+                ]))
+        tf_test_table = gcp.bigquery.Table("tf_test_table",
+            dataset_id=tf_test_dataset.dataset_id,
+            table_id="tf_test_tbl__9394",
+            deletion_protection=False,
+            project="my-project-name",
+            schema=\"\"\"    [
+              {
+                \\"name\\": \\"word\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"REQUIRED\\"
+              },
+              {
+                \\"name\\": \\"word_count\\",
+                \\"type\\": \\"INTEGER\\",
+                \\"mode\\": \\"REQUIRED\\"
+              }
+            ]
+        \"\"\")
+        identity_service_account = gcp.dataplex.Datascan("identity_service_account",
+            location="us-central1",
+            data_scan_id="dataplex-id-sa",
+            data={
+                "resource": pulumi.Output.all(
+                    dataset_id=tf_test_dataset.dataset_id,
+                    table_id=tf_test_table.table_id
+        ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "on_demand": {},
+                },
+            },
+            execution_identity={
+                "service_account": {
+                    "email": sa.email,
+                },
+            },
+            data_profile_spec={},
+            project="my-project-name",
+            opts = pulumi.ResourceOptions(depends_on=[
+                    tf_test_table,
+                    wait120_seconds,
+                ]))
+        ```
 
         ## Import
 
@@ -1227,6 +1396,8 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
+        :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+               Structure is documented below.
         :param pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels for the scan. A list of key->value pairs.
@@ -1528,7 +1699,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_40785",
+            name="tf-test-bucket-name-_37559",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -1556,13 +1727,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_79169",
+            name="tf-test-bucket-name-_91980",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_56529",
+            connection_id="tf-test-connection-_37118",
             location="us-central1",
-            friendly_name="tf-test-connection-_75413",
+            friendly_name="tf-test-connection-_80332",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1630,7 +1801,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_55138",
+            name="tf-test-bucket-name-_13293",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1660,11 +1831,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__37559",
+            dataset_id="tf_dataplex_test_dataset_id__40289",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__91980",
+            table_id="tf_dataplex_test_table_id__33395",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1741,11 +1912,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__37118",
+            dataset_id="tf_dataplex_test_dataset_id__76044",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__80332",
+            table_id="tf_dataplex_test_table_id__69391",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1817,6 +1988,138 @@ class Datascan(pulumi.CustomResource):
             data_documentation_spec={},
             project="my-project-name")
         ```
+        ### Dataplex Datascan Execution Identity User Credential
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
+            dataset_id="tf_test_ds__8270",
+            default_table_expiration_ms=3600000,
+            delete_contents_on_destroy=True,
+            project="my-project-name")
+        tf_test_table = gcp.bigquery.Table("tf_test_table",
+            dataset_id=tf_test_dataset.dataset_id,
+            table_id="tf_test_tbl__41150",
+            deletion_protection=False,
+            project="my-project-name",
+            schema=\"\"\"    [
+              {
+                \\"name\\": \\"word\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"REQUIRED\\"
+              },
+              {
+                \\"name\\": \\"word_count\\",
+                \\"type\\": \\"INTEGER\\",
+                \\"mode\\": \\"REQUIRED\\"
+              }
+            ]
+        \"\"\")
+        identity_user_credential = gcp.dataplex.Datascan("identity_user_credential",
+            location="us-central1",
+            data_scan_id="dataplex-id-user-cred",
+            data={
+                "resource": pulumi.Output.all(
+                    dataset_id=tf_test_dataset.dataset_id,
+                    table_id=tf_test_table.table_id
+        ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {},
+                },
+            },
+            execution_identity={
+                "user_credential": {},
+            },
+            data_profile_spec={},
+            project="my-project-name",
+            opts = pulumi.ResourceOptions(depends_on=[tf_test_table]))
+        ```
+        ### Dataplex Datascan Execution Identity Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.get_project(project_id="my-project-name")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="tf-test-sa-_89313",
+            display_name="DataScan Service Account",
+            project="my-project-name")
+        dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountTokenCreator",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-dataplex.iam.gserviceaccount.com")
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[dataplex_sa_impersonate]))
+        sa_bq_data_viewer = gcp.projects.IAMMember("sa_bq_data_viewer",
+            project="my-project-name",
+            role="roles/bigquery.dataViewer",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        sa_bq_job_user = gcp.projects.IAMMember("sa_bq_job_user",
+            project="my-project-name",
+            role="roles/bigquery.jobUser",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
+            dataset_id="tf_test_ds__60646",
+            default_table_expiration_ms=3600000,
+            delete_contents_on_destroy=True,
+            project="my-project-name",
+            opts = pulumi.ResourceOptions(depends_on=[
+                    dataplex_sa_impersonate,
+                    sa_bq_data_viewer,
+                    sa_bq_job_user,
+                ]))
+        tf_test_table = gcp.bigquery.Table("tf_test_table",
+            dataset_id=tf_test_dataset.dataset_id,
+            table_id="tf_test_tbl__9394",
+            deletion_protection=False,
+            project="my-project-name",
+            schema=\"\"\"    [
+              {
+                \\"name\\": \\"word\\",
+                \\"type\\": \\"STRING\\",
+                \\"mode\\": \\"REQUIRED\\"
+              },
+              {
+                \\"name\\": \\"word_count\\",
+                \\"type\\": \\"INTEGER\\",
+                \\"mode\\": \\"REQUIRED\\"
+              }
+            ]
+        \"\"\")
+        identity_service_account = gcp.dataplex.Datascan("identity_service_account",
+            location="us-central1",
+            data_scan_id="dataplex-id-sa",
+            data={
+                "resource": pulumi.Output.all(
+                    dataset_id=tf_test_dataset.dataset_id,
+                    table_id=tf_test_table.table_id
+        ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "on_demand": {},
+                },
+            },
+            execution_identity={
+                "service_account": {
+                    "email": sa.email,
+                },
+            },
+            data_profile_spec={},
+            project="my-project-name",
+            opts = pulumi.ResourceOptions(depends_on=[
+                    tf_test_table,
+                    wait120_seconds,
+                ]))
+        ```
 
         ## Import
 
@@ -1860,6 +2163,7 @@ class Datascan(pulumi.CustomResource):
                  data_scan_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 execution_identity: Optional[pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
                  execution_spec: Optional[pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1885,6 +2189,7 @@ class Datascan(pulumi.CustomResource):
             __props__.__dict__["data_scan_id"] = data_scan_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["execution_identity"] = execution_identity
             if execution_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_spec'")
             __props__.__dict__["execution_spec"] = execution_spec
@@ -1924,6 +2229,7 @@ class Datascan(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            execution_identity: Optional[pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
             execution_spec: Optional[pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']]] = None,
             execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1956,6 +2262,8 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+               Structure is documented below.
         :param pulumi.Input[Union['DatascanExecutionSpecArgs', 'DatascanExecutionSpecArgsDict']] execution_spec: DataScan execution settings.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatascanExecutionStatusArgs', 'DatascanExecutionStatusArgsDict']]]] execution_statuses: Status of the data scan execution.
@@ -1989,6 +2297,7 @@ class Datascan(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["execution_identity"] = execution_identity
         __props__.__dict__["execution_spec"] = execution_spec
         __props__.__dict__["execution_statuses"] = execution_statuses
         __props__.__dict__["labels"] = labels
@@ -2085,6 +2394,15 @@ class Datascan(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="executionIdentity")
+    def execution_identity(self) -> pulumi.Output[Optional['outputs.DatascanExecutionIdentity']]:
+        """
+        The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_identity")
 
     @_builtins.property
     @pulumi.getter(name="executionSpec")

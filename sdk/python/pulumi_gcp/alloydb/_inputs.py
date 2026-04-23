@@ -2226,6 +2226,10 @@ class InstanceObservabilityConfigArgsDict(TypedDict):
     """
     Track actively running queries. If not set, default value is "off".
     """
+    track_client_address: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Track client address for an instance. If not set, default value is "off".
+    """
     track_wait_event_types: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Record wait event types during query execution for an instance.
@@ -2245,6 +2249,7 @@ class InstanceObservabilityConfigArgs:
                  query_plans_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
                  record_application_tags: Optional[pulumi.Input[_builtins.bool]] = None,
                  track_active_queries: Optional[pulumi.Input[_builtins.bool]] = None,
+                 track_client_address: Optional[pulumi.Input[_builtins.bool]] = None,
                  track_wait_event_types: Optional[pulumi.Input[_builtins.bool]] = None,
                  track_wait_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -2255,6 +2260,7 @@ class InstanceObservabilityConfigArgs:
         :param pulumi.Input[_builtins.int] query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
         :param pulumi.Input[_builtins.bool] record_application_tags: Record application tags for an instance. This flag is turned "on" by default.
         :param pulumi.Input[_builtins.bool] track_active_queries: Track actively running queries. If not set, default value is "off".
+        :param pulumi.Input[_builtins.bool] track_client_address: Track client address for an instance. If not set, default value is "off".
         :param pulumi.Input[_builtins.bool] track_wait_event_types: Record wait event types during query execution for an instance.
         :param pulumi.Input[_builtins.bool] track_wait_events: Record wait events during query execution for an instance.
         """
@@ -2272,6 +2278,8 @@ class InstanceObservabilityConfigArgs:
             pulumi.set(__self__, "record_application_tags", record_application_tags)
         if track_active_queries is not None:
             pulumi.set(__self__, "track_active_queries", track_active_queries)
+        if track_client_address is not None:
+            pulumi.set(__self__, "track_client_address", track_client_address)
         if track_wait_event_types is not None:
             pulumi.set(__self__, "track_wait_event_types", track_wait_event_types)
         if track_wait_events is not None:
@@ -2360,6 +2368,18 @@ class InstanceObservabilityConfigArgs:
     @track_active_queries.setter
     def track_active_queries(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "track_active_queries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trackClientAddress")
+    def track_client_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Track client address for an instance. If not set, default value is "off".
+        """
+        return pulumi.get(self, "track_client_address")
+
+    @track_client_address.setter
+    def track_client_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "track_client_address", value)
 
     @_builtins.property
     @pulumi.getter(name="trackWaitEventTypes")

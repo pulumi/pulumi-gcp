@@ -5396,6 +5396,8 @@ type InstanceObservabilityConfig struct {
 	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
 	// Track actively running queries. If not set, default value is "off".
 	TrackActiveQueries *bool `pulumi:"trackActiveQueries"`
+	// Track client address for an instance. If not set, default value is "off".
+	TrackClientAddress *bool `pulumi:"trackClientAddress"`
 	// Record wait event types during query execution for an instance.
 	TrackWaitEventTypes *bool `pulumi:"trackWaitEventTypes"`
 	// Record wait events during query execution for an instance.
@@ -5428,6 +5430,8 @@ type InstanceObservabilityConfigArgs struct {
 	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
 	// Track actively running queries. If not set, default value is "off".
 	TrackActiveQueries pulumi.BoolPtrInput `pulumi:"trackActiveQueries"`
+	// Track client address for an instance. If not set, default value is "off".
+	TrackClientAddress pulumi.BoolPtrInput `pulumi:"trackClientAddress"`
 	// Record wait event types during query execution for an instance.
 	TrackWaitEventTypes pulumi.BoolPtrInput `pulumi:"trackWaitEventTypes"`
 	// Record wait events during query execution for an instance.
@@ -5546,6 +5550,11 @@ func (o InstanceObservabilityConfigOutput) TrackActiveQueries() pulumi.BoolPtrOu
 	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.TrackActiveQueries }).(pulumi.BoolPtrOutput)
 }
 
+// Track client address for an instance. If not set, default value is "off".
+func (o InstanceObservabilityConfigOutput) TrackClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.TrackClientAddress }).(pulumi.BoolPtrOutput)
+}
+
 // Record wait event types during query execution for an instance.
 func (o InstanceObservabilityConfigOutput) TrackWaitEventTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.TrackWaitEventTypes }).(pulumi.BoolPtrOutput)
@@ -5647,6 +5656,16 @@ func (o InstanceObservabilityConfigPtrOutput) TrackActiveQueries() pulumi.BoolPt
 			return nil
 		}
 		return v.TrackActiveQueries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Track client address for an instance. If not set, default value is "off".
+func (o InstanceObservabilityConfigPtrOutput) TrackClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackClientAddress
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10305,6 +10324,8 @@ type GetInstanceObservabilityConfig struct {
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
 	// Track actively running queries. If not set, default value is "off".
 	TrackActiveQueries bool `pulumi:"trackActiveQueries"`
+	// Track client address for an instance. If not set, default value is "off".
+	TrackClientAddress bool `pulumi:"trackClientAddress"`
 	// Record wait event types during query execution for an instance.
 	TrackWaitEventTypes bool `pulumi:"trackWaitEventTypes"`
 	// Record wait events during query execution for an instance.
@@ -10337,6 +10358,8 @@ type GetInstanceObservabilityConfigArgs struct {
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
 	// Track actively running queries. If not set, default value is "off".
 	TrackActiveQueries pulumi.BoolInput `pulumi:"trackActiveQueries"`
+	// Track client address for an instance. If not set, default value is "off".
+	TrackClientAddress pulumi.BoolInput `pulumi:"trackClientAddress"`
 	// Record wait event types during query execution for an instance.
 	TrackWaitEventTypes pulumi.BoolInput `pulumi:"trackWaitEventTypes"`
 	// Record wait events during query execution for an instance.
@@ -10427,6 +10450,11 @@ func (o GetInstanceObservabilityConfigOutput) RecordApplicationTags() pulumi.Boo
 // Track actively running queries. If not set, default value is "off".
 func (o GetInstanceObservabilityConfigOutput) TrackActiveQueries() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.TrackActiveQueries }).(pulumi.BoolOutput)
+}
+
+// Track client address for an instance. If not set, default value is "off".
+func (o GetInstanceObservabilityConfigOutput) TrackClientAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.TrackClientAddress }).(pulumi.BoolOutput)
 }
 
 // Record wait event types during query execution for an instance.

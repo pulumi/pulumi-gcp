@@ -54,8 +54,11 @@ class DataConnectorArgs:
                This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034)
                standard with a length limit of 63 characters. Otherwise, an
                INVALID_ARGUMENT error is returned.
-        :param pulumi.Input[_builtins.str] data_source: The name of the data source.
-               Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.str] data_source: The identifier for the data source.
+               This is a partial list of supported connectors. Please refer to the
+               [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+               for the full list of connectors.
+               Supported first-party connectors include:
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] refresh_interval: The refresh interval for data sync. If duration is set to 0, the data will
@@ -172,8 +175,11 @@ class DataConnectorArgs:
     @pulumi.getter(name="dataSource")
     def data_source(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the data source.
-        Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        The identifier for the data source.
+        This is a partial list of supported connectors. Please refer to the
+        [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        for the full list of connectors.
+        Supported first-party connectors include:
         """
         return pulumi.get(self, "data_source")
 
@@ -485,8 +491,11 @@ class _DataConnectorState:
                'GCS', 'GOOGLE_MAIL', 'GOOGLE_CALENDAR', 'GOOGLE_DRIVE',
                'NATIVE_CLOUD_IDENTITY', 'THIRD_PARTY_FEDERATED', 'THIRD_PARTY_EUA', 'GCNV'.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the DataConnector was created.
-        :param pulumi.Input[_builtins.str] data_source: The name of the data source.
-               Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.str] data_source: The identifier for the data source.
+               This is a partial list of supported connectors. Please refer to the
+               [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+               for the full list of connectors.
+               Supported first-party connectors include:
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
@@ -757,8 +766,11 @@ class _DataConnectorState:
     @pulumi.getter(name="dataSource")
     def data_source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the data source.
-        Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        The identifier for the data source.
+        This is a partial list of supported connectors. Please refer to the
+        [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        for the full list of connectors.
+        Supported first-party connectors include:
         """
         return pulumi.get(self, "data_source")
 
@@ -1269,8 +1281,11 @@ class DataConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connector_modes: The modes enabled for this connector. The possible value can be:
                'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
                'EUA', 'FEDERATED_AND_EUA'.
-        :param pulumi.Input[_builtins.str] data_source: The name of the data source.
-               Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.str] data_source: The identifier for the data source.
+               This is a partial list of supported connectors. Please refer to the
+               [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+               for the full list of connectors.
+               Supported first-party connectors include:
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
@@ -1637,8 +1652,11 @@ class DataConnector(pulumi.CustomResource):
                'GCS', 'GOOGLE_MAIL', 'GOOGLE_CALENDAR', 'GOOGLE_DRIVE',
                'NATIVE_CLOUD_IDENTITY', 'THIRD_PARTY_FEDERATED', 'THIRD_PARTY_EUA', 'GCNV'.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the DataConnector was created.
-        :param pulumi.Input[_builtins.str] data_source: The name of the data source.
-               Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        :param pulumi.Input[_builtins.str] data_source: The identifier for the data source.
+               This is a partial list of supported connectors. Please refer to the
+               [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+               for the full list of connectors.
+               Supported first-party connectors include:
         :param pulumi.Input[_builtins.int] data_source_version: The version of the data source. For example, `3` for Jira v3.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]] destination_configs: Destination connector configurations for the data connector,
                used to configure where data is served.
@@ -1841,8 +1859,11 @@ class DataConnector(pulumi.CustomResource):
     @pulumi.getter(name="dataSource")
     def data_source(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the data source.
-        Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+        The identifier for the data source.
+        This is a partial list of supported connectors. Please refer to the
+        [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+        for the full list of connectors.
+        Supported first-party connectors include:
         """
         return pulumi.get(self, "data_source")
 

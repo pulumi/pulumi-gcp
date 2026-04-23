@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_95154")
+ *             .name("tf-test-subnet_74000")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())

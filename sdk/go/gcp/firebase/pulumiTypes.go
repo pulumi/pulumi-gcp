@@ -7845,6 +7845,109 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ServiceId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type StorageDefaultBucketBucket struct {
+	// (Output)
+	// The resource name of the bucket in the format
+	// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+	Name *string `pulumi:"name"`
+}
+
+// StorageDefaultBucketBucketInput is an input type that accepts StorageDefaultBucketBucketArgs and StorageDefaultBucketBucketOutput values.
+// You can construct a concrete instance of `StorageDefaultBucketBucketInput` via:
+//
+//	StorageDefaultBucketBucketArgs{...}
+type StorageDefaultBucketBucketInput interface {
+	pulumi.Input
+
+	ToStorageDefaultBucketBucketOutput() StorageDefaultBucketBucketOutput
+	ToStorageDefaultBucketBucketOutputWithContext(context.Context) StorageDefaultBucketBucketOutput
+}
+
+type StorageDefaultBucketBucketArgs struct {
+	// (Output)
+	// The resource name of the bucket in the format
+	// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (StorageDefaultBucketBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDefaultBucketBucket)(nil)).Elem()
+}
+
+func (i StorageDefaultBucketBucketArgs) ToStorageDefaultBucketBucketOutput() StorageDefaultBucketBucketOutput {
+	return i.ToStorageDefaultBucketBucketOutputWithContext(context.Background())
+}
+
+func (i StorageDefaultBucketBucketArgs) ToStorageDefaultBucketBucketOutputWithContext(ctx context.Context) StorageDefaultBucketBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageDefaultBucketBucketOutput)
+}
+
+// StorageDefaultBucketBucketArrayInput is an input type that accepts StorageDefaultBucketBucketArray and StorageDefaultBucketBucketArrayOutput values.
+// You can construct a concrete instance of `StorageDefaultBucketBucketArrayInput` via:
+//
+//	StorageDefaultBucketBucketArray{ StorageDefaultBucketBucketArgs{...} }
+type StorageDefaultBucketBucketArrayInput interface {
+	pulumi.Input
+
+	ToStorageDefaultBucketBucketArrayOutput() StorageDefaultBucketBucketArrayOutput
+	ToStorageDefaultBucketBucketArrayOutputWithContext(context.Context) StorageDefaultBucketBucketArrayOutput
+}
+
+type StorageDefaultBucketBucketArray []StorageDefaultBucketBucketInput
+
+func (StorageDefaultBucketBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageDefaultBucketBucket)(nil)).Elem()
+}
+
+func (i StorageDefaultBucketBucketArray) ToStorageDefaultBucketBucketArrayOutput() StorageDefaultBucketBucketArrayOutput {
+	return i.ToStorageDefaultBucketBucketArrayOutputWithContext(context.Background())
+}
+
+func (i StorageDefaultBucketBucketArray) ToStorageDefaultBucketBucketArrayOutputWithContext(ctx context.Context) StorageDefaultBucketBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageDefaultBucketBucketArrayOutput)
+}
+
+type StorageDefaultBucketBucketOutput struct{ *pulumi.OutputState }
+
+func (StorageDefaultBucketBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDefaultBucketBucket)(nil)).Elem()
+}
+
+func (o StorageDefaultBucketBucketOutput) ToStorageDefaultBucketBucketOutput() StorageDefaultBucketBucketOutput {
+	return o
+}
+
+func (o StorageDefaultBucketBucketOutput) ToStorageDefaultBucketBucketOutputWithContext(ctx context.Context) StorageDefaultBucketBucketOutput {
+	return o
+}
+
+// (Output)
+// The resource name of the bucket in the format
+// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+func (o StorageDefaultBucketBucketOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageDefaultBucketBucket) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type StorageDefaultBucketBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageDefaultBucketBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageDefaultBucketBucket)(nil)).Elem()
+}
+
+func (o StorageDefaultBucketBucketArrayOutput) ToStorageDefaultBucketBucketArrayOutput() StorageDefaultBucketBucketArrayOutput {
+	return o
+}
+
+func (o StorageDefaultBucketBucketArrayOutput) ToStorageDefaultBucketBucketArrayOutputWithContext(ctx context.Context) StorageDefaultBucketBucketArrayOutput {
+	return o
+}
+
+func (o StorageDefaultBucketBucketArrayOutput) Index(i pulumi.IntInput) StorageDefaultBucketBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageDefaultBucketBucket {
+		return vs[0].([]StorageDefaultBucketBucket)[vs[1].(int)]
+	}).(StorageDefaultBucketBucketOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfigInput)(nil)).Elem(), AiLogicConfigGenerativeLanguageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfigPtrInput)(nil)).Elem(), AiLogicConfigGenerativeLanguageConfigArgs{})
@@ -7948,6 +8051,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteArrayInput)(nil)).Elem(), HostingVersionConfigRewriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunPtrInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDefaultBucketBucketInput)(nil)).Elem(), StorageDefaultBucketBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDefaultBucketBucketArrayInput)(nil)).Elem(), StorageDefaultBucketBucketArray{})
 	pulumi.RegisterOutputType(AiLogicConfigGenerativeLanguageConfigOutput{})
 	pulumi.RegisterOutputType(AiLogicConfigGenerativeLanguageConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiLogicConfigTelemetryConfigOutput{})
@@ -8050,4 +8155,6 @@ func init() {
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteArrayOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteRunOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteRunPtrOutput{})
+	pulumi.RegisterOutputType(StorageDefaultBucketBucketOutput{})
+	pulumi.RegisterOutputType(StorageDefaultBucketBucketArrayOutput{})
 }

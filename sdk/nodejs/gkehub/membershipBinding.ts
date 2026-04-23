@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "tf-test-membership_9991",
+ *     membershipId: "tf-test-membership_45397",
  *     endpoint: {
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -41,9 +41,9 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [primary],
  * });
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_12125"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_16451"});
  * const membershipBinding = new gcp.gkehub.MembershipBinding("membership_binding", {
- *     membershipBindingId: "tf-test-membership-binding_82749",
+ *     membershipBindingId: "tf-test-membership-binding_3686",
  *     scope: scope.name,
  *     membershipId: membership.membershipId,
  *     location: "global",

@@ -14,12 +14,9 @@ import (
 
 // A resource represents a Dataform folder
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about Folder, see:
 //
-// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.folders)
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.folders)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dataform/docs/)
 //
@@ -41,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewFolder(ctx, "dataform_folder_basic", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic Folder-_39249"),
+//				DisplayName: pulumi.String("Basic Folder-_8493"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,14 +64,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataformFolderRoot, err := dataform.NewFolder(ctx, "dataform_folder_root", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Root Folder"),
+//				DisplayName: pulumi.String("Root Folder-_9106"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataform.NewFolder(ctx, "dataform_folder_full", &dataform.FolderArgs{
 //				Region:           pulumi.String("us-central1"),
-//				DisplayName:      pulumi.String("Nested Folder"),
+//				DisplayName:      pulumi.String("Nested Folder-_27169"),
 //				ContainingFolder: dataformFolderRoot.ID(),
 //			})
 //			if err != nil {

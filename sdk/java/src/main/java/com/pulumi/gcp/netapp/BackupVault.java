@@ -131,6 +131,24 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
         return this.backupVaultType;
     }
     /**
+     * The crypto key version used to encrypt the backup vault.
+     * Format:
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    @Export(name="backupsCryptoKeyVersion", refs={String.class}, tree="[0]")
+    private Output<String> backupsCryptoKeyVersion;
+
+    /**
+     * @return The crypto key version used to encrypt the backup vault.
+     * Format:
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public Output<String> backupsCryptoKeyVersion() {
+        return this.backupsCryptoKeyVersion;
+    }
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
      * 
      */
@@ -185,6 +203,38 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Encryption state of customer-managed encryption keys (CMEK) backups.
+     * 
+     */
+    @Export(name="encryptionState", refs={String.class}, tree="[0]")
+    private Output<String> encryptionState;
+
+    /**
+     * @return Encryption state of customer-managed encryption keys (CMEK) backups.
+     * 
+     */
+    public Output<String> encryptionState() {
+        return this.encryptionState;
+    }
+    /**
+     * Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     * 
+     */
+    @Export(name="kmsConfig", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsConfig;
+
+    /**
+     * @return Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     * 
+     */
+    public Output<Optional<String>> kmsConfig() {
+        return Codegen.optional(this.kmsConfig);
     }
     /**
      * Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`.

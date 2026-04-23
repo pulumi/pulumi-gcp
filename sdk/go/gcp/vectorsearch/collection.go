@@ -75,6 +75,98 @@ import (
 //	}
 //
 // ```
+// ### Vectorsearch Collection Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-cmek-collection"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-cmek-collection"),
+//				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKeyMemberVsSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_vs_sa", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-vectorsearch.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vectorsearch.NewCollection(ctx, "example-cmek-collection", &vectorsearch.CollectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				CollectionId: pulumi.String("example-cmek-collection"),
+//				DisplayName:  pulumi.String("My Awesome Encrypted Collection"),
+//				Description:  pulumi.String("This collection stores important data."),
+//				EncryptionSpec: &vectorsearch.CollectionEncryptionSpecArgs{
+//					CryptoKeyName: cryptoKey.ID(),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env":  pulumi.String("dev"),
+//					"team": pulumi.String("my-team"),
+//				},
+//				DataSchema: pulumi.String(`{
+//	  \"type\": \"object\",
+//	  \"properties\": {
+//	    \"title\": {
+//	      \"type\": \"string\"
+//	    },
+//	    \"plot\": {
+//	      \"type\": \"string\"
+//	    }
+//	  }
+//	}
+//
+// `),
+//
+//				VectorSchemas: vectorsearch.CollectionVectorSchemaArray{
+//					&vectorsearch.CollectionVectorSchemaArgs{
+//						FieldName: pulumi.String("text_embedding"),
+//						DenseVector: &vectorsearch.CollectionVectorSchemaDenseVectorArgs{
+//							Dimensions: pulumi.Int(768),
+//							VertexEmbeddingConfig: &vectorsearch.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs{
+//								ModelId:      pulumi.String("textembedding-gecko@003"),
+//								TaskType:     pulumi.String("RETRIEVAL_DOCUMENT"),
+//								TextTemplate: pulumi.String("Title: {title} ---- Plot: {plot}"),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyMemberVsSa,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -112,6 +204,10 @@ type Collection struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Represents a customer-managed encryption key specification that can be
+	// applied to a Vector Search collection.
+	// Structure is documented below.
+	EncryptionSpec CollectionEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -195,6 +291,10 @@ type collectionState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Represents a customer-managed encryption key specification that can be
+	// applied to a Vector Search collection.
+	// Structure is documented below.
+	EncryptionSpec *CollectionEncryptionSpec `pulumi:"encryptionSpec"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -238,6 +338,10 @@ type CollectionState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Represents a customer-managed encryption key specification that can be
+	// applied to a Vector Search collection.
+	// Structure is documented below.
+	EncryptionSpec CollectionEncryptionSpecPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -281,6 +385,10 @@ type collectionArgs struct {
 	Description *string `pulumi:"description"`
 	// User-specified display name of the collection
 	DisplayName *string `pulumi:"displayName"`
+	// Represents a customer-managed encryption key specification that can be
+	// applied to a Vector Search collection.
+	// Structure is documented below.
+	EncryptionSpec *CollectionEncryptionSpec `pulumi:"encryptionSpec"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -314,6 +422,10 @@ type CollectionArgs struct {
 	Description pulumi.StringPtrInput
 	// User-specified display name of the collection
 	DisplayName pulumi.StringPtrInput
+	// Represents a customer-managed encryption key specification that can be
+	// applied to a Vector Search collection.
+	// Structure is documented below.
+	EncryptionSpec CollectionEncryptionSpecPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -452,6 +564,13 @@ func (o CollectionOutput) DisplayName() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CollectionOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Collection) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Represents a customer-managed encryption key specification that can be
+// applied to a Vector Search collection.
+// Structure is documented below.
+func (o CollectionOutput) EncryptionSpec() CollectionEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *Collection) CollectionEncryptionSpecPtrOutput { return v.EncryptionSpec }).(CollectionEncryptionSpecPtrOutput)
 }
 
 // Labels as key value pairs.

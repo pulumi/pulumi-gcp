@@ -15,6 +15,7 @@ import com.pulumi.gcp.dataplex.outputs.DatascanDataDiscoverySpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataDocumentationSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpec;
+import com.pulumi.gcp.dataplex.outputs.DatascanExecutionIdentity;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionStatus;
 import java.lang.String;
@@ -515,7 +516,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_40785")
+ *             .name("tf-test-bucket-name-_37559")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -584,15 +585,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_79169")
+ *             .name("tf-test-bucket-name-_91980")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var tfTestConnection = new Connection("tfTestConnection", ConnectionArgs.builder()
- *             .connectionId("tf-test-connection-_56529")
+ *             .connectionId("tf-test-connection-_37118")
  *             .location("us-central1")
- *             .friendlyName("tf-test-connection-_75413")
+ *             .friendlyName("tf-test-connection-_80332")
  *             .description("a bigquery connection for tf test")
  *             .cloudResource(ConnectionCloudResourceArgs.builder()
  *                 .build())
@@ -689,7 +690,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_55138")
+ *             .name("tf-test-bucket-name-_13293")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -754,13 +755,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__37559")
+ *             .datasetId("tf_dataplex_test_dataset_id__40289")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__91980")
+ *             .tableId("tf_dataplex_test_table_id__33395")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -874,13 +875,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__37118")
+ *             .datasetId("tf_dataplex_test_dataset_id__76044")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__80332")
+ *             .tableId("tf_dataplex_test_table_id__69391")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -959,6 +960,244 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * }
+ * </pre>
+ * ### Dataplex Datascan Execution Identity User Credential
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityUserCredentialArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
+ *             .datasetId("tf_test_ds__8270")
+ *             .defaultTableExpirationMs(3600000)
+ *             .deleteContentsOnDestroy(true)
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
+ *             .datasetId(tfTestDataset.datasetId())
+ *             .tableId("tf_test_tbl__41150")
+ *             .deletionProtection(false)
+ *             .project("my-project-name")
+ *             .schema("""
+ *     [
+ *       {
+ *         \"name\": \"word\",
+ *         \"type\": \"STRING\",
+ *         \"mode\": \"REQUIRED\"
+ *       },
+ *       {
+ *         \"name\": \"word_count\",
+ *         \"type\": \"INTEGER\",
+ *         \"mode\": \"REQUIRED\"
+ *       }
+ *     ]
+ *             """)
+ *             .build());
+ * 
+ *         var identityUserCredential = new Datascan("identityUserCredential", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("dataplex-id-user-cred")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> {
+ *                     var datasetId = values.t1;
+ *                     var tableId = values.t2;
+ *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
+ *                 }))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .oneTime(DatascanExecutionSpecTriggerOneTimeArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .executionIdentity(DatascanExecutionIdentityArgs.builder()
+ *                 .userCredential(DatascanExecutionIdentityUserCredentialArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(tfTestTable)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Dataplex Datascan Execution Identity Service Account
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityServiceAccountArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .projectId("my-project-name")
+ *             .build());
+ * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("tf-test-sa-_89313")
+ *             .displayName("DataScan Service Account")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var dataplexSaImpersonate = new com.pulumi.gcp.serviceaccount.IAMMember("dataplexSaImpersonate", com.pulumi.gcp.serviceaccount.IAMMemberArgs.builder()
+ *             .serviceAccountId(sa.name())
+ *             .role("roles/iam.serviceAccountTokenCreator")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataplex.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(dataplexSaImpersonate)
+ *                 .build());
+ * 
+ *         var saBqDataViewer = new com.pulumi.gcp.projects.IAMMember("saBqDataViewer", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/bigquery.dataViewer")
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var saBqJobUser = new com.pulumi.gcp.projects.IAMMember("saBqJobUser", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/bigquery.jobUser")
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
+ *             .datasetId("tf_test_ds__60646")
+ *             .defaultTableExpirationMs(3600000)
+ *             .deleteContentsOnDestroy(true)
+ *             .project("my-project-name")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     dataplexSaImpersonate,
+ *                     saBqDataViewer,
+ *                     saBqJobUser)
+ *                 .build());
+ * 
+ *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
+ *             .datasetId(tfTestDataset.datasetId())
+ *             .tableId("tf_test_tbl__9394")
+ *             .deletionProtection(false)
+ *             .project("my-project-name")
+ *             .schema("""
+ *     [
+ *       }{{@code
+ *         \"name\": \"word\",
+ *         \"type\": \"STRING\",
+ *         \"mode\": \"REQUIRED\"
+ *       }}{@code ,
+ *       }{{@code
+ *         \"name\": \"word_count\",
+ *         \"type\": \"INTEGER\",
+ *         \"mode\": \"REQUIRED\"
+ *       }}{@code
+ *     ]
+ *             """)
+ *             .build());
+ * 
+ *         var identityServiceAccount = new Datascan("identityServiceAccount", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("dataplex-id-sa")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                     var datasetId = values.t1;
+ *                     var tableId = values.t2;
+ *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
+ *                 }}{@code ))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .onDemand(DatascanExecutionSpecTriggerOnDemandArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .executionIdentity(DatascanExecutionIdentityArgs.builder()
+ *                 .serviceAccount(DatascanExecutionIdentityServiceAccountArgs.builder()
+ *                     .email(sa.email())
+ *                     .build())
+ *                 .build())
+ *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     tfTestTable,
+ *                     wait120Seconds)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1130,6 +1369,22 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="executionIdentity", refs={DatascanExecutionIdentity.class}, tree="[0]")
+    private Output</* @Nullable */ DatascanExecutionIdentity> executionIdentity;
+
+    /**
+     * @return The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DatascanExecutionIdentity>> executionIdentity() {
+        return Codegen.optional(this.executionIdentity);
     }
     /**
      * DataScan execution settings.

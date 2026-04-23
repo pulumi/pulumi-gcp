@@ -80,6 +80,10 @@ type BackupVault struct {
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType pulumi.StringOutput `pulumi:"backupVaultType"`
+	// The crypto key version used to encrypt the backup vault.
+	// Format:
+	// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	BackupsCryptoKeyVersion pulumi.StringOutput `pulumi:"backupsCryptoKeyVersion"`
 	// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of this resource.
@@ -88,6 +92,12 @@ type BackupVault struct {
 	DestinationBackupVault pulumi.StringOutput `pulumi:"destinationBackupVault"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Encryption state of customer-managed encryption keys (CMEK) backups.
+	EncryptionState pulumi.StringOutput `pulumi:"encryptionState"`
+	// Specifies the Key Management System (KMS) configuration to be used for
+	// backup encryption. Format:
+	// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+	KmsConfig pulumi.StringPtrOutput `pulumi:"kmsConfig"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -157,6 +167,10 @@ type backupVaultState struct {
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType *string `pulumi:"backupVaultType"`
+	// The crypto key version used to encrypt the backup vault.
+	// Format:
+	// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	BackupsCryptoKeyVersion *string `pulumi:"backupsCryptoKeyVersion"`
 	// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime *string `pulumi:"createTime"`
 	// An optional description of this resource.
@@ -165,6 +179,12 @@ type backupVaultState struct {
 	DestinationBackupVault *string `pulumi:"destinationBackupVault"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Encryption state of customer-managed encryption keys (CMEK) backups.
+	EncryptionState *string `pulumi:"encryptionState"`
+	// Specifies the Key Management System (KMS) configuration to be used for
+	// backup encryption. Format:
+	// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+	KmsConfig *string `pulumi:"kmsConfig"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -197,6 +217,10 @@ type BackupVaultState struct {
 	// Type of the backup vault to be created. Default is IN_REGION.
 	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
 	BackupVaultType pulumi.StringPtrInput
+	// The crypto key version used to encrypt the backup vault.
+	// Format:
+	// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	BackupsCryptoKeyVersion pulumi.StringPtrInput
 	// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -205,6 +229,12 @@ type BackupVaultState struct {
 	DestinationBackupVault pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Encryption state of customer-managed encryption keys (CMEK) backups.
+	EncryptionState pulumi.StringPtrInput
+	// Specifies the Key Management System (KMS) configuration to be used for
+	// backup encryption. Format:
+	// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+	KmsConfig pulumi.StringPtrInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -243,6 +273,10 @@ type backupVaultArgs struct {
 	BackupVaultType *string `pulumi:"backupVaultType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Specifies the Key Management System (KMS) configuration to be used for
+	// backup encryption. Format:
+	// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+	KmsConfig *string `pulumi:"kmsConfig"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -269,6 +303,10 @@ type BackupVaultArgs struct {
 	BackupVaultType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Specifies the Key Management System (KMS) configuration to be used for
+	// backup encryption. Format:
+	// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+	KmsConfig pulumi.StringPtrInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -387,6 +425,13 @@ func (o BackupVaultOutput) BackupVaultType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.BackupVaultType }).(pulumi.StringOutput)
 }
 
+// The crypto key version used to encrypt the backup vault.
+// Format:
+// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+func (o BackupVaultOutput) BackupsCryptoKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.BackupsCryptoKeyVersion }).(pulumi.StringOutput)
+}
+
 // Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 func (o BackupVaultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -405,6 +450,18 @@ func (o BackupVaultOutput) DestinationBackupVault() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o BackupVaultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Encryption state of customer-managed encryption keys (CMEK) backups.
+func (o BackupVaultOutput) EncryptionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// Specifies the Key Management System (KMS) configuration to be used for
+// backup encryption. Format:
+// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+func (o BackupVaultOutput) KmsConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.KmsConfig }).(pulumi.StringPtrOutput)
 }
 
 // Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.

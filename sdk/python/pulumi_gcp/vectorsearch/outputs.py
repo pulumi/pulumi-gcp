@@ -16,11 +16,53 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CollectionEncryptionSpec',
     'CollectionVectorSchema',
     'CollectionVectorSchemaDenseVector',
     'CollectionVectorSchemaDenseVectorVertexEmbeddingConfig',
     'CollectionVectorSchemaSparseVector',
 ]
+
+@pulumi.output_type
+class CollectionEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKeyName":
+            suggest = "crypto_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CollectionEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CollectionEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CollectionEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 crypto_key_name: _builtins.str):
+        """
+        :param _builtins.str crypto_key_name: Resource name of the Cloud KMS key used to protect the resource.
+               The Cloud KMS key must be in the same region as the resource. It must have
+               the format
+               `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> _builtins.str:
+        """
+        Resource name of the Cloud KMS key used to protect the resource.
+        The Cloud KMS key must be in the same region as the resource. It must have
+        the format
+        `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "crypto_key_name")
+
 
 @pulumi.output_type
 class CollectionVectorSchema(dict):

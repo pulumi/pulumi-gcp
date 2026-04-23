@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the Saas that defines the product (managed service) that
-        /// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+        /// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
         /// common data model. Immutable once set.
         /// </summary>
         [Output("saas")]
@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the Saas that defines the product (managed service) that
-        /// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+        /// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
         /// common data model. Immutable once set.
         /// </summary>
         [Input("saas", required: true)]
@@ -572,7 +572,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the Saas that defines the product (managed service) that
-        /// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+        /// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
         /// common data model. Immutable once set.
         /// </summary>
         [Input("saas")]

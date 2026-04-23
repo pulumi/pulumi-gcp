@@ -190,6 +190,45 @@ import (
 //	}
 //
 // ```
+// ### Clouddeploy Custom Target Type Tasks
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewCustomTargetType(ctx, "custom-target-type", &clouddeploy.CustomTargetTypeArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-custom-target-type"),
+//				Description: pulumi.String("My custom target type"),
+//				Tasks: &clouddeploy.CustomTargetTypeTasksArgs{
+//					Render: &clouddeploy.CustomTargetTypeTasksRenderArgs{
+//						Container: &clouddeploy.CustomTargetTypeTasksRenderContainerArgs{
+//							Image: pulumi.String("gcr.io/my-project/my-render-image"),
+//						},
+//					},
+//					Deploy: &clouddeploy.CustomTargetTypeTasksDeployArgs{
+//						Container: &clouddeploy.CustomTargetTypeTasksDeployContainerArgs{
+//							Image: pulumi.String("gcr.io/my-project/my-deploy-image"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -242,6 +281,9 @@ type CustomTargetType struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Configures render and deploy for the `CustomTargetType` using tasks.
+	// Structure is documented below.
+	Tasks CustomTargetTypeTasksPtrOutput `pulumi:"tasks"`
 	// Unique identifier of the `CustomTargetType`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time at which the `CustomTargetType` was updated.
@@ -319,6 +361,9 @@ type customTargetTypeState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Configures render and deploy for the `CustomTargetType` using tasks.
+	// Structure is documented below.
+	Tasks *CustomTargetTypeTasks `pulumi:"tasks"`
 	// Unique identifier of the `CustomTargetType`.
 	Uid *string `pulumi:"uid"`
 	// Time at which the `CustomTargetType` was updated.
@@ -359,6 +404,9 @@ type CustomTargetTypeState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Configures render and deploy for the `CustomTargetType` using tasks.
+	// Structure is documented below.
+	Tasks CustomTargetTypeTasksPtrInput
 	// Unique identifier of the `CustomTargetType`.
 	Uid pulumi.StringPtrInput
 	// Time at which the `CustomTargetType` was updated.
@@ -390,6 +438,9 @@ type customTargetTypeArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configures render and deploy for the `CustomTargetType` using tasks.
+	// Structure is documented below.
+	Tasks *CustomTargetTypeTasks `pulumi:"tasks"`
 }
 
 // The set of arguments for constructing a CustomTargetType resource.
@@ -414,6 +465,9 @@ type CustomTargetTypeArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configures render and deploy for the `CustomTargetType` using tasks.
+	// Structure is documented below.
+	Tasks CustomTargetTypeTasksPtrInput
 }
 
 func (CustomTargetTypeArgs) ElementType() reflect.Type {
@@ -574,6 +628,12 @@ func (o CustomTargetTypeOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o CustomTargetTypeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Configures render and deploy for the `CustomTargetType` using tasks.
+// Structure is documented below.
+func (o CustomTargetTypeOutput) Tasks() CustomTargetTypeTasksPtrOutput {
+	return o.ApplyT(func(v *CustomTargetType) CustomTargetTypeTasksPtrOutput { return v.Tasks }).(CustomTargetTypeTasksPtrOutput)
 }
 
 // Unique identifier of the `CustomTargetType`.

@@ -6,6 +6,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeCustomActionsArgs;
+import com.pulumi.gcp.clouddeploy.inputs.CustomTargetTypeTasksArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -227,6 +228,23 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tasks")
+    private @Nullable Output<CustomTargetTypeTasksArgs> tasks;
+
+    /**
+     * @return Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CustomTargetTypeTasksArgs>> tasks() {
+        return Optional.ofNullable(this.tasks);
+    }
+
+    /**
      * Unique identifier of the `CustomTargetType`.
      * 
      */
@@ -272,6 +290,7 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.tasks = $.tasks;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -579,6 +598,29 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param tasks Configures render and deploy for the `CustomTargetType` using tasks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(@Nullable Output<CustomTargetTypeTasksArgs> tasks) {
+            $.tasks = tasks;
+            return this;
+        }
+
+        /**
+         * @param tasks Configures render and deploy for the `CustomTargetType` using tasks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(CustomTargetTypeTasksArgs tasks) {
+            return tasks(Output.of(tasks));
         }
 
         /**

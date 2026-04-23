@@ -12,12 +12,9 @@ namespace Pulumi.Gcp.Dataform
     /// <summary>
     /// A resource represents a Dataform folder
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about Folder, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.folders)
+    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.folders)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dataform/docs/)
     /// 
@@ -36,7 +33,7 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformFolderBasic = new Gcp.Dataform.Folder("dataform_folder_basic", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Basic Folder-_39249",
+    ///         DisplayName = "Basic Folder-_8493",
     ///     });
     /// 
     /// });
@@ -54,13 +51,13 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformFolderRoot = new Gcp.Dataform.Folder("dataform_folder_root", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Root Folder",
+    ///         DisplayName = "Root Folder-_9106",
     ///     });
     /// 
     ///     var dataformFolderFull = new Gcp.Dataform.Folder("dataform_folder_full", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Nested Folder",
+    ///         DisplayName = "Nested Folder-_27169",
     ///         ContainingFolder = dataformFolderRoot.Id,
     ///     });
     /// 

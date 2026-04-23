@@ -42,6 +42,10 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly bool? TrackActiveQueries;
         /// <summary>
+        /// Track client address for an instance. If not set, default value is "off".
+        /// </summary>
+        public readonly bool? TrackClientAddress;
+        /// <summary>
         /// Record wait event types during query execution for an instance.
         /// </summary>
         public readonly bool? TrackWaitEventTypes;
@@ -66,6 +70,8 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
             bool? trackActiveQueries,
 
+            bool? trackClientAddress,
+
             bool? trackWaitEventTypes,
 
             bool? trackWaitEvents)
@@ -77,6 +83,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
             QueryPlansPerMinute = queryPlansPerMinute;
             RecordApplicationTags = recordApplicationTags;
             TrackActiveQueries = trackActiveQueries;
+            TrackClientAddress = trackClientAddress;
             TrackWaitEventTypes = trackWaitEventTypes;
             TrackWaitEvents = trackWaitEvents;
         }

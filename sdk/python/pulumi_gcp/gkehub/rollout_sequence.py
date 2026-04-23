@@ -24,6 +24,7 @@ class RolloutSequenceArgs:
                  rollout_sequence_id: pulumi.Input[_builtins.str],
                  stages: pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]],
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignored_clusters_selector: Optional[pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -33,6 +34,8 @@ class RolloutSequenceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
+        :param pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs'] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Rollout Sequence.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -44,6 +47,8 @@ class RolloutSequenceArgs:
         pulumi.set(__self__, "stages", stages)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if ignored_clusters_selector is not None:
+            pulumi.set(__self__, "ignored_clusters_selector", ignored_clusters_selector)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -87,6 +92,19 @@ class RolloutSequenceArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="ignoredClustersSelector")
+    def ignored_clusters_selector(self) -> Optional[pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs']]:
+        """
+        Selector for clusters to exclude from the Rollout Sequence.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ignored_clusters_selector")
+
+    @ignored_clusters_selector.setter
+    def ignored_clusters_selector(self, value: Optional[pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs']]):
+        pulumi.set(self, "ignored_clusters_selector", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -123,6 +141,7 @@ class _RolloutSequenceState:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignored_clusters_selector: Optional[pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -139,6 +158,8 @@ class _RolloutSequenceState:
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: etag of the Rollout Sequence.
+        :param pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs'] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Rollout Sequence.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -164,6 +185,8 @@ class _RolloutSequenceState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if ignored_clusters_selector is not None:
+            pulumi.set(__self__, "ignored_clusters_selector", ignored_clusters_selector)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -240,6 +263,19 @@ class _RolloutSequenceState:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "etag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoredClustersSelector")
+    def ignored_clusters_selector(self) -> Optional[pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs']]:
+        """
+        Selector for clusters to exclude from the Rollout Sequence.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ignored_clusters_selector")
+
+    @ignored_clusters_selector.setter
+    def ignored_clusters_selector(self, value: Optional[pulumi.Input['RolloutSequenceIgnoredClustersSelectorArgs']]):
+        pulumi.set(self, "ignored_clusters_selector", value)
 
     @_builtins.property
     @pulumi.getter
@@ -351,6 +387,7 @@ class RolloutSequence(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignored_clusters_selector: Optional[pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rollout_sequence_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -388,6 +425,8 @@ class RolloutSequence(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
+        :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Rollout Sequence.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -449,6 +488,7 @@ class RolloutSequence(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignored_clusters_selector: Optional[pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rollout_sequence_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -463,6 +503,7 @@ class RolloutSequence(pulumi.CustomResource):
             __props__ = RolloutSequenceArgs.__new__(RolloutSequenceArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["ignored_clusters_selector"] = ignored_clusters_selector
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             if rollout_sequence_id is None and not opts.urn:
@@ -496,6 +537,7 @@ class RolloutSequence(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            ignored_clusters_selector: Optional[pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -516,6 +558,8 @@ class RolloutSequence(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Human readable display name of the Rollout Sequence.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: etag of the Rollout Sequence.
+        :param pulumi.Input[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']] ignored_clusters_selector: Selector for clusters to exclude from the Rollout Sequence.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this Rollout Sequence.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -540,6 +584,7 @@ class RolloutSequence(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["ignored_clusters_selector"] = ignored_clusters_selector
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -589,6 +634,15 @@ class RolloutSequence(pulumi.CustomResource):
         etag of the Rollout Sequence.
         """
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoredClustersSelector")
+    def ignored_clusters_selector(self) -> pulumi.Output[Optional['outputs.RolloutSequenceIgnoredClustersSelector']]:
+        """
+        Selector for clusters to exclude from the Rollout Sequence.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ignored_clusters_selector")
 
     @_builtins.property
     @pulumi.getter

@@ -19,7 +19,7 @@ public final class UnitKindInputVariableMappingTo {
      */
     private String dependency;
     /**
-     * @return Tells SaaS Runtime if this mapping should be used during lookup or not
+     * @return Tells App Lifecycle Manager if this mapping should be used during lookup or not
      * 
      */
     private @Nullable Boolean ignoreForLookup;
@@ -38,7 +38,7 @@ public final class UnitKindInputVariableMappingTo {
         return this.dependency;
     }
     /**
-     * @return Tells SaaS Runtime if this mapping should be used during lookup or not
+     * @return Tells App Lifecycle Manager if this mapping should be used during lookup or not
      * 
      */
     public Optional<Boolean> ignoreForLookup() {

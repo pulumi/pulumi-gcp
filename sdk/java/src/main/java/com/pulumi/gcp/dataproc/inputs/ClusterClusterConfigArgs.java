@@ -169,6 +169,21 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The cluster engine.
+     * 
+     */
+    @Import(name="engine")
+    private @Nullable Output<String> engine;
+
+    /**
+     * @return The cluster engine.
+     * 
+     */
+    public Optional<Output<String>> engine() {
+        return Optional.ofNullable(this.engine);
+    }
+
+    /**
      * Common config settings for resources of Google Compute Engine cluster
      * instances, applicable to all instances in the cluster. Structure defined below.
      * 
@@ -384,6 +399,7 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         this.dataprocMetricConfig = $.dataprocMetricConfig;
         this.encryptionConfig = $.encryptionConfig;
         this.endpointConfig = $.endpointConfig;
+        this.engine = $.engine;
         this.gceClusterConfig = $.gceClusterConfig;
         this.initializationActions = $.initializationActions;
         this.lifecycleConfig = $.lifecycleConfig;
@@ -610,6 +626,27 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder endpointConfig(ClusterClusterConfigEndpointConfigArgs endpointConfig) {
             return endpointConfig(Output.of(endpointConfig));
+        }
+
+        /**
+         * @param engine The cluster engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engine(@Nullable Output<String> engine) {
+            $.engine = engine;
+            return this;
+        }
+
+        /**
+         * @param engine The cluster engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engine(String engine) {
+            return engine(Output.of(engine));
         }
 
         /**

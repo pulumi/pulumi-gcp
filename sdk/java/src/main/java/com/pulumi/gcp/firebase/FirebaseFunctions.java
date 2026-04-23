@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.firebase.inputs.GetAdminSdkConfigArgs;
+import com.pulumi.gcp.firebase.inputs.GetAdminSdkConfigPlainArgs;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppArgs;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppConfigArgs;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppConfigPlainArgs;
@@ -23,6 +25,7 @@ import com.pulumi.gcp.firebase.inputs.GetWebAppArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppConfigPlainArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppPlainArgs;
+import com.pulumi.gcp.firebase.outputs.GetAdminSdkConfigResult;
 import com.pulumi.gcp.firebase.outputs.GetAndroidAppConfigResult;
 import com.pulumi.gcp.firebase.outputs.GetAndroidAppResult;
 import com.pulumi.gcp.firebase.outputs.GetAppleAppConfigResult;
@@ -33,6 +36,118 @@ import com.pulumi.gcp.firebase.outputs.GetWebAppResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class FirebaseFunctions {
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static Output<GetAdminSdkConfigResult> getAdminSdkConfig() {
+        return getAdminSdkConfig(GetAdminSdkConfigArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static CompletableFuture<GetAdminSdkConfigResult> getAdminSdkConfigPlain() {
+        return getAdminSdkConfigPlain(GetAdminSdkConfigPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static Output<GetAdminSdkConfigResult> getAdminSdkConfig(GetAdminSdkConfigArgs args) {
+        return getAdminSdkConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static CompletableFuture<GetAdminSdkConfigResult> getAdminSdkConfigPlain(GetAdminSdkConfigPlainArgs args) {
+        return getAdminSdkConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static Output<GetAdminSdkConfigResult> getAdminSdkConfig(GetAdminSdkConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAdminSdkConfig:getAdminSdkConfig", TypeShape.of(GetAdminSdkConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static Output<GetAdminSdkConfigResult> getAdminSdkConfig(GetAdminSdkConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAdminSdkConfig:getAdminSdkConfig", TypeShape.of(GetAdminSdkConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A Google Cloud Firebase Admin SDK configuration
+     * 
+     * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+     * See Provider Versions for more details on beta resources.
+     * 
+     * To get more information about AdminSdkConfig, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/getAdminSdkConfig)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static CompletableFuture<GetAdminSdkConfigResult> getAdminSdkConfigPlain(GetAdminSdkConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:firebase/getAdminSdkConfig:getAdminSdkConfig", TypeShape.of(GetAdminSdkConfigResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * A Google Cloud Firebase Android application instance
      * 

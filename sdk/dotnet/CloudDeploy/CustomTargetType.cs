@@ -174,6 +174,42 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// ### Clouddeploy Custom Target Type Tasks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom_target_type = new Gcp.CloudDeploy.CustomTargetType("custom-target-type", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Name = "my-custom-target-type",
+    ///         Description = "My custom target type",
+    ///         Tasks = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksArgs
+    ///         {
+    ///             Render = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksRenderArgs
+    ///             {
+    ///                 Container = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksRenderContainerArgs
+    ///                 {
+    ///                     Image = "gcr.io/my-project/my-render-image",
+    ///                 },
+    ///             },
+    ///             Deploy = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksDeployArgs
+    ///             {
+    ///                 Container = new Gcp.CloudDeploy.Inputs.CustomTargetTypeTasksDeployContainerArgs
+    ///                 {
+    ///                     Image = "gcr.io/my-project/my-deploy-image",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -278,6 +314,13 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures render and deploy for the `CustomTargetType` using tasks.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tasks")]
+        public Output<Outputs.CustomTargetTypeTasks?> Tasks { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the `CustomTargetType`.
@@ -401,6 +444,13 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configures render and deploy for the `CustomTargetType` using tasks.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tasks")]
+        public Input<Inputs.CustomTargetTypeTasksArgs>? Tasks { get; set; }
 
         public CustomTargetTypeArgs()
         {
@@ -532,6 +582,13 @@ namespace Pulumi.Gcp.CloudDeploy
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Configures render and deploy for the `CustomTargetType` using tasks.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tasks")]
+        public Input<Inputs.CustomTargetTypeTasksGetArgs>? Tasks { get; set; }
 
         /// <summary>
         /// Unique identifier of the `CustomTargetType`.

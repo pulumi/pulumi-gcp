@@ -177,12 +177,9 @@ class TeamFolder(pulumi.CustomResource):
         """
         A resource represents a Dataform TeamFolder
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about TeamFolder, see:
 
-        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.teamFolders)
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.teamFolders)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dataform/docs/)
 
@@ -196,7 +193,7 @@ class TeamFolder(pulumi.CustomResource):
 
         dataform_team_folder_basic = gcp.dataform.TeamFolder("dataform_team_folder_basic",
             region="us-central1",
-            display_name="Basic TeamFolder-_74391")
+            display_name="Basic TeamFolder-_75223")
         ```
 
         ## Import
@@ -236,12 +233,9 @@ class TeamFolder(pulumi.CustomResource):
         """
         A resource represents a Dataform TeamFolder
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about TeamFolder, see:
 
-        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.teamFolders)
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.teamFolders)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dataform/docs/)
 
@@ -255,7 +249,7 @@ class TeamFolder(pulumi.CustomResource):
 
         dataform_team_folder_basic = gcp.dataform.TeamFolder("dataform_team_folder_basic",
             region="us-central1",
-            display_name="Basic TeamFolder-_74391")
+            display_name="Basic TeamFolder-_75223")
         ```
 
         ## Import

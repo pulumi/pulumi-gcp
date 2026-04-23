@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     },
  *     clusterConfig: {
  *         stagingBucket: "dataproc-staging-bucket",
- *         clusterTier: "CLUSTER_TIER_STANDARD",
+ *         engine: "DEFAULT",
  *         masterConfig: {
  *             numInstances: 1,
  *             machineType: "e2-medium",

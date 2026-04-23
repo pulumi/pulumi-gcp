@@ -6,7 +6,10 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleHeaderActionArgs;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
+import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs;
+import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleRedirectOptionsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -21,16 +24,22 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
     public static final OrganizationSecurityPolicyRuleArgs Empty = new OrganizationSecurityPolicyRuleArgs();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are:
+     * &#34;allow&#34;: allow access to target.
+     * &#34;deny&#34;: deny access to target.
+     * &#34;gotoNext&#34;: forward the request to the next hierarchical policy for evaluation.
+     * &#34;redirect&#34;: redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are:
+     * &#34;allow&#34;: allow access to target.
+     * &#34;deny&#34;: deny access to target.
+     * &#34;gotoNext&#34;: forward the request to the next hierarchical policy for evaluation.
+     * &#34;redirect&#34;: redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      * 
      */
     public Output<String> action() {
@@ -97,6 +106,23 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
     }
 
     /**
+     * Optional, additional actions that are performed on headers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="headerAction")
+    private @Nullable Output<OrganizationSecurityPolicyRuleHeaderActionArgs> headerAction;
+
+    /**
+     * @return Optional, additional actions that are performed on headers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationSecurityPolicyRuleHeaderActionArgs>> headerAction() {
+        return Optional.ofNullable(this.headerAction);
+    }
+
+    /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * Structure is documented below.
      * 
@@ -126,6 +152,25 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
      */
     public Output<String> policyId() {
         return this.policyId;
+    }
+
+    /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="preconfiguredWafConfig")
+    private @Nullable Output<OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig;
+
+    /**
+     * @return Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs>> preconfiguredWafConfig() {
+        return Optional.ofNullable(this.preconfiguredWafConfig);
     }
 
     /**
@@ -160,6 +205,25 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
      */
     public Output<Integer> priority() {
         return this.priority;
+    }
+
+    /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions.
+     * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="redirectOptions")
+    private @Nullable Output<OrganizationSecurityPolicyRuleRedirectOptionsArgs> redirectOptions;
+
+    /**
+     * @return Parameters defining the redirect action. Cannot be specified for any other actions.
+     * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationSecurityPolicyRuleRedirectOptionsArgs>> redirectOptions() {
+        return Optional.ofNullable(this.redirectOptions);
     }
 
     /**
@@ -211,10 +275,13 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         this.description = $.description;
         this.direction = $.direction;
         this.enableLogging = $.enableLogging;
+        this.headerAction = $.headerAction;
         this.match = $.match;
         this.policyId = $.policyId;
+        this.preconfiguredWafConfig = $.preconfiguredWafConfig;
         this.preview = $.preview;
         this.priority = $.priority;
+        this.redirectOptions = $.redirectOptions;
         this.targetResources = $.targetResources;
         this.targetServiceAccounts = $.targetServiceAccounts;
     }
@@ -238,8 +305,11 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either
-         * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are:
+         * &#34;allow&#34;: allow access to target.
+         * &#34;deny&#34;: deny access to target.
+         * &#34;gotoNext&#34;: forward the request to the next hierarchical policy for evaluation.
+         * &#34;redirect&#34;: redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
          * 
          * @return builder
          * 
@@ -250,8 +320,11 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either
-         * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are:
+         * &#34;allow&#34;: allow access to target.
+         * &#34;deny&#34;: deny access to target.
+         * &#34;gotoNext&#34;: forward the request to the next hierarchical policy for evaluation.
+         * &#34;redirect&#34;: redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
          * 
          * @return builder
          * 
@@ -338,6 +411,29 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param headerAction Optional, additional actions that are performed on headers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(@Nullable Output<OrganizationSecurityPolicyRuleHeaderActionArgs> headerAction) {
+            $.headerAction = headerAction;
+            return this;
+        }
+
+        /**
+         * @param headerAction Optional, additional actions that are performed on headers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(OrganizationSecurityPolicyRuleHeaderActionArgs headerAction) {
+            return headerAction(Output.of(headerAction));
+        }
+
+        /**
          * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
          * Structure is documented below.
          * 
@@ -379,6 +475,31 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
          */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
+        }
+
+        /**
+         * @param preconfiguredWafConfig Preconfigured WAF configuration to be applied for the rule.
+         * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preconfiguredWafConfig(@Nullable Output<OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig) {
+            $.preconfiguredWafConfig = preconfiguredWafConfig;
+            return this;
+        }
+
+        /**
+         * @param preconfiguredWafConfig Preconfigured WAF configuration to be applied for the rule.
+         * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preconfiguredWafConfig(OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs preconfiguredWafConfig) {
+            return preconfiguredWafConfig(Output.of(preconfiguredWafConfig));
         }
 
         /**
@@ -425,6 +546,31 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
          */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
+        }
+
+        /**
+         * @param redirectOptions Parameters defining the redirect action. Cannot be specified for any other actions.
+         * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectOptions(@Nullable Output<OrganizationSecurityPolicyRuleRedirectOptionsArgs> redirectOptions) {
+            $.redirectOptions = redirectOptions;
+            return this;
+        }
+
+        /**
+         * @param redirectOptions Parameters defining the redirect action. Cannot be specified for any other actions.
+         * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectOptions(OrganizationSecurityPolicyRuleRedirectOptionsArgs redirectOptions) {
+            return redirectOptions(Output.of(redirectOptions));
         }
 
         /**

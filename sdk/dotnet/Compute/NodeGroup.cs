@@ -39,14 +39,14 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "soletenant-tmpl",
     ///         Region = "us-central1",
-    ///         NodeType = "n1-node-96-624",
+    ///         NodeType = "c2-node-60-240",
     ///     });
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
     ///         Name = "soletenant-group",
-    ///         Zone = "us-central1-a",
-    ///         Description = "example google_compute_node_group for the Google Provider",
+    ///         Zone = "us-central1-c",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
     ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///     });
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Compute
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
     ///         Name = "soletenant-group",
-    ///         Zone = "us-central1-a",
+    ///         Zone = "us-central1-f",
     ///         Description = "example google_compute_node_group for Terraform Google Provider",
     ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "soletenant-tmpl",
     ///         Region = "us-central1",
-    ///         NodeType = "n1-node-96-624",
+    ///         NodeType = "c2-node-60-240",
     ///     });
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "soletenant-tmpl",
     ///         Region = "us-central1",
-    ///         NodeType = "n1-node-96-624",
+    ///         NodeType = "c2-node-60-240",
     ///     });
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()

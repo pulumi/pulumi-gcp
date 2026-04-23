@@ -7,12 +7,9 @@ import * as utilities from "../utilities";
 /**
  * A resource represents a Dataform folder
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about Folder, see:
  *
- * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.folders)
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.folders)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dataform/docs/)
  *
@@ -26,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderBasic = new gcp.dataform.Folder("dataform_folder_basic", {
  *     region: "us-central1",
- *     displayName: "Basic Folder-_39249",
+ *     displayName: "Basic Folder-_8493",
  * });
  * ```
  * ### Dataform Folder Full
@@ -37,11 +34,11 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderRoot = new gcp.dataform.Folder("dataform_folder_root", {
  *     region: "us-central1",
- *     displayName: "Root Folder",
+ *     displayName: "Root Folder-_9106",
  * });
  * const dataformFolderFull = new gcp.dataform.Folder("dataform_folder_full", {
  *     region: "us-central1",
- *     displayName: "Nested Folder",
+ *     displayName: "Nested Folder-_27169",
  *     containingFolder: dataformFolderRoot.id,
  * });
  * ```

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vectorsearch.CollectionArgs;
 import com.pulumi.gcp.vectorsearch.inputs.CollectionState;
+import com.pulumi.gcp.vectorsearch.outputs.CollectionEncryptionSpec;
 import com.pulumi.gcp.vectorsearch.outputs.CollectionVectorSchema;
 import java.lang.String;
 import java.util.List;
@@ -83,6 +84,106 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Vectorsearch Collection Cmek
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.vectorsearch.Collection;
+ * import com.pulumi.gcp.vectorsearch.CollectionArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionEncryptionSpecArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaDenseVectorArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
+ *             .name("example-cmek-collection")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
+ *             .name("example-cmek-collection")
+ *             .keyRing(keyRing.id())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var cryptoKeyMemberVsSa = new CryptoKeyIAMMember("cryptoKeyMemberVsSa", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-vectorsearch.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var example_cmek_collection = new Collection("example-cmek-collection", CollectionArgs.builder()
+ *             .location("us-central1")
+ *             .collectionId("example-cmek-collection")
+ *             .displayName("My Awesome Encrypted Collection")
+ *             .description("This collection stores important data.")
+ *             .encryptionSpec(CollectionEncryptionSpecArgs.builder()
+ *                 .cryptoKeyName(cryptoKey.id())
+ *                 .build())
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("env", "dev"),
+ *                 Map.entry("team", "my-team")
+ *             ))
+ *             .dataSchema("""
+ * }{{@code
+ *   \"type\": \"object\",
+ *   \"properties\": }{{@code
+ *     \"title\": }{{@code
+ *       \"type\": \"string\"
+ *     }}{@code ,
+ *     \"plot\": }{{@code
+ *       \"type\": \"string\"
+ *     }}{@code
+ *   }}{@code
+ * }}{@code
+ *             """)
+ *             .vectorSchemas(CollectionVectorSchemaArgs.builder()
+ *                 .fieldName("text_embedding")
+ *                 .denseVector(CollectionVectorSchemaDenseVectorArgs.builder()
+ *                     .dimensions(768)
+ *                     .vertexEmbeddingConfig(CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs.builder()
+ *                         .modelId("textembedding-gecko}{@literal @}{@code 003")
+ *                         .taskType("RETRIEVAL_DOCUMENT")
+ *                         .textTemplate("Title: }{{@code title}}{@code  ---- Plot: }{{@code plot}}{@code ")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyMemberVsSa)
+ *                 .build());
  * 
  *     }}{@code
  * }}{@code
@@ -203,6 +304,24 @@ public class Collection extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={CollectionEncryptionSpec.class}, tree="[0]")
+    private Output</* @Nullable */ CollectionEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CollectionEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * Labels as key value pairs.

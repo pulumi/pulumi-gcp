@@ -105,6 +105,11 @@ export type ExtensionsInstance = import("./extensionsInstance").ExtensionsInstan
 export const ExtensionsInstance: typeof import("./extensionsInstance").ExtensionsInstance = null as any;
 utilities.lazyLoad(exports, ["ExtensionsInstance"], () => require("./extensionsInstance"));
 
+export { GetAdminSdkConfigArgs, GetAdminSdkConfigResult, GetAdminSdkConfigOutputArgs } from "./getAdminSdkConfig";
+export const getAdminSdkConfig: typeof import("./getAdminSdkConfig").getAdminSdkConfig = null as any;
+export const getAdminSdkConfigOutput: typeof import("./getAdminSdkConfig").getAdminSdkConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getAdminSdkConfig","getAdminSdkConfigOutput"], () => require("./getAdminSdkConfig"));
+
 export { GetAndroidAppArgs, GetAndroidAppResult, GetAndroidAppOutputArgs } from "./getAndroidApp";
 export const getAndroidApp: typeof import("./getAndroidApp").getAndroidApp = null as any;
 export const getAndroidAppOutput: typeof import("./getAndroidApp").getAndroidAppOutput = null as any;
@@ -175,6 +180,11 @@ export type StorageBucket = import("./storageBucket").StorageBucket;
 export const StorageBucket: typeof import("./storageBucket").StorageBucket = null as any;
 utilities.lazyLoad(exports, ["StorageBucket"], () => require("./storageBucket"));
 
+export { StorageDefaultBucketArgs, StorageDefaultBucketState } from "./storageDefaultBucket";
+export type StorageDefaultBucket = import("./storageDefaultBucket").StorageDefaultBucket;
+export const StorageDefaultBucket: typeof import("./storageDefaultBucket").StorageDefaultBucket = null as any;
+utilities.lazyLoad(exports, ["StorageDefaultBucket"], () => require("./storageDefaultBucket"));
+
 export { WebAppArgs, WebAppState } from "./webApp";
 export type WebApp = import("./webApp").WebApp;
 export const WebApp: typeof import("./webApp").WebApp = null as any;
@@ -239,6 +249,8 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "gcp:firebase/storageBucket:StorageBucket":
                 return new StorageBucket(name, <any>undefined, { urn })
+            case "gcp:firebase/storageDefaultBucket:StorageDefaultBucket":
+                return new StorageDefaultBucket(name, <any>undefined, { urn })
             case "gcp:firebase/webApp:WebApp":
                 return new WebApp(name, <any>undefined, { urn })
             default:
@@ -273,4 +285,5 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/storageBucket", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/storageDefaultBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/webApp", _module)

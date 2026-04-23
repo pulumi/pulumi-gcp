@@ -314,12 +314,9 @@ class DataTableRow(pulumi.CustomResource):
         """
         Represents a single row in a data table.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about DataTableRow, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dataTables.dataTableRows)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataTables.dataTableRows)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
@@ -401,12 +398,9 @@ class DataTableRow(pulumi.CustomResource):
         """
         Represents a single row in a data table.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about DataTableRow, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dataTables.dataTableRows)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataTables.dataTableRows)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 

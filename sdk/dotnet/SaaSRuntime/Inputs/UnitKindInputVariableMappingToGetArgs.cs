@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.SaaSRuntime.Inputs
         public Input<string> Dependency { get; set; } = null!;
 
         /// <summary>
-        /// Tells SaaS Runtime if this mapping should be used during lookup or not
+        /// Tells App Lifecycle Manager if this mapping should be used during lookup or not
         /// </summary>
         [Input("ignoreForLookup")]
         public Input<bool>? IgnoreForLookup { get; set; }

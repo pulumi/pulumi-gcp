@@ -6,6 +6,7 @@ package com.pulumi.gcp.iam.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,15 @@ public final class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle
      * 
      */
     private List<GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors;
+    /**
+     * @return If set to True, the trust bundle will include the private ca managed identity regional root
+     * public certificates.
+     * 
+     * &gt; **Note** &#39;trust_default_shared_ca&#39; is only supported for managed identity trust domain
+     * resource.
+     * 
+     */
+    private Boolean trustDefaultSharedCa;
     private String trustDomain;
 
     private GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle() {}
@@ -30,6 +40,17 @@ public final class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle
      */
     public List<GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors() {
         return this.trustAnchors;
+    }
+    /**
+     * @return If set to True, the trust bundle will include the private ca managed identity regional root
+     * public certificates.
+     * 
+     * &gt; **Note** &#39;trust_default_shared_ca&#39; is only supported for managed identity trust domain
+     * resource.
+     * 
+     */
+    public Boolean trustDefaultSharedCa() {
+        return this.trustDefaultSharedCa;
     }
     public String trustDomain() {
         return this.trustDomain;
@@ -45,11 +66,13 @@ public final class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle
     @CustomType.Builder
     public static final class Builder {
         private List<GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor> trustAnchors;
+        private Boolean trustDefaultSharedCa;
         private String trustDomain;
         public Builder() {}
         public Builder(GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.trustAnchors = defaults.trustAnchors;
+    	      this.trustDefaultSharedCa = defaults.trustDefaultSharedCa;
     	      this.trustDomain = defaults.trustDomain;
         }
 
@@ -65,6 +88,14 @@ public final class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle
             return trustAnchors(List.of(trustAnchors));
         }
         @CustomType.Setter
+        public Builder trustDefaultSharedCa(Boolean trustDefaultSharedCa) {
+            if (trustDefaultSharedCa == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle", "trustDefaultSharedCa");
+            }
+            this.trustDefaultSharedCa = trustDefaultSharedCa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder trustDomain(String trustDomain) {
             if (trustDomain == null) {
               throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle", "trustDomain");
@@ -75,6 +106,7 @@ public final class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle
         public GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle build() {
             final var _resultValue = new GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle();
             _resultValue.trustAnchors = trustAnchors;
+            _resultValue.trustDefaultSharedCa = trustDefaultSharedCa;
             _resultValue.trustDomain = trustDomain;
             return _resultValue;
         }

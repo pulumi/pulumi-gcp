@@ -123,6 +123,8 @@ import javax.annotation.Nullable;
  *             .displayName("autonomousDatabase displayname")
  *             .database("mydatabase")
  *             .adminPassword("123Abpassword")
+ *             .odbNetwork("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork")
+ *             .odbSubnet("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
  *             .network(default_.id())
  *             .cidr("10.5.0.0/24")
  *             .labels(Map.of("label-one", "value-one"))

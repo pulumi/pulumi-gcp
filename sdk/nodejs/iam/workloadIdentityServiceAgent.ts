@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const primary = new gcp.iam.WorkloadIdentityServiceAgent("primary", {parent: project.then(project => `projects/${project.number}/locations/global/serviceProducers/healthcare.google.apis.com`)});
+ * const primary = new gcp.iam.WorkloadIdentityServiceAgent("primary", {parent: project.then(project => `projects/${project.number}/locations/global/serviceProducers/healthcare.googleapis.com`)});
  * ```
  *
  * ## Import

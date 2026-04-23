@@ -113,7 +113,7 @@ import (
 //				DisplayName: pulumi.String("child agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-2.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				LlmAgent: &ces.AgentLlmAgentArgs{},
@@ -158,7 +158,7 @@ import (
 //				Description: pulumi.String("test agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-2.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				BeforeAgentCallbacks: ces.AgentBeforeAgentCallbackArray{
@@ -276,7 +276,7 @@ import (
 //				App:         cesAppForAgent.AppId,
 //				DisplayName: pulumi.String("my-agent"),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
@@ -340,7 +340,7 @@ import (
 //				App:         cesAppForAgent.AppId,
 //				DisplayName: pulumi.String("my-agent"),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{

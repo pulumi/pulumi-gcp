@@ -176,7 +176,7 @@ def get_account(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: The Google service account ID. This be one of:
+    :param _builtins.str account_id: The Google service account ID. This must be one of:
            
            * The name of the service account within the project (e.g. `my-service`)
            
@@ -239,7 +239,7 @@ def get_account_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str account_id: The Google service account ID. This be one of:
+    :param _builtins.str account_id: The Google service account ID. This must be one of:
            
            * The name of the service account within the project (e.g. `my-service`)
            

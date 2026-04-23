@@ -10,6 +10,7 @@ import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataDocumentationSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionStatusArgs;
 import java.lang.String;
@@ -180,6 +181,23 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="executionIdentity")
+    private @Nullable Output<DatascanExecutionIdentityArgs> executionIdentity;
+
+    /**
+     * @return The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanExecutionIdentityArgs>> executionIdentity() {
+        return Optional.ofNullable(this.executionIdentity);
     }
 
     /**
@@ -374,6 +392,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
+        this.executionIdentity = $.executionIdentity;
         this.executionSpec = $.executionSpec;
         this.executionStatuses = $.executionStatuses;
         this.labels = $.labels;
@@ -621,6 +640,29 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param executionIdentity The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionIdentity(@Nullable Output<DatascanExecutionIdentityArgs> executionIdentity) {
+            $.executionIdentity = executionIdentity;
+            return this;
+        }
+
+        /**
+         * @param executionIdentity The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionIdentity(DatascanExecutionIdentityArgs executionIdentity) {
+            return executionIdentity(Output.of(executionIdentity));
         }
 
         /**

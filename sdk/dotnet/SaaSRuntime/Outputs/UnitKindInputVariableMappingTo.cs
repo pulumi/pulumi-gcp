@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.SaaSRuntime.Outputs
         /// </summary>
         public readonly string Dependency;
         /// <summary>
-        /// Tells SaaS Runtime if this mapping should be used during lookup or not
+        /// Tells App Lifecycle Manager if this mapping should be used during lookup or not
         /// </summary>
         public readonly bool? IgnoreForLookup;
         /// <summary>

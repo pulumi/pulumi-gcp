@@ -957,7 +957,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1110,7 +1110,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1346,7 +1346,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1499,7 +1499,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-1.5-flash",
+                "model": "gemini-2.5-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1934,7 +1934,7 @@ class App(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="loggingSettings")
-    def logging_settings(self) -> pulumi.Output[Optional['outputs.AppLoggingSettings']]:
+    def logging_settings(self) -> pulumi.Output['outputs.AppLoggingSettings']:
         """
         Settings to describe the logging behaviors for the app.
         Structure is documented below.

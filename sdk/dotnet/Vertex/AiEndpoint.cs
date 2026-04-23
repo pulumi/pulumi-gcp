@@ -134,14 +134,14 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "psc-network-_85072",
+    ///         Name = "psc-network-_19370",
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
-    ///         Name = "endpoint-name_35762",
+    ///         Name = "endpoint-name_76273",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
-    ///         Name = "endpoint-name_24469",
+    ///         Name = "endpoint-name_25601",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",

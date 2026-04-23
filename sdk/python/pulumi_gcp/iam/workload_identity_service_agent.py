@@ -105,7 +105,7 @@ class WorkloadIdentityServiceAgent(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        primary = gcp.iam.WorkloadIdentityServiceAgent("primary", parent=f"projects/{project.number}/locations/global/serviceProducers/healthcare.google.apis.com")
+        primary = gcp.iam.WorkloadIdentityServiceAgent("primary", parent=f"projects/{project.number}/locations/global/serviceProducers/healthcare.googleapis.com")
         ```
 
         ## Import
@@ -135,7 +135,7 @@ class WorkloadIdentityServiceAgent(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        primary = gcp.iam.WorkloadIdentityServiceAgent("primary", parent=f"projects/{project.number}/locations/global/serviceProducers/healthcare.google.apis.com")
+        primary = gcp.iam.WorkloadIdentityServiceAgent("primary", parent=f"projects/{project.number}/locations/global/serviceProducers/healthcare.googleapis.com")
         ```
 
         ## Import

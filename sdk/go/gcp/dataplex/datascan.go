@@ -419,7 +419,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_40785"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_37559"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -471,7 +471,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_79169"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_91980"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -479,9 +479,9 @@ import (
 //				return err
 //			}
 //			tfTestConnection, err := bigquery.NewConnection(ctx, "tf_test_connection", &bigquery.ConnectionArgs{
-//				ConnectionId:  pulumi.String("tf-test-connection-_56529"),
+//				ConnectionId:  pulumi.String("tf-test-connection-_37118"),
 //				Location:      pulumi.String("us-central1"),
-//				FriendlyName:  pulumi.String("tf-test-connection-_75413"),
+//				FriendlyName:  pulumi.String("tf-test-connection-_80332"),
 //				Description:   pulumi.String("a bigquery connection for tf test"),
 //				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
 //			})
@@ -574,7 +574,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_55138"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_13293"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -627,7 +627,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__37559"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__40289"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -635,7 +635,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__91980"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__33395"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -737,7 +737,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__37118"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__76044"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -745,7 +745,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__80332"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__69391"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -831,6 +831,229 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Datascan Execution Identity User Credential
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_test_ds__8270"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//				DeleteContentsOnDestroy:  pulumi.Bool(true),
+//				Project:                  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
+//				DatasetId:          tfTestDataset.DatasetId,
+//				TableId:            pulumi.String("tf_test_tbl__41150"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Project:            pulumi.String("my-project-name"),
+//				Schema: pulumi.String(`    [
+//	      {
+//	        \"name\": \"word\",
+//	        \"type\": \"STRING\",
+//	        \"mode\": \"REQUIRED\"
+//	      },
+//	      {
+//	        \"name\": \"word_count\",
+//	        \"type\": \"INTEGER\",
+//	        \"mode\": \"REQUIRED\"
+//	      }
+//	    ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "identity_user_credential", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("dataplex-id-user-cred"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						datasetId := _args[0].(string)
+//						tableId := _args[1].(string)
+//						return fmt.Sprintf("//bigquery.googleapis.com/projects/my-project-name/datasets/%v/tables/%v", datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OneTime: &dataplex.DatascanExecutionSpecTriggerOneTimeArgs{},
+//					},
+//				},
+//				ExecutionIdentity: &dataplex.DatascanExecutionIdentityArgs{
+//					UserCredential: &dataplex.DatascanExecutionIdentityUserCredentialArgs{},
+//				},
+//				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{},
+//				Project:         pulumi.String("my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				tfTestTable,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Datascan Execution Identity Service Account
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("tf-test-sa-_89313"),
+//				DisplayName: pulumi.String("DataScan Service Account"),
+//				Project:     pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dataplexSaImpersonate, err := serviceaccount.NewIAMMember(ctx, "dataplex_sa_impersonate", &serviceaccount.IAMMemberArgs{
+//				ServiceAccountId: sa.Name,
+//				Role:             pulumi.String("roles/iam.serviceAccountTokenCreator"),
+//				Member:           pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataplex.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dataplexSaImpersonate,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			saBqDataViewer, err := projects.NewIAMMember(ctx, "sa_bq_data_viewer", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/bigquery.dataViewer"),
+//				Member: sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			saBqJobUser, err := projects.NewIAMMember(ctx, "sa_bq_job_user", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/bigquery.jobUser"),
+//				Member: sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_test_ds__60646"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//				DeleteContentsOnDestroy:  pulumi.Bool(true),
+//				Project:                  pulumi.String("my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dataplexSaImpersonate,
+//				saBqDataViewer,
+//				saBqJobUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
+//				DatasetId:          tfTestDataset.DatasetId,
+//				TableId:            pulumi.String("tf_test_tbl__9394"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Project:            pulumi.String("my-project-name"),
+//				Schema: pulumi.String(`    [
+//	      {
+//	        \"name\": \"word\",
+//	        \"type\": \"STRING\",
+//	        \"mode\": \"REQUIRED\"
+//	      },
+//	      {
+//	        \"name\": \"word_count\",
+//	        \"type\": \"INTEGER\",
+//	        \"mode\": \"REQUIRED\"
+//	      }
+//	    ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "identity_service_account", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("dataplex-id-sa"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						datasetId := _args[0].(string)
+//						tableId := _args[1].(string)
+//						return fmt.Sprintf("//bigquery.googleapis.com/projects/my-project-name/datasets/%v/tables/%v", datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
+//					},
+//				},
+//				ExecutionIdentity: &dataplex.DatascanExecutionIdentityArgs{
+//					ServiceAccount: &dataplex.DatascanExecutionIdentityServiceAccountArgs{
+//						Email: sa.Email,
+//					},
+//				},
+//				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{},
+//				Project:         pulumi.String("my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				tfTestTable,
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -876,6 +1099,9 @@ type Datascan struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+	// Structure is documented below.
+	ExecutionIdentity DatascanExecutionIdentityPtrOutput `pulumi:"executionIdentity"`
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecOutput `pulumi:"executionSpec"`
@@ -978,6 +1204,9 @@ type datascanState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+	// Structure is documented below.
+	ExecutionIdentity *DatascanExecutionIdentity `pulumi:"executionIdentity"`
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec *DatascanExecutionSpec `pulumi:"executionSpec"`
@@ -1034,6 +1263,9 @@ type DatascanState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+	// Structure is documented below.
+	ExecutionIdentity DatascanExecutionIdentityPtrInput
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecPtrInput
@@ -1090,6 +1322,9 @@ type datascanArgs struct {
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+	// Structure is documented below.
+	ExecutionIdentity *DatascanExecutionIdentity `pulumi:"executionIdentity"`
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpec `pulumi:"executionSpec"`
@@ -1127,6 +1362,9 @@ type DatascanArgs struct {
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+	// Structure is documented below.
+	ExecutionIdentity DatascanExecutionIdentityPtrInput
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecInput
@@ -1281,6 +1519,12 @@ func (o DatascanOutput) DisplayName() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o DatascanOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+// Structure is documented below.
+func (o DatascanOutput) ExecutionIdentity() DatascanExecutionIdentityPtrOutput {
+	return o.ApplyT(func(v *Datascan) DatascanExecutionIdentityPtrOutput { return v.ExecutionIdentity }).(DatascanExecutionIdentityPtrOutput)
 }
 
 // DataScan execution settings.

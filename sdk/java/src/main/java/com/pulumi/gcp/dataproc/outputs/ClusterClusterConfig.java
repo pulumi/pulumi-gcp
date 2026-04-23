@@ -76,6 +76,11 @@ public final class ClusterClusterConfig {
      */
     private @Nullable ClusterClusterConfigEndpointConfig endpointConfig;
     /**
+     * @return The cluster engine.
+     * 
+     */
+    private @Nullable String engine;
+    /**
      * @return Common config settings for resources of Google Compute Engine cluster
      * instances, applicable to all instances in the cluster. Structure defined below.
      * 
@@ -218,6 +223,13 @@ public final class ClusterClusterConfig {
         return Optional.ofNullable(this.endpointConfig);
     }
     /**
+     * @return The cluster engine.
+     * 
+     */
+    public Optional<String> engine() {
+        return Optional.ofNullable(this.engine);
+    }
+    /**
      * @return Common config settings for resources of Google Compute Engine cluster
      * instances, applicable to all instances in the cluster. Structure defined below.
      * 
@@ -332,6 +344,7 @@ public final class ClusterClusterConfig {
         private @Nullable ClusterClusterConfigDataprocMetricConfig dataprocMetricConfig;
         private @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig;
         private @Nullable ClusterClusterConfigEndpointConfig endpointConfig;
+        private @Nullable String engine;
         private @Nullable ClusterClusterConfigGceClusterConfig gceClusterConfig;
         private @Nullable List<ClusterClusterConfigInitializationAction> initializationActions;
         private @Nullable ClusterClusterConfigLifecycleConfig lifecycleConfig;
@@ -354,6 +367,7 @@ public final class ClusterClusterConfig {
     	      this.dataprocMetricConfig = defaults.dataprocMetricConfig;
     	      this.encryptionConfig = defaults.encryptionConfig;
     	      this.endpointConfig = defaults.endpointConfig;
+    	      this.engine = defaults.engine;
     	      this.gceClusterConfig = defaults.gceClusterConfig;
     	      this.initializationActions = defaults.initializationActions;
     	      this.lifecycleConfig = defaults.lifecycleConfig;
@@ -416,6 +430,12 @@ public final class ClusterClusterConfig {
         public Builder endpointConfig(@Nullable ClusterClusterConfigEndpointConfig endpointConfig) {
 
             this.endpointConfig = endpointConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engine(@Nullable String engine) {
+
+            this.engine = engine;
             return this;
         }
         @CustomType.Setter
@@ -497,6 +517,7 @@ public final class ClusterClusterConfig {
             _resultValue.dataprocMetricConfig = dataprocMetricConfig;
             _resultValue.encryptionConfig = encryptionConfig;
             _resultValue.endpointConfig = endpointConfig;
+            _resultValue.engine = engine;
             _resultValue.gceClusterConfig = gceClusterConfig;
             _resultValue.initializationActions = initializationActions;
             _resultValue.lifecycleConfig = lifecycleConfig;

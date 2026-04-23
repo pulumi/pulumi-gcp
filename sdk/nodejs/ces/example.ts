@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     displayName: "base agent",
  *     instruction: "You are a helpful assistant for this example.",
  *     modelSettings: {
- *         model: "gemini-2.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     llmAgent: {},
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  *     displayName: "child agent",
  *     instruction: "You are a helpful assistant for this example.",
  *     modelSettings: {
- *         model: "gemini-2.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     llmAgent: {},

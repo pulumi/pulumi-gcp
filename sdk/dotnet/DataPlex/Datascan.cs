@@ -428,7 +428,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_40785",
+    ///         Name = "tf-test-bucket-name-_37559",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -471,16 +471,16 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_79169",
+    ///         Name = "tf-test-bucket-name-_91980",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
     ///     {
-    ///         ConnectionId = "tf-test-connection-_56529",
+    ///         ConnectionId = "tf-test-connection-_37118",
     ///         Location = "us-central1",
-    ///         FriendlyName = "tf-test-connection-_75413",
+    ///         FriendlyName = "tf-test-connection-_80332",
     ///         Description = "a bigquery connection for tf test",
     ///         CloudResource = null,
     ///     });
@@ -573,7 +573,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_55138",
+    ///         Name = "tf-test-bucket-name-_13293",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -619,14 +619,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__37559",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__40289",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__91980",
+    ///         TableId = "tf_dataplex_test_table_id__33395",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -718,14 +718,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__37118",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__76044",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__80332",
+    ///         TableId = "tf_dataplex_test_table_id__69391",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -804,6 +804,213 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///         DataDocumentationSpec = null,
     ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Datascan Execution Identity User Credential
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
+    ///     {
+    ///         DatasetId = "tf_test_ds__8270",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         DeleteContentsOnDestroy = true,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
+    ///     {
+    ///         DatasetId = tfTestDataset.DatasetId,
+    ///         TableId = "tf_test_tbl__41150",
+    ///         DeletionProtection = false,
+    ///         Project = "my-project-name",
+    ///         Schema = @"    [
+    ///       {
+    ///         \""name\"": \""word\"",
+    ///         \""type\"": \""STRING\"",
+    ///         \""mode\"": \""REQUIRED\""
+    ///       },
+    ///       {
+    ///         \""name\"": \""word_count\"",
+    ///         \""type\"": \""INTEGER\"",
+    ///         \""mode\"": \""REQUIRED\""
+    ///       }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var identityUserCredential = new Gcp.DataPlex.Datascan("identity_user_credential", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataplex-id-user-cred",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var datasetId = values.Item1;
+    ///                 var tableId = values.Item2;
+    ///                 return $"//bigquery.googleapis.com/projects/my-project-name/datasets/{datasetId}/tables/{tableId}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OneTime = null,
+    ///             },
+    ///         },
+    ///         ExecutionIdentity = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityArgs
+    ///         {
+    ///             UserCredential = null,
+    ///         },
+    ///         DataProfileSpec = null,
+    ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             tfTestTable,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Datascan Execution Identity Service Account
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "tf-test-sa-_89313",
+    ///         DisplayName = "DataScan Service Account",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var dataplexSaImpersonate = new Gcp.ServiceAccount.IAMMember("dataplex_sa_impersonate", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountTokenCreator",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-dataplex.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dataplexSaImpersonate,
+    ///         },
+    ///     });
+    /// 
+    ///     var saBqDataViewer = new Gcp.Projects.IAMMember("sa_bq_data_viewer", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var saBqJobUser = new Gcp.Projects.IAMMember("sa_bq_job_user", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/bigquery.jobUser",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
+    ///     {
+    ///         DatasetId = "tf_test_ds__60646",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         DeleteContentsOnDestroy = true,
+    ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dataplexSaImpersonate,
+    ///             saBqDataViewer,
+    ///             saBqJobUser,
+    ///         },
+    ///     });
+    /// 
+    ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
+    ///     {
+    ///         DatasetId = tfTestDataset.DatasetId,
+    ///         TableId = "tf_test_tbl__9394",
+    ///         DeletionProtection = false,
+    ///         Project = "my-project-name",
+    ///         Schema = @"    [
+    ///       {
+    ///         \""name\"": \""word\"",
+    ///         \""type\"": \""STRING\"",
+    ///         \""mode\"": \""REQUIRED\""
+    ///       },
+    ///       {
+    ///         \""name\"": \""word_count\"",
+    ///         \""type\"": \""INTEGER\"",
+    ///         \""mode\"": \""REQUIRED\""
+    ///       }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var identityServiceAccount = new Gcp.DataPlex.Datascan("identity_service_account", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataplex-id-sa",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var datasetId = values.Item1;
+    ///                 var tableId = values.Item2;
+    ///                 return $"//bigquery.googleapis.com/projects/my-project-name/datasets/{datasetId}/tables/{tableId}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OnDemand = null,
+    ///             },
+    ///         },
+    ///         ExecutionIdentity = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityArgs
+    ///         {
+    ///             ServiceAccount = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityServiceAccountArgs
+    ///             {
+    ///                 Email = sa.Email,
+    ///             },
+    ///         },
+    ///         DataProfileSpec = null,
+    ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             tfTestTable,
+    ///             wait120Seconds,
+    ///         },
     ///     });
     /// 
     /// });
@@ -893,6 +1100,13 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("executionIdentity")]
+        public Output<Outputs.DatascanExecutionIdentity?> ExecutionIdentity { get; private set; } = null!;
 
         /// <summary>
         /// DataScan execution settings.
@@ -1071,6 +1285,13 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("executionIdentity")]
+        public Input<Inputs.DatascanExecutionIdentityArgs>? ExecutionIdentity { get; set; }
+
+        /// <summary>
         /// DataScan execution settings.
         /// Structure is documented below.
         /// </summary>
@@ -1186,6 +1407,13 @@ namespace Pulumi.Gcp.DataPlex
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("executionIdentity")]
+        public Input<Inputs.DatascanExecutionIdentityGetArgs>? ExecutionIdentity { get; set; }
 
         /// <summary>
         /// DataScan execution settings.

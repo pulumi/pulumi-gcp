@@ -26,6 +26,7 @@ class BackupVaultArgs:
                  backup_retention_policy: Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']] = None,
                  backup_vault_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
@@ -39,6 +40,9 @@ class BackupVaultArgs:
         :param pulumi.Input[_builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] kms_config: Specifies the Key Management System (KMS) configuration to be used for
+               backup encryption. Format:
+               `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -56,6 +60,8 @@ class BackupVaultArgs:
             pulumi.set(__self__, "backup_vault_type", backup_vault_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if kms_config is not None:
+            pulumi.set(__self__, "kms_config", kms_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -126,6 +132,20 @@ class BackupVaultArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="kmsConfig")
+    def kms_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the Key Management System (KMS) configuration to be used for
+        backup encryption. Format:
+        `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+        """
+        return pulumi.get(self, "kms_config")
+
+    @kms_config.setter
+    def kms_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -172,10 +192,13 @@ class _BackupVaultState:
                  backup_region: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_retention_policy: Optional[pulumi.Input['BackupVaultBackupRetentionPolicyArgs']] = None,
                  backup_vault_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 backups_crypto_key_version: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  destination_backup_vault: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -192,10 +215,17 @@ class _BackupVaultState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+        :param pulumi.Input[_builtins.str] backups_crypto_key_version: The crypto key version used to encrypt the backup vault.
+               Format:
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
         :param pulumi.Input[_builtins.str] create_time: Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] destination_backup_vault: Name of the Backup vault created in backup region.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] encryption_state: Encryption state of customer-managed encryption keys (CMEK) backups.
+        :param pulumi.Input[_builtins.str] kms_config: Specifies the Key Management System (KMS) configuration to be used for
+               backup encryption. Format:
+               `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -216,6 +246,8 @@ class _BackupVaultState:
             pulumi.set(__self__, "backup_retention_policy", backup_retention_policy)
         if backup_vault_type is not None:
             pulumi.set(__self__, "backup_vault_type", backup_vault_type)
+        if backups_crypto_key_version is not None:
+            pulumi.set(__self__, "backups_crypto_key_version", backups_crypto_key_version)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -224,6 +256,10 @@ class _BackupVaultState:
             pulumi.set(__self__, "destination_backup_vault", destination_backup_vault)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_state is not None:
+            pulumi.set(__self__, "encryption_state", encryption_state)
+        if kms_config is not None:
+            pulumi.set(__self__, "kms_config", kms_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -280,6 +316,20 @@ class _BackupVaultState:
         pulumi.set(self, "backup_vault_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="backupsCryptoKeyVersion")
+    def backups_crypto_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The crypto key version used to encrypt the backup vault.
+        Format:
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "backups_crypto_key_version")
+
+    @backups_crypto_key_version.setter
+    def backups_crypto_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backups_crypto_key_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -326,6 +376,32 @@ class _BackupVaultState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionState")
+    def encryption_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Encryption state of customer-managed encryption keys (CMEK) backups.
+        """
+        return pulumi.get(self, "encryption_state")
+
+    @encryption_state.setter
+    def encryption_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encryption_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsConfig")
+    def kms_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the Key Management System (KMS) configuration to be used for
+        backup encryption. Format:
+        `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+        """
+        return pulumi.get(self, "kms_config")
+
+    @kms_config.setter
+    def kms_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -439,6 +515,7 @@ class BackupVault(pulumi.CustomResource):
                  backup_retention_policy: Optional[pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
                  backup_vault_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -496,6 +573,9 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] kms_config: Specifies the Key Management System (KMS) configuration to be used for
+               backup encryption. Format:
+               `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -574,6 +654,7 @@ class BackupVault(pulumi.CustomResource):
                  backup_retention_policy: Optional[pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
                  backup_vault_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -591,15 +672,18 @@ class BackupVault(pulumi.CustomResource):
             __props__.__dict__["backup_retention_policy"] = backup_retention_policy
             __props__.__dict__["backup_vault_type"] = backup_vault_type
             __props__.__dict__["description"] = description
+            __props__.__dict__["kms_config"] = kms_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["backups_crypto_key_version"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["destination_backup_vault"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["encryption_state"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["source_backup_vault"] = None
             __props__.__dict__["source_region"] = None
@@ -619,10 +703,13 @@ class BackupVault(pulumi.CustomResource):
             backup_region: Optional[pulumi.Input[_builtins.str]] = None,
             backup_retention_policy: Optional[pulumi.Input[Union['BackupVaultBackupRetentionPolicyArgs', 'BackupVaultBackupRetentionPolicyArgsDict']]] = None,
             backup_vault_type: Optional[pulumi.Input[_builtins.str]] = None,
+            backups_crypto_key_version: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             destination_backup_vault: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_state: Optional[pulumi.Input[_builtins.str]] = None,
+            kms_config: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -643,10 +730,17 @@ class BackupVault(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] backup_vault_type: Type of the backup vault to be created. Default is IN_REGION.
                Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+        :param pulumi.Input[_builtins.str] backups_crypto_key_version: The crypto key version used to encrypt the backup vault.
+               Format:
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
         :param pulumi.Input[_builtins.str] create_time: Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] destination_backup_vault: Name of the Backup vault created in backup region.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] encryption_state: Encryption state of customer-managed encryption keys (CMEK) backups.
+        :param pulumi.Input[_builtins.str] kms_config: Specifies the Key Management System (KMS) configuration to be used for
+               backup encryption. Format:
+               `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -668,10 +762,13 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["backup_region"] = backup_region
         __props__.__dict__["backup_retention_policy"] = backup_retention_policy
         __props__.__dict__["backup_vault_type"] = backup_vault_type
+        __props__.__dict__["backups_crypto_key_version"] = backups_crypto_key_version
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["destination_backup_vault"] = destination_backup_vault
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["encryption_state"] = encryption_state
+        __props__.__dict__["kms_config"] = kms_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -709,6 +806,16 @@ class BackupVault(pulumi.CustomResource):
         return pulumi.get(self, "backup_vault_type")
 
     @_builtins.property
+    @pulumi.getter(name="backupsCryptoKeyVersion")
+    def backups_crypto_key_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The crypto key version used to encrypt the backup vault.
+        Format:
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "backups_crypto_key_version")
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
@@ -739,6 +846,24 @@ class BackupVault(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionState")
+    def encryption_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        Encryption state of customer-managed encryption keys (CMEK) backups.
+        """
+        return pulumi.get(self, "encryption_state")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsConfig")
+    def kms_config(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies the Key Management System (KMS) configuration to be used for
+        backup encryption. Format:
+        `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+        """
+        return pulumi.get(self, "kms_config")
 
     @_builtins.property
     @pulumi.getter
