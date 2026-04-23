@@ -310,14 +310,14 @@ diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/clo
 index e4c44c5c1..44b42f491 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
-@@ -33,8 +33,63 @@ To get more information about Service, see:
+@@ -33,9 +33,64 @@ To get more information about Service, see:
  ~> **Warning:** We recommend using the `google_cloud_run_v2_service` resource which offers a better
  developer experience and broader support of Cloud Run features.
  
 -## Example Usage - Cloud Run Service Basic
 +## Example Usage - Cloud Run Service Pubsub
-+
-+
+ 
+ 
 +```hcl
 +resource "google_cloud_run_service" "default" {
 +    name     = "cloud_run_service_name"
@@ -370,11 +370,12 @@ index e4c44c5c1..44b42f491 100644
 +  }
 +}
 +```
- 
++
 +## Example Usage - Cloud Run Service Basic
- 
++
  ```hcl
  resource "google_cloud_run_service" "default" {
+   name     = "cloudrun-srv"
 @@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
@@ -779,7 +780,7 @@ index 63eab4f70..648f21928 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/compute_node_group.html.markdown b/website/docs/r/compute_node_group.html.markdown
-index 4204269a9..0fe5c0a99 100644
+index 93b7a0a80..ec08f2230 100644
 --- a/website/docs/r/compute_node_group.html.markdown
 +++ b/website/docs/r/compute_node_group.html.markdown
 @@ -30,6 +30,11 @@ To get more information about NodeGroup, see:
@@ -794,17 +795,6 @@ index 4204269a9..0fe5c0a99 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=node_group_basic&open_in_editor=main.tf" target="_blank">
      <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
-@@ -47,8 +52,8 @@ resource "google_compute_node_template" "soletenant-tmpl" {
- 
- resource "google_compute_node_group" "nodes" {
-   name        = "soletenant-group"
--  zone        = "us-central1-f"
--  description = "example google_compute_node_group for Terraform Google Provider"
-+  zone        = "us-central1-a"
-+  description = "example google_compute_node_group for the Google Provider"
- 
-   initial_size          = 1
-   node_template = google_compute_node_template.soletenant-tmpl.id
 @@ -99,8 +104,8 @@ resource "google_compute_node_template" "soletenant-tmpl" {
  
  resource "google_compute_node_group" "nodes" {
@@ -844,10 +834,10 @@ index c0677f54f..49dec75a3 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index 830de5283..025e0610a 100644
+index 664e855c8..6e15c9cfb 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-@@ -82,7 +82,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
+@@ -191,7 +191,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
  ```hcl
  resource "google_compute_organization_security_policy" "policy" {
    provider     = google-beta
@@ -1683,7 +1673,7 @@ index ad0cde9bf..fdf69242a 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index 3ac96f391..0b2956b66 100644
+index 065550cb9..e74423c7d 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -162,7 +162,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -1695,7 +1685,7 @@ index 3ac96f391..0b2956b66 100644
        Does not affect auto scaling decomissioning from an autoscaling policy.
        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
-@@ -710,7 +710,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
+@@ -712,7 +712,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
    * PREEMPTIBILITY_UNSPECIFIED
    * NON_PREEMPTIBLE
    * PREEMPTIBLE
@@ -2423,7 +2413,7 @@ index 79f96126c..b43103997 100644
  * `check_if_service_has_usage_on_destroy` - (Optional)
  [Beta](../guides/provider_versions.html.markdown)
 diff --git a/website/docs/r/google_service_account.html.markdown b/website/docs/r/google_service_account.html.markdown
-index 95dadfe35..4c4bdd429 100644
+index 96767f8b9..012e88129 100644
 --- a/website/docs/r/google_service_account.html.markdown
 +++ b/website/docs/r/google_service_account.html.markdown
 @@ -30,8 +30,7 @@ Allows management of a Google Cloud service account.
@@ -2957,7 +2947,7 @@ index c7632aeb5..d779ad0d0 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 5cef58cb3..0aa420fe5 100644
+index eedf3cbba..c7e50237d 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3026,7 +3016,7 @@ index 5cef58cb3..0aa420fe5 100644
      configuration is detailed below.
  
  * `point_in_time_restore_context` - (Optional) The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
-@@ -773,7 +771,7 @@ The optional `clone` block supports:
+@@ -779,7 +777,7 @@ The optional `clone` block supports:
      A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
  
  The optional `restore_backup_context` block supports:
@@ -3035,7 +3025,7 @@ index 5cef58cb3..0aa420fe5 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -839,21 +837,13 @@ instance.
+@@ -845,21 +843,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
