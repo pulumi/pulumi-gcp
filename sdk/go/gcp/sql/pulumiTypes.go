@@ -1712,6 +1712,8 @@ type DatabaseInstanceSettings struct {
 	EnableDataplexIntegration *bool `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 	EnableGoogleMlIntegration *bool `pulumi:"enableGoogleMlIntegration"`
+	// The Microsoft Entra ID configuration for the SQL Server instance.
+	EntraidConfig *DatabaseInstanceSettingsEntraidConfig `pulumi:"entraidConfig"`
 	// Config used to determine the final backup settings for the instance
 	FinalBackupConfig *DatabaseInstanceSettingsFinalBackupConfig `pulumi:"finalBackupConfig"`
 	// Configuration of Query Insights.
@@ -1813,6 +1815,8 @@ type DatabaseInstanceSettingsArgs struct {
 	EnableDataplexIntegration pulumi.BoolPtrInput `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 	EnableGoogleMlIntegration pulumi.BoolPtrInput `pulumi:"enableGoogleMlIntegration"`
+	// The Microsoft Entra ID configuration for the SQL Server instance.
+	EntraidConfig DatabaseInstanceSettingsEntraidConfigPtrInput `pulumi:"entraidConfig"`
 	// Config used to determine the final backup settings for the instance
 	FinalBackupConfig DatabaseInstanceSettingsFinalBackupConfigPtrInput `pulumi:"finalBackupConfig"`
 	// Configuration of Query Insights.
@@ -2059,6 +2063,11 @@ func (o DatabaseInstanceSettingsOutput) EnableDataplexIntegration() pulumi.BoolP
 // Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 func (o DatabaseInstanceSettingsOutput) EnableGoogleMlIntegration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Entra ID configuration for the SQL Server instance.
+func (o DatabaseInstanceSettingsOutput) EntraidConfig() DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsEntraidConfig { return v.EntraidConfig }).(DatabaseInstanceSettingsEntraidConfigPtrOutput)
 }
 
 // Config used to determine the final backup settings for the instance
@@ -2416,6 +2425,16 @@ func (o DatabaseInstanceSettingsPtrOutput) EnableGoogleMlIntegration() pulumi.Bo
 		}
 		return v.EnableGoogleMlIntegration
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The Microsoft Entra ID configuration for the SQL Server instance.
+func (o DatabaseInstanceSettingsPtrOutput) EntraidConfig() DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsEntraidConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EntraidConfig
+	}).(DatabaseInstanceSettingsEntraidConfigPtrOutput)
 }
 
 // Config used to determine the final backup settings for the instance
@@ -3908,6 +3927,162 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) Time() pulumi.St
 			return nil
 		}
 		return &v.Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsEntraidConfig struct {
+	// The application ID for the Entra ID configuration. This must be paired with a tenantId to be valid.
+	ApplicationId *string `pulumi:"applicationId"`
+	// The tenant ID for the Entra ID configuration. This must be paired with an applicationId to be valid.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// DatabaseInstanceSettingsEntraidConfigInput is an input type that accepts DatabaseInstanceSettingsEntraidConfigArgs and DatabaseInstanceSettingsEntraidConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsEntraidConfigInput` via:
+//
+//	DatabaseInstanceSettingsEntraidConfigArgs{...}
+type DatabaseInstanceSettingsEntraidConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsEntraidConfigOutput() DatabaseInstanceSettingsEntraidConfigOutput
+	ToDatabaseInstanceSettingsEntraidConfigOutputWithContext(context.Context) DatabaseInstanceSettingsEntraidConfigOutput
+}
+
+type DatabaseInstanceSettingsEntraidConfigArgs struct {
+	// The application ID for the Entra ID configuration. This must be paired with a tenantId to be valid.
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// The tenant ID for the Entra ID configuration. This must be paired with an applicationId to be valid.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (DatabaseInstanceSettingsEntraidConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsEntraidConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsEntraidConfigArgs) ToDatabaseInstanceSettingsEntraidConfigOutput() DatabaseInstanceSettingsEntraidConfigOutput {
+	return i.ToDatabaseInstanceSettingsEntraidConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsEntraidConfigArgs) ToDatabaseInstanceSettingsEntraidConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsEntraidConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsEntraidConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsEntraidConfigArgs) ToDatabaseInstanceSettingsEntraidConfigPtrOutput() DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsEntraidConfigArgs) ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsEntraidConfigOutput).ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsEntraidConfigPtrInput is an input type that accepts DatabaseInstanceSettingsEntraidConfigArgs, DatabaseInstanceSettingsEntraidConfigPtr and DatabaseInstanceSettingsEntraidConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsEntraidConfigPtrInput` via:
+//
+//	        DatabaseInstanceSettingsEntraidConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsEntraidConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsEntraidConfigPtrOutput() DatabaseInstanceSettingsEntraidConfigPtrOutput
+	ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsEntraidConfigPtrOutput
+}
+
+type databaseInstanceSettingsEntraidConfigPtrType DatabaseInstanceSettingsEntraidConfigArgs
+
+func DatabaseInstanceSettingsEntraidConfigPtr(v *DatabaseInstanceSettingsEntraidConfigArgs) DatabaseInstanceSettingsEntraidConfigPtrInput {
+	return (*databaseInstanceSettingsEntraidConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsEntraidConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsEntraidConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsEntraidConfigPtrType) ToDatabaseInstanceSettingsEntraidConfigPtrOutput() DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsEntraidConfigPtrType) ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsEntraidConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsEntraidConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsEntraidConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsEntraidConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigOutput) ToDatabaseInstanceSettingsEntraidConfigOutput() DatabaseInstanceSettingsEntraidConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigOutput) ToDatabaseInstanceSettingsEntraidConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsEntraidConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigOutput) ToDatabaseInstanceSettingsEntraidConfigPtrOutput() DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigOutput) ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsEntraidConfig) *DatabaseInstanceSettingsEntraidConfig {
+		return &v
+	}).(DatabaseInstanceSettingsEntraidConfigPtrOutput)
+}
+
+// The application ID for the Entra ID configuration. This must be paired with a tenantId to be valid.
+func (o DatabaseInstanceSettingsEntraidConfigOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsEntraidConfig) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID for the Entra ID configuration. This must be paired with an applicationId to be valid.
+func (o DatabaseInstanceSettingsEntraidConfigOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsEntraidConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsEntraidConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsEntraidConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsEntraidConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigPtrOutput) ToDatabaseInstanceSettingsEntraidConfigPtrOutput() DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigPtrOutput) ToDatabaseInstanceSettingsEntraidConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsEntraidConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsEntraidConfigPtrOutput) Elem() DatabaseInstanceSettingsEntraidConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsEntraidConfig) DatabaseInstanceSettingsEntraidConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsEntraidConfig
+		return ret
+	}).(DatabaseInstanceSettingsEntraidConfigOutput)
+}
+
+// The application ID for the Entra ID configuration. This must be paired with a tenantId to be valid.
+func (o DatabaseInstanceSettingsEntraidConfigPtrOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsEntraidConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID for the Entra ID configuration. This must be paired with an applicationId to be valid.
+func (o DatabaseInstanceSettingsEntraidConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsEntraidConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7839,6 +8014,8 @@ type GetDatabaseInstanceSetting struct {
 	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
+	// The Microsoft Entra ID configuration for the SQL Server instance.
+	EntraidConfigs []GetDatabaseInstanceSettingEntraidConfig `pulumi:"entraidConfigs"`
 	// Config used to determine the final backup settings for the instance
 	FinalBackupConfigs []GetDatabaseInstanceSettingFinalBackupConfig `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
@@ -7929,6 +8106,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
+	// The Microsoft Entra ID configuration for the SQL Server instance.
+	EntraidConfigs GetDatabaseInstanceSettingEntraidConfigArrayInput `pulumi:"entraidConfigs"`
 	// Config used to determine the final backup settings for the instance
 	FinalBackupConfigs GetDatabaseInstanceSettingFinalBackupConfigArrayInput `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
@@ -8140,6 +8319,11 @@ func (o GetDatabaseInstanceSettingOutput) EnableDataplexIntegration() pulumi.Boo
 // Enables Vertex AI Integration.
 func (o GetDatabaseInstanceSettingOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
+}
+
+// The Microsoft Entra ID configuration for the SQL Server instance.
+func (o GetDatabaseInstanceSettingOutput) EntraidConfigs() GetDatabaseInstanceSettingEntraidConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingEntraidConfig { return v.EntraidConfigs }).(GetDatabaseInstanceSettingEntraidConfigArrayOutput)
 }
 
 // Config used to determine the final backup settings for the instance
@@ -9237,6 +9421,112 @@ func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingDenyMaintenancePeriod {
 		return vs[0].([]GetDatabaseInstanceSettingDenyMaintenancePeriod)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput)
+}
+
+type GetDatabaseInstanceSettingEntraidConfig struct {
+	// The application ID for the Entra ID configuration.
+	ApplicationId string `pulumi:"applicationId"`
+	// The tenant ID for the Entra ID configuration.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// GetDatabaseInstanceSettingEntraidConfigInput is an input type that accepts GetDatabaseInstanceSettingEntraidConfigArgs and GetDatabaseInstanceSettingEntraidConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingEntraidConfigInput` via:
+//
+//	GetDatabaseInstanceSettingEntraidConfigArgs{...}
+type GetDatabaseInstanceSettingEntraidConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingEntraidConfigOutput() GetDatabaseInstanceSettingEntraidConfigOutput
+	ToGetDatabaseInstanceSettingEntraidConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingEntraidConfigOutput
+}
+
+type GetDatabaseInstanceSettingEntraidConfigArgs struct {
+	// The application ID for the Entra ID configuration.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The tenant ID for the Entra ID configuration.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (GetDatabaseInstanceSettingEntraidConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingEntraidConfigArgs) ToGetDatabaseInstanceSettingEntraidConfigOutput() GetDatabaseInstanceSettingEntraidConfigOutput {
+	return i.ToGetDatabaseInstanceSettingEntraidConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingEntraidConfigArgs) ToGetDatabaseInstanceSettingEntraidConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingEntraidConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingEntraidConfigOutput)
+}
+
+// GetDatabaseInstanceSettingEntraidConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingEntraidConfigArray and GetDatabaseInstanceSettingEntraidConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingEntraidConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingEntraidConfigArray{ GetDatabaseInstanceSettingEntraidConfigArgs{...} }
+type GetDatabaseInstanceSettingEntraidConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingEntraidConfigArrayOutput() GetDatabaseInstanceSettingEntraidConfigArrayOutput
+	ToGetDatabaseInstanceSettingEntraidConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingEntraidConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingEntraidConfigArray []GetDatabaseInstanceSettingEntraidConfigInput
+
+func (GetDatabaseInstanceSettingEntraidConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingEntraidConfigArray) ToGetDatabaseInstanceSettingEntraidConfigArrayOutput() GetDatabaseInstanceSettingEntraidConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingEntraidConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingEntraidConfigArray) ToGetDatabaseInstanceSettingEntraidConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingEntraidConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingEntraidConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingEntraidConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingEntraidConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingEntraidConfigOutput) ToGetDatabaseInstanceSettingEntraidConfigOutput() GetDatabaseInstanceSettingEntraidConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingEntraidConfigOutput) ToGetDatabaseInstanceSettingEntraidConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingEntraidConfigOutput {
+	return o
+}
+
+// The application ID for the Entra ID configuration.
+func (o GetDatabaseInstanceSettingEntraidConfigOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingEntraidConfig) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The tenant ID for the Entra ID configuration.
+func (o GetDatabaseInstanceSettingEntraidConfigOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingEntraidConfig) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingEntraidConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingEntraidConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingEntraidConfigArrayOutput) ToGetDatabaseInstanceSettingEntraidConfigArrayOutput() GetDatabaseInstanceSettingEntraidConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingEntraidConfigArrayOutput) ToGetDatabaseInstanceSettingEntraidConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingEntraidConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingEntraidConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingEntraidConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingEntraidConfig {
+		return vs[0].([]GetDatabaseInstanceSettingEntraidConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingEntraidConfigOutput)
 }
 
 type GetDatabaseInstanceSettingFinalBackupConfig struct {
@@ -12310,6 +12600,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
+	// The Microsoft Entra ID configuration for the SQL Server instance.
+	EntraidConfigs []GetDatabaseInstancesInstanceSettingEntraidConfig `pulumi:"entraidConfigs"`
 	// Config used to determine the final backup settings for the instance
 	FinalBackupConfigs []GetDatabaseInstancesInstanceSettingFinalBackupConfig `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
@@ -12400,6 +12692,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
+	// The Microsoft Entra ID configuration for the SQL Server instance.
+	EntraidConfigs GetDatabaseInstancesInstanceSettingEntraidConfigArrayInput `pulumi:"entraidConfigs"`
 	// Config used to determine the final backup settings for the instance
 	FinalBackupConfigs GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
@@ -12613,6 +12907,13 @@ func (o GetDatabaseInstancesInstanceSettingOutput) EnableDataplexIntegration() p
 // Enables Vertex AI Integration.
 func (o GetDatabaseInstancesInstanceSettingOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
+}
+
+// The Microsoft Entra ID configuration for the SQL Server instance.
+func (o GetDatabaseInstancesInstanceSettingOutput) EntraidConfigs() GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingEntraidConfig {
+		return v.EntraidConfigs
+	}).(GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput)
 }
 
 // Config used to determine the final backup settings for the instance
@@ -13716,6 +14017,112 @@ func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingEntraidConfig struct {
+	// The application ID for the Entra ID configuration.
+	ApplicationId string `pulumi:"applicationId"`
+	// The tenant ID for the Entra ID configuration.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// GetDatabaseInstancesInstanceSettingEntraidConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingEntraidConfigArgs and GetDatabaseInstancesInstanceSettingEntraidConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingEntraidConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingEntraidConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingEntraidConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingEntraidConfigOutput() GetDatabaseInstancesInstanceSettingEntraidConfigOutput
+	ToGetDatabaseInstancesInstanceSettingEntraidConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingEntraidConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingEntraidConfigArgs struct {
+	// The application ID for the Entra ID configuration.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The tenant ID for the Entra ID configuration.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (GetDatabaseInstancesInstanceSettingEntraidConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingEntraidConfigArgs) ToGetDatabaseInstancesInstanceSettingEntraidConfigOutput() GetDatabaseInstancesInstanceSettingEntraidConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingEntraidConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingEntraidConfigArgs) ToGetDatabaseInstancesInstanceSettingEntraidConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingEntraidConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingEntraidConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingEntraidConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingEntraidConfigArray and GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingEntraidConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingEntraidConfigArray{ GetDatabaseInstancesInstanceSettingEntraidConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingEntraidConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput() GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingEntraidConfigArray []GetDatabaseInstancesInstanceSettingEntraidConfigInput
+
+func (GetDatabaseInstancesInstanceSettingEntraidConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingEntraidConfigArray) ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput() GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingEntraidConfigArray) ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingEntraidConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingEntraidConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigOutput) ToGetDatabaseInstancesInstanceSettingEntraidConfigOutput() GetDatabaseInstancesInstanceSettingEntraidConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigOutput) ToGetDatabaseInstancesInstanceSettingEntraidConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingEntraidConfigOutput {
+	return o
+}
+
+// The application ID for the Entra ID configuration.
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingEntraidConfig) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The tenant ID for the Entra ID configuration.
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingEntraidConfig) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingEntraidConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput() GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingEntraidConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingEntraidConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingEntraidConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingEntraidConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingEntraidConfigOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingFinalBackupConfig struct {
@@ -15650,6 +16057,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagArrayInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsEntraidConfigInput)(nil)).Elem(), DatabaseInstanceSettingsEntraidConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsEntraidConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsEntraidConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsFinalBackupConfigInput)(nil)).Elem(), DatabaseInstanceSettingsFinalBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsFinalBackupConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsFinalBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfigInput)(nil)).Elem(), DatabaseInstanceSettingsInsightsConfigArgs{})
@@ -15718,6 +16127,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingEntraidConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingEntraidConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingEntraidConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingEntraidConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingFinalBackupConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingFinalBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingFinalBackupConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingFinalBackupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingInsightsConfigArgs{})
@@ -15780,6 +16191,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingEntraidConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingEntraidConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingEntraidConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingEntraidConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingFinalBackupConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingFinalBackupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingInsightsConfigArgs{})
@@ -15844,6 +16257,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsEntraidConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsEntraidConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsFinalBackupConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsFinalBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigOutput{})
@@ -15912,6 +16327,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingEntraidConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingEntraidConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingFinalBackupConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingFinalBackupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigOutput{})
@@ -15974,6 +16391,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingEntraidConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingEntraidConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingInsightsConfigOutput{})

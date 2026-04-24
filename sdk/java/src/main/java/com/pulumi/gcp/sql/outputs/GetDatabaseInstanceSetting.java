@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingConnectionPoolConfig
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDenyMaintenancePeriod;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingEntraidConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingFinalBackupConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingInsightsConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfiguration;
@@ -138,6 +139,11 @@ public final class GetDatabaseInstanceSetting {
      * 
      */
     private Boolean enableGoogleMlIntegration;
+    /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    private List<GetDatabaseInstanceSettingEntraidConfig> entraidConfigs;
     /**
      * @return Config used to determine the final backup settings for the instance
      * 
@@ -352,6 +358,13 @@ public final class GetDatabaseInstanceSetting {
         return this.enableGoogleMlIntegration;
     }
     /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    public List<GetDatabaseInstanceSettingEntraidConfig> entraidConfigs() {
+        return this.entraidConfigs;
+    }
+    /**
      * @return Config used to determine the final backup settings for the instance
      * 
      */
@@ -467,6 +480,7 @@ public final class GetDatabaseInstanceSetting {
         private String effectiveAvailabilityType;
         private Boolean enableDataplexIntegration;
         private Boolean enableGoogleMlIntegration;
+        private List<GetDatabaseInstanceSettingEntraidConfig> entraidConfigs;
         private List<GetDatabaseInstanceSettingFinalBackupConfig> finalBackupConfigs;
         private List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
         private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
@@ -508,6 +522,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.effectiveAvailabilityType = defaults.effectiveAvailabilityType;
     	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
+    	      this.entraidConfigs = defaults.entraidConfigs;
     	      this.finalBackupConfigs = defaults.finalBackupConfigs;
     	      this.insightsConfigs = defaults.insightsConfigs;
     	      this.ipConfigurations = defaults.ipConfigurations;
@@ -738,6 +753,17 @@ public final class GetDatabaseInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder entraidConfigs(List<GetDatabaseInstanceSettingEntraidConfig> entraidConfigs) {
+            if (entraidConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "entraidConfigs");
+            }
+            this.entraidConfigs = entraidConfigs;
+            return this;
+        }
+        public Builder entraidConfigs(GetDatabaseInstanceSettingEntraidConfig... entraidConfigs) {
+            return entraidConfigs(List.of(entraidConfigs));
+        }
+        @CustomType.Setter
         public Builder finalBackupConfigs(List<GetDatabaseInstanceSettingFinalBackupConfig> finalBackupConfigs) {
             if (finalBackupConfigs == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "finalBackupConfigs");
@@ -899,6 +925,7 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.effectiveAvailabilityType = effectiveAvailabilityType;
             _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
+            _resultValue.entraidConfigs = entraidConfigs;
             _resultValue.finalBackupConfigs = finalBackupConfigs;
             _resultValue.insightsConfigs = insightsConfigs;
             _resultValue.ipConfigurations = ipConfigurations;

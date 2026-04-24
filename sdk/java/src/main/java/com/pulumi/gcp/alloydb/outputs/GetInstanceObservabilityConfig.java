@@ -47,6 +47,11 @@ public final class GetInstanceObservabilityConfig {
      */
     private Boolean trackActiveQueries;
     /**
+     * @return Track client address for an instance. If not set, default value is &#34;off&#34;.
+     * 
+     */
+    private Boolean trackClientAddress;
+    /**
      * @return Record wait event types during query execution for an instance.
      * 
      */
@@ -108,6 +113,13 @@ public final class GetInstanceObservabilityConfig {
         return this.trackActiveQueries;
     }
     /**
+     * @return Track client address for an instance. If not set, default value is &#34;off&#34;.
+     * 
+     */
+    public Boolean trackClientAddress() {
+        return this.trackClientAddress;
+    }
+    /**
      * @return Record wait event types during query execution for an instance.
      * 
      */
@@ -138,6 +150,7 @@ public final class GetInstanceObservabilityConfig {
         private Integer queryPlansPerMinute;
         private Boolean recordApplicationTags;
         private Boolean trackActiveQueries;
+        private Boolean trackClientAddress;
         private Boolean trackWaitEventTypes;
         private Boolean trackWaitEvents;
         public Builder() {}
@@ -150,6 +163,7 @@ public final class GetInstanceObservabilityConfig {
     	      this.queryPlansPerMinute = defaults.queryPlansPerMinute;
     	      this.recordApplicationTags = defaults.recordApplicationTags;
     	      this.trackActiveQueries = defaults.trackActiveQueries;
+    	      this.trackClientAddress = defaults.trackClientAddress;
     	      this.trackWaitEventTypes = defaults.trackWaitEventTypes;
     	      this.trackWaitEvents = defaults.trackWaitEvents;
         }
@@ -211,6 +225,14 @@ public final class GetInstanceObservabilityConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder trackClientAddress(Boolean trackClientAddress) {
+            if (trackClientAddress == null) {
+              throw new MissingRequiredPropertyException("GetInstanceObservabilityConfig", "trackClientAddress");
+            }
+            this.trackClientAddress = trackClientAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder trackWaitEventTypes(Boolean trackWaitEventTypes) {
             if (trackWaitEventTypes == null) {
               throw new MissingRequiredPropertyException("GetInstanceObservabilityConfig", "trackWaitEventTypes");
@@ -235,6 +257,7 @@ public final class GetInstanceObservabilityConfig {
             _resultValue.queryPlansPerMinute = queryPlansPerMinute;
             _resultValue.recordApplicationTags = recordApplicationTags;
             _resultValue.trackActiveQueries = trackActiveQueries;
+            _resultValue.trackClientAddress = trackClientAddress;
             _resultValue.trackWaitEventTypes = trackWaitEventTypes;
             _resultValue.trackWaitEvents = trackWaitEvents;
             return _resultValue;

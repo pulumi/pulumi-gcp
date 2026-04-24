@@ -420,16 +420,22 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      * 
      */
     @Export(name="dataSource", refs={String.class}, tree="[0]")
     private Output<String> dataSource;
 
     /**
-     * @return The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * @return The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      * 
      */
     public Output<String> dataSource() {

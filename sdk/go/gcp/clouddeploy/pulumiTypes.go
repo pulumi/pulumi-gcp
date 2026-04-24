@@ -2793,6 +2793,840 @@ func (o CustomTargetTypeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type CustomTargetTypeTasks struct {
+	// The task responsible for deploy operations.
+	// Structure is documented below.
+	Deploy CustomTargetTypeTasksDeploy `pulumi:"deploy"`
+	// The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+	// Structure is documented below.
+	Render *CustomTargetTypeTasksRender `pulumi:"render"`
+}
+
+// CustomTargetTypeTasksInput is an input type that accepts CustomTargetTypeTasksArgs and CustomTargetTypeTasksOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksInput` via:
+//
+//	CustomTargetTypeTasksArgs{...}
+type CustomTargetTypeTasksInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksOutput() CustomTargetTypeTasksOutput
+	ToCustomTargetTypeTasksOutputWithContext(context.Context) CustomTargetTypeTasksOutput
+}
+
+type CustomTargetTypeTasksArgs struct {
+	// The task responsible for deploy operations.
+	// Structure is documented below.
+	Deploy CustomTargetTypeTasksDeployInput `pulumi:"deploy"`
+	// The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+	// Structure is documented below.
+	Render CustomTargetTypeTasksRenderPtrInput `pulumi:"render"`
+}
+
+func (CustomTargetTypeTasksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasks)(nil)).Elem()
+}
+
+func (i CustomTargetTypeTasksArgs) ToCustomTargetTypeTasksOutput() CustomTargetTypeTasksOutput {
+	return i.ToCustomTargetTypeTasksOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksArgs) ToCustomTargetTypeTasksOutputWithContext(ctx context.Context) CustomTargetTypeTasksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksOutput)
+}
+
+func (i CustomTargetTypeTasksArgs) ToCustomTargetTypeTasksPtrOutput() CustomTargetTypeTasksPtrOutput {
+	return i.ToCustomTargetTypeTasksPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksArgs) ToCustomTargetTypeTasksPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksOutput).ToCustomTargetTypeTasksPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeTasksPtrInput is an input type that accepts CustomTargetTypeTasksArgs, CustomTargetTypeTasksPtr and CustomTargetTypeTasksPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksPtrInput` via:
+//
+//	        CustomTargetTypeTasksArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeTasksPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksPtrOutput() CustomTargetTypeTasksPtrOutput
+	ToCustomTargetTypeTasksPtrOutputWithContext(context.Context) CustomTargetTypeTasksPtrOutput
+}
+
+type customTargetTypeTasksPtrType CustomTargetTypeTasksArgs
+
+func CustomTargetTypeTasksPtr(v *CustomTargetTypeTasksArgs) CustomTargetTypeTasksPtrInput {
+	return (*customTargetTypeTasksPtrType)(v)
+}
+
+func (*customTargetTypeTasksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasks)(nil)).Elem()
+}
+
+func (i *customTargetTypeTasksPtrType) ToCustomTargetTypeTasksPtrOutput() CustomTargetTypeTasksPtrOutput {
+	return i.ToCustomTargetTypeTasksPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeTasksPtrType) ToCustomTargetTypeTasksPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksPtrOutput)
+}
+
+type CustomTargetTypeTasksOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasks)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksOutput) ToCustomTargetTypeTasksOutput() CustomTargetTypeTasksOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksOutput) ToCustomTargetTypeTasksOutputWithContext(ctx context.Context) CustomTargetTypeTasksOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksOutput) ToCustomTargetTypeTasksPtrOutput() CustomTargetTypeTasksPtrOutput {
+	return o.ToCustomTargetTypeTasksPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeTasksOutput) ToCustomTargetTypeTasksPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeTasks) *CustomTargetTypeTasks {
+		return &v
+	}).(CustomTargetTypeTasksPtrOutput)
+}
+
+// The task responsible for deploy operations.
+// Structure is documented below.
+func (o CustomTargetTypeTasksOutput) Deploy() CustomTargetTypeTasksDeployOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasks) CustomTargetTypeTasksDeploy { return v.Deploy }).(CustomTargetTypeTasksDeployOutput)
+}
+
+// The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+// Structure is documented below.
+func (o CustomTargetTypeTasksOutput) Render() CustomTargetTypeTasksRenderPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasks) *CustomTargetTypeTasksRender { return v.Render }).(CustomTargetTypeTasksRenderPtrOutput)
+}
+
+type CustomTargetTypeTasksPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasks)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksPtrOutput) ToCustomTargetTypeTasksPtrOutput() CustomTargetTypeTasksPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksPtrOutput) ToCustomTargetTypeTasksPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksPtrOutput) Elem() CustomTargetTypeTasksOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasks) CustomTargetTypeTasks {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeTasks
+		return ret
+	}).(CustomTargetTypeTasksOutput)
+}
+
+// The task responsible for deploy operations.
+// Structure is documented below.
+func (o CustomTargetTypeTasksPtrOutput) Deploy() CustomTargetTypeTasksDeployPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasks) *CustomTargetTypeTasksDeploy {
+		if v == nil {
+			return nil
+		}
+		return &v.Deploy
+	}).(CustomTargetTypeTasksDeployPtrOutput)
+}
+
+// The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
+// Structure is documented below.
+func (o CustomTargetTypeTasksPtrOutput) Render() CustomTargetTypeTasksRenderPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasks) *CustomTargetTypeTasksRender {
+		if v == nil {
+			return nil
+		}
+		return v.Render
+	}).(CustomTargetTypeTasksRenderPtrOutput)
+}
+
+type CustomTargetTypeTasksDeploy struct {
+	// This task is represented by a container that is executed in the Cloud Build execution environment.
+	// Structure is documented below.
+	Container *CustomTargetTypeTasksDeployContainer `pulumi:"container"`
+}
+
+// CustomTargetTypeTasksDeployInput is an input type that accepts CustomTargetTypeTasksDeployArgs and CustomTargetTypeTasksDeployOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksDeployInput` via:
+//
+//	CustomTargetTypeTasksDeployArgs{...}
+type CustomTargetTypeTasksDeployInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksDeployOutput() CustomTargetTypeTasksDeployOutput
+	ToCustomTargetTypeTasksDeployOutputWithContext(context.Context) CustomTargetTypeTasksDeployOutput
+}
+
+type CustomTargetTypeTasksDeployArgs struct {
+	// This task is represented by a container that is executed in the Cloud Build execution environment.
+	// Structure is documented below.
+	Container CustomTargetTypeTasksDeployContainerPtrInput `pulumi:"container"`
+}
+
+func (CustomTargetTypeTasksDeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksDeploy)(nil)).Elem()
+}
+
+func (i CustomTargetTypeTasksDeployArgs) ToCustomTargetTypeTasksDeployOutput() CustomTargetTypeTasksDeployOutput {
+	return i.ToCustomTargetTypeTasksDeployOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksDeployArgs) ToCustomTargetTypeTasksDeployOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksDeployOutput)
+}
+
+func (i CustomTargetTypeTasksDeployArgs) ToCustomTargetTypeTasksDeployPtrOutput() CustomTargetTypeTasksDeployPtrOutput {
+	return i.ToCustomTargetTypeTasksDeployPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksDeployArgs) ToCustomTargetTypeTasksDeployPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksDeployOutput).ToCustomTargetTypeTasksDeployPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeTasksDeployPtrInput is an input type that accepts CustomTargetTypeTasksDeployArgs, CustomTargetTypeTasksDeployPtr and CustomTargetTypeTasksDeployPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksDeployPtrInput` via:
+//
+//	        CustomTargetTypeTasksDeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeTasksDeployPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksDeployPtrOutput() CustomTargetTypeTasksDeployPtrOutput
+	ToCustomTargetTypeTasksDeployPtrOutputWithContext(context.Context) CustomTargetTypeTasksDeployPtrOutput
+}
+
+type customTargetTypeTasksDeployPtrType CustomTargetTypeTasksDeployArgs
+
+func CustomTargetTypeTasksDeployPtr(v *CustomTargetTypeTasksDeployArgs) CustomTargetTypeTasksDeployPtrInput {
+	return (*customTargetTypeTasksDeployPtrType)(v)
+}
+
+func (*customTargetTypeTasksDeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksDeploy)(nil)).Elem()
+}
+
+func (i *customTargetTypeTasksDeployPtrType) ToCustomTargetTypeTasksDeployPtrOutput() CustomTargetTypeTasksDeployPtrOutput {
+	return i.ToCustomTargetTypeTasksDeployPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeTasksDeployPtrType) ToCustomTargetTypeTasksDeployPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksDeployPtrOutput)
+}
+
+type CustomTargetTypeTasksDeployOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksDeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksDeploy)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksDeployOutput) ToCustomTargetTypeTasksDeployOutput() CustomTargetTypeTasksDeployOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployOutput) ToCustomTargetTypeTasksDeployOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployOutput) ToCustomTargetTypeTasksDeployPtrOutput() CustomTargetTypeTasksDeployPtrOutput {
+	return o.ToCustomTargetTypeTasksDeployPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeTasksDeployOutput) ToCustomTargetTypeTasksDeployPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeTasksDeploy) *CustomTargetTypeTasksDeploy {
+		return &v
+	}).(CustomTargetTypeTasksDeployPtrOutput)
+}
+
+// This task is represented by a container that is executed in the Cloud Build execution environment.
+// Structure is documented below.
+func (o CustomTargetTypeTasksDeployOutput) Container() CustomTargetTypeTasksDeployContainerPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksDeploy) *CustomTargetTypeTasksDeployContainer { return v.Container }).(CustomTargetTypeTasksDeployContainerPtrOutput)
+}
+
+type CustomTargetTypeTasksDeployPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksDeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksDeploy)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksDeployPtrOutput) ToCustomTargetTypeTasksDeployPtrOutput() CustomTargetTypeTasksDeployPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployPtrOutput) ToCustomTargetTypeTasksDeployPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployPtrOutput) Elem() CustomTargetTypeTasksDeployOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeploy) CustomTargetTypeTasksDeploy {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeTasksDeploy
+		return ret
+	}).(CustomTargetTypeTasksDeployOutput)
+}
+
+// This task is represented by a container that is executed in the Cloud Build execution environment.
+// Structure is documented below.
+func (o CustomTargetTypeTasksDeployPtrOutput) Container() CustomTargetTypeTasksDeployContainerPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeploy) *CustomTargetTypeTasksDeployContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(CustomTargetTypeTasksDeployContainerPtrOutput)
+}
+
+type CustomTargetTypeTasksDeployContainer struct {
+	// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// CustomTargetTypeTasksDeployContainerInput is an input type that accepts CustomTargetTypeTasksDeployContainerArgs and CustomTargetTypeTasksDeployContainerOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksDeployContainerInput` via:
+//
+//	CustomTargetTypeTasksDeployContainerArgs{...}
+type CustomTargetTypeTasksDeployContainerInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksDeployContainerOutput() CustomTargetTypeTasksDeployContainerOutput
+	ToCustomTargetTypeTasksDeployContainerOutputWithContext(context.Context) CustomTargetTypeTasksDeployContainerOutput
+}
+
+type CustomTargetTypeTasksDeployContainerArgs struct {
+	// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (CustomTargetTypeTasksDeployContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksDeployContainer)(nil)).Elem()
+}
+
+func (i CustomTargetTypeTasksDeployContainerArgs) ToCustomTargetTypeTasksDeployContainerOutput() CustomTargetTypeTasksDeployContainerOutput {
+	return i.ToCustomTargetTypeTasksDeployContainerOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksDeployContainerArgs) ToCustomTargetTypeTasksDeployContainerOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksDeployContainerOutput)
+}
+
+func (i CustomTargetTypeTasksDeployContainerArgs) ToCustomTargetTypeTasksDeployContainerPtrOutput() CustomTargetTypeTasksDeployContainerPtrOutput {
+	return i.ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksDeployContainerArgs) ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksDeployContainerOutput).ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeTasksDeployContainerPtrInput is an input type that accepts CustomTargetTypeTasksDeployContainerArgs, CustomTargetTypeTasksDeployContainerPtr and CustomTargetTypeTasksDeployContainerPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksDeployContainerPtrInput` via:
+//
+//	        CustomTargetTypeTasksDeployContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeTasksDeployContainerPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksDeployContainerPtrOutput() CustomTargetTypeTasksDeployContainerPtrOutput
+	ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(context.Context) CustomTargetTypeTasksDeployContainerPtrOutput
+}
+
+type customTargetTypeTasksDeployContainerPtrType CustomTargetTypeTasksDeployContainerArgs
+
+func CustomTargetTypeTasksDeployContainerPtr(v *CustomTargetTypeTasksDeployContainerArgs) CustomTargetTypeTasksDeployContainerPtrInput {
+	return (*customTargetTypeTasksDeployContainerPtrType)(v)
+}
+
+func (*customTargetTypeTasksDeployContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksDeployContainer)(nil)).Elem()
+}
+
+func (i *customTargetTypeTasksDeployContainerPtrType) ToCustomTargetTypeTasksDeployContainerPtrOutput() CustomTargetTypeTasksDeployContainerPtrOutput {
+	return i.ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeTasksDeployContainerPtrType) ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksDeployContainerPtrOutput)
+}
+
+type CustomTargetTypeTasksDeployContainerOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksDeployContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksDeployContainer)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksDeployContainerOutput) ToCustomTargetTypeTasksDeployContainerOutput() CustomTargetTypeTasksDeployContainerOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployContainerOutput) ToCustomTargetTypeTasksDeployContainerOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployContainerOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployContainerOutput) ToCustomTargetTypeTasksDeployContainerPtrOutput() CustomTargetTypeTasksDeployContainerPtrOutput {
+	return o.ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeTasksDeployContainerOutput) ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeTasksDeployContainer) *CustomTargetTypeTasksDeployContainer {
+		return &v
+	}).(CustomTargetTypeTasksDeployContainerPtrOutput)
+}
+
+// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o CustomTargetTypeTasksDeployContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksDeployContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o CustomTargetTypeTasksDeployContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksDeployContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables that are set in the container.
+func (o CustomTargetTypeTasksDeployContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksDeployContainer) map[string]string { return v.Env }).(pulumi.StringMapOutput)
+}
+
+// Image is the container image to use.
+func (o CustomTargetTypeTasksDeployContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksDeployContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type CustomTargetTypeTasksDeployContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksDeployContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksDeployContainer)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) ToCustomTargetTypeTasksDeployContainerPtrOutput() CustomTargetTypeTasksDeployContainerPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) ToCustomTargetTypeTasksDeployContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksDeployContainerPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) Elem() CustomTargetTypeTasksDeployContainerOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeployContainer) CustomTargetTypeTasksDeployContainer {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeTasksDeployContainer
+		return ret
+	}).(CustomTargetTypeTasksDeployContainerOutput)
+}
+
+// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeployContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeployContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables that are set in the container.
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeployContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Image is the container image to use.
+func (o CustomTargetTypeTasksDeployContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksDeployContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomTargetTypeTasksRender struct {
+	// This task is represented by a container that is executed in the Cloud Build execution environment.
+	// Structure is documented below.
+	Container *CustomTargetTypeTasksRenderContainer `pulumi:"container"`
+}
+
+// CustomTargetTypeTasksRenderInput is an input type that accepts CustomTargetTypeTasksRenderArgs and CustomTargetTypeTasksRenderOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksRenderInput` via:
+//
+//	CustomTargetTypeTasksRenderArgs{...}
+type CustomTargetTypeTasksRenderInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksRenderOutput() CustomTargetTypeTasksRenderOutput
+	ToCustomTargetTypeTasksRenderOutputWithContext(context.Context) CustomTargetTypeTasksRenderOutput
+}
+
+type CustomTargetTypeTasksRenderArgs struct {
+	// This task is represented by a container that is executed in the Cloud Build execution environment.
+	// Structure is documented below.
+	Container CustomTargetTypeTasksRenderContainerPtrInput `pulumi:"container"`
+}
+
+func (CustomTargetTypeTasksRenderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksRender)(nil)).Elem()
+}
+
+func (i CustomTargetTypeTasksRenderArgs) ToCustomTargetTypeTasksRenderOutput() CustomTargetTypeTasksRenderOutput {
+	return i.ToCustomTargetTypeTasksRenderOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksRenderArgs) ToCustomTargetTypeTasksRenderOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksRenderOutput)
+}
+
+func (i CustomTargetTypeTasksRenderArgs) ToCustomTargetTypeTasksRenderPtrOutput() CustomTargetTypeTasksRenderPtrOutput {
+	return i.ToCustomTargetTypeTasksRenderPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksRenderArgs) ToCustomTargetTypeTasksRenderPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksRenderOutput).ToCustomTargetTypeTasksRenderPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeTasksRenderPtrInput is an input type that accepts CustomTargetTypeTasksRenderArgs, CustomTargetTypeTasksRenderPtr and CustomTargetTypeTasksRenderPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksRenderPtrInput` via:
+//
+//	        CustomTargetTypeTasksRenderArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeTasksRenderPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksRenderPtrOutput() CustomTargetTypeTasksRenderPtrOutput
+	ToCustomTargetTypeTasksRenderPtrOutputWithContext(context.Context) CustomTargetTypeTasksRenderPtrOutput
+}
+
+type customTargetTypeTasksRenderPtrType CustomTargetTypeTasksRenderArgs
+
+func CustomTargetTypeTasksRenderPtr(v *CustomTargetTypeTasksRenderArgs) CustomTargetTypeTasksRenderPtrInput {
+	return (*customTargetTypeTasksRenderPtrType)(v)
+}
+
+func (*customTargetTypeTasksRenderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksRender)(nil)).Elem()
+}
+
+func (i *customTargetTypeTasksRenderPtrType) ToCustomTargetTypeTasksRenderPtrOutput() CustomTargetTypeTasksRenderPtrOutput {
+	return i.ToCustomTargetTypeTasksRenderPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeTasksRenderPtrType) ToCustomTargetTypeTasksRenderPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksRenderPtrOutput)
+}
+
+type CustomTargetTypeTasksRenderOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksRenderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksRender)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksRenderOutput) ToCustomTargetTypeTasksRenderOutput() CustomTargetTypeTasksRenderOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderOutput) ToCustomTargetTypeTasksRenderOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderOutput) ToCustomTargetTypeTasksRenderPtrOutput() CustomTargetTypeTasksRenderPtrOutput {
+	return o.ToCustomTargetTypeTasksRenderPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeTasksRenderOutput) ToCustomTargetTypeTasksRenderPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeTasksRender) *CustomTargetTypeTasksRender {
+		return &v
+	}).(CustomTargetTypeTasksRenderPtrOutput)
+}
+
+// This task is represented by a container that is executed in the Cloud Build execution environment.
+// Structure is documented below.
+func (o CustomTargetTypeTasksRenderOutput) Container() CustomTargetTypeTasksRenderContainerPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksRender) *CustomTargetTypeTasksRenderContainer { return v.Container }).(CustomTargetTypeTasksRenderContainerPtrOutput)
+}
+
+type CustomTargetTypeTasksRenderPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksRenderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksRender)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksRenderPtrOutput) ToCustomTargetTypeTasksRenderPtrOutput() CustomTargetTypeTasksRenderPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderPtrOutput) ToCustomTargetTypeTasksRenderPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderPtrOutput) Elem() CustomTargetTypeTasksRenderOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRender) CustomTargetTypeTasksRender {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeTasksRender
+		return ret
+	}).(CustomTargetTypeTasksRenderOutput)
+}
+
+// This task is represented by a container that is executed in the Cloud Build execution environment.
+// Structure is documented below.
+func (o CustomTargetTypeTasksRenderPtrOutput) Container() CustomTargetTypeTasksRenderContainerPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRender) *CustomTargetTypeTasksRenderContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(CustomTargetTypeTasksRenderContainerPtrOutput)
+}
+
+type CustomTargetTypeTasksRenderContainer struct {
+	// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// CustomTargetTypeTasksRenderContainerInput is an input type that accepts CustomTargetTypeTasksRenderContainerArgs and CustomTargetTypeTasksRenderContainerOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksRenderContainerInput` via:
+//
+//	CustomTargetTypeTasksRenderContainerArgs{...}
+type CustomTargetTypeTasksRenderContainerInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksRenderContainerOutput() CustomTargetTypeTasksRenderContainerOutput
+	ToCustomTargetTypeTasksRenderContainerOutputWithContext(context.Context) CustomTargetTypeTasksRenderContainerOutput
+}
+
+type CustomTargetTypeTasksRenderContainerArgs struct {
+	// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (CustomTargetTypeTasksRenderContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksRenderContainer)(nil)).Elem()
+}
+
+func (i CustomTargetTypeTasksRenderContainerArgs) ToCustomTargetTypeTasksRenderContainerOutput() CustomTargetTypeTasksRenderContainerOutput {
+	return i.ToCustomTargetTypeTasksRenderContainerOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksRenderContainerArgs) ToCustomTargetTypeTasksRenderContainerOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksRenderContainerOutput)
+}
+
+func (i CustomTargetTypeTasksRenderContainerArgs) ToCustomTargetTypeTasksRenderContainerPtrOutput() CustomTargetTypeTasksRenderContainerPtrOutput {
+	return i.ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeTasksRenderContainerArgs) ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksRenderContainerOutput).ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeTasksRenderContainerPtrInput is an input type that accepts CustomTargetTypeTasksRenderContainerArgs, CustomTargetTypeTasksRenderContainerPtr and CustomTargetTypeTasksRenderContainerPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeTasksRenderContainerPtrInput` via:
+//
+//	        CustomTargetTypeTasksRenderContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeTasksRenderContainerPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeTasksRenderContainerPtrOutput() CustomTargetTypeTasksRenderContainerPtrOutput
+	ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(context.Context) CustomTargetTypeTasksRenderContainerPtrOutput
+}
+
+type customTargetTypeTasksRenderContainerPtrType CustomTargetTypeTasksRenderContainerArgs
+
+func CustomTargetTypeTasksRenderContainerPtr(v *CustomTargetTypeTasksRenderContainerArgs) CustomTargetTypeTasksRenderContainerPtrInput {
+	return (*customTargetTypeTasksRenderContainerPtrType)(v)
+}
+
+func (*customTargetTypeTasksRenderContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksRenderContainer)(nil)).Elem()
+}
+
+func (i *customTargetTypeTasksRenderContainerPtrType) ToCustomTargetTypeTasksRenderContainerPtrOutput() CustomTargetTypeTasksRenderContainerPtrOutput {
+	return i.ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeTasksRenderContainerPtrType) ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeTasksRenderContainerPtrOutput)
+}
+
+type CustomTargetTypeTasksRenderContainerOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksRenderContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeTasksRenderContainer)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksRenderContainerOutput) ToCustomTargetTypeTasksRenderContainerOutput() CustomTargetTypeTasksRenderContainerOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderContainerOutput) ToCustomTargetTypeTasksRenderContainerOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderContainerOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderContainerOutput) ToCustomTargetTypeTasksRenderContainerPtrOutput() CustomTargetTypeTasksRenderContainerPtrOutput {
+	return o.ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeTasksRenderContainerOutput) ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeTasksRenderContainer) *CustomTargetTypeTasksRenderContainer {
+		return &v
+	}).(CustomTargetTypeTasksRenderContainerPtrOutput)
+}
+
+// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o CustomTargetTypeTasksRenderContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksRenderContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o CustomTargetTypeTasksRenderContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksRenderContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables that are set in the container.
+func (o CustomTargetTypeTasksRenderContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksRenderContainer) map[string]string { return v.Env }).(pulumi.StringMapOutput)
+}
+
+// Image is the container image to use.
+func (o CustomTargetTypeTasksRenderContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeTasksRenderContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type CustomTargetTypeTasksRenderContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeTasksRenderContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeTasksRenderContainer)(nil)).Elem()
+}
+
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) ToCustomTargetTypeTasksRenderContainerPtrOutput() CustomTargetTypeTasksRenderContainerPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) ToCustomTargetTypeTasksRenderContainerPtrOutputWithContext(ctx context.Context) CustomTargetTypeTasksRenderContainerPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) Elem() CustomTargetTypeTasksRenderContainerOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRenderContainer) CustomTargetTypeTasksRenderContainer {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeTasksRenderContainer
+		return ret
+	}).(CustomTargetTypeTasksRenderContainerOutput)
+}
+
+// Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRenderContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRenderContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables that are set in the container.
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRenderContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Image is the container image to use.
+func (o CustomTargetTypeTasksRenderContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeTasksRenderContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeliveryPipelineCondition struct {
 	// Details around the Pipeline's overall status.
 	PipelineReadyConditions []DeliveryPipelineConditionPipelineReadyCondition `pulumi:"pipelineReadyConditions"`
@@ -10387,6 +11221,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeIamBindingConditionPtrInput)(nil)).Elem(), CustomTargetTypeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeIamMemberConditionInput)(nil)).Elem(), CustomTargetTypeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeIamMemberConditionPtrInput)(nil)).Elem(), CustomTargetTypeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksInput)(nil)).Elem(), CustomTargetTypeTasksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksPtrInput)(nil)).Elem(), CustomTargetTypeTasksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksDeployInput)(nil)).Elem(), CustomTargetTypeTasksDeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksDeployPtrInput)(nil)).Elem(), CustomTargetTypeTasksDeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksDeployContainerInput)(nil)).Elem(), CustomTargetTypeTasksDeployContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksDeployContainerPtrInput)(nil)).Elem(), CustomTargetTypeTasksDeployContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksRenderInput)(nil)).Elem(), CustomTargetTypeTasksRenderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksRenderPtrInput)(nil)).Elem(), CustomTargetTypeTasksRenderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksRenderContainerInput)(nil)).Elem(), CustomTargetTypeTasksRenderContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeTasksRenderContainerPtrInput)(nil)).Elem(), CustomTargetTypeTasksRenderContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionInput)(nil)).Elem(), DeliveryPipelineConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionPipelineReadyConditionInput)(nil)).Elem(), DeliveryPipelineConditionPipelineReadyConditionArgs{})
@@ -10521,6 +11365,16 @@ func init() {
 	pulumi.RegisterOutputType(CustomTargetTypeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CustomTargetTypeIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(CustomTargetTypeIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksDeployOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksDeployPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksDeployContainerOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksDeployContainerPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksRenderOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksRenderPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksRenderContainerOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeTasksRenderContainerPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionPipelineReadyConditionOutput{})

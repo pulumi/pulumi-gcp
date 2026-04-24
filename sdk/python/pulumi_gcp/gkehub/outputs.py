@@ -86,6 +86,7 @@ __all__ = [
     'MembershipRbacRoleBindingRole',
     'MembershipRbacRoleBindingState',
     'NamespaceState',
+    'RolloutSequenceIgnoredClustersSelector',
     'RolloutSequenceStage',
     'RolloutSequenceStageClusterSelector',
     'ScopeIamBindingCondition',
@@ -3830,6 +3831,43 @@ class NamespaceState(dict):
         Code describes the state of a Namespace resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class RolloutSequenceIgnoredClustersSelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelSelector":
+            suggest = "label_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutSequenceIgnoredClustersSelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutSequenceIgnoredClustersSelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutSequenceIgnoredClustersSelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 label_selector: _builtins.str):
+        """
+        :param _builtins.str label_selector: The label selector must be a valid CEL (Common Expression Language) expression which
+               evaluates resource.labels.
+        """
+        pulumi.set(__self__, "label_selector", label_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> _builtins.str:
+        """
+        The label selector must be a valid CEL (Common Expression Language) expression which
+        evaluates resource.labels.
+        """
+        return pulumi.get(self, "label_selector")
 
 
 @pulumi.output_type

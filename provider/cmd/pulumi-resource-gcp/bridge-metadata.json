@@ -9517,6 +9517,53 @@
                                 }
                             }
                         }
+                    },
+                    "tasks": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "deploy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "container": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "args": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "command": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "render": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "container": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "args": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "command": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -12982,6 +13029,16 @@
                 "current": "gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule",
                 "majorVersion": 9,
                 "fields": {
+                    "header_action": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "request_headers_to_adds": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "match": {
                         "maxItemsOne": true,
                         "elem": {
@@ -13014,6 +13071,38 @@
                                 }
                             }
                         }
+                    },
+                    "preconfigured_waf_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exclusion": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "request_cookie": {
+                                                "maxItemsOne": false
+                                            },
+                                            "request_header": {
+                                                "maxItemsOne": false
+                                            },
+                                            "request_query_param": {
+                                                "maxItemsOne": false
+                                            },
+                                            "request_uri": {
+                                                "maxItemsOne": false
+                                            },
+                                            "target_rule_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "redirect_options": {
+                        "maxItemsOne": true
                     },
                     "target_resources": {
                         "maxItemsOne": false
@@ -21896,6 +21985,22 @@
                             }
                         }
                     },
+                    "execution_identity": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dataplex_service_agent": {
+                                    "maxItemsOne": true
+                                },
+                                "service_account": {
+                                    "maxItemsOne": true
+                                },
+                                "user_credential": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "execution_spec": {
                         "maxItemsOne": true,
                         "elem": {
@@ -28123,6 +28228,15 @@
                 "current": "gcp:firebase/storageBucket:StorageBucket",
                 "majorVersion": 9
             },
+            "google_firebase_storage_default_bucket": {
+                "current": "gcp:firebase/storageDefaultBucket:StorageDefaultBucket",
+                "majorVersion": 9,
+                "fields": {
+                    "bucket": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_firebase_web_app": {
                 "current": "gcp:firebase/webApp:WebApp",
                 "majorVersion": 9,
@@ -29138,6 +29252,9 @@
                 "current": "gcp:gkehub/rolloutSequence:RolloutSequence",
                 "majorVersion": 9,
                 "fields": {
+                    "ignored_clusters_selector": {
+                        "maxItemsOne": true
+                    },
                     "stages": {
                         "maxItemsOne": false,
                         "elem": {
@@ -40905,6 +41022,9 @@
                                 "deny_maintenance_period": {
                                     "maxItemsOne": true
                                 },
+                                "entraid_config": {
+                                    "maxItemsOne": true
+                                },
                                 "final_backup_config": {
                                     "maxItemsOne": true
                                 },
@@ -42255,6 +42375,9 @@
                 "current": "gcp:vectorsearch/collection:Collection",
                 "majorVersion": 9,
                 "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
                     "vector_schema": {
                         "maxItemsOne": false,
                         "elem": {
@@ -50455,6 +50578,10 @@
                     }
                 }
             },
+            "google_firebase_admin_sdk_config": {
+                "current": "gcp:firebase/getAdminSdkConfig:getAdminSdkConfig",
+                "majorVersion": 9
+            },
             "google_firebase_android_app": {
                 "current": "gcp:firebase/getAndroidApp:getAndroidApp",
                 "majorVersion": 9,
@@ -53222,6 +53349,9 @@
                                 "deny_maintenance_period": {
                                     "maxItemsOne": false
                                 },
+                                "entraid_config": {
+                                    "maxItemsOne": false
+                                },
                                 "final_backup_config": {
                                     "maxItemsOne": false
                                 },
@@ -53367,6 +53497,9 @@
                                                 "maxItemsOne": false
                                             },
                                             "deny_maintenance_period": {
+                                                "maxItemsOne": false
+                                            },
+                                            "entraid_config": {
                                                 "maxItemsOne": false
                                             },
                                             "final_backup_config": {
@@ -56616,6 +56749,7 @@
             "gcp:firebase/hostingVersion:HostingVersion": 0,
             "gcp:firebase/project:Project": 0,
             "gcp:firebase/storageBucket:StorageBucket": 0,
+            "gcp:firebase/storageDefaultBucket:StorageDefaultBucket": 0,
             "gcp:firebase/webApp:WebApp": 0,
             "gcp:firebaserules/release:Release": 0,
             "gcp:firebaserules/ruleset:Ruleset": 0,
@@ -57472,6 +57606,7 @@
             "gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy": 0,
             "gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy": 0,
             "gcp:filestore/getInstance:getInstance": 0,
+            "gcp:firebase/getAdminSdkConfig:getAdminSdkConfig": 1,
             "gcp:firebase/getAndroidApp:getAndroidApp": 0,
             "gcp:firebase/getAndroidAppConfig:getAndroidAppConfig": 1,
             "gcp:firebase/getAppleApp:getAppleApp": 0,

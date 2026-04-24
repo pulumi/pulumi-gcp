@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'CollectionEncryptionSpecArgs',
+    'CollectionEncryptionSpecArgsDict',
     'CollectionVectorSchemaArgs',
     'CollectionVectorSchemaArgsDict',
     'CollectionVectorSchemaDenseVectorArgs',
@@ -24,6 +26,43 @@ __all__ = [
     'CollectionVectorSchemaSparseVectorArgs',
     'CollectionVectorSchemaSparseVectorArgsDict',
 ]
+
+class CollectionEncryptionSpecArgsDict(TypedDict):
+    crypto_key_name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the Cloud KMS key used to protect the resource.
+    The Cloud KMS key must be in the same region as the resource. It must have
+    the format
+    `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+    """
+
+@pulumi.input_type
+class CollectionEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 crypto_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] crypto_key_name: Resource name of the Cloud KMS key used to protect the resource.
+               The Cloud KMS key must be in the same region as the resource. It must have
+               the format
+               `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource name of the Cloud KMS key used to protect the resource.
+        The Cloud KMS key must be in the same region as the resource. It must have
+        the format
+        `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "crypto_key_name", value)
+
 
 class CollectionVectorSchemaArgsDict(TypedDict):
     field_name: pulumi.Input[_builtins.str]

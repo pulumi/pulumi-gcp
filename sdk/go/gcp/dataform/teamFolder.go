@@ -14,12 +14,9 @@ import (
 
 // A resource represents a Dataform TeamFolder
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about TeamFolder, see:
 //
-// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.teamFolders)
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.teamFolders)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dataform/docs/)
 //
@@ -41,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewTeamFolder(ctx, "dataform_team_folder_basic", &dataform.TeamFolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic TeamFolder-_74391"),
+//				DisplayName: pulumi.String("Basic TeamFolder-_75223"),
 //			})
 //			if err != nil {
 //				return err

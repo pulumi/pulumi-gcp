@@ -122,6 +122,21 @@ public final class InstanceObservabilityConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Track client address for an instance. If not set, default value is &#34;off&#34;.
+     * 
+     */
+    @Import(name="trackClientAddress")
+    private @Nullable Output<Boolean> trackClientAddress;
+
+    /**
+     * @return Track client address for an instance. If not set, default value is &#34;off&#34;.
+     * 
+     */
+    public Optional<Output<Boolean>> trackClientAddress() {
+        return Optional.ofNullable(this.trackClientAddress);
+    }
+
+    /**
      * Record wait event types during query execution for an instance.
      * 
      */
@@ -161,6 +176,7 @@ public final class InstanceObservabilityConfigArgs extends com.pulumi.resources.
         this.queryPlansPerMinute = $.queryPlansPerMinute;
         this.recordApplicationTags = $.recordApplicationTags;
         this.trackActiveQueries = $.trackActiveQueries;
+        this.trackClientAddress = $.trackClientAddress;
         this.trackWaitEventTypes = $.trackWaitEventTypes;
         this.trackWaitEvents = $.trackWaitEvents;
     }
@@ -328,6 +344,27 @@ public final class InstanceObservabilityConfigArgs extends com.pulumi.resources.
          */
         public Builder trackActiveQueries(Boolean trackActiveQueries) {
             return trackActiveQueries(Output.of(trackActiveQueries));
+        }
+
+        /**
+         * @param trackClientAddress Track client address for an instance. If not set, default value is &#34;off&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trackClientAddress(@Nullable Output<Boolean> trackClientAddress) {
+            $.trackClientAddress = trackClientAddress;
+            return this;
+        }
+
+        /**
+         * @param trackClientAddress Track client address for an instance. If not set, default value is &#34;off&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trackClientAddress(Boolean trackClientAddress) {
+            return trackClientAddress(Output.of(trackClientAddress));
         }
 
         /**

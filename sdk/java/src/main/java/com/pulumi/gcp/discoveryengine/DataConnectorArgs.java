@@ -145,16 +145,22 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      * 
      */
     @Import(name="dataSource", required=true)
     private Output<String> dataSource;
 
     /**
-     * @return The name of the data source.
-     * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+     * @return The identifier for the data source.
+     * This is a partial list of supported connectors. Please refer to the
+     * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+     * for the full list of connectors.
+     * Supported first-party connectors include:
      * 
      */
     public Output<String> dataSource() {
@@ -606,8 +612,11 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataSource The name of the data source.
-         * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+         * @param dataSource The identifier for the data source.
+         * This is a partial list of supported connectors. Please refer to the
+         * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+         * for the full list of connectors.
+         * Supported first-party connectors include:
          * 
          * @return builder
          * 
@@ -618,8 +627,11 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataSource The name of the data source.
-         * Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+         * @param dataSource The identifier for the data source.
+         * This is a partial list of supported connectors. Please refer to the
+         * [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+         * for the full list of connectors.
+         * Supported first-party connectors include:
          * 
          * @return builder
          * 

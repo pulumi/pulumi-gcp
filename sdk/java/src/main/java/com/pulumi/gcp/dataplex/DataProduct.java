@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_41819}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_29439}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *                     .displayName("Data Analyst - Updated")
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-analysts-_75092}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-analysts-_87786}{@literal @}{@code example.com")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *                     .groupId("scientist")
  *                     .displayName("Data Scientist")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-scientists-_2605}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-scientists-_2067}{@literal @}{@code example.com")
  *                         .build())
  *                     .build())
  *             .build());

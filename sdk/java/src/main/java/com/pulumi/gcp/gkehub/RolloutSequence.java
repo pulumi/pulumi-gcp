@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceState;
+import com.pulumi.gcp.gkehub.outputs.RolloutSequenceIgnoredClustersSelector;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceStage;
 import java.lang.String;
 import java.util.List;
@@ -117,6 +118,22 @@ public class RolloutSequence extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="ignoredClustersSelector", refs={RolloutSequenceIgnoredClustersSelector.class}, tree="[0]")
+    private Output</* @Nullable */ RolloutSequenceIgnoredClustersSelector> ignoredClustersSelector;
+
+    /**
+     * @return Selector for clusters to exclude from the Rollout Sequence.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RolloutSequenceIgnoredClustersSelector>> ignoredClustersSelector() {
+        return Codegen.optional(this.ignoredClustersSelector);
     }
     /**
      * Labels for this Rollout Sequence.

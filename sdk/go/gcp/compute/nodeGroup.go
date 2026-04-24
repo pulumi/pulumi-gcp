@@ -44,15 +44,15 @@ import (
 //			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
-//				NodeType: pulumi.String("n1-node-96-624"),
+//				NodeType: pulumi.String("c2-node-60-240"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:         pulumi.String("soletenant-group"),
-//				Zone:         pulumi.String("us-central1-a"),
-//				Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
+//				Zone:         pulumi.String("us-central1-c"),
+//				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:  pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //			})
@@ -88,7 +88,7 @@ import (
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:                pulumi.String("soletenant-group"),
-//				Zone:                pulumi.String("us-central1-a"),
+//				Zone:                pulumi.String("us-central1-f"),
 //				Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:         pulumi.Int(1),
 //				NodeTemplate:        soletenant_tmpl.ID(),
@@ -119,7 +119,7 @@ import (
 //			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
-//				NodeType: pulumi.String("n1-node-96-624"),
+//				NodeType: pulumi.String("c2-node-60-240"),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +175,7 @@ import (
 //			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
-//				NodeType: pulumi.String("n1-node-96-624"),
+//				NodeType: pulumi.String("c2-node-60-240"),
 //			})
 //			if err != nil {
 //				return err

@@ -12,12 +12,9 @@ namespace Pulumi.Gcp.Dataform
     /// <summary>
     /// A resource represents a Dataform TeamFolder
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about TeamFolder, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.teamFolders)
+    /// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.teamFolders)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dataform/docs/)
     /// 
@@ -36,7 +33,7 @@ namespace Pulumi.Gcp.Dataform
     ///     var dataformTeamFolderBasic = new Gcp.Dataform.TeamFolder("dataform_team_folder_basic", new()
     ///     {
     ///         Region = "us-central1",
-    ///         DisplayName = "Basic TeamFolder-_74391",
+    ///         DisplayName = "Basic TeamFolder-_75223",
     ///     });
     /// 
     /// });

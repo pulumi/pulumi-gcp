@@ -17,7 +17,7 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAccountArgs Empty = new GetAccountArgs();
 
     /**
-     * The Google service account ID. This be one of:
+     * The Google service account ID. This must be one of:
      * 
      * * The name of the service account within the project (e.g. `my-service`)
      * 
@@ -32,7 +32,7 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
     private Output<String> accountId;
 
     /**
-     * @return The Google service account ID. This be one of:
+     * @return The Google service account ID. This must be one of:
      * 
      * * The name of the service account within the project (e.g. `my-service`)
      * 
@@ -90,7 +90,7 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The Google service account ID. This be one of:
+         * @param accountId The Google service account ID. This must be one of:
          * 
          * * The name of the service account within the project (e.g. `my-service`)
          * 
@@ -109,7 +109,7 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The Google service account ID. This be one of:
+         * @param accountId The Google service account ID. This must be one of:
          * 
          * * The name of the service account within the project (e.g. `my-service`)
          * 

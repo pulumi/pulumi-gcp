@@ -26,6 +26,7 @@ class CollectionArgs:
                  data_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input['CollectionEncryptionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  vector_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['CollectionVectorSchemaArgs']]]] = None):
@@ -43,6 +44,9 @@ class CollectionArgs:
                underscores, and hyphens.
         :param pulumi.Input[_builtins.str] description: User-specified description of the collection
         :param pulumi.Input[_builtins.str] display_name: User-specified display name of the collection
+        :param pulumi.Input['CollectionEncryptionSpecArgs'] encryption_spec: Represents a customer-managed encryption key specification that can be
+               applied to a Vector Search collection.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -62,6 +66,8 @@ class CollectionArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -136,6 +142,20 @@ class CollectionArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['CollectionEncryptionSpecArgs']]:
+        """
+        Represents a customer-managed encryption key specification that can be
+        applied to a Vector Search collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['CollectionEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -188,6 +208,7 @@ class _CollectionState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: Optional[pulumi.Input['CollectionEncryptionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -210,6 +231,9 @@ class _CollectionState:
         :param pulumi.Input[_builtins.str] description: User-specified description of the collection
         :param pulumi.Input[_builtins.str] display_name: User-specified display name of the collection
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['CollectionEncryptionSpecArgs'] encryption_spec: Represents a customer-managed encryption key specification that can be
+               applied to a Vector Search collection.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -238,6 +262,8 @@ class _CollectionState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -330,6 +356,20 @@ class _CollectionState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['CollectionEncryptionSpecArgs']]:
+        """
+        Represents a customer-managed encryption key specification that can be
+        applied to a Vector Search collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['CollectionEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -434,6 +474,7 @@ class Collection(pulumi.CustomResource):
                  data_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -483,6 +524,60 @@ class Collection(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Vectorsearch Collection Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-cmek-collection",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-cmek-collection",
+            key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_member_vs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_vs_sa",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-vectorsearch.iam.gserviceaccount.com")
+        example_cmek_collection = gcp.vectorsearch.Collection("example-cmek-collection",
+            location="us-central1",
+            collection_id="example-cmek-collection",
+            display_name="My Awesome Encrypted Collection",
+            description="This collection stores important data.",
+            encryption_spec={
+                "crypto_key_name": crypto_key.id,
+            },
+            labels={
+                "env": "dev",
+                "team": "my-team",
+            },
+            data_schema=\"\"\"{
+          \\"type\\": \\"object\\",
+          \\"properties\\": {
+            \\"title\\": {
+              \\"type\\": \\"string\\"
+            },
+            \\"plot\\": {
+              \\"type\\": \\"string\\"
+            }
+          }
+        }
+        \"\"\",
+            vector_schemas=[{
+                "field_name": "text_embedding",
+                "dense_vector": {
+                    "dimensions": 768,
+                    "vertex_embedding_config": {
+                        "model_id": "textembedding-gecko@003",
+                        "task_type": "RETRIEVAL_DOCUMENT",
+                        "text_template": "Title: {title} ---- Plot: {plot}",
+                    },
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_vs_sa]))
+        ```
 
         ## Import
 
@@ -513,6 +608,9 @@ class Collection(pulumi.CustomResource):
                underscores, and hyphens.
         :param pulumi.Input[_builtins.str] description: User-specified description of the collection
         :param pulumi.Input[_builtins.str] display_name: User-specified display name of the collection
+        :param pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']] encryption_spec: Represents a customer-managed encryption key specification that can be
+               applied to a Vector Search collection.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -575,6 +673,60 @@ class Collection(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Vectorsearch Collection Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-cmek-collection",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-cmek-collection",
+            key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_member_vs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_vs_sa",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-vectorsearch.iam.gserviceaccount.com")
+        example_cmek_collection = gcp.vectorsearch.Collection("example-cmek-collection",
+            location="us-central1",
+            collection_id="example-cmek-collection",
+            display_name="My Awesome Encrypted Collection",
+            description="This collection stores important data.",
+            encryption_spec={
+                "crypto_key_name": crypto_key.id,
+            },
+            labels={
+                "env": "dev",
+                "team": "my-team",
+            },
+            data_schema=\"\"\"{
+          \\"type\\": \\"object\\",
+          \\"properties\\": {
+            \\"title\\": {
+              \\"type\\": \\"string\\"
+            },
+            \\"plot\\": {
+              \\"type\\": \\"string\\"
+            }
+          }
+        }
+        \"\"\",
+            vector_schemas=[{
+                "field_name": "text_embedding",
+                "dense_vector": {
+                    "dimensions": 768,
+                    "vertex_embedding_config": {
+                        "model_id": "textembedding-gecko@003",
+                        "task_type": "RETRIEVAL_DOCUMENT",
+                        "text_template": "Title: {title} ---- Plot: {plot}",
+                    },
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_vs_sa]))
+        ```
 
         ## Import
 
@@ -612,6 +764,7 @@ class Collection(pulumi.CustomResource):
                  data_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,6 +784,7 @@ class Collection(pulumi.CustomResource):
             __props__.__dict__["data_schema"] = data_schema
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -660,6 +814,7 @@ class Collection(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -686,6 +841,9 @@ class Collection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: User-specified description of the collection
         :param pulumi.Input[_builtins.str] display_name: User-specified display name of the collection
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['CollectionEncryptionSpecArgs', 'CollectionEncryptionSpecArgsDict']] encryption_spec: Represents a customer-managed encryption key specification that can be
+               applied to a Vector Search collection.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -712,6 +870,7 @@ class Collection(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -774,6 +933,16 @@ class Collection(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.CollectionEncryptionSpec']]:
+        """
+        Represents a customer-managed encryption key specification that can be
+        applied to a Vector Search collection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @_builtins.property
     @pulumi.getter

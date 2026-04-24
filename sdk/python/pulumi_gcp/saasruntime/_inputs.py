@@ -979,7 +979,7 @@ class UnitKindInputVariableMappingToArgsDict(TypedDict):
     """
     ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    Tells SaaS Runtime if this mapping should be used during lookup or not
+    Tells App Lifecycle Manager if this mapping should be used during lookup or not
     """
 
 @pulumi.input_type
@@ -991,7 +991,7 @@ class UnitKindInputVariableMappingToArgs:
         """
         :param pulumi.Input[_builtins.str] dependency: Alias of the dependency that the inputVariable will pass its value to
         :param pulumi.Input[_builtins.str] input_variable: Name of the inputVariable on the dependency
-        :param pulumi.Input[_builtins.bool] ignore_for_lookup: Tells SaaS Runtime if this mapping should be used during lookup or not
+        :param pulumi.Input[_builtins.bool] ignore_for_lookup: Tells App Lifecycle Manager if this mapping should be used during lookup or not
         """
         pulumi.set(__self__, "dependency", dependency)
         pulumi.set(__self__, "input_variable", input_variable)
@@ -1026,7 +1026,7 @@ class UnitKindInputVariableMappingToArgs:
     @pulumi.getter(name="ignoreForLookup")
     def ignore_for_lookup(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Tells SaaS Runtime if this mapping should be used during lookup or not
+        Tells App Lifecycle Manager if this mapping should be used during lookup or not
         """
         return pulumi.get(self, "ignore_for_lookup")
 
@@ -1167,7 +1167,7 @@ class UnitKindOutputVariableMappingToArgsDict(TypedDict):
     """
     ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    Tells SaaS Runtime if this mapping should be used during lookup or not
+    Tells App Lifecycle Manager if this mapping should be used during lookup or not
     """
 
 @pulumi.input_type
@@ -1179,7 +1179,7 @@ class UnitKindOutputVariableMappingToArgs:
         """
         :param pulumi.Input[_builtins.str] dependency: Alias of the dependency that the inputVariable will pass its value to
         :param pulumi.Input[_builtins.str] input_variable: Name of the inputVariable on the dependency
-        :param pulumi.Input[_builtins.bool] ignore_for_lookup: Tells SaaS Runtime if this mapping should be used during lookup or not
+        :param pulumi.Input[_builtins.bool] ignore_for_lookup: Tells App Lifecycle Manager if this mapping should be used during lookup or not
         """
         pulumi.set(__self__, "dependency", dependency)
         pulumi.set(__self__, "input_variable", input_variable)
@@ -1214,7 +1214,7 @@ class UnitKindOutputVariableMappingToArgs:
     @pulumi.getter(name="ignoreForLookup")
     def ignore_for_lookup(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Tells SaaS Runtime if this mapping should be used during lookup or not
+        Tells App Lifecycle Manager if this mapping should be used during lookup or not
         """
         return pulumi.get(self, "ignore_for_lookup")
 

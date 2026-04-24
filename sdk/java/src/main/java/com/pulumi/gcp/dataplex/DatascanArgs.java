@@ -11,6 +11,7 @@ import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataDocumentationSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
 import java.lang.String;
 import java.util.Map;
@@ -152,6 +153,23 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="executionIdentity")
+    private @Nullable Output<DatascanExecutionIdentityArgs> executionIdentity;
+
+    /**
+     * @return The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanExecutionIdentityArgs>> executionIdentity() {
+        return Optional.ofNullable(this.executionIdentity);
+    }
+
+    /**
      * DataScan execution settings.
      * Structure is documented below.
      * 
@@ -232,6 +250,7 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
         this.dataScanId = $.dataScanId;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.executionIdentity = $.executionIdentity;
         this.executionSpec = $.executionSpec;
         this.labels = $.labels;
         this.location = $.location;
@@ -430,6 +449,29 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param executionIdentity The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionIdentity(@Nullable Output<DatascanExecutionIdentityArgs> executionIdentity) {
+            $.executionIdentity = executionIdentity;
+            return this;
+        }
+
+        /**
+         * @param executionIdentity The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionIdentity(DatascanExecutionIdentityArgs executionIdentity) {
+            return executionIdentity(Output.of(executionIdentity));
         }
 
         /**

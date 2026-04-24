@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new WorkloadIdentityServiceAgent("primary", WorkloadIdentityServiceAgentArgs.builder()
- *             .parent(String.format("projects/%s/locations/global/serviceProducers/healthcare.google.apis.com", project.number()))
+ *             .parent(String.format("projects/%s/locations/global/serviceProducers/healthcare.googleapis.com", project.number()))
  *             .build());
  * 
  *     }

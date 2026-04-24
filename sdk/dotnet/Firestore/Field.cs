@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__9329",
+    ///         Collection = "chatrooms__9723",
     ///         FieldId = "basic",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__37135",
+    ///         Collection = "chatrooms__22061",
     ///         FieldId = "field_with_same_configuration_as_ancestor",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -176,7 +176,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__42503",
+    ///         Collection = "chatrooms__60461",
     ///         FieldId = "*",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {

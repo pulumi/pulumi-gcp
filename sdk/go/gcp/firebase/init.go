@@ -75,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Project{}
 	case "gcp:firebase/storageBucket:StorageBucket":
 		r = &StorageBucket{}
+	case "gcp:firebase/storageDefaultBucket:StorageDefaultBucket":
+		r = &StorageDefaultBucket{}
 	case "gcp:firebase/webApp:WebApp":
 		r = &WebApp{}
 	default:
@@ -223,6 +225,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/storageBucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/storageDefaultBucket",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

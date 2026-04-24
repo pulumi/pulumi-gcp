@@ -1858,7 +1858,7 @@ func (o UnitKindInputVariableMappingFromPtrOutput) OutputVariable() pulumi.Strin
 type UnitKindInputVariableMappingTo struct {
 	// Alias of the dependency that the inputVariable will pass its value to
 	Dependency string `pulumi:"dependency"`
-	// Tells SaaS Runtime if this mapping should be used during lookup or not
+	// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 	IgnoreForLookup *bool `pulumi:"ignoreForLookup"`
 	// Name of the inputVariable on the dependency
 	InputVariable string `pulumi:"inputVariable"`
@@ -1878,7 +1878,7 @@ type UnitKindInputVariableMappingToInput interface {
 type UnitKindInputVariableMappingToArgs struct {
 	// Alias of the dependency that the inputVariable will pass its value to
 	Dependency pulumi.StringInput `pulumi:"dependency"`
-	// Tells SaaS Runtime if this mapping should be used during lookup or not
+	// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 	IgnoreForLookup pulumi.BoolPtrInput `pulumi:"ignoreForLookup"`
 	// Name of the inputVariable on the dependency
 	InputVariable pulumi.StringInput `pulumi:"inputVariable"`
@@ -1966,7 +1966,7 @@ func (o UnitKindInputVariableMappingToOutput) Dependency() pulumi.StringOutput {
 	return o.ApplyT(func(v UnitKindInputVariableMappingTo) string { return v.Dependency }).(pulumi.StringOutput)
 }
 
-// Tells SaaS Runtime if this mapping should be used during lookup or not
+// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 func (o UnitKindInputVariableMappingToOutput) IgnoreForLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UnitKindInputVariableMappingTo) *bool { return v.IgnoreForLookup }).(pulumi.BoolPtrOutput)
 }
@@ -2010,7 +2010,7 @@ func (o UnitKindInputVariableMappingToPtrOutput) Dependency() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tells SaaS Runtime if this mapping should be used during lookup or not
+// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 func (o UnitKindInputVariableMappingToPtrOutput) IgnoreForLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UnitKindInputVariableMappingTo) *bool {
 		if v == nil {
@@ -2310,7 +2310,7 @@ func (o UnitKindOutputVariableMappingFromPtrOutput) OutputVariable() pulumi.Stri
 type UnitKindOutputVariableMappingTo struct {
 	// Alias of the dependency that the inputVariable will pass its value to
 	Dependency string `pulumi:"dependency"`
-	// Tells SaaS Runtime if this mapping should be used during lookup or not
+	// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 	IgnoreForLookup *bool `pulumi:"ignoreForLookup"`
 	// Name of the inputVariable on the dependency
 	InputVariable string `pulumi:"inputVariable"`
@@ -2330,7 +2330,7 @@ type UnitKindOutputVariableMappingToInput interface {
 type UnitKindOutputVariableMappingToArgs struct {
 	// Alias of the dependency that the inputVariable will pass its value to
 	Dependency pulumi.StringInput `pulumi:"dependency"`
-	// Tells SaaS Runtime if this mapping should be used during lookup or not
+	// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 	IgnoreForLookup pulumi.BoolPtrInput `pulumi:"ignoreForLookup"`
 	// Name of the inputVariable on the dependency
 	InputVariable pulumi.StringInput `pulumi:"inputVariable"`
@@ -2418,7 +2418,7 @@ func (o UnitKindOutputVariableMappingToOutput) Dependency() pulumi.StringOutput 
 	return o.ApplyT(func(v UnitKindOutputVariableMappingTo) string { return v.Dependency }).(pulumi.StringOutput)
 }
 
-// Tells SaaS Runtime if this mapping should be used during lookup or not
+// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 func (o UnitKindOutputVariableMappingToOutput) IgnoreForLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UnitKindOutputVariableMappingTo) *bool { return v.IgnoreForLookup }).(pulumi.BoolPtrOutput)
 }
@@ -2462,7 +2462,7 @@ func (o UnitKindOutputVariableMappingToPtrOutput) Dependency() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Tells SaaS Runtime if this mapping should be used during lookup or not
+// Tells App Lifecycle Manager if this mapping should be used during lookup or not
 func (o UnitKindOutputVariableMappingToPtrOutput) IgnoreForLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UnitKindOutputVariableMappingTo) *bool {
 		if v == nil {

@@ -2423,6 +2423,10 @@ class ClusterClusterConfigArgsDict(TypedDict):
     The config settings for port access on the cluster.
     Structure defined below.
     """
+    engine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cluster engine.
+    """
     gce_cluster_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigArgsDict']]
     """
     Common config settings for resources of Google Compute Engine cluster
@@ -2499,6 +2503,7 @@ class ClusterClusterConfigArgs:
                  dataproc_metric_config: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']] = None,
                  endpoint_config: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']] = None,
+                 engine: Optional[pulumi.Input[_builtins.str]] = None,
                  gce_cluster_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArgs']] = None,
                  initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]]] = None,
                  lifecycle_config: Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArgs']] = None,
@@ -2528,6 +2533,7 @@ class ClusterClusterConfigArgs:
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigEndpointConfigArgs'] endpoint_config: The config settings for port access on the cluster.
                Structure defined below.
+        :param pulumi.Input[_builtins.str] engine: The cluster engine.
         :param pulumi.Input['ClusterClusterConfigGceClusterConfigArgs'] gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
                instances, applicable to all instances in the cluster. Structure defined below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]] initialization_actions: Commands to execute on each node after config is completed.
@@ -2576,6 +2582,8 @@ class ClusterClusterConfigArgs:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_config is not None:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
         if gce_cluster_config is not None:
             pulumi.set(__self__, "gce_cluster_config", gce_cluster_config)
         if initialization_actions is not None:
@@ -2703,6 +2711,18 @@ class ClusterClusterConfigArgs:
     @endpoint_config.setter
     def endpoint_config(self, value: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']]):
         pulumi.set(self, "endpoint_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The cluster engine.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="gceClusterConfig")

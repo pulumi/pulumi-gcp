@@ -274,8 +274,11 @@ type DataConnector struct {
 	ConnectorType pulumi.StringOutput `pulumi:"connectorType"`
 	// Timestamp when the DataConnector was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The name of the data source.
-	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+	// The identifier for the data source.
+	// This is a partial list of supported connectors. Please refer to the
+	// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+	// for the full list of connectors.
+	// Supported first-party connectors include:
 	DataSource pulumi.StringOutput `pulumi:"dataSource"`
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion pulumi.IntOutput `pulumi:"dataSourceVersion"`
@@ -444,8 +447,11 @@ type dataConnectorState struct {
 	ConnectorType *string `pulumi:"connectorType"`
 	// Timestamp when the DataConnector was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The name of the data source.
-	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+	// The identifier for the data source.
+	// This is a partial list of supported connectors. Please refer to the
+	// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+	// for the full list of connectors.
+	// Supported first-party connectors include:
 	DataSource *string `pulumi:"dataSource"`
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion *int `pulumi:"dataSourceVersion"`
@@ -570,8 +576,11 @@ type DataConnectorState struct {
 	ConnectorType pulumi.StringPtrInput
 	// Timestamp when the DataConnector was created.
 	CreateTime pulumi.StringPtrInput
-	// The name of the data source.
-	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+	// The identifier for the data source.
+	// This is a partial list of supported connectors. Please refer to the
+	// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+	// for the full list of connectors.
+	// Supported first-party connectors include:
 	DataSource pulumi.StringPtrInput
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion pulumi.IntPtrInput
@@ -683,8 +692,11 @@ type dataConnectorArgs struct {
 	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
 	// 'EUA', 'FEDERATED_AND_EUA'.
 	ConnectorModes []string `pulumi:"connectorModes"`
-	// The name of the data source.
-	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+	// The identifier for the data source.
+	// This is a partial list of supported connectors. Please refer to the
+	// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+	// for the full list of connectors.
+	// Supported first-party connectors include:
 	DataSource string `pulumi:"dataSource"`
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion *int `pulumi:"dataSourceVersion"`
@@ -762,8 +774,11 @@ type DataConnectorArgs struct {
 	// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
 	// 'EUA', 'FEDERATED_AND_EUA'.
 	ConnectorModes pulumi.StringArrayInput
-	// The name of the data source.
-	// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+	// The identifier for the data source.
+	// This is a partial list of supported connectors. Please refer to the
+	// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+	// for the full list of connectors.
+	// Supported first-party connectors include:
 	DataSource pulumi.StringInput
 	// The version of the data source. For example, `3` for Jira v3.
 	DataSourceVersion pulumi.IntPtrInput
@@ -973,8 +988,11 @@ func (o DataConnectorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The name of the data source.
-// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
+// The identifier for the data source.
+// This is a partial list of supported connectors. Please refer to the
+// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
+// for the full list of connectors.
+// Supported first-party connectors include:
 func (o DataConnectorOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.DataSource }).(pulumi.StringOutput)
 }

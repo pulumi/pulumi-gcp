@@ -14,14 +14,14 @@ namespace Pulumi.Gcp.DataPlex.Inputs
     {
         /// <summary>
         /// (Output)
-        /// The time when the latest DataScanJob started.
+        /// The time when the latest DataScanJob ended.
         /// </summary>
         [Input("latestJobEndTime")]
         public Input<string>? LatestJobEndTime { get; set; }
 
         /// <summary>
         /// (Output)
-        /// The time when the latest DataScanJob ended.
+        /// The time when the latest DataScanJob started.
         /// </summary>
         [Input("latestJobStartTime")]
         public Input<string>? LatestJobStartTime { get; set; }

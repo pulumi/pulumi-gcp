@@ -28,14 +28,20 @@ class OrganizationSecurityPolicyRuleArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  direction: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 header_action: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[_builtins.bool]] = None,
+                 redirect_options: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicyRule resource.
 
-        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
-               "allow", "deny" or "goto_next".
+        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are:
+               "allow": allow access to target.
+               "deny": deny access to target.
+               "goto_next": forward the request to the next hierarchical policy for evaluation.
+               "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
@@ -52,7 +58,15 @@ class OrganizationSecurityPolicyRuleArgs:
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
                This field may only be specified when the versionedExpr is set to FIREWALL.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers.
+               Structure is documented below.
+        :param pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+               Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: (Optional, Beta)
                A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get
@@ -72,8 +86,14 @@ class OrganizationSecurityPolicyRuleArgs:
             pulumi.set(__self__, "direction", direction)
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
+        if redirect_options is not None:
+            pulumi.set(__self__, "redirect_options", redirect_options)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
         if target_service_accounts is not None:
@@ -83,8 +103,11 @@ class OrganizationSecurityPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either
-        "allow", "deny" or "goto_next".
+        The Action to perform when the client connection triggers the rule. Valid actions are:
+        "allow": allow access to target.
+        "deny": deny access to target.
+        "goto_next": forward the request to the next hierarchical policy for evaluation.
+        "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         """
         return pulumi.get(self, "action")
 
@@ -175,6 +198,33 @@ class OrganizationSecurityPolicyRuleArgs:
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]:
+        """
+        Optional, additional actions that are performed on headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -185,6 +235,20 @@ class OrganizationSecurityPolicyRuleArgs:
     @preview.setter
     def preview(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "preview", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions.
+        Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
+
+    @redirect_options.setter
+    def redirect_options(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]):
+        pulumi.set(self, "redirect_options", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResources")
@@ -224,17 +288,23 @@ class _OrganizationSecurityPolicyRuleState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  direction: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 header_action: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']] = None,
                  match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[_builtins.bool]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
+                 redirect_options: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicyRule resources.
 
-        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
-               "allow", "deny" or "goto_next".
+        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are:
+               "allow": allow access to target.
+               "deny": deny access to target.
+               "goto_next": forward the request to the next hierarchical policy for evaluation.
+               "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -245,13 +315,21 @@ class _OrganizationSecurityPolicyRuleState:
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
                This field may only be specified when the versionedExpr is set to FIREWALL.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers.
+               Structure is documented below.
         :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
+        :param pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+               Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: (Optional, Beta)
                A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get
@@ -269,14 +347,20 @@ class _OrganizationSecurityPolicyRuleState:
             pulumi.set(__self__, "direction", direction)
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if redirect_options is not None:
+            pulumi.set(__self__, "redirect_options", redirect_options)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
         if target_service_accounts is not None:
@@ -286,8 +370,11 @@ class _OrganizationSecurityPolicyRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either
-        "allow", "deny" or "goto_next".
+        The Action to perform when the client connection triggers the rule. Valid actions are:
+        "allow": allow access to target.
+        "deny": deny access to target.
+        "goto_next": forward the request to the next hierarchical policy for evaluation.
+        "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         """
         return pulumi.get(self, "action")
 
@@ -339,6 +426,19 @@ class _OrganizationSecurityPolicyRuleState:
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]:
+        """
+        Optional, additional actions that are performed on headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
+
+    @_builtins.property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]:
         """
@@ -362,6 +462,20 @@ class _OrganizationSecurityPolicyRuleState:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -388,6 +502,20 @@ class _OrganizationSecurityPolicyRuleState:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions.
+        Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
+
+    @redirect_options.setter
+    def redirect_options(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]):
+        pulumi.set(self, "redirect_options", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResources")
@@ -430,10 +558,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  direction: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 header_action: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
                  match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[_builtins.bool]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
+                 redirect_options: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -490,6 +621,107 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             },
             priority=100)
         ```
+        ### Organization Security Policy Rule With Preconfigured Waf Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_56730",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
+            action="allow",
+            match={
+                "expr": {
+                    "expression": "evaluatePreconfiguredWaf('sqli-stable', {'sensitivity': 2})",
+                },
+                "versioned_expr": "",
+            },
+            preconfigured_waf_config={
+                "exclusions": [
+                    {
+                        "request_headers": [{
+                            "operator": "STARTS_WITH",
+                            "value": "User-Agent",
+                        }],
+                        "request_uris": [{
+                            "operator": "CONTAINS",
+                            "value": "/admin/",
+                        }],
+                        "target_rule_set": "sqli-stable",
+                    },
+                    {
+                        "request_query_params": [{
+                            "operator": "EQUALS",
+                            "value": "user_input",
+                        }],
+                        "target_rule_set": "sqli-stable",
+                    },
+                ],
+            },
+            priority=100)
+        ```
+        ### Organization Security Policy Rule With Header Action
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_95154",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
+            action="allow",
+            match={
+                "expr": {
+                    "expression": "request.path.contains('/login/')",
+                },
+                "versioned_expr": "",
+            },
+            header_action={
+                "request_headers_to_adds": [
+                    {
+                        "header_name": "X-Forwarded-For",
+                        "header_value": "true",
+                    },
+                    {
+                        "header_name": "X-Custom-Header",
+                        "header_value": "custom-value",
+                    },
+                ],
+            },
+            priority=100)
+        ```
+        ### Organization Security Policy Rule With Redirect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_64336",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
+            action="redirect",
+            match={
+                "config": {
+                    "src_ip_ranges": ["10.0.1.0/24"],
+                },
+                "versioned_expr": "SRC_IPS_V1",
+            },
+            redirect_options={
+                "type": "EXTERNAL_302",
+                "target": "https://www.example.com/blocked",
+            },
+            priority=100)
+        ```
         ### Organization Security Policy Rule Firewall
 
         ```python
@@ -540,8 +772,11 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
-               "allow", "deny" or "goto_next".
+        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are:
+               "allow": allow access to target.
+               "deny": deny access to target.
+               "goto_next": forward the request to the next hierarchical policy for evaluation.
+               "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -552,13 +787,21 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
                This field may only be specified when the versionedExpr is set to FIREWALL.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers.
+               Structure is documented below.
         :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+               Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: (Optional, Beta)
                A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get
@@ -624,6 +867,107 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                     "expression": "request.path.contains('/folder/test/')",
                 },
                 "versioned_expr": "",
+            },
+            priority=100)
+        ```
+        ### Organization Security Policy Rule With Preconfigured Waf Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_56730",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
+            action="allow",
+            match={
+                "expr": {
+                    "expression": "evaluatePreconfiguredWaf('sqli-stable', {'sensitivity': 2})",
+                },
+                "versioned_expr": "",
+            },
+            preconfigured_waf_config={
+                "exclusions": [
+                    {
+                        "request_headers": [{
+                            "operator": "STARTS_WITH",
+                            "value": "User-Agent",
+                        }],
+                        "request_uris": [{
+                            "operator": "CONTAINS",
+                            "value": "/admin/",
+                        }],
+                        "target_rule_set": "sqli-stable",
+                    },
+                    {
+                        "request_query_params": [{
+                            "operator": "EQUALS",
+                            "value": "user_input",
+                        }],
+                        "target_rule_set": "sqli-stable",
+                    },
+                ],
+            },
+            priority=100)
+        ```
+        ### Organization Security Policy Rule With Header Action
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_95154",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
+            action="allow",
+            match={
+                "expr": {
+                    "expression": "request.path.contains('/login/')",
+                },
+                "versioned_expr": "",
+            },
+            header_action={
+                "request_headers_to_adds": [
+                    {
+                        "header_name": "X-Forwarded-For",
+                        "header_value": "true",
+                    },
+                    {
+                        "header_name": "X-Custom-Header",
+                        "header_value": "custom-value",
+                    },
+                ],
+            },
+            priority=100)
+        ```
+        ### Organization Security Policy Rule With Redirect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_64336",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
+            policy_id=policy.id,
+            action="redirect",
+            match={
+                "config": {
+                    "src_ip_ranges": ["10.0.1.0/24"],
+                },
+                "versioned_expr": "SRC_IPS_V1",
+            },
+            redirect_options={
+                "type": "EXTERNAL_302",
+                "target": "https://www.example.com/blocked",
             },
             priority=100)
         ```
@@ -694,10 +1038,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  direction: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 header_action: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
                  match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[_builtins.bool]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
+                 redirect_options: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -715,16 +1062,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["direction"] = direction
             __props__.__dict__["enable_logging"] = enable_logging
+            __props__.__dict__["header_action"] = header_action
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["preconfigured_waf_config"] = preconfigured_waf_config
             __props__.__dict__["preview"] = preview
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
+            __props__.__dict__["redirect_options"] = redirect_options
             __props__.__dict__["target_resources"] = target_resources
             __props__.__dict__["target_service_accounts"] = target_service_accounts
         super(OrganizationSecurityPolicyRule, __self__).__init__(
@@ -741,10 +1091,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             direction: Optional[pulumi.Input[_builtins.str]] = None,
             enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+            header_action: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
             match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
             policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+            preconfigured_waf_config: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
             preview: Optional[pulumi.Input[_builtins.bool]] = None,
             priority: Optional[pulumi.Input[_builtins.int]] = None,
+            redirect_options: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
             target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OrganizationSecurityPolicyRule':
         """
@@ -754,8 +1107,11 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Can currently be either
-               "allow", "deny" or "goto_next".
+        :param pulumi.Input[_builtins.str] action: The Action to perform when the client connection triggers the rule. Valid actions are:
+               "allow": allow access to target.
+               "deny": deny access to target.
+               "goto_next": forward the request to the next hierarchical policy for evaluation.
+               "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         :param pulumi.Input[_builtins.str] description: A description of the rule.
         :param pulumi.Input[_builtins.str] direction: (Optional, Beta)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -766,13 +1122,21 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
                This field may only be specified when the versionedExpr is set to FIREWALL.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers.
+               Structure is documented below.
         :param pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[_builtins.int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+               Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_resources: (Optional, Beta)
                A list of network resource URLs to which this rule applies.
                This field allows you to control which network's VMs get
@@ -790,10 +1154,13 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["direction"] = direction
         __props__.__dict__["enable_logging"] = enable_logging
+        __props__.__dict__["header_action"] = header_action
         __props__.__dict__["match"] = match
         __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["preconfigured_waf_config"] = preconfigured_waf_config
         __props__.__dict__["preview"] = preview
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["redirect_options"] = redirect_options
         __props__.__dict__["target_resources"] = target_resources
         __props__.__dict__["target_service_accounts"] = target_service_accounts
         return OrganizationSecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
@@ -802,8 +1169,11 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either
-        "allow", "deny" or "goto_next".
+        The Action to perform when the client connection triggers the rule. Valid actions are:
+        "allow": allow access to target.
+        "deny": deny access to target.
+        "goto_next": forward the request to the next hierarchical policy for evaluation.
+        "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
         """
         return pulumi.get(self, "action")
 
@@ -839,6 +1209,15 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         return pulumi.get(self, "enable_logging")
 
     @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> pulumi.Output[Optional['outputs.OrganizationSecurityPolicyRuleHeaderAction']]:
+        """
+        Optional, additional actions that are performed on headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @_builtins.property
     @pulumi.getter
     def match(self) -> pulumi.Output['outputs.OrganizationSecurityPolicyRuleMatch']:
         """
@@ -854,6 +1233,16 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         The ID of the OrganizationSecurityPolicy this rule applies to.
         """
         return pulumi.get(self, "policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> pulumi.Output[Optional['outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
 
     @_builtins.property
     @pulumi.getter
@@ -872,6 +1261,16 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         highest priority and 2147483647 is the lowest prority.
         """
         return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> pulumi.Output[Optional['outputs.OrganizationSecurityPolicyRuleRedirectOptions']]:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions.
+        Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
 
     @_builtins.property
     @pulumi.getter(name="targetResources")

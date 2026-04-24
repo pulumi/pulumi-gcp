@@ -36,7 +36,7 @@ class UnitKindArgs:
 
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+               the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
                common data model. Immutable once set.
         :param pulumi.Input[_builtins.str] unit_kind_id: The ID value for the new unit kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
@@ -101,7 +101,7 @@ class UnitKindArgs:
     def saas(self) -> pulumi.Input[_builtins.str]:
         """
         A reference to the Saas that defines the product (managed service) that
-        the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+        the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
         common data model. Immutable once set.
         """
         return pulumi.get(self, "saas")
@@ -289,7 +289,7 @@ class _UnitKindState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+               the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
                common data model. Immutable once set.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
@@ -535,7 +535,7 @@ class _UnitKindState:
     def saas(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A reference to the Saas that defines the product (managed service) that
-        the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+        the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
         common data model. Immutable once set.
         """
         return pulumi.get(self, "saas")
@@ -693,7 +693,7 @@ class UnitKind(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+               the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
                common data model. Immutable once set.
         :param pulumi.Input[_builtins.str] unit_kind_id: The ID value for the new unit kind.
         """
@@ -896,7 +896,7 @@ class UnitKind(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+               the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
                common data model. Immutable once set.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
@@ -1073,7 +1073,7 @@ class UnitKind(pulumi.CustomResource):
     def saas(self) -> pulumi.Output[_builtins.str]:
         """
         A reference to the Saas that defines the product (managed service) that
-        the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+        the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
         common data model. Immutable once set.
         """
         return pulumi.get(self, "saas")

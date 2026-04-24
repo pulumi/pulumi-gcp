@@ -34,14 +34,14 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var example = new Gcp.DataPlex.Lake("example", new()
     ///     {
-    ///         Name = "tf-test-lake_1443",
+    ///         Name = "tf-test-lake_21563",
     ///         Location = "us-central1",
     ///         Project = "my-project-name",
     ///     });
     /// 
     ///     var exampleTask = new Gcp.DataPlex.Task("example", new()
     ///     {
-    ///         TaskId = "tf-test-task_26032",
+    ///         TaskId = "tf-test-task_25141",
     ///         Location = "us-central1",
     ///         Lake = example.Name,
     ///         Description = "Test Task Basic",
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     // VPC network
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "tf-test-workstation-cluster_8647",
+    ///         Name = "tf-test-workstation-cluster_30827",
     ///         AutoCreateSubnetworks = true,
     ///     });
     /// 
@@ -95,14 +95,14 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var exampleSpark = new Gcp.DataPlex.Lake("example_spark", new()
     ///     {
-    ///         Name = "tf-test-lake_50610",
+    ///         Name = "tf-test-lake_6529",
     ///         Location = "us-central1",
     ///         Project = "my-project-name",
     ///     });
     /// 
     ///     var exampleSparkTask = new Gcp.DataPlex.Task("example_spark", new()
     ///     {
-    ///         TaskId = "tf-test-task_77124",
+    ///         TaskId = "tf-test-task_16178",
     ///         Location = "us-central1",
     ///         Lake = exampleSpark.Name,
     ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     // VPC network
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = "tf-test-workstation-cluster_15335",
+    ///         Name = "tf-test-workstation-cluster_26317",
     ///         AutoCreateSubnetworks = true,
     ///     });
     /// 
@@ -190,14 +190,14 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var exampleNotebook = new Gcp.DataPlex.Lake("example_notebook", new()
     ///     {
-    ///         Name = "tf-test-lake_20665",
+    ///         Name = "tf-test-lake_4866",
     ///         Location = "us-central1",
     ///         Project = "my-project-name",
     ///     });
     /// 
     ///     var exampleNotebookTask = new Gcp.DataPlex.Task("example_notebook", new()
     ///     {
-    ///         TaskId = "tf-test-task_85160",
+    ///         TaskId = "tf-test-task_12618",
     ///         Location = "us-central1",
     ///         Lake = exampleNotebook.Name,
     ///         TriggerSpec = new Gcp.DataPlex.Inputs.TaskTriggerSpecArgs

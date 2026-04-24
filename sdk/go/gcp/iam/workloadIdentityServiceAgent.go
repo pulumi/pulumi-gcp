@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = iam.NewWorkloadIdentityServiceAgent(ctx, "primary", &iam.WorkloadIdentityServiceAgentArgs{
-//				Parent: pulumi.Sprintf("projects/%v/locations/global/serviceProducers/healthcare.google.apis.com", project.Number),
+//				Parent: pulumi.Sprintf("projects/%v/locations/global/serviceProducers/healthcare.googleapis.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

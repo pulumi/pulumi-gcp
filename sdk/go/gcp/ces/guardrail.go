@@ -211,7 +211,7 @@ import (
 //					CustomPolicy: &ces.GuardrailLlmPromptSecurityCustomPolicyArgs{
 //						MaxConversationMessages: pulumi.Int(10),
 //						ModelSettings: &ces.GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs{
-//							Model:       pulumi.String("gemini-2.5-flash"),
+//							Model:       pulumi.String("gemini-2.5-flash-001"),
 //							Temperature: pulumi.Float64(50),
 //						},
 //						Prompt:              pulumi.String("example_prompt"),
@@ -357,7 +357,7 @@ import (
 //				LlmPolicy: &ces.GuardrailLlmPolicyArgs{
 //					MaxConversationMessages: pulumi.Int(10),
 //					ModelSettings: &ces.GuardrailLlmPolicyModelSettingsArgs{
-//						Model:       pulumi.String("gemini-2.5-flash"),
+//						Model:       pulumi.String("gemini-2.5-flash-001"),
 //						Temperature: pulumi.Float64(50),
 //					},
 //					Prompt:              pulumi.String("example_prompt"),

@@ -51,6 +51,9 @@ type RolloutSequence struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// etag of the Rollout Sequence.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Selector for clusters to exclude from the Rollout Sequence.
+	// Structure is documented below.
+	IgnoredClustersSelector RolloutSequenceIgnoredClustersSelectorPtrOutput `pulumi:"ignoredClustersSelector"`
 	// Labels for this Rollout Sequence.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -126,6 +129,9 @@ type rolloutSequenceState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// etag of the Rollout Sequence.
 	Etag *string `pulumi:"etag"`
+	// Selector for clusters to exclude from the Rollout Sequence.
+	// Structure is documented below.
+	IgnoredClustersSelector *RolloutSequenceIgnoredClustersSelector `pulumi:"ignoredClustersSelector"`
 	// Labels for this Rollout Sequence.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -161,6 +167,9 @@ type RolloutSequenceState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// etag of the Rollout Sequence.
 	Etag pulumi.StringPtrInput
+	// Selector for clusters to exclude from the Rollout Sequence.
+	// Structure is documented below.
+	IgnoredClustersSelector RolloutSequenceIgnoredClustersSelectorPtrInput
 	// Labels for this Rollout Sequence.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -192,6 +201,9 @@ func (RolloutSequenceState) ElementType() reflect.Type {
 type rolloutSequenceArgs struct {
 	// Human readable display name of the Rollout Sequence.
 	DisplayName *string `pulumi:"displayName"`
+	// Selector for clusters to exclude from the Rollout Sequence.
+	// Structure is documented below.
+	IgnoredClustersSelector *RolloutSequenceIgnoredClustersSelector `pulumi:"ignoredClustersSelector"`
 	// Labels for this Rollout Sequence.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -211,6 +223,9 @@ type rolloutSequenceArgs struct {
 type RolloutSequenceArgs struct {
 	// Human readable display name of the Rollout Sequence.
 	DisplayName pulumi.StringPtrInput
+	// Selector for clusters to exclude from the Rollout Sequence.
+	// Structure is documented below.
+	IgnoredClustersSelector RolloutSequenceIgnoredClustersSelectorPtrInput
 	// Labels for this Rollout Sequence.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -336,6 +351,14 @@ func (o RolloutSequenceOutput) EffectiveLabels() pulumi.StringMapOutput {
 // etag of the Rollout Sequence.
 func (o RolloutSequenceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Selector for clusters to exclude from the Rollout Sequence.
+// Structure is documented below.
+func (o RolloutSequenceOutput) IgnoredClustersSelector() RolloutSequenceIgnoredClustersSelectorPtrOutput {
+	return o.ApplyT(func(v *RolloutSequence) RolloutSequenceIgnoredClustersSelectorPtrOutput {
+		return v.IgnoredClustersSelector
+	}).(RolloutSequenceIgnoredClustersSelectorPtrOutput)
 }
 
 // Labels for this Rollout Sequence.

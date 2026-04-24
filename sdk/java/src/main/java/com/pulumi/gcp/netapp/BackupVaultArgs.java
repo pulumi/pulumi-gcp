@@ -83,6 +83,25 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     * 
+     */
+    @Import(name="kmsConfig")
+    private @Nullable Output<String> kmsConfig;
+
+    /**
+     * @return Specifies the Key Management System (KMS) configuration to be used for
+     * backup encryption. Format:
+     * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+     * 
+     */
+    public Optional<Output<String>> kmsConfig() {
+        return Optional.ofNullable(this.kmsConfig);
+    }
+
+    /**
      * Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -157,6 +176,7 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
         this.backupRetentionPolicy = $.backupRetentionPolicy;
         this.backupVaultType = $.backupVaultType;
         this.description = $.description;
+        this.kmsConfig = $.kmsConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -267,6 +287,31 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param kmsConfig Specifies the Key Management System (KMS) configuration to be used for
+         * backup encryption. Format:
+         * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsConfig(@Nullable Output<String> kmsConfig) {
+            $.kmsConfig = kmsConfig;
+            return this;
+        }
+
+        /**
+         * @param kmsConfig Specifies the Key Management System (KMS) configuration to be used for
+         * backup encryption. Format:
+         * `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsConfig(String kmsConfig) {
+            return kmsConfig(Output.of(kmsConfig));
         }
 
         /**

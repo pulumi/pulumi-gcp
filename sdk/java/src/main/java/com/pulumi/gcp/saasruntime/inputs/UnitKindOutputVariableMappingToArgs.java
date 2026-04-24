@@ -33,14 +33,14 @@ public final class UnitKindOutputVariableMappingToArgs extends com.pulumi.resour
     }
 
     /**
-     * Tells SaaS Runtime if this mapping should be used during lookup or not
+     * Tells App Lifecycle Manager if this mapping should be used during lookup or not
      * 
      */
     @Import(name="ignoreForLookup")
     private @Nullable Output<Boolean> ignoreForLookup;
 
     /**
-     * @return Tells SaaS Runtime if this mapping should be used during lookup or not
+     * @return Tells App Lifecycle Manager if this mapping should be used during lookup or not
      * 
      */
     public Optional<Output<Boolean>> ignoreForLookup() {
@@ -110,7 +110,7 @@ public final class UnitKindOutputVariableMappingToArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ignoreForLookup Tells SaaS Runtime if this mapping should be used during lookup or not
+         * @param ignoreForLookup Tells App Lifecycle Manager if this mapping should be used during lookup or not
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class UnitKindOutputVariableMappingToArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ignoreForLookup Tells SaaS Runtime if this mapping should be used during lookup or not
+         * @param ignoreForLookup Tells App Lifecycle Manager if this mapping should be used during lookup or not
          * 
          * @return builder
          * 

@@ -2869,21 +2869,37 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict(TypedDi
     """
     The identifier for this object. Format specified above.
     """
+    trust_default_shared_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to True, the trust bundle will include the private ca managed identity regional root
+    public certificates.
+
+    > **Note** `trust_default_shared_ca` is only supported for managed identity trust domain
+    resource.
+    """
 
 @pulumi.input_type
 class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
     def __init__(__self__, *,
                  trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]],
-                 trust_domain: pulumi.Input[_builtins.str]):
+                 trust_domain: pulumi.Input[_builtins.str],
+                 trust_default_shared_ca: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given
                `TrustStore`. The incoming end entity's certificate must be chained up to one of the
                trust anchors here.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] trust_domain: The identifier for this object. Format specified above.
+        :param pulumi.Input[_builtins.bool] trust_default_shared_ca: If set to True, the trust bundle will include the private ca managed identity regional root
+               public certificates.
+               
+               > **Note** `trust_default_shared_ca` is only supported for managed identity trust domain
+               resource.
         """
         pulumi.set(__self__, "trust_anchors", trust_anchors)
         pulumi.set(__self__, "trust_domain", trust_domain)
+        if trust_default_shared_ca is not None:
+            pulumi.set(__self__, "trust_default_shared_ca", trust_default_shared_ca)
 
     @_builtins.property
     @pulumi.getter(name="trustAnchors")
@@ -2911,6 +2927,22 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
     @trust_domain.setter
     def trust_domain(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "trust_domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trustDefaultSharedCa")
+    def trust_default_shared_ca(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to True, the trust bundle will include the private ca managed identity regional root
+        public certificates.
+
+        > **Note** `trust_default_shared_ca` is only supported for managed identity trust domain
+        resource.
+        """
+        return pulumi.get(self, "trust_default_shared_ca")
+
+    @trust_default_shared_ca.setter
+    def trust_default_shared_ca(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "trust_default_shared_ca", value)
 
 
 class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgsDict(TypedDict):

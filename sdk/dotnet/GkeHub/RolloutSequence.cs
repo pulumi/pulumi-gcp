@@ -71,6 +71,13 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Selector for clusters to exclude from the Rollout Sequence.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("ignoredClustersSelector")]
+        public Output<Outputs.RolloutSequenceIgnoredClustersSelector?> IgnoredClustersSelector { get; private set; } = null!;
+
+        /// <summary>
         /// Labels for this Rollout Sequence.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -181,6 +188,13 @@ namespace Pulumi.Gcp.GkeHub
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Selector for clusters to exclude from the Rollout Sequence.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ignoredClustersSelector")]
+        public Input<Inputs.RolloutSequenceIgnoredClustersSelectorArgs>? IgnoredClustersSelector { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -269,6 +283,13 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Selector for clusters to exclude from the Rollout Sequence.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ignoredClustersSelector")]
+        public Input<Inputs.RolloutSequenceIgnoredClustersSelectorGetArgs>? IgnoredClustersSelector { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

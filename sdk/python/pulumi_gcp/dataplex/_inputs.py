@@ -107,6 +107,14 @@ __all__ = [
     'DatascanDataQualitySpecRuleTableConditionExpectationArgsDict',
     'DatascanDataQualitySpecRuleUniquenessExpectationArgs',
     'DatascanDataQualitySpecRuleUniquenessExpectationArgsDict',
+    'DatascanExecutionIdentityArgs',
+    'DatascanExecutionIdentityArgsDict',
+    'DatascanExecutionIdentityDataplexServiceAgentArgs',
+    'DatascanExecutionIdentityDataplexServiceAgentArgsDict',
+    'DatascanExecutionIdentityServiceAccountArgs',
+    'DatascanExecutionIdentityServiceAccountArgsDict',
+    'DatascanExecutionIdentityUserCredentialArgs',
+    'DatascanExecutionIdentityUserCredentialArgsDict',
     'DatascanExecutionSpecArgs',
     'DatascanExecutionSpecArgsDict',
     'DatascanExecutionSpecTriggerArgs',
@@ -3177,6 +3185,124 @@ class DatascanDataQualitySpecRuleUniquenessExpectationArgs:
         pass
 
 
+class DatascanExecutionIdentityArgsDict(TypedDict):
+    dataplex_service_agent: NotRequired[pulumi.Input['DatascanExecutionIdentityDataplexServiceAgentArgsDict']]
+    """
+    The Dataplex service agent associated with the user's project.
+    """
+    service_account: NotRequired[pulumi.Input['DatascanExecutionIdentityServiceAccountArgsDict']]
+    """
+    Service account to use to execute a datascan.
+    Structure is documented below.
+    """
+    user_credential: NotRequired[pulumi.Input['DatascanExecutionIdentityUserCredentialArgsDict']]
+    """
+    The credential of the calling user. Supports only ONE_TIME trigger type.
+    """
+
+@pulumi.input_type
+class DatascanExecutionIdentityArgs:
+    def __init__(__self__, *,
+                 dataplex_service_agent: Optional[pulumi.Input['DatascanExecutionIdentityDataplexServiceAgentArgs']] = None,
+                 service_account: Optional[pulumi.Input['DatascanExecutionIdentityServiceAccountArgs']] = None,
+                 user_credential: Optional[pulumi.Input['DatascanExecutionIdentityUserCredentialArgs']] = None):
+        """
+        :param pulumi.Input['DatascanExecutionIdentityDataplexServiceAgentArgs'] dataplex_service_agent: The Dataplex service agent associated with the user's project.
+        :param pulumi.Input['DatascanExecutionIdentityServiceAccountArgs'] service_account: Service account to use to execute a datascan.
+               Structure is documented below.
+        :param pulumi.Input['DatascanExecutionIdentityUserCredentialArgs'] user_credential: The credential of the calling user. Supports only ONE_TIME trigger type.
+        """
+        if dataplex_service_agent is not None:
+            pulumi.set(__self__, "dataplex_service_agent", dataplex_service_agent)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if user_credential is not None:
+            pulumi.set(__self__, "user_credential", user_credential)
+
+    @_builtins.property
+    @pulumi.getter(name="dataplexServiceAgent")
+    def dataplex_service_agent(self) -> Optional[pulumi.Input['DatascanExecutionIdentityDataplexServiceAgentArgs']]:
+        """
+        The Dataplex service agent associated with the user's project.
+        """
+        return pulumi.get(self, "dataplex_service_agent")
+
+    @dataplex_service_agent.setter
+    def dataplex_service_agent(self, value: Optional[pulumi.Input['DatascanExecutionIdentityDataplexServiceAgentArgs']]):
+        pulumi.set(self, "dataplex_service_agent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['DatascanExecutionIdentityServiceAccountArgs']]:
+        """
+        Service account to use to execute a datascan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['DatascanExecutionIdentityServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userCredential")
+    def user_credential(self) -> Optional[pulumi.Input['DatascanExecutionIdentityUserCredentialArgs']]:
+        """
+        The credential of the calling user. Supports only ONE_TIME trigger type.
+        """
+        return pulumi.get(self, "user_credential")
+
+    @user_credential.setter
+    def user_credential(self, value: Optional[pulumi.Input['DatascanExecutionIdentityUserCredentialArgs']]):
+        pulumi.set(self, "user_credential", value)
+
+
+class DatascanExecutionIdentityDataplexServiceAgentArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class DatascanExecutionIdentityDataplexServiceAgentArgs:
+    def __init__(__self__):
+        pass
+
+
+class DatascanExecutionIdentityServiceAccountArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    Service account email.
+    """
+
+@pulumi.input_type
+class DatascanExecutionIdentityServiceAccountArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] email: Service account email.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[_builtins.str]:
+        """
+        Service account email.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "email", value)
+
+
+class DatascanExecutionIdentityUserCredentialArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class DatascanExecutionIdentityUserCredentialArgs:
+    def __init__(__self__):
+        pass
+
+
 class DatascanExecutionSpecArgsDict(TypedDict):
     trigger: pulumi.Input['DatascanExecutionSpecTriggerArgsDict']
     """
@@ -3373,12 +3499,12 @@ class DatascanExecutionStatusArgsDict(TypedDict):
     latest_job_end_time: NotRequired[pulumi.Input[_builtins.str]]
     """
     (Output)
-    The time when the latest DataScanJob started.
+    The time when the latest DataScanJob ended.
     """
     latest_job_start_time: NotRequired[pulumi.Input[_builtins.str]]
     """
     (Output)
-    The time when the latest DataScanJob ended.
+    The time when the latest DataScanJob started.
     """
 
 @pulumi.input_type
@@ -3388,9 +3514,9 @@ class DatascanExecutionStatusArgs:
                  latest_job_start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] latest_job_end_time: (Output)
-               The time when the latest DataScanJob started.
-        :param pulumi.Input[_builtins.str] latest_job_start_time: (Output)
                The time when the latest DataScanJob ended.
+        :param pulumi.Input[_builtins.str] latest_job_start_time: (Output)
+               The time when the latest DataScanJob started.
         """
         if latest_job_end_time is not None:
             pulumi.set(__self__, "latest_job_end_time", latest_job_end_time)
@@ -3402,7 +3528,7 @@ class DatascanExecutionStatusArgs:
     def latest_job_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         (Output)
-        The time when the latest DataScanJob started.
+        The time when the latest DataScanJob ended.
         """
         return pulumi.get(self, "latest_job_end_time")
 
@@ -3415,7 +3541,7 @@ class DatascanExecutionStatusArgs:
     def latest_job_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         (Output)
-        The time when the latest DataScanJob ended.
+        The time when the latest DataScanJob started.
         """
         return pulumi.get(self, "latest_job_start_time")
 

@@ -67,6 +67,7 @@ __all__ = [
     'HostingVersionConfigRedirect',
     'HostingVersionConfigRewrite',
     'HostingVersionConfigRewriteRun',
+    'StorageDefaultBucketBucket',
 ]
 
 @pulumi.output_type
@@ -3315,5 +3316,28 @@ class HostingVersionConfigRewriteRun(dict):
         Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class StorageDefaultBucketBucket(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: (Output)
+               The resource name of the bucket in the format
+               projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The resource name of the bucket in the format
+        projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+        """
+        return pulumi.get(self, "name")
 
 

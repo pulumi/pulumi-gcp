@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Google service account ID. This be one of:
+        /// The Google service account ID. This must be one of:
         /// 
         /// * The name of the service account within the project (e.g. `my-service`)
         /// 
@@ -249,7 +249,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Google service account ID. This be one of:
+        /// The Google service account ID. This must be one of:
         /// 
         /// * The name of the service account within the project (e.g. `my-service`)
         /// 

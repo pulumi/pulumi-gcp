@@ -10,7 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleState;
+import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleHeaderAction;
 import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleMatch;
+import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRulePreconfiguredWafConfig;
+import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleRedirectOptions;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -129,6 +132,195 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Organization Security Policy Rule With Preconfigured Waf Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("tf-test_56730")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()
+ *             .policyId(policy.id())
+ *             .action("allow")
+ *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
+ *                 .expr(OrganizationSecurityPolicyRuleMatchExprArgs.builder()
+ *                     .expression("evaluatePreconfiguredWaf('sqli-stable', {'sensitivity': 2})")
+ *                     .build())
+ *                 .versionedExpr("")
+ *                 .build())
+ *             .preconfiguredWafConfig(OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs.builder()
+ *                 .exclusions(                
+ *                     OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                         .requestHeaders(OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs.builder()
+ *                             .operator("STARTS_WITH")
+ *                             .value("User-Agent")
+ *                             .build())
+ *                         .requestUris(OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs.builder()
+ *                             .operator("CONTAINS")
+ *                             .value("/admin/")
+ *                             .build())
+ *                         .targetRuleSet("sqli-stable")
+ *                         .build(),
+ *                     OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                         .requestQueryParams(OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs.builder()
+ *                             .operator("EQUALS")
+ *                             .value("user_input")
+ *                             .build())
+ *                         .targetRuleSet("sqli-stable")
+ *                         .build())
+ *                 .build())
+ *             .priority(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Organization Security Policy Rule With Header Action
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleHeaderActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("tf-test_95154")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()
+ *             .policyId(policy.id())
+ *             .action("allow")
+ *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
+ *                 .expr(OrganizationSecurityPolicyRuleMatchExprArgs.builder()
+ *                     .expression("request.path.contains('/login/')")
+ *                     .build())
+ *                 .versionedExpr("")
+ *                 .build())
+ *             .headerAction(OrganizationSecurityPolicyRuleHeaderActionArgs.builder()
+ *                 .requestHeadersToAdds(                
+ *                     OrganizationSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
+ *                         .headerName("X-Forwarded-For")
+ *                         .headerValue("true")
+ *                         .build(),
+ *                     OrganizationSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
+ *                         .headerName("X-Custom-Header")
+ *                         .headerValue("custom-value")
+ *                         .build())
+ *                 .build())
+ *             .priority(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Organization Security Policy Rule With Redirect
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleRedirectOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+ *             .shortName("tf-test_64336")
+ *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()
+ *             .policyId(policy.id())
+ *             .action("redirect")
+ *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
+ *                 .config(OrganizationSecurityPolicyRuleMatchConfigArgs.builder()
+ *                     .srcIpRanges("10.0.1.0/24")
+ *                     .build())
+ *                 .versionedExpr("SRC_IPS_V1")
+ *                 .build())
+ *             .redirectOptions(OrganizationSecurityPolicyRuleRedirectOptionsArgs.builder()
+ *                 .type("EXTERNAL_302")
+ *                 .target("https://www.example.com/blocked")
+ *                 .build())
+ *             .priority(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Organization Security Policy Rule Firewall
  * 
  * <pre>
@@ -207,16 +399,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule")
 public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
+     * The Action to perform when the client connection triggers the rule. Valid actions are:
+     * &#34;allow&#34;: allow access to target.
+     * &#34;deny&#34;: deny access to target.
+     * &#34;gotoNext&#34;: forward the request to the next hierarchical policy for evaluation.
+     * &#34;redirect&#34;: redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34; or &#34;gotoNext&#34;.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are:
+     * &#34;allow&#34;: allow access to target.
+     * &#34;deny&#34;: deny access to target.
+     * &#34;gotoNext&#34;: forward the request to the next hierarchical policy for evaluation.
+     * &#34;redirect&#34;: redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      * 
      */
     public Output<String> action() {
@@ -279,6 +477,22 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return Codegen.optional(this.enableLogging);
     }
     /**
+     * Optional, additional actions that are performed on headers.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="headerAction", refs={OrganizationSecurityPolicyRuleHeaderAction.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationSecurityPolicyRuleHeaderAction> headerAction;
+
+    /**
+     * @return Optional, additional actions that are performed on headers.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<OrganizationSecurityPolicyRuleHeaderAction>> headerAction() {
+        return Codegen.optional(this.headerAction);
+    }
+    /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * Structure is documented below.
      * 
@@ -307,6 +521,24 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      */
     public Output<String> policyId() {
         return this.policyId;
+    }
+    /**
+     * Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="preconfiguredWafConfig", refs={OrganizationSecurityPolicyRulePreconfiguredWafConfig.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationSecurityPolicyRulePreconfiguredWafConfig> preconfiguredWafConfig;
+
+    /**
+     * @return Preconfigured WAF configuration to be applied for the rule.
+     * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<OrganizationSecurityPolicyRulePreconfiguredWafConfig>> preconfiguredWafConfig() {
+        return Codegen.optional(this.preconfiguredWafConfig);
     }
     /**
      * If set to true, the specified action is not enforced.
@@ -339,6 +571,24 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      */
     public Output<Integer> priority() {
         return this.priority;
+    }
+    /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions.
+     * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="redirectOptions", refs={OrganizationSecurityPolicyRuleRedirectOptions.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationSecurityPolicyRuleRedirectOptions> redirectOptions;
+
+    /**
+     * @return Parameters defining the redirect action. Cannot be specified for any other actions.
+     * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<OrganizationSecurityPolicyRuleRedirectOptions>> redirectOptions() {
+        return Codegen.optional(this.redirectOptions);
     }
     /**
      * (Optional, Beta)

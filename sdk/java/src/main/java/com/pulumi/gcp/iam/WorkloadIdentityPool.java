@@ -149,6 +149,7 @@ import javax.annotation.Nullable;
  *                 .additionalTrustBundles(                
  *                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
  *                         .trustDomain("example.com")
+ *                         .trustDefaultSharedCa(false)
  *                         .trustAnchors(                        
  *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
  *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
@@ -163,6 +164,7 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
  *                         .trustDomain("example.net")
+ *                         .trustDefaultSharedCa(false)
  *                         .trustAnchors(                        
  *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
  *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
@@ -229,6 +231,7 @@ import javax.annotation.Nullable;
  *                 .additionalTrustBundles(                
  *                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
  *                         .trustDomain("example.com")
+ *                         .trustDefaultSharedCa(true)
  *                         .trustAnchors(                        
  *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
  *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
@@ -243,6 +246,7 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
  *                         .trustDomain("example.net")
+ *                         .trustDefaultSharedCa(true)
  *                         .trustAnchors(                        
  *                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
  *                                 .pemCertificate(StdFunctions.file(FileArgs.builder()

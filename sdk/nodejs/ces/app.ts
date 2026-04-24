@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     modelSettings: {
- *         model: "gemini-1.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     evaluationMetricsThresholds: {
@@ -252,7 +252,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     modelSettings: {
- *         model: "gemini-1.5-flash",
+ *         model: "gemini-2.5-flash-001",
  *         temperature: 0.5,
  *     },
  *     evaluationMetricsThresholds: {
@@ -459,7 +459,7 @@ export class App extends pulumi.CustomResource {
      * Settings to describe the logging behaviors for the app.
      * Structure is documented below.
      */
-    declare public readonly loggingSettings: pulumi.Output<outputs.ces.AppLoggingSettings | undefined>;
+    declare public readonly loggingSettings: pulumi.Output<outputs.ces.AppLoggingSettings>;
     /**
      * Metadata about the app. This field can be used to store additional
      * information relevant to the app's details or intended usages.

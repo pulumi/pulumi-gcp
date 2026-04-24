@@ -744,6 +744,8 @@ class AutonomousDatabase(pulumi.CustomResource):
             display_name="autonomousDatabase displayname",
             database="mydatabase",
             admin_password="123Abpassword",
+            odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             network=default.id,
             cidr="10.5.0.0/24",
             labels={
@@ -958,6 +960,8 @@ class AutonomousDatabase(pulumi.CustomResource):
             display_name="autonomousDatabase displayname",
             database="mydatabase",
             admin_password="123Abpassword",
+            odb_network="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
             network=default.id,
             cidr="10.5.0.0/24",
             labels={

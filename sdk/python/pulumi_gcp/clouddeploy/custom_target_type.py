@@ -27,7 +27,8 @@ class CustomTargetTypeArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 tasks: Optional[pulumi.Input['CustomTargetTypeTasksArgs']] = None):
         """
         The set of arguments for constructing a CustomTargetType resource.
 
@@ -44,6 +45,8 @@ class CustomTargetTypeArgs:
         :param pulumi.Input[_builtins.str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['CustomTargetTypeTasksArgs'] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -58,6 +61,8 @@ class CustomTargetTypeArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
 
     @_builtins.property
     @pulumi.getter
@@ -149,6 +154,19 @@ class CustomTargetTypeArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input['CustomTargetTypeTasksArgs']]:
+        """
+        Configures render and deploy for the `CustomTargetType` using tasks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input['CustomTargetTypeTasksArgs']]):
+        pulumi.set(self, "tasks", value)
+
 
 @pulumi.input_type
 class _CustomTargetTypeState:
@@ -166,6 +184,7 @@ class _CustomTargetTypeState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tasks: Optional[pulumi.Input['CustomTargetTypeTasksArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -191,6 +210,8 @@ class _CustomTargetTypeState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input['CustomTargetTypeTasksArgs'] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] update_time: Time at which the `CustomTargetType` was updated.
         """
@@ -220,6 +241,8 @@ class _CustomTargetTypeState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -390,6 +413,19 @@ class _CustomTargetTypeState:
 
     @_builtins.property
     @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input['CustomTargetTypeTasksArgs']]:
+        """
+        Configures render and deploy for the `CustomTargetType` using tasks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input['CustomTargetTypeTasksArgs']]):
+        pulumi.set(self, "tasks", value)
+
+    @_builtins.property
+    @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique identifier of the `CustomTargetType`.
@@ -426,6 +462,7 @@ class CustomTargetType(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 tasks: Optional[pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Deploy `CustomTargetType` defines a type of custom target that can be referenced in a
@@ -530,6 +567,29 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Clouddeploy Custom Target Type Tasks
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_target_type = gcp.clouddeploy.CustomTargetType("custom-target-type",
+            location="us-central1",
+            name="my-custom-target-type",
+            description="My custom target type",
+            tasks={
+                "render": {
+                    "container": {
+                        "image": "gcr.io/my-project/my-render-image",
+                    },
+                },
+                "deploy": {
+                    "container": {
+                        "image": "gcr.io/my-project/my-deploy-image",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -563,6 +623,8 @@ class CustomTargetType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
+               Structure is documented below.
         """
         ...
     @overload
@@ -673,6 +735,29 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Clouddeploy Custom Target Type Tasks
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_target_type = gcp.clouddeploy.CustomTargetType("custom-target-type",
+            location="us-central1",
+            name="my-custom-target-type",
+            description="My custom target type",
+            tasks={
+                "render": {
+                    "container": {
+                        "image": "gcr.io/my-project/my-render-image",
+                    },
+                },
+                "deploy": {
+                    "container": {
+                        "image": "gcr.io/my-project/my-deploy-image",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -713,6 +798,7 @@ class CustomTargetType(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 tasks: Optional[pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -731,6 +817,7 @@ class CustomTargetType(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["tasks"] = tasks
             __props__.__dict__["create_time"] = None
             __props__.__dict__["custom_target_type_id"] = None
             __props__.__dict__["effective_annotations"] = None
@@ -764,6 +851,7 @@ class CustomTargetType(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tasks: Optional[pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomTargetType':
         """
@@ -793,6 +881,8 @@ class CustomTargetType(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[Union['CustomTargetTypeTasksArgs', 'CustomTargetTypeTasksArgsDict']] tasks: Configures render and deploy for the `CustomTargetType` using tasks.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the `CustomTargetType`.
         :param pulumi.Input[_builtins.str] update_time: Time at which the `CustomTargetType` was updated.
         """
@@ -813,6 +903,7 @@ class CustomTargetType(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["tasks"] = tasks
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return CustomTargetType(resource_name, opts=opts, __props__=__props__)
@@ -927,6 +1018,15 @@ class CustomTargetType(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> pulumi.Output[Optional['outputs.CustomTargetTypeTasks']]:
+        """
+        Configures render and deploy for the `CustomTargetType` using tasks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tasks")
 
     @_builtins.property
     @pulumi.getter

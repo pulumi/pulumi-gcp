@@ -31,8 +31,8 @@ class TenantArgs:
 
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the
-               SaaS Runtime common data model.
+               the producer wants to manage with App Lifecycle Manager. Part of the
+               App Lifecycle Manager common data model.
         :param pulumi.Input[_builtins.str] tenant_id: The ID value for the new tenant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations is an unstructured key-value map stored with a resource that
                may be set by external tools to store and retrieve arbitrary metadata.
@@ -41,7 +41,7 @@ class TenantArgs:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] consumer_resource: A reference to the consumer resource this SaaS Tenant is representing.
-               The relationship with a consumer resource can be used by SaaS Runtime for
+               The relationship with a consumer resource can be used by App Lifecycle Manager for
                retrieving consumer-defined settings and policies such as maintenance
                policies (using Unified Maintenance Policy API).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -80,8 +80,8 @@ class TenantArgs:
     def saas(self) -> pulumi.Input[_builtins.str]:
         """
         A reference to the Saas that defines the product (managed service) that
-        the producer wants to manage with SaaS Runtime. Part of the
-        SaaS Runtime common data model.
+        the producer wants to manage with App Lifecycle Manager. Part of the
+        App Lifecycle Manager common data model.
         """
         return pulumi.get(self, "saas")
 
@@ -123,7 +123,7 @@ class TenantArgs:
     def consumer_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A reference to the consumer resource this SaaS Tenant is representing.
-        The relationship with a consumer resource can be used by SaaS Runtime for
+        The relationship with a consumer resource can be used by App Lifecycle Manager for
         retrieving consumer-defined settings and policies such as maintenance
         policies (using Unified Maintenance Policy API).
         """
@@ -189,7 +189,7 @@ class _TenantState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] consumer_resource: A reference to the consumer resource this SaaS Tenant is representing.
-               The relationship with a consumer resource can be used by SaaS Runtime for
+               The relationship with a consumer resource can be used by App Lifecycle Manager for
                retrieving consumer-defined settings and policies such as maintenance
                policies (using Unified Maintenance Policy API).
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -208,8 +208,8 @@ class _TenantState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the
-               SaaS Runtime common data model.
+               the producer wants to manage with App Lifecycle Manager. Part of the
+               App Lifecycle Manager common data model.
         :param pulumi.Input[_builtins.str] tenant_id: The ID value for the new tenant.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
@@ -271,7 +271,7 @@ class _TenantState:
     def consumer_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A reference to the consumer resource this SaaS Tenant is representing.
-        The relationship with a consumer resource can be used by SaaS Runtime for
+        The relationship with a consumer resource can be used by App Lifecycle Manager for
         retrieving consumer-defined settings and policies such as maintenance
         policies (using Unified Maintenance Policy API).
         """
@@ -389,8 +389,8 @@ class _TenantState:
     def saas(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A reference to the Saas that defines the product (managed service) that
-        the producer wants to manage with SaaS Runtime. Part of the
-        SaaS Runtime common data model.
+        the producer wants to manage with App Lifecycle Manager. Part of the
+        App Lifecycle Manager common data model.
         """
         return pulumi.get(self, "saas")
 
@@ -508,7 +508,7 @@ class Tenant(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] consumer_resource: A reference to the consumer resource this SaaS Tenant is representing.
-               The relationship with a consumer resource can be used by SaaS Runtime for
+               The relationship with a consumer resource can be used by App Lifecycle Manager for
                retrieving consumer-defined settings and policies such as maintenance
                policies (using Unified Maintenance Policy API).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels on the resource, which can be used for categorization.
@@ -519,8 +519,8 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the
-               SaaS Runtime common data model.
+               the producer wants to manage with App Lifecycle Manager. Part of the
+               App Lifecycle Manager common data model.
         :param pulumi.Input[_builtins.str] tenant_id: The ID value for the new tenant.
         """
         ...
@@ -664,7 +664,7 @@ class Tenant(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] consumer_resource: A reference to the consumer resource this SaaS Tenant is representing.
-               The relationship with a consumer resource can be used by SaaS Runtime for
+               The relationship with a consumer resource can be used by App Lifecycle Manager for
                retrieving consumer-defined settings and policies such as maintenance
                policies (using Unified Maintenance Policy API).
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -683,8 +683,8 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas: A reference to the Saas that defines the product (managed service) that
-               the producer wants to manage with SaaS Runtime. Part of the
-               SaaS Runtime common data model.
+               the producer wants to manage with App Lifecycle Manager. Part of the
+               App Lifecycle Manager common data model.
         :param pulumi.Input[_builtins.str] tenant_id: The ID value for the new tenant.
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
@@ -733,7 +733,7 @@ class Tenant(pulumi.CustomResource):
     def consumer_resource(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A reference to the consumer resource this SaaS Tenant is representing.
-        The relationship with a consumer resource can be used by SaaS Runtime for
+        The relationship with a consumer resource can be used by App Lifecycle Manager for
         retrieving consumer-defined settings and policies such as maintenance
         policies (using Unified Maintenance Policy API).
         """
@@ -815,8 +815,8 @@ class Tenant(pulumi.CustomResource):
     def saas(self) -> pulumi.Output[_builtins.str]:
         """
         A reference to the Saas that defines the product (managed service) that
-        the producer wants to manage with SaaS Runtime. Part of the
-        SaaS Runtime common data model.
+        the producer wants to manage with App Lifecycle Manager. Part of the
+        App Lifecycle Manager common data model.
         """
         return pulumi.get(self, "saas")
 

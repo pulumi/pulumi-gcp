@@ -85,6 +85,14 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> BackupVaultType { get; private set; } = null!;
 
         /// <summary>
+        /// The crypto key version used to encrypt the backup vault.
+        /// Format:
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        [Output("backupsCryptoKeyVersion")]
+        public Output<string> BackupsCryptoKeyVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         /// </summary>
         [Output("createTime")]
@@ -107,6 +115,20 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Encryption state of customer-managed encryption keys (CMEK) backups.
+        /// </summary>
+        [Output("encryptionState")]
+        public Output<string> EncryptionState { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the Key Management System (KMS) configuration to be used for
+        /// backup encryption. Format:
+        /// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+        /// </summary>
+        [Output("kmsConfig")]
+        public Output<string?> KmsConfig { get; private set; } = null!;
 
         /// <summary>
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -238,6 +260,14 @@ namespace Pulumi.Gcp.Netapp
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies the Key Management System (KMS) configuration to be used for
+        /// backup encryption. Format:
+        /// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+        /// </summary>
+        [Input("kmsConfig")]
+        public Input<string>? KmsConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -301,6 +331,14 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? BackupVaultType { get; set; }
 
         /// <summary>
+        /// The crypto key version used to encrypt the backup vault.
+        /// Format:
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        [Input("backupsCryptoKeyVersion")]
+        public Input<string>? BackupsCryptoKeyVersion { get; set; }
+
+        /// <summary>
         /// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         /// </summary>
         [Input("createTime")]
@@ -333,6 +371,20 @@ namespace Pulumi.Gcp.Netapp
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Encryption state of customer-managed encryption keys (CMEK) backups.
+        /// </summary>
+        [Input("encryptionState")]
+        public Input<string>? EncryptionState { get; set; }
+
+        /// <summary>
+        /// Specifies the Key Management System (KMS) configuration to be used for
+        /// backup encryption. Format:
+        /// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+        /// </summary>
+        [Input("kmsConfig")]
+        public Input<string>? KmsConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

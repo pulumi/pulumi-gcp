@@ -155,6 +155,8 @@ __all__ = [
     'MembershipRbacRoleBindingStateArgsDict',
     'NamespaceStateArgs',
     'NamespaceStateArgsDict',
+    'RolloutSequenceIgnoredClustersSelectorArgs',
+    'RolloutSequenceIgnoredClustersSelectorArgsDict',
     'RolloutSequenceStageArgs',
     'RolloutSequenceStageArgsDict',
     'RolloutSequenceStageClusterSelectorArgs',
@@ -4839,6 +4841,37 @@ class NamespaceStateArgs:
     @code.setter
     def code(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "code", value)
+
+
+class RolloutSequenceIgnoredClustersSelectorArgsDict(TypedDict):
+    label_selector: pulumi.Input[_builtins.str]
+    """
+    The label selector must be a valid CEL (Common Expression Language) expression which
+    evaluates resource.labels.
+    """
+
+@pulumi.input_type
+class RolloutSequenceIgnoredClustersSelectorArgs:
+    def __init__(__self__, *,
+                 label_selector: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] label_selector: The label selector must be a valid CEL (Common Expression Language) expression which
+               evaluates resource.labels.
+        """
+        pulumi.set(__self__, "label_selector", label_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label selector must be a valid CEL (Common Expression Language) expression which
+        evaluates resource.labels.
+        """
+        return pulumi.get(self, "label_selector")
+
+    @label_selector.setter
+    def label_selector(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label_selector", value)
 
 
 class RolloutSequenceStageArgsDict(TypedDict):

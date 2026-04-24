@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the consumer resource this SaaS Tenant is representing.
-        /// The relationship with a consumer resource can be used by SaaS Runtime for
+        /// The relationship with a consumer resource can be used by App Lifecycle Manager for
         /// retrieving consumer-defined settings and policies such as maintenance
         /// policies (using Unified Maintenance Policy API).
         /// </summary>
@@ -147,8 +147,8 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the Saas that defines the product (managed service) that
-        /// the producer wants to manage with SaaS Runtime. Part of the
-        /// SaaS Runtime common data model.
+        /// the producer wants to manage with App Lifecycle Manager. Part of the
+        /// App Lifecycle Manager common data model.
         /// </summary>
         [Output("saas")]
         public Output<string> Saas { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the consumer resource this SaaS Tenant is representing.
-        /// The relationship with a consumer resource can be used by SaaS Runtime for
+        /// The relationship with a consumer resource can be used by App Lifecycle Manager for
         /// retrieving consumer-defined settings and policies such as maintenance
         /// policies (using Unified Maintenance Policy API).
         /// </summary>
@@ -284,8 +284,8 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the Saas that defines the product (managed service) that
-        /// the producer wants to manage with SaaS Runtime. Part of the
-        /// SaaS Runtime common data model.
+        /// the producer wants to manage with App Lifecycle Manager. Part of the
+        /// App Lifecycle Manager common data model.
         /// </summary>
         [Input("saas", required: true)]
         public Input<string> Saas { get; set; } = null!;
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the consumer resource this SaaS Tenant is representing.
-        /// The relationship with a consumer resource can be used by SaaS Runtime for
+        /// The relationship with a consumer resource can be used by App Lifecycle Manager for
         /// retrieving consumer-defined settings and policies such as maintenance
         /// policies (using Unified Maintenance Policy API).
         /// </summary>
@@ -419,8 +419,8 @@ namespace Pulumi.Gcp.SaaSRuntime
 
         /// <summary>
         /// A reference to the Saas that defines the product (managed service) that
-        /// the producer wants to manage with SaaS Runtime. Part of the
-        /// SaaS Runtime common data model.
+        /// the producer wants to manage with App Lifecycle Manager. Part of the
+        /// App Lifecycle Manager common data model.
         /// </summary>
         [Input("saas")]
         public Input<string>? Saas { get; set; }

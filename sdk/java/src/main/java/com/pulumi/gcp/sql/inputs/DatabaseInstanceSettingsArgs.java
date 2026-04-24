@@ -13,6 +13,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigArg
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDataCacheConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsEntraidConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsFinalBackupConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsInsightsConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
@@ -390,6 +391,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    @Import(name="entraidConfig")
+    private @Nullable Output<DatabaseInstanceSettingsEntraidConfigArgs> entraidConfig;
+
+    /**
+     * @return The Microsoft Entra ID configuration for the SQL Server instance.
+     * 
+     */
+    public Optional<Output<DatabaseInstanceSettingsEntraidConfigArgs>> entraidConfig() {
+        return Optional.ofNullable(this.entraidConfig);
+    }
+
+    /**
      * Config used to determine the final backup settings for the instance
      * 
      */
@@ -600,6 +616,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.effectiveAvailabilityType = $.effectiveAvailabilityType;
         this.enableDataplexIntegration = $.enableDataplexIntegration;
         this.enableGoogleMlIntegration = $.enableGoogleMlIntegration;
+        this.entraidConfig = $.entraidConfig;
         this.finalBackupConfig = $.finalBackupConfig;
         this.insightsConfig = $.insightsConfig;
         this.ipConfiguration = $.ipConfiguration;
@@ -1124,6 +1141,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder enableGoogleMlIntegration(Boolean enableGoogleMlIntegration) {
             return enableGoogleMlIntegration(Output.of(enableGoogleMlIntegration));
+        }
+
+        /**
+         * @param entraidConfig The Microsoft Entra ID configuration for the SQL Server instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entraidConfig(@Nullable Output<DatabaseInstanceSettingsEntraidConfigArgs> entraidConfig) {
+            $.entraidConfig = entraidConfig;
+            return this;
+        }
+
+        /**
+         * @param entraidConfig The Microsoft Entra ID configuration for the SQL Server instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entraidConfig(DatabaseInstanceSettingsEntraidConfigArgs entraidConfig) {
+            return entraidConfig(Output.of(entraidConfig));
         }
 
         /**

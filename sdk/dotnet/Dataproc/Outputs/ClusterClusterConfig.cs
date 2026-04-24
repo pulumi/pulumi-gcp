@@ -55,6 +55,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigEndpointConfig? EndpointConfig;
         /// <summary>
+        /// The cluster engine.
+        /// </summary>
+        public readonly string? Engine;
+        /// <summary>
         /// Common config settings for resources of Google Compute Engine cluster
         /// instances, applicable to all instances in the cluster. Structure defined below.
         /// </summary>
@@ -137,6 +141,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             Outputs.ClusterClusterConfigEndpointConfig? endpointConfig,
 
+            string? engine,
+
             Outputs.ClusterClusterConfigGceClusterConfig? gceClusterConfig,
 
             ImmutableArray<Outputs.ClusterClusterConfigInitializationAction> initializationActions,
@@ -167,6 +173,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             DataprocMetricConfig = dataprocMetricConfig;
             EncryptionConfig = encryptionConfig;
             EndpointConfig = endpointConfig;
+            Engine = engine;
             GceClusterConfig = gceClusterConfig;
             InitializationActions = initializationActions;
             LifecycleConfig = lifecycleConfig;

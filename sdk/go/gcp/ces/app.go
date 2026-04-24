@@ -196,7 +196,7 @@ import (
 //					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
-//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
@@ -409,7 +409,7 @@ import (
 //					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
-//					Model:       pulumi.String("gemini-1.5-flash"),
+//					Model:       pulumi.String("gemini-2.5-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
@@ -548,7 +548,7 @@ type App struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Settings to describe the logging behaviors for the app.
 	// Structure is documented below.
-	LoggingSettings AppLoggingSettingsPtrOutput `pulumi:"loggingSettings"`
+	LoggingSettings AppLoggingSettingsOutput `pulumi:"loggingSettings"`
 	// Metadata about the app. This field can be used to store additional
 	// information relevant to the app's details or intended usages.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
@@ -1081,8 +1081,8 @@ func (o AppOutput) Location() pulumi.StringOutput {
 
 // Settings to describe the logging behaviors for the app.
 // Structure is documented below.
-func (o AppOutput) LoggingSettings() AppLoggingSettingsPtrOutput {
-	return o.ApplyT(func(v *App) AppLoggingSettingsPtrOutput { return v.LoggingSettings }).(AppLoggingSettingsPtrOutput)
+func (o AppOutput) LoggingSettings() AppLoggingSettingsOutput {
+	return o.ApplyT(func(v *App) AppLoggingSettingsOutput { return v.LoggingSettings }).(AppLoggingSettingsOutput)
 }
 
 // Metadata about the app. This field can be used to store additional

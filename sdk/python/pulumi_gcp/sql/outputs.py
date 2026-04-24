@@ -34,6 +34,7 @@ __all__ = [
     'DatabaseInstanceSettingsDataCacheConfig',
     'DatabaseInstanceSettingsDatabaseFlag',
     'DatabaseInstanceSettingsDenyMaintenancePeriod',
+    'DatabaseInstanceSettingsEntraidConfig',
     'DatabaseInstanceSettingsFinalBackupConfig',
     'DatabaseInstanceSettingsInsightsConfig',
     'DatabaseInstanceSettingsIpConfiguration',
@@ -68,6 +69,7 @@ __all__ = [
     'GetDatabaseInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstanceSettingDenyMaintenancePeriodResult',
+    'GetDatabaseInstanceSettingEntraidConfigResult',
     'GetDatabaseInstanceSettingFinalBackupConfigResult',
     'GetDatabaseInstanceSettingInsightsConfigResult',
     'GetDatabaseInstanceSettingIpConfigurationResult',
@@ -99,6 +101,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstancesInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult',
+    'GetDatabaseInstancesInstanceSettingEntraidConfigResult',
     'GetDatabaseInstancesInstanceSettingFinalBackupConfigResult',
     'GetDatabaseInstancesInstanceSettingInsightsConfigResult',
     'GetDatabaseInstancesInstanceSettingIpConfigurationResult',
@@ -959,6 +962,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "enable_dataplex_integration"
         elif key == "enableGoogleMlIntegration":
             suggest = "enable_google_ml_integration"
+        elif key == "entraidConfig":
+            suggest = "entraid_config"
         elif key == "finalBackupConfig":
             suggest = "final_backup_config"
         elif key == "insightsConfig":
@@ -1021,6 +1026,7 @@ class DatabaseInstanceSettings(dict):
                  effective_availability_type: Optional[_builtins.str] = None,
                  enable_dataplex_integration: Optional[_builtins.bool] = None,
                  enable_google_ml_integration: Optional[_builtins.bool] = None,
+                 entraid_config: Optional['outputs.DatabaseInstanceSettingsEntraidConfig'] = None,
                  final_backup_config: Optional['outputs.DatabaseInstanceSettingsFinalBackupConfig'] = None,
                  insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
@@ -1074,6 +1080,7 @@ class DatabaseInstanceSettings(dict):
                `settings.0.availability_type`).
         :param _builtins.bool enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param _builtins.bool enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        :param 'DatabaseInstanceSettingsEntraidConfigArgs' entraid_config: The Microsoft Entra ID configuration for the SQL Server instance.
         :param 'DatabaseInstanceSettingsFinalBackupConfigArgs' final_backup_config: Config used to determine the final backup settings for the instance
         :param 'DatabaseInstanceSettingsInsightsConfigArgs' insights_config: Configuration of Query Insights.
         :param 'DatabaseInstanceSettingsMaintenanceWindowArgs' maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -1134,6 +1141,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         if enable_google_ml_integration is not None:
             pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        if entraid_config is not None:
+            pulumi.set(__self__, "entraid_config", entraid_config)
         if final_backup_config is not None:
             pulumi.set(__self__, "final_backup_config", final_backup_config)
         if insights_config is not None:
@@ -1364,6 +1373,14 @@ class DatabaseInstanceSettings(dict):
         Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         """
         return pulumi.get(self, "enable_google_ml_integration")
+
+    @_builtins.property
+    @pulumi.getter(name="entraidConfig")
+    def entraid_config(self) -> Optional['outputs.DatabaseInstanceSettingsEntraidConfig']:
+        """
+        The Microsoft Entra ID configuration for the SQL Server instance.
+        """
+        return pulumi.get(self, "entraid_config")
 
     @_builtins.property
     @pulumi.getter(name="finalBackupConfig")
@@ -1899,6 +1916,56 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
         Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
         return pulumi.get(self, "time")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsEntraidConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationId":
+            suggest = "application_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsEntraidConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsEntraidConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsEntraidConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 application_id: Optional[_builtins.str] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str application_id: The application ID for the Entra ID configuration. This must be paired with a tenant_id to be valid.
+        :param _builtins.str tenant_id: The tenant ID for the Entra ID configuration. This must be paired with an application_id to be valid.
+        """
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[_builtins.str]:
+        """
+        The application ID for the Entra ID configuration. This must be paired with a tenant_id to be valid.
+        """
+        return pulumi.get(self, "application_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        The tenant ID for the Entra ID configuration. This must be paired with an application_id to be valid.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -3695,6 +3762,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  effective_availability_type: _builtins.str,
                  enable_dataplex_integration: _builtins.bool,
                  enable_google_ml_integration: _builtins.bool,
+                 entraid_configs: Sequence['outputs.GetDatabaseInstanceSettingEntraidConfigResult'],
                  final_backup_configs: Sequence['outputs.GetDatabaseInstanceSettingFinalBackupConfigResult'],
                  insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
@@ -3738,6 +3806,7 @@ class GetDatabaseInstanceSettingResult(dict):
                API (for read pools, effective_availability_type may differ from availability_type).
         :param _builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param _builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
+        :param Sequence['GetDatabaseInstanceSettingEntraidConfigArgs'] entraid_configs: The Microsoft Entra ID configuration for the SQL Server instance.
         :param Sequence['GetDatabaseInstanceSettingFinalBackupConfigArgs'] final_backup_configs: Config used to determine the final backup settings for the instance
         :param Sequence['GetDatabaseInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
         :param Sequence['GetDatabaseInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -3773,6 +3842,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        pulumi.set(__self__, "entraid_configs", entraid_configs)
         pulumi.set(__self__, "final_backup_configs", final_backup_configs)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
@@ -3973,6 +4043,14 @@ class GetDatabaseInstanceSettingResult(dict):
         Enables Vertex AI Integration.
         """
         return pulumi.get(self, "enable_google_ml_integration")
+
+    @_builtins.property
+    @pulumi.getter(name="entraidConfigs")
+    def entraid_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingEntraidConfigResult']:
+        """
+        The Microsoft Entra ID configuration for the SQL Server instance.
+        """
+        return pulumi.get(self, "entraid_configs")
 
     @_builtins.property
     @pulumi.getter(name="finalBackupConfigs")
@@ -4374,6 +4452,35 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
         Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
         return pulumi.get(self, "time")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingEntraidConfigResult(dict):
+    def __init__(__self__, *,
+                 application_id: _builtins.str,
+                 tenant_id: _builtins.str):
+        """
+        :param _builtins.str application_id: The application ID for the Entra ID configuration.
+        :param _builtins.str tenant_id: The tenant ID for the Entra ID configuration.
+        """
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> _builtins.str:
+        """
+        The application ID for the Entra ID configuration.
+        """
+        return pulumi.get(self, "application_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        The tenant ID for the Entra ID configuration.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -5937,6 +6044,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  effective_availability_type: _builtins.str,
                  enable_dataplex_integration: _builtins.bool,
                  enable_google_ml_integration: _builtins.bool,
+                 entraid_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingEntraidConfigResult'],
                  final_backup_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingFinalBackupConfigResult'],
                  insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult'],
@@ -5980,6 +6088,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                API (for read pools, effective_availability_type may differ from availability_type).
         :param _builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param _builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
+        :param Sequence['GetDatabaseInstancesInstanceSettingEntraidConfigArgs'] entraid_configs: The Microsoft Entra ID configuration for the SQL Server instance.
         :param Sequence['GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs'] final_backup_configs: Config used to determine the final backup settings for the instance
         :param Sequence['GetDatabaseInstancesInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
         :param Sequence['GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
@@ -6015,6 +6124,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        pulumi.set(__self__, "entraid_configs", entraid_configs)
         pulumi.set(__self__, "final_backup_configs", final_backup_configs)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
@@ -6215,6 +6325,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         Enables Vertex AI Integration.
         """
         return pulumi.get(self, "enable_google_ml_integration")
+
+    @_builtins.property
+    @pulumi.getter(name="entraidConfigs")
+    def entraid_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingEntraidConfigResult']:
+        """
+        The Microsoft Entra ID configuration for the SQL Server instance.
+        """
+        return pulumi.get(self, "entraid_configs")
 
     @_builtins.property
     @pulumi.getter(name="finalBackupConfigs")
@@ -6616,6 +6734,35 @@ class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
         Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
         return pulumi.get(self, "time")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingEntraidConfigResult(dict):
+    def __init__(__self__, *,
+                 application_id: _builtins.str,
+                 tenant_id: _builtins.str):
+        """
+        :param _builtins.str application_id: The application ID for the Entra ID configuration.
+        :param _builtins.str tenant_id: The tenant ID for the Entra ID configuration.
+        """
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> _builtins.str:
+        """
+        The application ID for the Entra ID configuration.
+        """
+        return pulumi.get(self, "application_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        The tenant ID for the Entra ID configuration.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type

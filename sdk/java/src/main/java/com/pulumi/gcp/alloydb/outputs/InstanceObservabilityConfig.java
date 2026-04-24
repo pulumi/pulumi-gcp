@@ -48,6 +48,11 @@ public final class InstanceObservabilityConfig {
      */
     private @Nullable Boolean trackActiveQueries;
     /**
+     * @return Track client address for an instance. If not set, default value is &#34;off&#34;.
+     * 
+     */
+    private @Nullable Boolean trackClientAddress;
+    /**
      * @return Record wait event types during query execution for an instance.
      * 
      */
@@ -109,6 +114,13 @@ public final class InstanceObservabilityConfig {
         return Optional.ofNullable(this.trackActiveQueries);
     }
     /**
+     * @return Track client address for an instance. If not set, default value is &#34;off&#34;.
+     * 
+     */
+    public Optional<Boolean> trackClientAddress() {
+        return Optional.ofNullable(this.trackClientAddress);
+    }
+    /**
      * @return Record wait event types during query execution for an instance.
      * 
      */
@@ -139,6 +151,7 @@ public final class InstanceObservabilityConfig {
         private @Nullable Integer queryPlansPerMinute;
         private @Nullable Boolean recordApplicationTags;
         private @Nullable Boolean trackActiveQueries;
+        private @Nullable Boolean trackClientAddress;
         private @Nullable Boolean trackWaitEventTypes;
         private @Nullable Boolean trackWaitEvents;
         public Builder() {}
@@ -151,6 +164,7 @@ public final class InstanceObservabilityConfig {
     	      this.queryPlansPerMinute = defaults.queryPlansPerMinute;
     	      this.recordApplicationTags = defaults.recordApplicationTags;
     	      this.trackActiveQueries = defaults.trackActiveQueries;
+    	      this.trackClientAddress = defaults.trackClientAddress;
     	      this.trackWaitEventTypes = defaults.trackWaitEventTypes;
     	      this.trackWaitEvents = defaults.trackWaitEvents;
         }
@@ -198,6 +212,12 @@ public final class InstanceObservabilityConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder trackClientAddress(@Nullable Boolean trackClientAddress) {
+
+            this.trackClientAddress = trackClientAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder trackWaitEventTypes(@Nullable Boolean trackWaitEventTypes) {
 
             this.trackWaitEventTypes = trackWaitEventTypes;
@@ -218,6 +238,7 @@ public final class InstanceObservabilityConfig {
             _resultValue.queryPlansPerMinute = queryPlansPerMinute;
             _resultValue.recordApplicationTags = recordApplicationTags;
             _resultValue.trackActiveQueries = trackActiveQueries;
+            _resultValue.trackClientAddress = trackClientAddress;
             _resultValue.trackWaitEventTypes = trackWaitEventTypes;
             _resultValue.trackWaitEvents = trackWaitEvents;
             return _resultValue;

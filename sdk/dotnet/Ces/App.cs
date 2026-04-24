@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
     ///         {
-    ///             Model = "gemini-1.5-flash",
+    ///             Model = "gemini-2.5-flash-001",
     ///             Temperature = 0.5,
     ///         },
     ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
     ///         {
-    ///             Model = "gemini-1.5-flash",
+    ///             Model = "gemini-2.5-flash-001",
     ///             Temperature = 0.5,
     ///         },
     ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
@@ -589,7 +589,7 @@ namespace Pulumi.Gcp.Ces
         /// Structure is documented below.
         /// </summary>
         [Output("loggingSettings")]
-        public Output<Outputs.AppLoggingSettings?> LoggingSettings { get; private set; } = null!;
+        public Output<Outputs.AppLoggingSettings> LoggingSettings { get; private set; } = null!;
 
         /// <summary>
         /// Metadata about the app. This field can be used to store additional

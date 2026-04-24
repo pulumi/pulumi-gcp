@@ -28,6 +28,16 @@ namespace Pulumi.Gcp.Iam.Inputs
         }
 
         /// <summary>
+        /// If set to True, the trust bundle will include the private ca managed identity regional root
+        /// public certificates.
+        /// 
+        /// &gt; **Note** `TrustDefaultSharedCa` is only supported for managed identity trust domain
+        /// resource.
+        /// </summary>
+        [Input("trustDefaultSharedCa")]
+        public Input<bool>? TrustDefaultSharedCa { get; set; }
+
+        /// <summary>
         /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("trustDomain", required: true)]

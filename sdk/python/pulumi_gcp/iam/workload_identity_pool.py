@@ -606,6 +606,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 "additional_trust_bundles": [
                     {
                         "trust_domain": "example.com",
+                        "trust_default_shared_ca": False,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
@@ -617,6 +618,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                     },
                     {
                         "trust_domain": "example.net",
+                        "trust_default_shared_ca": False,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
@@ -655,6 +657,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 "additional_trust_bundles": [
                     {
                         "trust_domain": "example.com",
+                        "trust_default_shared_ca": True,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
@@ -666,6 +669,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                     },
                     {
                         "trust_domain": "example.net",
+                        "trust_default_shared_ca": True,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
@@ -814,6 +818,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 "additional_trust_bundles": [
                     {
                         "trust_domain": "example.com",
+                        "trust_default_shared_ca": False,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
@@ -825,6 +830,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                     },
                     {
                         "trust_domain": "example.net",
+                        "trust_default_shared_ca": False,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
@@ -863,6 +869,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                 "additional_trust_bundles": [
                     {
                         "trust_domain": "example.com",
+                        "trust_default_shared_ca": True,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
@@ -874,6 +881,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                     },
                     {
                         "trust_domain": "example.net",
+                        "trust_default_shared_ca": True,
                         "trust_anchors": [
                             {
                                 "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,

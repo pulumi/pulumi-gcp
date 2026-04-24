@@ -117,6 +117,8 @@ __all__ = [
     'HostingVersionConfigRewriteArgsDict',
     'HostingVersionConfigRewriteRunArgs',
     'HostingVersionConfigRewriteRunArgsDict',
+    'StorageDefaultBucketBucketArgs',
+    'StorageDefaultBucketBucketArgsDict',
 ]
 
 class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
@@ -4344,5 +4346,40 @@ class HostingVersionConfigRewriteRunArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "region", value)
+
+
+class StorageDefaultBucketBucketArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Output)
+    The resource name of the bucket in the format
+    projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+    """
+
+@pulumi.input_type
+class StorageDefaultBucketBucketArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: (Output)
+               The resource name of the bucket in the format
+               projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The resource name of the bucket in the format
+        projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
 

@@ -15,12 +15,12 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     {
         /// <summary>
         /// (Output)
-        /// The time when the latest DataScanJob started.
+        /// The time when the latest DataScanJob ended.
         /// </summary>
         public readonly string? LatestJobEndTime;
         /// <summary>
         /// (Output)
-        /// The time when the latest DataScanJob ended.
+        /// The time when the latest DataScanJob started.
         /// </summary>
         public readonly string? LatestJobStartTime;
 

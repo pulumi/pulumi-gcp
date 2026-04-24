@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
- *             .nodeType("n1-node-96-624")
+ *             .nodeType("c2-node-60-240")
  *             .build());
  * 
  *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
- *             .zone("us-central1-a")
- *             .description("example google_compute_node_group for the Google Provider")
+ *             .zone("us-central1-c")
+ *             .description("example google_compute_node_group for Terraform Google Provider")
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .build());
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
  *             .name("soletenant-group")
- *             .zone("us-central1-a")
+ *             .zone("us-central1-f")
  *             .description("example google_compute_node_group for Terraform Google Provider")
  *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
- *             .nodeType("n1-node-96-624")
+ *             .nodeType("c2-node-60-240")
  *             .build());
  * 
  *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
  *             .name("soletenant-tmpl")
  *             .region("us-central1")
- *             .nodeType("n1-node-96-624")
+ *             .nodeType("c2-node-60-240")
  *             .build());
  * 
  *         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()

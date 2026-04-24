@@ -17,12 +17,9 @@ import javax.annotation.Nullable;
 /**
  * A resource represents a Dataform folder
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about Folder, see:
  * 
- * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.folders)
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.folders)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dataform/docs/)
  * 
@@ -54,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderBasic = new Folder("dataformFolderBasic", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Basic Folder-_39249")
+ *             .displayName("Basic Folder-_8493")
  *             .build());
  * 
  *     }
@@ -87,12 +84,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderRoot = new Folder("dataformFolderRoot", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Root Folder")
+ *             .displayName("Root Folder-_9106")
  *             .build());
  * 
  *         var dataformFolderFull = new Folder("dataformFolderFull", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Nested Folder")
+ *             .displayName("Nested Folder-_27169")
  *             .containingFolder(dataformFolderRoot.id())
  *             .build());
  * 

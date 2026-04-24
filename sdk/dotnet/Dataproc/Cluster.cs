@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
     ///             StagingBucket = "dataproc-staging-bucket",
-    ///             ClusterTier = "CLUSTER_TIER_STANDARD",
+    ///             Engine = "DEFAULT",
     ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
     ///             {
     ///                 NumInstances = 1,

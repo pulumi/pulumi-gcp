@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_41819@example.com",
+ *             googleGroup: "tf-test-analysts-_29439@example.com",
  *         },
  *     }],
  * });
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_75092@example.com",
+ *                 googleGroup: "tf-test-analysts-_87786@example.com",
  *             },
  *         },
  *         {
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *             groupId: "scientist",
  *             displayName: "Data Scientist",
  *             principal: {
- *                 googleGroup: "tf-test-scientists-_2605@example.com",
+ *                 googleGroup: "tf-test-scientists-_2067@example.com",
  *             },
  *         },
  *     ],

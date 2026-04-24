@@ -6640,6 +6640,12 @@ type WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle struct {
 	// trust anchors here.
 	// Structure is documented below.
 	TrustAnchors []WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor `pulumi:"trustAnchors"`
+	// If set to True, the trust bundle will include the private ca managed identity regional root
+	// public certificates.
+	//
+	// > **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+	// resource.
+	TrustDefaultSharedCa *bool `pulumi:"trustDefaultSharedCa"`
 	// The identifier for this object. Format specified above.
 	TrustDomain string `pulumi:"trustDomain"`
 }
@@ -6661,6 +6667,12 @@ type WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs struct {
 	// trust anchors here.
 	// Structure is documented below.
 	TrustAnchors WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayInput `pulumi:"trustAnchors"`
+	// If set to True, the trust bundle will include the private ca managed identity regional root
+	// public certificates.
+	//
+	// > **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+	// resource.
+	TrustDefaultSharedCa pulumi.BoolPtrInput `pulumi:"trustDefaultSharedCa"`
 	// The identifier for this object. Format specified above.
 	TrustDomain pulumi.StringInput `pulumi:"trustDomain"`
 }
@@ -6724,6 +6736,17 @@ func (o WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) TrustA
 	return o.ApplyT(func(v WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle) []WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor {
 		return v.TrustAnchors
 	}).(WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayOutput)
+}
+
+// If set to True, the trust bundle will include the private ca managed identity regional root
+// public certificates.
+//
+// > **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
+// resource.
+func (o WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) TrustDefaultSharedCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle) *bool {
+		return v.TrustDefaultSharedCa
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The identifier for this object. Format specified above.
@@ -8807,7 +8830,13 @@ type GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle struct {
 	// 'TrustStore'. The incoming end entity's certificate must be chained up to one of the
 	// trust anchors here.
 	TrustAnchors []GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor `pulumi:"trustAnchors"`
-	TrustDomain  string                                                                     `pulumi:"trustDomain"`
+	// If set to True, the trust bundle will include the private ca managed identity regional root
+	// public certificates.
+	//
+	// > **Note** 'trust_default_shared_ca' is only supported for managed identity trust domain
+	// resource.
+	TrustDefaultSharedCa bool   `pulumi:"trustDefaultSharedCa"`
+	TrustDomain          string `pulumi:"trustDomain"`
 }
 
 // GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleInput is an input type that accepts GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs and GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput values.
@@ -8826,7 +8855,13 @@ type GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs struct {
 	// 'TrustStore'. The incoming end entity's certificate must be chained up to one of the
 	// trust anchors here.
 	TrustAnchors GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayInput `pulumi:"trustAnchors"`
-	TrustDomain  pulumi.StringInput                                                                 `pulumi:"trustDomain"`
+	// If set to True, the trust bundle will include the private ca managed identity regional root
+	// public certificates.
+	//
+	// > **Note** 'trust_default_shared_ca' is only supported for managed identity trust domain
+	// resource.
+	TrustDefaultSharedCa pulumi.BoolInput   `pulumi:"trustDefaultSharedCa"`
+	TrustDomain          pulumi.StringInput `pulumi:"trustDomain"`
 }
 
 func (GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs) ElementType() reflect.Type {
@@ -8887,6 +8922,17 @@ func (o GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) Tru
 	return o.ApplyT(func(v GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle) []GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor {
 		return v.TrustAnchors
 	}).(GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayOutput)
+}
+
+// If set to True, the trust bundle will include the private ca managed identity regional root
+// public certificates.
+//
+// > **Note** 'trust_default_shared_ca' is only supported for managed identity trust domain
+// resource.
+func (o GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) TrustDefaultSharedCa() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle) bool {
+		return v.TrustDefaultSharedCa
+	}).(pulumi.BoolOutput)
 }
 
 func (o GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleOutput) TrustDomain() pulumi.StringOutput {

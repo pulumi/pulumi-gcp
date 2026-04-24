@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "dci-tf-_26317",
+    ///         ProjectId = "dci-tf-_82749",
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var myApphubApplication = new Gcp.Apphub.Application("my_apphub_application", new()
     ///     {
     ///         Location = "us-central1",
-    ///         ApplicationId = "tf-test-example-application_4866",
+    ///         ApplicationId = "tf-test-example-application_15022",
     ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
     ///         {
     ///             Type = "REGIONAL",
@@ -210,7 +210,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var insightsConfig = new Gcp.DeveloperConnect.InsightsConfig("insights_config", new()
     ///     {
     ///         Location = "us-central1",
-    ///         InsightsConfigId = "tf-test-ic-apphub-_12618",
+    ///         InsightsConfigId = "tf-test-ic-apphub-_89648",
     ///         Project = project.ProjectId,
     ///         Annotations = null,
     ///         Labels = null,
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "dci-tf-_32270",
+    ///         ProjectId = "dci-tf-_64612",
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
@@ -428,7 +428,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var insightsConfigProjects = new Gcp.DeveloperConnect.InsightsConfig("insights_config_projects", new()
     ///     {
     ///         Location = "us-central1",
-    ///         InsightsConfigId = "tf-test-ic-projects-_44703",
+    ///         InsightsConfigId = "tf-test-ic-projects-_34242",
     ///         Project = project.ProjectId,
     ///         Annotations = null,
     ///         Labels = null,

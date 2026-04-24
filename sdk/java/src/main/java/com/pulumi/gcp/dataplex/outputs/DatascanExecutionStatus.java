@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 public final class DatascanExecutionStatus {
     /**
      * @return (Output)
-     * The time when the latest DataScanJob started.
+     * The time when the latest DataScanJob ended.
      * 
      */
     private @Nullable String latestJobEndTime;
     /**
      * @return (Output)
-     * The time when the latest DataScanJob ended.
+     * The time when the latest DataScanJob started.
      * 
      */
     private @Nullable String latestJobStartTime;
@@ -27,7 +27,7 @@ public final class DatascanExecutionStatus {
     private DatascanExecutionStatus() {}
     /**
      * @return (Output)
-     * The time when the latest DataScanJob started.
+     * The time when the latest DataScanJob ended.
      * 
      */
     public Optional<String> latestJobEndTime() {
@@ -35,7 +35,7 @@ public final class DatascanExecutionStatus {
     }
     /**
      * @return (Output)
-     * The time when the latest DataScanJob ended.
+     * The time when the latest DataScanJob started.
      * 
      */
     public Optional<String> latestJobStartTime() {

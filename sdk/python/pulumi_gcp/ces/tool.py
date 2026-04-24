@@ -726,7 +726,7 @@ class Tool(pulumi.CustomResource):
                     "modality_type": "TEXT",
                     "rewriter_config": {
                         "model_settings": {
-                            "model": "gemini-2.5-flash",
+                            "model": "gemini-2.5-flash-001",
                             "temperature": 1,
                         },
                         "prompt": "example-prompt",
@@ -734,7 +734,7 @@ class Tool(pulumi.CustomResource):
                     },
                     "summarization_config": {
                         "model_settings": {
-                            "model": "gemini-2.5-flash",
+                            "model": "gemini-2.5-flash-001",
                             "temperature": 1,
                         },
                         "prompt": "example-prompt",
@@ -1046,7 +1046,7 @@ class Tool(pulumi.CustomResource):
                     "modality_type": "TEXT",
                     "rewriter_config": {
                         "model_settings": {
-                            "model": "gemini-2.5-flash",
+                            "model": "gemini-2.5-flash-001",
                             "temperature": 1,
                         },
                         "prompt": "example-prompt",
@@ -1054,7 +1054,7 @@ class Tool(pulumi.CustomResource):
                     },
                     "summarization_config": {
                         "model_settings": {
-                            "model": "gemini-2.5-flash",
+                            "model": "gemini-2.5-flash-001",
                             "temperature": 1,
                         },
                         "prompt": "example-prompt",

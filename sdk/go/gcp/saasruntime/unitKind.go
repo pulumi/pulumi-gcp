@@ -156,7 +156,7 @@ type UnitKind struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+	// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
 	// common data model. Immutable once set.
 	Saas pulumi.StringOutput `pulumi:"saas"`
 	// The unique identifier of the resource. UID is unique in the time
@@ -270,7 +270,7 @@ type unitKindState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+	// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
 	// common data model. Immutable once set.
 	Saas *string `pulumi:"saas"`
 	// The unique identifier of the resource. UID is unique in the time
@@ -341,7 +341,7 @@ type UnitKindState struct {
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+	// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
 	// common data model. Immutable once set.
 	Saas pulumi.StringPtrInput
 	// The unique identifier of the resource. UID is unique in the time
@@ -399,7 +399,7 @@ type unitKindArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+	// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
 	// common data model. Immutable once set.
 	Saas string `pulumi:"saas"`
 	// The ID value for the new unit kind.
@@ -444,7 +444,7 @@ type UnitKindArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the Saas that defines the product (managed service) that
-	// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+	// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
 	// common data model. Immutable once set.
 	Saas pulumi.StringInput
 	// The ID value for the new unit kind.
@@ -634,7 +634,7 @@ func (o UnitKindOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // A reference to the Saas that defines the product (managed service) that
-// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
 // common data model. Immutable once set.
 func (o UnitKindOutput) Saas() pulumi.StringOutput {
 	return o.ApplyT(func(v *UnitKind) pulumi.StringOutput { return v.Saas }).(pulumi.StringOutput)

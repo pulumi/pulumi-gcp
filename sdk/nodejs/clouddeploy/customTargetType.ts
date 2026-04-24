@@ -113,6 +113,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Clouddeploy Custom Target Type Tasks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom_target_type = new gcp.clouddeploy.CustomTargetType("custom-target-type", {
+ *     location: "us-central1",
+ *     name: "my-custom-target-type",
+ *     description: "My custom target type",
+ *     tasks: {
+ *         render: {
+ *             container: {
+ *                 image: "gcr.io/my-project/my-render-image",
+ *             },
+ *         },
+ *         deploy: {
+ *             container: {
+ *                 image: "gcr.io/my-project/my-deploy-image",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -218,6 +242,11 @@ export class CustomTargetType extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     */
+    declare public readonly tasks: pulumi.Output<outputs.clouddeploy.CustomTargetTypeTasks | undefined>;
+    /**
      * Unique identifier of the `CustomTargetType`.
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
@@ -252,6 +281,7 @@ export class CustomTargetType extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["tasks"] = state?.tasks;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -266,6 +296,7 @@ export class CustomTargetType extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
+            resourceInputs["tasks"] = args?.tasks;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customTargetTypeId"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -346,6 +377,11 @@ export interface CustomTargetTypeState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     */
+    tasks?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeTasks>;
+    /**
      * Unique identifier of the `CustomTargetType`.
      */
     uid?: pulumi.Input<string>;
@@ -393,4 +429,9 @@ export interface CustomTargetTypeArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configures render and deploy for the `CustomTargetType` using tasks.
+     * Structure is documented below.
+     */
+    tasks?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeTasks>;
 }

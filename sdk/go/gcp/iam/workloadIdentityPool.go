@@ -136,7 +136,8 @@ import (
 //				InlineTrustConfig: &iam.WorkloadIdentityPoolInlineTrustConfigArgs{
 //					AdditionalTrustBundles: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArray{
 //						&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
-//							TrustDomain: pulumi.String("example.com"),
+//							TrustDomain:          pulumi.String("example.com"),
+//							TrustDefaultSharedCa: pulumi.Bool(false),
 //							TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
 //								&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
 //									PemCertificate: pulumi.String(invokeFile.Result),
@@ -147,7 +148,8 @@ import (
 //							},
 //						},
 //						&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
-//							TrustDomain: pulumi.String("example.net"),
+//							TrustDomain:          pulumi.String("example.net"),
+//							TrustDefaultSharedCa: pulumi.Bool(false),
 //							TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
 //								&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
 //									PemCertificate: pulumi.String(invokeFile2.Result),
@@ -227,7 +229,8 @@ import (
 //				InlineTrustConfig: &iam.WorkloadIdentityPoolInlineTrustConfigArgs{
 //					AdditionalTrustBundles: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArray{
 //						&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
-//							TrustDomain: pulumi.String("example.com"),
+//							TrustDomain:          pulumi.String("example.com"),
+//							TrustDefaultSharedCa: pulumi.Bool(true),
 //							TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
 //								&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
 //									PemCertificate: pulumi.String(invokeFile.Result),
@@ -238,7 +241,8 @@ import (
 //							},
 //						},
 //						&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
-//							TrustDomain: pulumi.String("example.net"),
+//							TrustDomain:          pulumi.String("example.net"),
+//							TrustDefaultSharedCa: pulumi.Bool(true),
 //							TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
 //								&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
 //									PemCertificate: pulumi.String(invokeFile2.Result),

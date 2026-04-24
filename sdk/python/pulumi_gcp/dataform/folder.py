@@ -214,12 +214,9 @@ class Folder(pulumi.CustomResource):
         """
         A resource represents a Dataform folder
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about Folder, see:
 
-        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.folders)
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.folders)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dataform/docs/)
 
@@ -233,7 +230,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_39249")
+            display_name="Basic Folder-_8493")
         ```
         ### Dataform Folder Full
 
@@ -243,10 +240,10 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
             region="us-central1",
-            display_name="Root Folder")
+            display_name="Root Folder-_9106")
         dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
             region="us-central1",
-            display_name="Nested Folder",
+            display_name="Nested Folder-_27169",
             containing_folder=dataform_folder_root.id)
         ```
 
@@ -289,12 +286,9 @@ class Folder(pulumi.CustomResource):
         """
         A resource represents a Dataform folder
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about Folder, see:
 
-        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.folders)
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.folders)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dataform/docs/)
 
@@ -308,7 +302,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_39249")
+            display_name="Basic Folder-_8493")
         ```
         ### Dataform Folder Full
 
@@ -318,10 +312,10 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
             region="us-central1",
-            display_name="Root Folder")
+            display_name="Root Folder-_9106")
         dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
             region="us-central1",
-            display_name="Nested Folder",
+            display_name="Nested Folder-_27169",
             containing_folder=dataform_folder_root.id)
         ```
 

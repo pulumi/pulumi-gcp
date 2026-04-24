@@ -170,6 +170,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<bool>? EnableGoogleMlIntegration { get; set; }
 
         /// <summary>
+        /// The Microsoft Entra ID configuration for the SQL Server instance.
+        /// </summary>
+        [Input("entraidConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsEntraidConfigGetArgs>? EntraidConfig { get; set; }
+
+        /// <summary>
         /// Config used to determine the final backup settings for the instance
         /// </summary>
         [Input("finalBackupConfig")]

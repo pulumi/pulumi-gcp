@@ -6,6 +6,7 @@ package com.pulumi.gcp.vectorsearch;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vectorsearch.inputs.CollectionEncryptionSpecArgs;
 import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaArgs;
 import java.lang.String;
 import java.util.List;
@@ -92,6 +93,25 @@ public final class CollectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<CollectionEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Represents a customer-managed encryption key specification that can be
+     * applied to a Vector Search collection.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CollectionEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
+    }
+
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -172,6 +192,7 @@ public final class CollectionArgs extends com.pulumi.resources.ResourceArgs {
         this.dataSchema = $.dataSchema;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.encryptionSpec = $.encryptionSpec;
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
@@ -290,6 +311,31 @@ public final class CollectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param encryptionSpec Represents a customer-managed encryption key specification that can be
+         * applied to a Vector Search collection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<CollectionEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Represents a customer-managed encryption key specification that can be
+         * applied to a Vector Search collection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(CollectionEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**
