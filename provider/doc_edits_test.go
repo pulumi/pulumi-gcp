@@ -1,11 +1,63 @@
 package gcp
 
 import (
+	"encoding/json"
+	"os"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
+
+func TestReplacementDoesNotIncludeTodos(t *testing.T) {
+	t.Parallel()
+
+	replacementsJSON, err := os.ReadFile("replacements.json")
+	require.NoError(t, err, "failed to read replacements.json")
+
+	var replacementsFile replacementFile
+	err = json.Unmarshal(replacementsJSON, &replacementsFile)
+	require.NoError(t, err, "failed to unmarshal replacements.json")
+
+	for doc, replacements := range replacementsFile {
+		for _, replacement := range replacements {
+			assert.NotContainsf(t, replacement.New, "TODO", "replacement value for %q contains TODO", doc)
+		}
+	}
+}
+
+func TestReplacementsDotJSON(t *testing.T) {
+	t.Parallel()
+
+	edit := applyReplacementsDotJSON()
+	actual, err := edit.Edit("compute_node_types.html.markdown", []byte(`resource "google_compute_node_template" "tmpl" {
+  name      = "terraform-test-tmpl"
+}`))
+	require.NoError(t, err)
+	assert.Equal(t, `resource "google_compute_node_template" "tmpl" {
+  name      = "test-tmpl"
+}`, string(actual))
+
+	actual, err = edit.Edit("unrelated.html.markdown", []byte("Terraform should be untouched here."))
+	require.NoError(t, err)
+	assert.Equal(t, "Terraform should be untouched here.", string(actual))
+}
+
+func TestJoinMultilineMarkdownLinks(t *testing.T) {
+	t.Parallel()
+
+	input := "See [customer-supplied encryption key]\n(https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)."
+	expected := "See [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)."
+
+	actual, err := joinMultilineMarkdownLinks.Edit("doc.md", []byte(input))
+	require.NoError(t, err)
+	assert.Equal(t, expected, string(actual))
+
+	actual, err = joinMultilineMarkdownLinks.Edit("doc.md", []byte("[inline](https://example.com)"))
+	require.NoError(t, err)
+	assert.Equal(t, "[inline](https://example.com)", string(actual))
+}
 
 func TestEffectiveLabels(t *testing.T) {
 	t.Parallel()
@@ -63,7 +115,7 @@ Some more text.`,
 
 	for _, tt := range tests {
 		tt := tt
-		t.Run("", func(t *testing.T) {
+		t.Run(strings.ReplaceAll(tt.text, "\n", " "), func(t *testing.T) {
 			t.Parallel()
 			actual, err := removeSecretsInPlainTextNote.Edit("doc.md", []byte(tt.text))
 			require.NoError(t, err)

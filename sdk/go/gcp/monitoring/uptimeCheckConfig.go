@@ -404,8 +404,7 @@ type UptimeCheckConfig struct {
 	HttpCheck UptimeCheckConfigHttpCheckPtrOutput `pulumi:"httpCheck"`
 	// Specifies whether to log the results of failed probes to Cloud Logging.
 	LogCheckFailures pulumi.BoolPtrOutput `pulumi:"logCheckFailures"`
-	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
@@ -484,8 +483,7 @@ type uptimeCheckConfigState struct {
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
 	// Specifies whether to log the results of failed probes to Cloud Logging.
 	LogCheckFailures *bool `pulumi:"logCheckFailures"`
-	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
@@ -529,8 +527,7 @@ type UptimeCheckConfigState struct {
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
 	// Specifies whether to log the results of failed probes to Cloud Logging.
 	LogCheckFailures pulumi.BoolPtrInput
-	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
@@ -578,8 +575,7 @@ type uptimeCheckConfigArgs struct {
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
 	// Specifies whether to log the results of failed probes to Cloud Logging.
 	LogCheckFailures *bool `pulumi:"logCheckFailures"`
-	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
@@ -620,8 +616,7 @@ type UptimeCheckConfigArgs struct {
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
 	// Specifies whether to log the results of failed probes to Cloud Logging.
 	LogCheckFailures pulumi.BoolPtrInput
-	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
@@ -762,8 +757,7 @@ func (o UptimeCheckConfigOutput) LogCheckFailures() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.BoolPtrOutput { return v.LogCheckFailures }).(pulumi.BoolPtrOutput)
 }
 
-// The [monitored resource]
-// (https://cloud.google.com/monitoring/api/resources) associated with the
+// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
 // configuration. The following monitored resource types are supported for
 // uptime checks:
 func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredResourcePtrOutput {

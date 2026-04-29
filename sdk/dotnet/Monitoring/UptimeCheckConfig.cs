@@ -412,8 +412,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<bool?> LogCheckFailures { get; private set; } = null!;
 
         /// <summary>
-        /// The [monitored resource]
-        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for
         /// uptime checks:
         /// </summary>
@@ -570,8 +569,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? LogCheckFailures { get; set; }
 
         /// <summary>
-        /// The [monitored resource]
-        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for
         /// uptime checks:
         /// </summary>
@@ -690,8 +688,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? LogCheckFailures { get; set; }
 
         /// <summary>
-        /// The [monitored resource]
-        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for
         /// uptime checks:
         /// </summary>

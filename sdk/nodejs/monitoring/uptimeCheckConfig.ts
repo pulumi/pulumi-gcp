@@ -324,8 +324,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     declare public readonly logCheckFailures: pulumi.Output<boolean | undefined>;
     /**
-     * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
@@ -462,8 +461,7 @@ export interface UptimeCheckConfigState {
      */
     logCheckFailures?: pulumi.Input<boolean>;
     /**
-     * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
@@ -542,8 +540,7 @@ export interface UptimeCheckConfigArgs {
      */
     logCheckFailures?: pulumi.Input<boolean>;
     /**
-     * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */

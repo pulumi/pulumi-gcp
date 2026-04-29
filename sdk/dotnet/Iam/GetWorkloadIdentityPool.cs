@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Iam
         /// See Provider Versions for more details on beta resources.
         /// 
         /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -46,6 +47,7 @@ namespace Pulumi.Gcp.Iam
         /// See Provider Versions for more details on beta resources.
         /// 
         /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -74,6 +76,7 @@ namespace Pulumi.Gcp.Iam
         /// See Provider Versions for more details on beta resources.
         /// 
         /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
