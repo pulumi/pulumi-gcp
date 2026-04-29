@@ -53,8 +53,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A 256-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+     * A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * may be set.
@@ -64,8 +63,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> diskEncryptionKeyRaw;
 
     /**
-     * @return A 256-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+     * @return A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * may be set.
@@ -76,16 +74,14 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * 
      */
     @Import(name="diskEncryptionKeyRsa")
     private @Nullable Output<String> diskEncryptionKeyRsa;
 
     /**
-     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
      * 
      */
     public Optional<Output<String>> diskEncryptionKeyRsa() {
@@ -94,8 +90,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * encoded SHA-256 hash of the [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+     * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
      * 
      */
     @Import(name="diskEncryptionKeySha256")
@@ -103,8 +98,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * encoded SHA-256 hash of the [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+     * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeySha256() {
@@ -334,8 +328,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
          * may be set.
@@ -349,8 +342,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
          * may be set.
@@ -363,8 +355,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
          * 
          * @return builder
          * 
@@ -375,8 +366,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
          * 
          * @return builder
          * 
@@ -387,8 +377,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param diskEncryptionKeySha256 The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * encoded SHA-256 hash of the [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+         * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          * 
          * @return builder
          * 
@@ -400,8 +389,7 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param diskEncryptionKeySha256 The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * encoded SHA-256 hash of the [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+         * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          * 
          * @return builder
          * 

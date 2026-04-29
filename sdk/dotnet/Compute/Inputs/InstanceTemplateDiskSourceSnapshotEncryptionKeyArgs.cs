@@ -32,8 +32,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private Input<string>? _rawKey;
 
         /// <summary>
-        /// A 256-bit [customer-supplied encryption key]
-        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        /// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         /// to decrypt this snapshot. Only one of `KmsKeySelfLink`, `RsaEncryptedKey` and `RawKey`
         /// may be set.
@@ -52,8 +51,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private Input<string>? _rsaEncryptedKey;
 
         /// <summary>
-        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `KmsKeySelfLink`, `RsaEncryptedKey` and `RawKey`
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `KmsKeySelfLink`, `RsaEncryptedKey` and `RawKey`
         /// may be set.
         /// </summary>
         public Input<string>? RsaEncryptedKey

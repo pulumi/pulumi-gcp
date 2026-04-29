@@ -537,8 +537,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logCheckFailures);
     }
     /**
-     * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -547,8 +546,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ UptimeCheckConfigMonitoredResource> monitoredResource;
 
     /**
-     * @return The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * @return The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 

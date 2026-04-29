@@ -30,8 +30,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private Input<string>? _diskEncryptionKeyRaw;
 
         /// <summary>
-        /// A 256-bit [customer-supplied encryption key]
-        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        /// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         /// to encrypt this disk. Only one of `KmsKeySelfLink`, `DiskEncryptionKeyRsa` and `DiskEncryptionKeyRaw`
         /// may be set.
@@ -50,8 +49,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private Input<string>? _diskEncryptionKeyRsa;
 
         /// <summary>
-        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `KmsKeySelfLink`, `DiskEncryptionKeyRsa` and `DiskEncryptionKeyRaw`
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `KmsKeySelfLink`, `DiskEncryptionKeyRsa` and `DiskEncryptionKeyRaw`
         /// </summary>
         public Input<string>? DiskEncryptionKeyRsa
         {
@@ -65,8 +63,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        /// encoded SHA-256 hash of the [customer-supplied encryption key]
-        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        /// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         /// </summary>
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }

@@ -1,0 +1,78 @@
+{
+  "composer_environment.html.markdown": [
+    {
+      "old": "    Full structure is provided by [composer environment resource documentation](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/composer_environment#config).\n",
+      "new": ""
+    },
+    {
+      "old": "Full structure is provided by composer environment resource documentation.\n",
+      "new": ""
+    }
+  ],
+  "compute_instance_template.html.markdown": [
+    {
+      "old": "  this blank, Terraform will auto-generate a unique name.",
+      "new": "  this blank, the provider will auto-generate a unique name."
+    },
+    {
+      "old": "    not work unless you are running Terraform can send traffic to the instance's",
+      "new": "    not work unless you are running `pulumi up` from an environment that can send traffic to the instance's"
+    }
+  ],
+  "compute_node_types.html.markdown": [
+    {
+      "old": "  name      = \"terraform-test-tmpl\"",
+      "new": "  name      = \"test-tmpl\""
+    }
+  ],
+  "compute_zones.html.markdown": [
+    {
+      "old": "  name               = \"terraform-test-${count.index}\"",
+      "new": "  name               = \"test-${count.index}\""
+    }
+  ],
+  "container_engine_versions.html.markdown": [
+    {
+      "old": "  name               = \"terraform-test-cluster\"",
+      "new": "  name               = \"test-cluster\""
+    },
+    {
+      "old": "* `version_prefix` (Optional) - If provided, Terraform will only return versions",
+      "new": "* `version_prefix` (Optional) - If provided, the provider will only return versions"
+    }
+  ],
+  "dns_managed_zone.html.markdown": [
+    {
+      "old": "* `dns_name` - The fully qualified DNS name of this zone, e.g. `terraform.io.`.",
+      "new": "* `dns_name` - The fully qualified DNS name of this zone, e.g. `example.io.`."
+    }
+  ],
+  "service_account_id_token.html.markdown": [
+    {
+      "old": "provided by google_service_account_access_token.",
+      "new": "provided by `google_service_account_access_token`."
+    },
+    {
+      "old": "  The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for Terraform has been granted `roles/run.invoker` role previously.",
+      "new": "  The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously."
+    }
+  ],
+  "storage_project_service_account.html.markdown": [
+    {
+      "old": "Terraform apply errors in cases where the service account does not yet exist.",
+      "new": "Pulumi update errors in cases where the service account does not yet exist."
+    },
+    {
+      "old": "pulumi up errors in cases where the service account does not yet exist.",
+      "new": "Pulumi update errors in cases where the service account does not yet exist."
+    },
+    {
+      "old": ">  When you write Terraform code which uses features depending on this service account *and* your Terraform code adds the service account in IAM policy on other resources,",
+      "new": ">  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,"
+    },
+    {
+      "old": "   See the examples here and in the [`google_storage_notification`](/docs/providers/google/r/storage_notification.html) resource.",
+      "new": "   See the examples here and in the `google_storage_notification` resource."
+    }
+  ]
+}

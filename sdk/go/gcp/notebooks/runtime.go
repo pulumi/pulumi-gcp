@@ -296,8 +296,7 @@ type Runtime struct {
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -377,8 +376,7 @@ type runtimeState struct {
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState *string `pulumi:"healthState"`
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -421,8 +419,7 @@ type RuntimeState struct {
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringPtrInput
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -463,8 +460,7 @@ type runtimeArgs struct {
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -493,8 +489,7 @@ type RuntimeArgs struct {
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -623,8 +618,7 @@ func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 }
 
 // The labels to associate with this runtime. Label **keys** must
-// contain 1 to 63 characters, and must conform to [RFC 1035]
-// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 // empty, but, if present, must contain 1 to 63 characters, and must
 // conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 // more than 32 labels can be associated with a cluster.

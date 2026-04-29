@@ -33,8 +33,7 @@ public final class InstanceBootDiskInitializeParamsSourceImageEncryptionKey {
     private @Nullable String rsaEncryptedKey;
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * encoded SHA-256 hash of the [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+     * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
      * 
      */
     private @Nullable String sha256;
@@ -70,8 +69,7 @@ public final class InstanceBootDiskInitializeParamsSourceImageEncryptionKey {
     }
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * encoded SHA-256 hash of the [customer-supplied encryption key]
-     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+     * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
      * 
      */
     public Optional<String> sha256() {

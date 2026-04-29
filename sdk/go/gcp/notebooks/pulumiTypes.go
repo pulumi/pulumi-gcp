@@ -2847,8 +2847,7 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// accessible without external IP addresses.
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -2938,8 +2937,7 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
 	// The labels to associate with this runtime. Label **keys** must
-	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -3120,8 +3118,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) InternalIpOnly() pulumi
 }
 
 // The labels to associate with this runtime. Label **keys** must
-// contain 1 to 63 characters, and must conform to [RFC 1035]
-// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 // empty, but, if present, must contain 1 to 63 characters, and must
 // conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 // more than 32 labels can be associated with a cluster.
@@ -3301,8 +3298,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) InternalIpOnly() pul
 }
 
 // The labels to associate with this runtime. Label **keys** must
-// contain 1 to 63 characters, and must conform to [RFC 1035]
-// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
 // empty, but, if present, must contain 1 to 63 characters, and must
 // conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 // more than 32 labels can be associated with a cluster.

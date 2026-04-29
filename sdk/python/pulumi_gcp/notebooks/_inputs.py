@@ -1219,8 +1219,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
     The labels to associate with this runtime. Label **keys** must
-    contain 1 to 63 characters, and must conform to [RFC 1035]
-    (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+    contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
     empty, but, if present, must contain 1 to 63 characters, and must
     conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
     more than 32 labels can be associated with a cluster.
@@ -1326,8 +1325,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                enabled networks, and all dependencies must be configured to be
                accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this runtime. Label **keys** must
-               contain 1 to 63 characters, and must conform to [RFC 1035]
-               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
                empty, but, if present, must contain 1 to 63 characters, and must
                conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
                more than 32 labels can be associated with a cluster.
@@ -1500,8 +1498,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this runtime. Label **keys** must
-        contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
         empty, but, if present, must contain 1 to 63 characters, and must
         conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         more than 32 labels can be associated with a cluster.

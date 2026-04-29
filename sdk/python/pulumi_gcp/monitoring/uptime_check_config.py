@@ -47,8 +47,7 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
-        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[_builtins.str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
@@ -169,8 +168,7 @@ class UptimeCheckConfigArgs:
     @pulumi.getter(name="monitoredResource")
     def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
         """
-        The [monitored resource]
-        (https://cloud.google.com/monitoring/api/resources) associated with the
+        The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         configuration. The following monitored resource types are supported for
         uptime checks:
         """
@@ -299,8 +297,7 @@ class _UptimeCheckConfigState:
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
-        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[_builtins.str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
@@ -418,8 +415,7 @@ class _UptimeCheckConfigState:
     @pulumi.getter(name="monitoredResource")
     def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
         """
-        The [monitored resource]
-        (https://cloud.google.com/monitoring/api/resources) associated with the
+        The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         configuration. The following monitored resource types are supported for
         uptime checks:
         """
@@ -842,8 +838,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
-        :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+        :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[_builtins.str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
@@ -1221,8 +1216,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
-        :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+        :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[_builtins.str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
@@ -1309,8 +1303,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter(name="monitoredResource")
     def monitored_resource(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigMonitoredResource']]:
         """
-        The [monitored resource]
-        (https://cloud.google.com/monitoring/api/resources) associated with the
+        The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         configuration. The following monitored resource types are supported for
         uptime checks:
         """

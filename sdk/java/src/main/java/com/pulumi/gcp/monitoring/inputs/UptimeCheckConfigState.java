@@ -106,8 +106,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -116,8 +115,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     private @Nullable Output<UptimeCheckConfigMonitoredResourceArgs> monitoredResource;
 
     /**
-     * @return The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * @return The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -446,8 +444,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoredResource The [monitored resource]
-         * (https://cloud.google.com/monitoring/api/resources) associated with the
+         * @param monitoredResource The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
          * configuration. The following monitored resource types are supported for
          * uptime checks:
          * 
@@ -460,8 +457,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoredResource The [monitored resource]
-         * (https://cloud.google.com/monitoring/api/resources) associated with the
+         * @param monitoredResource The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
          * configuration. The following monitored resource types are supported for
          * uptime checks:
          * 

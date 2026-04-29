@@ -2,8 +2,11 @@ package gcp
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"math/rand"
+	"os"
+	"path/filepath"
 	"regexp"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -19,8 +22,10 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		substituteRandomSuffix,
 		rewritemembersField,
 		skipBetaWarning,
+		joinMultilineMarkdownLinks,
 		simpleReplace("terraformLabels", "pulumiLabels"),
 		simpleReplace("terraform_labels", "pulumi_labels"),
+		applyReplacementsDotJSON(),
 	)
 }
 
@@ -174,4 +179,59 @@ var skipBetaWarning = tfbridge.DocsEdit{
 		content = bytes.ReplaceAll(content, []byte(betaWarning), []byte(""))
 		return content, nil
 	},
+}
+
+var multilineMarkdownLink = regexp.MustCompile(`\]\s*\n\s*\((https?://[^<>\s)]+)\)`)
+
+var joinMultilineMarkdownLinks = tfbridge.DocsEdit{
+	Path: "*",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return multilineMarkdownLink.ReplaceAll(content, []byte(`]($1)`)), nil
+	},
+}
+
+type replacementFile map[string][]replacement
+
+type replacement struct {
+	Old string `json:"old"`
+	New string `json:"new"`
+}
+
+func applyReplacementsDotJSON() tfbridge.DocsEdit {
+	replacements := mustReadReplacements()
+
+	return tfbridge.DocsEdit{
+		Path: "*",
+		Edit: func(path string, content []byte) ([]byte, error) {
+			replacementsForPath := replacements[path]
+			basePath := filepath.Base(path)
+			if basePath != path {
+				replacementsForPath = append(replacementsForPath, replacements[basePath]...)
+			}
+			for _, replacement := range replacementsForPath {
+				content = bytes.ReplaceAll(content, []byte(replacement.Old), []byte(replacement.New))
+			}
+			return content, nil
+		},
+	}
+}
+
+func mustReadReplacements() replacementFile {
+	for _, filePath := range []string{"provider/replacements.json", "replacements.json"} {
+		fileBytes, err := os.ReadFile(filePath)
+		if err != nil {
+			if os.IsNotExist(err) {
+				continue
+			}
+			panic(err)
+		}
+
+		var replacements replacementFile
+		if err := json.Unmarshal(fileBytes, &replacements); err != nil {
+			panic(err)
+		}
+		return replacements
+	}
+
+	panic("could not find provider/replacements.json or replacements.json")
 }
