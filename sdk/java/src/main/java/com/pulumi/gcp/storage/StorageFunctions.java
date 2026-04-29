@@ -3197,9 +3197,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
@@ -3331,9 +3331,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
@@ -3465,9 +3465,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
@@ -3599,9 +3599,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
@@ -3733,9 +3733,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
@@ -3867,9 +3867,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
@@ -4001,9 +4001,9 @@ public final class StorageFunctions {
      * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
      * which demand its existence, such as specifying it in Cloud IAM policy.
      * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-     * provider update errors in cases where the service account does not yet exist.
+     * Pulumi update errors in cases where the service account does not yet exist.
      * 
-     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     * &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.

@@ -47,8 +47,10 @@ func TestReplacementsDotJSON(t *testing.T) {
 func TestJoinMultilineMarkdownLinks(t *testing.T) {
 	t.Parallel()
 
-	input := "See [customer-supplied encryption key]\n(https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)."
-	expected := "See [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)."
+	input := "See [customer-supplied encryption key]\n" +
+		"(https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)."
+	expected := "See [customer-supplied encryption key]" +
+		"(https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)."
 
 	actual, err := joinMultilineMarkdownLinks.Edit("doc.md", []byte(input))
 	require.NoError(t, err)

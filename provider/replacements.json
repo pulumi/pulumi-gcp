@@ -16,7 +16,7 @@
     },
     {
       "old": "    not work unless you are running Terraform can send traffic to the instance's",
-      "new": "    not work unless you are running the provider can send traffic to the instance's"
+      "new": "    not work unless you are running `pulumi up` from an environment that can send traffic to the instance's"
     }
   ],
   "compute_node_types.html.markdown": [
@@ -60,15 +60,15 @@
   "storage_project_service_account.html.markdown": [
     {
       "old": "Terraform apply errors in cases where the service account does not yet exist.",
-      "new": "provider update errors in cases where the service account does not yet exist."
+      "new": "Pulumi update errors in cases where the service account does not yet exist."
     },
     {
       "old": "pulumi up errors in cases where the service account does not yet exist.",
-      "new": "provider update errors in cases where the service account does not yet exist."
+      "new": "Pulumi update errors in cases where the service account does not yet exist."
     },
     {
       "old": ">  When you write Terraform code which uses features depending on this service account *and* your Terraform code adds the service account in IAM policy on other resources,",
-      "new": ">  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,"
+      "new": ">  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,"
     },
     {
       "old": "   See the examples here and in the [`google_storage_notification`](/docs/providers/google/r/storage_notification.html) resource.",

@@ -204,7 +204,10 @@ func applyReplacementsDotJSON() tfbridge.DocsEdit {
 		Path: "*",
 		Edit: func(path string, content []byte) ([]byte, error) {
 			replacementsForPath := replacements[path]
-			replacementsForPath = append(replacementsForPath, replacements[filepath.Base(path)]...)
+			basePath := filepath.Base(path)
+			if basePath != path {
+				replacementsForPath = append(replacementsForPath, replacements[basePath]...)
+			}
 			for _, replacement := range replacementsForPath {
 				content = bytes.ReplaceAll(content, []byte(replacement.Old), []byte(replacement.New))
 			}
@@ -230,5 +233,5 @@ func mustReadReplacements() replacementFile {
 		return replacements
 	}
 
-	panic("could not find provider/replacements.json")
+	panic("could not find provider/replacements.json or replacements.json")
 }
