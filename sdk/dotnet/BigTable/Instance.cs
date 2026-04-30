@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
-    /// ## subcategory: "Cloud Bigtable"
-    /// 
-    /// description: |-
-    ///   Creates a Google Bigtable instance.
-    /// ---
-    /// 
-    /// # gcp.bigtable.Instance
-    /// 
     /// Creates a Google Bigtable instance. For more information see:
     /// 
     /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)

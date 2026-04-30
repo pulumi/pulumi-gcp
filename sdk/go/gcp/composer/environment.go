@@ -53,7 +53,7 @@ import (
 //     Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
 //   - Please review the [known
 //     issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
-//     problems.***
+//     problems.
 //
 // ## Example Usage
 //

@@ -39,6 +39,32 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
+        /// 
+        /// ### Autopilot
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+        ///     {
+        ///         AccountId = "service-account-id",
+        ///         DisplayName = "Service Account",
+        ///     });
+        /// 
+        ///     var primary = new Gcp.Container.Cluster("primary", new()
+        ///     {
+        ///         Name = "marcellus-wallace",
+        ///         Location = "us-central1-a",
+        ///         EnableAutopilot = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
@@ -71,6 +97,32 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
+        /// 
+        /// ### Autopilot
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+        ///     {
+        ///         AccountId = "service-account-id",
+        ///         DisplayName = "Service Account",
+        ///     });
+        /// 
+        ///     var primary = new Gcp.Container.Cluster("primary", new()
+        ///     {
+        ///         Name = "marcellus-wallace",
+        ///         Location = "us-central1-a",
+        ///         EnableAutopilot = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
@@ -101,6 +153,32 @@ namespace Pulumi.Gcp.Container
         ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
         ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Autopilot
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+        ///     {
+        ///         AccountId = "service-account-id",
+        ///         DisplayName = "Service Account",
+        ///     });
+        /// 
+        ///     var primary = new Gcp.Container.Cluster("primary", new()
+        ///     {
+        ///         Name = "marcellus-wallace",
+        ///         Location = "us-central1-a",
+        ///         EnableAutopilot = true,
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>

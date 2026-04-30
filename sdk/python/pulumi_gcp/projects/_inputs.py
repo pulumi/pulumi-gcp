@@ -456,7 +456,12 @@ class IAMAuditConfigAuditLogConfigArgsDict(TypedDict):
     """
     exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
     """
-    Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+    Identities that do not cause logging for this type of permission.
+    Each entry can have one of the following values:
+    * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+    * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+    * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+    * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
     """
 
 @pulumi.input_type
@@ -466,7 +471,12 @@ class IAMAuditConfigAuditLogConfigArgs:
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exempted_members: Identities that do not cause logging for this type of permission.
+               Each entry can have one of the following values:
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
@@ -488,7 +498,12 @@ class IAMAuditConfigAuditLogConfigArgs:
     @pulumi.getter(name="exemptedMembers")
     def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        Identities that do not cause logging for this type of permission.
+        Each entry can have one of the following values:
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "exempted_members")
 

@@ -8086,14 +8086,13 @@ class ClusterNodeConfig(dict):
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of
+               [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+               to apply to nodes. This field will only report drift on taint keys that are
+               already managed with Pulumi, use `effective_taints` to view the list of
+               GKE-managed taints on the node pool from all sources. Importing this resource
+               will not record any taints as being Pulumi-managed, and will cause drift with
+               any configured taints. Structure is documented below.
         :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
@@ -8594,14 +8593,13 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterNodeConfigTaint']]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        A list of
+        [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        to apply to nodes. This field will only report drift on taint keys that are
+        already managed with Pulumi, use `effective_taints` to view the list of
+        GKE-managed taints on the node pool from all sources. Importing this resource
+        will not record any taints as being Pulumi-managed, and will cause drift with
+        any configured taints. Structure is documented below.
         """
         return pulumi.get(self, "taints")
 
@@ -12958,14 +12956,13 @@ class ClusterNodePoolNodeConfig(dict):
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of
+               [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+               to apply to nodes. This field will only report drift on taint keys that are
+               already managed with Pulumi, use `effective_taints` to view the list of
+               GKE-managed taints on the node pool from all sources. Importing this resource
+               will not record any taints as being Pulumi-managed, and will cause drift with
+               any configured taints. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
@@ -13466,14 +13463,13 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        A list of
+        [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        to apply to nodes. This field will only report drift on taint keys that are
+        already managed with Pulumi, use `effective_taints` to view the list of
+        GKE-managed taints on the node pool from all sources. Importing this resource
+        will not record any taints as being Pulumi-managed, and will cause drift with
+        any configured taints. Structure is documented below.
         """
         return pulumi.get(self, "taints")
 

@@ -43,6 +43,42 @@ import (
 //	}
 //
 // ```
+//
+// ### Autopilot
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:            pulumi.String("marcellus-wallace"),
+//				Location:        pulumi.String("us-central1-a"),
+//				EnableAutopilot: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

@@ -1,4 +1,126 @@
 {
+  "apigee_instance.html.markdown": [
+    {
+      "old": "  description                          = \"Terraform-provisioned Apigee Org.\"\n",
+      "new": "  description                          = \"Auto-provisioned Apigee Org.\"\n"
+    },
+    {
+      "old": "  description              = \"Terraform-managed Apigee Runtime Instance\"\n",
+      "new": "  description              = \"Auto-managed Apigee Runtime Instance\"\n"
+    }
+  ],
+  "apigee_organization.html.markdown": [
+    {
+      "old": "  description                          = \"Terraform-provisioned Apigee Org.\"\n",
+      "new": "  description                          = \"Auto-provisioned Apigee Org.\"\n"
+    }
+  ],
+  "app_engine_application.html.markdown": [
+    {
+      "old": "   entire project to delete the application. Terraform will report the application has been\n   successfully deleted; this is a limitation of Terraform, and will go away in the future.\n   Terraform is not able to delete App Engine applications.\n",
+      "new": "   entire project to delete the application. This provider will report the application has been\n   successfully deleted; this is a limitation of the provider, and will go away in the future.\n   This provider is not able to delete App Engine applications.\n"
+    }
+  ],
+  "app_engine_flexible_app_version.html.markdown": [
+    {
+      "old": "  Environment variables available to the application.  As these are not returned in the API request, Terraform will not detect any changes made outside of the Terraform config.\n",
+      "new": "  Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.\n"
+    }
+  ],
+  "bigquery_job.html.markdown": [
+    {
+      "old": "  Specifies a string that represents a null value in a CSV file. For example, if you specify \"\\N\", BigQuery interprets \"\\N\" as a null value\n  when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an\n",
+      "new": "  Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this\n  property to a custom value, BigQuery throws an error if an\n"
+    }
+  ],
+  "bigquery_table.html.markdown": [
+    {
+      "old": "(and run `terraform apply` to write the field to state) in order to destroy an instance.\n",
+      "new": "(and run `pulumi update` to write the field to state) in order to destroy an instance.\n"
+    },
+    {
+      "old": "* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the table.\n    When the field is set to true or unset in Terraform state, a `terraform apply`\n    or `terraform destroy` that would delete the table will fail.\n    When the field is set to false, deleting the table is allowed..\n",
+      "new": "* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false\nin state, a `=destroy` or `=update` that would delete the instance will fail.\n"
+    },
+    {
+      "old": "    The API-side default is `\"`, specified in Terraform escaped as `\\\"`. Due to\n    limitations with Terraform default values, this value is required to be\n",
+      "new": "    The API-side default is `\"`, specified in the provider escaped as `\\\"`. Due to\n    limitations with default values, this value is required to be\n"
+    }
+  ],
+  "bigtable_instance.html.markdown": [
+    {
+      "old": "\n-> **Note**: It is strongly recommended to set `lifecycle { prevent_destroy = true }`\non instances in order to prevent accidental data loss. See\n[Terraform docs](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)\nfor more information on lifecycle parameters.\n\n-> **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`\n(and run `terraform apply` to write the field to state) in order to destroy an instance.\nIt is recommended to not set this field (or set it to true) until you're ready to destroy.\n\n\n",
+      "new": ""
+    },
+    {
+      "old": "* `cluster` - (Required) A block of cluster configuration options. This can be specified at least once, and up \n",
+      "new": "* `cluster` - (Required) A block of cluster configuration options. This can be specified at least once, and up\n"
+    },
+    {
+      "old": "* `force_destroy` - (Optional) Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, Terraform will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.\n",
+      "new": "* `force_destroy` - (Optional) Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.\n"
+    },
+    {
+      "old": "* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the instance. \n  When the field is set to true or unset in Terraform state, a `terraform apply` or `terraform destroy` that would delete\n  the instance will fail. When the field is set to false, deleting the instance is allowed.\n",
+      "new": "* `deletion_protection` - (Optional) Whether or not to allow this provider to destroy the instance. Unless this field is set to false\nin the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.\n"
+    },
+    {
+      "old": "\n!> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by\n",
+      "new": "\n!> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.\n\n!> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by\n"
+    },
+    {
+      "old": "`cluster_id`) will cause Terraform to delete/recreate the entire\n",
+      "new": "`cluster_id`) will cause the provider to delete/recreate the entire\n"
+    }
+  ],
+  "bigtable_table.html.markdown": [
+    {
+      "old": "-> **Note:** It is strongly recommended to set `lifecycle { prevent_destroy = true }`\non tables in order to prevent accidental data loss. See\n[Terraform docs](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)\nfor more information on lifecycle parameters.\n\n\n",
+      "new": ""
+    },
+    {
+      "old": "!> **Warning:** Modifying the `split_keys` of an existing table will cause Terraform\n",
+      "new": "!> **Warning:** Modifying the `split_keys` of an existing table will cause the provider\n"
+    }
+  ],
+  "bigtable_table_iam.html.markdown": [
+    {
+      "old": "    is not provided, Terraform will use the provider default.\n",
+      "new": "    is not provided, this provider will use the provider default.\n"
+    }
+  ],
+  "certificate_manager_certificate.html.markdown": [
+    {
+      "old": "  Leaf certificate comes first, followed by intermediate ones if any.\n\n",
+      "new": "  Leaf certificate comes first, followed by intermediate ones if any.\n  **Note**: This property is sensitive and will not be displayed in the plan.\n\n"
+    }
+  ],
+  "cloud_run_domain_mapping.html.markdown": [
+    {
+      "old": "  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config\n",
+      "new": "  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config\n"
+    }
+  ],
+  "cloud_run_service.html.markdown": [
+    {
+      "old": "        \"run.googleapis.com/client-name\"        = \"terraform\"\n",
+      "new": "        \"run.googleapis.com/client-name\"        = \"demo\"\n"
+    },
+    {
+      "old": "  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config\n",
+      "new": "  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config\n"
+    },
+    {
+      "old": "  Periodic probe of container liveness. Container will be restarted if the probe fails.\n",
+      "new": "  Periodic probe of container liveness. Container will be restarted if the probe fails. More info:\n  https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n"
+    }
+  ],
+  "cloud_scheduler_job.html.markdown": [
+    {
+      "old": "  Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.\n",
+      "new": "  Region where the scheduler job resides. If it is not provided, this provider will use the provider default.\n"
+    }
+  ],
   "composer_environment.html.markdown": [
     {
       "old": "    Full structure is provided by [composer environment resource documentation](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/composer_environment#config).\n",
@@ -9,7 +131,139 @@
       "new": ""
     }
   ],
+  "compute_attached_disk.html.markdown": [
+    {
+      "old": "Persistent disks can be attached to a compute instance using [the `attached_disk`\nsection within the compute instance configuration](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#attached_disk).\n",
+      "new": "Persistent disks can be attached to a compute instance using the `attached_disk`\nsection within the compute instance configuration.\n"
+    },
+    {
+      "old": "* [Resource: google_compute_disk](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk)\n",
+      "new": ""
+    }
+  ],
+  "compute_disk.html.markdown": [
+    {
+      "old": "  ~>**NOTE** If you change the size, Terraform updates the disk size\n",
+      "new": "  ~>**NOTE** If you change the size, the provider updates the disk size\n"
+    }
+  ],
+  "compute_disk_resource_policy_attachment.html.markdown": [
+    {
+      "old": "~> **Note:** This resource does not support regional disks (`google_compute_region_disk`). For regional disks, please refer to [`google_compute_region_disk_resource_policy_attachment`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_region_disk_resource_policy_attachment)\n\n\n",
+      "new": "~> **Note:** This resource does not support regional disks (`google_compute_region_disk`). For regional disks, please refer to the `google_compute_region_disk_resource_policy_attachment` resource.\n"
+    },
+    {
+      "old": "## Example Usage - Disk Resource Policy Attachment Basic\n",
+      "new": "\n## Example Usage\n\n### Disk Resource Policy Attachment Basic\n"
+    }
+  ],
+  "compute_image_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "compute_instance.html.markdown": [
+    {
+      "old": "* `allow_stopping_for_update` - (Optional) If true, allows Terraform to stop the instance to update its properties.\n",
+      "new": "* `allow_stopping_for_update` - (Optional) If true, allows this prvider to stop the instance to update its properties.\n"
+    },
+    {
+      "old": "    **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.\n",
+      "new": "    **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.\n"
+    },
+    {
+      "old": "    **Note**: As of 6.0.0, [argument syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) \n    is no longer supported for this field in favor of [block syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).\n    To dynamically set a list of guest accelerators, use [dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks).\n    To set an empty list, use a single `guest_accelerator` block with `count = 0`.\n",
+      "new": ""
+    },
+    {
+      "old": "is desired, you will need to modify your state file manually using\n`terraform state` commands.\n",
+      "new": "is desired, you will need to modify your state file.\n"
+    }
+  ],
+  "compute_instance_from_machine_image.html.markdown": [
+    {
+      "old": "See https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#attributes-reference\nfor details.\n",
+      "new": ""
+    }
+  ],
+  "compute_instance_from_template.html.markdown": [
+    {
+      "old": "To support removal of Optional/Computed fields in Terraform 0.12 the following fields\nare marked [Attributes as Blocks](/docs/configuration/attr-as-blocks.html):\n\n* `attached_disk`\n* `guest_accelerator`\n* `service_account`\n* `scratch_disk`\n* `network_interface.alias_ip_range`\n* `network_interface.access_config`\n\n",
+      "new": ""
+    },
+    {
+      "old": "See https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#attributes-reference\nfor details.\n",
+      "new": ""
+    }
+  ],
+  "compute_instance_group.html.markdown": [
+    {
+      "old": "-> Recreating an instance group that's in use by another resource will give a\n`resourceInUseByAnotherResource` error. You can avoid this error with a\nTerraform `lifecycle` block as outlined in the example below.\n",
+      "new": ""
+    },
+    {
+      "old": "  name        = \"terraform-test\"\n  description = \"Terraform test instance group\"\n",
+      "new": "  name        = \"test\"\n  description = \"Test instance group\"\n"
+    },
+    {
+      "old": "  name        = \"terraform-webservers\"\n  description = \"Terraform test instance group\"\n",
+      "new": "  name        = \"webservers\"\n  description = \"Test instance group\"\n"
+    }
+  ],
+  "compute_instance_group_manager.html.markdown": [
+    {
+      "old": "    returning. Note that if this is set to true and the operation does not succeed, Terraform will\n",
+      "new": "    returning. Note that if this is set to true and the operation does not succeed, this provider will\n"
+    }
+  ],
+  "compute_instance_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
   "compute_instance_template.html.markdown": [
+    {
+      "old": "Cloud Platform API. In order to update an Instance Template, Terraform will\ndestroy the existing resource and create a replacement. In order to effectively\nuse an Instance Template resource with an [Instance Group Manager resource][1],\nit's recommended to specify `create_before_destroy` in a [lifecycle][2] block.\n",
+      "new": "Cloud Platform API. In order to update an Instance Template, this provider will\ncreate a replacement. In order to effectively\nuse an Instance Template resource with an [Instance Group Manager resource][1].\n"
+    },
+    {
+      "old": "with `name_prefix`.  Example:\n",
+      "new": "with `name_prefix`. Example:\n"
+    },
+    {
+      "old": "With this setup Terraform generates a unique name for your Instance\n",
+      "new": "With this setup, this provider generates a unique name for your Instance\n"
+    },
+    {
+      "old": "ways to do this in Terraform, and they have their pros and cons. The difference ends\n",
+      "new": "ways to do this in the provider, and they have their pros and cons. The difference ends\n"
+    },
+    {
+      "old": "when Terraform runs, or you can have each instance check what the latest image is when\n",
+      "new": "when the provider runs, or you can have each instance check what the latest image is when\n"
+    },
+    {
+      "old": "If you're not sure, we recommend deploying the latest image available when Terraform runs,\n",
+      "new": "If you're not sure, we recommend deploying the latest image available when the provider runs,\n"
+    },
+    {
+      "old": "and means that no upgrades or changes to your instances happen outside of a `terraform apply`.\nYou can achieve this by using the [`google_compute_image`](../d/compute_image.html)\ndata source, which will retrieve the latest image on every `terraform apply`, and will update\n",
+      "new": "and means that no upgrades or changes to your instances happen outside of a `pulumi up`.\nYou can achieve this by using the `google_compute_image`\ndata source, which will retrieve the latest image on every `pulumi apply`, and will update\n"
+    },
+    {
+      "old": "- - -\n* `name` - (Optional) The name of the instance template. If you leave\n",
+      "new": "- - -\n\n* `name` - (Optional) The name of the instance template. If you leave\n"
+    },
+    {
+      "old": "  this blank, Terraform will auto-generate a unique name.\n",
+      "new": "  this blank, the provider will auto-generate a unique name.\n"
+    },
+    {
+      "old": "    not work unless you are running Terraform can send traffic to the instance's\n",
+      "new": "    not work unless you can send traffic to the instance's\n"
+    },
     {
       "old": "  this blank, Terraform will auto-generate a unique name.",
       "new": "  this blank, the provider will auto-generate a unique name."
@@ -19,16 +273,184 @@
       "new": "    not work unless you are running `pulumi up` from an environment that can send traffic to the instance's"
     }
   ],
+  "compute_machine_image_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n  consider it to be an entirely different resource and will treat it as such.\n",
+      "new": ""
+    }
+  ],
+  "compute_node_group.html.markdown": [
+    {
+      "old": "\n<div class = \"oics-button\" style=\"float: right; margin: 0 0 -15px\">\n",
+      "new": "\n~> **Warning:** Due to limitations of the API, this provider cannot update the\nnumber of nodes in a node group and changes to node group size either\nthrough provider config or through external changes will cause\nthe provider to delete and recreate the node group.\n\n<div class = \"oics-button\" style=\"float: right; margin: 0 0 -15px\">\n"
+    },
+    {
+      "old": "  zone        = \"us-central1-f\"\n  description = \"example google_compute_node_group for Terraform Google Provider\"\n",
+      "new": "  zone        = \"us-central1-a\"\n  description = \"example google_compute_node_group for Google Provider\"\n"
+    }
+  ],
   "compute_node_types.html.markdown": [
     {
       "old": "  name      = \"terraform-test-tmpl\"",
       "new": "  name      = \"test-tmpl\""
     }
   ],
+  "compute_organization_security_policy_association.html.markdown": [
+    {
+      "old": "  display_name = \"tf-test-secpol-%{random_suffix}\"\n",
+      "new": "  display_name = \"tf-test-secpol\"\n"
+    },
+    {
+      "old": "  short_name   = \"tf-test%{random_suffix}\"\n",
+      "new": "  display_name = \"tf-test\"\n"
+    },
+    {
+      "old": "  name          = \"tf-test%{random_suffix}\"\n",
+      "new": "  name          = \"tf-test\"\n"
+    }
+  ],
+  "compute_organization_security_policy_rule.html.markdown": [
+    {
+      "old": "  display_name = \"tf-test%{random_suffix}\"\n",
+      "new": "  display_name = \"tf-test\"\n"
+    }
+  ],
+  "compute_per_instance_config.html.markdown": [
+    {
+      "old": "  description = \"Terraform test instance group manager\"\n",
+      "new": "  description = \"Test instance group manager\"\n"
+    }
+  ],
+  "compute_project_metadata_item.html.markdown": [
+    {
+      "old": "manage a single key/value setting in Terraform rather than the entire\n",
+      "new": "manage a single key/value setting in the provider rather than the entire\n"
+    }
+  ],
+  "compute_region_disk_resource_policy_attachment.html.markdown": [
+    {
+      "old": "~> **Note:** This resource does not support zonal disks (`google_compute_disk`). For zonal disks, please refer to [`google_compute_disk_resource_policy_attachment`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)\n",
+      "new": "~> **Note:** This resource does not support zonal disks (`google_compute_disk`). For zonal disks, please refer to the `google_compute_disk_resource_policy_attachment` resource.\n"
+    },
+    {
+      "old": "## Example Usage - Region Disk Resource Policy Attachment Basic\n",
+      "new": "\n## Example Usage\n\n### Region Disk Resource Policy Attachment Basic\n"
+    }
+  ],
+  "compute_region_instance_group_manager.html.markdown": [
+    {
+      "old": "    returning. Note that if this is set to true and the operation does not succeed, Terraform will\n",
+      "new": "    returning. Note that if this is set to true and the operation does not succeed, the provider will\n"
+    }
+  ],
+  "compute_region_network_endpoint_group.html.markdown": [
+    {
+      "old": "When in use by a resource that can be updated, recreating a RegionNetworkEndpointGroup\nwill give a `resourceInUseByAnotherResource` error because Terraform will attempt to\ndelete the  RegionNetworkEndpointGroup first, but an in-use RegionNetworkEndpointGroup\ncan't be deleted in the API. Use `lifecycle.create_before_destroy` to reorder the plan\nand create the new resource first, allowing the deletion to go through successfully.\nThis is only recommended when strictly necessary, as the `create_before_destroy`\ndirective can be passed onto further dependencies, creating unexpected plans.\n\n\n",
+      "new": ""
+    }
+  ],
+  "compute_region_per_instance_config.html.markdown": [
+    {
+      "old": "  description = \"Terraform test instance group manager\"\n",
+      "new": "  description = \"Demo test instance group manager\"\n"
+    }
+  ],
+  "compute_region_ssl_certificate.html.markdown": [
+    {
+      "old": "// the specified configuration, Terraform will destroy the existing\n",
+      "new": "// the specified configuration, the provider will destroy the existing\n"
+    }
+  ],
+  "compute_security_policy.html.markdown": [
+    {
+      "old": "Security Policy is used by [`google_compute_backend_service`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_backend_service#security_policy).\n",
+      "new": "Security Policy is used by google_compute_backend_service.\n"
+    }
+  ],
+  "compute_snapshot.html.markdown": [
+    {
+      "old": "#     Template:      https:#github.com/GoogleCloudPlatform/magic-modules/tree/main/mmv1/templates/terraform/resource.html.markdown.tmpl\n#\n#     DO NOT EDIT this file directly. Any changes made to this file will be\n",
+      "new": "#     Template:      https:#github.com/GoogleCloudPlatform/magic-modules/tree/main/mmv1/templates/terraform/resource.html.markdown.tmpl\n#u\n#     DO NOT EDIT this file directly. Any changes made to this file will be\n"
+    }
+  ],
+  "compute_ssl_certificate.html.markdown": [
+    {
+      "old": "// the specified configuration, Terraform will destroy the existing\n// resource and create a replacement. To effectively use an SSL\n// certificate resource with a Target HTTPS Proxy resource, it's\n// recommended to specify create_before_destroy in a lifecycle block.\n// Either omit the Instance Template name attribute, specify a partial\n// name with name_prefix, or use random_id resource. Example:\n",
+      "new": "// the specified configuration, the provider will destroy the existing\n// resource and create a replacement. Example:\n"
+    }
+  ],
+  "compute_subnetwork.html.markdown": [
+    {
+      "old": "  **Note**: This field uses [attr-as-block mode](https://developer.hashicorp.com/terraform/language/attr-as-blocks) to avoid\n  breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,\n  set `send_secondary_ip_range_if_empty = true`\n",
+      "new": ""
+    }
+  ],
+  "compute_subnetwork_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "compute_target_pool.html.markdown": [
+    {
+      "old": "    Terraform interpolators to create a dependency on the instances from the\n",
+      "new": "    interpolation to create a dependency on the instances from the\n"
+    }
+  ],
   "compute_zones.html.markdown": [
     {
       "old": "  name               = \"terraform-test-${count.index}\"",
       "new": "  name               = \"test-${count.index}\""
+    }
+  ],
+  "container_cluster.html.markdown": [
+    {
+      "old": "  * Terraform guidance\n    * [Using GKE with Terraform](/docs/providers/google/guides/using_gke_with_terraform.html)\n    * [Provision a GKE Cluster (Google Cloud) Learn tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/gke)\n",
+      "new": "\n"
+    },
+    {
+      "old": "    are available, and can be use to approximate fuzzy versions in a\n    Terraform-compatible way. If you intend to specify versions manually,\n",
+      "new": "    are available. If you intend to specify versions manually,\n"
+    },
+    {
+      "old": "    manages the default node pool, which isn't recommended to be used with\n    Terraform. Structure is [documented below](#nested_node_config).\n",
+      "new": "    manages the default node pool, which isn't recommended to be used.\n    Structure is [documented below](#nested_node_config).\n\n* `network_config` -  (Optional) Configuration for\n   [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is [documented below](#nested_network_config)\n"
+    },
+    {
+      "old": "    recommended that you specify explicit versions as Terraform will see spurious diffs\n",
+      "new": "    recommended that you specify explicit versions as the provider will see spurious diffs\n"
+    },
+    {
+      "old": "    `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.\n",
+      "new": "    `version_prefix` field to approximate fuzzy versions.\n"
+    },
+    {
+      "old": "field from your config will cause Terraform to stop managing your cluster's\n",
+      "new": "field from your config will cause the provider to stop managing your cluster's\n"
+    },
+    {
+      "old": "    **Note**: As of 6.0.0, [argument syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments)\n    is no longer supported for this field in favor of [block syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).\n    To dynamically set a list of guest accelerators, use [dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks).\n    To set an empty list, use a single `guest_accelerator` block with `count = 0`.\n",
+      "new": ""
+    },
+    {
+      "old": "    included, Terraform will attempt to unset the value. To avoid this, set the\n",
+      "new": "    included, the provider will attempt to unset the value. To avoid this, set the\n"
+    },
+    {
+      "old": "already managed with Terraform",
+      "new": "already managed with Pulumi"
+    },
+    {
+      "old": "Terraform-managed",
+      "new": "Pulumi-managed"
+    },
+    {
+      "old": "access settings. If unset, Terraform will no longer manage this field and will\n",
+      "new": "access settings. If unset, the provider will no longer manage this field and will\n"
+    },
+    {
+      "old": "    * MODE_UNSPECIFIED: Not Set\n    * GCE_METADATA: Expose all Compute Engine metadata to pods.\n    * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.\n",
+      "new": "  * UNSPECIFIED: Not Set\n  * GCE_METADATA: Expose all Compute Engine metadata to pods.\n  * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.\n"
     }
   ],
   "container_engine_versions.html.markdown": [
@@ -41,20 +463,568 @@
       "new": "* `version_prefix` (Optional) - If provided, the provider will only return versions"
     }
   ],
+  "container_node_pool.html.markdown": [
+    {
+      "old": "-> See the [Using GKE with Terraform](/docs/providers/google/guides/using_gke_with_terraform.html)\nguide for more information about using GKE with Terraform.\n\n",
+      "new": ""
+    },
+    {
+      "old": "### Example Usage - using a separately managed node pool (recommended)\n",
+      "new": "## Example Usage - using a separately managed node pool (recommended)\n"
+    },
+    {
+      "old": "### Example Usage - 2 node pools, 1 separately managed + the default node pool\n",
+      "new": "## Example Usage - 2 node pools, 1 separately managed + the default node pool\n"
+    },
+    {
+      "old": "    and recreation on the next Terraform run (to rectify the discrepancy).  If you don't\n    need this value, don't set it.  If you do need it, you can [use a lifecycle block to\n    ignore subsequent changes to this field](https://github.com/hashicorp/terraform-provider-google/issues/6901#issuecomment-667369691).\n",
+      "new": "    and recreation on the next provider run (to rectify the discrepancy).  If you don't\n    need this value, don't set it.  If you do need it, you can use a lifecycle block to\n    ignore subsqeuent changes to this field.\n"
+    },
+    {
+      "old": "* `name` - (Optional) The name of the node pool. If left blank, Terraform will\n",
+      "new": "* `name` - (Optional) The name of the node pool. If left blank, the provider will\n"
+    },
+    {
+      "old": "    recommended that you specify explicit versions as Terraform will see spurious diffs\n",
+      "new": "    recommended that you specify explicit versions as the provider will see spurious diffs\n"
+    },
+    {
+      "old": "    `version_prefix` field to approximate fuzzy versions in a Terraform-compatible way.\n",
+      "new": "    `version_prefix` field to approximate fuzzy versions in a provider-compatible way.\n"
+    }
+  ],
+  "data_catalog_entry_group.html.markdown": [
+    {
+      "old": "  display_name = \"terraform entry group\"\n  description = \"entry group created by Terraform\"\n",
+      "new": "  display_name = \"entry group\"\n  description = \"example entry group\"\n"
+    }
+  ],
+  "dataflow_flex_template_job.html.markdown": [
+    {
+      "old": "are different from most other Terraform / Google resources.\n",
+      "new": "are different from most other provider / Google resources.\n"
+    },
+    {
+      "old": "configuration, you may experience a long wait for your `terraform destroy` to\n",
+      "new": "configuration, you may experience a long wait for your `pulumi destroy` to\n"
+    },
+    {
+      "old": "deletion during `terraform destroy`.  See above note.\n",
+      "new": "deletion during `pulumi destroy`.  See above note.\n"
+    }
+  ],
+  "dataflow_job.html.markdown": [
+    {
+      "old": "* `on_delete` - (Optional) One of \"drain\" or \"cancel\".  Specifies behavior of deletion during `terraform destroy`.  See above note.\n* `skip_wait_on_job_termination` - (Optional)  If set to `true`, terraform will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from terraform state and move on.  See above note.\n",
+      "new": "* `on_delete` - (Optional) One of \"drain\" or \"cancel\".  Specifies behavior of deletion during `pulumi destroy`.  See above note.\n* `skip_wait_on_job_termination` - (Optional)  If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.\n"
+    }
+  ],
+  "dataproc_cluster.html.markdown": [
+    {
+      "old": "* `graceful_decommission_timeout` - (Optional) Allows graceful decomissioning when you change the number of worker nodes directly through a terraform apply.\n",
+      "new": "* `graceful_decommission_timout` - (Optional) Allows graceful decomissioning when you change the number of worker nodes directly through an apply.\n"
+    },
+    {
+      "old": "  * SPOT\n",
+      "new": ""
+    }
+  ],
+  "dataproc_cluster_iam.html.markdown": [
+    {
+      "old": "* `project` - (Optional) The project in which the cluster belongs. If it\n    is not provided, Terraform will use the provider default.\n\n",
+      "new": "* `project` - (Optional) The project in which the cluster belongs. If it\n    is not provided, the provider will use a default.\n\n"
+    },
+    {
+      "old": "* `region` - (Optional) The region in which the cluster belongs. If it\n    is not provided, Terraform will use the provider default.\n\n",
+      "new": "* `region` - (Optional) The region in which the cluster belongs. If it\n    is not provided, the provider will use a default.\n\n"
+    }
+  ],
+  "dataproc_job_iam.html.markdown": [
+    {
+      "old": "* `project` - (Optional) The project in which the job belongs. If it\n    is not provided, Terraform will use the provider default.\n\n",
+      "new": "* `project` - (Optional) The project in which the job belongs. If it\n    is not provided, the provider will use a default.\n\n"
+    },
+    {
+      "old": "* `region` - (Optional) The region in which the job belongs. If it\n    is not provided, Terraform will use the provider default.\n\n",
+      "new": "* `region` - (Optional) The region in which the job belongs. If it\n    is not provided, the provider will use a default.\n\n"
+    }
+  ],
+  "deployment_manager_deployment.html.markdown": [
+    {
+      "old": "~> **Warning:** Deployment Manager shares similar behavior with Terraform as both\nproducts manage GCP resource lifecycle and state. This Terraform\nresource is intended only to manage a Deployment resource,\nand attempts to manage the Deployment's resources in Terraform as well\n",
+      "new": "~> **Warning:** This resource is intended only to manage a Deployment resource,\nand attempts to manage the Deployment's resources in the provider as well\n"
+    },
+    {
+      "old": "In addition, due to limitations of the API, Terraform will treat\n",
+      "new": "In addition, due to limitations of the API, the provider will treat\n"
+    },
+    {
+      "old": "  Terraform will force-recreate deployments if either preview is updated\n",
+      "new": "  the provider will force-recreate deployments if either preview is updated\n"
+    }
+  ],
+  "dialogflow_agent.html.markdown": [
+    {
+      "old": "  the Terraform state and Dialogflow if the agent tier is changed outside of Terraform.\n  Possible values are: `TIER_STANDARD`, `TIER_ENTERPRISE`, `TIER_ENTERPRISE_PLUS`.\n",
+      "new": "  the the provider state and Dialogflow if the agent tier is changed outside of the provider.\n"
+    }
+  ],
   "dns_managed_zone.html.markdown": [
+    {
+      "old": "  dns_name    = \"example-${random_id.rnd.hex}.com.\"\n",
+      "new": "  dns_name    = \"my-domain.com.\"\n"
+    },
+    {
+      "old": "\nresource \"random_id\" \"rnd\" {\n  byte_length = 4\n}\n",
+      "new": ""
+    },
+    {
+      "old": "\n\n* `description` -\n",
+      "new": "\n* `description` -\n"
+    },
+    {
+      "old": "  A textual description field. Defaults to 'Managed by Terraform'.\n",
+      "new": "  A textual description field. Defaults to 'Managed by Pulumi'.\n"
+    },
     {
       "old": "* `dns_name` - The fully qualified DNS name of this zone, e.g. `terraform.io.`.",
       "new": "* `dns_name` - The fully qualified DNS name of this zone, e.g. `example.io.`."
     }
   ],
+  "dns_policy.html.markdown": [
+    {
+      "old": "  A textual description field. Defaults to 'Managed by Terraform'.\n",
+      "new": "  A textual description field. Defaults to 'Managed by Pulumi'.\n"
+    }
+  ],
+  "google_billing_subaccount.html.markdown": [
+    {
+      "old": "!> **WARNING:** Deleting this Terraform resource will not delete or close the billing subaccount.\n",
+      "new": "!> **WARNING:** Deleting this resource will not delete or close the billing subaccount.\n"
+    },
+    {
+      "old": "  will be changed to \"Terraform Destroyed\" along with a timestamp.  If set to \"\" this will not occur.\n",
+      "new": "  will be changed to \"Destroyed\" along with a timestamp.  If set to \"\" this will not occur.\n"
+    }
+  ],
+  "google_folder.html.markdown": [
+    {
+      "old": "The service account used to run Terraform when creating a `google_folder`\n",
+      "new": "The service account used to run the provider when creating a `google_folder`\n"
+    }
+  ],
+  "google_folder_iam.html.markdown": [
+    {
+      "old": "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.\n",
+      "new": "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.\n  Each entry can have one of the following values:\n  * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.\n  * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.\n  * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.\n  * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.\n"
+    },
+    {
+      "old": "   fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before\n",
+      "new": "   fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before\n"
+    },
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "google_kms_crypto_key_iam.html.markdown": [
+    {
+      "old": "With IAM Conditions ([beta](https://terraform.io/docs/providers/google/provider_versions.html)):\n",
+      "new": "With IAM Conditions:\n"
+    },
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "google_kms_key_ring_iam.html.markdown": [
+    {
+      "old": "With IAM Conditions ([beta](https://terraform.io/docs/providers/google/provider_versions.html)):\n",
+      "new": "With IAM Conditions:\n"
+    },
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "google_organization_iam.html.markdown": [
+    {
+      "old": "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.\n",
+      "new": "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.\n  Each entry can have one of the following values:\n  * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.\n  * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.\n  * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.\n  * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.\n"
+    },
+    {
+      "old": "   <br /><br />\n",
+      "new": "\n\n"
+    },
+    {
+      "old": "   fully managed by Terraform.If you do use this resource,\n",
+      "new": "   fully managed by this provider.I f you do use this resource,\n"
+    },
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "google_organization_iam_custom_role.html.markdown": [
+    {
+      "old": " by Terraform, and new roles cannot share that name.\n",
+      "new": " by the provider, and new roles cannot share that name.\n"
+    }
+  ],
+  "google_project.html.markdown": [
+    {
+      "old": "The user or service account that is running Terraform when creating a `google_project`\n",
+      "new": "The user or service account that is running this provider when creating a `google_project`\n"
+    },
+    {
+      "old": "    belongs to. The user or service account performing this operation with Terraform\n    must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.\n",
+      "new": "    belongs to. The user or service account performing this operation with the provider\n    must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.\n"
+    }
+  ],
+  "google_project_iam.html.markdown": [
+    {
+      "old": "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.\n",
+      "new": "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.\n  Each entry can have one of the following values:\n  * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.\n  * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.\n  * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.\n  * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.\n"
+    },
+    {
+      "old": "   fully managed by Terraform. If you do use this resource, it is recommended to **import** the policy before\n",
+      "new": "   fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before\n"
+    },
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "google_project_iam_custom_role.html.markdown": [
+    {
+      "old": " by Terraform, and new roles cannot share that name.\n",
+      "new": " by the provider, and new roles cannot share that name.\n"
+    }
+  ],
+  "google_project_service.html.markdown": [
+    {
+      "old": "destroyed. If `false` or unset, an error will be returned if any enabled\nservices depend on this service when attempting to destroy it.\n",
+      "new": "destroyed. If `false` or unset, an error will be generated if any enabled\nservices depend on this service when destroying it.\n"
+    }
+  ],
+  "google_service_account.html.markdown": [
+    {
+      "old": "creation. If using these resources in the same config, you can add a\n[`sleep` using `local-exec`](https://github.com/hashicorp/terraform/issues/17726#issuecomment-377357866).\n",
+      "new": "creation.\n"
+    }
+  ],
+  "google_service_account_iam.html.markdown": [
+    {
+      "old": "## google_service_account_iam_policy\n",
+      "new": "## Example Usage\n\n### Service Account IAM Policy\n"
+    },
+    {
+      "old": "## google_service_account_iam_binding\n",
+      "new": "### Service Account IAM Binding\n"
+    },
+    {
+      "old": "## google_service_account_iam_member\n",
+      "new": "### Service Account IAM Member\n"
+    },
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_app_engine_service_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_app_engine_version_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_brand.html.markdown": [
+    {
+      "old": "\n\nTo get more information about Brand, see:\n",
+      "new": "\nTo get more information about Brand, see:\n"
+    }
+  ],
+  "iap_tunnel_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n  consider it to be an entirely different resource and will treat it as such.\n",
+      "new": ""
+    }
+  ],
+  "iap_tunnel_instance_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_web_backend_service_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_web_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_web_type_app_engine_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "iap_web_type_compute_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "kms_crypto_key.html.markdown": [
+    {
+      "old": "Destroying a Terraform-managed CryptoKey will remove it from state\n",
+      "new": "Destroying a provider-managed CryptoKey will remove it from state\n"
+    },
+    {
+      "old": "not delete the resource from the project.* When Terraform destroys these keys,\n",
+      "new": "not delete the resource from the project.* When the provider destroys these keys,\n"
+    }
+  ],
+  "kms_key_ring.html.markdown": [
+    {
+      "old": "Destroying a Terraform-managed KeyRing will remove it from state but\n",
+      "new": "Destroying a provider-managed KeyRing will remove it from state but\n"
+    }
+  ],
+  "kms_key_ring_import_job.html.markdown": [
+    {
+      "old": "Destroying a Terraform-managed KeyRingImportJob will remove it from state but\n",
+      "new": "Destroying a provider-managed KeyRingImportJob will remove it from state but\n"
+    }
+  ],
+  "logging_billing_account_bucket_config.html.markdown": [
+    {
+      "old": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your terraform state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n",
+      "new": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n"
+    }
+  ],
+  "logging_billing_account_sink.html.markdown": [
+    {
+      "old": "the credentials used with Terraform. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the\n",
+      "new": "the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the\n"
+    }
+  ],
+  "logging_folder_bucket_config.html.markdown": [
+    {
+      "old": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your terraform state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n",
+      "new": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n"
+    }
+  ],
+  "logging_folder_exclusion.html.markdown": [
+    {
+      "old": "~> You can specify exclusions for log sinks created by terraform by using the exclusions field of `google_logging_folder_sink`\n",
+      "new": "~> You can specify exclusions for log sinks created by the provider by using the exclusions field of `google_logging_folder_sink`\n"
+    }
+  ],
+  "logging_organization_bucket_config.html.markdown": [
+    {
+      "old": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your terraform state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n",
+      "new": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n"
+    }
+  ],
+  "logging_organization_exclusion.html.markdown": [
+    {
+      "old": "~> You can specify exclusions for log sinks created by terraform by using the exclusions field of `google_logging_organization_sink`\n",
+      "new": "~> You can specify exclusions for log sinks created by the provider by using the exclusions field of `google_logging_organization_sink`\n"
+    }
+  ],
+  "logging_project_bucket_config.html.markdown": [
+    {
+      "old": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your terraform state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n",
+      "new": "~> **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are \"_Default\" and \"_Required\".\n"
+    }
+  ],
+  "logging_project_exclusion.html.markdown": [
+    {
+      "old": "~> You can specify exclusions for log sinks created by terraform by using the exclusions field of `google_logging_project_sink`\n",
+      "new": "~> You can specify exclusions for log sinks created by the provider by using the exclusions field of `google_logging_project_sink`\n"
+    }
+  ],
+  "logging_project_sink.html.markdown": [
+    {
+      "old": "~> **Note:** You must have [granted the \"Logs Configuration Writer\"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with terraform.\n",
+      "new": "~> **Note:** You must have [granted the \"Logs Configuration Writer\"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.\n"
+    }
+  ],
+  "monitoring_notification_channel.html.markdown": [
+    {
+      "old": "and import to Terraform when setting up a brand new channel type to determine which\n",
+      "new": "and import it to the provider when setting up a brand new channel type to determine which\n"
+    },
+    {
+      "old": "  Labels with sensitive data are obfuscated by the API and therefore Terraform cannot\n",
+      "new": "  Labels with sensitive data are obfuscated by the API and therefore the provider cannot\n"
+    }
+  ],
+  "monitoring_slo.html.markdown": [
+    {
+      "old": "  display_name = \"Terraform Test SLO for App Engine\"\n",
+      "new": "  display_name = \"Test SLO for App Engine\"\n"
+    },
+    {
+      "old": "  display_name = \"Terraform Test SLO with request based SLI (good total ratio)\"\n",
+      "new": "  display_name = \"Test SLO with request based SLI (good total ratio)\"\n"
+    },
+    {
+      "old": "  display_name = \"Terraform Test SLO with window based SLI\"\n",
+      "new": "  display_name = \"Test SLO with window based SLI\"\n"
+    }
+  ],
+  "notebooks_instance.html.markdown": [
+    {
+      "old": "    terraform  = \"true\"\n",
+      "new": ""
+    }
+  ],
+  "redis_instance.html.markdown": [
+    {
+      "old": "  display_name      = \"Terraform Test Instance\"\n",
+      "new": "  display_name      = \"Test Instance\"\n"
+    }
+  ],
+  "security_scanner_scan_config.html.markdown": [
+    {
+      "old": "  display_name     = \"terraform-scan-config\"\n",
+      "new": "  display_name     = \"scan-config\"\n"
+    }
+  ],
   "service_account_id_token.html.markdown": [
     {
-      "old": "provided by google_service_account_access_token.",
+      "old": "provided by [google_service_account_access_token](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/service_account_access_token).",
       "new": "provided by `google_service_account_access_token`."
     },
     {
       "old": "  The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for Terraform has been granted `roles/run.invoker` role previously.",
       "new": "  The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously."
+    }
+  ],
+  "spanner_database.html.markdown": [
+    {
+      "old": "(and run `terraform apply` to write the field to state) in order to destroy an instance.\n",
+      "new": "(and run `pulumi up` to write the field to state) in order to destroy an instance.\n"
+    },
+    {
+      "old": "on databases in order to prevent accidental data loss. See\n[Terraform docs](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#prevent_destroy)\nfor more information on lifecycle parameters.\n",
+      "new": "on databases in order to prevent accidental data loss.\n"
+    },
+    {
+      "old": "* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the database. Defaults to true.\nWhen a`terraform destroy` or `terraform apply` would delete the database,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a `terraform apply`\nor `terraform destroy` that would delete the database will fail.\nWhen the field is set to false, deleting the database is allowed.\n",
+      "new": "* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false\nin state, a `destroy` or `update` that would delete the instance will fail.\n"
+    }
+  ],
+  "sql_database_instance.html.markdown": [
+    {
+      "old": "default 'root'@'%' user with no password. This user will be deleted by Terraform on\n",
+      "new": "default 'root'@'%' user with no password. This user will be deleted by the provider on\n"
+    },
+    {
+      "old": "(and run `terraform apply` to write the field to state) in order to destroy an instance.\n",
+      "new": "(and run `pulumi update` to write the field to state) in order to destroy an instance.\n"
+    },
+    {
+      "old": "    blank, Terraform will randomly generate one when the instance is first\n",
+      "new": "    blank, the provider will randomly generate one when the instance is first\n"
+    },
+    {
+      "old": "    up disk encryption currently requires manual steps outside of Terraform.\n",
+      "new": "    up disk encryption currently requires manual steps outside of this provider.\n"
+    },
+    {
+      "old": "* `deletion_protection` - (Optional) Whether Terraform will be prevented from destroying the instance.\n    When the field is set to true or unset in Terraform state, a `terraform apply`\n    or `terraform destroy` that would delete the instance will fail.\n    When the field is set to false, deleting the instance is allowed.\n",
+      "new": "* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false\nin state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.\n"
+    },
+    {
+      "old": "  ~> **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.\n",
+      "new": "  ~> **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.\n"
+    },
+    {
+      "old": "    cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.\n    **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this\n",
+      "new": "    cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.\n    **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this\n"
+    },
+    {
+      "old": "    resource creation, Terraform will attempt to clone another instance as indicated in the context. The\n",
+      "new": "    resource creation, this provider will attempt to clone another instance as indicated in the context. The\n"
+    },
+    {
+      "old": "**NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this\n",
+      "new": "**NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this\n"
+    },
+    {
+      "old": "* `first_ip_address` - The first IPv4 address of any type assigned. This is to\nsupport accessing the [first address in the list in a terraform output](https://github.com/hashicorp/terraform-provider-google/issues/912)\nwhen the resource is configured with a `count`.\n",
+      "new": "* `first_ip_address` - The first IPv4 address of any type assigned.\n"
+    },
+    {
+      "old": "* `public_ip_address` - The first public (`PRIMARY`) IPv4 address assigned. This is\na workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)\nbut also provides a convenient way to access an IP of a specific type without\nperforming filtering in a Terraform config.\n",
+      "new": "* `public_ip_address` - The first public (`PRIMARY`) IPv4 address assigned.\n"
+    },
+    {
+      "old": "* `private_ip_address` - The first private (`PRIVATE`) IPv4 address assigned. This is\na workaround for an [issue fixed in Terraform 0.12](https://github.com/hashicorp/terraform/issues/17048)\nbut also provides a convenient way to access an IP of a specific type without\nperforming filtering in a Terraform config.\n",
+      "new": "* `private_ip_address` - The first private (`PRIVATE`) IPv4 address assigned.\n"
+    }
+  ],
+  "storage_bucket.html.markdown": [
+    {
+      "old": "* `force_destroy` - (Optional, Default: false) When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when Terraform is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).\n",
+      "new": "* `force_destroy` - (Optional, Default: false) When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).\n"
+    },
+    {
+      "old": "  This data source calls an API which creates the account if required, ensuring your Terraform applies cleanly and repeatedly irrespective of the\n",
+      "new": "  This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the\n"
+    },
+    {
+      "old": "  You should take care for race conditions when the same Terraform manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.\n",
+      "new": "  You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.\n"
+    }
+  ],
+  "storage_bucket_access_control.html.markdown": [
+    {
+      "old": "[`storage_bucket_acl`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_acl)\nresource. Do not use these two resources in conjunction to manage the same bucket.\n",
+      "new": "`storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.\n"
+    }
+  ],
+  "storage_bucket_acl.html.markdown": [
+    {
+      "old": "Bucket ACLs can be managed non authoritatively using the [`storage_bucket_access_control`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_access_control) resource. Do not use these two resources in conjunction to manage the same bucket.\n",
+      "new": "Bucket ACLs can be managed non authoritatively using the `storage_bucket_access_control` resource. Do not use these two resources in conjunction to manage the same bucket.\n"
+    }
+  ],
+  "storage_bucket_iam.html.markdown": [
+    {
+      "old": "~> **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will\n",
+      "new": "~> **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the\n  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will\n"
+    }
+  ],
+  "storage_bucket_object.html.markdown": [
+    {
+      "old": "* `content` - (Optional, Sensitive) Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](/docs/configuration/outputs.html).\n",
+      "new": "* `content` - (Optional, Sensitive) Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.\n"
+    }
+  ],
+  "storage_hmac_key.html.markdown": [
+    {
+      "old": "#Create the HMAC key for the associated service account \n",
+      "new": "#Create the HMAC key for the associated service account\n"
+    }
+  ],
+  "storage_object_acl.html.markdown": [
+    {
+      "old": "-> The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically\nadds that role/entity pair to your `terraform plan` results when it is omitted in your config; `terraform plan` will show the correct final state at every point except for at\n`Create` time, where the object role/entity pair is omitted if not explicitly set.\n\n\n",
+      "new": ""
     }
   ],
   "storage_project_service_account.html.markdown": [

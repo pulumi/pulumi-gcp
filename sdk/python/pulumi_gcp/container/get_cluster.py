@@ -917,6 +917,21 @@ def get_cluster(location: Optional[_builtins.str] = None,
     pulumi.export("nodePools", my_cluster.node_pools)
     ```
 
+    ### Autopilot
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.serviceaccount.Account("default",
+        account_id="service-account-id",
+        display_name="Service Account")
+    primary = gcp.container.Cluster("primary",
+        name="marcellus-wallace",
+        location="us-central1-a",
+        enable_autopilot=True)
+    ```
+
 
     :param _builtins.str location: The location (zone or region) this cluster has been
            created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
@@ -1047,6 +1062,21 @@ def get_cluster_output(location: Optional[pulumi.Input[Optional[_builtins.str]]]
     pulumi.export("instanceGroupUrls", my_cluster.node_pools[0].instance_group_urls)
     pulumi.export("nodeConfig", my_cluster.node_configs)
     pulumi.export("nodePools", my_cluster.node_pools)
+    ```
+
+    ### Autopilot
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.serviceaccount.Account("default",
+        account_id="service-account-id",
+        display_name="Service Account")
+    primary = gcp.container.Cluster("primary",
+        name="marcellus-wallace",
+        location="us-central1-a",
+        enable_autopilot=True)
     ```
 
 

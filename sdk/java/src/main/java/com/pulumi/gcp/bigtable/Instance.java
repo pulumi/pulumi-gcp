@@ -19,14 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## subcategory: &#34;Cloud Bigtable&#34;
- * 
- * description: |-
- *   Creates a Google Bigtable instance.
- * ---
- * 
- * # gcp.bigtable.Instance
- * 
  * Creates a Google Bigtable instance. For more information see:
  * 
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)

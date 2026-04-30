@@ -143,7 +143,7 @@ type FlexTemplateJob struct {
 	//
 	// ***
 	ContainerSpecGcsPath pulumi.StringOutput `pulumi:"containerSpecGcsPath"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrOutput `pulumi:"enableStreamingEngine"`
@@ -155,11 +155,8 @@ type FlexTemplateJob struct {
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringOutput `pulumi:"launcherMachineType"`
@@ -258,7 +255,7 @@ type flexTemplateJobState struct {
 	//
 	// ***
 	ContainerSpecGcsPath *string `pulumi:"containerSpecGcsPath"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
@@ -270,11 +267,8 @@ type flexTemplateJobState struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType *string `pulumi:"launcherMachineType"`
@@ -336,7 +330,7 @@ type FlexTemplateJobState struct {
 	//
 	// ***
 	ContainerSpecGcsPath pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrInput
@@ -348,11 +342,8 @@ type FlexTemplateJobState struct {
 	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringPtrInput
@@ -426,11 +417,8 @@ type flexTemplateJobArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType *string `pulumi:"launcherMachineType"`
@@ -495,11 +483,8 @@ type FlexTemplateJobArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringPtrInput
@@ -653,7 +638,7 @@ func (o FlexTemplateJobOutput) ContainerSpecGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ContainerSpecGcsPath }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FlexTemplateJobOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -680,11 +665,8 @@ func (o FlexTemplateJobOutput) KmsKeyName() pulumi.StringOutput {
 
 // User labels to be specified for the job. Keys and values
 // should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-// page. **Note**: This field is marked as deprecated as the API does not currently
-// support adding labels.
-// **NOTE**: Google-provided Dataflow templates often provide default labels
-// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-// labels will be ignored to prevent diffs on re-apply.
+// page.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o FlexTemplateJobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

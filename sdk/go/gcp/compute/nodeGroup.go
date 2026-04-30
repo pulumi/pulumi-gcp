@@ -64,6 +64,11 @@ import (
 //	}
 //
 // ```
+// > **Warning:** Due to limitations of the API, this provider cannot update the
+// number of nodes in a node group and changes to node group size either
+// through provider config or through external changes will cause
+// the provider to delete and recreate the node group.
+//
 // ### Node Group Maintenance Interval
 //
 // ```go
@@ -88,8 +93,8 @@ import (
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:                pulumi.String("soletenant-group"),
-//				Zone:                pulumi.String("us-central1-f"),
-//				Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
+//				Zone:                pulumi.String("us-central1-a"),
+//				Description:         pulumi.String("example google_compute_node_group for Google Provider"),
 //				InitialSize:         pulumi.Int(1),
 //				NodeTemplate:        soletenant_tmpl.ID(),
 //				MaintenanceInterval: pulumi.String("RECURRENT"),
@@ -102,6 +107,11 @@ import (
 //	}
 //
 // ```
+// > **Warning:** Due to limitations of the API, this provider cannot update the
+// number of nodes in a node group and changes to node group size either
+// through provider config or through external changes will cause
+// the provider to delete and recreate the node group.
+//
 // ### Node Group Autoscaling Policy
 //
 // ```go
@@ -182,8 +192,8 @@ import (
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:         pulumi.String("soletenant-group"),
-//				Zone:         pulumi.String("us-central1-f"),
-//				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
+//				Zone:         pulumi.String("us-central1-a"),
+//				Description:  pulumi.String("example google_compute_node_group for Google Provider"),
 //				InitialSize:  pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //				ShareSettings: &compute.NodeGroupShareSettingsArgs{
