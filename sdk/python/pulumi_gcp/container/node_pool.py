@@ -53,7 +53,7 @@ class NodePoolArgs:
                may change this value in your existing cluster, which will trigger destruction
                and recreation on the next provider run (to rectify the discrepancy).  If you don't
                need this value, don't set it.  If you do need it, you can use a lifecycle block to
-               ignore subsqeuent changes to this field.
+               ignore subsequent changes to this field.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
                - - -
@@ -174,7 +174,7 @@ class NodePoolArgs:
         may change this value in your existing cluster, which will trigger destruction
         and recreation on the next provider run (to rectify the discrepancy).  If you don't
         need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        ignore subsqeuent changes to this field.
+        ignore subsequent changes to this field.
         """
         return pulumi.get(self, "initial_node_count")
 
@@ -432,7 +432,7 @@ class _NodePoolState:
                may change this value in your existing cluster, which will trigger destruction
                and recreation on the next provider run (to rectify the discrepancy).  If you don't
                need this value, don't set it.  If you do need it, you can use a lifecycle block to
-               ignore subsqeuent changes to this field.
+               ignore subsequent changes to this field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
@@ -562,7 +562,7 @@ class _NodePoolState:
         may change this value in your existing cluster, which will trigger destruction
         and recreation on the next provider run (to rectify the discrepancy).  If you don't
         need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        ignore subsqeuent changes to this field.
+        ignore subsequent changes to this field.
         """
         return pulumi.get(self, "initial_node_count")
 
@@ -935,7 +935,7 @@ class NodePool(pulumi.CustomResource):
                may change this value in your existing cluster, which will trigger destruction
                and recreation on the next provider run (to rectify the discrepancy).  If you don't
                need this value, don't set it.  If you do need it, you can use a lifecycle block to
-               ignore subsqeuent changes to this field.
+               ignore subsequent changes to this field.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
                - - -
@@ -1185,7 +1185,7 @@ class NodePool(pulumi.CustomResource):
                may change this value in your existing cluster, which will trigger destruction
                and recreation on the next provider run (to rectify the discrepancy).  If you don't
                need this value, don't set it.  If you do need it, you can use a lifecycle block to
-               ignore subsqeuent changes to this field.
+               ignore subsequent changes to this field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
@@ -1291,7 +1291,7 @@ class NodePool(pulumi.CustomResource):
         may change this value in your existing cluster, which will trigger destruction
         and recreation on the next provider run (to rectify the discrepancy).  If you don't
         need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        ignore subsqeuent changes to this field.
+        ignore subsequent changes to this field.
         """
         return pulumi.get(self, "initial_node_count")
 

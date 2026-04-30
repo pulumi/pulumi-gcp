@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Container
         /// may change this value in your existing cluster, which will trigger destruction
         /// and recreation on the next provider run (to rectify the discrepancy).  If you don't
         /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        /// ignore subsqeuent changes to this field.
+        /// ignore subsequent changes to this field.
         /// </summary>
         [Output("initialNodeCount")]
         public Output<int> InitialNodeCount { get; private set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.Gcp.Container
         /// may change this value in your existing cluster, which will trigger destruction
         /// and recreation on the next provider run (to rectify the discrepancy).  If you don't
         /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        /// ignore subsqeuent changes to this field.
+        /// ignore subsequent changes to this field.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -539,7 +539,7 @@ namespace Pulumi.Gcp.Container
         /// may change this value in your existing cluster, which will trigger destruction
         /// and recreation on the next provider run (to rectify the discrepancy).  If you don't
         /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        /// ignore subsqeuent changes to this field.
+        /// ignore subsequent changes to this field.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }

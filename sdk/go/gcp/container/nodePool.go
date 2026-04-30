@@ -167,7 +167,7 @@ type NodePool struct {
 	// may change this value in your existing cluster, which will trigger destruction
 	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
@@ -283,7 +283,7 @@ type nodePoolState struct {
 	// may change this value in your existing cluster, which will trigger destruction
 	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
@@ -367,7 +367,7 @@ type NodePoolState struct {
 	// may change this value in your existing cluster, which will trigger destruction
 	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
@@ -455,7 +455,7 @@ type nodePoolArgs struct {
 	// may change this value in your existing cluster, which will trigger destruction
 	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The location (region or zone) of the cluster.
 	//
@@ -535,7 +535,7 @@ type NodePoolArgs struct {
 	// may change this value in your existing cluster, which will trigger destruction
 	// and recreation on the next provider run (to rectify the discrepancy).  If you don't
 	// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-	// ignore subsqeuent changes to this field.
+	// ignore subsequent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The location (region or zone) of the cluster.
 	//
@@ -706,7 +706,7 @@ func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 // may change this value in your existing cluster, which will trigger destruction
 // and recreation on the next provider run (to rectify the discrepancy).  If you don't
 // need this value, don't set it.  If you do need it, you can use a lifecycle block to
-// ignore subsqeuent changes to this field.
+// ignore subsequent changes to this field.
 func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
 }

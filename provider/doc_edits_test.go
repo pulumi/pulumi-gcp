@@ -264,13 +264,15 @@ func TestHardDocsEdits(t *testing.T) {
 			"* Creating or updating an environment usually takes around 25 minutes.\n"+
 			"* In some cases errors in the configuration will be detected and reported only \n"+
 			"    during the process of the environment creation. If you encounter such \n"+
-			"    errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs for the Terraform provider.\n"+
+			"    errors, please verify your configuration is valid against GCP Cloud Composer before filing\n"+
+			"    bugs for the Terraform provider.\n"+
 			"* **Environments have Google Cloud Storage buckets that are not automatically \n"+
 			"    deleted** with the environment.\n"+
 			"    See [Delete environments](https://cloud.google.com/composer/docs/composer-2/delete-environments)\n"+
 			"    for more information.\n"+
 			"* Please refer to\n"+
-			"    [Troubleshooting pages](https://cloud.devsite.corp.google.com/composer/docs/composer-2/troubleshooting-environment-creation) if you encounter\n"+
+			"    [Troubleshooting pages](https://cloud.devsite.corp.google.com/composer/docs/composer-2/\n"+
+			"    troubleshooting-environment-creation) if you encounter\n"+
 			"    problems.\n\n"+
 			"## Example Usage"),
 	)

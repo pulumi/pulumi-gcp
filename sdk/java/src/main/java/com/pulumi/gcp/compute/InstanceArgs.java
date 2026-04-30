@@ -49,7 +49,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -57,7 +57,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> allowStoppingForUpdate;
 
     /**
-     * @return If true, allows this prvider to stop the instance to update its properties.
+     * @return If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -726,7 +726,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowStoppingForUpdate If true, allows this prvider to stop the instance to update its properties.
+         * @param allowStoppingForUpdate If true, allows this provider to stop the instance to update its properties.
          * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
          * 
          * @return builder
@@ -738,7 +738,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowStoppingForUpdate If true, allows this prvider to stop the instance to update its properties.
+         * @param allowStoppingForUpdate If true, allows this provider to stop the instance to update its properties.
          * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
          * 
          * @return builder

@@ -150,7 +150,7 @@ type Project struct {
 	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
@@ -234,7 +234,7 @@ type projectState struct {
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
@@ -284,7 +284,7 @@ type ProjectState struct {
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
@@ -338,7 +338,7 @@ type projectArgs struct {
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
@@ -383,7 +383,7 @@ type ProjectArgs struct {
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
@@ -516,7 +516,7 @@ func (o ProjectOutput) AutoCreateNetwork() pulumi.BoolPtrOutput {
 
 // The alphanumeric ID of the billing account this project
 // belongs to. The user or service account performing this operation with the provider
-// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
 // See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 // for more details.
 func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {

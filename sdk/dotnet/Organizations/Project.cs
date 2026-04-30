@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The alphanumeric ID of the billing account this project
         /// belongs to. The user or service account performing this operation with the provider
-        /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        /// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
         /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         /// for more details.
         /// </summary>
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The alphanumeric ID of the billing account this project
         /// belongs to. The user or service account performing this operation with the provider
-        /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        /// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
         /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         /// for more details.
         /// </summary>
@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The alphanumeric ID of the billing account this project
         /// belongs to. The user or service account performing this operation with the provider
-        /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        /// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
         /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         /// for more details.
         /// </summary>

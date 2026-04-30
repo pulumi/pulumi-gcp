@@ -321,7 +321,8 @@ class Environment(pulumi.CustomResource):
           process), and is prone to limited error reporting. If you encounter confusing or uninformative
           errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
           against the provider.
-        * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
+        * **Environments create Google Cloud Storage buckets that are not automatically cleaned up**
+          on environment deletion. [More about Composer's use of Cloud
           Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
         * Please review the [known
           issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
@@ -900,7 +901,8 @@ class Environment(pulumi.CustomResource):
           process), and is prone to limited error reporting. If you encounter confusing or uninformative
           errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
           against the provider.
-        * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
+        * **Environments create Google Cloud Storage buckets that are not automatically cleaned up**
+          on environment deletion. [More about Composer's use of Cloud
           Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
         * Please review the [known
           issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having

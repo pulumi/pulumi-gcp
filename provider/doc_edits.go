@@ -241,7 +241,8 @@ var addCloudRunPubsubExample = targetedInsertBefore(
 )
 
 var composerEnvironmentConsiderations = regexp.MustCompile(
-	`(?s)Several special considerations apply to managing Cloud Composer environments\s+with Terraform:.*?\n\n## Example Usage`,
+	`(?s)Several special considerations apply to managing Cloud Composer environments\s+with Terraform:` +
+		`.*?\n\n## Example Usage`,
 )
 
 var fixUpComposerEnvironmentWarning = tfbridge.DocsEdit{
@@ -257,7 +258,8 @@ var fixUpComposerEnvironmentWarning = tfbridge.DocsEdit{
 			"  process), and is prone to limited error reporting. If you encounter confusing or uninformative\n" +
 			"  errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs\n" +
 			"  against the provider.\n" +
-			"* **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud\n" +
+			"* **Environments create Google Cloud Storage buckets that are not automatically cleaned up**\n" +
+			"  on environment deletion. [More about Composer's use of Cloud\n" +
 			"  Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).\n" +
 			"* Please review the [known\n" +
 			"  issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having\n" +

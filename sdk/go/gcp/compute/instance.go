@@ -182,7 +182,7 @@ type Instance struct {
 
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrOutput `pulumi:"advancedMachineFeatures"`
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows this provider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrOutput `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -374,7 +374,7 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows this provider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -523,7 +523,7 @@ type instanceState struct {
 type InstanceState struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows this provider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -676,7 +676,7 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures *InstanceAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows this provider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -806,7 +806,7 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
 	AdvancedMachineFeatures InstanceAdvancedMachineFeaturesPtrInput
-	// If true, allows this prvider to stop the instance to update its properties.
+	// If true, allows this provider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -1024,7 +1024,7 @@ func (o InstanceOutput) AdvancedMachineFeatures() InstanceAdvancedMachineFeature
 	return o.ApplyT(func(v *Instance) InstanceAdvancedMachineFeaturesPtrOutput { return v.AdvancedMachineFeatures }).(InstanceAdvancedMachineFeaturesPtrOutput)
 }
 
-// If true, allows this prvider to stop the instance to update its properties.
+// If true, allows this provider to stop the instance to update its properties.
 // If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 func (o InstanceOutput) AllowStoppingForUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AllowStoppingForUpdate }).(pulumi.BoolPtrOutput)
