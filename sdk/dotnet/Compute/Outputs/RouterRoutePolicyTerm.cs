@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.RouterRoutePolicyTermMatch Match;
         /// <summary>
-        /// The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+        /// The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
         /// </summary>
         public readonly int Priority;
 

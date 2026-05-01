@@ -36,10 +36,17 @@ public final class ToolDataStoreTool {
      */
     private @Nullable ToolDataStoreToolEngineSource engineSource;
     /**
-     * @return Number of search results to return per query.
+     * @return (Optional, Deprecated)
+     * Number of search results to return per query.
      * The default value is 10. The maximum allowed value is 10.
      * 
+     * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
+     * 
+     * @deprecated
+     * `maxResults` is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
     private @Nullable Integer maxResults;
     /**
      * @return The modality configs for the data store.
@@ -79,10 +86,17 @@ public final class ToolDataStoreTool {
         return Optional.ofNullable(this.engineSource);
     }
     /**
-     * @return Number of search results to return per query.
+     * @return (Optional, Deprecated)
+     * Number of search results to return per query.
      * The default value is 10. The maximum allowed value is 10.
      * 
+     * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
+     * 
+     * @deprecated
+     * `maxResults` is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
     public Optional<Integer> maxResults() {
         return Optional.ofNullable(this.maxResults);
     }

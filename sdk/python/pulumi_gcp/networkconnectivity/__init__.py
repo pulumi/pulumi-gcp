@@ -8,8 +8,12 @@ import typing
 # Export this package's modules as members:
 from .destination import *
 from .gateway_advertised_route import *
+from .get_hub_iam_policy import *
 from .group import *
 from .hub import *
+from .hub_iam_binding import *
+from .hub_iam_member import *
+from .hub_iam_policy import *
 from .internal_range import *
 from .multicloud_data_transfer_config import *
 from .policy_based_route import *

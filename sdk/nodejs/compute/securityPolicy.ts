@@ -161,6 +161,33 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### With Advanced Options Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
+ *     advancedOptionsConfig: {
+ *         jsonParsing: "STANDARD",
+ *         jsonCustomConfig: {
+ *             contentTypes: [
+ *                 "application/json",
+ *                 "application/vnd.api+json",
+ *                 "application/vnd.collection+json",
+ *                 "application/vnd.hyper+json",
+ *             ],
+ *         },
+ *         logLevel: "VERBOSE",
+ *         userIpRequestHeaders: [
+ *             "True-Client-IP",
+ *             "x-custom-ip",
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Security policies can be imported using any of these accepted formats:

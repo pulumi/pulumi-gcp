@@ -67,6 +67,16 @@ __all__ = [
     'HostingVersionConfigRedirect',
     'HostingVersionConfigRewrite',
     'HostingVersionConfigRewriteRun',
+    'RemoteConfigRemoteConfigCondition',
+    'RemoteConfigRemoteConfigParameter',
+    'RemoteConfigRemoteConfigParameterConditionalValue',
+    'RemoteConfigRemoteConfigParameterDefaultValue',
+    'RemoteConfigRemoteConfigParameterGroup',
+    'RemoteConfigRemoteConfigParameterGroupParameter',
+    'RemoteConfigRemoteConfigParameterGroupParameterConditionalValue',
+    'RemoteConfigRemoteConfigParameterGroupParameterDefaultValue',
+    'RemoteConfigRemoteConfigVersion',
+    'RemoteConfigRemoteConfigVersionUpdateUser',
     'StorageDefaultBucketBucket',
 ]
 
@@ -3316,6 +3326,809 @@ class HostingVersionConfigRewriteRun(dict):
         Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagColor":
+            suggest = "tag_color"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 name: _builtins.str,
+                 tag_color: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: The logic of this condition.
+               See the documentation regarding
+               [Condition
+               Expressions](https://firebase.google.com/docs/remote-config/condition-reference)
+               for the expected syntax of this field.
+        :param _builtins.str name: A non-empty and unique name of this condition.
+        :param _builtins.str tag_color: The color associated with this condition for display purposes in the Firebase Console.
+               Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
+               Possible values are: `BLUE`, `BROWN`, `CYAN`, `DEEP_ORANGE`, `GREEN`, `INDIGO`, `LIME`, `ORANGE`, `PINK`, `PURPLE`, `TEAL`.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
+        if tag_color is not None:
+            pulumi.set(__self__, "tag_color", tag_color)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        The logic of this condition.
+        See the documentation regarding
+        [Condition
+        Expressions](https://firebase.google.com/docs/remote-config/condition-reference)
+        for the expected syntax of this field.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        A non-empty and unique name of this condition.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="tagColor")
+    def tag_color(self) -> Optional[_builtins.str]:
+        """
+        The color associated with this condition for display purposes in the Firebase Console.
+        Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
+        Possible values are: `BLUE`, `BROWN`, `CYAN`, `DEEP_ORANGE`, `GREEN`, `INDIGO`, `LIME`, `ORANGE`, `PINK`, `PURPLE`, `TEAL`.
+        """
+        return pulumi.get(self, "tag_color")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "conditionalValues":
+            suggest = "conditional_values"
+        elif key == "defaultValue":
+            suggest = "default_value"
+        elif key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_name: _builtins.str,
+                 conditional_values: Optional[Sequence['outputs.RemoteConfigRemoteConfigParameterConditionalValue']] = None,
+                 default_value: Optional['outputs.RemoteConfigRemoteConfigParameterDefaultValue'] = None,
+                 description: Optional[_builtins.str] = None,
+                 value_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str parameter_name: The identifier for this object. Format specified above.
+        :param Sequence['RemoteConfigRemoteConfigParameterConditionalValueArgs'] conditional_values: The condition_name of the highest priority
+               (the one listed first in the RemoteConfig's conditions list) determines
+               the value of this parameter.
+               Only one of use_in_app_default or value may be specified.
+               Structure is documented below.
+        :param 'RemoteConfigRemoteConfigParameterDefaultValueArgs' default_value: Value to set the parameter to, when none of the named conditions evaluate to true.
+               Only one of use_in_app_default or value may be specified.
+               Structure is documented below.
+        :param _builtins.str description: A description for this Parameter. Its length must be less than or equal to
+               256 characters . A description may contain any Unicode characters.
+        :param _builtins.str value_type: The data type for all values of this parameter in the current version of
+               the template.
+               Default value is `STRING`.
+               Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+        """
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        if conditional_values is not None:
+            pulumi.set(__self__, "conditional_values", conditional_values)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if value_type is not None:
+            pulumi.set(__self__, "value_type", value_type)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @_builtins.property
+    @pulumi.getter(name="conditionalValues")
+    def conditional_values(self) -> Optional[Sequence['outputs.RemoteConfigRemoteConfigParameterConditionalValue']]:
+        """
+        The condition_name of the highest priority
+        (the one listed first in the RemoteConfig's conditions list) determines
+        the value of this parameter.
+        Only one of use_in_app_default or value may be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional['outputs.RemoteConfigRemoteConfigParameterDefaultValue']:
+        """
+        Value to set the parameter to, when none of the named conditions evaluate to true.
+        Only one of use_in_app_default or value may be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description for this Parameter. Its length must be less than or equal to
+        256 characters . A description may contain any Unicode characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> Optional[_builtins.str]:
+        """
+        The data type for all values of this parameter in the current version of
+        the template.
+        Default value is `STRING`.
+        Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameterConditionalValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionName":
+            suggest = "condition_name"
+        elif key == "useInAppDefault":
+            suggest = "use_in_app_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameterConditionalValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameterConditionalValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameterConditionalValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition_name: _builtins.str,
+                 use_in_app_default: Optional[_builtins.bool] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str condition_name: The identifier for this object. Format specified above.
+        :param _builtins.bool use_in_app_default: If true, the parameter is omitted from the parameter values returned
+               to a client.
+        :param _builtins.str value: The string value that the parameter is set to.
+        """
+        pulumi.set(__self__, "condition_name", condition_name)
+        if use_in_app_default is not None:
+            pulumi.set(__self__, "use_in_app_default", use_in_app_default)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conditionName")
+    def condition_name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "condition_name")
+
+    @_builtins.property
+    @pulumi.getter(name="useInAppDefault")
+    def use_in_app_default(self) -> Optional[_builtins.bool]:
+        """
+        If true, the parameter is omitted from the parameter values returned
+        to a client.
+        """
+        return pulumi.get(self, "use_in_app_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The string value that the parameter is set to.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameterDefaultValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useInAppDefault":
+            suggest = "use_in_app_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameterDefaultValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameterDefaultValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameterDefaultValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 use_in_app_default: Optional[_builtins.bool] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool use_in_app_default: If true, the parameter is omitted from the parameter values returned
+               to a client.
+        :param _builtins.str value: The string value that the parameter is set to.
+        """
+        if use_in_app_default is not None:
+            pulumi.set(__self__, "use_in_app_default", use_in_app_default)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useInAppDefault")
+    def use_in_app_default(self) -> Optional[_builtins.bool]:
+        """
+        If true, the parameter is omitted from the parameter values returned
+        to a client.
+        """
+        return pulumi.get(self, "use_in_app_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The string value that the parameter is set to.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameterGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterGroupName":
+            suggest = "parameter_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameterGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameterGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameterGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_group_name: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 parameters: Optional[Sequence['outputs.RemoteConfigRemoteConfigParameterGroupParameter']] = None):
+        """
+        :param _builtins.str parameter_group_name: The identifier for this object. Format specified above.
+        :param _builtins.str description: A description for the group. Its length must be less than or equal to 256
+               characters. A description may contain any Unicode characters.
+        :param Sequence['RemoteConfigRemoteConfigParameterGroupParameterArgs'] parameters: Map of parameter keys to their optional default values and optional
+               conditional values for parameters that belong to this group.
+               A parameter only appears once per RemoteConfig: an ungrouped parameter
+               appears at the top level; a parameter organized within a group appears
+               within its group's map of parameters.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "parameter_group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description for the group. Its length must be less than or equal to 256
+        characters. A description may contain any Unicode characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.RemoteConfigRemoteConfigParameterGroupParameter']]:
+        """
+        Map of parameter keys to their optional default values and optional
+        conditional values for parameters that belong to this group.
+        A parameter only appears once per RemoteConfig: an ungrouped parameter
+        appears at the top level; a parameter organized within a group appears
+        within its group's map of parameters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameterGroupParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "conditionalValues":
+            suggest = "conditional_values"
+        elif key == "defaultValue":
+            suggest = "default_value"
+        elif key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameterGroupParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameterGroupParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameterGroupParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_name: _builtins.str,
+                 conditional_values: Optional[Sequence['outputs.RemoteConfigRemoteConfigParameterGroupParameterConditionalValue']] = None,
+                 default_value: Optional['outputs.RemoteConfigRemoteConfigParameterGroupParameterDefaultValue'] = None,
+                 description: Optional[_builtins.str] = None,
+                 value_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str parameter_name: The identifier for this object. Format specified above.
+        :param Sequence['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs'] conditional_values: The condition_name of the highest priority
+               (the one listed first in the RemoteConfig's conditions list) determines
+               the value of this parameter.
+               Only one of use_in_app_default or value may be specified.
+               Structure is documented below.
+        :param 'RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs' default_value: Value to set the parameter to, when none of the named conditions evaluate to true.
+               Only one of use_in_app_default or value may be specified.
+               Structure is documented below.
+        :param _builtins.str description: A description for this Parameter. Its length must be less than or equal to
+               256 characters . A description may contain any Unicode characters.
+        :param _builtins.str value_type: The data type for all values of this parameter in the current version of
+               the template.
+               Default value is `STRING`.
+               Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+        """
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        if conditional_values is not None:
+            pulumi.set(__self__, "conditional_values", conditional_values)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if value_type is not None:
+            pulumi.set(__self__, "value_type", value_type)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @_builtins.property
+    @pulumi.getter(name="conditionalValues")
+    def conditional_values(self) -> Optional[Sequence['outputs.RemoteConfigRemoteConfigParameterGroupParameterConditionalValue']]:
+        """
+        The condition_name of the highest priority
+        (the one listed first in the RemoteConfig's conditions list) determines
+        the value of this parameter.
+        Only one of use_in_app_default or value may be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional['outputs.RemoteConfigRemoteConfigParameterGroupParameterDefaultValue']:
+        """
+        Value to set the parameter to, when none of the named conditions evaluate to true.
+        Only one of use_in_app_default or value may be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description for this Parameter. Its length must be less than or equal to
+        256 characters . A description may contain any Unicode characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> Optional[_builtins.str]:
+        """
+        The data type for all values of this parameter in the current version of
+        the template.
+        Default value is `STRING`.
+        Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameterGroupParameterConditionalValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionName":
+            suggest = "condition_name"
+        elif key == "useInAppDefault":
+            suggest = "use_in_app_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameterGroupParameterConditionalValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameterGroupParameterConditionalValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameterGroupParameterConditionalValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition_name: _builtins.str,
+                 use_in_app_default: Optional[_builtins.bool] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str condition_name: The identifier for this object. Format specified above.
+        :param _builtins.bool use_in_app_default: If true, the parameter is omitted from the parameter values returned
+               to a client.
+        :param _builtins.str value: The string value that the parameter is set to.
+        """
+        pulumi.set(__self__, "condition_name", condition_name)
+        if use_in_app_default is not None:
+            pulumi.set(__self__, "use_in_app_default", use_in_app_default)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conditionName")
+    def condition_name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "condition_name")
+
+    @_builtins.property
+    @pulumi.getter(name="useInAppDefault")
+    def use_in_app_default(self) -> Optional[_builtins.bool]:
+        """
+        If true, the parameter is omitted from the parameter values returned
+        to a client.
+        """
+        return pulumi.get(self, "use_in_app_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The string value that the parameter is set to.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigParameterGroupParameterDefaultValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useInAppDefault":
+            suggest = "use_in_app_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigParameterGroupParameterDefaultValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigParameterGroupParameterDefaultValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigParameterGroupParameterDefaultValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 use_in_app_default: Optional[_builtins.bool] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool use_in_app_default: If true, the parameter is omitted from the parameter values returned
+               to a client.
+        :param _builtins.str value: The string value that the parameter is set to.
+        """
+        if use_in_app_default is not None:
+            pulumi.set(__self__, "use_in_app_default", use_in_app_default)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useInAppDefault")
+    def use_in_app_default(self) -> Optional[_builtins.bool]:
+        """
+        If true, the parameter is omitted from the parameter values returned
+        to a client.
+        """
+        return pulumi.get(self, "use_in_app_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The string value that the parameter is set to.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isLegacy":
+            suggest = "is_legacy"
+        elif key == "rollbackSource":
+            suggest = "rollback_source"
+        elif key == "updateOrigin":
+            suggest = "update_origin"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "updateType":
+            suggest = "update_type"
+        elif key == "updateUsers":
+            suggest = "update_users"
+        elif key == "versionNumber":
+            suggest = "version_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_legacy: Optional[_builtins.bool] = None,
+                 rollback_source: Optional[_builtins.str] = None,
+                 update_origin: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None,
+                 update_type: Optional[_builtins.str] = None,
+                 update_users: Optional[Sequence['outputs.RemoteConfigRemoteConfigVersionUpdateUser']] = None,
+                 version_number: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool is_legacy: (Output)
+               `True` if this Remote Config template was published before
+               version history was supported.
+        :param _builtins.str rollback_source: (Output)
+               Only present if this version is the result of a rollback, and
+               will be the version number of the Remote Config template that was
+               rolled-back to.
+        :param _builtins.str update_origin: (Output)
+               Where the update action originated.
+               For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
+        :param _builtins.str update_time: (Output)
+               When the Remote Config template was written to the Remote
+               Config server.
+        :param _builtins.str update_type: (Output)
+               What type of update was made.
+               For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
+        :param Sequence['RemoteConfigRemoteConfigVersionUpdateUserArgs'] update_users: (Output)
+               All the fields associated with the person/service account that wrote a
+               Remote Config template.
+               Structure is documented below.
+        :param _builtins.str version_number: (Output)
+               The version number of the version's corresponding
+               Remote Config template.
+        """
+        if is_legacy is not None:
+            pulumi.set(__self__, "is_legacy", is_legacy)
+        if rollback_source is not None:
+            pulumi.set(__self__, "rollback_source", rollback_source)
+        if update_origin is not None:
+            pulumi.set(__self__, "update_origin", update_origin)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if update_type is not None:
+            pulumi.set(__self__, "update_type", update_type)
+        if update_users is not None:
+            pulumi.set(__self__, "update_users", update_users)
+        if version_number is not None:
+            pulumi.set(__self__, "version_number", version_number)
+
+    @_builtins.property
+    @pulumi.getter(name="isLegacy")
+    def is_legacy(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        `True` if this Remote Config template was published before
+        version history was supported.
+        """
+        return pulumi.get(self, "is_legacy")
+
+    @_builtins.property
+    @pulumi.getter(name="rollbackSource")
+    def rollback_source(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Only present if this version is the result of a rollback, and
+        will be the version number of the Remote Config template that was
+        rolled-back to.
+        """
+        return pulumi.get(self, "rollback_source")
+
+    @_builtins.property
+    @pulumi.getter(name="updateOrigin")
+    def update_origin(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Where the update action originated.
+        For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
+        """
+        return pulumi.get(self, "update_origin")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        When the Remote Config template was written to the Remote
+        Config server.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updateType")
+    def update_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        What type of update was made.
+        For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
+        """
+        return pulumi.get(self, "update_type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateUsers")
+    def update_users(self) -> Optional[Sequence['outputs.RemoteConfigRemoteConfigVersionUpdateUser']]:
+        """
+        (Output)
+        All the fields associated with the person/service account that wrote a
+        Remote Config template.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "update_users")
+
+    @_builtins.property
+    @pulumi.getter(name="versionNumber")
+    def version_number(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The version number of the version's corresponding
+        Remote Config template.
+        """
+        return pulumi.get(self, "version_number")
+
+
+@pulumi.output_type
+class RemoteConfigRemoteConfigVersionUpdateUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUrl":
+            suggest = "image_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteConfigRemoteConfigVersionUpdateUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteConfigRemoteConfigVersionUpdateUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteConfigRemoteConfigVersionUpdateUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: Optional[_builtins.str] = None,
+                 image_url: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str email: (Output)
+               Email address.
+        :param _builtins.str image_url: (Output)
+               Image URL.
+        :param _builtins.str name: (Output)
+               Display name.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if image_url is not None:
+            pulumi.set(__self__, "image_url", image_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Email address.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Image URL.
+        """
+        return pulumi.get(self, "image_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Display name.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

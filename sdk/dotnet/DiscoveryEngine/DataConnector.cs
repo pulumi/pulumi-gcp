@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -164,8 +165,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///                     new Gcp.DiscoveryEngine.Inputs.DataConnectorDestinationConfigDestinationArgs
     ///                     {
     ///                         Host = "https://example.atlassian.net",
+    ///                         Port = 123,
     ///                     },
     ///                 },
+    ///                 Params = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["destination_type"] = "private",
+    ///                 }),
     ///             },
     ///         },
     ///         ConnectorModes = new[]

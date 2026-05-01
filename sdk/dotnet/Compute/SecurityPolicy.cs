@@ -243,6 +243,44 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### With Advanced Options Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Name = "my-policy",
+    ///         AdvancedOptionsConfig = new Gcp.Compute.Inputs.SecurityPolicyAdvancedOptionsConfigArgs
+    ///         {
+    ///             JsonParsing = "STANDARD",
+    ///             JsonCustomConfig = new Gcp.Compute.Inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs
+    ///             {
+    ///                 ContentTypes = new[]
+    ///                 {
+    ///                     "application/json",
+    ///                     "application/vnd.api+json",
+    ///                     "application/vnd.collection+json",
+    ///                     "application/vnd.hyper+json",
+    ///                 },
+    ///             },
+    ///             LogLevel = "VERBOSE",
+    ///             UserIpRequestHeaders = new[]
+    ///             {
+    ///                 "True-Client-IP",
+    ///                 "x-custom-ip",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Security policies can be imported using any of these accepted formats:

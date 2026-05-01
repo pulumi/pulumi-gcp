@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolNodeConfigLinuxNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Accurate time configuration for the node. Structure is documented below.
+        /// </summary>
+        [Input("accurateTimeConfig")]
+        public Input<Inputs.ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigGetArgs>? AccurateTimeConfig { get; set; }
+
+        /// <summary>
         /// Possible cgroup modes that can be used.
         /// Accepted values are:
         /// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
@@ -33,6 +39,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("nodeKernelModuleLoading")]
         public Input<Inputs.ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingGetArgs>? NodeKernelModuleLoading { get; set; }
+
+        /// <summary>
+        /// Swap configuration for the node. Structure is documented below.
+        /// </summary>
+        [Input("swapConfig")]
+        public Input<Inputs.ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigGetArgs>? SwapConfig { get; set; }
 
         [Input("sysctls")]
         private InputMap<string>? _sysctls;

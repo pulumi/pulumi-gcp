@@ -93,6 +93,9 @@ namespace Pulumi.Gcp
         [Output("bigtableCustomEndpoint")]
         public Output<string?> BigtableCustomEndpoint { get; private set; } = null!;
 
+        [Output("billingBudgetsCustomEndpoint")]
+        public Output<string?> BillingBudgetsCustomEndpoint { get; private set; } = null!;
+
         [Output("billingCustomEndpoint")]
         public Output<string?> BillingCustomEndpoint { get; private set; } = null!;
 
@@ -204,6 +207,9 @@ namespace Pulumi.Gcp
         [Output("dataFusionCustomEndpoint")]
         public Output<string?> DataFusionCustomEndpoint { get; private set; } = null!;
 
+        [Output("dataLineageCustomEndpoint")]
+        public Output<string?> DataLineageCustomEndpoint { get; private set; } = null!;
+
         [Output("dataLossPreventionCustomEndpoint")]
         public Output<string?> DataLossPreventionCustomEndpoint { get; private set; } = null!;
 
@@ -296,6 +302,9 @@ namespace Pulumi.Gcp
 
         [Output("firebaseHostingCustomEndpoint")]
         public Output<string?> FirebaseHostingCustomEndpoint { get; private set; } = null!;
+
+        [Output("firebaseRemoteConfigCustomEndpoint")]
+        public Output<string?> FirebaseRemoteConfigCustomEndpoint { get; private set; } = null!;
 
         [Output("firebaseStorageCustomEndpoint")]
         public Output<string?> FirebaseStorageCustomEndpoint { get; private set; } = null!;
@@ -737,6 +746,9 @@ namespace Pulumi.Gcp
         [Input("bigtableCustomEndpoint")]
         public Input<string>? BigtableCustomEndpoint { get; set; }
 
+        [Input("billingBudgetsCustomEndpoint")]
+        public Input<string>? BillingBudgetsCustomEndpoint { get; set; }
+
         [Input("billingCustomEndpoint")]
         public Input<string>? BillingCustomEndpoint { get; set; }
 
@@ -848,6 +860,9 @@ namespace Pulumi.Gcp
         [Input("dataFusionCustomEndpoint")]
         public Input<string>? DataFusionCustomEndpoint { get; set; }
 
+        [Input("dataLineageCustomEndpoint")]
+        public Input<string>? DataLineageCustomEndpoint { get; set; }
+
         [Input("dataLossPreventionCustomEndpoint")]
         public Input<string>? DataLossPreventionCustomEndpoint { get; set; }
 
@@ -954,6 +969,9 @@ namespace Pulumi.Gcp
 
         [Input("firebaseHostingCustomEndpoint")]
         public Input<string>? FirebaseHostingCustomEndpoint { get; set; }
+
+        [Input("firebaseRemoteConfigCustomEndpoint")]
+        public Input<string>? FirebaseRemoteConfigCustomEndpoint { get; set; }
 
         [Input("firebaseStorageCustomEndpoint")]
         public Input<string>? FirebaseStorageCustomEndpoint { get; set; }
@@ -1115,6 +1133,12 @@ namespace Pulumi.Gcp
 
         [Input("pollInterval")]
         public Input<string>? PollInterval { get; set; }
+
+        [Input("preferGlobalEndpoints", json: true)]
+        public Input<bool>? PreferGlobalEndpoints { get; set; }
+
+        [Input("preferRegionalEndpoints", json: true)]
+        public Input<bool>? PreferRegionalEndpoints { get; set; }
 
         [Input("privatecaCustomEndpoint")]
         public Input<string>? PrivatecaCustomEndpoint { get; set; }

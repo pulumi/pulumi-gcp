@@ -7845,6 +7845,1491 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ServiceId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type RemoteConfigRemoteConfigCondition struct {
+	// The logic of this condition.
+	// See the documentation regarding
+	// [Condition
+	// Expressions](https://firebase.google.com/docs/remote-config/condition-reference)
+	// for the expected syntax of this field.
+	Expression string `pulumi:"expression"`
+	// A non-empty and unique name of this condition.
+	Name string `pulumi:"name"`
+	// The color associated with this condition for display purposes in the Firebase Console.
+	// Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
+	// Possible values are: `BLUE`, `BROWN`, `CYAN`, `DEEP_ORANGE`, `GREEN`, `INDIGO`, `LIME`, `ORANGE`, `PINK`, `PURPLE`, `TEAL`.
+	TagColor *string `pulumi:"tagColor"`
+}
+
+// RemoteConfigRemoteConfigConditionInput is an input type that accepts RemoteConfigRemoteConfigConditionArgs and RemoteConfigRemoteConfigConditionOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigConditionInput` via:
+//
+//	RemoteConfigRemoteConfigConditionArgs{...}
+type RemoteConfigRemoteConfigConditionInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigConditionOutput() RemoteConfigRemoteConfigConditionOutput
+	ToRemoteConfigRemoteConfigConditionOutputWithContext(context.Context) RemoteConfigRemoteConfigConditionOutput
+}
+
+type RemoteConfigRemoteConfigConditionArgs struct {
+	// The logic of this condition.
+	// See the documentation regarding
+	// [Condition
+	// Expressions](https://firebase.google.com/docs/remote-config/condition-reference)
+	// for the expected syntax of this field.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A non-empty and unique name of this condition.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The color associated with this condition for display purposes in the Firebase Console.
+	// Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
+	// Possible values are: `BLUE`, `BROWN`, `CYAN`, `DEEP_ORANGE`, `GREEN`, `INDIGO`, `LIME`, `ORANGE`, `PINK`, `PURPLE`, `TEAL`.
+	TagColor pulumi.StringPtrInput `pulumi:"tagColor"`
+}
+
+func (RemoteConfigRemoteConfigConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigCondition)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigConditionArgs) ToRemoteConfigRemoteConfigConditionOutput() RemoteConfigRemoteConfigConditionOutput {
+	return i.ToRemoteConfigRemoteConfigConditionOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigConditionArgs) ToRemoteConfigRemoteConfigConditionOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigConditionOutput)
+}
+
+// RemoteConfigRemoteConfigConditionArrayInput is an input type that accepts RemoteConfigRemoteConfigConditionArray and RemoteConfigRemoteConfigConditionArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigConditionArrayInput` via:
+//
+//	RemoteConfigRemoteConfigConditionArray{ RemoteConfigRemoteConfigConditionArgs{...} }
+type RemoteConfigRemoteConfigConditionArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigConditionArrayOutput() RemoteConfigRemoteConfigConditionArrayOutput
+	ToRemoteConfigRemoteConfigConditionArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigConditionArrayOutput
+}
+
+type RemoteConfigRemoteConfigConditionArray []RemoteConfigRemoteConfigConditionInput
+
+func (RemoteConfigRemoteConfigConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigCondition)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigConditionArray) ToRemoteConfigRemoteConfigConditionArrayOutput() RemoteConfigRemoteConfigConditionArrayOutput {
+	return i.ToRemoteConfigRemoteConfigConditionArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigConditionArray) ToRemoteConfigRemoteConfigConditionArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigConditionArrayOutput)
+}
+
+type RemoteConfigRemoteConfigConditionOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigCondition)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigConditionOutput) ToRemoteConfigRemoteConfigConditionOutput() RemoteConfigRemoteConfigConditionOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigConditionOutput) ToRemoteConfigRemoteConfigConditionOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigConditionOutput {
+	return o
+}
+
+// The logic of this condition.
+// See the documentation regarding
+// [Condition
+// Expressions](https://firebase.google.com/docs/remote-config/condition-reference)
+// for the expected syntax of this field.
+func (o RemoteConfigRemoteConfigConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A non-empty and unique name of this condition.
+func (o RemoteConfigRemoteConfigConditionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigCondition) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The color associated with this condition for display purposes in the Firebase Console.
+// Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
+// Possible values are: `BLUE`, `BROWN`, `CYAN`, `DEEP_ORANGE`, `GREEN`, `INDIGO`, `LIME`, `ORANGE`, `PINK`, `PURPLE`, `TEAL`.
+func (o RemoteConfigRemoteConfigConditionOutput) TagColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigCondition) *string { return v.TagColor }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigCondition)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigConditionArrayOutput) ToRemoteConfigRemoteConfigConditionArrayOutput() RemoteConfigRemoteConfigConditionArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigConditionArrayOutput) ToRemoteConfigRemoteConfigConditionArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigConditionArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigConditionArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigCondition {
+		return vs[0].([]RemoteConfigRemoteConfigCondition)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigConditionOutput)
+}
+
+type RemoteConfigRemoteConfigParameter struct {
+	// The conditionName of the highest priority
+	// (the one listed first in the RemoteConfig's conditions list) determines
+	// the value of this parameter.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	ConditionalValues []RemoteConfigRemoteConfigParameterConditionalValue `pulumi:"conditionalValues"`
+	// Value to set the parameter to, when none of the named conditions evaluate to true.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	DefaultValue *RemoteConfigRemoteConfigParameterDefaultValue `pulumi:"defaultValue"`
+	// A description for this Parameter. Its length must be less than or equal to
+	// 256 characters . A description may contain any Unicode characters.
+	Description *string `pulumi:"description"`
+	// The identifier for this object. Format specified above.
+	ParameterName string `pulumi:"parameterName"`
+	// The data type for all values of this parameter in the current version of
+	// the template.
+	// Default value is `STRING`.
+	// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+	ValueType *string `pulumi:"valueType"`
+}
+
+// RemoteConfigRemoteConfigParameterInput is an input type that accepts RemoteConfigRemoteConfigParameterArgs and RemoteConfigRemoteConfigParameterOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterInput` via:
+//
+//	RemoteConfigRemoteConfigParameterArgs{...}
+type RemoteConfigRemoteConfigParameterInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterOutput() RemoteConfigRemoteConfigParameterOutput
+	ToRemoteConfigRemoteConfigParameterOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterOutput
+}
+
+type RemoteConfigRemoteConfigParameterArgs struct {
+	// The conditionName of the highest priority
+	// (the one listed first in the RemoteConfig's conditions list) determines
+	// the value of this parameter.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	ConditionalValues RemoteConfigRemoteConfigParameterConditionalValueArrayInput `pulumi:"conditionalValues"`
+	// Value to set the parameter to, when none of the named conditions evaluate to true.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	DefaultValue RemoteConfigRemoteConfigParameterDefaultValuePtrInput `pulumi:"defaultValue"`
+	// A description for this Parameter. Its length must be less than or equal to
+	// 256 characters . A description may contain any Unicode characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The identifier for this object. Format specified above.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+	// The data type for all values of this parameter in the current version of
+	// the template.
+	// Default value is `STRING`.
+	// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+}
+
+func (RemoteConfigRemoteConfigParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameter)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterArgs) ToRemoteConfigRemoteConfigParameterOutput() RemoteConfigRemoteConfigParameterOutput {
+	return i.ToRemoteConfigRemoteConfigParameterOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterArgs) ToRemoteConfigRemoteConfigParameterOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterOutput)
+}
+
+// RemoteConfigRemoteConfigParameterArrayInput is an input type that accepts RemoteConfigRemoteConfigParameterArray and RemoteConfigRemoteConfigParameterArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterArrayInput` via:
+//
+//	RemoteConfigRemoteConfigParameterArray{ RemoteConfigRemoteConfigParameterArgs{...} }
+type RemoteConfigRemoteConfigParameterArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterArrayOutput() RemoteConfigRemoteConfigParameterArrayOutput
+	ToRemoteConfigRemoteConfigParameterArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterArrayOutput
+}
+
+type RemoteConfigRemoteConfigParameterArray []RemoteConfigRemoteConfigParameterInput
+
+func (RemoteConfigRemoteConfigParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameter)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterArray) ToRemoteConfigRemoteConfigParameterArrayOutput() RemoteConfigRemoteConfigParameterArrayOutput {
+	return i.ToRemoteConfigRemoteConfigParameterArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterArray) ToRemoteConfigRemoteConfigParameterArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterArrayOutput)
+}
+
+type RemoteConfigRemoteConfigParameterOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameter)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterOutput) ToRemoteConfigRemoteConfigParameterOutput() RemoteConfigRemoteConfigParameterOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterOutput) ToRemoteConfigRemoteConfigParameterOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterOutput {
+	return o
+}
+
+// The conditionName of the highest priority
+// (the one listed first in the RemoteConfig's conditions list) determines
+// the value of this parameter.
+// Only one of useInAppDefault or value may be specified.
+// Structure is documented below.
+func (o RemoteConfigRemoteConfigParameterOutput) ConditionalValues() RemoteConfigRemoteConfigParameterConditionalValueArrayOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameter) []RemoteConfigRemoteConfigParameterConditionalValue {
+		return v.ConditionalValues
+	}).(RemoteConfigRemoteConfigParameterConditionalValueArrayOutput)
+}
+
+// Value to set the parameter to, when none of the named conditions evaluate to true.
+// Only one of useInAppDefault or value may be specified.
+// Structure is documented below.
+func (o RemoteConfigRemoteConfigParameterOutput) DefaultValue() RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameter) *RemoteConfigRemoteConfigParameterDefaultValue {
+		return v.DefaultValue
+	}).(RemoteConfigRemoteConfigParameterDefaultValuePtrOutput)
+}
+
+// A description for this Parameter. Its length must be less than or equal to
+// 256 characters . A description may contain any Unicode characters.
+func (o RemoteConfigRemoteConfigParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o RemoteConfigRemoteConfigParameterOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameter) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+// The data type for all values of this parameter in the current version of
+// the template.
+// Default value is `STRING`.
+// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+func (o RemoteConfigRemoteConfigParameterOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameter) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameter)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterArrayOutput) ToRemoteConfigRemoteConfigParameterArrayOutput() RemoteConfigRemoteConfigParameterArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterArrayOutput) ToRemoteConfigRemoteConfigParameterArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigParameter {
+		return vs[0].([]RemoteConfigRemoteConfigParameter)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigParameterOutput)
+}
+
+type RemoteConfigRemoteConfigParameterConditionalValue struct {
+	// The identifier for this object. Format specified above.
+	ConditionName string `pulumi:"conditionName"`
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault *bool `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value *string `pulumi:"value"`
+}
+
+// RemoteConfigRemoteConfigParameterConditionalValueInput is an input type that accepts RemoteConfigRemoteConfigParameterConditionalValueArgs and RemoteConfigRemoteConfigParameterConditionalValueOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterConditionalValueInput` via:
+//
+//	RemoteConfigRemoteConfigParameterConditionalValueArgs{...}
+type RemoteConfigRemoteConfigParameterConditionalValueInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterConditionalValueOutput() RemoteConfigRemoteConfigParameterConditionalValueOutput
+	ToRemoteConfigRemoteConfigParameterConditionalValueOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterConditionalValueOutput
+}
+
+type RemoteConfigRemoteConfigParameterConditionalValueArgs struct {
+	// The identifier for this object. Format specified above.
+	ConditionName pulumi.StringInput `pulumi:"conditionName"`
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault pulumi.BoolPtrInput `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RemoteConfigRemoteConfigParameterConditionalValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterConditionalValue)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterConditionalValueArgs) ToRemoteConfigRemoteConfigParameterConditionalValueOutput() RemoteConfigRemoteConfigParameterConditionalValueOutput {
+	return i.ToRemoteConfigRemoteConfigParameterConditionalValueOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterConditionalValueArgs) ToRemoteConfigRemoteConfigParameterConditionalValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterConditionalValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterConditionalValueOutput)
+}
+
+// RemoteConfigRemoteConfigParameterConditionalValueArrayInput is an input type that accepts RemoteConfigRemoteConfigParameterConditionalValueArray and RemoteConfigRemoteConfigParameterConditionalValueArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterConditionalValueArrayInput` via:
+//
+//	RemoteConfigRemoteConfigParameterConditionalValueArray{ RemoteConfigRemoteConfigParameterConditionalValueArgs{...} }
+type RemoteConfigRemoteConfigParameterConditionalValueArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutput() RemoteConfigRemoteConfigParameterConditionalValueArrayOutput
+	ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterConditionalValueArrayOutput
+}
+
+type RemoteConfigRemoteConfigParameterConditionalValueArray []RemoteConfigRemoteConfigParameterConditionalValueInput
+
+func (RemoteConfigRemoteConfigParameterConditionalValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterConditionalValue)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterConditionalValueArray) ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutput() RemoteConfigRemoteConfigParameterConditionalValueArrayOutput {
+	return i.ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterConditionalValueArray) ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterConditionalValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterConditionalValueArrayOutput)
+}
+
+type RemoteConfigRemoteConfigParameterConditionalValueOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterConditionalValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterConditionalValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterConditionalValueOutput) ToRemoteConfigRemoteConfigParameterConditionalValueOutput() RemoteConfigRemoteConfigParameterConditionalValueOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterConditionalValueOutput) ToRemoteConfigRemoteConfigParameterConditionalValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterConditionalValueOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o RemoteConfigRemoteConfigParameterConditionalValueOutput) ConditionName() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterConditionalValue) string { return v.ConditionName }).(pulumi.StringOutput)
+}
+
+// If true, the parameter is omitted from the parameter values returned
+// to a client.
+func (o RemoteConfigRemoteConfigParameterConditionalValueOutput) UseInAppDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterConditionalValue) *bool { return v.UseInAppDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The string value that the parameter is set to.
+func (o RemoteConfigRemoteConfigParameterConditionalValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterConditionalValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterConditionalValueArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterConditionalValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterConditionalValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterConditionalValueArrayOutput) ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutput() RemoteConfigRemoteConfigParameterConditionalValueArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterConditionalValueArrayOutput) ToRemoteConfigRemoteConfigParameterConditionalValueArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterConditionalValueArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterConditionalValueArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigParameterConditionalValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigParameterConditionalValue {
+		return vs[0].([]RemoteConfigRemoteConfigParameterConditionalValue)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigParameterConditionalValueOutput)
+}
+
+type RemoteConfigRemoteConfigParameterDefaultValue struct {
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault *bool `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value *string `pulumi:"value"`
+}
+
+// RemoteConfigRemoteConfigParameterDefaultValueInput is an input type that accepts RemoteConfigRemoteConfigParameterDefaultValueArgs and RemoteConfigRemoteConfigParameterDefaultValueOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterDefaultValueInput` via:
+//
+//	RemoteConfigRemoteConfigParameterDefaultValueArgs{...}
+type RemoteConfigRemoteConfigParameterDefaultValueInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterDefaultValueOutput() RemoteConfigRemoteConfigParameterDefaultValueOutput
+	ToRemoteConfigRemoteConfigParameterDefaultValueOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterDefaultValueOutput
+}
+
+type RemoteConfigRemoteConfigParameterDefaultValueArgs struct {
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault pulumi.BoolPtrInput `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RemoteConfigRemoteConfigParameterDefaultValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterDefaultValue)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterDefaultValueOutput() RemoteConfigRemoteConfigParameterDefaultValueOutput {
+	return i.ToRemoteConfigRemoteConfigParameterDefaultValueOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterDefaultValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterDefaultValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterDefaultValueOutput)
+}
+
+func (i RemoteConfigRemoteConfigParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return i.ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterDefaultValueOutput).ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(ctx)
+}
+
+// RemoteConfigRemoteConfigParameterDefaultValuePtrInput is an input type that accepts RemoteConfigRemoteConfigParameterDefaultValueArgs, RemoteConfigRemoteConfigParameterDefaultValuePtr and RemoteConfigRemoteConfigParameterDefaultValuePtrOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterDefaultValuePtrInput` via:
+//
+//	        RemoteConfigRemoteConfigParameterDefaultValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type RemoteConfigRemoteConfigParameterDefaultValuePtrInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterDefaultValuePtrOutput
+	ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterDefaultValuePtrOutput
+}
+
+type remoteConfigRemoteConfigParameterDefaultValuePtrType RemoteConfigRemoteConfigParameterDefaultValueArgs
+
+func RemoteConfigRemoteConfigParameterDefaultValuePtr(v *RemoteConfigRemoteConfigParameterDefaultValueArgs) RemoteConfigRemoteConfigParameterDefaultValuePtrInput {
+	return (*remoteConfigRemoteConfigParameterDefaultValuePtrType)(v)
+}
+
+func (*remoteConfigRemoteConfigParameterDefaultValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteConfigRemoteConfigParameterDefaultValue)(nil)).Elem()
+}
+
+func (i *remoteConfigRemoteConfigParameterDefaultValuePtrType) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return i.ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i *remoteConfigRemoteConfigParameterDefaultValuePtrType) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterDefaultValuePtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterDefaultValueOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterDefaultValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterDefaultValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterDefaultValueOutput() RemoteConfigRemoteConfigParameterDefaultValueOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterDefaultValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterDefaultValueOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return o.ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteConfigRemoteConfigParameterDefaultValue) *RemoteConfigRemoteConfigParameterDefaultValue {
+		return &v
+	}).(RemoteConfigRemoteConfigParameterDefaultValuePtrOutput)
+}
+
+// If true, the parameter is omitted from the parameter values returned
+// to a client.
+func (o RemoteConfigRemoteConfigParameterDefaultValueOutput) UseInAppDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterDefaultValue) *bool { return v.UseInAppDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The string value that the parameter is set to.
+func (o RemoteConfigRemoteConfigParameterDefaultValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterDefaultValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterDefaultValuePtrOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterDefaultValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteConfigRemoteConfigParameterDefaultValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValuePtrOutput) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValuePtrOutput) ToRemoteConfigRemoteConfigParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterDefaultValuePtrOutput) Elem() RemoteConfigRemoteConfigParameterDefaultValueOutput {
+	return o.ApplyT(func(v *RemoteConfigRemoteConfigParameterDefaultValue) RemoteConfigRemoteConfigParameterDefaultValue {
+		if v != nil {
+			return *v
+		}
+		var ret RemoteConfigRemoteConfigParameterDefaultValue
+		return ret
+	}).(RemoteConfigRemoteConfigParameterDefaultValueOutput)
+}
+
+// If true, the parameter is omitted from the parameter values returned
+// to a client.
+func (o RemoteConfigRemoteConfigParameterDefaultValuePtrOutput) UseInAppDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RemoteConfigRemoteConfigParameterDefaultValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseInAppDefault
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The string value that the parameter is set to.
+func (o RemoteConfigRemoteConfigParameterDefaultValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemoteConfigRemoteConfigParameterDefaultValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroup struct {
+	// A description for the group. Its length must be less than or equal to 256
+	// characters. A description may contain any Unicode characters.
+	Description *string `pulumi:"description"`
+	// The identifier for this object. Format specified above.
+	ParameterGroupName string `pulumi:"parameterGroupName"`
+	// Map of parameter keys to their optional default values and optional
+	// conditional values for parameters that belong to this group.
+	// A parameter only appears once per RemoteConfig: an ungrouped parameter
+	// appears at the top level; a parameter organized within a group appears
+	// within its group's map of parameters.
+	// Structure is documented below.
+	Parameters []RemoteConfigRemoteConfigParameterGroupParameter `pulumi:"parameters"`
+}
+
+// RemoteConfigRemoteConfigParameterGroupInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupArgs and RemoteConfigRemoteConfigParameterGroupOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupArgs{...}
+type RemoteConfigRemoteConfigParameterGroupInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupOutput() RemoteConfigRemoteConfigParameterGroupOutput
+	ToRemoteConfigRemoteConfigParameterGroupOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupArgs struct {
+	// A description for the group. Its length must be less than or equal to 256
+	// characters. A description may contain any Unicode characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The identifier for this object. Format specified above.
+	ParameterGroupName pulumi.StringInput `pulumi:"parameterGroupName"`
+	// Map of parameter keys to their optional default values and optional
+	// conditional values for parameters that belong to this group.
+	// A parameter only appears once per RemoteConfig: an ungrouped parameter
+	// appears at the top level; a parameter organized within a group appears
+	// within its group's map of parameters.
+	// Structure is documented below.
+	Parameters RemoteConfigRemoteConfigParameterGroupParameterArrayInput `pulumi:"parameters"`
+}
+
+func (RemoteConfigRemoteConfigParameterGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroup)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupArgs) ToRemoteConfigRemoteConfigParameterGroupOutput() RemoteConfigRemoteConfigParameterGroupOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupArgs) ToRemoteConfigRemoteConfigParameterGroupOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupOutput)
+}
+
+// RemoteConfigRemoteConfigParameterGroupArrayInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupArray and RemoteConfigRemoteConfigParameterGroupArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupArrayInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupArray{ RemoteConfigRemoteConfigParameterGroupArgs{...} }
+type RemoteConfigRemoteConfigParameterGroupArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupArrayOutput() RemoteConfigRemoteConfigParameterGroupArrayOutput
+	ToRemoteConfigRemoteConfigParameterGroupArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupArrayOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupArray []RemoteConfigRemoteConfigParameterGroupInput
+
+func (RemoteConfigRemoteConfigParameterGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterGroup)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupArray) ToRemoteConfigRemoteConfigParameterGroupArrayOutput() RemoteConfigRemoteConfigParameterGroupArrayOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupArray) ToRemoteConfigRemoteConfigParameterGroupArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupArrayOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroup)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupOutput) ToRemoteConfigRemoteConfigParameterGroupOutput() RemoteConfigRemoteConfigParameterGroupOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupOutput) ToRemoteConfigRemoteConfigParameterGroupOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupOutput {
+	return o
+}
+
+// A description for the group. Its length must be less than or equal to 256
+// characters. A description may contain any Unicode characters.
+func (o RemoteConfigRemoteConfigParameterGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o RemoteConfigRemoteConfigParameterGroupOutput) ParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroup) string { return v.ParameterGroupName }).(pulumi.StringOutput)
+}
+
+// Map of parameter keys to their optional default values and optional
+// conditional values for parameters that belong to this group.
+// A parameter only appears once per RemoteConfig: an ungrouped parameter
+// appears at the top level; a parameter organized within a group appears
+// within its group's map of parameters.
+// Structure is documented below.
+func (o RemoteConfigRemoteConfigParameterGroupOutput) Parameters() RemoteConfigRemoteConfigParameterGroupParameterArrayOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroup) []RemoteConfigRemoteConfigParameterGroupParameter {
+		return v.Parameters
+	}).(RemoteConfigRemoteConfigParameterGroupParameterArrayOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterGroup)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupArrayOutput) ToRemoteConfigRemoteConfigParameterGroupArrayOutput() RemoteConfigRemoteConfigParameterGroupArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupArrayOutput) ToRemoteConfigRemoteConfigParameterGroupArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigParameterGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigParameterGroup {
+		return vs[0].([]RemoteConfigRemoteConfigParameterGroup)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigParameterGroupOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameter struct {
+	// The conditionName of the highest priority
+	// (the one listed first in the RemoteConfig's conditions list) determines
+	// the value of this parameter.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	ConditionalValues []RemoteConfigRemoteConfigParameterGroupParameterConditionalValue `pulumi:"conditionalValues"`
+	// Value to set the parameter to, when none of the named conditions evaluate to true.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	DefaultValue *RemoteConfigRemoteConfigParameterGroupParameterDefaultValue `pulumi:"defaultValue"`
+	// A description for this Parameter. Its length must be less than or equal to
+	// 256 characters . A description may contain any Unicode characters.
+	Description *string `pulumi:"description"`
+	// The identifier for this object. Format specified above.
+	ParameterName string `pulumi:"parameterName"`
+	// The data type for all values of this parameter in the current version of
+	// the template.
+	// Default value is `STRING`.
+	// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+	ValueType *string `pulumi:"valueType"`
+}
+
+// RemoteConfigRemoteConfigParameterGroupParameterInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupParameterArgs and RemoteConfigRemoteConfigParameterGroupParameterOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupParameterInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupParameterArgs{...}
+type RemoteConfigRemoteConfigParameterGroupParameterInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupParameterOutput() RemoteConfigRemoteConfigParameterGroupParameterOutput
+	ToRemoteConfigRemoteConfigParameterGroupParameterOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupParameterOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterArgs struct {
+	// The conditionName of the highest priority
+	// (the one listed first in the RemoteConfig's conditions list) determines
+	// the value of this parameter.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	ConditionalValues RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayInput `pulumi:"conditionalValues"`
+	// Value to set the parameter to, when none of the named conditions evaluate to true.
+	// Only one of useInAppDefault or value may be specified.
+	// Structure is documented below.
+	DefaultValue RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrInput `pulumi:"defaultValue"`
+	// A description for this Parameter. Its length must be less than or equal to
+	// 256 characters . A description may contain any Unicode characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The identifier for this object. Format specified above.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+	// The data type for all values of this parameter in the current version of
+	// the template.
+	// Default value is `STRING`.
+	// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+}
+
+func (RemoteConfigRemoteConfigParameterGroupParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameter)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterArgs) ToRemoteConfigRemoteConfigParameterGroupParameterOutput() RemoteConfigRemoteConfigParameterGroupParameterOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterArgs) ToRemoteConfigRemoteConfigParameterGroupParameterOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterOutput)
+}
+
+// RemoteConfigRemoteConfigParameterGroupParameterArrayInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupParameterArray and RemoteConfigRemoteConfigParameterGroupParameterArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupParameterArrayInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupParameterArray{ RemoteConfigRemoteConfigParameterGroupParameterArgs{...} }
+type RemoteConfigRemoteConfigParameterGroupParameterArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutput() RemoteConfigRemoteConfigParameterGroupParameterArrayOutput
+	ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupParameterArrayOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterArray []RemoteConfigRemoteConfigParameterGroupParameterInput
+
+func (RemoteConfigRemoteConfigParameterGroupParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterGroupParameter)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterArray) ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutput() RemoteConfigRemoteConfigParameterGroupParameterArrayOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterArray) ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterArrayOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameter)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) ToRemoteConfigRemoteConfigParameterGroupParameterOutput() RemoteConfigRemoteConfigParameterGroupParameterOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) ToRemoteConfigRemoteConfigParameterGroupParameterOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterOutput {
+	return o
+}
+
+// The conditionName of the highest priority
+// (the one listed first in the RemoteConfig's conditions list) determines
+// the value of this parameter.
+// Only one of useInAppDefault or value may be specified.
+// Structure is documented below.
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) ConditionalValues() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameter) []RemoteConfigRemoteConfigParameterGroupParameterConditionalValue {
+		return v.ConditionalValues
+	}).(RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput)
+}
+
+// Value to set the parameter to, when none of the named conditions evaluate to true.
+// Only one of useInAppDefault or value may be specified.
+// Structure is documented below.
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) DefaultValue() RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameter) *RemoteConfigRemoteConfigParameterGroupParameterDefaultValue {
+		return v.DefaultValue
+	}).(RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput)
+}
+
+// A description for this Parameter. Its length must be less than or equal to
+// 256 characters . A description may contain any Unicode characters.
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameter) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+// The data type for all values of this parameter in the current version of
+// the template.
+// Default value is `STRING`.
+// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
+func (o RemoteConfigRemoteConfigParameterGroupParameterOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameter) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterGroupParameter)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterArrayOutput) ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutput() RemoteConfigRemoteConfigParameterGroupParameterArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterArrayOutput) ToRemoteConfigRemoteConfigParameterGroupParameterArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigParameterGroupParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigParameterGroupParameter {
+		return vs[0].([]RemoteConfigRemoteConfigParameterGroupParameter)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigParameterGroupParameterOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValue struct {
+	// The identifier for this object. Format specified above.
+	ConditionName string `pulumi:"conditionName"`
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault *bool `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value *string `pulumi:"value"`
+}
+
+// RemoteConfigRemoteConfigParameterGroupParameterConditionalValueInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs and RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupParameterConditionalValueInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs{...}
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValueInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput
+	ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs struct {
+	// The identifier for this object. Format specified above.
+	ConditionName pulumi.StringInput `pulumi:"conditionName"`
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault pulumi.BoolPtrInput `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterConditionalValue)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput)
+}
+
+// RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray and RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray{ RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs{...} }
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput
+	ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray []RemoteConfigRemoteConfigParameterGroupParameterConditionalValueInput
+
+func (RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterGroupParameterConditionalValue)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterConditionalValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput) ConditionName() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameterConditionalValue) string { return v.ConditionName }).(pulumi.StringOutput)
+}
+
+// If true, the parameter is omitted from the parameter values returned
+// to a client.
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput) UseInAppDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameterConditionalValue) *bool {
+		return v.UseInAppDefault
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The string value that the parameter is set to.
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameterConditionalValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigParameterGroupParameterConditionalValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput() RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput) ToRemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigParameterGroupParameterConditionalValue {
+		return vs[0].([]RemoteConfigRemoteConfigParameterGroupParameterConditionalValue)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterDefaultValue struct {
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault *bool `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value *string `pulumi:"value"`
+}
+
+// RemoteConfigRemoteConfigParameterGroupParameterDefaultValueInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs and RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupParameterDefaultValueInput` via:
+//
+//	RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs{...}
+type RemoteConfigRemoteConfigParameterGroupParameterDefaultValueInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput
+	ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs struct {
+	// If true, the parameter is omitted from the parameter values returned
+	// to a client.
+	UseInAppDefault pulumi.BoolPtrInput `pulumi:"useInAppDefault"`
+	// The string value that the parameter is set to.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterDefaultValue)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput)
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput).ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(ctx)
+}
+
+// RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrInput is an input type that accepts RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs, RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtr and RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrInput` via:
+//
+//	        RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput
+	ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput
+}
+
+type remoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrType RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs
+
+func RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtr(v *RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs) RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrInput {
+	return (*remoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrType)(v)
+}
+
+func (*remoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteConfigRemoteConfigParameterGroupParameterDefaultValue)(nil)).Elem()
+}
+
+func (i *remoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrType) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return i.ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i *remoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrType) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterDefaultValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return o.ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteConfigRemoteConfigParameterGroupParameterDefaultValue) *RemoteConfigRemoteConfigParameterGroupParameterDefaultValue {
+		return &v
+	}).(RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput)
+}
+
+// If true, the parameter is omitted from the parameter values returned
+// to a client.
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) UseInAppDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameterDefaultValue) *bool { return v.UseInAppDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The string value that the parameter is set to.
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigParameterGroupParameterDefaultValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteConfigRemoteConfigParameterGroupParameterDefaultValue)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput() RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput) ToRemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput) Elem() RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput {
+	return o.ApplyT(func(v *RemoteConfigRemoteConfigParameterGroupParameterDefaultValue) RemoteConfigRemoteConfigParameterGroupParameterDefaultValue {
+		if v != nil {
+			return *v
+		}
+		var ret RemoteConfigRemoteConfigParameterGroupParameterDefaultValue
+		return ret
+	}).(RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput)
+}
+
+// If true, the parameter is omitted from the parameter values returned
+// to a client.
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput) UseInAppDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RemoteConfigRemoteConfigParameterGroupParameterDefaultValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseInAppDefault
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The string value that the parameter is set to.
+func (o RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemoteConfigRemoteConfigParameterGroupParameterDefaultValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigVersion struct {
+	// (Output)
+	// `True` if this Remote Config template was published before
+	// version history was supported.
+	IsLegacy *bool `pulumi:"isLegacy"`
+	// (Output)
+	// Only present if this version is the result of a rollback, and
+	// will be the version number of the Remote Config template that was
+	// rolled-back to.
+	RollbackSource *string `pulumi:"rollbackSource"`
+	// (Output)
+	// Where the update action originated.
+	// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
+	UpdateOrigin *string `pulumi:"updateOrigin"`
+	// (Output)
+	// When the Remote Config template was written to the Remote
+	// Config server.
+	UpdateTime *string `pulumi:"updateTime"`
+	// (Output)
+	// What type of update was made.
+	// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
+	UpdateType *string `pulumi:"updateType"`
+	// (Output)
+	// All the fields associated with the person/service account that wrote a
+	// Remote Config template.
+	// Structure is documented below.
+	UpdateUsers []RemoteConfigRemoteConfigVersionUpdateUser `pulumi:"updateUsers"`
+	// (Output)
+	// The version number of the version's corresponding
+	// Remote Config template.
+	VersionNumber *string `pulumi:"versionNumber"`
+}
+
+// RemoteConfigRemoteConfigVersionInput is an input type that accepts RemoteConfigRemoteConfigVersionArgs and RemoteConfigRemoteConfigVersionOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigVersionInput` via:
+//
+//	RemoteConfigRemoteConfigVersionArgs{...}
+type RemoteConfigRemoteConfigVersionInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigVersionOutput() RemoteConfigRemoteConfigVersionOutput
+	ToRemoteConfigRemoteConfigVersionOutputWithContext(context.Context) RemoteConfigRemoteConfigVersionOutput
+}
+
+type RemoteConfigRemoteConfigVersionArgs struct {
+	// (Output)
+	// `True` if this Remote Config template was published before
+	// version history was supported.
+	IsLegacy pulumi.BoolPtrInput `pulumi:"isLegacy"`
+	// (Output)
+	// Only present if this version is the result of a rollback, and
+	// will be the version number of the Remote Config template that was
+	// rolled-back to.
+	RollbackSource pulumi.StringPtrInput `pulumi:"rollbackSource"`
+	// (Output)
+	// Where the update action originated.
+	// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
+	UpdateOrigin pulumi.StringPtrInput `pulumi:"updateOrigin"`
+	// (Output)
+	// When the Remote Config template was written to the Remote
+	// Config server.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// (Output)
+	// What type of update was made.
+	// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
+	UpdateType pulumi.StringPtrInput `pulumi:"updateType"`
+	// (Output)
+	// All the fields associated with the person/service account that wrote a
+	// Remote Config template.
+	// Structure is documented below.
+	UpdateUsers RemoteConfigRemoteConfigVersionUpdateUserArrayInput `pulumi:"updateUsers"`
+	// (Output)
+	// The version number of the version's corresponding
+	// Remote Config template.
+	VersionNumber pulumi.StringPtrInput `pulumi:"versionNumber"`
+}
+
+func (RemoteConfigRemoteConfigVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigVersion)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigVersionArgs) ToRemoteConfigRemoteConfigVersionOutput() RemoteConfigRemoteConfigVersionOutput {
+	return i.ToRemoteConfigRemoteConfigVersionOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigVersionArgs) ToRemoteConfigRemoteConfigVersionOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigVersionOutput)
+}
+
+// RemoteConfigRemoteConfigVersionArrayInput is an input type that accepts RemoteConfigRemoteConfigVersionArray and RemoteConfigRemoteConfigVersionArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigVersionArrayInput` via:
+//
+//	RemoteConfigRemoteConfigVersionArray{ RemoteConfigRemoteConfigVersionArgs{...} }
+type RemoteConfigRemoteConfigVersionArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigVersionArrayOutput() RemoteConfigRemoteConfigVersionArrayOutput
+	ToRemoteConfigRemoteConfigVersionArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigVersionArrayOutput
+}
+
+type RemoteConfigRemoteConfigVersionArray []RemoteConfigRemoteConfigVersionInput
+
+func (RemoteConfigRemoteConfigVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigVersion)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigVersionArray) ToRemoteConfigRemoteConfigVersionArrayOutput() RemoteConfigRemoteConfigVersionArrayOutput {
+	return i.ToRemoteConfigRemoteConfigVersionArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigVersionArray) ToRemoteConfigRemoteConfigVersionArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigVersionArrayOutput)
+}
+
+type RemoteConfigRemoteConfigVersionOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigVersion)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigVersionOutput) ToRemoteConfigRemoteConfigVersionOutput() RemoteConfigRemoteConfigVersionOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigVersionOutput) ToRemoteConfigRemoteConfigVersionOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionOutput {
+	return o
+}
+
+// (Output)
+// `True` if this Remote Config template was published before
+// version history was supported.
+func (o RemoteConfigRemoteConfigVersionOutput) IsLegacy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) *bool { return v.IsLegacy }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Only present if this version is the result of a rollback, and
+// will be the version number of the Remote Config template that was
+// rolled-back to.
+func (o RemoteConfigRemoteConfigVersionOutput) RollbackSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) *string { return v.RollbackSource }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Where the update action originated.
+// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
+func (o RemoteConfigRemoteConfigVersionOutput) UpdateOrigin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) *string { return v.UpdateOrigin }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// When the Remote Config template was written to the Remote
+// Config server.
+func (o RemoteConfigRemoteConfigVersionOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// What type of update was made.
+// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
+func (o RemoteConfigRemoteConfigVersionOutput) UpdateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) *string { return v.UpdateType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// All the fields associated with the person/service account that wrote a
+// Remote Config template.
+// Structure is documented below.
+func (o RemoteConfigRemoteConfigVersionOutput) UpdateUsers() RemoteConfigRemoteConfigVersionUpdateUserArrayOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) []RemoteConfigRemoteConfigVersionUpdateUser {
+		return v.UpdateUsers
+	}).(RemoteConfigRemoteConfigVersionUpdateUserArrayOutput)
+}
+
+// (Output)
+// The version number of the version's corresponding
+// Remote Config template.
+func (o RemoteConfigRemoteConfigVersionOutput) VersionNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersion) *string { return v.VersionNumber }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigVersion)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigVersionArrayOutput) ToRemoteConfigRemoteConfigVersionArrayOutput() RemoteConfigRemoteConfigVersionArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigVersionArrayOutput) ToRemoteConfigRemoteConfigVersionArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigVersionArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigVersion {
+		return vs[0].([]RemoteConfigRemoteConfigVersion)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigVersionOutput)
+}
+
+type RemoteConfigRemoteConfigVersionUpdateUser struct {
+	// (Output)
+	// Email address.
+	Email *string `pulumi:"email"`
+	// (Output)
+	// Image URL.
+	ImageUrl *string `pulumi:"imageUrl"`
+	// (Output)
+	// Display name.
+	Name *string `pulumi:"name"`
+}
+
+// RemoteConfigRemoteConfigVersionUpdateUserInput is an input type that accepts RemoteConfigRemoteConfigVersionUpdateUserArgs and RemoteConfigRemoteConfigVersionUpdateUserOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigVersionUpdateUserInput` via:
+//
+//	RemoteConfigRemoteConfigVersionUpdateUserArgs{...}
+type RemoteConfigRemoteConfigVersionUpdateUserInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigVersionUpdateUserOutput() RemoteConfigRemoteConfigVersionUpdateUserOutput
+	ToRemoteConfigRemoteConfigVersionUpdateUserOutputWithContext(context.Context) RemoteConfigRemoteConfigVersionUpdateUserOutput
+}
+
+type RemoteConfigRemoteConfigVersionUpdateUserArgs struct {
+	// (Output)
+	// Email address.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// (Output)
+	// Image URL.
+	ImageUrl pulumi.StringPtrInput `pulumi:"imageUrl"`
+	// (Output)
+	// Display name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (RemoteConfigRemoteConfigVersionUpdateUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigVersionUpdateUser)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigVersionUpdateUserArgs) ToRemoteConfigRemoteConfigVersionUpdateUserOutput() RemoteConfigRemoteConfigVersionUpdateUserOutput {
+	return i.ToRemoteConfigRemoteConfigVersionUpdateUserOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigVersionUpdateUserArgs) ToRemoteConfigRemoteConfigVersionUpdateUserOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionUpdateUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigVersionUpdateUserOutput)
+}
+
+// RemoteConfigRemoteConfigVersionUpdateUserArrayInput is an input type that accepts RemoteConfigRemoteConfigVersionUpdateUserArray and RemoteConfigRemoteConfigVersionUpdateUserArrayOutput values.
+// You can construct a concrete instance of `RemoteConfigRemoteConfigVersionUpdateUserArrayInput` via:
+//
+//	RemoteConfigRemoteConfigVersionUpdateUserArray{ RemoteConfigRemoteConfigVersionUpdateUserArgs{...} }
+type RemoteConfigRemoteConfigVersionUpdateUserArrayInput interface {
+	pulumi.Input
+
+	ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutput() RemoteConfigRemoteConfigVersionUpdateUserArrayOutput
+	ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutputWithContext(context.Context) RemoteConfigRemoteConfigVersionUpdateUserArrayOutput
+}
+
+type RemoteConfigRemoteConfigVersionUpdateUserArray []RemoteConfigRemoteConfigVersionUpdateUserInput
+
+func (RemoteConfigRemoteConfigVersionUpdateUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigVersionUpdateUser)(nil)).Elem()
+}
+
+func (i RemoteConfigRemoteConfigVersionUpdateUserArray) ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutput() RemoteConfigRemoteConfigVersionUpdateUserArrayOutput {
+	return i.ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutputWithContext(context.Background())
+}
+
+func (i RemoteConfigRemoteConfigVersionUpdateUserArray) ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionUpdateUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteConfigRemoteConfigVersionUpdateUserArrayOutput)
+}
+
+type RemoteConfigRemoteConfigVersionUpdateUserOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigVersionUpdateUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteConfigRemoteConfigVersionUpdateUser)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigVersionUpdateUserOutput) ToRemoteConfigRemoteConfigVersionUpdateUserOutput() RemoteConfigRemoteConfigVersionUpdateUserOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigVersionUpdateUserOutput) ToRemoteConfigRemoteConfigVersionUpdateUserOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionUpdateUserOutput {
+	return o
+}
+
+// (Output)
+// Email address.
+func (o RemoteConfigRemoteConfigVersionUpdateUserOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersionUpdateUser) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Image URL.
+func (o RemoteConfigRemoteConfigVersionUpdateUserOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersionUpdateUser) *string { return v.ImageUrl }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Display name.
+func (o RemoteConfigRemoteConfigVersionUpdateUserOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteConfigRemoteConfigVersionUpdateUser) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RemoteConfigRemoteConfigVersionUpdateUserArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteConfigRemoteConfigVersionUpdateUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteConfigRemoteConfigVersionUpdateUser)(nil)).Elem()
+}
+
+func (o RemoteConfigRemoteConfigVersionUpdateUserArrayOutput) ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutput() RemoteConfigRemoteConfigVersionUpdateUserArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigVersionUpdateUserArrayOutput) ToRemoteConfigRemoteConfigVersionUpdateUserArrayOutputWithContext(ctx context.Context) RemoteConfigRemoteConfigVersionUpdateUserArrayOutput {
+	return o
+}
+
+func (o RemoteConfigRemoteConfigVersionUpdateUserArrayOutput) Index(i pulumi.IntInput) RemoteConfigRemoteConfigVersionUpdateUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteConfigRemoteConfigVersionUpdateUser {
+		return vs[0].([]RemoteConfigRemoteConfigVersionUpdateUser)[vs[1].(int)]
+	}).(RemoteConfigRemoteConfigVersionUpdateUserOutput)
+}
+
 type StorageDefaultBucketBucket struct {
 	// (Output)
 	// The resource name of the bucket in the format
@@ -8051,6 +9536,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteArrayInput)(nil)).Elem(), HostingVersionConfigRewriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunPtrInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigConditionInput)(nil)).Elem(), RemoteConfigRemoteConfigConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigConditionArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterConditionalValueInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterConditionalValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterConditionalValueArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterConditionalValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterDefaultValueInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterDefaultValuePtrInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterConditionalValueInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterDefaultValueInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrInput)(nil)).Elem(), RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigVersionInput)(nil)).Elem(), RemoteConfigRemoteConfigVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigVersionArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigVersionUpdateUserInput)(nil)).Elem(), RemoteConfigRemoteConfigVersionUpdateUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteConfigRemoteConfigVersionUpdateUserArrayInput)(nil)).Elem(), RemoteConfigRemoteConfigVersionUpdateUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDefaultBucketBucketInput)(nil)).Elem(), StorageDefaultBucketBucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDefaultBucketBucketArrayInput)(nil)).Elem(), StorageDefaultBucketBucketArray{})
 	pulumi.RegisterOutputType(AiLogicConfigGenerativeLanguageConfigOutput{})
@@ -8155,6 +9660,26 @@ func init() {
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteArrayOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteRunOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteRunPtrOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigConditionOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigConditionArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterConditionalValueOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterConditionalValueArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterDefaultValueOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterDefaultValuePtrOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupParameterOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupParameterConditionalValueOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupParameterDefaultValueOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigParameterGroupParameterDefaultValuePtrOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigVersionOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigVersionArrayOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigVersionUpdateUserOutput{})
+	pulumi.RegisterOutputType(RemoteConfigRemoteConfigVersionUpdateUserArrayOutput{})
 	pulumi.RegisterOutputType(StorageDefaultBucketBucketOutput{})
 	pulumi.RegisterOutputType(StorageDefaultBucketBucketArrayOutput{})
 }

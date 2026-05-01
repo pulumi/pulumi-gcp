@@ -4,8 +4,10 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigSwapConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -14,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigLinuxNodeConfig {
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
     /**
      * @return cgroupMode specifies the cgroup mode to be used on the node.
      * 
@@ -29,6 +36,11 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig;
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
@@ -46,6 +58,13 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     private @Nullable String transparentHugepageEnabled;
 
     private NodePoolNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    public Optional<NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfig() {
+        return Optional.ofNullable(this.accurateTimeConfig);
+    }
     /**
      * @return cgroupMode specifies the cgroup mode to be used on the node.
      * 
@@ -66,6 +85,13 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      */
     public Optional<NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {
         return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    public Optional<NodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfig() {
+        return Optional.ofNullable(this.swapConfig);
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -98,23 +124,33 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
         private @Nullable String cgroupMode;
         private @Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
+        private @Nullable NodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig;
         private @Nullable Map<String,String> sysctls;
         private @Nullable String transparentHugepageDefrag;
         private @Nullable String transparentHugepageEnabled;
         public Builder() {}
         public Builder(NodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accurateTimeConfig = defaults.accurateTimeConfig;
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
+    	      this.swapConfig = defaults.swapConfig;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
+        @CustomType.Setter
+        public Builder accurateTimeConfig(@Nullable NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig) {
+
+            this.accurateTimeConfig = accurateTimeConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder cgroupMode(@Nullable String cgroupMode) {
 
@@ -131,6 +167,12 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
         public Builder nodeKernelModuleLoading(@Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading) {
 
             this.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder swapConfig(@Nullable NodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig) {
+
+            this.swapConfig = swapConfig;
             return this;
         }
         @CustomType.Setter
@@ -153,9 +195,11 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
         }
         public NodePoolNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new NodePoolNodeConfigLinuxNodeConfig();
+            _resultValue.accurateTimeConfig = accurateTimeConfig;
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            _resultValue.swapConfig = swapConfig;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

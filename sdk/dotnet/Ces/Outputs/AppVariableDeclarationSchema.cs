@@ -26,8 +26,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// <summary>
         /// Optional. Default value of the data. Represents a dynamically typed value
         /// which can be either null, a number, a string, a boolean, a struct,
-        /// or a list of values. The provided default value must be compatible
-        /// with the defined 'type' and other schema constraints.
+        /// or a list of values. The provided default value must be encoded as a JSON string.
+        /// Use `Jsonencode` in Terraform HCL to encode the default value.
         /// </summary>
         public readonly string? Default;
         /// <summary>

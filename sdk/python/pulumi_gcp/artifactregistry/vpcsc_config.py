@@ -193,6 +193,10 @@ class VpcscConfig(pulumi.CustomResource):
             vpcsc_policy="ALLOW")
         ```
 
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+
         ## Import
 
         VPCSCConfig can be imported using any of these accepted formats:
@@ -250,6 +254,10 @@ class VpcscConfig(pulumi.CustomResource):
             location="us-central1",
             vpcsc_policy="ALLOW")
         ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 

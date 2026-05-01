@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Workbench.Inputs
 
         /// <summary>
         /// Optional. Input only. Indicates the type of the disk.
-        /// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        /// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

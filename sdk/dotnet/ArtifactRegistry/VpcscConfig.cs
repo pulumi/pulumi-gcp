@@ -44,6 +44,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// });
     /// ```
     /// 
+    /// ## Regional Endpoint Policies
+    /// 
+    /// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+    /// 
     /// ## Import
     /// 
     /// VPCSCConfig can be imported using any of these accepted formats:

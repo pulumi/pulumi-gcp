@@ -26,6 +26,7 @@ class ConnectionArgs:
                  cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
                  cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
                  cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+                 configuration: Optional[pulumi.Input['ConnectionConfigurationArgs']] = None,
                  connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -45,6 +46,10 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
         :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Connection properties specific to the Cloud SQL.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionConfigurationArgs'] configuration: Connector configuration. This is a generic configuration that is used to connect to
+               external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+               Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
@@ -73,6 +78,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "cloud_spanner", cloud_spanner)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
+        if configuration is not None:
+            pulumi.set(__self__, "configuration", configuration)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
         if description is not None:
@@ -152,6 +159,21 @@ class ConnectionArgs:
     @cloud_sql.setter
     def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
         pulumi.set(self, "cloud_sql", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def configuration(self) -> Optional[pulumi.Input['ConnectionConfigurationArgs']]:
+        """
+        Connector configuration. This is a generic configuration that is used to connect to
+        external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+        Connector framework.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "configuration")
+
+    @configuration.setter
+    def configuration(self, value: Optional[pulumi.Input['ConnectionConfigurationArgs']]):
+        pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
@@ -255,6 +277,7 @@ class _ConnectionState:
                  cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
                  cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
                  cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+                 configuration: Optional[pulumi.Input['ConnectionConfigurationArgs']] = None,
                  connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -276,6 +299,10 @@ class _ConnectionState:
         :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
         :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Connection properties specific to the Cloud SQL.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionConfigurationArgs'] configuration: Connector configuration. This is a generic configuration that is used to connect to
+               external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+               Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
@@ -307,6 +334,8 @@ class _ConnectionState:
             pulumi.set(__self__, "cloud_spanner", cloud_spanner)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
+        if configuration is not None:
+            pulumi.set(__self__, "configuration", configuration)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
         if description is not None:
@@ -390,6 +419,21 @@ class _ConnectionState:
     @cloud_sql.setter
     def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
         pulumi.set(self, "cloud_sql", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def configuration(self) -> Optional[pulumi.Input['ConnectionConfigurationArgs']]:
+        """
+        Connector configuration. This is a generic configuration that is used to connect to
+        external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+        Connector framework.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "configuration")
+
+    @configuration.setter
+    def configuration(self, value: Optional[pulumi.Input['ConnectionConfigurationArgs']]):
+        pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
@@ -521,6 +565,7 @@ class Connection(pulumi.CustomResource):
                  cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
                  cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
                  cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
+                 configuration: Optional[pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -769,6 +814,63 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Connection Connector Configuration
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        name_suffix = "my-connection"
+        default_network = gcp.compute.Network("default", name=f"alloydb-network-{name_suffix}")
+        default = gcp.alloydb.Cluster("default",
+            cluster_id=f"alloydb-cluster-{name_suffix}",
+            location="us-central1",
+            network_config={
+                "network": default_network.id,
+            },
+            initial_user={
+                "password": "alloydb-cluster-password",
+            },
+            deletion_protection=False)
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name=f"alloydb-ip-{name_suffix}",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default.name,
+            instance_id=f"alloydb-instance-{name_suffix}",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="us-central1",
+            friendly_name="alloydb connection",
+            description="AlloyDB connection using connector configuration",
+            configuration={
+                "connector_id": "google-alloydb",
+                "asset": {
+                    "database": "postgres",
+                    "google_cloud_resource": default_instance.id.apply(lambda id: f"//alloydb.googleapis.com/{id}"),
+                },
+                "authentication": {
+                    "username_password": {
+                        "username": "user",
+                        "password": {
+                            "plaintext": "password",
+                        },
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -798,6 +900,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']] cloud_sql: Connection properties specific to the Cloud SQL.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']] configuration: Connector configuration. This is a generic configuration that is used to connect to
+               external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+               Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
@@ -1062,6 +1168,63 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Connection Connector Configuration
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        name_suffix = "my-connection"
+        default_network = gcp.compute.Network("default", name=f"alloydb-network-{name_suffix}")
+        default = gcp.alloydb.Cluster("default",
+            cluster_id=f"alloydb-cluster-{name_suffix}",
+            location="us-central1",
+            network_config={
+                "network": default_network.id,
+            },
+            initial_user={
+                "password": "alloydb-cluster-password",
+            },
+            deletion_protection=False)
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name=f"alloydb-ip-{name_suffix}",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default_network.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        default_instance = gcp.alloydb.Instance("default",
+            cluster=default.name,
+            instance_id=f"alloydb-instance-{name_suffix}",
+            instance_type="PRIMARY",
+            machine_config={
+                "cpu_count": 2,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="us-central1",
+            friendly_name="alloydb connection",
+            description="AlloyDB connection using connector configuration",
+            configuration={
+                "connector_id": "google-alloydb",
+                "asset": {
+                    "database": "postgres",
+                    "google_cloud_resource": default_instance.id.apply(lambda id: f"//alloydb.googleapis.com/{id}"),
+                },
+                "authentication": {
+                    "username_password": {
+                        "username": "user",
+                        "password": {
+                            "plaintext": "password",
+                        },
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -1100,6 +1263,7 @@ class Connection(pulumi.CustomResource):
                  cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
                  cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
                  cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
+                 configuration: Optional[pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1121,6 +1285,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["cloud_resource"] = cloud_resource
             __props__.__dict__["cloud_spanner"] = cloud_spanner
             __props__.__dict__["cloud_sql"] = cloud_sql
+            __props__.__dict__["configuration"] = configuration
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description
             __props__.__dict__["friendly_name"] = friendly_name
@@ -1145,6 +1310,7 @@ class Connection(pulumi.CustomResource):
             cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
             cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
             cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
+            configuration: Optional[pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
             connection_id: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1170,6 +1336,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']] cloud_sql: Connection properties specific to the Cloud SQL.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']] configuration: Connector configuration. This is a generic configuration that is used to connect to
+               external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+               Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
@@ -1200,6 +1370,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["cloud_resource"] = cloud_resource
         __props__.__dict__["cloud_spanner"] = cloud_spanner
         __props__.__dict__["cloud_sql"] = cloud_sql
+        __props__.__dict__["configuration"] = configuration
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["description"] = description
         __props__.__dict__["friendly_name"] = friendly_name
@@ -1255,6 +1426,17 @@ class Connection(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")
+
+    @_builtins.property
+    @pulumi.getter
+    def configuration(self) -> pulumi.Output[Optional['outputs.ConnectionConfiguration']]:
+        """
+        Connector configuration. This is a generic configuration that is used to connect to
+        external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+        Connector framework.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "configuration")
 
     @_builtins.property
     @pulumi.getter(name="connectionId")

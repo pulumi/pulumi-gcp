@@ -281,6 +281,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dns Managed Zone Iam Condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.dns.ManagedZone("default", {
+ *     name: "example-zone",
+ *     dnsName: "example.com.",
+ *     description: "Example zone for IAM conditions",
+ * });
+ * const conditionTest = new gcp.dns.DnsManagedZoneIamMember("condition_test", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     role: "roles/dns.admin",
+ *     member: "user:admin@hashicorptest.com",
+ *     condition: {
+ *         title: "Exact Record Match",
+ *         description: "Allow modifying only api.example.com. A records",
+ *         expression: "(resource.type == 'dns.googleapis.com/ResourceRecordSet' && resource.name.endsWith('/rrsets/api.example.com./A')) || (resource.type != 'dns.googleapis.com/ResourceRecordSet')",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

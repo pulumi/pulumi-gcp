@@ -55,7 +55,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
 
     /**
      * Optional. Input only. Indicates the type of the disk.
-     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
      * 
      */
     @Import(name="diskType")
@@ -63,7 +63,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
 
     /**
      * @return Optional. Input only. Indicates the type of the disk.
-     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -168,7 +168,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
 
         /**
          * @param diskType Optional. Input only. Indicates the type of the disk.
-         * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+         * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
 
         /**
          * @param diskType Optional. Input only. Indicates the type of the disk.
-         * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+         * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
          * 
          * @return builder
          * 

@@ -152,6 +152,21 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     * 
+     */
+    @Import(name="eraseWindowsVssSignature")
+    private @Nullable Output<Boolean> eraseWindowsVssSignature;
+
+    /**
+     * @return Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     * 
+     */
+    public Optional<Output<Boolean>> eraseWindowsVssSignature() {
+        return Optional.ofNullable(this.eraseWindowsVssSignature);
+    }
+
+    /**
      * List of the type and count of accelerator cards attached to the instance.
      * 
      */
@@ -550,6 +565,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         this.description = $.description;
         this.desiredStatus = $.desiredStatus;
         this.enableDisplay = $.enableDisplay;
+        this.eraseWindowsVssSignature = $.eraseWindowsVssSignature;
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
         this.instanceEncryptionKey = $.instanceEncryptionKey;
@@ -760,6 +776,27 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          */
         public Builder enableDisplay(Boolean enableDisplay) {
             return enableDisplay(Output.of(enableDisplay));
+        }
+
+        /**
+         * @param eraseWindowsVssSignature Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eraseWindowsVssSignature(@Nullable Output<Boolean> eraseWindowsVssSignature) {
+            $.eraseWindowsVssSignature = eraseWindowsVssSignature;
+            return this;
+        }
+
+        /**
+         * @param eraseWindowsVssSignature Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eraseWindowsVssSignature(Boolean eraseWindowsVssSignature) {
+            return eraseWindowsVssSignature(Output.of(eraseWindowsVssSignature));
         }
 
         /**

@@ -14,7 +14,7 @@ public final class JobTemplateTemplateVolumeEmptyDir {
     /**
      * @return The different types of medium supported for EmptyDir.
      * Default value is `MEMORY`.
-     * Possible values are: `MEMORY`.
+     * Possible values are: `MEMORY`, `DISK`.
      * 
      */
     private @Nullable String medium;
@@ -28,7 +28,7 @@ public final class JobTemplateTemplateVolumeEmptyDir {
     /**
      * @return The different types of medium supported for EmptyDir.
      * Default value is `MEMORY`.
-     * Possible values are: `MEMORY`.
+     * Possible values are: `MEMORY`, `DISK`.
      * 
      */
     public Optional<String> medium() {

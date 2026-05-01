@@ -22,15 +22,22 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// The key of the destination configuration, for example `Url`.
         /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Additional parameters for this destination config in structured json format.
+        /// </summary>
+        public readonly string? Params;
 
         [OutputConstructor]
         private DataConnectorDestinationConfig(
             ImmutableArray<Outputs.DataConnectorDestinationConfigDestination> destinations,
 
-            string? key)
+            string? key,
+
+            string? @params)
         {
             Destinations = destinations;
             Key = key;
+            Params = @params;
         }
     }
 }

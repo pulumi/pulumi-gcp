@@ -129,8 +129,6 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * -----
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -167,6 +165,12 @@ export class Instance extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
+     *
+     * -----
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -191,6 +195,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             resourceInputs["clusters"] = args?.clusters;
@@ -201,6 +206,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -234,8 +240,6 @@ export interface InstanceState {
     displayName?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * -----
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -272,6 +276,12 @@ export interface InstanceState {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
+     *
+     * -----
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -325,4 +335,10 @@ export interface InstanceArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the resource. Tags must follow the requirements at [create and manage tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing).
+     *
+     * -----
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

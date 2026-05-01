@@ -327,7 +327,7 @@ import (
 //							ModalityType: pulumi.String("TEXT"),
 //							RewriterConfig: &ces.ToolDataStoreToolModalityConfigRewriterConfigArgs{
 //								ModelSettings: &ces.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{
-//									Model:       pulumi.String("gemini-2.5-flash-001"),
+//									Model:       pulumi.String("gemini-3.0-flash-001"),
 //									Temperature: pulumi.Float64(1),
 //								},
 //								Prompt:   pulumi.String("example-prompt"),
@@ -335,7 +335,7 @@ import (
 //							},
 //							SummarizationConfig: &ces.ToolDataStoreToolModalityConfigSummarizationConfigArgs{
 //								ModelSettings: &ces.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{
-//									Model:       pulumi.String("gemini-2.5-flash-001"),
+//									Model:       pulumi.String("gemini-3.0-flash-001"),
 //									Temperature: pulumi.Float64(1),
 //								},
 //								Prompt:   pulumi.String("example-prompt"),
@@ -359,7 +359,6 @@ import (
 //						},
 //						Filter: pulumi.String("example_field: ANY(\"specific_example\")"),
 //					},
-//					MaxResults: pulumi.Int(5),
 //				},
 //			})
 //			if err != nil {

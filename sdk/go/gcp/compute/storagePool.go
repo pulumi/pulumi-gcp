@@ -170,6 +170,9 @@ type StoragePool struct {
 	// and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params StoragePoolParamsPtrOutput `pulumi:"params"`
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	PerformanceProvisioningType pulumi.StringOutput `pulumi:"performanceProvisioningType"`
@@ -279,6 +282,9 @@ type storagePoolState struct {
 	// and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *StoragePoolParams `pulumi:"params"`
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	PerformanceProvisioningType *string `pulumi:"performanceProvisioningType"`
@@ -345,6 +351,9 @@ type StoragePoolState struct {
 	// and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params StoragePoolParamsPtrInput
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	PerformanceProvisioningType pulumi.StringPtrInput
@@ -406,6 +415,9 @@ type storagePoolArgs struct {
 	// and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *StoragePoolParams `pulumi:"params"`
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	PerformanceProvisioningType *string `pulumi:"performanceProvisioningType"`
@@ -455,6 +467,9 @@ type StoragePoolArgs struct {
 	// and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params StoragePoolParamsPtrInput
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	// Possible values are: `STANDARD`, `ADVANCED`.
 	PerformanceProvisioningType pulumi.StringPtrInput
@@ -623,6 +638,12 @@ func (o StoragePoolOutput) Labels() pulumi.StringMapOutput {
 // except the last character, which cannot be a dash.
 func (o StoragePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o StoragePoolOutput) Params() StoragePoolParamsPtrOutput {
+	return o.ApplyT(func(v *StoragePool) StoragePoolParamsPtrOutput { return v.Params }).(StoragePoolParamsPtrOutput)
 }
 
 // Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.

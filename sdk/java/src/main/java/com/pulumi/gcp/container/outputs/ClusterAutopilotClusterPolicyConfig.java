@@ -14,11 +14,6 @@ public final class ClusterAutopilotClusterPolicyConfig {
     /**
      * @return Whether to block non autopilot managed node pools in the cluster.
      * 
-     * ## Attributes Reference
-     * 
-     * In addition to the arguments listed above, the following computed attributes are
-     * exported:
-     * 
      */
     private @Nullable Boolean noStandardNodePools;
     /**
@@ -40,11 +35,6 @@ public final class ClusterAutopilotClusterPolicyConfig {
     private ClusterAutopilotClusterPolicyConfig() {}
     /**
      * @return Whether to block non autopilot managed node pools in the cluster.
-     * 
-     * ## Attributes Reference
-     * 
-     * In addition to the arguments listed above, the following computed attributes are
-     * exported:
      * 
      */
     public Optional<Boolean> noStandardNodePools() {

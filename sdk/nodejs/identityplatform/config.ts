@@ -172,7 +172,7 @@ export class Config extends pulumi.CustomResource {
      * Configuration related to multi-tenant functionality.
      * Structure is documented below.
      */
-    declare public readonly multiTenant: pulumi.Output<outputs.identityplatform.ConfigMultiTenant | undefined>;
+    declare public readonly multiTenant: pulumi.Output<outputs.identityplatform.ConfigMultiTenant>;
     /**
      * The name of the Config resource
      */

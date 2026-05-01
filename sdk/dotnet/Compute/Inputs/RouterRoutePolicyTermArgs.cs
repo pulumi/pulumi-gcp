@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.RouterRoutePolicyTermMatchArgs> Match { get; set; } = null!;
 
         /// <summary>
-        /// The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+        /// The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;

@@ -5643,8 +5643,8 @@ type AppVariableDeclarationSchema struct {
 	AnyOf *string `pulumi:"anyOf"`
 	// Optional. Default value of the data. Represents a dynamically typed value
 	// which can be either null, a number, a string, a boolean, a struct,
-	// or a list of values. The provided default value must be compatible
-	// with the defined 'type' and other schema constraints.
+	// or a list of values. The provided default value must be encoded as a JSON string.
+	// Use `jsonencode` in Terraform HCL to encode the default value.
 	Default *string `pulumi:"default"`
 	// A map of definitions for use by ref. Only allowed at the root of the schema.
 	Defs *string `pulumi:"defs"`
@@ -5721,8 +5721,8 @@ type AppVariableDeclarationSchemaArgs struct {
 	AnyOf pulumi.StringPtrInput `pulumi:"anyOf"`
 	// Optional. Default value of the data. Represents a dynamically typed value
 	// which can be either null, a number, a string, a boolean, a struct,
-	// or a list of values. The provided default value must be compatible
-	// with the defined 'type' and other schema constraints.
+	// or a list of values. The provided default value must be encoded as a JSON string.
+	// Use `jsonencode` in Terraform HCL to encode the default value.
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// A map of definitions for use by ref. Only allowed at the root of the schema.
 	Defs pulumi.StringPtrInput `pulumi:"defs"`
@@ -5819,8 +5819,8 @@ func (o AppVariableDeclarationSchemaOutput) AnyOf() pulumi.StringPtrOutput {
 
 // Optional. Default value of the data. Represents a dynamically typed value
 // which can be either null, a number, a string, a boolean, a struct,
-// or a list of values. The provided default value must be compatible
-// with the defined 'type' and other schema constraints.
+// or a list of values. The provided default value must be encoded as a JSON string.
+// Use `jsonencode` in Terraform HCL to encode the default value.
 func (o AppVariableDeclarationSchemaOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppVariableDeclarationSchema) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
@@ -29423,8 +29423,13 @@ type ToolDataStoreTool struct {
 	// specific DataStores.
 	// Structure is documented below.
 	EngineSource *ToolDataStoreToolEngineSource `pulumi:"engineSource"`
+	// (Optional, Deprecated)
 	// Number of search results to return per query.
 	// The default value is 10. The maximum allowed value is 10.
+	//
+	// > **Warning:** `maxResults` is deprecated and will be removed in a future release.
+	//
+	// Deprecated: `maxResults` is deprecated and will be removed in a future release.
 	MaxResults *int `pulumi:"maxResults"`
 	// The modality configs for the data store.
 	// Structure is documented below.
@@ -29454,8 +29459,13 @@ type ToolDataStoreToolArgs struct {
 	// specific DataStores.
 	// Structure is documented below.
 	EngineSource ToolDataStoreToolEngineSourcePtrInput `pulumi:"engineSource"`
+	// (Optional, Deprecated)
 	// Number of search results to return per query.
 	// The default value is 10. The maximum allowed value is 10.
+	//
+	// > **Warning:** `maxResults` is deprecated and will be removed in a future release.
+	//
+	// Deprecated: `maxResults` is deprecated and will be removed in a future release.
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
 	// The modality configs for the data store.
 	// Structure is documented below.
@@ -29559,8 +29569,13 @@ func (o ToolDataStoreToolOutput) EngineSource() ToolDataStoreToolEngineSourcePtr
 	return o.ApplyT(func(v ToolDataStoreTool) *ToolDataStoreToolEngineSource { return v.EngineSource }).(ToolDataStoreToolEngineSourcePtrOutput)
 }
 
+// (Optional, Deprecated)
 // Number of search results to return per query.
 // The default value is 10. The maximum allowed value is 10.
+//
+// > **Warning:** `maxResults` is deprecated and will be removed in a future release.
+//
+// Deprecated: `maxResults` is deprecated and will be removed in a future release.
 func (o ToolDataStoreToolOutput) MaxResults() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ToolDataStoreTool) *int { return v.MaxResults }).(pulumi.IntPtrOutput)
 }
@@ -29633,8 +29648,13 @@ func (o ToolDataStoreToolPtrOutput) EngineSource() ToolDataStoreToolEngineSource
 	}).(ToolDataStoreToolEngineSourcePtrOutput)
 }
 
+// (Optional, Deprecated)
 // Number of search results to return per query.
 // The default value is 10. The maximum allowed value is 10.
+//
+// > **Warning:** `maxResults` is deprecated and will be removed in a future release.
+//
+// Deprecated: `maxResults` is deprecated and will be removed in a future release.
 func (o ToolDataStoreToolPtrOutput) MaxResults() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ToolDataStoreTool) *int {
 		if v == nil {

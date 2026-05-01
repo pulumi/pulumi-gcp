@@ -185,6 +185,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.StoragePoolParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
         /// Possible values are: `STANDARD`, `ADVANCED`.
         /// </summary>
@@ -356,6 +363,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.StoragePoolParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
         /// Possible values are: `STANDARD`, `ADVANCED`.
         /// </summary>
@@ -496,6 +510,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.StoragePoolParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.

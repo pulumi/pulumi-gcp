@@ -14,9 +14,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DnsManagedZoneIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // DnsManagedZoneIamBindingConditionInput is an input type that accepts DnsManagedZoneIamBindingConditionArgs and DnsManagedZoneIamBindingConditionOutput values.
@@ -31,9 +38,16 @@ type DnsManagedZoneIamBindingConditionInput interface {
 }
 
 type DnsManagedZoneIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (DnsManagedZoneIamBindingConditionArgs) ElementType() reflect.Type {
@@ -113,14 +127,21 @@ func (o DnsManagedZoneIamBindingConditionOutput) ToDnsManagedZoneIamBindingCondi
 	}).(DnsManagedZoneIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DnsManagedZoneIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsManagedZoneIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DnsManagedZoneIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsManagedZoneIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DnsManagedZoneIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsManagedZoneIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -149,6 +170,11 @@ func (o DnsManagedZoneIamBindingConditionPtrOutput) Elem() DnsManagedZoneIamBind
 	}).(DnsManagedZoneIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DnsManagedZoneIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) *string {
 		if v == nil {
@@ -158,6 +184,7 @@ func (o DnsManagedZoneIamBindingConditionPtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DnsManagedZoneIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) *string {
 		if v == nil {
@@ -167,6 +194,7 @@ func (o DnsManagedZoneIamBindingConditionPtrOutput) Expression() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DnsManagedZoneIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) *string {
 		if v == nil {
@@ -177,9 +205,16 @@ func (o DnsManagedZoneIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutp
 }
 
 type DnsManagedZoneIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // DnsManagedZoneIamMemberConditionInput is an input type that accepts DnsManagedZoneIamMemberConditionArgs and DnsManagedZoneIamMemberConditionOutput values.
@@ -194,9 +229,16 @@ type DnsManagedZoneIamMemberConditionInput interface {
 }
 
 type DnsManagedZoneIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (DnsManagedZoneIamMemberConditionArgs) ElementType() reflect.Type {
@@ -276,14 +318,21 @@ func (o DnsManagedZoneIamMemberConditionOutput) ToDnsManagedZoneIamMemberConditi
 	}).(DnsManagedZoneIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DnsManagedZoneIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsManagedZoneIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DnsManagedZoneIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsManagedZoneIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DnsManagedZoneIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsManagedZoneIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -312,6 +361,11 @@ func (o DnsManagedZoneIamMemberConditionPtrOutput) Elem() DnsManagedZoneIamMembe
 	}).(DnsManagedZoneIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+// consider it to be an entirely different resource and will treat it as such.
 func (o DnsManagedZoneIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) *string {
 		if v == nil {
@@ -321,6 +375,7 @@ func (o DnsManagedZoneIamMemberConditionPtrOutput) Description() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o DnsManagedZoneIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) *string {
 		if v == nil {
@@ -330,6 +385,7 @@ func (o DnsManagedZoneIamMemberConditionPtrOutput) Expression() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o DnsManagedZoneIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) *string {
 		if v == nil {

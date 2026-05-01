@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string KeyName;
         /// <summary>
-        /// ENCRYPTED or DECRYPTED.
+        /// ENCRYPTED, ALL_OBJECTS_ENCRYPTION_ENABLED or DECRYPTED.
         /// </summary>
         public readonly string State;
 

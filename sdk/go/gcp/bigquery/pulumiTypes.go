@@ -1920,6 +1920,1316 @@ func (o ConnectionCloudSqlCredentialPtrOutput) Username() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionConfiguration struct {
+	// Asset configuration for the connector.
+	// Structure is documented below.
+	Asset ConnectionConfigurationAsset `pulumi:"asset"`
+	// Authentication configuration for the connector.
+	// Structure is documented below.
+	Authentication *ConnectionConfigurationAuthentication `pulumi:"authentication"`
+	// The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
+	// `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
+	ConnectorId string `pulumi:"connectorId"`
+	// Endpoint configuration for the connector.
+	// Structure is documented below.
+	Endpoint *ConnectionConfigurationEndpoint `pulumi:"endpoint"`
+	// Network configuration for the connector.
+	// Structure is documented below.
+	Network *ConnectionConfigurationNetwork `pulumi:"network"`
+}
+
+// ConnectionConfigurationInput is an input type that accepts ConnectionConfigurationArgs and ConnectionConfigurationOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationInput` via:
+//
+//	ConnectionConfigurationArgs{...}
+type ConnectionConfigurationInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationOutput() ConnectionConfigurationOutput
+	ToConnectionConfigurationOutputWithContext(context.Context) ConnectionConfigurationOutput
+}
+
+type ConnectionConfigurationArgs struct {
+	// Asset configuration for the connector.
+	// Structure is documented below.
+	Asset ConnectionConfigurationAssetInput `pulumi:"asset"`
+	// Authentication configuration for the connector.
+	// Structure is documented below.
+	Authentication ConnectionConfigurationAuthenticationPtrInput `pulumi:"authentication"`
+	// The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
+	// `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// Endpoint configuration for the connector.
+	// Structure is documented below.
+	Endpoint ConnectionConfigurationEndpointPtrInput `pulumi:"endpoint"`
+	// Network configuration for the connector.
+	// Structure is documented below.
+	Network ConnectionConfigurationNetworkPtrInput `pulumi:"network"`
+}
+
+func (ConnectionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfiguration)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationArgs) ToConnectionConfigurationOutput() ConnectionConfigurationOutput {
+	return i.ToConnectionConfigurationOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationArgs) ToConnectionConfigurationOutputWithContext(ctx context.Context) ConnectionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationOutput)
+}
+
+func (i ConnectionConfigurationArgs) ToConnectionConfigurationPtrOutput() ConnectionConfigurationPtrOutput {
+	return i.ToConnectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationArgs) ToConnectionConfigurationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationOutput).ToConnectionConfigurationPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationPtrInput is an input type that accepts ConnectionConfigurationArgs, ConnectionConfigurationPtr and ConnectionConfigurationPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationPtrInput` via:
+//
+//	        ConnectionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationPtrOutput() ConnectionConfigurationPtrOutput
+	ToConnectionConfigurationPtrOutputWithContext(context.Context) ConnectionConfigurationPtrOutput
+}
+
+type connectionConfigurationPtrType ConnectionConfigurationArgs
+
+func ConnectionConfigurationPtr(v *ConnectionConfigurationArgs) ConnectionConfigurationPtrInput {
+	return (*connectionConfigurationPtrType)(v)
+}
+
+func (*connectionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfiguration)(nil)).Elem()
+}
+
+func (i *connectionConfigurationPtrType) ToConnectionConfigurationPtrOutput() ConnectionConfigurationPtrOutput {
+	return i.ToConnectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationPtrType) ToConnectionConfigurationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationPtrOutput)
+}
+
+type ConnectionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfiguration)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationOutput) ToConnectionConfigurationOutput() ConnectionConfigurationOutput {
+	return o
+}
+
+func (o ConnectionConfigurationOutput) ToConnectionConfigurationOutputWithContext(ctx context.Context) ConnectionConfigurationOutput {
+	return o
+}
+
+func (o ConnectionConfigurationOutput) ToConnectionConfigurationPtrOutput() ConnectionConfigurationPtrOutput {
+	return o.ToConnectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationOutput) ToConnectionConfigurationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfiguration) *ConnectionConfiguration {
+		return &v
+	}).(ConnectionConfigurationPtrOutput)
+}
+
+// Asset configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationOutput) Asset() ConnectionConfigurationAssetOutput {
+	return o.ApplyT(func(v ConnectionConfiguration) ConnectionConfigurationAsset { return v.Asset }).(ConnectionConfigurationAssetOutput)
+}
+
+// Authentication configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationOutput) Authentication() ConnectionConfigurationAuthenticationPtrOutput {
+	return o.ApplyT(func(v ConnectionConfiguration) *ConnectionConfigurationAuthentication { return v.Authentication }).(ConnectionConfigurationAuthenticationPtrOutput)
+}
+
+// The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
+// `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
+func (o ConnectionConfigurationOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionConfiguration) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// Endpoint configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationOutput) Endpoint() ConnectionConfigurationEndpointPtrOutput {
+	return o.ApplyT(func(v ConnectionConfiguration) *ConnectionConfigurationEndpoint { return v.Endpoint }).(ConnectionConfigurationEndpointPtrOutput)
+}
+
+// Network configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationOutput) Network() ConnectionConfigurationNetworkPtrOutput {
+	return o.ApplyT(func(v ConnectionConfiguration) *ConnectionConfigurationNetwork { return v.Network }).(ConnectionConfigurationNetworkPtrOutput)
+}
+
+type ConnectionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfiguration)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationPtrOutput) ToConnectionConfigurationPtrOutput() ConnectionConfigurationPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationPtrOutput) ToConnectionConfigurationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationPtrOutput) Elem() ConnectionConfigurationOutput {
+	return o.ApplyT(func(v *ConnectionConfiguration) ConnectionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfiguration
+		return ret
+	}).(ConnectionConfigurationOutput)
+}
+
+// Asset configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationPtrOutput) Asset() ConnectionConfigurationAssetPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfiguration) *ConnectionConfigurationAsset {
+		if v == nil {
+			return nil
+		}
+		return &v.Asset
+	}).(ConnectionConfigurationAssetPtrOutput)
+}
+
+// Authentication configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationPtrOutput) Authentication() ConnectionConfigurationAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfiguration) *ConnectionConfigurationAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(ConnectionConfigurationAuthenticationPtrOutput)
+}
+
+// The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
+// `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
+func (o ConnectionConfigurationPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Endpoint configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationPtrOutput) Endpoint() ConnectionConfigurationEndpointPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfiguration) *ConnectionConfigurationEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(ConnectionConfigurationEndpointPtrOutput)
+}
+
+// Network configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationPtrOutput) Network() ConnectionConfigurationNetworkPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfiguration) *ConnectionConfigurationNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(ConnectionConfigurationNetworkPtrOutput)
+}
+
+type ConnectionConfigurationAsset struct {
+	// The name of the database.
+	Database *string `pulumi:"database"`
+	// The full resource name of the Google Cloud resource.
+	// For AlloyDB, this is in the format of
+	// `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
+	GoogleCloudResource *string `pulumi:"googleCloudResource"`
+}
+
+// ConnectionConfigurationAssetInput is an input type that accepts ConnectionConfigurationAssetArgs and ConnectionConfigurationAssetOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAssetInput` via:
+//
+//	ConnectionConfigurationAssetArgs{...}
+type ConnectionConfigurationAssetInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAssetOutput() ConnectionConfigurationAssetOutput
+	ToConnectionConfigurationAssetOutputWithContext(context.Context) ConnectionConfigurationAssetOutput
+}
+
+type ConnectionConfigurationAssetArgs struct {
+	// The name of the database.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The full resource name of the Google Cloud resource.
+	// For AlloyDB, this is in the format of
+	// `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
+	GoogleCloudResource pulumi.StringPtrInput `pulumi:"googleCloudResource"`
+}
+
+func (ConnectionConfigurationAssetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAsset)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationAssetArgs) ToConnectionConfigurationAssetOutput() ConnectionConfigurationAssetOutput {
+	return i.ToConnectionConfigurationAssetOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAssetArgs) ToConnectionConfigurationAssetOutputWithContext(ctx context.Context) ConnectionConfigurationAssetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAssetOutput)
+}
+
+func (i ConnectionConfigurationAssetArgs) ToConnectionConfigurationAssetPtrOutput() ConnectionConfigurationAssetPtrOutput {
+	return i.ToConnectionConfigurationAssetPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAssetArgs) ToConnectionConfigurationAssetPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAssetOutput).ToConnectionConfigurationAssetPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationAssetPtrInput is an input type that accepts ConnectionConfigurationAssetArgs, ConnectionConfigurationAssetPtr and ConnectionConfigurationAssetPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAssetPtrInput` via:
+//
+//	        ConnectionConfigurationAssetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationAssetPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAssetPtrOutput() ConnectionConfigurationAssetPtrOutput
+	ToConnectionConfigurationAssetPtrOutputWithContext(context.Context) ConnectionConfigurationAssetPtrOutput
+}
+
+type connectionConfigurationAssetPtrType ConnectionConfigurationAssetArgs
+
+func ConnectionConfigurationAssetPtr(v *ConnectionConfigurationAssetArgs) ConnectionConfigurationAssetPtrInput {
+	return (*connectionConfigurationAssetPtrType)(v)
+}
+
+func (*connectionConfigurationAssetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAsset)(nil)).Elem()
+}
+
+func (i *connectionConfigurationAssetPtrType) ToConnectionConfigurationAssetPtrOutput() ConnectionConfigurationAssetPtrOutput {
+	return i.ToConnectionConfigurationAssetPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationAssetPtrType) ToConnectionConfigurationAssetPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAssetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAssetPtrOutput)
+}
+
+type ConnectionConfigurationAssetOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAssetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAsset)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAssetOutput) ToConnectionConfigurationAssetOutput() ConnectionConfigurationAssetOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAssetOutput) ToConnectionConfigurationAssetOutputWithContext(ctx context.Context) ConnectionConfigurationAssetOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAssetOutput) ToConnectionConfigurationAssetPtrOutput() ConnectionConfigurationAssetPtrOutput {
+	return o.ToConnectionConfigurationAssetPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationAssetOutput) ToConnectionConfigurationAssetPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAssetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationAsset) *ConnectionConfigurationAsset {
+		return &v
+	}).(ConnectionConfigurationAssetPtrOutput)
+}
+
+// The name of the database.
+func (o ConnectionConfigurationAssetOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAsset) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// The full resource name of the Google Cloud resource.
+// For AlloyDB, this is in the format of
+// `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
+func (o ConnectionConfigurationAssetOutput) GoogleCloudResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAsset) *string { return v.GoogleCloudResource }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationAssetPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAssetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAsset)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAssetPtrOutput) ToConnectionConfigurationAssetPtrOutput() ConnectionConfigurationAssetPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAssetPtrOutput) ToConnectionConfigurationAssetPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAssetPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAssetPtrOutput) Elem() ConnectionConfigurationAssetOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAsset) ConnectionConfigurationAsset {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationAsset
+		return ret
+	}).(ConnectionConfigurationAssetOutput)
+}
+
+// The name of the database.
+func (o ConnectionConfigurationAssetPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full resource name of the Google Cloud resource.
+// For AlloyDB, this is in the format of
+// `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
+func (o ConnectionConfigurationAssetPtrOutput) GoogleCloudResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAsset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCloudResource
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationAuthentication struct {
+	// (Output)
+	// Output only. The service account used for authenticating with the connector.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Username/password authentication configuration.
+	// Structure is documented below.
+	UsernamePassword *ConnectionConfigurationAuthenticationUsernamePassword `pulumi:"usernamePassword"`
+}
+
+// ConnectionConfigurationAuthenticationInput is an input type that accepts ConnectionConfigurationAuthenticationArgs and ConnectionConfigurationAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAuthenticationInput` via:
+//
+//	ConnectionConfigurationAuthenticationArgs{...}
+type ConnectionConfigurationAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAuthenticationOutput() ConnectionConfigurationAuthenticationOutput
+	ToConnectionConfigurationAuthenticationOutputWithContext(context.Context) ConnectionConfigurationAuthenticationOutput
+}
+
+type ConnectionConfigurationAuthenticationArgs struct {
+	// (Output)
+	// Output only. The service account used for authenticating with the connector.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Username/password authentication configuration.
+	// Structure is documented below.
+	UsernamePassword ConnectionConfigurationAuthenticationUsernamePasswordPtrInput `pulumi:"usernamePassword"`
+}
+
+func (ConnectionConfigurationAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAuthentication)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationAuthenticationArgs) ToConnectionConfigurationAuthenticationOutput() ConnectionConfigurationAuthenticationOutput {
+	return i.ToConnectionConfigurationAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAuthenticationArgs) ToConnectionConfigurationAuthenticationOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationOutput)
+}
+
+func (i ConnectionConfigurationAuthenticationArgs) ToConnectionConfigurationAuthenticationPtrOutput() ConnectionConfigurationAuthenticationPtrOutput {
+	return i.ToConnectionConfigurationAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAuthenticationArgs) ToConnectionConfigurationAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationOutput).ToConnectionConfigurationAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationAuthenticationPtrInput is an input type that accepts ConnectionConfigurationAuthenticationArgs, ConnectionConfigurationAuthenticationPtr and ConnectionConfigurationAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAuthenticationPtrInput` via:
+//
+//	        ConnectionConfigurationAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAuthenticationPtrOutput() ConnectionConfigurationAuthenticationPtrOutput
+	ToConnectionConfigurationAuthenticationPtrOutputWithContext(context.Context) ConnectionConfigurationAuthenticationPtrOutput
+}
+
+type connectionConfigurationAuthenticationPtrType ConnectionConfigurationAuthenticationArgs
+
+func ConnectionConfigurationAuthenticationPtr(v *ConnectionConfigurationAuthenticationArgs) ConnectionConfigurationAuthenticationPtrInput {
+	return (*connectionConfigurationAuthenticationPtrType)(v)
+}
+
+func (*connectionConfigurationAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAuthentication)(nil)).Elem()
+}
+
+func (i *connectionConfigurationAuthenticationPtrType) ToConnectionConfigurationAuthenticationPtrOutput() ConnectionConfigurationAuthenticationPtrOutput {
+	return i.ToConnectionConfigurationAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationAuthenticationPtrType) ToConnectionConfigurationAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAuthenticationOutput) ToConnectionConfigurationAuthenticationOutput() ConnectionConfigurationAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationOutput) ToConnectionConfigurationAuthenticationOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationOutput) ToConnectionConfigurationAuthenticationPtrOutput() ConnectionConfigurationAuthenticationPtrOutput {
+	return o.ToConnectionConfigurationAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationAuthenticationOutput) ToConnectionConfigurationAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationAuthentication) *ConnectionConfigurationAuthentication {
+		return &v
+	}).(ConnectionConfigurationAuthenticationPtrOutput)
+}
+
+// (Output)
+// Output only. The service account used for authenticating with the connector.
+func (o ConnectionConfigurationAuthenticationOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAuthentication) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Username/password authentication configuration.
+// Structure is documented below.
+func (o ConnectionConfigurationAuthenticationOutput) UsernamePassword() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAuthentication) *ConnectionConfigurationAuthenticationUsernamePassword {
+		return v.UsernamePassword
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAuthenticationPtrOutput) ToConnectionConfigurationAuthenticationPtrOutput() ConnectionConfigurationAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationPtrOutput) ToConnectionConfigurationAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationPtrOutput) Elem() ConnectionConfigurationAuthenticationOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthentication) ConnectionConfigurationAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationAuthentication
+		return ret
+	}).(ConnectionConfigurationAuthenticationOutput)
+}
+
+// (Output)
+// Output only. The service account used for authenticating with the connector.
+func (o ConnectionConfigurationAuthenticationPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username/password authentication configuration.
+// Structure is documented below.
+func (o ConnectionConfigurationAuthenticationPtrOutput) UsernamePassword() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthentication) *ConnectionConfigurationAuthenticationUsernamePassword {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePassword
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationUsernamePassword struct {
+	// Password configuration for the connector.
+	// Structure is documented below.
+	Password ConnectionConfigurationAuthenticationUsernamePasswordPassword `pulumi:"password"`
+	// Username for the connector.
+	Username string `pulumi:"username"`
+}
+
+// ConnectionConfigurationAuthenticationUsernamePasswordInput is an input type that accepts ConnectionConfigurationAuthenticationUsernamePasswordArgs and ConnectionConfigurationAuthenticationUsernamePasswordOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAuthenticationUsernamePasswordInput` via:
+//
+//	ConnectionConfigurationAuthenticationUsernamePasswordArgs{...}
+type ConnectionConfigurationAuthenticationUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAuthenticationUsernamePasswordOutput() ConnectionConfigurationAuthenticationUsernamePasswordOutput
+	ToConnectionConfigurationAuthenticationUsernamePasswordOutputWithContext(context.Context) ConnectionConfigurationAuthenticationUsernamePasswordOutput
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordArgs struct {
+	// Password configuration for the connector.
+	// Structure is documented below.
+	Password ConnectionConfigurationAuthenticationUsernamePasswordPasswordInput `pulumi:"password"`
+	// Username for the connector.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ConnectionConfigurationAuthenticationUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePassword)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordOutput() ConnectionConfigurationAuthenticationUsernamePasswordOutput {
+	return i.ToConnectionConfigurationAuthenticationUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationUsernamePasswordOutput)
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return i.ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationUsernamePasswordOutput).ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationAuthenticationUsernamePasswordPtrInput is an input type that accepts ConnectionConfigurationAuthenticationUsernamePasswordArgs, ConnectionConfigurationAuthenticationUsernamePasswordPtr and ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAuthenticationUsernamePasswordPtrInput` via:
+//
+//	        ConnectionConfigurationAuthenticationUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationAuthenticationUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput
+	ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput
+}
+
+type connectionConfigurationAuthenticationUsernamePasswordPtrType ConnectionConfigurationAuthenticationUsernamePasswordArgs
+
+func ConnectionConfigurationAuthenticationUsernamePasswordPtr(v *ConnectionConfigurationAuthenticationUsernamePasswordArgs) ConnectionConfigurationAuthenticationUsernamePasswordPtrInput {
+	return (*connectionConfigurationAuthenticationUsernamePasswordPtrType)(v)
+}
+
+func (*connectionConfigurationAuthenticationUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAuthenticationUsernamePassword)(nil)).Elem()
+}
+
+func (i *connectionConfigurationAuthenticationUsernamePasswordPtrType) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return i.ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationAuthenticationUsernamePasswordPtrType) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAuthenticationUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePassword)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordOutput() ConnectionConfigurationAuthenticationUsernamePasswordOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return o.ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationAuthenticationUsernamePassword) *ConnectionConfigurationAuthenticationUsernamePassword {
+		return &v
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput)
+}
+
+// Password configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordOutput) Password() ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAuthenticationUsernamePassword) ConnectionConfigurationAuthenticationUsernamePasswordPassword {
+		return v.Password
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput)
+}
+
+// Username for the connector.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAuthenticationUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAuthenticationUsernamePassword)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput) Elem() ConnectionConfigurationAuthenticationUsernamePasswordOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthenticationUsernamePassword) ConnectionConfigurationAuthenticationUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationAuthenticationUsernamePassword
+		return ret
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordOutput)
+}
+
+// Password configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput) Password() ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthenticationUsernamePassword) *ConnectionConfigurationAuthenticationUsernamePasswordPassword {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput)
+}
+
+// Username for the connector.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthenticationUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordPassword struct {
+	// The plaintext password.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Plaintext string `pulumi:"plaintext"`
+	// (Output)
+	// Output only. The type of the secret.
+	SecretType *string `pulumi:"secretType"`
+}
+
+// ConnectionConfigurationAuthenticationUsernamePasswordPasswordInput is an input type that accepts ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs and ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAuthenticationUsernamePasswordPasswordInput` via:
+//
+//	ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs{...}
+type ConnectionConfigurationAuthenticationUsernamePasswordPasswordInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput
+	ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutputWithContext(context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs struct {
+	// The plaintext password.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Plaintext pulumi.StringInput `pulumi:"plaintext"`
+	// (Output)
+	// Output only. The type of the secret.
+	SecretType pulumi.StringPtrInput `pulumi:"secretType"`
+}
+
+func (ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePasswordPassword)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput {
+	return i.ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput)
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return i.ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput).ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrInput is an input type that accepts ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs, ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtr and ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrInput` via:
+//
+//	        ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput
+	ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput
+}
+
+type connectionConfigurationAuthenticationUsernamePasswordPasswordPtrType ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs
+
+func ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtr(v *ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs) ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrInput {
+	return (*connectionConfigurationAuthenticationUsernamePasswordPasswordPtrType)(v)
+}
+
+func (*connectionConfigurationAuthenticationUsernamePasswordPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAuthenticationUsernamePasswordPassword)(nil)).Elem()
+}
+
+func (i *connectionConfigurationAuthenticationUsernamePasswordPasswordPtrType) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return i.ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationAuthenticationUsernamePasswordPasswordPtrType) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePasswordPassword)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return o.ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationAuthenticationUsernamePasswordPassword) *ConnectionConfigurationAuthenticationUsernamePasswordPassword {
+		return &v
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput)
+}
+
+// The plaintext password.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) Plaintext() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAuthenticationUsernamePasswordPassword) string { return v.Plaintext }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The type of the secret.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationAuthenticationUsernamePasswordPassword) *string { return v.SecretType }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationAuthenticationUsernamePasswordPassword)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput() ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput) ToConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutputWithContext(ctx context.Context) ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput) Elem() ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthenticationUsernamePasswordPassword) ConnectionConfigurationAuthenticationUsernamePasswordPassword {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationAuthenticationUsernamePasswordPassword
+		return ret
+	}).(ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput)
+}
+
+// The plaintext password.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput) Plaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthenticationUsernamePasswordPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Plaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The type of the secret.
+func (o ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationAuthenticationUsernamePasswordPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationEndpoint struct {
+	// Host and port in the format of `host:port` for the connector endpoint.
+	HostPort *string `pulumi:"hostPort"`
+}
+
+// ConnectionConfigurationEndpointInput is an input type that accepts ConnectionConfigurationEndpointArgs and ConnectionConfigurationEndpointOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationEndpointInput` via:
+//
+//	ConnectionConfigurationEndpointArgs{...}
+type ConnectionConfigurationEndpointInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationEndpointOutput() ConnectionConfigurationEndpointOutput
+	ToConnectionConfigurationEndpointOutputWithContext(context.Context) ConnectionConfigurationEndpointOutput
+}
+
+type ConnectionConfigurationEndpointArgs struct {
+	// Host and port in the format of `host:port` for the connector endpoint.
+	HostPort pulumi.StringPtrInput `pulumi:"hostPort"`
+}
+
+func (ConnectionConfigurationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationEndpoint)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationEndpointArgs) ToConnectionConfigurationEndpointOutput() ConnectionConfigurationEndpointOutput {
+	return i.ToConnectionConfigurationEndpointOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationEndpointArgs) ToConnectionConfigurationEndpointOutputWithContext(ctx context.Context) ConnectionConfigurationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationEndpointOutput)
+}
+
+func (i ConnectionConfigurationEndpointArgs) ToConnectionConfigurationEndpointPtrOutput() ConnectionConfigurationEndpointPtrOutput {
+	return i.ToConnectionConfigurationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationEndpointArgs) ToConnectionConfigurationEndpointPtrOutputWithContext(ctx context.Context) ConnectionConfigurationEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationEndpointOutput).ToConnectionConfigurationEndpointPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationEndpointPtrInput is an input type that accepts ConnectionConfigurationEndpointArgs, ConnectionConfigurationEndpointPtr and ConnectionConfigurationEndpointPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationEndpointPtrInput` via:
+//
+//	        ConnectionConfigurationEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationEndpointPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationEndpointPtrOutput() ConnectionConfigurationEndpointPtrOutput
+	ToConnectionConfigurationEndpointPtrOutputWithContext(context.Context) ConnectionConfigurationEndpointPtrOutput
+}
+
+type connectionConfigurationEndpointPtrType ConnectionConfigurationEndpointArgs
+
+func ConnectionConfigurationEndpointPtr(v *ConnectionConfigurationEndpointArgs) ConnectionConfigurationEndpointPtrInput {
+	return (*connectionConfigurationEndpointPtrType)(v)
+}
+
+func (*connectionConfigurationEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationEndpoint)(nil)).Elem()
+}
+
+func (i *connectionConfigurationEndpointPtrType) ToConnectionConfigurationEndpointPtrOutput() ConnectionConfigurationEndpointPtrOutput {
+	return i.ToConnectionConfigurationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationEndpointPtrType) ToConnectionConfigurationEndpointPtrOutputWithContext(ctx context.Context) ConnectionConfigurationEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationEndpointPtrOutput)
+}
+
+type ConnectionConfigurationEndpointOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationEndpoint)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationEndpointOutput) ToConnectionConfigurationEndpointOutput() ConnectionConfigurationEndpointOutput {
+	return o
+}
+
+func (o ConnectionConfigurationEndpointOutput) ToConnectionConfigurationEndpointOutputWithContext(ctx context.Context) ConnectionConfigurationEndpointOutput {
+	return o
+}
+
+func (o ConnectionConfigurationEndpointOutput) ToConnectionConfigurationEndpointPtrOutput() ConnectionConfigurationEndpointPtrOutput {
+	return o.ToConnectionConfigurationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationEndpointOutput) ToConnectionConfigurationEndpointPtrOutputWithContext(ctx context.Context) ConnectionConfigurationEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationEndpoint) *ConnectionConfigurationEndpoint {
+		return &v
+	}).(ConnectionConfigurationEndpointPtrOutput)
+}
+
+// Host and port in the format of `host:port` for the connector endpoint.
+func (o ConnectionConfigurationEndpointOutput) HostPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationEndpoint) *string { return v.HostPort }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationEndpoint)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationEndpointPtrOutput) ToConnectionConfigurationEndpointPtrOutput() ConnectionConfigurationEndpointPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationEndpointPtrOutput) ToConnectionConfigurationEndpointPtrOutputWithContext(ctx context.Context) ConnectionConfigurationEndpointPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationEndpointPtrOutput) Elem() ConnectionConfigurationEndpointOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationEndpoint) ConnectionConfigurationEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationEndpoint
+		return ret
+	}).(ConnectionConfigurationEndpointOutput)
+}
+
+// Host and port in the format of `host:port` for the connector endpoint.
+func (o ConnectionConfigurationEndpointPtrOutput) HostPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostPort
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionConfigurationNetwork struct {
+	// Private Service Connect configuration for the connector.
+	// Structure is documented below.
+	PrivateServiceConnect *ConnectionConfigurationNetworkPrivateServiceConnect `pulumi:"privateServiceConnect"`
+}
+
+// ConnectionConfigurationNetworkInput is an input type that accepts ConnectionConfigurationNetworkArgs and ConnectionConfigurationNetworkOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationNetworkInput` via:
+//
+//	ConnectionConfigurationNetworkArgs{...}
+type ConnectionConfigurationNetworkInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationNetworkOutput() ConnectionConfigurationNetworkOutput
+	ToConnectionConfigurationNetworkOutputWithContext(context.Context) ConnectionConfigurationNetworkOutput
+}
+
+type ConnectionConfigurationNetworkArgs struct {
+	// Private Service Connect configuration for the connector.
+	// Structure is documented below.
+	PrivateServiceConnect ConnectionConfigurationNetworkPrivateServiceConnectPtrInput `pulumi:"privateServiceConnect"`
+}
+
+func (ConnectionConfigurationNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationNetwork)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationNetworkArgs) ToConnectionConfigurationNetworkOutput() ConnectionConfigurationNetworkOutput {
+	return i.ToConnectionConfigurationNetworkOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationNetworkArgs) ToConnectionConfigurationNetworkOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationNetworkOutput)
+}
+
+func (i ConnectionConfigurationNetworkArgs) ToConnectionConfigurationNetworkPtrOutput() ConnectionConfigurationNetworkPtrOutput {
+	return i.ToConnectionConfigurationNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationNetworkArgs) ToConnectionConfigurationNetworkPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationNetworkOutput).ToConnectionConfigurationNetworkPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationNetworkPtrInput is an input type that accepts ConnectionConfigurationNetworkArgs, ConnectionConfigurationNetworkPtr and ConnectionConfigurationNetworkPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationNetworkPtrInput` via:
+//
+//	        ConnectionConfigurationNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationNetworkPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationNetworkPtrOutput() ConnectionConfigurationNetworkPtrOutput
+	ToConnectionConfigurationNetworkPtrOutputWithContext(context.Context) ConnectionConfigurationNetworkPtrOutput
+}
+
+type connectionConfigurationNetworkPtrType ConnectionConfigurationNetworkArgs
+
+func ConnectionConfigurationNetworkPtr(v *ConnectionConfigurationNetworkArgs) ConnectionConfigurationNetworkPtrInput {
+	return (*connectionConfigurationNetworkPtrType)(v)
+}
+
+func (*connectionConfigurationNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationNetwork)(nil)).Elem()
+}
+
+func (i *connectionConfigurationNetworkPtrType) ToConnectionConfigurationNetworkPtrOutput() ConnectionConfigurationNetworkPtrOutput {
+	return i.ToConnectionConfigurationNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationNetworkPtrType) ToConnectionConfigurationNetworkPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationNetworkPtrOutput)
+}
+
+type ConnectionConfigurationNetworkOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationNetwork)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationNetworkOutput) ToConnectionConfigurationNetworkOutput() ConnectionConfigurationNetworkOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkOutput) ToConnectionConfigurationNetworkOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkOutput) ToConnectionConfigurationNetworkPtrOutput() ConnectionConfigurationNetworkPtrOutput {
+	return o.ToConnectionConfigurationNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationNetworkOutput) ToConnectionConfigurationNetworkPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationNetwork) *ConnectionConfigurationNetwork {
+		return &v
+	}).(ConnectionConfigurationNetworkPtrOutput)
+}
+
+// Private Service Connect configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationNetworkOutput) PrivateServiceConnect() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return o.ApplyT(func(v ConnectionConfigurationNetwork) *ConnectionConfigurationNetworkPrivateServiceConnect {
+		return v.PrivateServiceConnect
+	}).(ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput)
+}
+
+type ConnectionConfigurationNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationNetwork)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationNetworkPtrOutput) ToConnectionConfigurationNetworkPtrOutput() ConnectionConfigurationNetworkPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkPtrOutput) ToConnectionConfigurationNetworkPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkPtrOutput) Elem() ConnectionConfigurationNetworkOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationNetwork) ConnectionConfigurationNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationNetwork
+		return ret
+	}).(ConnectionConfigurationNetworkOutput)
+}
+
+// Private Service Connect configuration for the connector.
+// Structure is documented below.
+func (o ConnectionConfigurationNetworkPtrOutput) PrivateServiceConnect() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationNetwork) *ConnectionConfigurationNetworkPrivateServiceConnect {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnect
+	}).(ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput)
+}
+
+type ConnectionConfigurationNetworkPrivateServiceConnect struct {
+	// The resource name of a network attachment in the format of
+	// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// ConnectionConfigurationNetworkPrivateServiceConnectInput is an input type that accepts ConnectionConfigurationNetworkPrivateServiceConnectArgs and ConnectionConfigurationNetworkPrivateServiceConnectOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationNetworkPrivateServiceConnectInput` via:
+//
+//	ConnectionConfigurationNetworkPrivateServiceConnectArgs{...}
+type ConnectionConfigurationNetworkPrivateServiceConnectInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationNetworkPrivateServiceConnectOutput() ConnectionConfigurationNetworkPrivateServiceConnectOutput
+	ToConnectionConfigurationNetworkPrivateServiceConnectOutputWithContext(context.Context) ConnectionConfigurationNetworkPrivateServiceConnectOutput
+}
+
+type ConnectionConfigurationNetworkPrivateServiceConnectArgs struct {
+	// The resource name of a network attachment in the format of
+	// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+}
+
+func (ConnectionConfigurationNetworkPrivateServiceConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationNetworkPrivateServiceConnect)(nil)).Elem()
+}
+
+func (i ConnectionConfigurationNetworkPrivateServiceConnectArgs) ToConnectionConfigurationNetworkPrivateServiceConnectOutput() ConnectionConfigurationNetworkPrivateServiceConnectOutput {
+	return i.ToConnectionConfigurationNetworkPrivateServiceConnectOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationNetworkPrivateServiceConnectArgs) ToConnectionConfigurationNetworkPrivateServiceConnectOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPrivateServiceConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationNetworkPrivateServiceConnectOutput)
+}
+
+func (i ConnectionConfigurationNetworkPrivateServiceConnectArgs) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutput() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return i.ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConfigurationNetworkPrivateServiceConnectArgs) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationNetworkPrivateServiceConnectOutput).ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(ctx)
+}
+
+// ConnectionConfigurationNetworkPrivateServiceConnectPtrInput is an input type that accepts ConnectionConfigurationNetworkPrivateServiceConnectArgs, ConnectionConfigurationNetworkPrivateServiceConnectPtr and ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput values.
+// You can construct a concrete instance of `ConnectionConfigurationNetworkPrivateServiceConnectPtrInput` via:
+//
+//	        ConnectionConfigurationNetworkPrivateServiceConnectArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConfigurationNetworkPrivateServiceConnectPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutput() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput
+	ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(context.Context) ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput
+}
+
+type connectionConfigurationNetworkPrivateServiceConnectPtrType ConnectionConfigurationNetworkPrivateServiceConnectArgs
+
+func ConnectionConfigurationNetworkPrivateServiceConnectPtr(v *ConnectionConfigurationNetworkPrivateServiceConnectArgs) ConnectionConfigurationNetworkPrivateServiceConnectPtrInput {
+	return (*connectionConfigurationNetworkPrivateServiceConnectPtrType)(v)
+}
+
+func (*connectionConfigurationNetworkPrivateServiceConnectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationNetworkPrivateServiceConnect)(nil)).Elem()
+}
+
+func (i *connectionConfigurationNetworkPrivateServiceConnectPtrType) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutput() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return i.ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConfigurationNetworkPrivateServiceConnectPtrType) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput)
+}
+
+type ConnectionConfigurationNetworkPrivateServiceConnectOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationNetworkPrivateServiceConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConfigurationNetworkPrivateServiceConnect)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectOutput) ToConnectionConfigurationNetworkPrivateServiceConnectOutput() ConnectionConfigurationNetworkPrivateServiceConnectOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectOutput) ToConnectionConfigurationNetworkPrivateServiceConnectOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPrivateServiceConnectOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectOutput) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutput() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return o.ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectOutput) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConfigurationNetworkPrivateServiceConnect) *ConnectionConfigurationNetworkPrivateServiceConnect {
+		return &v
+	}).(ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput)
+}
+
+// The resource name of a network attachment in the format of
+// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+func (o ConnectionConfigurationNetworkPrivateServiceConnectOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionConfigurationNetworkPrivateServiceConnect) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+type ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConfigurationNetworkPrivateServiceConnect)(nil)).Elem()
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutput() ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput) ToConnectionConfigurationNetworkPrivateServiceConnectPtrOutputWithContext(ctx context.Context) ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput {
+	return o
+}
+
+func (o ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput) Elem() ConnectionConfigurationNetworkPrivateServiceConnectOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationNetworkPrivateServiceConnect) ConnectionConfigurationNetworkPrivateServiceConnect {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConfigurationNetworkPrivateServiceConnect
+		return ret
+	}).(ConnectionConfigurationNetworkPrivateServiceConnectOutput)
+}
+
+// The resource name of a network attachment in the format of
+// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+func (o ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionConfigurationNetworkPrivateServiceConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -22847,6 +24157,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlPtrInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlCredentialInput)(nil)).Elem(), ConnectionCloudSqlCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlCredentialPtrInput)(nil)).Elem(), ConnectionCloudSqlCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationInput)(nil)).Elem(), ConnectionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationPtrInput)(nil)).Elem(), ConnectionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAssetInput)(nil)).Elem(), ConnectionConfigurationAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAssetPtrInput)(nil)).Elem(), ConnectionConfigurationAssetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAuthenticationInput)(nil)).Elem(), ConnectionConfigurationAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAuthenticationPtrInput)(nil)).Elem(), ConnectionConfigurationAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePasswordInput)(nil)).Elem(), ConnectionConfigurationAuthenticationUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePasswordPtrInput)(nil)).Elem(), ConnectionConfigurationAuthenticationUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePasswordPasswordInput)(nil)).Elem(), ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrInput)(nil)).Elem(), ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationEndpointInput)(nil)).Elem(), ConnectionConfigurationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationEndpointPtrInput)(nil)).Elem(), ConnectionConfigurationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationNetworkInput)(nil)).Elem(), ConnectionConfigurationNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationNetworkPtrInput)(nil)).Elem(), ConnectionConfigurationNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationNetworkPrivateServiceConnectInput)(nil)).Elem(), ConnectionConfigurationNetworkPrivateServiceConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConfigurationNetworkPrivateServiceConnectPtrInput)(nil)).Elem(), ConnectionConfigurationNetworkPrivateServiceConnectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingConditionInput)(nil)).Elem(), ConnectionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingConditionPtrInput)(nil)).Elem(), ConnectionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
@@ -23111,6 +24437,22 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAssetOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAssetPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAuthenticationUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAuthenticationUsernamePasswordPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAuthenticationUsernamePasswordPasswordOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationAuthenticationUsernamePasswordPasswordPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationEndpointOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationEndpointPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationNetworkOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationNetworkPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationNetworkPrivateServiceConnectOutput{})
+	pulumi.RegisterOutputType(ConnectionConfigurationNetworkPrivateServiceConnectPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(ConnectionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIamMemberConditionOutput{})

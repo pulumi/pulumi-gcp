@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapDefaultRouteAction
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the cache policy configuration for matched traffic. Available
         /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
         /// property must be specified. This policy cannot be specified if any target

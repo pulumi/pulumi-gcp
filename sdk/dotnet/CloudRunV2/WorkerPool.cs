@@ -557,6 +557,56 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Worker Pool Emptydir Disk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.WorkerPool("default", new()
+    ///     {
+    ///         Name = "cloudrun-worker-pool",
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         DeletionProtection = true,
+    ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/worker-pool",
+    ///                     VolumeMounts = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerVolumeMountArgs
+    ///                         {
+    ///                             Name = "empty-dir-volume",
+    ///                             MountPath = "/mnt",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Volumes = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateVolumeArgs
+    ///                 {
+    ///                     Name = "empty-dir-volume",
+    ///                     EmptyDir = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateVolumeEmptyDirArgs
+    ///                     {
+    ///                         Medium = "DISK",
+    ///                         SizeLimit = "10Gi",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Worker Pool Mount Nfs
     /// 
     /// ```csharp

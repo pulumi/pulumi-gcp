@@ -210,6 +210,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bigtableCustomEndpoint);
     }
 
+    @Import(name="billingBudgetsCustomEndpoint")
+    private @Nullable Output<String> billingBudgetsCustomEndpoint;
+
+    public Optional<Output<String>> billingBudgetsCustomEndpoint() {
+        return Optional.ofNullable(this.billingBudgetsCustomEndpoint);
+    }
+
     @Import(name="billingCustomEndpoint")
     private @Nullable Output<String> billingCustomEndpoint;
 
@@ -469,6 +476,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataFusionCustomEndpoint);
     }
 
+    @Import(name="dataLineageCustomEndpoint")
+    private @Nullable Output<String> dataLineageCustomEndpoint;
+
+    public Optional<Output<String>> dataLineageCustomEndpoint() {
+        return Optional.ofNullable(this.dataLineageCustomEndpoint);
+    }
+
     @Import(name="dataLossPreventionCustomEndpoint")
     private @Nullable Output<String> dataLossPreventionCustomEndpoint;
 
@@ -705,6 +719,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> firebaseHostingCustomEndpoint() {
         return Optional.ofNullable(this.firebaseHostingCustomEndpoint);
+    }
+
+    @Import(name="firebaseRemoteConfigCustomEndpoint")
+    private @Nullable Output<String> firebaseRemoteConfigCustomEndpoint;
+
+    public Optional<Output<String>> firebaseRemoteConfigCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseRemoteConfigCustomEndpoint);
     }
 
     @Import(name="firebaseStorageCustomEndpoint")
@@ -1069,6 +1090,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> pollInterval() {
         return Optional.ofNullable(this.pollInterval);
+    }
+
+    @Import(name="preferGlobalEndpoints", json=true)
+    private @Nullable Output<Boolean> preferGlobalEndpoints;
+
+    public Optional<Output<Boolean>> preferGlobalEndpoints() {
+        return Optional.ofNullable(this.preferGlobalEndpoints);
+    }
+
+    @Import(name="preferRegionalEndpoints", json=true)
+    private @Nullable Output<Boolean> preferRegionalEndpoints;
+
+    public Optional<Output<Boolean>> preferRegionalEndpoints() {
+        return Optional.ofNullable(this.preferRegionalEndpoints);
     }
 
     @Import(name="privatecaCustomEndpoint")
@@ -1486,6 +1521,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.bigqueryDatapolicyv2CustomEndpoint = $.bigqueryDatapolicyv2CustomEndpoint;
         this.bigqueryReservationCustomEndpoint = $.bigqueryReservationCustomEndpoint;
         this.bigtableCustomEndpoint = $.bigtableCustomEndpoint;
+        this.billingBudgetsCustomEndpoint = $.billingBudgetsCustomEndpoint;
         this.billingCustomEndpoint = $.billingCustomEndpoint;
         this.billingProject = $.billingProject;
         this.binaryAuthorizationCustomEndpoint = $.binaryAuthorizationCustomEndpoint;
@@ -1523,6 +1559,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.credentials = $.credentials;
         this.dataCatalogCustomEndpoint = $.dataCatalogCustomEndpoint;
         this.dataFusionCustomEndpoint = $.dataFusionCustomEndpoint;
+        this.dataLineageCustomEndpoint = $.dataLineageCustomEndpoint;
         this.dataLossPreventionCustomEndpoint = $.dataLossPreventionCustomEndpoint;
         this.dataPipelineCustomEndpoint = $.dataPipelineCustomEndpoint;
         this.databaseMigrationServiceCustomEndpoint = $.databaseMigrationServiceCustomEndpoint;
@@ -1557,6 +1594,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.firebaseDatabaseCustomEndpoint = $.firebaseDatabaseCustomEndpoint;
         this.firebaseExtensionsCustomEndpoint = $.firebaseExtensionsCustomEndpoint;
         this.firebaseHostingCustomEndpoint = $.firebaseHostingCustomEndpoint;
+        this.firebaseRemoteConfigCustomEndpoint = $.firebaseRemoteConfigCustomEndpoint;
         this.firebaseStorageCustomEndpoint = $.firebaseStorageCustomEndpoint;
         this.firebaserulesCustomEndpoint = $.firebaserulesCustomEndpoint;
         this.firestoreCustomEndpoint = $.firestoreCustomEndpoint;
@@ -1609,6 +1647,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.parameterManagerCustomEndpoint = $.parameterManagerCustomEndpoint;
         this.parameterManagerRegionalCustomEndpoint = $.parameterManagerRegionalCustomEndpoint;
         this.pollInterval = $.pollInterval;
+        this.preferGlobalEndpoints = $.preferGlobalEndpoints;
+        this.preferRegionalEndpoints = $.preferRegionalEndpoints;
         this.privatecaCustomEndpoint = $.privatecaCustomEndpoint;
         this.privilegedAccessManagerCustomEndpoint = $.privilegedAccessManagerCustomEndpoint;
         this.project = $.project;
@@ -1925,6 +1965,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder bigtableCustomEndpoint(String bigtableCustomEndpoint) {
             return bigtableCustomEndpoint(Output.of(bigtableCustomEndpoint));
+        }
+
+        public Builder billingBudgetsCustomEndpoint(@Nullable Output<String> billingBudgetsCustomEndpoint) {
+            $.billingBudgetsCustomEndpoint = billingBudgetsCustomEndpoint;
+            return this;
+        }
+
+        public Builder billingBudgetsCustomEndpoint(String billingBudgetsCustomEndpoint) {
+            return billingBudgetsCustomEndpoint(Output.of(billingBudgetsCustomEndpoint));
         }
 
         public Builder billingCustomEndpoint(@Nullable Output<String> billingCustomEndpoint) {
@@ -2260,6 +2309,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dataFusionCustomEndpoint(Output.of(dataFusionCustomEndpoint));
         }
 
+        public Builder dataLineageCustomEndpoint(@Nullable Output<String> dataLineageCustomEndpoint) {
+            $.dataLineageCustomEndpoint = dataLineageCustomEndpoint;
+            return this;
+        }
+
+        public Builder dataLineageCustomEndpoint(String dataLineageCustomEndpoint) {
+            return dataLineageCustomEndpoint(Output.of(dataLineageCustomEndpoint));
+        }
+
         public Builder dataLossPreventionCustomEndpoint(@Nullable Output<String> dataLossPreventionCustomEndpoint) {
             $.dataLossPreventionCustomEndpoint = dataLossPreventionCustomEndpoint;
             return this;
@@ -2564,6 +2622,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder firebaseHostingCustomEndpoint(String firebaseHostingCustomEndpoint) {
             return firebaseHostingCustomEndpoint(Output.of(firebaseHostingCustomEndpoint));
+        }
+
+        public Builder firebaseRemoteConfigCustomEndpoint(@Nullable Output<String> firebaseRemoteConfigCustomEndpoint) {
+            $.firebaseRemoteConfigCustomEndpoint = firebaseRemoteConfigCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseRemoteConfigCustomEndpoint(String firebaseRemoteConfigCustomEndpoint) {
+            return firebaseRemoteConfigCustomEndpoint(Output.of(firebaseRemoteConfigCustomEndpoint));
         }
 
         public Builder firebaseStorageCustomEndpoint(@Nullable Output<String> firebaseStorageCustomEndpoint) {
@@ -3036,6 +3103,24 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder pollInterval(String pollInterval) {
             return pollInterval(Output.of(pollInterval));
+        }
+
+        public Builder preferGlobalEndpoints(@Nullable Output<Boolean> preferGlobalEndpoints) {
+            $.preferGlobalEndpoints = preferGlobalEndpoints;
+            return this;
+        }
+
+        public Builder preferGlobalEndpoints(Boolean preferGlobalEndpoints) {
+            return preferGlobalEndpoints(Output.of(preferGlobalEndpoints));
+        }
+
+        public Builder preferRegionalEndpoints(@Nullable Output<Boolean> preferRegionalEndpoints) {
+            $.preferRegionalEndpoints = preferRegionalEndpoints;
+            return this;
+        }
+
+        public Builder preferRegionalEndpoints(Boolean preferRegionalEndpoints) {
+            return preferRegionalEndpoints(Output.of(preferRegionalEndpoints));
         }
 
         public Builder privatecaCustomEndpoint(@Nullable Output<String> privatecaCustomEndpoint) {

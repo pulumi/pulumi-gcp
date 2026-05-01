@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .modelSettings(AppModelSettingsArgs.builder()
- *                 .model("gemini-2.5-flash-001")
+ *                 .model("gemini-3.0-flash-001")
  *                 .temperature(0.5)
  *                 .build())
  *             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
@@ -265,7 +265,6 @@ import javax.annotation.Nullable;
  *                     .input("test-fixtures/cert.pem")
  *                     .build()).result())
  *                 .privateKey(fakeSecretVersion.name())
- *                 .passphrase(fakeSecretVersion.name())
  *                 .build())
  *             .build());
  * 
@@ -376,7 +375,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .modelSettings(AppModelSettingsArgs.builder()
- *                 .model("gemini-2.5-flash-001")
+ *                 .model("gemini-3.0-flash-001")
  *                 .temperature(0.5)
  *                 .build())
  *             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()

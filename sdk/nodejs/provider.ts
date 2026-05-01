@@ -52,6 +52,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly bigqueryDatapolicyv2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly bigqueryReservationCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly bigtableCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly billingBudgetsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly billingCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly billingProject: pulumi.Output<string | undefined>;
     declare public readonly binaryAuthorizationCustomEndpoint: pulumi.Output<string | undefined>;
@@ -89,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly credentials: pulumi.Output<string | undefined>;
     declare public readonly dataCatalogCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dataFusionCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly dataLineageCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dataLossPreventionCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dataPipelineCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly databaseMigrationServiceCustomEndpoint: pulumi.Output<string | undefined>;
@@ -120,6 +122,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly firebaseDatabaseCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaseExtensionsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaseHostingCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly firebaseRemoteConfigCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaseStorageCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaserulesCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firestoreCustomEndpoint: pulumi.Output<string | undefined>;
@@ -263,6 +266,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["bigqueryDatapolicyv2CustomEndpoint"] = args?.bigqueryDatapolicyv2CustomEndpoint;
             resourceInputs["bigqueryReservationCustomEndpoint"] = args?.bigqueryReservationCustomEndpoint;
             resourceInputs["bigtableCustomEndpoint"] = args?.bigtableCustomEndpoint;
+            resourceInputs["billingBudgetsCustomEndpoint"] = args?.billingBudgetsCustomEndpoint;
             resourceInputs["billingCustomEndpoint"] = args?.billingCustomEndpoint;
             resourceInputs["billingProject"] = args?.billingProject;
             resourceInputs["binaryAuthorizationCustomEndpoint"] = args?.binaryAuthorizationCustomEndpoint;
@@ -300,6 +304,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["credentials"] = args?.credentials;
             resourceInputs["dataCatalogCustomEndpoint"] = args?.dataCatalogCustomEndpoint;
             resourceInputs["dataFusionCustomEndpoint"] = args?.dataFusionCustomEndpoint;
+            resourceInputs["dataLineageCustomEndpoint"] = args?.dataLineageCustomEndpoint;
             resourceInputs["dataLossPreventionCustomEndpoint"] = args?.dataLossPreventionCustomEndpoint;
             resourceInputs["dataPipelineCustomEndpoint"] = args?.dataPipelineCustomEndpoint;
             resourceInputs["databaseMigrationServiceCustomEndpoint"] = args?.databaseMigrationServiceCustomEndpoint;
@@ -334,6 +339,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["firebaseDatabaseCustomEndpoint"] = args?.firebaseDatabaseCustomEndpoint;
             resourceInputs["firebaseExtensionsCustomEndpoint"] = args?.firebaseExtensionsCustomEndpoint;
             resourceInputs["firebaseHostingCustomEndpoint"] = args?.firebaseHostingCustomEndpoint;
+            resourceInputs["firebaseRemoteConfigCustomEndpoint"] = args?.firebaseRemoteConfigCustomEndpoint;
             resourceInputs["firebaseStorageCustomEndpoint"] = args?.firebaseStorageCustomEndpoint;
             resourceInputs["firebaserulesCustomEndpoint"] = args?.firebaserulesCustomEndpoint;
             resourceInputs["firestoreCustomEndpoint"] = args?.firestoreCustomEndpoint;
@@ -386,6 +392,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["parameterManagerCustomEndpoint"] = args?.parameterManagerCustomEndpoint;
             resourceInputs["parameterManagerRegionalCustomEndpoint"] = args?.parameterManagerRegionalCustomEndpoint;
             resourceInputs["pollInterval"] = args?.pollInterval;
+            resourceInputs["preferGlobalEndpoints"] = pulumi.output(args?.preferGlobalEndpoints).apply(JSON.stringify);
+            resourceInputs["preferRegionalEndpoints"] = pulumi.output(args?.preferRegionalEndpoints).apply(JSON.stringify);
             resourceInputs["privatecaCustomEndpoint"] = args?.privatecaCustomEndpoint;
             resourceInputs["privilegedAccessManagerCustomEndpoint"] = args?.privilegedAccessManagerCustomEndpoint;
             resourceInputs["project"] = (args?.project) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
@@ -489,6 +497,7 @@ export interface ProviderArgs {
     bigqueryDatapolicyv2CustomEndpoint?: pulumi.Input<string>;
     bigqueryReservationCustomEndpoint?: pulumi.Input<string>;
     bigtableCustomEndpoint?: pulumi.Input<string>;
+    billingBudgetsCustomEndpoint?: pulumi.Input<string>;
     billingCustomEndpoint?: pulumi.Input<string>;
     billingProject?: pulumi.Input<string>;
     binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
@@ -526,6 +535,7 @@ export interface ProviderArgs {
     credentials?: pulumi.Input<string>;
     dataCatalogCustomEndpoint?: pulumi.Input<string>;
     dataFusionCustomEndpoint?: pulumi.Input<string>;
+    dataLineageCustomEndpoint?: pulumi.Input<string>;
     dataLossPreventionCustomEndpoint?: pulumi.Input<string>;
     dataPipelineCustomEndpoint?: pulumi.Input<string>;
     databaseMigrationServiceCustomEndpoint?: pulumi.Input<string>;
@@ -560,6 +570,7 @@ export interface ProviderArgs {
     firebaseDatabaseCustomEndpoint?: pulumi.Input<string>;
     firebaseExtensionsCustomEndpoint?: pulumi.Input<string>;
     firebaseHostingCustomEndpoint?: pulumi.Input<string>;
+    firebaseRemoteConfigCustomEndpoint?: pulumi.Input<string>;
     firebaseStorageCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;
     firestoreCustomEndpoint?: pulumi.Input<string>;
@@ -612,6 +623,8 @@ export interface ProviderArgs {
     parameterManagerCustomEndpoint?: pulumi.Input<string>;
     parameterManagerRegionalCustomEndpoint?: pulumi.Input<string>;
     pollInterval?: pulumi.Input<string>;
+    preferGlobalEndpoints?: pulumi.Input<boolean>;
+    preferRegionalEndpoints?: pulumi.Input<boolean>;
     privatecaCustomEndpoint?: pulumi.Input<string>;
     privilegedAccessManagerCustomEndpoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

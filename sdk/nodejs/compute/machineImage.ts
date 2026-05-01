@@ -79,6 +79,43 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Machine Image Resource Manager Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: project.then(project => `projects/${project.number}`),
+ *     shortName: "tagkey",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "tagvalue",
+ * });
+ * const vm = new gcp.compute.Instance("vm", {
+ *     name: "my-vm",
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const image = new gcp.compute.MachineImage("image", {
+ *     name: "my-image",
+ *     sourceInstance: vm.selfLink,
+ *     params: {
+ *         resourceManagerTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *             [tagKey1Id]: tagValue1Id,
+ *         }),
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -146,6 +183,11 @@ export class MachineImage extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.MachineImageParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -180,6 +222,7 @@ export class MachineImage extends pulumi.CustomResource {
             resourceInputs["guestFlush"] = state?.guestFlush;
             resourceInputs["machineImageEncryptionKey"] = state?.machineImageEncryptionKey;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["sourceInstance"] = state?.sourceInstance;
@@ -193,6 +236,7 @@ export class MachineImage extends pulumi.CustomResource {
             resourceInputs["guestFlush"] = args?.guestFlush;
             resourceInputs["machineImageEncryptionKey"] = args?.machineImageEncryptionKey;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["sourceInstance"] = args?.sourceInstance;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -228,6 +272,11 @@ export interface MachineImageState {
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.MachineImageParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -272,6 +321,11 @@ export interface MachineImageArgs {
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.MachineImageParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

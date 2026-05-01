@@ -123,6 +123,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     declare public readonly enableDisplay: pulumi.Output<boolean>;
     /**
+     * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     */
+    declare public readonly eraseWindowsVssSignature: pulumi.Output<boolean>;
+    /**
      * List of the type and count of accelerator cards attached to the instance.
      */
     declare public readonly guestAccelerators: pulumi.Output<outputs.compute.InstanceFromMachineImageGuestAccelerator[]>;
@@ -288,6 +292,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["desiredStatus"] = state?.desiredStatus;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableDisplay"] = state?.enableDisplay;
+            resourceInputs["eraseWindowsVssSignature"] = state?.eraseWindowsVssSignature;
             resourceInputs["guestAccelerators"] = state?.guestAccelerators;
             resourceInputs["hostname"] = state?.hostname;
             resourceInputs["instanceEncryptionKey"] = state?.instanceEncryptionKey;
@@ -332,6 +337,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["desiredStatus"] = args?.desiredStatus;
             resourceInputs["enableDisplay"] = args?.enableDisplay;
+            resourceInputs["eraseWindowsVssSignature"] = args?.eraseWindowsVssSignature;
             resourceInputs["guestAccelerators"] = args?.guestAccelerators;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["instanceEncryptionKey"] = args?.instanceEncryptionKey;
@@ -439,6 +445,10 @@ export interface InstanceFromMachineImageState {
      * Whether the instance has virtual displays enabled.
      */
     enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */
@@ -615,6 +625,10 @@ export interface InstanceFromMachineImageArgs {
      * Whether the instance has virtual displays enabled.
      */
     enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */

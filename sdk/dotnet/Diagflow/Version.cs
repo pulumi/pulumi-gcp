@@ -57,18 +57,6 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var gcpSa = new Gcp.Projects.ServiceIdentity("gcp_sa", new()
-    ///     {
-    ///         Service = "dialogflow.googleapis.com",
-    ///         Project = project.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             waitEnableServiceApi,
-    ///         },
-    ///     });
-    /// 
     ///     var basicAgent = new Gcp.Diagflow.Agent("basic_agent", new()
     ///     {
     ///         DisplayName = "example_agent",

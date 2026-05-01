@@ -36,6 +36,27 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Display name.
      * 
      */
@@ -158,6 +179,7 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
 
     private PrivateConnectionArgs(PrivateConnectionArgs $) {
         this.createWithoutValidation = $.createWithoutValidation;
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.location = $.location;
@@ -204,6 +226,33 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder createWithoutValidation(Boolean createWithoutValidation) {
             return createWithoutValidation(Output.of(createWithoutValidation));
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the private connection. Setting `FORCE` will also delete any child
+         * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+         * child routes exist. Defaults to `FORCE` for backwards compatibility.
+         * Possible values: `DEFAULT`, `FORCE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the private connection. Setting `FORCE` will also delete any child
+         * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+         * child routes exist. Defaults to `FORCE` for backwards compatibility.
+         * Possible values: `DEFAULT`, `FORCE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

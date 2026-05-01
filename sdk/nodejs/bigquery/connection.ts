@@ -267,6 +267,69 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Connection Connector Configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const nameSuffix = "my-connection";
+ * const defaultNetwork = new gcp.compute.Network("default", {name: `alloydb-network-${nameSuffix}`});
+ * const _default = new gcp.alloydb.Cluster("default", {
+ *     clusterId: `alloydb-cluster-${nameSuffix}`,
+ *     location: "us-central1",
+ *     networkConfig: {
+ *         network: defaultNetwork.id,
+ *     },
+ *     initialUser: {
+ *         password: "alloydb-cluster-password",
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: `alloydb-ip-${nameSuffix}`,
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: defaultNetwork.id,
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: defaultNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const defaultInstance = new gcp.alloydb.Instance("default", {
+ *     cluster: _default.name,
+ *     instanceId: `alloydb-instance-${nameSuffix}`,
+ *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "us-central1",
+ *     friendlyName: "alloydb connection",
+ *     description: "AlloyDB connection using connector configuration",
+ *     configuration: {
+ *         connectorId: "google-alloydb",
+ *         asset: {
+ *             database: "postgres",
+ *             googleCloudResource: pulumi.interpolate`//alloydb.googleapis.com/${defaultInstance.id}`,
+ *         },
+ *         authentication: {
+ *             usernamePassword: {
+ *                 username: "user",
+ *                 password: {
+ *                     plaintext: "password",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -338,6 +401,13 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly cloudSql: pulumi.Output<outputs.bigquery.ConnectionCloudSql | undefined>;
     /**
+     * Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     */
+    declare public readonly configuration: pulumi.Output<outputs.bigquery.ConnectionConfiguration | undefined>;
+    /**
      * Optional connection id that should be assigned to the created connection.
      */
     declare public readonly connectionId: pulumi.Output<string>;
@@ -402,6 +472,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["cloudResource"] = state?.cloudResource;
             resourceInputs["cloudSpanner"] = state?.cloudSpanner;
             resourceInputs["cloudSql"] = state?.cloudSql;
+            resourceInputs["configuration"] = state?.configuration;
             resourceInputs["connectionId"] = state?.connectionId;
             resourceInputs["description"] = state?.description;
             resourceInputs["friendlyName"] = state?.friendlyName;
@@ -418,6 +489,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["cloudResource"] = args?.cloudResource;
             resourceInputs["cloudSpanner"] = args?.cloudSpanner;
             resourceInputs["cloudSql"] = args?.cloudSql;
+            resourceInputs["configuration"] = args?.configuration;
             resourceInputs["connectionId"] = args?.connectionId;
             resourceInputs["description"] = args?.description;
             resourceInputs["friendlyName"] = args?.friendlyName;
@@ -462,6 +534,13 @@ export interface ConnectionState {
      * Structure is documented below.
      */
     cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
+    /**
+     * Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     */
+    configuration?: pulumi.Input<inputs.bigquery.ConnectionConfiguration>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */
@@ -539,6 +618,13 @@ export interface ConnectionArgs {
      * Structure is documented below.
      */
     cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
+    /**
+     * Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     */
+    configuration?: pulumi.Input<inputs.bigquery.ConnectionConfiguration>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */

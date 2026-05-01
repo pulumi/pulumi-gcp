@@ -106,6 +106,7 @@ export interface GetInstanceResult {
      * Whether the instance has virtual displays enabled.
      */
     readonly enableDisplay: boolean;
+    readonly eraseWindowsVssSignature: boolean;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure is documented below.
      */

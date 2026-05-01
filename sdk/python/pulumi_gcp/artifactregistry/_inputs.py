@@ -67,6 +67,8 @@ __all__ = [
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict',
     'RepositoryVulnerabilityScanningConfigArgs',
     'RepositoryVulnerabilityScanningConfigArgsDict',
+    'RuleConditionArgs',
+    'RuleConditionArgsDict',
 ]
 
 class RepositoryCleanupPolicyArgsDict(TypedDict):
@@ -1571,5 +1573,99 @@ class RepositoryVulnerabilityScanningConfigArgs:
     @enablement_state_reason.setter
     def enablement_state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "enablement_state_reason", value)
+
+
+class RuleConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Description of the expression. This is a longer text which
+    describes the expression, e.g. when hovered over it in a UI.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. String indicating the location of the expression for error
+    reporting, e.g. a file name and a position in the file.
+    """
+    title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Title for the expression, i.e. a short string describing its purpose.
+    """
+
+@pulumi.input_type
+class RuleConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input[_builtins.str]] = None,
+                 title: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which
+               describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[_builtins.str] location: Optional. String indicating the location of the expression for error
+               reporting, e.g. a file name and a position in the file.
+        :param pulumi.Input[_builtins.str] title: Optional. Title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Description of the expression. This is a longer text which
+        describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. String indicating the location of the expression for error
+        reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "title", value)
 
 

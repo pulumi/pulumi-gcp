@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstantSnapshotParamsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -141,6 +142,23 @@ public final class InstantSnapshotState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InstantSnapshotParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstantSnapshotParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -244,6 +262,7 @@ public final class InstantSnapshotState extends com.pulumi.resources.ResourceArg
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.selfLink = $.selfLink;
@@ -433,6 +452,29 @@ public final class InstantSnapshotState extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InstantSnapshotParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InstantSnapshotParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

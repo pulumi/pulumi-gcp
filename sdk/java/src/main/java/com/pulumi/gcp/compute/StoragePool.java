@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.StoragePoolArgs;
 import com.pulumi.gcp.compute.inputs.StoragePoolState;
+import com.pulumi.gcp.compute.outputs.StoragePoolParams;
 import com.pulumi.gcp.compute.outputs.StoragePoolResourceStatus;
 import com.pulumi.gcp.compute.outputs.StoragePoolStatus;
 import java.lang.Boolean;
@@ -314,6 +315,22 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={StoragePoolParams.class}, tree="[0]")
+    private Output</* @Nullable */ StoragePoolParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<StoragePoolParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.

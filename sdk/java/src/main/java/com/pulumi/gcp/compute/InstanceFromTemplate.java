@@ -305,6 +305,20 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.enableDisplay;
     }
     /**
+     * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     * 
+     */
+    @Export(name="eraseWindowsVssSignature", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> eraseWindowsVssSignature;
+
+    /**
+     * @return Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     * 
+     */
+    public Output<Boolean> eraseWindowsVssSignature() {
+        return this.eraseWindowsVssSignature;
+    }
+    /**
      * List of the type and count of accelerator cards attached to the instance.
      * 
      */

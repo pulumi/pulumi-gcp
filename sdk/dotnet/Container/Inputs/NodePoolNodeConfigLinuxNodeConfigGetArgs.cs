@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolNodeConfigLinuxNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The settings for the accurate time configuration.
+        /// </summary>
+        [Input("accurateTimeConfig")]
+        public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigGetArgs>? AccurateTimeConfig { get; set; }
+
+        /// <summary>
         /// cgroupMode specifies the cgroup mode to be used on the node.
         /// </summary>
         [Input("cgroupMode")]
@@ -29,6 +35,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("nodeKernelModuleLoading")]
         public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingGetArgs>? NodeKernelModuleLoading { get; set; }
+
+        /// <summary>
+        /// Swap configuration for the node.
+        /// </summary>
+        [Input("swapConfig")]
+        public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigSwapConfigGetArgs>? SwapConfig { get; set; }
 
         [Input("sysctls")]
         private InputMap<string>? _sysctls;

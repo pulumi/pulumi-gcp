@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+ * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
  *
  * To get more information about Address Groups, see:
  *
@@ -16,6 +16,8 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
  *
  * ## Example Usage
+ *
+ * ### Project Level
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,11 +28,24 @@ import * as utilities from "../utilities";
  *     project: "my-project-id",
  * });
  * ```
+ *
+ * ### Organization Level
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const orgAll = gcp.networksecurity.getAddressGroups({
+ *     location: "us-central1",
+ *     parent: "organizations/123456789",
+ * });
+ * ```
  */
 export function getAddressGroups(args: GetAddressGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:networksecurity/getAddressGroups:getAddressGroups", {
         "location": args.location,
+        "parent": args.parent,
         "project": args.project,
     }, opts);
 }
@@ -41,10 +56,18 @@ export function getAddressGroups(args: GetAddressGroupsArgs, opts?: pulumi.Invok
 export interface GetAddressGroupsArgs {
     /**
      * The location of the Address Group.
+     *
+     * - - -
      */
     location: string;
     /**
-     * The ID of the project.
+     * The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+     *
+     * > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+     */
+    parent?: string;
+    /**
+     * The ID of the project. Conflicts with `parent`.
      */
     project?: string;
 }
@@ -54,7 +77,7 @@ export interface GetAddressGroupsArgs {
  */
 export interface GetAddressGroupsResult {
     /**
-     * A list of Address Groups in the selected project and location. Structure is defined below.
+     * A list of Address Groups in the selected project or organization and location. Structure is defined below.
      */
     readonly addressGroups: outputs.networksecurity.GetAddressGroupsAddressGroup[];
     /**
@@ -62,13 +85,14 @@ export interface GetAddressGroupsResult {
      */
     readonly id: string;
     readonly location: string;
+    readonly parent?: string;
     /**
      * The ID of the project in which the resource belongs.
      */
     readonly project: string;
 }
 /**
- * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+ * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
  *
  * To get more information about Address Groups, see:
  *
@@ -77,6 +101,8 @@ export interface GetAddressGroupsResult {
  *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
  *
  * ## Example Usage
+ *
+ * ### Project Level
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,11 +113,24 @@ export interface GetAddressGroupsResult {
  *     project: "my-project-id",
  * });
  * ```
+ *
+ * ### Organization Level
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const orgAll = gcp.networksecurity.getAddressGroups({
+ *     location: "us-central1",
+ *     parent: "organizations/123456789",
+ * });
+ * ```
  */
 export function getAddressGroupsOutput(args: GetAddressGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:networksecurity/getAddressGroups:getAddressGroups", {
         "location": args.location,
+        "parent": args.parent,
         "project": args.project,
     }, opts);
 }
@@ -102,10 +141,18 @@ export function getAddressGroupsOutput(args: GetAddressGroupsOutputArgs, opts?: 
 export interface GetAddressGroupsOutputArgs {
     /**
      * The location of the Address Group.
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * The ID of the project.
+     * The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+     *
+     * > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+     */
+    parent?: pulumi.Input<string>;
+    /**
+     * The ID of the project. Conflicts with `parent`.
      */
     project?: pulumi.Input<string>;
 }

@@ -27,6 +27,14 @@ __all__ = [
     'ConnectionCloudSpanner',
     'ConnectionCloudSql',
     'ConnectionCloudSqlCredential',
+    'ConnectionConfiguration',
+    'ConnectionConfigurationAsset',
+    'ConnectionConfigurationAuthentication',
+    'ConnectionConfigurationAuthenticationUsernamePassword',
+    'ConnectionConfigurationAuthenticationUsernamePasswordPassword',
+    'ConnectionConfigurationEndpoint',
+    'ConnectionConfigurationNetwork',
+    'ConnectionConfigurationNetworkPrivateServiceConnect',
     'ConnectionIamBindingCondition',
     'ConnectionIamMemberCondition',
     'ConnectionSpark',
@@ -799,6 +807,397 @@ class ConnectionCloudSqlCredential(dict):
         Username for database.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorId":
+            suggest = "connector_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asset: 'outputs.ConnectionConfigurationAsset',
+                 connector_id: _builtins.str,
+                 authentication: Optional['outputs.ConnectionConfigurationAuthentication'] = None,
+                 endpoint: Optional['outputs.ConnectionConfigurationEndpoint'] = None,
+                 network: Optional['outputs.ConnectionConfigurationNetwork'] = None):
+        """
+        :param 'ConnectionConfigurationAssetArgs' asset: Asset configuration for the connector.
+               Structure is documented below.
+        :param _builtins.str connector_id: The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
+               `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
+        :param 'ConnectionConfigurationAuthenticationArgs' authentication: Authentication configuration for the connector.
+               Structure is documented below.
+        :param 'ConnectionConfigurationEndpointArgs' endpoint: Endpoint configuration for the connector.
+               Structure is documented below.
+        :param 'ConnectionConfigurationNetworkArgs' network: Network configuration for the connector.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "asset", asset)
+        pulumi.set(__self__, "connector_id", connector_id)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @_builtins.property
+    @pulumi.getter
+    def asset(self) -> 'outputs.ConnectionConfigurationAsset':
+        """
+        Asset configuration for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "asset")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
+        `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> Optional['outputs.ConnectionConfigurationAuthentication']:
+        """
+        Authentication configuration for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authentication")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional['outputs.ConnectionConfigurationEndpoint']:
+        """
+        Endpoint configuration for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.ConnectionConfigurationNetwork']:
+        """
+        Network configuration for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ConnectionConfigurationAsset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCloudResource":
+            suggest = "google_cloud_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfigurationAsset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfigurationAsset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfigurationAsset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: Optional[_builtins.str] = None,
+                 google_cloud_resource: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str database: The name of the database.
+        :param _builtins.str google_cloud_resource: The full resource name of the Google Cloud resource.
+               For AlloyDB, this is in the format of
+               `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if google_cloud_resource is not None:
+            pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The name of the database.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudResource")
+    def google_cloud_resource(self) -> Optional[_builtins.str]:
+        """
+        The full resource name of the Google Cloud resource.
+        For AlloyDB, this is in the format of
+        `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
+        """
+        return pulumi.get(self, "google_cloud_resource")
+
+
+@pulumi.output_type
+class ConnectionConfigurationAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "usernamePassword":
+            suggest = "username_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfigurationAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfigurationAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfigurationAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: Optional[_builtins.str] = None,
+                 username_password: Optional['outputs.ConnectionConfigurationAuthenticationUsernamePassword'] = None):
+        """
+        :param _builtins.str service_account: (Output)
+               Output only. The service account used for authenticating with the connector.
+        :param 'ConnectionConfigurationAuthenticationUsernamePasswordArgs' username_password: Username/password authentication configuration.
+               Structure is documented below.
+        """
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if username_password is not None:
+            pulumi.set(__self__, "username_password", username_password)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The service account used for authenticating with the connector.
+        """
+        return pulumi.get(self, "service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="usernamePassword")
+    def username_password(self) -> Optional['outputs.ConnectionConfigurationAuthenticationUsernamePassword']:
+        """
+        Username/password authentication configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "username_password")
+
+
+@pulumi.output_type
+class ConnectionConfigurationAuthenticationUsernamePassword(dict):
+    def __init__(__self__, *,
+                 password: 'outputs.ConnectionConfigurationAuthenticationUsernamePasswordPassword',
+                 username: _builtins.str):
+        """
+        :param 'ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs' password: Password configuration for the connector.
+               Structure is documented below.
+        :param _builtins.str username: Username for the connector.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> 'outputs.ConnectionConfigurationAuthenticationUsernamePasswordPassword':
+        """
+        Password configuration for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        Username for the connector.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionConfigurationAuthenticationUsernamePasswordPassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretType":
+            suggest = "secret_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfigurationAuthenticationUsernamePasswordPassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfigurationAuthenticationUsernamePasswordPassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfigurationAuthenticationUsernamePasswordPassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plaintext: _builtins.str,
+                 secret_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str plaintext: The plaintext password.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str secret_type: (Output)
+               Output only. The type of the secret.
+        """
+        pulumi.set(__self__, "plaintext", plaintext)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def plaintext(self) -> _builtins.str:
+        """
+        The plaintext password.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "plaintext")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The type of the secret.
+        """
+        return pulumi.get(self, "secret_type")
+
+
+@pulumi.output_type
+class ConnectionConfigurationEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostPort":
+            suggest = "host_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfigurationEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfigurationEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfigurationEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_port: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host_port: Host and port in the format of `host:port` for the connector endpoint.
+        """
+        if host_port is not None:
+            pulumi.set(__self__, "host_port", host_port)
+
+    @_builtins.property
+    @pulumi.getter(name="hostPort")
+    def host_port(self) -> Optional[_builtins.str]:
+        """
+        Host and port in the format of `host:port` for the connector endpoint.
+        """
+        return pulumi.get(self, "host_port")
+
+
+@pulumi.output_type
+class ConnectionConfigurationNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateServiceConnect":
+            suggest = "private_service_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfigurationNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfigurationNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfigurationNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_service_connect: Optional['outputs.ConnectionConfigurationNetworkPrivateServiceConnect'] = None):
+        """
+        :param 'ConnectionConfigurationNetworkPrivateServiceConnectArgs' private_service_connect: Private Service Connect configuration for the connector.
+               Structure is documented below.
+        """
+        if private_service_connect is not None:
+            pulumi.set(__self__, "private_service_connect", private_service_connect)
+
+    @_builtins.property
+    @pulumi.getter(name="privateServiceConnect")
+    def private_service_connect(self) -> Optional['outputs.ConnectionConfigurationNetworkPrivateServiceConnect']:
+        """
+        Private Service Connect configuration for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect")
+
+
+@pulumi.output_type
+class ConnectionConfigurationNetworkPrivateServiceConnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionConfigurationNetworkPrivateServiceConnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionConfigurationNetworkPrivateServiceConnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionConfigurationNetworkPrivateServiceConnect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: _builtins.str):
+        """
+        :param _builtins.str network_attachment: The resource name of a network attachment in the format of
+               `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> _builtins.str:
+        """
+        The resource name of a network attachment in the format of
+        `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`.
+        """
+        return pulumi.get(self, "network_attachment")
 
 
 @pulumi.output_type

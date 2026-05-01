@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigLinuxNodeConfig
     {
         /// <summary>
+        /// The settings for the accurate time configuration.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig? AccurateTimeConfig;
+        /// <summary>
         /// cgroupMode specifies the cgroup mode to be used on the node.
         /// </summary>
         public readonly string? CgroupMode;
@@ -25,6 +29,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The settings for kernel module loading.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading? NodeKernelModuleLoading;
+        /// <summary>
+        /// Swap configuration for the node.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigSwapConfig? SwapConfig;
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         /// </summary>
@@ -40,11 +48,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private NodePoolNodeConfigLinuxNodeConfig(
+            Outputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig? accurateTimeConfig,
+
             string? cgroupMode,
 
             Outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig? hugepagesConfig,
 
             Outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading? nodeKernelModuleLoading,
+
+            Outputs.NodePoolNodeConfigLinuxNodeConfigSwapConfig? swapConfig,
 
             ImmutableDictionary<string, string>? sysctls,
 
@@ -52,9 +64,11 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? transparentHugepageEnabled)
         {
+            AccurateTimeConfig = accurateTimeConfig;
             CgroupMode = cgroupMode;
             HugepagesConfig = hugepagesConfig;
             NodeKernelModuleLoading = nodeKernelModuleLoading;
+            SwapConfig = swapConfig;
             Sysctls = sysctls;
             TransparentHugepageDefrag = transparentHugepageDefrag;
             TransparentHugepageEnabled = transparentHugepageEnabled;

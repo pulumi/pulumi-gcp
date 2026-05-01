@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// Target port number accepted by the destination.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
         public DataConnectorDestinationConfigDestinationArgs()
         {
         }

@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     public static class GetAddressGroups
     {
         /// <summary>
-        /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+        /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
         /// 
         /// To get more information about Address Groups, see:
         /// 
@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         ///     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Project Level
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,6 +36,25 @@ namespace Pulumi.Gcp.NetworkSecurity
         ///     {
         ///         Location = "us-central1",
         ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Organization Level
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var orgAll = Gcp.NetworkSecurity.GetAddressGroups.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         Parent = "organizations/123456789",
         ///     });
         /// 
         /// });
@@ -43,7 +64,7 @@ namespace Pulumi.Gcp.NetworkSecurity
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressGroupsResult>("gcp:networksecurity/getAddressGroups:getAddressGroups", args ?? new GetAddressGroupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+        /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
         /// 
         /// To get more information about Address Groups, see:
         /// 
@@ -52,6 +73,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         ///     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Project Level
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -69,12 +92,31 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Organization Level
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var orgAll = Gcp.NetworkSecurity.GetAddressGroups.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         Parent = "organizations/123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAddressGroupsResult> Invoke(GetAddressGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressGroupsResult>("gcp:networksecurity/getAddressGroups:getAddressGroups", args ?? new GetAddressGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+        /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
         /// 
         /// To get more information about Address Groups, see:
         /// 
@@ -83,6 +125,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         ///     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Project Level
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -96,6 +140,25 @@ namespace Pulumi.Gcp.NetworkSecurity
         ///     {
         ///         Location = "us-central1",
         ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Organization Level
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var orgAll = Gcp.NetworkSecurity.GetAddressGroups.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         Parent = "organizations/123456789",
         ///     });
         /// 
         /// });
@@ -110,12 +173,22 @@ namespace Pulumi.Gcp.NetworkSecurity
     {
         /// <summary>
         /// The location of the Address Group.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project.
+        /// The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `Project`.
+        /// 
+        /// &gt; **Note:** Exactly one of `Project` or `Parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+        /// </summary>
+        [Input("parent")]
+        public string? Parent { get; set; }
+
+        /// <summary>
+        /// The ID of the project. Conflicts with `Parent`.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -130,12 +203,22 @@ namespace Pulumi.Gcp.NetworkSecurity
     {
         /// <summary>
         /// The location of the Address Group.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project.
+        /// The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `Project`.
+        /// 
+        /// &gt; **Note:** Exactly one of `Project` or `Parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// The ID of the project. Conflicts with `Parent`.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -151,7 +234,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class GetAddressGroupsResult
     {
         /// <summary>
-        /// A list of Address Groups in the selected project and location. Structure is defined below.
+        /// A list of Address Groups in the selected project or organization and location. Structure is defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAddressGroupsAddressGroupResult> AddressGroups;
         /// <summary>
@@ -159,6 +242,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         public readonly string Id;
         public readonly string Location;
+        public readonly string? Parent;
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// </summary>
@@ -172,11 +256,14 @@ namespace Pulumi.Gcp.NetworkSecurity
 
             string location,
 
+            string? parent,
+
             string project)
         {
             AddressGroups = addressGroups;
             Id = id;
             Location = location;
+            Parent = parent;
             Project = project;
         }
     }

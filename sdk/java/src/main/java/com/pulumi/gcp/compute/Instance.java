@@ -414,6 +414,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableDisplay);
     }
     /**
+     * Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     * 
+     */
+    @Export(name="eraseWindowsVssSignature", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> eraseWindowsVssSignature;
+
+    /**
+     * @return Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     * 
+     */
+    public Output<Optional<Boolean>> eraseWindowsVssSignature() {
+        return Codegen.optional(this.eraseWindowsVssSignature);
+    }
+    /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      * 

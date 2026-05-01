@@ -40,6 +40,7 @@ from .hosting_release import *
 from .hosting_site import *
 from .hosting_version import *
 from .project import *
+from .remote_config_remote_config import *
 from .storage_bucket import *
 from .storage_default_bucket import *
 from .web_app import *

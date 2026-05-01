@@ -1505,16 +1505,20 @@ class DataConnectorBapConfig(dict):
 class DataConnectorDestinationConfig(dict):
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.DataConnectorDestinationConfigDestination']] = None,
-                 key: Optional[_builtins.str] = None):
+                 key: Optional[_builtins.str] = None,
+                 params: Optional[_builtins.str] = None):
         """
         :param Sequence['DataConnectorDestinationConfigDestinationArgs'] destinations: The list of destinations for this configuration.
                Structure is documented below.
         :param _builtins.str key: The key of the destination configuration, for example `url`.
+        :param _builtins.str params: Additional parameters for this destination config in structured json format.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
 
     @_builtins.property
     @pulumi.getter
@@ -1533,17 +1537,29 @@ class DataConnectorDestinationConfig(dict):
         """
         return pulumi.get(self, "key")
 
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[_builtins.str]:
+        """
+        Additional parameters for this destination config in structured json format.
+        """
+        return pulumi.get(self, "params")
+
 
 @pulumi.output_type
 class DataConnectorDestinationConfigDestination(dict):
     def __init__(__self__, *,
-                 host: Optional[_builtins.str] = None):
+                 host: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
         """
         :param _builtins.str host: The host of the destination, for example
                `https://example.atlassian.net`.
+        :param _builtins.int port: Target port number accepted by the destination.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
@@ -1553,6 +1569,14 @@ class DataConnectorDestinationConfigDestination(dict):
         `https://example.atlassian.net`.
         """
         return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Target port number accepted by the destination.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

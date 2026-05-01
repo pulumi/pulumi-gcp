@@ -77,6 +77,53 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Datastream Private Connection Force Delete
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.datastream.PrivateConnection;
+ * import com.pulumi.gcp.datastream.PrivateConnectionArgs;
+ * import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .build());
+ * 
+ *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
+ *             .displayName("Connection profile")
+ *             .location("us-central1")
+ *             .privateConnectionId("my-connection")
+ *             .deletionPolicy("FORCE")
+ *             .labels(Map.of("key", "value"))
+ *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
+ *                 .vpc(defaultNetwork.id())
+ *                 .subnet("10.0.0.0/29")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Datastream Private Connection Psc Interface
  * 
  * <pre>
@@ -175,6 +222,26 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> createWithoutValidation() {
         return Codegen.optional(this.createWithoutValidation);
+    }
+    /**
+     * The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * Display name.

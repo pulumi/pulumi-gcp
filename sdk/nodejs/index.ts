@@ -64,6 +64,7 @@ import * as datacatalog from "./datacatalog";
 import * as dataflow from "./dataflow";
 import * as dataform from "./dataform";
 import * as datafusion from "./datafusion";
+import * as datalineage from "./datalineage";
 import * as dataloss from "./dataloss";
 import * as dataplex from "./dataplex";
 import * as dataproc from "./dataproc";
@@ -73,6 +74,7 @@ import * as developerconnect from "./developerconnect";
 import * as diagflow from "./diagflow";
 import * as discoveryengine from "./discoveryengine";
 import * as dns from "./dns";
+import * as documentai from "./documentai";
 import * as edgecontainer from "./edgecontainer";
 import * as edgenetwork from "./edgenetwork";
 import * as endpoints from "./endpoints";
@@ -205,6 +207,7 @@ export {
     dataflow,
     dataform,
     datafusion,
+    datalineage,
     dataloss,
     dataplex,
     dataproc,
@@ -214,6 +217,7 @@ export {
     diagflow,
     discoveryengine,
     dns,
+    documentai,
     edgecontainer,
     edgenetwork,
     endpoints,

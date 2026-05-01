@@ -4,8 +4,10 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigSwapConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -14,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeConfigLinuxNodeConfig {
+    /**
+     * @return Accurate time configuration for the node. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
     /**
      * @return Possible cgroup modes that can be used.
      * Accepted values are:
@@ -34,6 +41,11 @@ public final class ClusterNodeConfigLinuxNodeConfig {
      */
     private @Nullable ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
     /**
+     * @return Swap configuration for the node. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigLinuxNodeConfigSwapConfig swapConfig;
+    /**
      * @return The Linux kernel parameters to be applied to the nodes
      * and all pods running on the nodes. Specified as a map from the key, such as
      * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -53,6 +65,13 @@ public final class ClusterNodeConfigLinuxNodeConfig {
     private @Nullable String transparentHugepageEnabled;
 
     private ClusterNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return Accurate time configuration for the node. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfig() {
+        return Optional.ofNullable(this.accurateTimeConfig);
+    }
     /**
      * @return Possible cgroup modes that can be used.
      * Accepted values are:
@@ -77,6 +96,13 @@ public final class ClusterNodeConfigLinuxNodeConfig {
      */
     public Optional<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {
         return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
+    /**
+     * @return Swap configuration for the node. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigLinuxNodeConfigSwapConfig> swapConfig() {
+        return Optional.ofNullable(this.swapConfig);
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes
@@ -112,23 +138,33 @@ public final class ClusterNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
         private @Nullable String cgroupMode;
         private @Nullable ClusterNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
+        private @Nullable ClusterNodeConfigLinuxNodeConfigSwapConfig swapConfig;
         private @Nullable Map<String,String> sysctls;
         private @Nullable String transparentHugepageDefrag;
         private @Nullable String transparentHugepageEnabled;
         public Builder() {}
         public Builder(ClusterNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accurateTimeConfig = defaults.accurateTimeConfig;
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
+    	      this.swapConfig = defaults.swapConfig;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
+        @CustomType.Setter
+        public Builder accurateTimeConfig(@Nullable ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig) {
+
+            this.accurateTimeConfig = accurateTimeConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder cgroupMode(@Nullable String cgroupMode) {
 
@@ -145,6 +181,12 @@ public final class ClusterNodeConfigLinuxNodeConfig {
         public Builder nodeKernelModuleLoading(@Nullable ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading) {
 
             this.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder swapConfig(@Nullable ClusterNodeConfigLinuxNodeConfigSwapConfig swapConfig) {
+
+            this.swapConfig = swapConfig;
             return this;
         }
         @CustomType.Setter
@@ -167,9 +209,11 @@ public final class ClusterNodeConfigLinuxNodeConfig {
         }
         public ClusterNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new ClusterNodeConfigLinuxNodeConfig();
+            _resultValue.accurateTimeConfig = accurateTimeConfig;
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            _resultValue.swapConfig = swapConfig;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

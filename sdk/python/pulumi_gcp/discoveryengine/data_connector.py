@@ -1173,6 +1173,7 @@ class DataConnector(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_gcp as gcp
 
         jira_with_actions = gcp.discoveryengine.DataConnector("jira-with-actions",
@@ -1209,7 +1210,11 @@ class DataConnector(pulumi.CustomResource):
                 "key": "url",
                 "destinations": [{
                     "host": "https://example.atlassian.net",
+                    "port": 123,
                 }],
+                "params": json.dumps({
+                    "destination_type": "private",
+                }),
             }],
             connector_modes=[
                 "FEDERATED",
@@ -1396,6 +1401,7 @@ class DataConnector(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_gcp as gcp
 
         jira_with_actions = gcp.discoveryengine.DataConnector("jira-with-actions",
@@ -1432,7 +1438,11 @@ class DataConnector(pulumi.CustomResource):
                 "key": "url",
                 "destinations": [{
                     "host": "https://example.atlassian.net",
+                    "port": 123,
                 }],
+                "params": json.dumps({
+                    "destination_type": "private",
+                }),
             }],
             connector_modes=[
                 "FEDERATED",

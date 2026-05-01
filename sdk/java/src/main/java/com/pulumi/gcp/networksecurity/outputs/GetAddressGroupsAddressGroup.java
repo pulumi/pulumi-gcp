@@ -17,6 +17,8 @@ public final class GetAddressGroupsAddressGroup {
     /**
      * @return The location of the Address Group.
      * 
+     * ***
+     * 
      */
     private String location;
     /**
@@ -34,6 +36,8 @@ public final class GetAddressGroupsAddressGroup {
     }
     /**
      * @return The location of the Address Group.
+     * 
+     * ***
      * 
      */
     public String location() {

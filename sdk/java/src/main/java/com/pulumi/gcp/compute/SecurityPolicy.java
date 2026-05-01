@@ -277,6 +277,55 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### With Advanced Options Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
+ *             .name("my-policy")
+ *             .advancedOptionsConfig(SecurityPolicyAdvancedOptionsConfigArgs.builder()
+ *                 .jsonParsing("STANDARD")
+ *                 .jsonCustomConfig(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs.builder()
+ *                     .contentTypes(                    
+ *                         "application/json",
+ *                         "application/vnd.api+json",
+ *                         "application/vnd.collection+json",
+ *                         "application/vnd.hyper+json")
+ *                     .build())
+ *                 .logLevel("VERBOSE")
+ *                 .userIpRequestHeaders(                
+ *                     "True-Client-IP",
+ *                     "x-custom-ip")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Security policies can be imported using any of these accepted formats:

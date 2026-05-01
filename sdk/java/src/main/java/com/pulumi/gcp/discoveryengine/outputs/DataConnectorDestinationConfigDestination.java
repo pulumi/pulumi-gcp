@@ -4,6 +4,7 @@
 package com.pulumi.gcp.discoveryengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class DataConnectorDestinationConfigDestination {
      * 
      */
     private @Nullable String host;
+    /**
+     * @return Target port number accepted by the destination.
+     * 
+     */
+    private @Nullable Integer port;
 
     private DataConnectorDestinationConfigDestination() {}
     /**
@@ -26,6 +32,13 @@ public final class DataConnectorDestinationConfigDestination {
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
+    }
+    /**
+     * @return Target port number accepted by the destination.
+     * 
+     */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
 
     public static Builder builder() {
@@ -38,10 +51,12 @@ public final class DataConnectorDestinationConfigDestination {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(DataConnectorDestinationConfigDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
+    	      this.port = defaults.port;
         }
 
         @CustomType.Setter
@@ -50,9 +65,16 @@ public final class DataConnectorDestinationConfigDestination {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+
+            this.port = port;
+            return this;
+        }
         public DataConnectorDestinationConfigDestination build() {
             final var _resultValue = new DataConnectorDestinationConfigDestination();
             _resultValue.host = host;
+            _resultValue.port = port;
             return _resultValue;
         }
     }

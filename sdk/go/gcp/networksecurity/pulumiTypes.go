@@ -12134,6 +12134,8 @@ type GetAddressGroupsAddressGroup struct {
 	Capacity int      `pulumi:"capacity"`
 	Items    []string `pulumi:"items"`
 	// The location of the Address Group.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The name of the Address Group.
 	Name string `pulumi:"name"`
@@ -12154,6 +12156,8 @@ type GetAddressGroupsAddressGroupArgs struct {
 	Capacity pulumi.IntInput         `pulumi:"capacity"`
 	Items    pulumi.StringArrayInput `pulumi:"items"`
 	// The location of the Address Group.
+	//
+	// ***
 	Location pulumi.StringInput `pulumi:"location"`
 	// The name of the Address Group.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -12219,6 +12223,8 @@ func (o GetAddressGroupsAddressGroupOutput) Items() pulumi.StringArrayOutput {
 }
 
 // The location of the Address Group.
+//
+// ***
 func (o GetAddressGroupsAddressGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Location }).(pulumi.StringOutput)
 }
