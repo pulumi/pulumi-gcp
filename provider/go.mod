@@ -28,13 +28,13 @@ require (
 	cloud.google.com/go v0.123.0 // indirect
 	cloud.google.com/go/auth v0.20.0 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect
-	cloud.google.com/go/bigtable v1.42.0 // indirect
+	cloud.google.com/go/bigtable v1.46.0 // indirect
 	cloud.google.com/go/compute/metadata v0.9.0 // indirect
-	cloud.google.com/go/iam v1.5.3 // indirect
+	cloud.google.com/go/iam v1.7.0 // indirect
 	cloud.google.com/go/kms v1.26.0 // indirect
 	cloud.google.com/go/logging v1.13.2 // indirect
-	cloud.google.com/go/longrunning v0.8.0 // indirect
-	cloud.google.com/go/monitoring v1.24.3 // indirect
+	cloud.google.com/go/longrunning v0.9.0 // indirect
+	cloud.google.com/go/monitoring v1.25.0 // indirect
 	cloud.google.com/go/storage v1.61.3 // indirect
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.17.0 // indirect
@@ -106,7 +106,7 @@ require (
 	github.com/djherbis/times v1.6.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/envoyproxy/go-control-plane/envoy v1.36.0 // indirect
+	github.com/envoyproxy/go-control-plane/envoy v1.37.0 // indirect
 	github.com/envoyproxy/protoc-gen-validate v1.3.0 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
 	github.com/ettle/strcase v0.1.1 // indirect
