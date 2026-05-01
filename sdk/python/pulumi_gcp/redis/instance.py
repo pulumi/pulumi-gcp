@@ -1442,7 +1442,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
-            display_name="Terraform Test Instance",
+            display_name="Test Instance",
             replica_count=5,
             read_replicas_mode="READ_REPLICAS_ENABLED",
             labels={
@@ -1479,7 +1479,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
-            display_name="Terraform Test Instance",
+            display_name="Test Instance",
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
@@ -1730,7 +1730,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
-            display_name="Terraform Test Instance",
+            display_name="Test Instance",
             replica_count=5,
             read_replicas_mode="READ_REPLICAS_ENABLED",
             labels={
@@ -1767,7 +1767,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
-            display_name="Terraform Test Instance",
+            display_name="Test Instance",
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",

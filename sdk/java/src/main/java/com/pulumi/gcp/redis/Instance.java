@@ -300,7 +300,7 @@ import javax.annotation.Nullable;
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
  *             .redisVersion("REDIS_7_2")
- *             .displayName("Terraform Test Instance")
+ *             .displayName("Test Instance")
  *             .replicaCount(5)
  *             .readReplicasMode("READ_REPLICAS_ENABLED")
  *             .labels(Map.ofEntries(
@@ -373,7 +373,7 @@ import javax.annotation.Nullable;
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
  *             .redisVersion("REDIS_7_2")
- *             .displayName("Terraform Test Instance")
+ *             .displayName("Test Instance")
  *             .labels(Map.ofEntries(
  *                 Map.entry("my_key", "my_val"),
  *                 Map.entry("other_key", "other_val")

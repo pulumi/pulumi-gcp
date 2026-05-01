@@ -214,7 +214,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * may change this value in your existing cluster, which will trigger destruction
      * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
      * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      * 
      */
     @Export(name="initialNodeCount", refs={Integer.class}, tree="[0]")
@@ -227,7 +227,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * may change this value in your existing cluster, which will trigger destruction
      * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
      * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      * 
      */
     public Output<Integer> initialNodeCount() {

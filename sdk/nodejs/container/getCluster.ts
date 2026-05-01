@@ -24,6 +24,23 @@ import * as utilities from "../utilities";
  * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
  * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
  * ```
+ *
+ * ### Autopilot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "marcellus-wallace",
+ *     location: "us-central1-a",
+ *     enableAutopilot: true,
+ * });
+ * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -175,6 +192,23 @@ export interface GetClusterResult {
  * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.nodePools?.[0]?.instanceGroupUrls);
  * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
  * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
+ * ```
+ *
+ * ### Autopilot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "marcellus-wallace",
+ *     location: "us-central1-a",
+ *     enableAutopilot: true,
+ * });
  * ```
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {

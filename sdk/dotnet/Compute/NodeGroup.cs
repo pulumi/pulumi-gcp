@@ -53,6 +53,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+    /// number of nodes in a node group and changes to node group size either
+    /// through provider config or through external changes will cause
+    /// the provider to delete and recreate the node group.
+    /// 
     /// ### Node Group Maintenance Interval
     /// 
     /// ```csharp
@@ -73,8 +78,8 @@ namespace Pulumi.Gcp.Compute
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
     ///         Name = "soletenant-group",
-    ///         Zone = "us-central1-f",
-    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for Google Provider",
     ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///         MaintenanceInterval = "RECURRENT",
@@ -82,6 +87,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+    /// number of nodes in a node group and changes to node group size either
+    /// through provider config or through external changes will cause
+    /// the provider to delete and recreate the node group.
+    /// 
     /// ### Node Group Autoscaling Policy
     /// 
     /// ```csharp
@@ -149,8 +159,8 @@ namespace Pulumi.Gcp.Compute
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
     ///         Name = "soletenant-group",
-    ///         Zone = "us-central1-f",
-    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for Google Provider",
     ///         InitialSize = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///         ShareSettings = new Gcp.Compute.Inputs.NodeGroupShareSettingsArgs

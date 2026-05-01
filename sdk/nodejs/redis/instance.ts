@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
- *     displayName: "Terraform Test Instance",
+ *     displayName: "Test Instance",
  *     replicaCount: 5,
  *     readReplicasMode: "READ_REPLICAS_ENABLED",
  *     labels: {
@@ -199,7 +199,7 @@ import * as utilities from "../utilities";
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
- *     displayName: "Terraform Test Instance",
+ *     displayName: "Test Instance",
  *     labels: {
  *         my_key: "my_val",
  *         other_key: "other_val",

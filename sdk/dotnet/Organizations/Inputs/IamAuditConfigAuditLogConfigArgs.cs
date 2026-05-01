@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Organizations.Inputs
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         public InputList<string> ExemptedMembers
         {

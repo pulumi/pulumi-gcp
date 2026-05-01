@@ -134,7 +134,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     declare public readonly containerSpecGcsPath: pulumi.Output<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -156,11 +156,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -360,7 +357,7 @@ export interface FlexTemplateJobState {
      */
     containerSpecGcsPath?: pulumi.Input<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -382,11 +379,8 @@ export interface FlexTemplateJobState {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -515,11 +509,8 @@ export interface FlexTemplateJobArgs {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -11,16 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## subcategory: "Cloud Bigtable"
-//
-// description: |-
-//
-//	Creates a Google Bigtable instance.
-//
-// ---
-//
-// # bigtable.Instance
-//
 // Creates a Google Bigtable instance. For more information see:
 //
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)

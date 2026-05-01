@@ -218,7 +218,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.advancedMachineFeatures);
     }
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
@@ -226,7 +226,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> allowStoppingForUpdate;
 
     /**
-     * @return If true, allows this prvider to stop the instance to update its properties.
+     * @return If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */

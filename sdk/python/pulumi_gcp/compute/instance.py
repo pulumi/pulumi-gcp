@@ -73,7 +73,7 @@ class InstanceArgs:
                
                - - -
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this provider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
@@ -279,7 +279,7 @@ class InstanceArgs:
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
+        If true, allows this provider to stop the instance to update its properties.
         If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
@@ -722,7 +722,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
 
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this provider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
@@ -928,7 +928,7 @@ class _InstanceState:
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
+        If true, allows this provider to stop the instance to update its properties.
         If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
@@ -1642,7 +1642,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdvancedMachineFeaturesArgs', 'InstanceAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this provider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedDiskArgs', 'InstanceAttachedDiskArgsDict']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[Union['InstanceBootDiskArgs', 'InstanceBootDiskArgsDict']] boot_disk: The boot disk for the instance.
@@ -2020,7 +2020,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdvancedMachineFeaturesArgs', 'InstanceAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
+        :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this provider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAttachedDiskArgs', 'InstanceAttachedDiskArgsDict']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[Union['InstanceBootDiskArgs', 'InstanceBootDiskArgsDict']] boot_disk: The boot disk for the instance.
@@ -2184,7 +2184,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
+        If true, allows this provider to stop the instance to update its properties.
         If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")

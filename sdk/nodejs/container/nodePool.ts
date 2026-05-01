@@ -139,7 +139,7 @@ export class NodePool extends pulumi.CustomResource {
      * may change this value in your existing cluster, which will trigger destruction
      * and recreation on the next provider run (to rectify the discrepancy).  If you don't
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      */
     declare public readonly initialNodeCount: pulumi.Output<number>;
     /**
@@ -331,7 +331,7 @@ export interface NodePoolState {
      * may change this value in your existing cluster, which will trigger destruction
      * and recreation on the next provider run (to rectify the discrepancy).  If you don't
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      */
     initialNodeCount?: pulumi.Input<number>;
     /**
@@ -458,7 +458,7 @@ export interface NodePoolArgs {
      * may change this value in your existing cluster, which will trigger destruction
      * and recreation on the next provider run (to rectify the discrepancy).  If you don't
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
-     * ignore subsqeuent changes to this field.
+     * ignore subsequent changes to this field.
      */
     initialNodeCount?: pulumi.Input<number>;
     /**

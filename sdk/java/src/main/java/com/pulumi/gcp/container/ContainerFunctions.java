@@ -1095,6 +1095,48 @@ public final class ContainerFunctions {
      * }
      * </pre>
      * 
+     * ### Autopilot
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.Account;
+     * import com.pulumi.gcp.serviceaccount.AccountArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Account("default", AccountArgs.builder()
+     *             .accountId("service-account-id")
+     *             .displayName("Service Account")
+     *             .build());
+     * 
+     *         var primary = new Cluster("primary", ClusterArgs.builder()
+     *             .name("marcellus-wallace")
+     *             .location("us-central1-a")
+     *             .enableAutopilot(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
         return getCluster(args, InvokeOptions.Empty);
@@ -1135,6 +1177,48 @@ public final class ContainerFunctions {
      *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
      *         ctx.export("nodeConfig", myCluster.nodeConfigs());
      *         ctx.export("nodePools", myCluster.nodePools());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Autopilot
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.Account;
+     * import com.pulumi.gcp.serviceaccount.AccountArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Account("default", AccountArgs.builder()
+     *             .accountId("service-account-id")
+     *             .displayName("Service Account")
+     *             .build());
+     * 
+     *         var primary = new Cluster("primary", ClusterArgs.builder()
+     *             .name("marcellus-wallace")
+     *             .location("us-central1-a")
+     *             .enableAutopilot(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -1185,6 +1269,48 @@ public final class ContainerFunctions {
      * }
      * </pre>
      * 
+     * ### Autopilot
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.Account;
+     * import com.pulumi.gcp.serviceaccount.AccountArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Account("default", AccountArgs.builder()
+     *             .accountId("service-account-id")
+     *             .displayName("Service Account")
+     *             .build());
+     * 
+     *         var primary = new Cluster("primary", ClusterArgs.builder()
+     *             .name("marcellus-wallace")
+     *             .location("us-central1-a")
+     *             .enableAutopilot(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:container/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -1230,6 +1356,48 @@ public final class ContainerFunctions {
      * }
      * </pre>
      * 
+     * ### Autopilot
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.Account;
+     * import com.pulumi.gcp.serviceaccount.AccountArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Account("default", AccountArgs.builder()
+     *             .accountId("service-account-id")
+     *             .displayName("Service Account")
+     *             .build());
+     * 
+     *         var primary = new Cluster("primary", ClusterArgs.builder()
+     *             .name("marcellus-wallace")
+     *             .location("us-central1-a")
+     *             .enableAutopilot(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:container/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -1270,6 +1438,48 @@ public final class ContainerFunctions {
      *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
      *         ctx.export("nodeConfig", myCluster.nodeConfigs());
      *         ctx.export("nodePools", myCluster.nodePools());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Autopilot
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.Account;
+     * import com.pulumi.gcp.serviceaccount.AccountArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Account("default", AccountArgs.builder()
+     *             .accountId("service-account-id")
+     *             .displayName("Service Account")
+     *             .build());
+     * 
+     *         var primary = new Cluster("primary", ClusterArgs.builder()
+     *             .name("marcellus-wallace")
+     *             .location("us-central1-a")
+     *             .enableAutopilot(true)
+     *             .build());
+     * 
      *     }
      * }
      * }

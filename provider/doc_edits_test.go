@@ -44,6 +44,31 @@ func TestReplacementsDotJSON(t *testing.T) {
 	assert.Equal(t, "Terraform should be untouched here.", string(actual))
 }
 
+func TestAggregateIAMExemptedMembersReplacement(t *testing.T) {
+	t.Parallel()
+
+	input := "* `exempted_members` - (Optional) Identities that do not cause logging for this type of permission.  " +
+		"The format is the same as that for `members`.\n"
+
+	edit := applyReplacementsDotJSON()
+	for _, doc := range []string{
+		"google_folder_iam.html.markdown",
+		"google_organization_iam.html.markdown",
+		"google_project_iam.html.markdown",
+	} {
+		doc := doc
+		t.Run(doc, func(t *testing.T) {
+			t.Parallel()
+
+			actual, err := edit.Edit(doc, []byte(input))
+			require.NoError(t, err)
+			assert.Contains(t, string(actual), "Each entry can have one of the following values:")
+			assert.Contains(t, string(actual), "**serviceAccount:{emailid}**")
+			assert.NotContains(t, string(actual), "The format is the same as that for `members`.")
+		})
+	}
+}
+
 func TestJoinMultilineMarkdownLinks(t *testing.T) {
 	t.Parallel()
 
@@ -197,4 +222,62 @@ func TestRewriteMembersField(t *testing.T) {
 			assert.Equal(t, tt.expected, string(actual))
 		})
 	}
+}
+
+func TestHardDocsEdits(t *testing.T) {
+	t.Parallel()
+
+	actual, err := addCloudRunPubsubExample.Edit(
+		"cloud_run_service.html.markdown",
+		[]byte("## Example Usage - Cloud Run Service Basic\n"),
+	)
+	require.NoError(t, err)
+	assert.Contains(t, string(actual), "## Example Usage - Cloud Run Service Pubsub")
+	assert.Contains(t, string(actual), "resource \"google_pubsub_subscription\" \"subscription\"")
+	assert.Contains(t, string(actual), "## Example Usage - Cloud Run Service Basic")
+
+	actual, err = addContainerClusterAutopilotExample.Edit(
+		"container_cluster.html.markdown",
+		[]byte("## Argument Reference\n"),
+	)
+	require.NoError(t, err)
+	assert.Contains(t, string(actual), "## Example Usage - autopilot")
+	assert.Contains(t, string(actual), "enable_autopilot = true")
+	assert.Contains(t, string(actual), "## Argument Reference")
+
+	actual, err = fixUpServiceAccountIamConditionHeadings.Edit(
+		"google_service_account_iam.html.markdown",
+		[]byte("With IAM Conditions:\n\nmiddle\n\nWith IAM Conditions:"),
+	)
+	require.NoError(t, err)
+	assert.Contains(t, string(actual), "### Service Account IAM Binding With IAM Conditions:")
+	assert.Contains(t, string(actual), "### Service Account IAM Member With IAM Conditions:")
+
+	actual, err = fixUpComposerEnvironmentWarning.Edit(
+		"composer_environment.html.markdown",
+		[]byte("Several special considerations apply to managing Cloud Composer environments \n"+
+			"with Terraform:\n\n"+
+			"* The Environment resource is based on several layers of GCP infrastructure. \n"+
+			"    Terraform does not manage these underlying resources. For example, in Cloud \n"+
+			"    Composer 2, this includes a Kubernetes Engine cluster, Cloud Storage, and \n"+
+			"    Compute networking resources.\n"+
+			"* Creating or updating an environment usually takes around 25 minutes.\n"+
+			"* In some cases errors in the configuration will be detected and reported only \n"+
+			"    during the process of the environment creation. If you encounter such \n"+
+			"    errors, please verify your configuration is valid against GCP Cloud Composer before filing\n"+
+			"    bugs for the Terraform provider.\n"+
+			"* **Environments have Google Cloud Storage buckets that are not automatically \n"+
+			"    deleted** with the environment.\n"+
+			"    See [Delete environments](https://cloud.google.com/composer/docs/composer-2/delete-environments)\n"+
+			"    for more information.\n"+
+			"* Please refer to\n"+
+			"    [Troubleshooting pages](https://cloud.devsite.corp.google.com/composer/docs/composer-2/\n"+
+			"    troubleshooting-environment-creation) if you encounter\n"+
+			"    problems.\n\n"+
+			"## Example Usage"),
+	)
+	require.NoError(t, err)
+	assert.Contains(t, string(actual), "Due to limitations of the API, Pulumi")
+	assert.Contains(t, string(actual), "known\n  issues")
+	assert.NotContains(t, string(actual), "problems.***")
 }

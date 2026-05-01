@@ -152,7 +152,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly advancedMachineFeatures: pulumi.Output<outputs.compute.InstanceAdvancedMachineFeatures | undefined>;
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
     declare public readonly allowStoppingForUpdate: pulumi.Output<boolean | undefined>;
@@ -507,7 +507,7 @@ export interface InstanceState {
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
     allowStoppingForUpdate?: pulumi.Input<boolean>;
@@ -745,7 +745,7 @@ export interface InstanceArgs {
      */
     advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
     /**
-     * If true, allows this prvider to stop the instance to update its properties.
+     * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
     allowStoppingForUpdate?: pulumi.Input<boolean>;

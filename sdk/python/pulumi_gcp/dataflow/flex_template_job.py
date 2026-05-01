@@ -59,11 +59,8 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
@@ -231,11 +228,8 @@ class FlexTemplateJobArgs:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **Note**: This field is marked as deprecated as the API does not currently
-        support adding labels.
-        **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
+        page.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -497,18 +491,15 @@ class _FlexTemplateJobState:
                Template.
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] job_id: The unique ID of this job.
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
@@ -652,7 +643,7 @@ class _FlexTemplateJobState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -714,11 +705,8 @@ class _FlexTemplateJobState:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **Note**: This field is marked as deprecated as the API does not currently
-        support adding labels.
-        **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
+        page.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1101,11 +1089,8 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
@@ -1355,18 +1340,15 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] job_id: The unique ID of this job.
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
@@ -1469,7 +1451,7 @@ class FlexTemplateJob(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1511,11 +1493,8 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **Note**: This field is marked as deprecated as the API does not currently
-        support adding labels.
-        **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
+        page.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

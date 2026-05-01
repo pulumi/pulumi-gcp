@@ -255,7 +255,7 @@ import (
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
 //				AuthorizedNetwork:     pulumi.String(pulumi.String(redis_network.Id)),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
-//				DisplayName:           pulumi.String("Terraform Test Instance"),
+//				DisplayName:           pulumi.String("Test Instance"),
 //				ReplicaCount:          pulumi.Int(5),
 //				ReadReplicasMode:      pulumi.String("READ_REPLICAS_ENABLED"),
 //				Labels: pulumi.StringMap{
@@ -323,7 +323,7 @@ import (
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
 //				AuthorizedNetwork:     pulumi.String(pulumi.String(redis_network.Id)),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
-//				DisplayName:           pulumi.String("Terraform Test Instance"),
+//				DisplayName:           pulumi.String("Test Instance"),
 //				Labels: pulumi.StringMap{
 //					"my_key":    pulumi.String("my_val"),
 //					"other_key": pulumi.String("other_val"),

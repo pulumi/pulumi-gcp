@@ -526,6 +526,11 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
         ### Node Group Maintenance Interval
 
         ```python
@@ -538,12 +543,17 @@ class NodeGroup(pulumi.CustomResource):
             node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
         ### Node Group Autoscaling Policy
 
         ```python
@@ -587,8 +597,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
             share_settings={
@@ -682,6 +692,11 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
         ### Node Group Maintenance Interval
 
         ```python
@@ -694,12 +709,17 @@ class NodeGroup(pulumi.CustomResource):
             node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
         ### Node Group Autoscaling Policy
 
         ```python
@@ -743,8 +763,8 @@ class NodeGroup(pulumi.CustomResource):
             node_type="c2-node-60-240")
         nodes = gcp.compute.NodeGroup("nodes",
             name="soletenant-group",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id,
             share_settings={

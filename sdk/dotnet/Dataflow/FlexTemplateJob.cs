@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
@@ -173,11 +173,8 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values
         /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **Note**: This field is marked as deprecated as the API does not currently
-        /// support adding labels.
-        /// **NOTE**: Google-provided Dataflow templates often provide default labels
-        /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        /// labels will be ignored to prevent diffs on re-apply.
+        /// page.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -422,11 +419,8 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values
         /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **Note**: This field is marked as deprecated as the API does not currently
-        /// support adding labels.
-        /// **NOTE**: Google-provided Dataflow templates often provide default labels
-        /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        /// labels will be ignored to prevent diffs on re-apply.
+        /// page.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -605,7 +599,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<string>? _effectiveLabels;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         public InputMap<string> EffectiveLabels
         {
@@ -647,11 +641,8 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values
         /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **Note**: This field is marked as deprecated as the API does not currently
-        /// support adding labels.
-        /// **NOTE**: Google-provided Dataflow templates often provide default labels
-        /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        /// labels will be ignored to prevent diffs on re-apply.
+        /// page.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

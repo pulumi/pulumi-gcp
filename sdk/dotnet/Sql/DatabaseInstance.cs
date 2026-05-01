@@ -575,8 +575,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The BackupdrBackup needed to restore the database to a backup run. This field will
-        /// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Output("backupdrBackup")]
@@ -698,7 +698,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The PointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
         /// cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Output("pointInTimeRestoreContext")]
@@ -865,8 +865,8 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The BackupdrBackup needed to restore the database to a backup run. This field will
-        /// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Input("backupdrBackup")]
@@ -960,7 +960,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The PointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
         /// cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Input("pointInTimeRestoreContext")]
@@ -1096,8 +1096,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The BackupdrBackup needed to restore the database to a backup run. This field will
-        /// cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Input("backupdrBackup")]
@@ -1230,7 +1230,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The PointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
         /// cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
-        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
+        /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
         /// block during resource creation/update will trigger the restore action after the resource is created/updated.
         /// </summary>
         [Input("pointInTimeRestoreContext")]

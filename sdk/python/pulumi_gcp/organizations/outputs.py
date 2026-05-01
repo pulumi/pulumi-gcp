@@ -113,6 +113,15 @@ class IAMBindingCondition(dict):
                  expression: _builtins.str,
                  title: _builtins.str,
                  description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param _builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        :param _builtins.str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -121,16 +130,29 @@ class IAMBindingCondition(dict):
     @_builtins.property
     @pulumi.getter
     def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @_builtins.property
     @pulumi.getter
     def title(self) -> _builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
         return pulumi.get(self, "description")
 
 
@@ -214,7 +236,7 @@ class IamAuditConfigAuditLogConfig(dict):
                * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
@@ -237,7 +259,7 @@ class IamAuditConfigAuditLogConfig(dict):
         * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **domain:{domain}**: A Google Workspace domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "exempted_members")
 

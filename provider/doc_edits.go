@@ -13,19 +13,24 @@ import (
 )
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
-	return append(defaults,
+	rules := []tfbridge.DocsEdit{applyReplacementsDotJSON()}
+	rules = append(rules, defaults...)
+	return append(rules,
 		fixUpKmsCryptoKey,
 		fixupEffectiveLabels,
 		fixUpServiceNetworkDeletionPolicy,
 		removeSecretsInPlainTextNote,
 		removeBetaFromDescriptionField,
 		substituteRandomSuffix,
+		addCloudRunPubsubExample,
+		fixUpComposerEnvironmentWarning,
+		addContainerClusterAutopilotExample,
+		fixUpServiceAccountIamConditionHeadings,
 		rewritemembersField,
 		skipBetaWarning,
 		joinMultilineMarkdownLinks,
 		simpleReplace("terraformLabels", "pulumiLabels"),
 		simpleReplace("terraform_labels", "pulumi_labels"),
-		applyReplacementsDotJSON(),
 	)
 }
 
@@ -158,6 +163,17 @@ func targetedSimpleReplace(filePath, from, to string) tfbridge.DocsEdit {
 	}
 }
 
+func targetedInsertBefore(filePath, marker, insertion string) tfbridge.DocsEdit {
+	markerB := []byte(marker)
+	replacement := append([]byte(insertion), markerB...)
+	return tfbridge.DocsEdit{
+		Path: filePath,
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return bytes.Replace(content, markerB, replacement, 1), nil
+		},
+	}
+}
+
 var fixUpKmsCryptoKey = targetedSimpleReplace(
 	"kms_crypto_key.html.markdown",
 	"For this reason, it is strongly recommended that you add\nlifecycle\nhooks "+
@@ -170,6 +186,125 @@ var fixUpServiceNetworkDeletionPolicy = targetedSimpleReplace(
 	"This will enable a successful terraform destroy",
 	"This will enable a successful pulumi destroy",
 )
+
+var addCloudRunPubsubExample = targetedInsertBefore(
+	"cloud_run_service.html.markdown",
+	"## Example Usage - Cloud Run Service Basic\n",
+	"## Example Usage - Cloud Run Service Pubsub\n\n"+
+		"```hcl\n"+
+		"resource \"google_cloud_run_service\" \"default\" {\n"+
+		"    name     = \"cloud_run_service_name\"\n"+
+		"    location = \"us-central1\"\n"+
+		"    template {\n"+
+		"      spec {\n"+
+		"            containers {\n"+
+		"                image = \"gcr.io/cloudrun/hello\"\n"+
+		"            }\n"+
+		"      }\n"+
+		"    }\n"+
+		"    traffic {\n"+
+		"      percent         = 100\n"+
+		"      latest_revision = true\n"+
+		"    }\n"+
+		"}\n\n"+
+		"resource \"google_service_account\" \"sa\" {\n"+
+		"  account_id   = \"cloud-run-pubsub-invoker\"\n"+
+		"  display_name = \"Cloud Run Pub/Sub Invoker\"\n"+
+		"}\n\n"+
+		"resource \"google_cloud_run_service_iam_binding\" \"binding\" {\n"+
+		"  location = google_cloud_run_service.default.location\n"+
+		"  service = google_cloud_run_service.default.name\n"+
+		"  role = \"roles/run.invoker\"\n"+
+		"  members = [\"serviceAccount:${google_service_account.sa.email}\"]\n"+
+		"}\n\n"+
+		"resource \"google_project_iam_binding\" \"project\" {\n"+
+		"  role    = \"roles/iam.serviceAccountTokenCreator\"\n"+
+		"  members = [\"serviceAccount:${google_service_account.sa.email}\"]\n"+
+		"}\n\n"+
+		"resource \"google_pubsub_topic\" \"topic\" {\n"+
+		"  name = \"pubsub_topic\"\n"+
+		"}\n\n"+
+		"resource \"google_pubsub_subscription\" \"subscription\" {\n"+
+		"  name  = \"pubsub_subscription\"\n"+
+		"  topic = google_pubsub_topic.topic.name\n"+
+		"  push_config {\n"+
+		"    push_endpoint = google_cloud_run_service.default.status[0].url\n"+
+		"    oidc_token {\n"+
+		"      service_account_email = google_service_account.sa.email\n"+
+		"    }\n"+
+		"    attributes = {\n"+
+		"      x-goog-version = \"v1\"\n"+
+		"    }\n"+
+		"  }\n"+
+		"}\n"+
+		"```\n\n",
+)
+
+var composerEnvironmentConsiderations = regexp.MustCompile(
+	`(?s)Several special considerations apply to managing Cloud Composer environments\s+with Terraform:` +
+		`.*?\n\n## Example Usage`,
+)
+
+var fixUpComposerEnvironmentWarning = tfbridge.DocsEdit{
+	Path: "composer_environment.html.markdown",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		replacement := []byte("We **STRONGLY** recommend you read the [GCP\n" +
+			"guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long\n" +
+			"deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine\n" +
+			"cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi\n" +
+			"will not be able to find or manage many of these underlying resources automatically. In particular:\n" +
+			"* Creating or updating an environment resource can take up to one hour. In addition, GCP may only\n" +
+			"  detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation\n" +
+			"  process), and is prone to limited error reporting. If you encounter confusing or uninformative\n" +
+			"  errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs\n" +
+			"  against the provider.\n" +
+			"* **Environments create Google Cloud Storage buckets that are not automatically cleaned up**\n" +
+			"  on environment deletion. [More about Composer's use of Cloud\n" +
+			"  Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).\n" +
+			"* Please review the [known\n" +
+			"  issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having\n" +
+			"  problems.\n\n" +
+			"## Example Usage")
+		return composerEnvironmentConsiderations.ReplaceAllLiteral(content, replacement), nil
+	},
+}
+
+var addContainerClusterAutopilotExample = targetedInsertBefore(
+	"container_cluster.html.markdown",
+	"## Argument Reference\n",
+	"## Example Usage - autopilot\n\n"+
+		"```hcl\n"+
+		"resource \"google_service_account\" \"default\" {\n"+
+		"  account_id   = \"service-account-id\"\n"+
+		"  display_name = \"Service Account\"\n"+
+		"}\n\n"+
+		"resource \"google_container_cluster\" \"primary\" {\n"+
+		"  name             = \"marcellus-wallace\"\n"+
+		"  location         = \"us-central1-a\"\n"+
+		"  enable_autopilot = true\n"+
+		"  timeouts {\n"+
+		"    create = \"30m\"\n"+
+		"    update = \"40m\"\n"+
+		"  }\n"+
+		"}\n"+
+		"```\n\n",
+)
+
+var fixUpServiceAccountIamConditionHeadings = tfbridge.DocsEdit{
+	Path: "google_service_account_iam.html.markdown",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		heading := []byte("With IAM Conditions:")
+		parts := bytes.SplitN(content, heading, 3)
+		if len(parts) != 3 {
+			return content, nil
+		}
+		content = append(parts[0], []byte("### Service Account IAM Binding With IAM Conditions:")...)
+		content = append(content, parts[1]...)
+		content = append(content, []byte("### Service Account IAM Member With IAM Conditions:")...)
+		content = append(content, parts[2]...)
+		return content, nil
+	},
+}
 
 var skipBetaWarning = tfbridge.DocsEdit{
 	Path: "*",

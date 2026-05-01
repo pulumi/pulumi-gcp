@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.Redis
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_7_2",
-    ///         DisplayName = "Terraform Test Instance",
+    ///         DisplayName = "Test Instance",
     ///         ReplicaCount = 5,
     ///         ReadReplicasMode = "READ_REPLICAS_ENABLED",
     ///         Labels = 
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.Redis
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_7_2",
-    ///         DisplayName = "Terraform Test Instance",
+    ///         DisplayName = "Test Instance",
     ///         Labels = 
     ///         {
     ///             { "my_key", "my_val" },

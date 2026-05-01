@@ -404,14 +404,6 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## subcategory: "Cloud Bigtable"
-
-        description: |-
-          Creates a Google Bigtable instance.
-        ---
-
-        # bigtable.Instance
-
         Creates a Google Bigtable instance. For more information see:
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -517,14 +509,6 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## subcategory: "Cloud Bigtable"
-
-        description: |-
-          Creates a Google Bigtable instance.
-        ---
-
-        # bigtable.Instance
-
         Creates a Google Bigtable instance. For more information see:
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)

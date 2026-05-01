@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceAdvancedMachineFeatures?> AdvancedMachineFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// If true, allows this prvider to stop the instance to update its properties.
+        /// If true, allows this provider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Output("allowStoppingForUpdate")]
@@ -558,7 +558,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
-        /// If true, allows this prvider to stop the instance to update its properties.
+        /// If true, allows this provider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Input("allowStoppingForUpdate")]
@@ -872,7 +872,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
-        /// If true, allows this prvider to stop the instance to update its properties.
+        /// If true, allows this provider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Input("allowStoppingForUpdate")]

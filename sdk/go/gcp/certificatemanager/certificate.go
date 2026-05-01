@@ -178,7 +178,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Certificate Basic
+// ### Certificate Manager Self Managed Certificate
 //
 // ```go
 // package main
@@ -186,41 +186,32 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
-//				Name:        pulumi.String("dns-auth"),
-//				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
-//			})
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
-//				Name:        pulumi.String("dns-auth2"),
-//				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
-//			})
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/private-key.pem",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
 //				Name:        pulumi.String("self-managed-cert"),
 //				Description: pulumi.String("Global cert"),
-//				Scope:       pulumi.String("EDGE_CACHE"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						instance.Domain,
-//						instance2.Domain,
-//					},
-//					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID(),
-//						instance2.ID(),
-//					},
+//				Scope:       pulumi.String("ALL_REGIONS"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate: pulumi.String(invokeFile.Result),
+//					PemPrivateKey:  pulumi.String(invokeFile1.Result),
 //				},
 //			})
 //			if err != nil {
