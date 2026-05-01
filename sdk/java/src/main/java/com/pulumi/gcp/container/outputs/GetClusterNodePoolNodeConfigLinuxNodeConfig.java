@@ -5,8 +5,10 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs;
     /**
      * @return cgroupMode specifies the cgroup mode to be used on the node.
      * 
@@ -29,6 +36,11 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private List<GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfigs;
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
@@ -46,6 +58,13 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     private String transparentHugepageEnabled;
 
     private GetClusterNodePoolNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs() {
+        return this.accurateTimeConfigs;
+    }
     /**
      * @return cgroupMode specifies the cgroup mode to be used on the node.
      * 
@@ -66,6 +85,13 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
      */
     public List<GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings() {
         return this.nodeKernelModuleLoadings;
+    }
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfigs() {
+        return this.swapConfigs;
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -98,23 +124,38 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs;
         private String cgroupMode;
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
+        private List<GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfigs;
         private Map<String,String> sysctls;
         private String transparentHugepageDefrag;
         private String transparentHugepageEnabled;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accurateTimeConfigs = defaults.accurateTimeConfigs;
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfigs = defaults.hugepagesConfigs;
     	      this.nodeKernelModuleLoadings = defaults.nodeKernelModuleLoadings;
+    	      this.swapConfigs = defaults.swapConfigs;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
+        @CustomType.Setter
+        public Builder accurateTimeConfigs(List<GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs) {
+            if (accurateTimeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigLinuxNodeConfig", "accurateTimeConfigs");
+            }
+            this.accurateTimeConfigs = accurateTimeConfigs;
+            return this;
+        }
+        public Builder accurateTimeConfigs(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig... accurateTimeConfigs) {
+            return accurateTimeConfigs(List.of(accurateTimeConfigs));
+        }
         @CustomType.Setter
         public Builder cgroupMode(String cgroupMode) {
             if (cgroupMode == null) {
@@ -146,6 +187,17 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
             return nodeKernelModuleLoadings(List.of(nodeKernelModuleLoadings));
         }
         @CustomType.Setter
+        public Builder swapConfigs(List<GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfigs) {
+            if (swapConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigLinuxNodeConfig", "swapConfigs");
+            }
+            this.swapConfigs = swapConfigs;
+            return this;
+        }
+        public Builder swapConfigs(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig... swapConfigs) {
+            return swapConfigs(List.of(swapConfigs));
+        }
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             if (sysctls == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigLinuxNodeConfig", "sysctls");
@@ -171,9 +223,11 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
         }
         public GetClusterNodePoolNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigLinuxNodeConfig();
+            _resultValue.accurateTimeConfigs = accurateTimeConfigs;
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfigs = hugepagesConfigs;
             _resultValue.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
+            _resultValue.swapConfigs = swapConfigs;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

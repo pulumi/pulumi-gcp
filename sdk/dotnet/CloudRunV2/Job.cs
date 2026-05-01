@@ -472,6 +472,59 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Job Emptydir Disk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Name = "cloudrun-job",
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         DeletionProtection = true,
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "empty-dir-volume",
+    ///                                 MountPath = "/mnt",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeArgs
+    ///                     {
+    ///                         Name = "empty-dir-volume",
+    ///                         EmptyDir = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeEmptyDirArgs
+    ///                         {
+    ///                             Medium = "DISK",
+    ///                             SizeLimit = "10Gi",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Job Run Job
     /// 
     /// ```csharp

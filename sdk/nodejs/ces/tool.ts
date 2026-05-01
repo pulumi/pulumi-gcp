@@ -187,7 +187,7 @@ import * as utilities from "../utilities";
  *             modalityType: "TEXT",
  *             rewriterConfig: {
  *                 modelSettings: {
- *                     model: "gemini-2.5-flash-001",
+ *                     model: "gemini-3.0-flash-001",
  *                     temperature: 1,
  *                 },
  *                 prompt: "example-prompt",
@@ -195,7 +195,7 @@ import * as utilities from "../utilities";
  *             },
  *             summarizationConfig: {
  *                 modelSettings: {
- *                     model: "gemini-2.5-flash-001",
+ *                     model: "gemini-3.0-flash-001",
  *                     temperature: 1,
  *                 },
  *                 prompt: "example-prompt",
@@ -216,7 +216,6 @@ import * as utilities from "../utilities";
  *             }],
  *             filter: "example_field: ANY(\"specific_example\")",
  *         },
- *         maxResults: 5,
  *     },
  * });
  * ```

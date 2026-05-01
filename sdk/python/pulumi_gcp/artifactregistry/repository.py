@@ -1315,6 +1315,10 @@ class Repository(pulumi.CustomResource):
             })
         ```
 
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+
         ## Import
 
         Repository can be imported using any of these accepted formats:
@@ -1932,6 +1936,10 @@ class Repository(pulumi.CustomResource):
                 "enablement_config": "INHERITED",
             })
         ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 

@@ -369,10 +369,22 @@ __all__ = [
     'ClusterNodeConfigKubeletConfigTopologyManagerArgsDict',
     'ClusterNodeConfigLinuxNodeConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs',
+    'ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
     'ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
     'ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigArgs',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs',
+    'ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'ClusterNodeConfigReservationAffinityArgs',
@@ -515,10 +527,22 @@ __all__ = [
     'ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'ClusterNodePoolNodeConfigReservationAffinityArgs',
@@ -681,10 +705,22 @@ __all__ = [
     'NodePoolNodeConfigKubeletConfigTopologyManagerArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs',
+    'NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
     'NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs',
+    'NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'NodePoolNodeConfigReservationAffinityArgs',
@@ -5685,12 +5721,6 @@ class ClusterAutopilotClusterPolicyConfigArgsDict(TypedDict):
     no_standard_node_pools: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Whether to block non autopilot managed node pools in the cluster.
-
-
-    ## Attributes Reference
-
-    In addition to the arguments listed above, the following computed attributes are
-    exported:
     """
     no_system_impersonation: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -5714,12 +5744,6 @@ class ClusterAutopilotClusterPolicyConfigArgs:
                  no_unsafe_webhooks: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] no_standard_node_pools: Whether to block non autopilot managed node pools in the cluster.
-               
-               
-               ## Attributes Reference
-               
-               In addition to the arguments listed above, the following computed attributes are
-               exported:
         :param pulumi.Input[_builtins.bool] no_system_impersonation: Whether to block impersonation of system accounts in the cluster.
         :param pulumi.Input[_builtins.bool] no_system_mutation: Whether to block mutation of resources in system namespaces and non-namespaced system resources.
         :param pulumi.Input[_builtins.bool] no_unsafe_webhooks: Whether to block unsafe webhooks in the cluster.
@@ -5738,12 +5762,6 @@ class ClusterAutopilotClusterPolicyConfigArgs:
     def no_standard_node_pools(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether to block non autopilot managed node pools in the cluster.
-
-
-        ## Attributes Reference
-
-        In addition to the arguments listed above, the following computed attributes are
-        exported:
         """
         return pulumi.get(self, "no_standard_node_pools")
 
@@ -6240,7 +6258,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgsDict(TypedD
     """
     upgrade_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgsDict']]]]
     """
-    Specifies the Auto Upgrade knobs for the node pool.
+    Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
     """
 
 @pulumi.input_type
@@ -6254,7 +6272,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
                
                This block also contains several computed attributes, documented below.
         :param pulumi.Input[_builtins.bool] auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]] upgrade_options: Specifies the Auto Upgrade knobs for the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]] upgrade_options: Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
         """
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
@@ -6293,7 +6311,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
     @pulumi.getter(name="upgradeOptions")
     def upgrade_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]]:
         """
-        Specifies the Auto Upgrade knobs for the node pool.
+        Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
         """
         return pulumi.get(self, "upgrade_options")
 
@@ -7180,7 +7198,7 @@ class ClusterEnableK8sBetaApisArgs:
 class ClusterEnterpriseConfigArgsDict(TypedDict):
     cluster_tier: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+    The effective tier of the cluster.
     """
     desired_tier: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -7193,7 +7211,7 @@ class ClusterEnterpriseConfigArgs:
                  cluster_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  desired_tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] cluster_tier: Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+        :param pulumi.Input[_builtins.str] cluster_tier: The effective tier of the cluster.
         :param pulumi.Input[_builtins.str] desired_tier: (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         if cluster_tier is not None:
@@ -7212,7 +7230,7 @@ class ClusterEnterpriseConfigArgs:
     @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def cluster_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+        The effective tier of the cluster.
         """
         return pulumi.get(self, "cluster_tier")
 
@@ -7237,15 +7255,15 @@ class ClusterEnterpriseConfigArgs:
 class ClusterFleetArgsDict(TypedDict):
     membership: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Full resource name of the registered fleet membership of the cluster.
+    The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
     """
     membership_id: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Short name of the fleet membership, for example "member-1".
+    The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
     """
     membership_location: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Location of the fleet membership, for example "us-central1".
+    The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
     """
     membership_type: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -7270,9 +7288,9 @@ class ClusterFleetArgs:
                  pre_registered: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] membership: Full resource name of the registered fleet membership of the cluster.
-        :param pulumi.Input[_builtins.str] membership_id: Short name of the fleet membership, for example "member-1".
-        :param pulumi.Input[_builtins.str] membership_location: Location of the fleet membership, for example "us-central1".
+        :param pulumi.Input[_builtins.str] membership: The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+        :param pulumi.Input[_builtins.str] membership_id: The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+        :param pulumi.Input[_builtins.str] membership_location: The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         :param pulumi.Input[_builtins.str] membership_type: Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
         :param pulumi.Input[_builtins.bool] pre_registered: Whether the cluster has been registered via the fleet API.
         :param pulumi.Input[_builtins.str] project: The name of the Fleet host project where this cluster will be registered.
@@ -7294,7 +7312,7 @@ class ClusterFleetArgs:
     @pulumi.getter
     def membership(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Full resource name of the registered fleet membership of the cluster.
+        The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
         """
         return pulumi.get(self, "membership")
 
@@ -7306,7 +7324,7 @@ class ClusterFleetArgs:
     @pulumi.getter(name="membershipId")
     def membership_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Short name of the fleet membership, for example "member-1".
+        The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_id")
 
@@ -7318,7 +7336,7 @@ class ClusterFleetArgs:
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Location of the fleet membership, for example "us-central1".
+        The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_location")
 
@@ -8149,12 +8167,22 @@ class ClusterMaintenancePolicyArgs:
 class ClusterMaintenancePolicyDailyMaintenanceWindowArgsDict(TypedDict):
     start_time: pulumi.Input[_builtins.str]
     duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration of the time window, automatically chosen to be
+    smallest possible in the given scenario.
+    Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
+    """
 
 @pulumi.input_type
 class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
     def __init__(__self__, *,
                  start_time: pulumi.Input[_builtins.str],
                  duration: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] duration: Duration of the time window, automatically chosen to be
+               smallest possible in the given scenario.
+               Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
+        """
         pulumi.set(__self__, "start_time", start_time)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -8171,6 +8199,11 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
     @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Duration of the time window, automatically chosen to be
+        smallest possible in the given scenario.
+        Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -8594,15 +8627,18 @@ class ClusterMasterAuthArgsDict(TypedDict):
     """
     client_certificate: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+    Base64 encoded public certificate
+    used by clients to authenticate to the cluster endpoint.
     """
     client_key: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+    Base64 encoded private key used by clients
+    to authenticate to the cluster endpoint.
     """
     cluster_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Base64 encoded public certificate that is the root of trust for the cluster.
+    Base64 encoded public certificate
+    that is the root certificate of the cluster.
     """
 
 @pulumi.input_type
@@ -8614,9 +8650,12 @@ class ClusterMasterAuthArgs:
                  cluster_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-        :param pulumi.Input[_builtins.str] client_certificate: Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
-        :param pulumi.Input[_builtins.str] client_key: Base64 encoded private key used by clients to authenticate to the cluster endpoint.
-        :param pulumi.Input[_builtins.str] cluster_ca_certificate: Base64 encoded public certificate that is the root of trust for the cluster.
+        :param pulumi.Input[_builtins.str] client_certificate: Base64 encoded public certificate
+               used by clients to authenticate to the cluster endpoint.
+        :param pulumi.Input[_builtins.str] client_key: Base64 encoded private key used by clients
+               to authenticate to the cluster endpoint.
+        :param pulumi.Input[_builtins.str] cluster_ca_certificate: Base64 encoded public certificate
+               that is the root certificate of the cluster.
         """
         pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_certificate is not None:
@@ -8642,7 +8681,8 @@ class ClusterMasterAuthArgs:
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+        Base64 encoded public certificate
+        used by clients to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_certificate")
 
@@ -8654,7 +8694,8 @@ class ClusterMasterAuthArgs:
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+        Base64 encoded private key used by clients
+        to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_key")
 
@@ -8666,7 +8707,8 @@ class ClusterMasterAuthArgs:
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Base64 encoded public certificate that is the root of trust for the cluster.
+        Base64 encoded public certificate
+        that is the root certificate of the cluster.
         """
         return pulumi.get(self, "cluster_ca_certificate")
 
@@ -9160,7 +9202,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     effective_taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgsDict']]]]
     """
-    List of kubernetes taints applied to each node.
+    List of kubernetes taints applied to each node. Structure is documented above.
     """
     enable_confidential_storage: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -9434,7 +9476,7 @@ class ClusterNodeConfigArgs:
                Prefer configuring `boot_disk`.
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[_builtins.bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -9717,7 +9759,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]:
         """
-        List of kubernetes taints applied to each node.
+        List of kubernetes taints applied to each node. Structure is documented above.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -12447,6 +12489,10 @@ class ClusterNodeConfigKubeletConfigTopologyManagerArgs:
 
 
 class ClusterNodeConfigLinuxNodeConfigArgsDict(TypedDict):
+    accurate_time_config: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict']]
+    """
+    Accurate time configuration for the node. Structure is documented below.
+    """
     cgroup_mode: NotRequired[pulumi.Input[_builtins.str]]
     """
     Possible cgroup modes that can be used.
@@ -12462,6 +12508,10 @@ class ClusterNodeConfigLinuxNodeConfigArgsDict(TypedDict):
     node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
     """
     Settings for kernel module loading. Structure is documented below.
+    """
+    swap_config: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigArgsDict']]
+    """
+    Swap configuration for the node. Structure is documented below.
     """
     sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
@@ -12482,13 +12532,16 @@ class ClusterNodeConfigLinuxNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
+                 accurate_time_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']] = None,
                  cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  hugepages_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
                  node_kernel_module_loading: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None,
+                 swap_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transparent_hugepage_defrag: Optional[pulumi.Input[_builtins.str]] = None,
                  transparent_hugepage_enabled: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs'] accurate_time_config: Accurate time configuration for the node. Structure is documented below.
         :param pulumi.Input[_builtins.str] cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
@@ -12496,6 +12549,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigArgs'] swap_config: Swap configuration for the node. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -12503,18 +12557,34 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
         :param pulumi.Input[_builtins.str] transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
         :param pulumi.Input[_builtins.str] transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
+        if accurate_time_config is not None:
+            pulumi.set(__self__, "accurate_time_config", accurate_time_config)
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if node_kernel_module_loading is not None:
             pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
+        if swap_config is not None:
+            pulumi.set(__self__, "swap_config", swap_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
         if transparent_hugepage_defrag is not None:
             pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
         if transparent_hugepage_enabled is not None:
             pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="accurateTimeConfig")
+    def accurate_time_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]:
+        """
+        Accurate time configuration for the node. Structure is documented below.
+        """
+        return pulumi.get(self, "accurate_time_config")
+
+    @accurate_time_config.setter
+    def accurate_time_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]):
+        pulumi.set(self, "accurate_time_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -12557,6 +12627,18 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
         pulumi.set(self, "node_kernel_module_loading", value)
 
     @_builtins.property
+    @pulumi.getter(name="swapConfig")
+    def swap_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigArgs']]:
+        """
+        Swap configuration for the node. Structure is documented below.
+        """
+        return pulumi.get(self, "swap_config")
+
+    @swap_config.setter
+    def swap_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigArgs']]):
+        pulumi.set(self, "swap_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -12594,6 +12676,35 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
     @transparent_hugepage_enabled.setter
     def transparent_hugepage_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "transparent_hugepage_enabled", value)
+
+
+class ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict(TypedDict):
+    enable_ptp_kvm_time_sync: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable accurate time synchronization with PTP-KVM.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs:
+    def __init__(__self__, *,
+                 enable_ptp_kvm_time_sync: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_ptp_kvm_time_sync: Whether to enable accurate time synchronization with PTP-KVM.
+        """
+        if enable_ptp_kvm_time_sync is not None:
+            pulumi.set(__self__, "enable_ptp_kvm_time_sync", enable_ptp_kvm_time_sync)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePtpKvmTimeSync")
+    def enable_ptp_kvm_time_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable accurate time synchronization with PTP-KVM.
+        """
+        return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+    @enable_ptp_kvm_time_sync.setter
+    def enable_ptp_kvm_time_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_ptp_kvm_time_sync", value)
 
 
 class ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict(TypedDict):
@@ -12684,6 +12795,271 @@ class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     @policy.setter
     def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy", value)
+
+
+class ClusterNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
+    boot_disk_profile: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict']]
+    """
+    Swap on the node's boot disk. Structure is documented below.
+    """
+    dedicated_local_ssd_profile: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict']]
+    """
+    Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables or disables swap for the node pool.
+    """
+    encryption_config: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict']]
+    """
+    If omitted, swap space is encrypted by default. Structure is documented below.
+    """
+    ephemeral_local_ssd_profile: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict']]
+    """
+    Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigSwapConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_profile: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']] = None,
+                 dedicated_local_ssd_profile: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']] = None,
+                 ephemeral_local_ssd_profile: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']] = None):
+        """
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs'] boot_disk_profile: Swap on the node's boot disk. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs'] dedicated_local_ssd_profile: Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
+        :param pulumi.Input[_builtins.bool] enabled: Enables or disables swap for the node pool.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs'] encryption_config: If omitted, swap space is encrypted by default. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs'] ephemeral_local_ssd_profile: Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
+        """
+        if boot_disk_profile is not None:
+            pulumi.set(__self__, "boot_disk_profile", boot_disk_profile)
+        if dedicated_local_ssd_profile is not None:
+            pulumi.set(__self__, "dedicated_local_ssd_profile", dedicated_local_ssd_profile)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
+        if ephemeral_local_ssd_profile is not None:
+            pulumi.set(__self__, "ephemeral_local_ssd_profile", ephemeral_local_ssd_profile)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProfile")
+    def boot_disk_profile(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]:
+        """
+        Swap on the node's boot disk. Structure is documented below.
+        """
+        return pulumi.get(self, "boot_disk_profile")
+
+    @boot_disk_profile.setter
+    def boot_disk_profile(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]):
+        pulumi.set(self, "boot_disk_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dedicatedLocalSsdProfile")
+    def dedicated_local_ssd_profile(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]:
+        """
+        Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
+        """
+        return pulumi.get(self, "dedicated_local_ssd_profile")
+
+    @dedicated_local_ssd_profile.setter
+    def dedicated_local_ssd_profile(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]):
+        pulumi.set(self, "dedicated_local_ssd_profile", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables or disables swap for the node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]:
+        """
+        If omitted, swap space is encrypted by default. Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralLocalSsdProfile")
+    def ephemeral_local_ssd_profile(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]:
+        """
+        Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_local_ssd_profile")
+
+    @ephemeral_local_ssd_profile.setter
+    def ephemeral_local_ssd_profile(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]):
+        pulumi.set(self, "ephemeral_local_ssd_profile", value)
+
+
+class ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict(TypedDict):
+    swap_size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space in gibibytes (GiB).
+    """
+    swap_size_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space as a percentage of the boot disk size.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs:
+    def __init__(__self__, *,
+                 swap_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 swap_size_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] swap_size_gib: Specifies the size of the swap space in gibibytes (GiB).
+        :param pulumi.Input[_builtins.int] swap_size_percent: Specifies the size of the swap space as a percentage of the boot disk size.
+        """
+        if swap_size_gib is not None:
+            pulumi.set(__self__, "swap_size_gib", swap_size_gib)
+        if swap_size_percent is not None:
+            pulumi.set(__self__, "swap_size_percent", swap_size_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizeGib")
+    def swap_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space in gibibytes (GiB).
+        """
+        return pulumi.get(self, "swap_size_gib")
+
+    @swap_size_gib.setter
+    def swap_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizePercent")
+    def swap_size_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space as a percentage of the boot disk size.
+        """
+        return pulumi.get(self, "swap_size_percent")
+
+    @swap_size_percent.setter
+    def swap_size_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_percent", value)
+
+
+class ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict(TypedDict):
+    disk_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of physical local NVMe SSD disks to attach.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs:
+    def __init__(__self__, *,
+                 disk_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_count: The number of physical local NVMe SSD disks to attach.
+        """
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+
+    @_builtins.property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of physical local NVMe SSD disks to attach.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @disk_count.setter
+    def disk_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "disk_count", value)
+
+
+class ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, swap space will not be encrypted. Defaults to false (encrypted).
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: If true, swap space will not be encrypted. Defaults to false (encrypted).
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, swap space will not be encrypted. Defaults to false (encrypted).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+class ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict(TypedDict):
+    swap_size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space in gibibytes (GiB).
+    """
+    swap_size_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+    """
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs:
+    def __init__(__self__, *,
+                 swap_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 swap_size_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] swap_size_gib: Specifies the size of the swap space in gibibytes (GiB).
+        :param pulumi.Input[_builtins.int] swap_size_percent: Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+        """
+        if swap_size_gib is not None:
+            pulumi.set(__self__, "swap_size_gib", swap_size_gib)
+        if swap_size_percent is not None:
+            pulumi.set(__self__, "swap_size_percent", swap_size_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizeGib")
+    def swap_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space in gibibytes (GiB).
+        """
+        return pulumi.get(self, "swap_size_gib")
+
+    @swap_size_gib.setter
+    def swap_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizePercent")
+    def swap_size_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+        """
+        return pulumi.get(self, "swap_size_percent")
+
+    @swap_size_percent.setter
+    def swap_size_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_percent", value)
 
 
 class ClusterNodeConfigLocalNvmeSsdBlockConfigArgsDict(TypedDict):
@@ -15249,7 +15625,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     effective_taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgsDict']]]]
     """
-    List of kubernetes taints applied to each node.
+    List of kubernetes taints applied to each node. Structure is documented above.
     """
     enable_confidential_storage: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -15523,7 +15899,7 @@ class ClusterNodePoolNodeConfigArgs:
                Prefer configuring `boot_disk`.
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[_builtins.bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -15806,7 +16182,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]:
         """
-        List of kubernetes taints applied to each node.
+        List of kubernetes taints applied to each node. Structure is documented above.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -18536,6 +18912,10 @@ class ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs:
 
 
 class ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
+    accurate_time_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict']]
+    """
+    Accurate time configuration for the node. Structure is documented below.
+    """
     cgroup_mode: NotRequired[pulumi.Input[_builtins.str]]
     """
     Possible cgroup modes that can be used.
@@ -18551,6 +18931,10 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
     node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
     """
     Settings for kernel module loading. Structure is documented below.
+    """
+    swap_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict']]
+    """
+    Swap configuration for the node. Structure is documented below.
     """
     sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
@@ -18571,13 +18955,16 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
+                 accurate_time_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']] = None,
                  cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  hugepages_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
                  node_kernel_module_loading: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None,
+                 swap_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transparent_hugepage_defrag: Optional[pulumi.Input[_builtins.str]] = None,
                  transparent_hugepage_enabled: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs'] accurate_time_config: Accurate time configuration for the node. Structure is documented below.
         :param pulumi.Input[_builtins.str] cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
@@ -18585,6 +18972,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs'] swap_config: Swap configuration for the node. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -18592,18 +18980,34 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
         :param pulumi.Input[_builtins.str] transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
         :param pulumi.Input[_builtins.str] transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
+        if accurate_time_config is not None:
+            pulumi.set(__self__, "accurate_time_config", accurate_time_config)
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if node_kernel_module_loading is not None:
             pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
+        if swap_config is not None:
+            pulumi.set(__self__, "swap_config", swap_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
         if transparent_hugepage_defrag is not None:
             pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
         if transparent_hugepage_enabled is not None:
             pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="accurateTimeConfig")
+    def accurate_time_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]:
+        """
+        Accurate time configuration for the node. Structure is documented below.
+        """
+        return pulumi.get(self, "accurate_time_config")
+
+    @accurate_time_config.setter
+    def accurate_time_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]):
+        pulumi.set(self, "accurate_time_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -18646,6 +19050,18 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
         pulumi.set(self, "node_kernel_module_loading", value)
 
     @_builtins.property
+    @pulumi.getter(name="swapConfig")
+    def swap_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']]:
+        """
+        Swap configuration for the node. Structure is documented below.
+        """
+        return pulumi.get(self, "swap_config")
+
+    @swap_config.setter
+    def swap_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']]):
+        pulumi.set(self, "swap_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -18683,6 +19099,35 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     @transparent_hugepage_enabled.setter
     def transparent_hugepage_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "transparent_hugepage_enabled", value)
+
+
+class ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict(TypedDict):
+    enable_ptp_kvm_time_sync: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable accurate time synchronization with PTP-KVM.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs:
+    def __init__(__self__, *,
+                 enable_ptp_kvm_time_sync: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_ptp_kvm_time_sync: Whether to enable accurate time synchronization with PTP-KVM.
+        """
+        if enable_ptp_kvm_time_sync is not None:
+            pulumi.set(__self__, "enable_ptp_kvm_time_sync", enable_ptp_kvm_time_sync)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePtpKvmTimeSync")
+    def enable_ptp_kvm_time_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable accurate time synchronization with PTP-KVM.
+        """
+        return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+    @enable_ptp_kvm_time_sync.setter
+    def enable_ptp_kvm_time_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_ptp_kvm_time_sync", value)
 
 
 class ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict(TypedDict):
@@ -18773,6 +19218,271 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     @policy.setter
     def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy", value)
+
+
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
+    boot_disk_profile: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict']]
+    """
+    Swap on the node's boot disk. Structure is documented below.
+    """
+    dedicated_local_ssd_profile: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict']]
+    """
+    Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables or disables swap for the node pool.
+    """
+    encryption_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict']]
+    """
+    If omitted, swap space is encrypted by default. Structure is documented below.
+    """
+    ephemeral_local_ssd_profile: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict']]
+    """
+    Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_profile: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']] = None,
+                 dedicated_local_ssd_profile: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']] = None,
+                 ephemeral_local_ssd_profile: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']] = None):
+        """
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs'] boot_disk_profile: Swap on the node's boot disk. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs'] dedicated_local_ssd_profile: Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
+        :param pulumi.Input[_builtins.bool] enabled: Enables or disables swap for the node pool.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs'] encryption_config: If omitted, swap space is encrypted by default. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs'] ephemeral_local_ssd_profile: Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
+        """
+        if boot_disk_profile is not None:
+            pulumi.set(__self__, "boot_disk_profile", boot_disk_profile)
+        if dedicated_local_ssd_profile is not None:
+            pulumi.set(__self__, "dedicated_local_ssd_profile", dedicated_local_ssd_profile)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
+        if ephemeral_local_ssd_profile is not None:
+            pulumi.set(__self__, "ephemeral_local_ssd_profile", ephemeral_local_ssd_profile)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProfile")
+    def boot_disk_profile(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]:
+        """
+        Swap on the node's boot disk. Structure is documented below.
+        """
+        return pulumi.get(self, "boot_disk_profile")
+
+    @boot_disk_profile.setter
+    def boot_disk_profile(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]):
+        pulumi.set(self, "boot_disk_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dedicatedLocalSsdProfile")
+    def dedicated_local_ssd_profile(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]:
+        """
+        Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
+        """
+        return pulumi.get(self, "dedicated_local_ssd_profile")
+
+    @dedicated_local_ssd_profile.setter
+    def dedicated_local_ssd_profile(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]):
+        pulumi.set(self, "dedicated_local_ssd_profile", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables or disables swap for the node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]:
+        """
+        If omitted, swap space is encrypted by default. Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralLocalSsdProfile")
+    def ephemeral_local_ssd_profile(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]:
+        """
+        Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_local_ssd_profile")
+
+    @ephemeral_local_ssd_profile.setter
+    def ephemeral_local_ssd_profile(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]):
+        pulumi.set(self, "ephemeral_local_ssd_profile", value)
+
+
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict(TypedDict):
+    swap_size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space in gibibytes (GiB).
+    """
+    swap_size_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space as a percentage of the boot disk size.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs:
+    def __init__(__self__, *,
+                 swap_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 swap_size_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] swap_size_gib: Specifies the size of the swap space in gibibytes (GiB).
+        :param pulumi.Input[_builtins.int] swap_size_percent: Specifies the size of the swap space as a percentage of the boot disk size.
+        """
+        if swap_size_gib is not None:
+            pulumi.set(__self__, "swap_size_gib", swap_size_gib)
+        if swap_size_percent is not None:
+            pulumi.set(__self__, "swap_size_percent", swap_size_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizeGib")
+    def swap_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space in gibibytes (GiB).
+        """
+        return pulumi.get(self, "swap_size_gib")
+
+    @swap_size_gib.setter
+    def swap_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizePercent")
+    def swap_size_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space as a percentage of the boot disk size.
+        """
+        return pulumi.get(self, "swap_size_percent")
+
+    @swap_size_percent.setter
+    def swap_size_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_percent", value)
+
+
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict(TypedDict):
+    disk_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of physical local NVMe SSD disks to attach.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs:
+    def __init__(__self__, *,
+                 disk_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_count: The number of physical local NVMe SSD disks to attach.
+        """
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+
+    @_builtins.property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of physical local NVMe SSD disks to attach.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @disk_count.setter
+    def disk_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "disk_count", value)
+
+
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, swap space will not be encrypted. Defaults to false (encrypted).
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: If true, swap space will not be encrypted. Defaults to false (encrypted).
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, swap space will not be encrypted. Defaults to false (encrypted).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict(TypedDict):
+    swap_size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space in gibibytes (GiB).
+    """
+    swap_size_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+    """
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs:
+    def __init__(__self__, *,
+                 swap_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 swap_size_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] swap_size_gib: Specifies the size of the swap space in gibibytes (GiB).
+        :param pulumi.Input[_builtins.int] swap_size_percent: Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+        """
+        if swap_size_gib is not None:
+            pulumi.set(__self__, "swap_size_gib", swap_size_gib)
+        if swap_size_percent is not None:
+            pulumi.set(__self__, "swap_size_percent", swap_size_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizeGib")
+    def swap_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space in gibibytes (GiB).
+        """
+        return pulumi.get(self, "swap_size_gib")
+
+    @swap_size_gib.setter
+    def swap_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizePercent")
+    def swap_size_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+        """
+        return pulumi.get(self, "swap_size_percent")
+
+    @swap_size_percent.setter
+    def swap_size_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_percent", value)
 
 
 class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict(TypedDict):
@@ -24677,6 +25387,10 @@ class NodePoolNodeConfigKubeletConfigTopologyManagerArgs:
 
 
 class NodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
+    accurate_time_config: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict']]
+    """
+    The settings for the accurate time configuration.
+    """
     cgroup_mode: NotRequired[pulumi.Input[_builtins.str]]
     """
     cgroupMode specifies the cgroup mode to be used on the node.
@@ -24688,6 +25402,10 @@ class NodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
     node_kernel_module_loading: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
     """
     The settings for kernel module loading.
+    """
+    swap_config: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict']]
+    """
+    Swap configuration for the node.
     """
     sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
     """
@@ -24705,32 +25423,52 @@ class NodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class NodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
+                 accurate_time_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']] = None,
                  cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  hugepages_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
                  node_kernel_module_loading: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None,
+                 swap_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transparent_hugepage_defrag: Optional[pulumi.Input[_builtins.str]] = None,
                  transparent_hugepage_enabled: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs'] accurate_time_config: The settings for the accurate time configuration.
         :param pulumi.Input[_builtins.str] cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
         :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages.
         :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs'] swap_config: Swap configuration for the node.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         :param pulumi.Input[_builtins.str] transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
         :param pulumi.Input[_builtins.str] transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
+        if accurate_time_config is not None:
+            pulumi.set(__self__, "accurate_time_config", accurate_time_config)
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if node_kernel_module_loading is not None:
             pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
+        if swap_config is not None:
+            pulumi.set(__self__, "swap_config", swap_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
         if transparent_hugepage_defrag is not None:
             pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
         if transparent_hugepage_enabled is not None:
             pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="accurateTimeConfig")
+    def accurate_time_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]:
+        """
+        The settings for the accurate time configuration.
+        """
+        return pulumi.get(self, "accurate_time_config")
+
+    @accurate_time_config.setter
+    def accurate_time_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]):
+        pulumi.set(self, "accurate_time_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -24769,6 +25507,18 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
         pulumi.set(self, "node_kernel_module_loading", value)
 
     @_builtins.property
+    @pulumi.getter(name="swapConfig")
+    def swap_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']]:
+        """
+        Swap configuration for the node.
+        """
+        return pulumi.get(self, "swap_config")
+
+    @swap_config.setter
+    def swap_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']]):
+        pulumi.set(self, "swap_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -24803,6 +25553,35 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
     @transparent_hugepage_enabled.setter
     def transparent_hugepage_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "transparent_hugepage_enabled", value)
+
+
+class NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict(TypedDict):
+    enable_ptp_kvm_time_sync: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable accurate time synchronization with PTP-KVM.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs:
+    def __init__(__self__, *,
+                 enable_ptp_kvm_time_sync: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_ptp_kvm_time_sync: Whether to enable accurate time synchronization with PTP-KVM.
+        """
+        if enable_ptp_kvm_time_sync is not None:
+            pulumi.set(__self__, "enable_ptp_kvm_time_sync", enable_ptp_kvm_time_sync)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePtpKvmTimeSync")
+    def enable_ptp_kvm_time_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable accurate time synchronization with PTP-KVM.
+        """
+        return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+    @enable_ptp_kvm_time_sync.setter
+    def enable_ptp_kvm_time_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_ptp_kvm_time_sync", value)
 
 
 class NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict(TypedDict):
@@ -24881,6 +25660,271 @@ class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     @policy.setter
     def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy", value)
+
+
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
+    boot_disk_profile: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict']]
+    """
+    Swap on the node's boot disk.
+    """
+    dedicated_local_ssd_profile: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict']]
+    """
+    Provisions a new, separate local NVMe SSD exclusively for swap.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables or disables swap for the node pool.
+    """
+    encryption_config: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict']]
+    """
+    If omitted, swap space is encrypted by default.
+    """
+    ephemeral_local_ssd_profile: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict']]
+    """
+    Swap on the local SSD shared with pod ephemeral storage.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_profile: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']] = None,
+                 dedicated_local_ssd_profile: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']] = None,
+                 ephemeral_local_ssd_profile: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']] = None):
+        """
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs'] boot_disk_profile: Swap on the node's boot disk.
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs'] dedicated_local_ssd_profile: Provisions a new, separate local NVMe SSD exclusively for swap.
+        :param pulumi.Input[_builtins.bool] enabled: Enables or disables swap for the node pool.
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs'] encryption_config: If omitted, swap space is encrypted by default.
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs'] ephemeral_local_ssd_profile: Swap on the local SSD shared with pod ephemeral storage.
+        """
+        if boot_disk_profile is not None:
+            pulumi.set(__self__, "boot_disk_profile", boot_disk_profile)
+        if dedicated_local_ssd_profile is not None:
+            pulumi.set(__self__, "dedicated_local_ssd_profile", dedicated_local_ssd_profile)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
+        if ephemeral_local_ssd_profile is not None:
+            pulumi.set(__self__, "ephemeral_local_ssd_profile", ephemeral_local_ssd_profile)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProfile")
+    def boot_disk_profile(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]:
+        """
+        Swap on the node's boot disk.
+        """
+        return pulumi.get(self, "boot_disk_profile")
+
+    @boot_disk_profile.setter
+    def boot_disk_profile(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]):
+        pulumi.set(self, "boot_disk_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dedicatedLocalSsdProfile")
+    def dedicated_local_ssd_profile(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]:
+        """
+        Provisions a new, separate local NVMe SSD exclusively for swap.
+        """
+        return pulumi.get(self, "dedicated_local_ssd_profile")
+
+    @dedicated_local_ssd_profile.setter
+    def dedicated_local_ssd_profile(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]):
+        pulumi.set(self, "dedicated_local_ssd_profile", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables or disables swap for the node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]:
+        """
+        If omitted, swap space is encrypted by default.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralLocalSsdProfile")
+    def ephemeral_local_ssd_profile(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]:
+        """
+        Swap on the local SSD shared with pod ephemeral storage.
+        """
+        return pulumi.get(self, "ephemeral_local_ssd_profile")
+
+    @ephemeral_local_ssd_profile.setter
+    def ephemeral_local_ssd_profile(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]):
+        pulumi.set(self, "ephemeral_local_ssd_profile", value)
+
+
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict(TypedDict):
+    swap_size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space in gibibytes (GiB).
+    """
+    swap_size_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space as a percentage of the boot disk size.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs:
+    def __init__(__self__, *,
+                 swap_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 swap_size_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] swap_size_gib: Specifies the size of the swap space in gibibytes (GiB).
+        :param pulumi.Input[_builtins.int] swap_size_percent: Specifies the size of the swap space as a percentage of the boot disk size.
+        """
+        if swap_size_gib is not None:
+            pulumi.set(__self__, "swap_size_gib", swap_size_gib)
+        if swap_size_percent is not None:
+            pulumi.set(__self__, "swap_size_percent", swap_size_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizeGib")
+    def swap_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space in gibibytes (GiB).
+        """
+        return pulumi.get(self, "swap_size_gib")
+
+    @swap_size_gib.setter
+    def swap_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizePercent")
+    def swap_size_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space as a percentage of the boot disk size.
+        """
+        return pulumi.get(self, "swap_size_percent")
+
+    @swap_size_percent.setter
+    def swap_size_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_percent", value)
+
+
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict(TypedDict):
+    disk_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of physical local NVMe SSD disks to attach.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs:
+    def __init__(__self__, *,
+                 disk_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_count: The number of physical local NVMe SSD disks to attach.
+        """
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+
+    @_builtins.property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of physical local NVMe SSD disks to attach.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @disk_count.setter
+    def disk_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "disk_count", value)
+
+
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, swap space will not be encrypted. Defaults to false (encrypted).
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disabled: If true, swap space will not be encrypted. Defaults to false (encrypted).
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, swap space will not be encrypted. Defaults to false (encrypted).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict(TypedDict):
+    swap_size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space in gibibytes (GiB).
+    """
+    swap_size_percent: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+    """
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs:
+    def __init__(__self__, *,
+                 swap_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 swap_size_percent: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] swap_size_gib: Specifies the size of the swap space in gibibytes (GiB).
+        :param pulumi.Input[_builtins.int] swap_size_percent: Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+        """
+        if swap_size_gib is not None:
+            pulumi.set(__self__, "swap_size_gib", swap_size_gib)
+        if swap_size_percent is not None:
+            pulumi.set(__self__, "swap_size_percent", swap_size_percent)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizeGib")
+    def swap_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space in gibibytes (GiB).
+        """
+        return pulumi.get(self, "swap_size_gib")
+
+    @swap_size_gib.setter
+    def swap_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="swapSizePercent")
+    def swap_size_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+        """
+        return pulumi.get(self, "swap_size_percent")
+
+    @swap_size_percent.setter
+    def swap_size_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "swap_size_percent", value)
 
 
 class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict(TypedDict):

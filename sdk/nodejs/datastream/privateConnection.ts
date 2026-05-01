@@ -37,6 +37,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Private Connection Force Delete
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("default", {name: "my-network"});
+ * const _default = new gcp.datastream.PrivateConnection("default", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     privateConnectionId: "my-connection",
+ *     deletionPolicy: "FORCE",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     vpcPeeringConfig: {
+ *         vpc: defaultNetwork.id,
+ *         subnet: "10.0.0.0/29",
+ *     },
+ * });
+ * ```
  * ### Datastream Private Connection Psc Interface
  *
  * ```typescript
@@ -122,6 +143,13 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     declare public readonly createWithoutValidation: pulumi.Output<boolean | undefined>;
     /**
+     * The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    /**
      * Display name.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -193,6 +221,7 @@ export class PrivateConnection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PrivateConnectionState | undefined;
             resourceInputs["createWithoutValidation"] = state?.createWithoutValidation;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["errors"] = state?.errors;
@@ -217,6 +246,7 @@ export class PrivateConnection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'privateConnectionId'");
             }
             resourceInputs["createWithoutValidation"] = args?.createWithoutValidation;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -245,6 +275,13 @@ export interface PrivateConnectionState {
      * If set to true, will skip validations.
      */
     createWithoutValidation?: pulumi.Input<boolean>;
+    /**
+     * The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Display name.
      */
@@ -312,6 +349,13 @@ export interface PrivateConnectionArgs {
      * If set to true, will skip validations.
      */
     createWithoutValidation?: pulumi.Input<boolean>;
+    /**
+     * The deletion policy for the private connection. Setting `FORCE` will also delete any child
+     * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+     * child routes exist. Defaults to `FORCE` for backwards compatibility.
+     * Possible values: `DEFAULT`, `FORCE`.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Display name.
      */

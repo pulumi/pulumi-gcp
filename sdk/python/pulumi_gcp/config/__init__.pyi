@@ -69,6 +69,8 @@ bigqueryReservationCustomEndpoint: Optional[str]
 
 bigtableCustomEndpoint: Optional[str]
 
+billingBudgetsCustomEndpoint: Optional[str]
+
 billingCustomEndpoint: Optional[str]
 
 billingProject: Optional[str]
@@ -143,6 +145,8 @@ dataCatalogCustomEndpoint: Optional[str]
 
 dataFusionCustomEndpoint: Optional[str]
 
+dataLineageCustomEndpoint: Optional[str]
+
 dataLossPreventionCustomEndpoint: Optional[str]
 
 dataPipelineCustomEndpoint: Optional[str]
@@ -212,6 +216,8 @@ firebaseDatabaseCustomEndpoint: Optional[str]
 firebaseExtensionsCustomEndpoint: Optional[str]
 
 firebaseHostingCustomEndpoint: Optional[str]
+
+firebaseRemoteConfigCustomEndpoint: Optional[str]
 
 firebaseStorageCustomEndpoint: Optional[str]
 
@@ -316,6 +322,10 @@ parameterManagerCustomEndpoint: Optional[str]
 parameterManagerRegionalCustomEndpoint: Optional[str]
 
 pollInterval: Optional[str]
+
+preferGlobalEndpoints: Optional[bool]
+
+preferRegionalEndpoints: Optional[bool]
 
 privatecaCustomEndpoint: Optional[str]
 

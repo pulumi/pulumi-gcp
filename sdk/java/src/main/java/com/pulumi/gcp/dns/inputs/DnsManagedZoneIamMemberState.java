@@ -16,9 +16,19 @@ public final class DnsManagedZoneIamMemberState extends com.pulumi.resources.Res
 
     public static final DnsManagedZoneIamMemberState Empty = new DnsManagedZoneIamMemberState();
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<DnsManagedZoneIamMemberConditionArgs> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<DnsManagedZoneIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -155,11 +165,25 @@ public final class DnsManagedZoneIamMemberState extends com.pulumi.resources.Res
             $ = new DnsManagedZoneIamMemberState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<DnsManagedZoneIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(DnsManagedZoneIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }

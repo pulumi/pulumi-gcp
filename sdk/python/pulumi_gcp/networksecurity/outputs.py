@@ -4647,6 +4647,8 @@ class GetAddressGroupsAddressGroupResult(dict):
                  name: _builtins.str):
         """
         :param _builtins.str location: The location of the Address Group.
+               
+               - - -
         :param _builtins.str name: The name of the Address Group.
         """
         pulumi.set(__self__, "capacity", capacity)
@@ -4669,6 +4671,8 @@ class GetAddressGroupsAddressGroupResult(dict):
     def location(self) -> _builtins.str:
         """
         The location of the Address Group.
+
+        - - -
         """
         return pulumi.get(self, "location")
 

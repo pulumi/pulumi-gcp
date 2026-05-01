@@ -559,6 +559,56 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Worker Pool Emptydir Disk
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewWorkerPool(ctx, "default", &cloudrunv2.WorkerPoolArgs{
+//				Name:               pulumi.String("cloudrun-worker-pool"),
+//				Location:           pulumi.String("us-central1"),
+//				LaunchStage:        pulumi.String("BETA"),
+//				DeletionProtection: pulumi.Bool(true),
+//				Template: &cloudrunv2.WorkerPoolTemplateArgs{
+//					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
+//						&cloudrunv2.WorkerPoolTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/worker-pool"),
+//							VolumeMounts: cloudrunv2.WorkerPoolTemplateContainerVolumeMountArray{
+//								&cloudrunv2.WorkerPoolTemplateContainerVolumeMountArgs{
+//									Name:      pulumi.String("empty-dir-volume"),
+//									MountPath: pulumi.String("/mnt"),
+//								},
+//							},
+//						},
+//					},
+//					Volumes: cloudrunv2.WorkerPoolTemplateVolumeArray{
+//						&cloudrunv2.WorkerPoolTemplateVolumeArgs{
+//							Name: pulumi.String("empty-dir-volume"),
+//							EmptyDir: &cloudrunv2.WorkerPoolTemplateVolumeEmptyDirArgs{
+//								Medium:    pulumi.String("DISK"),
+//								SizeLimit: pulumi.String("10Gi"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudrunv2 Worker Pool Mount Nfs
 //
 // ```go

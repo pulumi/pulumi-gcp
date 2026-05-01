@@ -27,7 +27,7 @@ class GetStoragePoolResult:
     """
     A collection of values returned by getStoragePool.
     """
-    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, deletion_protection=None, description=None, effective_labels=None, id=None, kind=None, label_fingerprint=None, labels=None, name=None, performance_provisioning_type=None, pool_provisioned_capacity_gb=None, pool_provisioned_iops=None, pool_provisioned_throughput=None, project=None, pulumi_labels=None, resource_statuses=None, statuses=None, storage_pool_type=None, zone=None):
+    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, deletion_protection=None, description=None, effective_labels=None, id=None, kind=None, label_fingerprint=None, labels=None, name=None, params=None, performance_provisioning_type=None, pool_provisioned_capacity_gb=None, pool_provisioned_iops=None, pool_provisioned_throughput=None, project=None, pulumi_labels=None, resource_statuses=None, statuses=None, storage_pool_type=None, zone=None):
         if capacity_provisioning_type and not isinstance(capacity_provisioning_type, str):
             raise TypeError("Expected argument 'capacity_provisioning_type' to be a str")
         pulumi.set(__self__, "capacity_provisioning_type", capacity_provisioning_type)
@@ -58,6 +58,9 @@ class GetStoragePoolResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if performance_provisioning_type and not isinstance(performance_provisioning_type, str):
             raise TypeError("Expected argument 'performance_provisioning_type' to be a str")
         pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
@@ -140,6 +143,11 @@ class GetStoragePoolResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Sequence['outputs.GetStoragePoolParamResult']:
+        return pulumi.get(self, "params")
+
+    @_builtins.property
     @pulumi.getter(name="performanceProvisioningType")
     def performance_provisioning_type(self) -> _builtins.str:
         return pulumi.get(self, "performance_provisioning_type")
@@ -206,6 +214,7 @@ class AwaitableGetStoragePoolResult(GetStoragePoolResult):
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
             name=self.name,
+            params=self.params,
             performance_provisioning_type=self.performance_provisioning_type,
             pool_provisioned_capacity_gb=self.pool_provisioned_capacity_gb,
             pool_provisioned_iops=self.pool_provisioned_iops,
@@ -265,6 +274,7 @@ def get_storage_pool(name: Optional[_builtins.str] = None,
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        params=pulumi.get(__ret__, 'params'),
         performance_provisioning_type=pulumi.get(__ret__, 'performance_provisioning_type'),
         pool_provisioned_capacity_gb=pulumi.get(__ret__, 'pool_provisioned_capacity_gb'),
         pool_provisioned_iops=pulumi.get(__ret__, 'pool_provisioned_iops'),
@@ -321,6 +331,7 @@ def get_storage_pool_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
+        params=pulumi.get(__response__, 'params'),
         performance_provisioning_type=pulumi.get(__response__, 'performance_provisioning_type'),
         pool_provisioned_capacity_gb=pulumi.get(__response__, 'pool_provisioned_capacity_gb'),
         pool_provisioned_iops=pulumi.get(__response__, 'pool_provisioned_iops'),

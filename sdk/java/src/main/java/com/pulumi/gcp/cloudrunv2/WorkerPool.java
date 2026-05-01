@@ -608,6 +608,58 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Worker Pool Emptydir Disk
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPool;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new WorkerPool("default", WorkerPoolArgs.builder()
+ *             .name("cloudrun-worker-pool")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
+ *             .deletionProtection(true)
+ *             .template(WorkerPoolTemplateArgs.builder()
+ *                 .containers(WorkerPoolTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/worker-pool")
+ *                     .volumeMounts(WorkerPoolTemplateContainerVolumeMountArgs.builder()
+ *                         .name("empty-dir-volume")
+ *                         .mountPath("/mnt")
+ *                         .build())
+ *                     .build())
+ *                 .volumes(WorkerPoolTemplateVolumeArgs.builder()
+ *                     .name("empty-dir-volume")
+ *                     .emptyDir(WorkerPoolTemplateVolumeEmptyDirArgs.builder()
+ *                         .medium("DISK")
+ *                         .sizeLimit("10Gi")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Cloudrunv2 Worker Pool Mount Nfs
  * 
  * <pre>

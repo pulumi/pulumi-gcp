@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterEnterpriseConfig
     {
         /// <summary>
-        /// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+        /// The effective tier of the cluster.
         /// </summary>
         public readonly string? ClusterTier;
         /// <summary>

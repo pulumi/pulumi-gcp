@@ -113,6 +113,8 @@ type InstanceFromTemplate struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolOutput `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -256,6 +258,8 @@ type instanceFromTemplateState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -362,6 +366,8 @@ type InstanceFromTemplateState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -462,6 +468,8 @@ type instanceFromTemplateArgs struct {
 	DesiredStatus *string `pulumi:"desiredStatus"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -547,6 +555,8 @@ type InstanceFromTemplateArgs struct {
 	DesiredStatus pulumi.StringPtrInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -772,6 +782,11 @@ func (o InstanceFromTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Whether the instance has virtual displays enabled.
 func (o InstanceFromTemplateOutput) EnableDisplay() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.BoolOutput { return v.EnableDisplay }).(pulumi.BoolOutput)
+}
+
+// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+func (o InstanceFromTemplateOutput) EraseWindowsVssSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.BoolOutput { return v.EraseWindowsVssSignature }).(pulumi.BoolOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance.

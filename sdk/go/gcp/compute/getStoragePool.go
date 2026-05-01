@@ -78,6 +78,7 @@ type LookupStoragePoolResult struct {
 	LabelFingerprint            string                         `pulumi:"labelFingerprint"`
 	Labels                      map[string]string              `pulumi:"labels"`
 	Name                        string                         `pulumi:"name"`
+	Params                      []GetStoragePoolParam          `pulumi:"params"`
 	PerformanceProvisioningType string                         `pulumi:"performanceProvisioningType"`
 	PoolProvisionedCapacityGb   string                         `pulumi:"poolProvisionedCapacityGb"`
 	PoolProvisionedIops         string                         `pulumi:"poolProvisionedIops"`
@@ -166,6 +167,10 @@ func (o LookupStoragePoolResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupStoragePoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupStoragePoolResultOutput) Params() GetStoragePoolParamArrayOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) []GetStoragePoolParam { return v.Params }).(GetStoragePoolParamArrayOutput)
 }
 
 func (o LookupStoragePoolResultOutput) PerformanceProvisioningType() pulumi.StringOutput {

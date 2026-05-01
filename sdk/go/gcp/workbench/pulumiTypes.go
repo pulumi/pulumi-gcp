@@ -490,7 +490,7 @@ type InstanceGceSetupAcceleratorConfig struct {
 	// Optional. Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
 	// Optional. Type of this accelerator.
-	// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+	// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
 	Type *string `pulumi:"type"`
 }
 
@@ -509,7 +509,7 @@ type InstanceGceSetupAcceleratorConfigArgs struct {
 	// Optional. Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Optional. Type of this accelerator.
-	// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+	// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -570,7 +570,7 @@ func (o InstanceGceSetupAcceleratorConfigOutput) CoreCount() pulumi.StringPtrOut
 }
 
 // Optional. Type of this accelerator.
-// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_H100_80GB`, `NVIDIA_H100_MEGA_80GB`, `NVIDIA_H200_141GB`, `NVIDIA_B200`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
 func (o InstanceGceSetupAcceleratorConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupAcceleratorConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -605,7 +605,7 @@ type InstanceGceSetupBootDisk struct {
 	// recommended value of 150GB.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Optional. Indicates the type of the disk.
-	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 	DiskType *string `pulumi:"diskType"`
 	// 'Optional. The KMS key used to encrypt the disks, only
 	// applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
@@ -634,7 +634,7 @@ type InstanceGceSetupBootDiskArgs struct {
 	// recommended value of 150GB.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Optional. Indicates the type of the disk.
-	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// 'Optional. The KMS key used to encrypt the disks, only
 	// applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
@@ -734,7 +734,7 @@ func (o InstanceGceSetupBootDiskOutput) DiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // Optional. Indicates the type of the disk.
-// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 func (o InstanceGceSetupBootDiskOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupBootDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -795,7 +795,7 @@ func (o InstanceGceSetupBootDiskPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // Optional. Indicates the type of the disk.
-// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 func (o InstanceGceSetupBootDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGceSetupBootDisk) *string {
 		if v == nil {
@@ -1128,7 +1128,7 @@ type InstanceGceSetupDataDisks struct {
 	// 100.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Optional. Input only. Indicates the type of the disk.
-	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 	DiskType *string `pulumi:"diskType"`
 	// 'Optional. The KMS key used to encrypt the disks,
 	// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
@@ -1157,7 +1157,7 @@ type InstanceGceSetupDataDisksArgs struct {
 	// 100.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Optional. Input only. Indicates the type of the disk.
-	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// 'Optional. The KMS key used to encrypt the disks,
 	// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
@@ -1257,7 +1257,7 @@ func (o InstanceGceSetupDataDisksOutput) DiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // Optional. Input only. Indicates the type of the disk.
-// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 func (o InstanceGceSetupDataDisksOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupDataDisks) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -1318,7 +1318,7 @@ func (o InstanceGceSetupDataDisksPtrOutput) DiskSizeGb() pulumi.StringPtrOutput 
 }
 
 // Optional. Input only. Indicates the type of the disk.
-// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
 func (o InstanceGceSetupDataDisksPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGceSetupDataDisks) *string {
 		if v == nil {

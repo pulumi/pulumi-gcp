@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         public readonly ImmutableArray<string> Items;
         /// <summary>
         /// The location of the Address Group.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Location;
         /// <summary>

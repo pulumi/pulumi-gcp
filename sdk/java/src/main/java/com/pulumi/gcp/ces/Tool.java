@@ -276,7 +276,7 @@ import javax.annotation.Nullable;
  *                     .modalityType("TEXT")
  *                     .rewriterConfig(ToolDataStoreToolModalityConfigRewriterConfigArgs.builder()
  *                         .modelSettings(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs.builder()
- *                             .model("gemini-2.5-flash-001")
+ *                             .model("gemini-3.0-flash-001")
  *                             .temperature(1.0)
  *                             .build())
  *                         .prompt("example-prompt")
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .summarizationConfig(ToolDataStoreToolModalityConfigSummarizationConfigArgs.builder()
  *                         .modelSettings(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs.builder()
- *                             .model("gemini-2.5-flash-001")
+ *                             .model("gemini-3.0-flash-001")
  *                             .temperature(1.0)
  *                             .build())
  *                         .prompt("example-prompt")
@@ -305,7 +305,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .filter("example_field: ANY(\"specific_example\")")
  *                     .build())
- *                 .maxResults(5)
  *                 .build())
  *             .build());
  * 

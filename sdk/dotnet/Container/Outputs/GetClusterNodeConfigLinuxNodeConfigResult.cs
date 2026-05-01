@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodeConfigLinuxNodeConfigResult
     {
         /// <summary>
+        /// The settings for the accurate time configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigResult> AccurateTimeConfigs;
+        /// <summary>
         /// cgroupMode specifies the cgroup mode to be used on the node.
         /// </summary>
         public readonly string CgroupMode;
@@ -25,6 +29,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The settings for kernel module loading.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingResult> NodeKernelModuleLoadings;
+        /// <summary>
+        /// Swap configuration for the node.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigSwapConfigResult> SwapConfigs;
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         /// </summary>
@@ -40,11 +48,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodeConfigLinuxNodeConfigResult(
+            ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigResult> accurateTimeConfigs,
+
             string cgroupMode,
 
             ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult> hugepagesConfigs,
 
             ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingResult> nodeKernelModuleLoadings,
+
+            ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigSwapConfigResult> swapConfigs,
 
             ImmutableDictionary<string, string> sysctls,
 
@@ -52,9 +64,11 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string transparentHugepageEnabled)
         {
+            AccurateTimeConfigs = accurateTimeConfigs;
             CgroupMode = cgroupMode;
             HugepagesConfigs = hugepagesConfigs;
             NodeKernelModuleLoadings = nodeKernelModuleLoadings;
+            SwapConfigs = swapConfigs;
             Sysctls = sysctls;
             TransparentHugepageDefrag = transparentHugepageDefrag;
             TransparentHugepageEnabled = transparentHugepageEnabled;

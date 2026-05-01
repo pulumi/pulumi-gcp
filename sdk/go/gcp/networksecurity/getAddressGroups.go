@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
 //
 // To get more information about Address Groups, see:
 //
@@ -20,6 +20,8 @@ import (
 //   - [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
 //
 // ## Example Usage
+//
+// ### Project Level
 //
 // ```go
 // package main
@@ -45,6 +47,33 @@ import (
 //	}
 //
 // ```
+//
+// ### Organization Level
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.GetAddressGroups(ctx, &networksecurity.GetAddressGroupsArgs{
+//				Location: "us-central1",
+//				Parent:   pulumi.StringRef("organizations/123456789"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAddressGroups(ctx *pulumi.Context, args *GetAddressGroupsArgs, opts ...pulumi.InvokeOption) (*GetAddressGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressGroupsResult
@@ -58,18 +87,25 @@ func GetAddressGroups(ctx *pulumi.Context, args *GetAddressGroupsArgs, opts ...p
 // A collection of arguments for invoking getAddressGroups.
 type GetAddressGroupsArgs struct {
 	// The location of the Address Group.
+	//
+	// ***
 	Location string `pulumi:"location"`
-	// The ID of the project.
+	// The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+	//
+	// > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+	Parent *string `pulumi:"parent"`
+	// The ID of the project. Conflicts with `parent`.
 	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getAddressGroups.
 type GetAddressGroupsResult struct {
-	// A list of Address Groups in the selected project and location. Structure is defined below.
+	// A list of Address Groups in the selected project or organization and location. Structure is defined below.
 	AddressGroups []GetAddressGroupsAddressGroup `pulumi:"addressGroups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Location string `pulumi:"location"`
+	Id       string  `pulumi:"id"`
+	Location string  `pulumi:"location"`
+	Parent   *string `pulumi:"parent"`
 	// The ID of the project in which the resource belongs.
 	Project string `pulumi:"project"`
 }
@@ -86,8 +122,14 @@ func GetAddressGroupsOutput(ctx *pulumi.Context, args GetAddressGroupsOutputArgs
 // A collection of arguments for invoking getAddressGroups.
 type GetAddressGroupsOutputArgs struct {
 	// The location of the Address Group.
+	//
+	// ***
 	Location pulumi.StringInput `pulumi:"location"`
-	// The ID of the project.
+	// The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+	//
+	// > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
+	// The ID of the project. Conflicts with `parent`.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -110,7 +152,7 @@ func (o GetAddressGroupsResultOutput) ToGetAddressGroupsResultOutputWithContext(
 	return o
 }
 
-// A list of Address Groups in the selected project and location. Structure is defined below.
+// A list of Address Groups in the selected project or organization and location. Structure is defined below.
 func (o GetAddressGroupsResultOutput) AddressGroups() GetAddressGroupsAddressGroupArrayOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) []GetAddressGroupsAddressGroup { return v.AddressGroups }).(GetAddressGroupsAddressGroupArrayOutput)
 }
@@ -122,6 +164,10 @@ func (o GetAddressGroupsResultOutput) Id() pulumi.StringOutput {
 
 func (o GetAddressGroupsResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetAddressGroupsResultOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAddressGroupsResult) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

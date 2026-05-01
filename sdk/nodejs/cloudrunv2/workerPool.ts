@@ -343,6 +343,35 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Worker Pool Emptydir Disk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.WorkerPool("default", {
+ *     name: "cloudrun-worker-pool",
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     deletionProtection: true,
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
+ *             volumeMounts: [{
+ *                 name: "empty-dir-volume",
+ *                 mountPath: "/mnt",
+ *             }],
+ *         }],
+ *         volumes: [{
+ *             name: "empty-dir-volume",
+ *             emptyDir: {
+ *                 medium: "DISK",
+ *                 sizeLimit: "10Gi",
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Worker Pool Mount Nfs
  *
  * ```typescript

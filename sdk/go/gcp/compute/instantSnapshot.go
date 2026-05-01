@@ -107,6 +107,9 @@ type InstantSnapshot struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InstantSnapshotParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -184,6 +187,9 @@ type instantSnapshotState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *InstantSnapshotParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -224,6 +230,9 @@ type InstantSnapshotState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InstantSnapshotParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -259,6 +268,9 @@ type instantSnapshotArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *InstantSnapshotParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -284,6 +296,9 @@ type InstantSnapshotArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InstantSnapshotParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -422,6 +437,12 @@ func (o InstantSnapshotOutput) Labels() pulumi.StringMapOutput {
 // character, which cannot be a dash.
 func (o InstantSnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstantSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o InstantSnapshotOutput) Params() InstantSnapshotParamsPtrOutput {
+	return o.ApplyT(func(v *InstantSnapshot) InstantSnapshotParamsPtrOutput { return v.Params }).(InstantSnapshotParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

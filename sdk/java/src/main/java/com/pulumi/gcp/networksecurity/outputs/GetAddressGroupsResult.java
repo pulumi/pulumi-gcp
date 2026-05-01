@@ -9,11 +9,13 @@ import com.pulumi.gcp.networksecurity.outputs.GetAddressGroupsAddressGroup;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressGroupsResult {
     /**
-     * @return A list of Address Groups in the selected project and location. Structure is defined below.
+     * @return A list of Address Groups in the selected project or organization and location. Structure is defined below.
      * 
      */
     private List<GetAddressGroupsAddressGroup> addressGroups;
@@ -23,6 +25,7 @@ public final class GetAddressGroupsResult {
      */
     private String id;
     private String location;
+    private @Nullable String parent;
     /**
      * @return The ID of the project in which the resource belongs.
      * 
@@ -31,7 +34,7 @@ public final class GetAddressGroupsResult {
 
     private GetAddressGroupsResult() {}
     /**
-     * @return A list of Address Groups in the selected project and location. Structure is defined below.
+     * @return A list of Address Groups in the selected project or organization and location. Structure is defined below.
      * 
      */
     public List<GetAddressGroupsAddressGroup> addressGroups() {
@@ -46,6 +49,9 @@ public final class GetAddressGroupsResult {
     }
     public String location() {
         return this.location;
+    }
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
     }
     /**
      * @return The ID of the project in which the resource belongs.
@@ -67,6 +73,7 @@ public final class GetAddressGroupsResult {
         private List<GetAddressGroupsAddressGroup> addressGroups;
         private String id;
         private String location;
+        private @Nullable String parent;
         private String project;
         public Builder() {}
         public Builder(GetAddressGroupsResult defaults) {
@@ -74,6 +81,7 @@ public final class GetAddressGroupsResult {
     	      this.addressGroups = defaults.addressGroups;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
+    	      this.parent = defaults.parent;
     	      this.project = defaults.project;
         }
 
@@ -105,6 +113,12 @@ public final class GetAddressGroupsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder parent(@Nullable String parent) {
+
+            this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetAddressGroupsResult", "project");
@@ -117,6 +131,7 @@ public final class GetAddressGroupsResult {
             _resultValue.addressGroups = addressGroups;
             _resultValue.id = id;
             _resultValue.location = location;
+            _resultValue.parent = parent;
             _resultValue.project = project;
             return _resultValue;
         }

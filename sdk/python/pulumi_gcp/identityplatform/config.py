@@ -865,7 +865,7 @@ class Config(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="multiTenant")
-    def multi_tenant(self) -> pulumi.Output[Optional['outputs.ConfigMultiTenant']]:
+    def multi_tenant(self) -> pulumi.Output['outputs.ConfigMultiTenant']:
         """
         Configuration related to multi-tenant functionality.
         Structure is documented below.

@@ -29,6 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "gcp:networkconnectivity/hub:Hub":
 		r = &Hub{}
+	case "gcp:networkconnectivity/hubIamBinding:HubIamBinding":
+		r = &HubIamBinding{}
+	case "gcp:networkconnectivity/hubIamMember:HubIamMember":
+		r = &HubIamMember{}
+	case "gcp:networkconnectivity/hubIamPolicy:HubIamPolicy":
+		r = &HubIamPolicy{}
 	case "gcp:networkconnectivity/internalRange:InternalRange":
 		r = &InternalRange{}
 	case "gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig":
@@ -74,6 +80,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkconnectivity/hub",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkconnectivity/hubIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkconnectivity/hubIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkconnectivity/hubIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

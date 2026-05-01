@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// Additional parameters for this destination config in structured json format.
+        /// </summary>
+        [Input("params")]
+        public Input<string>? Params { get; set; }
+
         public DataConnectorDestinationConfigGetArgs()
         {
         }

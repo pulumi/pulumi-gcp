@@ -2928,8 +2928,8 @@ class AppVariableDeclarationSchemaArgsDict(TypedDict):
     """
     Optional. Default value of the data. Represents a dynamically typed value
     which can be either null, a number, a string, a boolean, a struct,
-    or a list of values. The provided default value must be compatible
-    with the defined 'type' and other schema constraints.
+    or a list of values. The provided default value must be encoded as a JSON string.
+    Use `jsonencode` in Terraform HCL to encode the default value.
     """
     defs: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -3031,8 +3031,8 @@ class AppVariableDeclarationSchemaArgs:
         :param pulumi.Input[_builtins.str] any_of: Optional. The instance value should be valid against at least one of the schemas in this list.
         :param pulumi.Input[_builtins.str] default: Optional. Default value of the data. Represents a dynamically typed value
                which can be either null, a number, a string, a boolean, a struct,
-               or a list of values. The provided default value must be compatible
-               with the defined 'type' and other schema constraints.
+               or a list of values. The provided default value must be encoded as a JSON string.
+               Use `jsonencode` in Terraform HCL to encode the default value.
         :param pulumi.Input[_builtins.str] defs: A map of definitions for use by ref. Only allowed at the root of the schema.
         :param pulumi.Input[_builtins.str] description: The description of the data.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enums: Possible values of the element of primitive type with enum format.
@@ -3148,8 +3148,8 @@ class AppVariableDeclarationSchemaArgs:
         """
         Optional. Default value of the data. Represents a dynamically typed value
         which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
+        or a list of values. The provided default value must be encoded as a JSON string.
+        Use `jsonencode` in Terraform HCL to encode the default value.
         """
         return pulumi.get(self, "default")
 
@@ -18895,8 +18895,11 @@ class ToolDataStoreToolArgsDict(TypedDict):
     """
     max_results: NotRequired[pulumi.Input[_builtins.int]]
     """
+    (Optional, Deprecated)
     Number of search results to return per query.
     The default value is 10. The maximum allowed value is 10.
+
+    > **Warning:** `max_results` is deprecated and will be removed in a future release.
     """
     modality_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolModalityConfigArgsDict']]]]
     """
@@ -18921,8 +18924,11 @@ class ToolDataStoreToolArgs:
         :param pulumi.Input['ToolDataStoreToolEngineSourceArgs'] engine_source: Configuration for searching within an Engine, potentially targeting
                specific DataStores.
                Structure is documented below.
-        :param pulumi.Input[_builtins.int] max_results: Number of search results to return per query.
+        :param pulumi.Input[_builtins.int] max_results: (Optional, Deprecated)
+               Number of search results to return per query.
                The default value is 10. The maximum allowed value is 10.
+               
+               > **Warning:** `max_results` is deprecated and will be removed in a future release.
         :param pulumi.Input[Sequence[pulumi.Input['ToolDataStoreToolModalityConfigArgs']]] modality_configs: The modality configs for the data store.
                Structure is documented below.
         """
@@ -18933,6 +18939,9 @@ class ToolDataStoreToolArgs:
             pulumi.set(__self__, "description", description)
         if engine_source is not None:
             pulumi.set(__self__, "engine_source", engine_source)
+        if max_results is not None:
+            warnings.warn("""`max_results` is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""max_results is deprecated: `max_results` is deprecated and will be removed in a future release.""")
         if max_results is not None:
             pulumi.set(__self__, "max_results", max_results)
         if modality_configs is not None:
@@ -18991,10 +19000,14 @@ class ToolDataStoreToolArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxResults")
+    @_utilities.deprecated("""`max_results` is deprecated and will be removed in a future release.""")
     def max_results(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        (Optional, Deprecated)
         Number of search results to return per query.
         The default value is 10. The maximum allowed value is 10.
+
+        > **Warning:** `max_results` is deprecated and will be removed in a future release.
         """
         return pulumi.get(self, "max_results")
 

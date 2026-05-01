@@ -130,6 +130,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('bigtableCustomEndpoint')
 
     @_builtins.property
+    def billing_budgets_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('billingBudgetsCustomEndpoint')
+
+    @_builtins.property
     def billing_custom_endpoint(self) -> Optional[str]:
         return __config__.get('billingCustomEndpoint')
 
@@ -278,6 +282,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataFusionCustomEndpoint')
 
     @_builtins.property
+    def data_lineage_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataLineageCustomEndpoint')
+
+    @_builtins.property
     def data_loss_prevention_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataLossPreventionCustomEndpoint')
 
@@ -416,6 +424,10 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def firebase_hosting_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseHostingCustomEndpoint')
+
+    @_builtins.property
+    def firebase_remote_config_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseRemoteConfigCustomEndpoint')
 
     @_builtins.property
     def firebase_storage_custom_endpoint(self) -> Optional[str]:
@@ -624,6 +636,14 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def poll_interval(self) -> Optional[str]:
         return __config__.get('pollInterval')
+
+    @_builtins.property
+    def prefer_global_endpoints(self) -> Optional[bool]:
+        return __config__.get_bool('preferGlobalEndpoints')
+
+    @_builtins.property
+    def prefer_regional_endpoints(self) -> Optional[bool]:
+        return __config__.get_bool('preferRegionalEndpoints')
 
     @_builtins.property
     def privateca_custom_endpoint(self) -> Optional[str]:

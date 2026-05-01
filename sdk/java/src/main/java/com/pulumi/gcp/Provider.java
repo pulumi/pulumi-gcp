@@ -173,6 +173,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> bigtableCustomEndpoint() {
         return Codegen.optional(this.bigtableCustomEndpoint);
     }
+    @Export(name="billingBudgetsCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> billingBudgetsCustomEndpoint;
+
+    public Output<Optional<String>> billingBudgetsCustomEndpoint() {
+        return Codegen.optional(this.billingBudgetsCustomEndpoint);
+    }
     @Export(name="billingCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingCustomEndpoint;
 
@@ -395,6 +401,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dataFusionCustomEndpoint() {
         return Codegen.optional(this.dataFusionCustomEndpoint);
     }
+    @Export(name="dataLineageCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataLineageCustomEndpoint;
+
+    public Output<Optional<String>> dataLineageCustomEndpoint() {
+        return Codegen.optional(this.dataLineageCustomEndpoint);
+    }
     @Export(name="dataLossPreventionCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataLossPreventionCustomEndpoint;
 
@@ -580,6 +592,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> firebaseHostingCustomEndpoint() {
         return Codegen.optional(this.firebaseHostingCustomEndpoint);
+    }
+    @Export(name="firebaseRemoteConfigCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> firebaseRemoteConfigCustomEndpoint;
+
+    public Output<Optional<String>> firebaseRemoteConfigCustomEndpoint() {
+        return Codegen.optional(this.firebaseRemoteConfigCustomEndpoint);
     }
     @Export(name="firebaseStorageCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firebaseStorageCustomEndpoint;

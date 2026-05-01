@@ -115,6 +115,11 @@ export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamP
 export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
 utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
 
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
 export { VpcscConfigArgs, VpcscConfigState } from "./vpcscConfig";
 export type VpcscConfig = import("./vpcscConfig").VpcscConfig;
 export const VpcscConfig: typeof import("./vpcscConfig").VpcscConfig = null as any;
@@ -133,6 +138,8 @@ const _module = {
                 return new RepositoryIamMember(name, <any>undefined, { urn })
             case "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy":
                 return new RepositoryIamPolicy(name, <any>undefined, { urn })
+            case "gcp:artifactregistry/rule:Rule":
+                return new Rule(name, <any>undefined, { urn })
             case "gcp:artifactregistry/vpcscConfig:VpcscConfig":
                 return new VpcscConfig(name, <any>undefined, { urn })
             default:
@@ -144,4 +151,5 @@ pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repository", _mod
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "artifactregistry/rule", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/vpcscConfig", _module)

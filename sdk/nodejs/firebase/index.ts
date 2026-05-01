@@ -175,6 +175,11 @@ export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
+export { RemoteConfigRemoteConfigArgs, RemoteConfigRemoteConfigState } from "./remoteConfigRemoteConfig";
+export type RemoteConfigRemoteConfig = import("./remoteConfigRemoteConfig").RemoteConfigRemoteConfig;
+export const RemoteConfigRemoteConfig: typeof import("./remoteConfigRemoteConfig").RemoteConfigRemoteConfig = null as any;
+utilities.lazyLoad(exports, ["RemoteConfigRemoteConfig"], () => require("./remoteConfigRemoteConfig"));
+
 export { StorageBucketArgs, StorageBucketState } from "./storageBucket";
 export type StorageBucket = import("./storageBucket").StorageBucket;
 export const StorageBucket: typeof import("./storageBucket").StorageBucket = null as any;
@@ -247,6 +252,8 @@ const _module = {
                 return new HostingVersion(name, <any>undefined, { urn })
             case "gcp:firebase/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig":
+                return new RemoteConfigRemoteConfig(name, <any>undefined, { urn })
             case "gcp:firebase/storageBucket:StorageBucket":
                 return new StorageBucket(name, <any>undefined, { urn })
             case "gcp:firebase/storageDefaultBucket:StorageDefaultBucket":
@@ -284,6 +291,7 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/hostingRelease", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/remoteConfigRemoteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/storageBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/storageDefaultBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/webApp", _module)

@@ -117,6 +117,70 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Machine Image Resource Manager Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var tagKey1 = new Gcp.Tags.TagKey("tag_key1", new()
+    ///     {
+    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         ShortName = "tagkey",
+    ///     });
+    /// 
+    ///     var tagValue1 = new Gcp.Tags.TagValue("tag_value1", new()
+    ///     {
+    ///         Parent = tagKey1.Id,
+    ///         ShortName = "tagvalue",
+    ///     });
+    /// 
+    ///     var vm = new Gcp.Compute.Instance("vm", new()
+    ///     {
+    ///         Name = "my-vm",
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var image = new Gcp.Compute.MachineImage("image", new()
+    ///     {
+    ///         Name = "my-image",
+    ///         SourceInstance = vm.SelfLink,
+    ///         Params = new Gcp.Compute.Inputs.MachineImageParamsArgs
+    ///         {
+    ///             ResourceManagerTags = Output.Tuple(tagKey1.Id, tagValue1.Id).Apply(values =&gt;
+    ///             {
+    ///                 var tagKey1Id = values.Item1;
+    ///                 var tagValue1Id = values.Item2;
+    ///                 return 
+    ///                 {
+    ///                     { tagKey1Id, tagValue1Id },
+    ///                 };
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -165,6 +229,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.MachineImageParams?> Params { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -267,6 +338,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.MachineImageParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -315,6 +393,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.MachineImageParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

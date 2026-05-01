@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetStoragePoolParam;
 import com.pulumi.gcp.compute.outputs.GetStoragePoolResourceStatus;
 import com.pulumi.gcp.compute.outputs.GetStoragePoolStatus;
 import java.lang.Boolean;
@@ -27,6 +28,7 @@ public final class GetStoragePoolResult {
     private String labelFingerprint;
     private Map<String,String> labels;
     private String name;
+    private List<GetStoragePoolParam> params;
     private String performanceProvisioningType;
     private String poolProvisionedCapacityGb;
     private String poolProvisionedIops;
@@ -68,6 +70,9 @@ public final class GetStoragePoolResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetStoragePoolParam> params() {
+        return this.params;
     }
     public String performanceProvisioningType() {
         return this.performanceProvisioningType;
@@ -119,6 +124,7 @@ public final class GetStoragePoolResult {
         private String labelFingerprint;
         private Map<String,String> labels;
         private String name;
+        private List<GetStoragePoolParam> params;
         private String performanceProvisioningType;
         private String poolProvisionedCapacityGb;
         private String poolProvisionedIops;
@@ -142,6 +148,7 @@ public final class GetStoragePoolResult {
     	      this.labelFingerprint = defaults.labelFingerprint;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.params = defaults.params;
     	      this.performanceProvisioningType = defaults.performanceProvisioningType;
     	      this.poolProvisionedCapacityGb = defaults.poolProvisionedCapacityGb;
     	      this.poolProvisionedIops = defaults.poolProvisionedIops;
@@ -233,6 +240,17 @@ public final class GetStoragePoolResult {
             }
             this.name = name;
             return this;
+        }
+        @CustomType.Setter
+        public Builder params(List<GetStoragePoolParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetStoragePoolResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetStoragePoolParam... params) {
+            return params(List.of(params));
         }
         @CustomType.Setter
         public Builder performanceProvisioningType(String performanceProvisioningType) {
@@ -330,6 +348,7 @@ public final class GetStoragePoolResult {
             _resultValue.labelFingerprint = labelFingerprint;
             _resultValue.labels = labels;
             _resultValue.name = name;
+            _resultValue.params = params;
             _resultValue.performanceProvisioningType = performanceProvisioningType;
             _resultValue.poolProvisionedCapacityGb = poolProvisionedCapacityGb;
             _resultValue.poolProvisionedIops = poolProvisionedIops;

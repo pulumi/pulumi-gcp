@@ -29,6 +29,7 @@ class StoragePoolArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['StoragePoolParamsArgs']] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -62,6 +63,8 @@ class StoragePoolArgs:
                which means the first character must be a lowercase letter,
                and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input['StoragePoolParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] pool_provisioned_iops: Provisioned IOPS of the storage pool.
@@ -83,6 +86,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if performance_provisioning_type is not None:
             pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
         if pool_provisioned_iops is not None:
@@ -207,6 +212,19 @@ class StoragePoolArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['StoragePoolParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['StoragePoolParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="performanceProvisioningType")
     def performance_provisioning_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -270,6 +288,7 @@ class _StoragePoolState:
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['StoragePoolParamsArgs']] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
@@ -306,6 +325,8 @@ class _StoragePoolState:
                which means the first character must be a lowercase letter,
                and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input['StoragePoolParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] pool_provisioned_capacity_gb: Size, in GiB, of the storage pool. For more information about the size limits,
@@ -346,6 +367,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if performance_provisioning_type is not None:
             pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
         if pool_provisioned_capacity_gb is not None:
@@ -490,6 +513,19 @@ class _StoragePoolState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['StoragePoolParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['StoragePoolParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="performanceProvisioningType")
     def performance_provisioning_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -632,6 +668,7 @@ class StoragePool(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']]] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
@@ -741,6 +778,8 @@ class StoragePool(pulumi.CustomResource):
                which means the first character must be a lowercase letter,
                and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] pool_provisioned_capacity_gb: Size, in GiB, of the storage pool. For more information about the size limits,
@@ -864,6 +903,7 @@ class StoragePool(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']]] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
@@ -885,6 +925,7 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["performance_provisioning_type"] = performance_provisioning_type
             if pool_provisioned_capacity_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'pool_provisioned_capacity_gb'")
@@ -926,6 +967,7 @@ class StoragePool(pulumi.CustomResource):
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']]] = None,
             performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
             pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
             pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
@@ -966,6 +1008,8 @@ class StoragePool(pulumi.CustomResource):
                which means the first character must be a lowercase letter,
                and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[Union['StoragePoolParamsArgs', 'StoragePoolParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] pool_provisioned_capacity_gb: Size, in GiB, of the storage pool. For more information about the size limits,
@@ -1001,6 +1045,7 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["performance_provisioning_type"] = performance_provisioning_type
         __props__.__dict__["pool_provisioned_capacity_gb"] = pool_provisioned_capacity_gb
         __props__.__dict__["pool_provisioned_iops"] = pool_provisioned_iops
@@ -1098,6 +1143,15 @@ class StoragePool(pulumi.CustomResource):
         except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.StoragePoolParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="performanceProvisioningType")

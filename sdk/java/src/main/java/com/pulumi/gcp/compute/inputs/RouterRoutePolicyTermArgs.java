@@ -54,14 +54,14 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+     * The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
      * 
      */
     @Import(name="priority", required=true)
     private Output<Integer> priority;
 
     /**
-     * @return The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+     * @return The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
      * 
      */
     public Output<Integer> priority() {
@@ -152,7 +152,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+         * @param priority The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+         * @param priority The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
          * 
          * @return builder
          * 

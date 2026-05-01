@@ -378,6 +378,104 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Connection Connector Configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nameSuffix = "my-connection";
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = $"alloydb-network-{nameSuffix}",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Alloydb.Cluster("default", new()
+    ///     {
+    ///         ClusterId = $"alloydb-cluster-{nameSuffix}",
+    ///         Location = "us-central1",
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///         },
+    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
+    ///         {
+    ///             Password = "alloydb-cluster-password",
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = $"alloydb-ip-{nameSuffix}",
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
+    ///     {
+    ///         Network = defaultNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstance = new Gcp.Alloydb.Instance("default", new()
+    ///     {
+    ///         Cluster = @default.Name,
+    ///         InstanceId = $"alloydb-instance-{nameSuffix}",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "us-central1",
+    ///         FriendlyName = "alloydb connection",
+    ///         Description = "AlloyDB connection using connector configuration",
+    ///         Configuration = new Gcp.BigQuery.Inputs.ConnectionConfigurationArgs
+    ///         {
+    ///             ConnectorId = "google-alloydb",
+    ///             Asset = new Gcp.BigQuery.Inputs.ConnectionConfigurationAssetArgs
+    ///             {
+    ///                 Database = "postgres",
+    ///                 GoogleCloudResource = defaultInstance.Id.Apply(id =&gt; $"//alloydb.googleapis.com/{id}"),
+    ///             },
+    ///             Authentication = new Gcp.BigQuery.Inputs.ConnectionConfigurationAuthenticationArgs
+    ///             {
+    ///                 UsernamePassword = new Gcp.BigQuery.Inputs.ConnectionConfigurationAuthenticationUsernamePasswordArgs
+    ///                 {
+    ///                     Username = "user",
+    ///                     Password = new Gcp.BigQuery.Inputs.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs
+    ///                     {
+    ///                         Plaintext = "password",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -432,6 +530,15 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("cloudSql")]
         public Output<Outputs.ConnectionCloudSql?> CloudSql { get; private set; } = null!;
+
+        /// <summary>
+        /// Connector configuration. This is a generic configuration that is used to connect to
+        /// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+        /// Connector framework.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("configuration")]
+        public Output<Outputs.ConnectionConfiguration?> Configuration { get; private set; } = null!;
 
         /// <summary>
         /// Optional connection id that should be assigned to the created connection.
@@ -579,6 +686,15 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.ConnectionCloudSqlArgs>? CloudSql { get; set; }
 
         /// <summary>
+        /// Connector configuration. This is a generic configuration that is used to connect to
+        /// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+        /// Connector framework.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("configuration")]
+        public Input<Inputs.ConnectionConfigurationArgs>? Configuration { get; set; }
+
+        /// <summary>
         /// Optional connection id that should be assigned to the created connection.
         /// </summary>
         [Input("connectionId")]
@@ -671,6 +787,15 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("cloudSql")]
         public Input<Inputs.ConnectionCloudSqlGetArgs>? CloudSql { get; set; }
+
+        /// <summary>
+        /// Connector configuration. This is a generic configuration that is used to connect to
+        /// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+        /// Connector framework.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("configuration")]
+        public Input<Inputs.ConnectionConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
         /// Optional connection id that should be assigned to the created connection.

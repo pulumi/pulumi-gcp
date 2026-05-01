@@ -16,7 +16,7 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
     public static final ClusterEnterpriseConfigArgs Empty = new ClusterEnterpriseConfigArgs();
 
     /**
-     * Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+     * The effective tier of the cluster.
      * 
      * @deprecated
      * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
@@ -27,7 +27,7 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> clusterTier;
 
     /**
-     * @return Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+     * @return The effective tier of the cluster.
      * 
      * @deprecated
      * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
@@ -87,7 +87,7 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param clusterTier Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+         * @param clusterTier The effective tier of the cluster.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param clusterTier Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+         * @param clusterTier The effective tier of the cluster.
          * 
          * @return builder
          * 

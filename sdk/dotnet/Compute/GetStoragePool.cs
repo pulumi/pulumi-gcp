@@ -184,6 +184,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string LabelFingerprint;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetStoragePoolParamResult> Params;
         public readonly string PerformanceProvisioningType;
         public readonly string PoolProvisionedCapacityGb;
         public readonly string PoolProvisionedIops;
@@ -217,6 +218,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            ImmutableArray<Outputs.GetStoragePoolParamResult> @params,
+
             string performanceProvisioningType,
 
             string poolProvisionedCapacityGb,
@@ -247,6 +250,7 @@ namespace Pulumi.Gcp.Compute
             LabelFingerprint = labelFingerprint;
             Labels = labels;
             Name = name;
+            Params = @params;
             PerformanceProvisioningType = performanceProvisioningType;
             PoolProvisionedCapacityGb = poolProvisionedCapacityGb;
             PoolProvisionedIops = poolProvisionedIops;

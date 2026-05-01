@@ -225,6 +225,14 @@ Object.defineProperty(exports, "bigtableCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const billingBudgetsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "billingBudgetsCustomEndpoint", {
+    get() {
+        return __config.get("billingBudgetsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const billingCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "billingCustomEndpoint", {
     get() {
@@ -521,6 +529,14 @@ Object.defineProperty(exports, "dataFusionCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const dataLineageCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataLineageCustomEndpoint", {
+    get() {
+        return __config.get("dataLineageCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dataLossPreventionCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataLossPreventionCustomEndpoint", {
     get() {
@@ -797,6 +813,14 @@ export declare const firebaseHostingCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseHostingCustomEndpoint", {
     get() {
         return __config.get("firebaseHostingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const firebaseRemoteConfigCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseRemoteConfigCustomEndpoint", {
+    get() {
+        return __config.get("firebaseRemoteConfigCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1213,6 +1237,22 @@ export declare const pollInterval: string | undefined;
 Object.defineProperty(exports, "pollInterval", {
     get() {
         return __config.get("pollInterval");
+    },
+    enumerable: true,
+});
+
+export declare const preferGlobalEndpoints: boolean | undefined;
+Object.defineProperty(exports, "preferGlobalEndpoints", {
+    get() {
+        return __config.getObject<boolean>("preferGlobalEndpoints");
+    },
+    enumerable: true,
+});
+
+export declare const preferRegionalEndpoints: boolean | undefined;
+Object.defineProperty(exports, "preferRegionalEndpoints", {
+    get() {
+        return __config.getObject<boolean>("preferRegionalEndpoints");
     },
     enumerable: true,
 });

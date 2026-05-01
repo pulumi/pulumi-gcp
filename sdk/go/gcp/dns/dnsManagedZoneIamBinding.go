@@ -26,6 +26,8 @@ import (
 //
 // > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## dns.DnsManagedZoneIamPolicy
 //
 // ```go
@@ -44,7 +46,7 @@ import (
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
 //					{
-//						Role: "roles/viewer",
+//						Role: "roles/dns.admin",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
@@ -68,6 +70,52 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/dns.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewDnsManagedZoneIamPolicy(ctx, "policy", &dns.DnsManagedZoneIamPolicyArgs{
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
+//				PolicyData:  pulumi.String(pulumi.String(admin.PolicyData)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## dns.DnsManagedZoneIamBinding
 //
 // ```go
@@ -85,7 +133,7 @@ import (
 //			_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
 //				Project:     pulumi.Any(_default.Project),
 //				ManagedZone: pulumi.Any(_default.Name),
-//				Role:        pulumi.String("roles/viewer"),
+//				Role:        pulumi.String("roles/dns.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -99,6 +147,41 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
+//				Role:        pulumi.String("roles/dns.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &dns.DnsManagedZoneIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## dns.DnsManagedZoneIamMember
 //
 // ```go
@@ -116,8 +199,42 @@ import (
 //			_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
 //				Project:     pulumi.Any(_default.Project),
 //				ManagedZone: pulumi.Any(_default.Name),
-//				Role:        pulumi.String("roles/viewer"),
+//				Role:        pulumi.String("roles/dns.admin"),
 //				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
+//				Role:        pulumi.String("roles/dns.admin"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//				Condition: &dns.DnsManagedZoneIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -148,6 +265,8 @@ import (
 //
 // > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## dns.DnsManagedZoneIamPolicy
 //
 // ```go
@@ -166,7 +285,7 @@ import (
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
 //					{
-//						Role: "roles/viewer",
+//						Role: "roles/dns.admin",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
@@ -190,6 +309,52 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/dns.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewDnsManagedZoneIamPolicy(ctx, "policy", &dns.DnsManagedZoneIamPolicyArgs{
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
+//				PolicyData:  pulumi.String(pulumi.String(admin.PolicyData)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## dns.DnsManagedZoneIamBinding
 //
 // ```go
@@ -207,7 +372,7 @@ import (
 //			_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
 //				Project:     pulumi.Any(_default.Project),
 //				ManagedZone: pulumi.Any(_default.Name),
-//				Role:        pulumi.String("roles/viewer"),
+//				Role:        pulumi.String("roles/dns.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -221,6 +386,41 @@ import (
 //
 // ```
 //
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDnsManagedZoneIamBinding(ctx, "binding", &dns.DnsManagedZoneIamBindingArgs{
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
+//				Role:        pulumi.String("roles/dns.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &dns.DnsManagedZoneIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## dns.DnsManagedZoneIamMember
 //
 // ```go
@@ -238,8 +438,42 @@ import (
 //			_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
 //				Project:     pulumi.Any(_default.Project),
 //				ManagedZone: pulumi.Any(_default.Name),
-//				Role:        pulumi.String("roles/viewer"),
+//				Role:        pulumi.String("roles/dns.admin"),
 //				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewDnsManagedZoneIamMember(ctx, "member", &dns.DnsManagedZoneIamMemberArgs{
+//				Project:     pulumi.Any(_default.Project),
+//				ManagedZone: pulumi.Any(_default.Name),
+//				Role:        pulumi.String("roles/dns.admin"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//				Condition: &dns.DnsManagedZoneIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -264,12 +498,12 @@ import (
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 // ```sh
-// $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane@example.com"
+// $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 // ```sh
-// $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer"
+// $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
@@ -283,6 +517,8 @@ import (
 type DnsManagedZoneIamBinding struct {
 	pulumi.CustomResourceState
 
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition DnsManagedZoneIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -349,6 +585,8 @@ func GetDnsManagedZoneIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DnsManagedZoneIamBinding resources.
 type dnsManagedZoneIamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *DnsManagedZoneIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -377,6 +615,8 @@ type dnsManagedZoneIamBindingState struct {
 }
 
 type DnsManagedZoneIamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition DnsManagedZoneIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -409,6 +649,8 @@ func (DnsManagedZoneIamBindingState) ElementType() reflect.Type {
 }
 
 type dnsManagedZoneIamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *DnsManagedZoneIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
 	ManagedZone string `pulumi:"managedZone"`
@@ -436,6 +678,8 @@ type dnsManagedZoneIamBindingArgs struct {
 
 // The set of arguments for constructing a DnsManagedZoneIamBinding resource.
 type DnsManagedZoneIamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition DnsManagedZoneIamBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	ManagedZone pulumi.StringInput
@@ -548,6 +792,8 @@ func (o DnsManagedZoneIamBindingOutput) ToDnsManagedZoneIamBindingOutputWithCont
 	return o
 }
 
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (o DnsManagedZoneIamBindingOutput) Condition() DnsManagedZoneIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *DnsManagedZoneIamBinding) DnsManagedZoneIamBindingConditionPtrOutput { return v.Condition }).(DnsManagedZoneIamBindingConditionPtrOutput)
 }

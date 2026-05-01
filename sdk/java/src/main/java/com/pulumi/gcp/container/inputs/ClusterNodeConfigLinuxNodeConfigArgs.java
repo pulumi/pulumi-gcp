@@ -5,8 +5,10 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigSwapConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,6 +19,21 @@ import javax.annotation.Nullable;
 public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodeConfigLinuxNodeConfigArgs Empty = new ClusterNodeConfigLinuxNodeConfigArgs();
+
+    /**
+     * Accurate time configuration for the node. Structure is documented below.
+     * 
+     */
+    @Import(name="accurateTimeConfig")
+    private @Nullable Output<ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs> accurateTimeConfig;
+
+    /**
+     * @return Accurate time configuration for the node. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs>> accurateTimeConfig() {
+        return Optional.ofNullable(this.accurateTimeConfig);
+    }
 
     /**
      * Possible cgroup modes that can be used.
@@ -69,6 +86,21 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>> nodeKernelModuleLoading() {
         return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
+
+    /**
+     * Swap configuration for the node. Structure is documented below.
+     * 
+     */
+    @Import(name="swapConfig")
+    private @Nullable Output<ClusterNodeConfigLinuxNodeConfigSwapConfigArgs> swapConfig;
+
+    /**
+     * @return Swap configuration for the node. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigLinuxNodeConfigSwapConfigArgs>> swapConfig() {
+        return Optional.ofNullable(this.swapConfig);
     }
 
     /**
@@ -125,9 +157,11 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
     private ClusterNodeConfigLinuxNodeConfigArgs() {}
 
     private ClusterNodeConfigLinuxNodeConfigArgs(ClusterNodeConfigLinuxNodeConfigArgs $) {
+        this.accurateTimeConfig = $.accurateTimeConfig;
         this.cgroupMode = $.cgroupMode;
         this.hugepagesConfig = $.hugepagesConfig;
         this.nodeKernelModuleLoading = $.nodeKernelModuleLoading;
+        this.swapConfig = $.swapConfig;
         this.sysctls = $.sysctls;
         this.transparentHugepageDefrag = $.transparentHugepageDefrag;
         this.transparentHugepageEnabled = $.transparentHugepageEnabled;
@@ -149,6 +183,27 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
 
         public Builder(ClusterNodeConfigLinuxNodeConfigArgs defaults) {
             $ = new ClusterNodeConfigLinuxNodeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accurateTimeConfig Accurate time configuration for the node. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accurateTimeConfig(@Nullable Output<ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs> accurateTimeConfig) {
+            $.accurateTimeConfig = accurateTimeConfig;
+            return this;
+        }
+
+        /**
+         * @param accurateTimeConfig Accurate time configuration for the node. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accurateTimeConfig(ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs accurateTimeConfig) {
+            return accurateTimeConfig(Output.of(accurateTimeConfig));
         }
 
         /**
@@ -220,6 +275,27 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
          */
         public Builder nodeKernelModuleLoading(ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs nodeKernelModuleLoading) {
             return nodeKernelModuleLoading(Output.of(nodeKernelModuleLoading));
+        }
+
+        /**
+         * @param swapConfig Swap configuration for the node. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder swapConfig(@Nullable Output<ClusterNodeConfigLinuxNodeConfigSwapConfigArgs> swapConfig) {
+            $.swapConfig = swapConfig;
+            return this;
+        }
+
+        /**
+         * @param swapConfig Swap configuration for the node. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder swapConfig(ClusterNodeConfigLinuxNodeConfigSwapConfigArgs swapConfig) {
+            return swapConfig(Output.of(swapConfig));
         }
 
         /**

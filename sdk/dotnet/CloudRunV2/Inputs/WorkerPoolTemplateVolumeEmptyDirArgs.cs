@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// <summary>
         /// The different types of medium supported for EmptyDir.
         /// Default value is `MEMORY`.
-        /// Possible values are: `MEMORY`.
+        /// Possible values are: `MEMORY`, `DISK`.
         /// </summary>
         [Input("medium")]
         public Input<string>? Medium { get; set; }

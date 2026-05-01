@@ -974,14 +974,18 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
+     * The current version of the master in the cluster. This may
+     * be different than the `minMasterVersion` set in the config if the master
+     * has been updated by GKE.
      * 
      */
     @Import(name="masterVersion")
     private @Nullable Output<String> masterVersion;
 
     /**
-     * @return The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
+     * @return The current version of the master in the cluster. This may
+     * be different than the `minMasterVersion` set in the config if the master
+     * has been updated by GKE.
      * 
      */
     public Optional<Output<String>> masterVersion() {
@@ -1627,14 +1631,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server-defined URL for the resource.
+     * The server-defined URL for the resource.
      * 
      */
     @Import(name="selfLink")
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return Server-defined URL for the resource.
+     * @return The server-defined URL for the resource.
      * 
      */
     public Optional<Output<String>> selfLink() {
@@ -1657,14 +1661,20 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
      * 
      */
     @Import(name="servicesIpv4Cidr")
     private @Nullable Output<String> servicesIpv4Cidr;
 
     /**
-     * @return The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+     * @return The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
      * 
      */
     public Optional<Output<String>> servicesIpv4Cidr() {
@@ -1704,14 +1714,18 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+     * The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
      * 
      */
     @Import(name="tpuIpv4CidrBlock")
     private @Nullable Output<String> tpuIpv4CidrBlock;
 
     /**
-     * @return The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+     * @return The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
      * 
      */
     public Optional<Output<String>> tpuIpv4CidrBlock() {
@@ -3128,7 +3142,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterVersion The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
+         * @param masterVersion The current version of the master in the cluster. This may
+         * be different than the `minMasterVersion` set in the config if the master
+         * has been updated by GKE.
          * 
          * @return builder
          * 
@@ -3139,7 +3155,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterVersion The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
+         * @param masterVersion The current version of the master in the cluster. This may
+         * be different than the `minMasterVersion` set in the config if the master
+         * has been updated by GKE.
          * 
          * @return builder
          * 
@@ -4010,7 +4028,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfLink Server-defined URL for the resource.
+         * @param selfLink The server-defined URL for the resource.
          * 
          * @return builder
          * 
@@ -4021,7 +4039,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfLink Server-defined URL for the resource.
+         * @param selfLink The server-defined URL for the resource.
          * 
          * @return builder
          * 
@@ -4052,7 +4070,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servicesIpv4Cidr The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+         * @param servicesIpv4Cidr The IP address range of the Kubernetes services in this
+         * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+         * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+         * `/16` from the container CIDR.
          * 
          * @return builder
          * 
@@ -4063,7 +4084,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servicesIpv4Cidr The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+         * @param servicesIpv4Cidr The IP address range of the Kubernetes services in this
+         * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+         * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+         * `/16` from the container CIDR.
          * 
          * @return builder
          * 
@@ -4117,7 +4141,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tpuIpv4CidrBlock The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+         * @param tpuIpv4CidrBlock The IP address range of the Cloud TPUs in this cluster, in
+         * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+         * notation (e.g. `1.2.3.4/29`).
          * 
          * @return builder
          * 
@@ -4128,7 +4154,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tpuIpv4CidrBlock The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+         * @param tpuIpv4CidrBlock The IP address range of the Cloud TPUs in this cluster, in
+         * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+         * notation (e.g. `1.2.3.4/29`).
          * 
          * @return builder
          * 

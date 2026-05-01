@@ -18,6 +18,8 @@ public final class GetAddressGroupsPlainArgs extends com.pulumi.resources.Invoke
     /**
      * The location of the Address Group.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private String location;
@@ -25,20 +27,41 @@ public final class GetAddressGroupsPlainArgs extends com.pulumi.resources.Invoke
     /**
      * @return The location of the Address Group.
      * 
+     * ***
+     * 
      */
     public String location() {
         return this.location;
     }
 
     /**
-     * The ID of the project.
+     * The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+     * 
+     * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable String parent;
+
+    /**
+     * @return The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+     * 
+     * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
+     * The ID of the project. Conflicts with `parent`.
      * 
      */
     @Import(name="project")
     private @Nullable String project;
 
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Conflicts with `parent`.
      * 
      */
     public Optional<String> project() {
@@ -49,6 +72,7 @@ public final class GetAddressGroupsPlainArgs extends com.pulumi.resources.Invoke
 
     private GetAddressGroupsPlainArgs(GetAddressGroupsPlainArgs $) {
         this.location = $.location;
+        this.parent = $.parent;
         this.project = $.project;
     }
 
@@ -73,6 +97,8 @@ public final class GetAddressGroupsPlainArgs extends com.pulumi.resources.Invoke
         /**
          * @param location The location of the Address Group.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -82,7 +108,20 @@ public final class GetAddressGroupsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param project The ID of the project.
+         * @param parent The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+         * 
+         * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable String parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param project The ID of the project. Conflicts with `parent`.
          * 
          * @return builder
          * 

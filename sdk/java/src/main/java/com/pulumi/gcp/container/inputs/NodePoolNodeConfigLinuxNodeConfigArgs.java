@@ -5,8 +5,10 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,6 +19,21 @@ import javax.annotation.Nullable;
 public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeConfigLinuxNodeConfigArgs Empty = new NodePoolNodeConfigLinuxNodeConfigArgs();
+
+    /**
+     * The settings for the accurate time configuration.
+     * 
+     */
+    @Import(name="accurateTimeConfig")
+    private @Nullable Output<NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs> accurateTimeConfig;
+
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs>> accurateTimeConfig() {
+        return Optional.ofNullable(this.accurateTimeConfig);
+    }
 
     /**
      * cgroupMode specifies the cgroup mode to be used on the node.
@@ -61,6 +78,21 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
      */
     public Optional<Output<NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>> nodeKernelModuleLoading() {
         return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
+
+    /**
+     * Swap configuration for the node.
+     * 
+     */
+    @Import(name="swapConfig")
+    private @Nullable Output<NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs> swapConfig;
+
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs>> swapConfig() {
+        return Optional.ofNullable(this.swapConfig);
     }
 
     /**
@@ -111,9 +143,11 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
     private NodePoolNodeConfigLinuxNodeConfigArgs() {}
 
     private NodePoolNodeConfigLinuxNodeConfigArgs(NodePoolNodeConfigLinuxNodeConfigArgs $) {
+        this.accurateTimeConfig = $.accurateTimeConfig;
         this.cgroupMode = $.cgroupMode;
         this.hugepagesConfig = $.hugepagesConfig;
         this.nodeKernelModuleLoading = $.nodeKernelModuleLoading;
+        this.swapConfig = $.swapConfig;
         this.sysctls = $.sysctls;
         this.transparentHugepageDefrag = $.transparentHugepageDefrag;
         this.transparentHugepageEnabled = $.transparentHugepageEnabled;
@@ -135,6 +169,27 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
 
         public Builder(NodePoolNodeConfigLinuxNodeConfigArgs defaults) {
             $ = new NodePoolNodeConfigLinuxNodeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accurateTimeConfig The settings for the accurate time configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accurateTimeConfig(@Nullable Output<NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs> accurateTimeConfig) {
+            $.accurateTimeConfig = accurateTimeConfig;
+            return this;
+        }
+
+        /**
+         * @param accurateTimeConfig The settings for the accurate time configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accurateTimeConfig(NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs accurateTimeConfig) {
+            return accurateTimeConfig(Output.of(accurateTimeConfig));
         }
 
         /**
@@ -198,6 +253,27 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
          */
         public Builder nodeKernelModuleLoading(NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs nodeKernelModuleLoading) {
             return nodeKernelModuleLoading(Output.of(nodeKernelModuleLoading));
+        }
+
+        /**
+         * @param swapConfig Swap configuration for the node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder swapConfig(@Nullable Output<NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs> swapConfig) {
+            $.swapConfig = swapConfig;
+            return this;
+        }
+
+        /**
+         * @param swapConfig Swap configuration for the node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder swapConfig(NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs swapConfig) {
+            return swapConfig(Output.of(swapConfig));
         }
 
         /**

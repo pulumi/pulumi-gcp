@@ -217,6 +217,7 @@ namespace Pulumi.Gcp.Compute
         /// Whether the instance has virtual displays enabled.
         /// </summary>
         public readonly bool EnableDisplay;
+        public readonly bool EraseWindowsVssSignature;
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
         /// </summary>
@@ -338,6 +339,8 @@ namespace Pulumi.Gcp.Compute
 
             bool enableDisplay,
 
+            bool eraseWindowsVssSignature,
+
             ImmutableArray<Outputs.GetInstanceGuestAcceleratorResult> guestAccelerators,
 
             string hostname,
@@ -412,6 +415,7 @@ namespace Pulumi.Gcp.Compute
             DesiredStatus = desiredStatus;
             EffectiveLabels = effectiveLabels;
             EnableDisplay = enableDisplay;
+            EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
             Id = id;

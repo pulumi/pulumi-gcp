@@ -16,7 +16,7 @@ public final class GetClusterDatabaseEncryption {
      */
     private String keyName;
     /**
-     * @return ENCRYPTED or DECRYPTED.
+     * @return ENCRYPTED, ALL_OBJECTS_ENCRYPTION_ENABLED or DECRYPTED.
      * 
      */
     private String state;
@@ -30,7 +30,7 @@ public final class GetClusterDatabaseEncryption {
         return this.keyName;
     }
     /**
-     * @return ENCRYPTED or DECRYPTED.
+     * @return ENCRYPTED, ALL_OBJECTS_ENCRYPTION_ENABLED or DECRYPTED.
      * 
      */
     public String state() {

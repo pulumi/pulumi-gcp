@@ -156,14 +156,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * List of kubernetes taints applied to each node.
+     * List of kubernetes taints applied to each node. Structure is documented above.
      * 
      */
     @Import(name="effectiveTaints")
     private @Nullable Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints;
 
     /**
-     * @return List of kubernetes taints applied to each node.
+     * @return List of kubernetes taints applied to each node. Structure is documented above.
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>>> effectiveTaints() {
@@ -1063,7 +1063,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * @param effectiveTaints List of kubernetes taints applied to each node. Structure is documented above.
          * 
          * @return builder
          * 
@@ -1074,7 +1074,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * @param effectiveTaints List of kubernetes taints applied to each node. Structure is documented above.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * @param effectiveTaints List of kubernetes taints applied to each node. Structure is documented above.
          * 
          * @return builder
          * 

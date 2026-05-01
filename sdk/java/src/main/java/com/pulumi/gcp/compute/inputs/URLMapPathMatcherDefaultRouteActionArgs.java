@@ -25,7 +25,6 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
     public static final URLMapPathMatcherDefaultRouteActionArgs Empty = new URLMapPathMatcherDefaultRouteActionArgs();
 
     /**
-     * (Optional, Beta)
      * Specifies the cache policy configuration for matched traffic. Available
      * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
      * property must be specified. This policy cannot be specified if any target
@@ -37,8 +36,7 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
     private @Nullable Output<URLMapPathMatcherDefaultRouteActionCachePolicyArgs> cachePolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Specifies the cache policy configuration for matched traffic. Available
+     * @return Specifies the cache policy configuration for matched traffic. Available
      * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
      * property must be specified. This policy cannot be specified if any target
      * backend has Identity-Aware Proxy enabled.
@@ -256,8 +254,7 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
         }
 
         /**
-         * @param cachePolicy (Optional, Beta)
-         * Specifies the cache policy configuration for matched traffic. Available
+         * @param cachePolicy Specifies the cache policy configuration for matched traffic. Available
          * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
          * property must be specified. This policy cannot be specified if any target
          * backend has Identity-Aware Proxy enabled.
@@ -272,8 +269,7 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
         }
 
         /**
-         * @param cachePolicy (Optional, Beta)
-         * Specifies the cache policy configuration for matched traffic. Available
+         * @param cachePolicy Specifies the cache policy configuration for matched traffic. Available
          * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
          * property must be specified. This policy cannot be specified if any target
          * backend has Identity-Aware Proxy enabled.

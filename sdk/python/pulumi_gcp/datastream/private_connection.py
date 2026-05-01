@@ -25,6 +25,7 @@ class PrivateConnectionArgs:
                  location: pulumi.Input[_builtins.str],
                  private_connection_id: pulumi.Input[_builtins.str],
                  create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  psc_interface_config: Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']] = None,
@@ -36,6 +37,10 @@ class PrivateConnectionArgs:
         :param pulumi.Input[_builtins.str] location: The name of the location this private connection is located in.
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
+               routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+               child routes exist. Defaults to `FORCE` for backwards compatibility.
+               Possible values: `DEFAULT`, `FORCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -53,6 +58,8 @@ class PrivateConnectionArgs:
         pulumi.set(__self__, "private_connection_id", private_connection_id)
         if create_without_validation is not None:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -109,6 +116,21 @@ class PrivateConnectionArgs:
     @create_without_validation.setter
     def create_without_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the private connection. Setting `FORCE` will also delete any child
+        routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+        child routes exist. Defaults to `FORCE` for backwards compatibility.
+        Possible values: `DEFAULT`, `FORCE`.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -170,6 +192,7 @@ class PrivateConnectionArgs:
 class _PrivateConnectionState:
     def __init__(__self__, *,
                  create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
@@ -186,6 +209,10 @@ class _PrivateConnectionState:
         Input properties used for looking up and filtering PrivateConnection resources.
 
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
+               routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+               child routes exist. Defaults to `FORCE` for backwards compatibility.
+               Possible values: `DEFAULT`, `FORCE`.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
@@ -210,6 +237,8 @@ class _PrivateConnectionState:
         """
         if create_without_validation is not None:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -246,6 +275,21 @@ class _PrivateConnectionState:
     @create_without_validation.setter
     def create_without_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the private connection. Setting `FORCE` will also delete any child
+        routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+        child routes exist. Defaults to `FORCE` for backwards compatibility.
+        Possible values: `DEFAULT`, `FORCE`.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -408,6 +452,7 @@ class PrivateConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -438,6 +483,26 @@ class PrivateConnection(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config={
+                "vpc": default_network.id,
+                "subnet": "10.0.0.0/29",
+            })
+        ```
+        ### Datastream Private Connection Force Delete
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default", name="my-network")
+        default = gcp.datastream.PrivateConnection("default",
+            display_name="Connection profile",
+            location="us-central1",
+            private_connection_id="my-connection",
+            deletion_policy="FORCE",
             labels={
                 "key": "value",
             },
@@ -498,6 +563,10 @@ class PrivateConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
+               routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+               child routes exist. Defaults to `FORCE` for backwards compatibility.
+               Possible values: `DEFAULT`, `FORCE`.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -541,6 +610,26 @@ class PrivateConnection(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config={
+                "vpc": default_network.id,
+                "subnet": "10.0.0.0/29",
+            })
+        ```
+        ### Datastream Private Connection Force Delete
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default", name="my-network")
+        default = gcp.datastream.PrivateConnection("default",
+            display_name="Connection profile",
+            location="us-central1",
+            private_connection_id="my-connection",
+            deletion_policy="FORCE",
             labels={
                 "key": "value",
             },
@@ -614,6 +703,7 @@ class PrivateConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,6 +721,7 @@ class PrivateConnection(pulumi.CustomResource):
             __props__ = PrivateConnectionArgs.__new__(PrivateConnectionArgs)
 
             __props__.__dict__["create_without_validation"] = create_without_validation
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -662,6 +753,7 @@ class PrivateConnection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]]] = None,
@@ -682,6 +774,10 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
+               routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+               child routes exist. Defaults to `FORCE` for backwards compatibility.
+               Possible values: `DEFAULT`, `FORCE`.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]] errors: The PrivateConnection error in case of failure.
@@ -709,6 +805,7 @@ class PrivateConnection(pulumi.CustomResource):
         __props__ = _PrivateConnectionState.__new__(_PrivateConnectionState)
 
         __props__.__dict__["create_without_validation"] = create_without_validation
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["errors"] = errors
@@ -730,6 +827,17 @@ class PrivateConnection(pulumi.CustomResource):
         If set to true, will skip validations.
         """
         return pulumi.get(self, "create_without_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The deletion policy for the private connection. Setting `FORCE` will also delete any child
+        routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+        child routes exist. Defaults to `FORCE` for backwards compatibility.
+        Possible values: `DEFAULT`, `FORCE`.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

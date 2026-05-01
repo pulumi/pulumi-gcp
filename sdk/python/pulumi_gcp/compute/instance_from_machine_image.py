@@ -30,6 +30,7 @@ class InstanceFromMachineImageArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_encryption_key: Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']] = None,
@@ -68,6 +69,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
@@ -120,6 +122,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "desired_status", desired_status)
         if enable_display is not None:
             pulumi.set(__self__, "enable_display", enable_display)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
@@ -277,6 +281,18 @@ class InstanceFromMachineImageArgs:
     @enable_display.setter
     def enable_display(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enable_display", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
@@ -583,6 +599,7 @@ class _InstanceFromMachineImageState:
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_encryption_key: Optional[pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs']] = None,
@@ -633,6 +650,7 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
@@ -707,6 +725,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_display is not None:
             pulumi.set(__self__, "enable_display", enable_display)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
@@ -939,6 +959,18 @@ class _InstanceFromMachineImageState:
     @enable_display.setter
     def enable_display(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enable_display", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
@@ -1341,6 +1373,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']]] = None,
@@ -1406,6 +1439,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
@@ -1504,6 +1538,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']]] = None,
@@ -1545,6 +1580,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["desired_status"] = desired_status
             __props__.__dict__["enable_display"] = enable_display
+            __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["instance_encryption_key"] = instance_encryption_key
@@ -1610,6 +1646,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             desired_status: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
+            erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[_builtins.str]] = None,
             instance_encryption_key: Optional[pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']]] = None,
@@ -1664,6 +1701,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
@@ -1728,6 +1766,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["desired_status"] = desired_status
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_display"] = enable_display
+        __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["instance_encryption_key"] = instance_encryption_key
@@ -1874,6 +1913,14 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         Whether the instance has virtual displays enabled.
         """
         return pulumi.get(self, "enable_display")
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")

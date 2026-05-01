@@ -15,6 +15,7 @@ import com.pulumi.gcp.bigquery.outputs.ConnectionAzure;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudResource;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSpanner;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSql;
+import com.pulumi.gcp.bigquery.outputs.ConnectionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.ConnectionSpark;
 import java.lang.Boolean;
 import java.lang.String;
@@ -534,6 +535,114 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Bigquery Connection Connector Configuration
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAssetArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationUsernamePasswordArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var nameSuffix = "my-connection";
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name(String.format("alloydb-network-%s", nameSuffix))
+ *             .build());
+ * 
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
+ *             .clusterId(String.format("alloydb-cluster-%s", nameSuffix))
+ *             .location("us-central1")
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(defaultNetwork.id())
+ *                 .build())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password("alloydb-cluster-password")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+ *             .name(String.format("alloydb-ip-%s", nameSuffix))
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
+ *             .prefixLength(16)
+ *             .network(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new com.pulumi.gcp.servicenetworking.Connection("vpcConnection", com.pulumi.gcp.servicenetworking.ConnectionArgs.builder()
+ *             .network(defaultNetwork.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .cluster(default_.name())
+ *             .instanceId(String.format("alloydb-instance-%s", nameSuffix))
+ *             .instanceType("PRIMARY")
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var connection = new com.pulumi.gcp.bigquery.Connection("connection", com.pulumi.gcp.bigquery.ConnectionArgs.builder()
+ *             .connectionId("my-connection")
+ *             .location("us-central1")
+ *             .friendlyName("alloydb connection")
+ *             .description("AlloyDB connection using connector configuration")
+ *             .configuration(ConnectionConfigurationArgs.builder()
+ *                 .connectorId("google-alloydb")
+ *                 .asset(ConnectionConfigurationAssetArgs.builder()
+ *                     .database("postgres")
+ *                     .googleCloudResource(defaultInstance.id().applyValue(_id -> String.format("//alloydb.googleapis.com/%s", _id)))
+ *                     .build())
+ *                 .authentication(ConnectionConfigurationAuthenticationArgs.builder()
+ *                     .usernamePassword(ConnectionConfigurationAuthenticationUsernamePasswordArgs.builder()
+ *                         .username("user")
+ *                         .password(ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs.builder()
+ *                             .plaintext("password")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -633,6 +742,26 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConnectionCloudSql>> cloudSql() {
         return Codegen.optional(this.cloudSql);
+    }
+    /**
+     * Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="configuration", refs={ConnectionConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionConfiguration> configuration;
+
+    /**
+     * @return Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionConfiguration>> configuration() {
+        return Codegen.optional(this.configuration);
     }
     /**
      * Optional connection id that should be assigned to the created connection.

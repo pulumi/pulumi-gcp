@@ -43,6 +43,7 @@ type Provider struct {
 	BigqueryDatapolicyv2CustomEndpoint     pulumi.StringPtrOutput `pulumi:"bigqueryDatapolicyv2CustomEndpoint"`
 	BigqueryReservationCustomEndpoint      pulumi.StringPtrOutput `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"bigtableCustomEndpoint"`
+	BillingBudgetsCustomEndpoint           pulumi.StringPtrOutput `pulumi:"billingBudgetsCustomEndpoint"`
 	BillingCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"billingCustomEndpoint"`
 	BillingProject                         pulumi.StringPtrOutput `pulumi:"billingProject"`
 	BinaryAuthorizationCustomEndpoint      pulumi.StringPtrOutput `pulumi:"binaryAuthorizationCustomEndpoint"`
@@ -80,6 +81,7 @@ type Provider struct {
 	Credentials                            pulumi.StringPtrOutput `pulumi:"credentials"`
 	DataCatalogCustomEndpoint              pulumi.StringPtrOutput `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dataFusionCustomEndpoint"`
+	DataLineageCustomEndpoint              pulumi.StringPtrOutput `pulumi:"dataLineageCustomEndpoint"`
 	DataLossPreventionCustomEndpoint       pulumi.StringPtrOutput `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataPipelineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataPipelineCustomEndpoint"`
 	DatabaseMigrationServiceCustomEndpoint pulumi.StringPtrOutput `pulumi:"databaseMigrationServiceCustomEndpoint"`
@@ -111,6 +113,7 @@ type Provider struct {
 	FirebaseDatabaseCustomEndpoint         pulumi.StringPtrOutput `pulumi:"firebaseDatabaseCustomEndpoint"`
 	FirebaseExtensionsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"firebaseExtensionsCustomEndpoint"`
 	FirebaseHostingCustomEndpoint          pulumi.StringPtrOutput `pulumi:"firebaseHostingCustomEndpoint"`
+	FirebaseRemoteConfigCustomEndpoint     pulumi.StringPtrOutput `pulumi:"firebaseRemoteConfigCustomEndpoint"`
 	FirebaseStorageCustomEndpoint          pulumi.StringPtrOutput `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint            pulumi.StringPtrOutput `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"firestoreCustomEndpoint"`
@@ -283,6 +286,7 @@ type providerArgs struct {
 	BigqueryDatapolicyv2CustomEndpoint     *string                      `pulumi:"bigqueryDatapolicyv2CustomEndpoint"`
 	BigqueryReservationCustomEndpoint      *string                      `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint                 *string                      `pulumi:"bigtableCustomEndpoint"`
+	BillingBudgetsCustomEndpoint           *string                      `pulumi:"billingBudgetsCustomEndpoint"`
 	BillingCustomEndpoint                  *string                      `pulumi:"billingCustomEndpoint"`
 	BillingProject                         *string                      `pulumi:"billingProject"`
 	BinaryAuthorizationCustomEndpoint      *string                      `pulumi:"binaryAuthorizationCustomEndpoint"`
@@ -320,6 +324,7 @@ type providerArgs struct {
 	Credentials                            *string                      `pulumi:"credentials"`
 	DataCatalogCustomEndpoint              *string                      `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint               *string                      `pulumi:"dataFusionCustomEndpoint"`
+	DataLineageCustomEndpoint              *string                      `pulumi:"dataLineageCustomEndpoint"`
 	DataLossPreventionCustomEndpoint       *string                      `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataPipelineCustomEndpoint             *string                      `pulumi:"dataPipelineCustomEndpoint"`
 	DatabaseMigrationServiceCustomEndpoint *string                      `pulumi:"databaseMigrationServiceCustomEndpoint"`
@@ -354,6 +359,7 @@ type providerArgs struct {
 	FirebaseDatabaseCustomEndpoint         *string                      `pulumi:"firebaseDatabaseCustomEndpoint"`
 	FirebaseExtensionsCustomEndpoint       *string                      `pulumi:"firebaseExtensionsCustomEndpoint"`
 	FirebaseHostingCustomEndpoint          *string                      `pulumi:"firebaseHostingCustomEndpoint"`
+	FirebaseRemoteConfigCustomEndpoint     *string                      `pulumi:"firebaseRemoteConfigCustomEndpoint"`
 	FirebaseStorageCustomEndpoint          *string                      `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint            *string                      `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint                *string                      `pulumi:"firestoreCustomEndpoint"`
@@ -406,6 +412,8 @@ type providerArgs struct {
 	ParameterManagerCustomEndpoint         *string                      `pulumi:"parameterManagerCustomEndpoint"`
 	ParameterManagerRegionalCustomEndpoint *string                      `pulumi:"parameterManagerRegionalCustomEndpoint"`
 	PollInterval                           *string                      `pulumi:"pollInterval"`
+	PreferGlobalEndpoints                  *bool                        `pulumi:"preferGlobalEndpoints"`
+	PreferRegionalEndpoints                *bool                        `pulumi:"preferRegionalEndpoints"`
 	PrivatecaCustomEndpoint                *string                      `pulumi:"privatecaCustomEndpoint"`
 	PrivilegedAccessManagerCustomEndpoint  *string                      `pulumi:"privilegedAccessManagerCustomEndpoint"`
 	Project                                *string                      `pulumi:"project"`
@@ -492,6 +500,7 @@ type ProviderArgs struct {
 	BigqueryDatapolicyv2CustomEndpoint     pulumi.StringPtrInput
 	BigqueryReservationCustomEndpoint      pulumi.StringPtrInput
 	BigtableCustomEndpoint                 pulumi.StringPtrInput
+	BillingBudgetsCustomEndpoint           pulumi.StringPtrInput
 	BillingCustomEndpoint                  pulumi.StringPtrInput
 	BillingProject                         pulumi.StringPtrInput
 	BinaryAuthorizationCustomEndpoint      pulumi.StringPtrInput
@@ -529,6 +538,7 @@ type ProviderArgs struct {
 	Credentials                            pulumi.StringPtrInput
 	DataCatalogCustomEndpoint              pulumi.StringPtrInput
 	DataFusionCustomEndpoint               pulumi.StringPtrInput
+	DataLineageCustomEndpoint              pulumi.StringPtrInput
 	DataLossPreventionCustomEndpoint       pulumi.StringPtrInput
 	DataPipelineCustomEndpoint             pulumi.StringPtrInput
 	DatabaseMigrationServiceCustomEndpoint pulumi.StringPtrInput
@@ -563,6 +573,7 @@ type ProviderArgs struct {
 	FirebaseDatabaseCustomEndpoint         pulumi.StringPtrInput
 	FirebaseExtensionsCustomEndpoint       pulumi.StringPtrInput
 	FirebaseHostingCustomEndpoint          pulumi.StringPtrInput
+	FirebaseRemoteConfigCustomEndpoint     pulumi.StringPtrInput
 	FirebaseStorageCustomEndpoint          pulumi.StringPtrInput
 	FirebaserulesCustomEndpoint            pulumi.StringPtrInput
 	FirestoreCustomEndpoint                pulumi.StringPtrInput
@@ -615,6 +626,8 @@ type ProviderArgs struct {
 	ParameterManagerCustomEndpoint         pulumi.StringPtrInput
 	ParameterManagerRegionalCustomEndpoint pulumi.StringPtrInput
 	PollInterval                           pulumi.StringPtrInput
+	PreferGlobalEndpoints                  pulumi.BoolPtrInput
+	PreferRegionalEndpoints                pulumi.BoolPtrInput
 	PrivatecaCustomEndpoint                pulumi.StringPtrInput
 	PrivilegedAccessManagerCustomEndpoint  pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
@@ -832,6 +845,10 @@ func (o ProviderOutput) BigtableCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BigtableCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) BillingBudgetsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BillingBudgetsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) BillingCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BillingCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -980,6 +997,10 @@ func (o ProviderOutput) DataFusionCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataFusionCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DataLineageCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataLineageCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) DataLossPreventionCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataLossPreventionCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1102,6 +1123,10 @@ func (o ProviderOutput) FirebaseExtensionsCustomEndpoint() pulumi.StringPtrOutpu
 
 func (o ProviderOutput) FirebaseHostingCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseHostingCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) FirebaseRemoteConfigCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseRemoteConfigCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) FirebaseStorageCustomEndpoint() pulumi.StringPtrOutput {

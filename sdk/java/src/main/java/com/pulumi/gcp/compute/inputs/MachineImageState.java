@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.MachineImageMachineImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.MachineImageParamsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -89,6 +90,23 @@ public final class MachineImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<MachineImageParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MachineImageParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -157,6 +175,7 @@ public final class MachineImageState extends com.pulumi.resources.ResourceArgs {
         this.guestFlush = $.guestFlush;
         this.machineImageEncryptionKey = $.machineImageEncryptionKey;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
         this.selfLink = $.selfLink;
         this.sourceInstance = $.sourceInstance;
@@ -273,6 +292,29 @@ public final class MachineImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<MachineImageParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(MachineImageParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

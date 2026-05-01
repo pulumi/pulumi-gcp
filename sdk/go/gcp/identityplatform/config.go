@@ -161,7 +161,7 @@ type Config struct {
 	Monitoring ConfigMonitoringOutput `pulumi:"monitoring"`
 	// Configuration related to multi-tenant functionality.
 	// Structure is documented below.
-	MultiTenant ConfigMultiTenantPtrOutput `pulumi:"multiTenant"`
+	MultiTenant ConfigMultiTenantOutput `pulumi:"multiTenant"`
 	// The name of the Config resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -475,8 +475,8 @@ func (o ConfigOutput) Monitoring() ConfigMonitoringOutput {
 
 // Configuration related to multi-tenant functionality.
 // Structure is documented below.
-func (o ConfigOutput) MultiTenant() ConfigMultiTenantPtrOutput {
-	return o.ApplyT(func(v *Config) ConfigMultiTenantPtrOutput { return v.MultiTenant }).(ConfigMultiTenantPtrOutput)
+func (o ConfigOutput) MultiTenant() ConfigMultiTenantOutput {
+	return o.ApplyT(func(v *Config) ConfigMultiTenantOutput { return v.MultiTenant }).(ConfigMultiTenantOutput)
 }
 
 // The name of the Config resource

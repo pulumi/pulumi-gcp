@@ -49,11 +49,27 @@ public final class DataConnectorDestinationConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Additional parameters for this destination config in structured json format.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<String> params;
+
+    /**
+     * @return Additional parameters for this destination config in structured json format.
+     * 
+     */
+    public Optional<Output<String>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
     private DataConnectorDestinationConfigArgs() {}
 
     private DataConnectorDestinationConfigArgs(DataConnectorDestinationConfigArgs $) {
         this.destinations = $.destinations;
         this.key = $.key;
+        this.params = $.params;
     }
 
     public static Builder builder() {
@@ -127,6 +143,27 @@ public final class DataConnectorDestinationConfigArgs extends com.pulumi.resourc
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param params Additional parameters for this destination config in structured json format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<String> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional parameters for this destination config in structured json format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(String params) {
+            return params(Output.of(params));
         }
 
         public DataConnectorDestinationConfigArgs build() {

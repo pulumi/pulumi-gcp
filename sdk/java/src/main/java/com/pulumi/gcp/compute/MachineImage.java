@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.MachineImageArgs;
 import com.pulumi.gcp.compute.inputs.MachineImageState;
 import com.pulumi.gcp.compute.outputs.MachineImageMachineImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.MachineImageParams;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -153,6 +154,84 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Machine Image Resource Manager Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.MachineImage;
+ * import com.pulumi.gcp.compute.MachineImageArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageParamsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var tagKey1 = new TagKey("tagKey1", TagKeyArgs.builder()
+ *             .parent(String.format("projects/%s", project.number()))
+ *             .shortName("tagkey")
+ *             .build());
+ * 
+ *         var tagValue1 = new TagValue("tagValue1", TagValueArgs.builder()
+ *             .parent(tagKey1.id())
+ *             .shortName("tagvalue")
+ *             .build());
+ * 
+ *         var vm = new Instance("vm", InstanceArgs.builder()
+ *             .name("my-vm")
+ *             .machineType("e2-medium")
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image("debian-cloud/debian-11")
+ *                     .build())
+ *                 .build())
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .network("default")
+ *                 .build())
+ *             .build());
+ * 
+ *         var image = new MachineImage("image", MachineImageArgs.builder()
+ *             .name("my-image")
+ *             .sourceInstance(vm.selfLink())
+ *             .params(MachineImageParamsArgs.builder()
+ *                 .resourceManagerTags(Output.tuple(tagKey1.id(), tagValue1.id()).applyValue(values -> {
+ *                     var tagKey1Id = values.t1;
+ *                     var tagValue1Id = values.t2;
+ *                     return Map.of(tagKey1Id, tagValue1Id);
+ *                 }))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -238,6 +317,22 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={MachineImageParams.class}, tree="[0]")
+    private Output</* @Nullable */ MachineImageParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<MachineImageParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

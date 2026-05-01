@@ -243,6 +243,48 @@ import (
 //
 // ```
 //
+// ### With Advanced Options Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name: pulumi.String("my-policy"),
+//				AdvancedOptionsConfig: &compute.SecurityPolicyAdvancedOptionsConfigArgs{
+//					JsonParsing: pulumi.String("STANDARD"),
+//					JsonCustomConfig: &compute.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{
+//						ContentTypes: pulumi.StringArray{
+//							pulumi.String("application/json"),
+//							pulumi.String("application/vnd.api+json"),
+//							pulumi.String("application/vnd.collection+json"),
+//							pulumi.String("application/vnd.hyper+json"),
+//						},
+//					},
+//					LogLevel: pulumi.String("VERBOSE"),
+//					UserIpRequestHeaders: pulumi.StringArray{
+//						pulumi.String("True-Client-IP"),
+//						pulumi.String("x-custom-ip"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Security policies can be imported using any of these accepted formats:

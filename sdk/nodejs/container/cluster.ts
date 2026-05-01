@@ -101,6 +101,32 @@ import * as utilities from "../utilities";
  *     enableAutopilot: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
+ * provider value will be used. Examples:
+ *
+ * * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+ * * `{{project_id}}/{{location}}/{{cluster_id}}`
+ * * `{{location}}/{{cluster_id}}`
+ *
+ * When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
+ *
+ * ```sh
+ * $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
+ *
+ * $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+ *
+ * $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
+ * ```
+ *
+ * > **Note:** This resource has several fields that control Terraform-specific behavior and aren't present in the API. If they are set in config and you import a cluster, Terraform may need to perform an update immediately after import. Most of these updates should be no-ops but some may modify your cluster if the imported state differs.
+ *
+ * For example, the following fields will show diffs if set in config:
+ *
+ * - `minMasterVersion`
+ * - `removeDefaultNodePool`
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -402,7 +428,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly masterAuthorizedNetworksConfig: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
-     * The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
+     * The current version of the master in the cluster. This may
+     * be different than the `minMasterVersion` set in the config if the master
+     * has been updated by GKE.
      */
     declare public /*out*/ readonly masterVersion: pulumi.Output<string>;
     /**
@@ -614,7 +642,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly securityPostureConfig: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
     /**
-     * Server-defined URL for the resource.
+     * The server-defined URL for the resource.
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
@@ -622,7 +650,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly serviceExternalIpsConfig: pulumi.Output<outputs.container.ClusterServiceExternalIpsConfig>;
     /**
-     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
      */
     declare public /*out*/ readonly servicesIpv4Cidr: pulumi.Output<string>;
     /**
@@ -635,7 +666,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly tpuConfig: pulumi.Output<outputs.container.ClusterTpuConfig>;
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+     * The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
      */
     declare public /*out*/ readonly tpuIpv4CidrBlock: pulumi.Output<string>;
     /**
@@ -1146,7 +1179,9 @@ export interface ClusterState {
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
-     * The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
+     * The current version of the master in the cluster. This may
+     * be different than the `minMasterVersion` set in the config if the master
+     * has been updated by GKE.
      */
     masterVersion?: pulumi.Input<string>;
     /**
@@ -1358,7 +1393,7 @@ export interface ClusterState {
      */
     securityPostureConfig?: pulumi.Input<inputs.container.ClusterSecurityPostureConfig>;
     /**
-     * Server-defined URL for the resource.
+     * The server-defined URL for the resource.
      */
     selfLink?: pulumi.Input<string>;
     /**
@@ -1366,7 +1401,10 @@ export interface ClusterState {
      */
     serviceExternalIpsConfig?: pulumi.Input<inputs.container.ClusterServiceExternalIpsConfig>;
     /**
-     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+     * The IP address range of the Kubernetes services in this
+     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+     * `/16` from the container CIDR.
      */
     servicesIpv4Cidr?: pulumi.Input<string>;
     /**
@@ -1379,7 +1417,9 @@ export interface ClusterState {
      */
     tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig>;
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+     * The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
      */
     tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**

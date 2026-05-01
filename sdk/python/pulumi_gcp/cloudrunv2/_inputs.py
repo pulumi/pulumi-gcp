@@ -2173,7 +2173,7 @@ class JobTemplateTemplateVolumeEmptyDirArgsDict(TypedDict):
     """
     The different types of medium supported for EmptyDir.
     Default value is `MEMORY`.
-    Possible values are: `MEMORY`.
+    Possible values are: `MEMORY`, `DISK`.
     """
     size_limit: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -2188,7 +2188,7 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
         """
         :param pulumi.Input[_builtins.str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
-               Possible values are: `MEMORY`.
+               Possible values are: `MEMORY`, `DISK`.
         :param pulumi.Input[_builtins.str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         if medium is not None:
@@ -2202,7 +2202,7 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
         """
         The different types of medium supported for EmptyDir.
         Default value is `MEMORY`.
-        Possible values are: `MEMORY`.
+        Possible values are: `MEMORY`, `DISK`.
         """
         return pulumi.get(self, "medium")
 
@@ -9270,7 +9270,7 @@ class WorkerPoolTemplateVolumeEmptyDirArgsDict(TypedDict):
     """
     The different types of medium supported for EmptyDir.
     Default value is `MEMORY`.
-    Possible values are: `MEMORY`.
+    Possible values are: `MEMORY`, `DISK`.
     """
     size_limit: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -9285,7 +9285,7 @@ class WorkerPoolTemplateVolumeEmptyDirArgs:
         """
         :param pulumi.Input[_builtins.str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
-               Possible values are: `MEMORY`.
+               Possible values are: `MEMORY`, `DISK`.
         :param pulumi.Input[_builtins.str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         if medium is not None:
@@ -9299,7 +9299,7 @@ class WorkerPoolTemplateVolumeEmptyDirArgs:
         """
         The different types of medium supported for EmptyDir.
         Default value is `MEMORY`.
-        Possible values are: `MEMORY`.
+        Possible values are: `MEMORY`, `DISK`.
         """
         return pulumi.get(self, "medium")
 

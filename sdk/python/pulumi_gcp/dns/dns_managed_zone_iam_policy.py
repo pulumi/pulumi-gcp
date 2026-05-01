@@ -177,6 +177,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## dns.DnsManagedZoneIamPolicy
 
         ```python
@@ -184,7 +186,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/viewer",
+            "role": "roles/dns.admin",
             "members": ["user:jane@example.com"],
         }])
         policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
@@ -193,6 +195,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/dns.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
+            project=default["project"],
+            managed_zone=default["name"],
+            policy_data=admin.policy_data)
+        ```
         ## dns.DnsManagedZoneIamBinding
 
         ```python
@@ -202,10 +224,27 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         binding = gcp.dns.DnsManagedZoneIamBinding("binding",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dns.DnsManagedZoneIamBinding("binding",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## dns.DnsManagedZoneIamMember
 
         ```python
@@ -215,8 +254,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         member = gcp.dns.DnsManagedZoneIamMember("member",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dns.DnsManagedZoneIamMember("member",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## This resource supports User Project Overrides.
@@ -239,6 +296,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## dns.DnsManagedZoneIamPolicy
 
         ```python
@@ -246,7 +305,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/viewer",
+            "role": "roles/dns.admin",
             "members": ["user:jane@example.com"],
         }])
         policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
@@ -255,6 +314,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/dns.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
+            project=default["project"],
+            managed_zone=default["name"],
+            policy_data=admin.policy_data)
+        ```
         ## dns.DnsManagedZoneIamBinding
 
         ```python
@@ -264,10 +343,27 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         binding = gcp.dns.DnsManagedZoneIamBinding("binding",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dns.DnsManagedZoneIamBinding("binding",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## dns.DnsManagedZoneIamMember
 
         ```python
@@ -277,8 +373,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         member = gcp.dns.DnsManagedZoneIamMember("member",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dns.DnsManagedZoneIamMember("member",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -295,12 +409,12 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
         ```sh
-        $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane@example.com"
+        $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
         ```sh
-        $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer"
+        $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.
@@ -341,6 +455,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## dns.DnsManagedZoneIamPolicy
 
         ```python
@@ -348,7 +464,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/viewer",
+            "role": "roles/dns.admin",
             "members": ["user:jane@example.com"],
         }])
         policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
@@ -357,6 +473,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/dns.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
+            project=default["project"],
+            managed_zone=default["name"],
+            policy_data=admin.policy_data)
+        ```
         ## dns.DnsManagedZoneIamBinding
 
         ```python
@@ -366,10 +502,27 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         binding = gcp.dns.DnsManagedZoneIamBinding("binding",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dns.DnsManagedZoneIamBinding("binding",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## dns.DnsManagedZoneIamMember
 
         ```python
@@ -379,8 +532,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         member = gcp.dns.DnsManagedZoneIamMember("member",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dns.DnsManagedZoneIamMember("member",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## This resource supports User Project Overrides.
@@ -403,6 +574,8 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## dns.DnsManagedZoneIamPolicy
 
         ```python
@@ -410,7 +583,7 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[{
-            "role": "roles/viewer",
+            "role": "roles/dns.admin",
             "members": ["user:jane@example.com"],
         }])
         policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
@@ -419,6 +592,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/dns.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
+        policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
+            project=default["project"],
+            managed_zone=default["name"],
+            policy_data=admin.policy_data)
+        ```
         ## dns.DnsManagedZoneIamBinding
 
         ```python
@@ -428,10 +621,27 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         binding = gcp.dns.DnsManagedZoneIamBinding("binding",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             members=["user:jane@example.com"])
         ```
 
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dns.DnsManagedZoneIamBinding("binding",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
+        ```
         ## dns.DnsManagedZoneIamMember
 
         ```python
@@ -441,8 +651,26 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         member = gcp.dns.DnsManagedZoneIamMember("member",
             project=default["project"],
             managed_zone=default["name"],
-            role="roles/viewer",
+            role="roles/dns.admin",
             member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dns.DnsManagedZoneIamMember("member",
+            project=default["project"],
+            managed_zone=default["name"],
+            role="roles/dns.admin",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -459,12 +687,12 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
         ```sh
-        $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane@example.com"
+        $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin user:jane@example.com"
         ```
 
         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
         ```sh
-        $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer"
+        $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin"
         ```
 
         IAM policy imports use the identifier of the resource in question, e.g.

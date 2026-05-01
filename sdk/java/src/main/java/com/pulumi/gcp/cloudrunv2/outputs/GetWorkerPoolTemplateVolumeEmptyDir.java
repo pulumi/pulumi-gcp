@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkerPoolTemplateVolumeEmptyDir {
     /**
-     * @return The different types of medium supported for EmptyDir. Default value: &#34;MEMORY&#34; Possible values: [&#34;MEMORY&#34;]
+     * @return The different types of medium supported for EmptyDir. Default value: &#34;MEMORY&#34; Possible values: [&#34;MEMORY&#34;, &#34;DISK&#34;]
      * 
      */
     private String medium;
@@ -23,7 +23,7 @@ public final class GetWorkerPoolTemplateVolumeEmptyDir {
 
     private GetWorkerPoolTemplateVolumeEmptyDir() {}
     /**
-     * @return The different types of medium supported for EmptyDir. Default value: &#34;MEMORY&#34; Possible values: [&#34;MEMORY&#34;]
+     * @return The different types of medium supported for EmptyDir. Default value: &#34;MEMORY&#34; Possible values: [&#34;MEMORY&#34;, &#34;DISK&#34;]
      * 
      */
     public String medium() {

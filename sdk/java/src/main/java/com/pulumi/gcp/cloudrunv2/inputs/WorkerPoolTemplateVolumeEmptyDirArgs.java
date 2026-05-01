@@ -18,7 +18,7 @@ public final class WorkerPoolTemplateVolumeEmptyDirArgs extends com.pulumi.resou
     /**
      * The different types of medium supported for EmptyDir.
      * Default value is `MEMORY`.
-     * Possible values are: `MEMORY`.
+     * Possible values are: `MEMORY`, `DISK`.
      * 
      */
     @Import(name="medium")
@@ -27,7 +27,7 @@ public final class WorkerPoolTemplateVolumeEmptyDirArgs extends com.pulumi.resou
     /**
      * @return The different types of medium supported for EmptyDir.
      * Default value is `MEMORY`.
-     * Possible values are: `MEMORY`.
+     * Possible values are: `MEMORY`, `DISK`.
      * 
      */
     public Optional<Output<String>> medium() {
@@ -77,7 +77,7 @@ public final class WorkerPoolTemplateVolumeEmptyDirArgs extends com.pulumi.resou
         /**
          * @param medium The different types of medium supported for EmptyDir.
          * Default value is `MEMORY`.
-         * Possible values are: `MEMORY`.
+         * Possible values are: `MEMORY`, `DISK`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class WorkerPoolTemplateVolumeEmptyDirArgs extends com.pulumi.resou
         /**
          * @param medium The different types of medium supported for EmptyDir.
          * Default value is `MEMORY`.
-         * Possible values are: `MEMORY`.
+         * Possible values are: `MEMORY`, `DISK`.
          * 
          * @return builder
          * 

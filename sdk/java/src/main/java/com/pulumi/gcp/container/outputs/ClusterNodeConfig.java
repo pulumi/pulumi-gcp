@@ -78,7 +78,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable String diskType;
     /**
-     * @return List of kubernetes taints applied to each node.
+     * @return List of kubernetes taints applied to each node. Structure is documented above.
      * 
      */
     private @Nullable List<ClusterNodeConfigEffectiveTaint> effectiveTaints;
@@ -377,7 +377,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return List of kubernetes taints applied to each node.
+     * @return List of kubernetes taints applied to each node. Structure is documented above.
      * 
      */
     public List<ClusterNodeConfigEffectiveTaint> effectiveTaints() {

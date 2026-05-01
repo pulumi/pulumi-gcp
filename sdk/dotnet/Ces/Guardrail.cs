@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.Ces
     ///                 MaxConversationMessages = 10,
     ///                 ModelSettings = new Gcp.Ces.Inputs.GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs
     ///                 {
-    ///                     Model = "gemini-2.5-flash-001",
+    ///                     Model = "gemini-3.0-flash-001",
     ///                     Temperature = 50,
     ///                 },
     ///                 Prompt = "example_prompt",
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.Ces
     ///             MaxConversationMessages = 10,
     ///             ModelSettings = new Gcp.Ces.Inputs.GuardrailLlmPolicyModelSettingsArgs
     ///             {
-    ///                 Model = "gemini-2.5-flash-001",
+    ///                 Model = "gemini-3.0-flash-001",
     ///                 Temperature = 50,
     ///             },
     ///             Prompt = "example_prompt",

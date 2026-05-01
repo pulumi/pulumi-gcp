@@ -4,8 +4,10 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -14,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
+    /**
+     * @return Accurate time configuration for the node. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
     /**
      * @return Possible cgroup modes that can be used.
      * Accepted values are:
@@ -34,6 +41,11 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
     /**
+     * @return Swap configuration for the node. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig;
+    /**
      * @return The Linux kernel parameters to be applied to the nodes
      * and all pods running on the nodes. Specified as a map from the key, such as
      * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -53,6 +65,13 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     private @Nullable String transparentHugepageEnabled;
 
     private ClusterNodePoolNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return Accurate time configuration for the node. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfig() {
+        return Optional.ofNullable(this.accurateTimeConfig);
+    }
     /**
      * @return Possible cgroup modes that can be used.
      * Accepted values are:
@@ -77,6 +96,13 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
      */
     public Optional<ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {
         return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
+    /**
+     * @return Swap configuration for the node. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfig() {
+        return Optional.ofNullable(this.swapConfig);
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes
@@ -112,23 +138,33 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
         private @Nullable String cgroupMode;
         private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
+        private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig;
         private @Nullable Map<String,String> sysctls;
         private @Nullable String transparentHugepageDefrag;
         private @Nullable String transparentHugepageEnabled;
         public Builder() {}
         public Builder(ClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accurateTimeConfig = defaults.accurateTimeConfig;
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
+    	      this.swapConfig = defaults.swapConfig;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
+        @CustomType.Setter
+        public Builder accurateTimeConfig(@Nullable ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig) {
+
+            this.accurateTimeConfig = accurateTimeConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder cgroupMode(@Nullable String cgroupMode) {
 
@@ -145,6 +181,12 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
         public Builder nodeKernelModuleLoading(@Nullable ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading) {
 
             this.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder swapConfig(@Nullable ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig) {
+
+            this.swapConfig = swapConfig;
             return this;
         }
         @CustomType.Setter
@@ -167,9 +209,11 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
         }
         public ClusterNodePoolNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new ClusterNodePoolNodeConfigLinuxNodeConfig();
+            _resultValue.accurateTimeConfig = accurateTimeConfig;
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            _resultValue.swapConfig = swapConfig;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

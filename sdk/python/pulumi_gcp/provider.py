@@ -47,6 +47,7 @@ class ProviderArgs:
                  bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_budgets_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_project: Optional[pulumi.Input[_builtins.str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -84,6 +85,7 @@ class ProviderArgs:
                  credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_lineage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_pipeline_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  database_migration_service_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -118,6 +120,7 @@ class ProviderArgs:
                  firebase_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_extensions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 firebase_remote_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -170,6 +173,8 @@ class ProviderArgs:
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 prefer_global_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prefer_regional_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -282,6 +287,8 @@ class ProviderArgs:
             pulumi.set(__self__, "bigquery_reservation_custom_endpoint", bigquery_reservation_custom_endpoint)
         if bigtable_custom_endpoint is not None:
             pulumi.set(__self__, "bigtable_custom_endpoint", bigtable_custom_endpoint)
+        if billing_budgets_custom_endpoint is not None:
+            pulumi.set(__self__, "billing_budgets_custom_endpoint", billing_budgets_custom_endpoint)
         if billing_custom_endpoint is not None:
             pulumi.set(__self__, "billing_custom_endpoint", billing_custom_endpoint)
         if billing_project is not None:
@@ -356,6 +363,8 @@ class ProviderArgs:
             pulumi.set(__self__, "data_catalog_custom_endpoint", data_catalog_custom_endpoint)
         if data_fusion_custom_endpoint is not None:
             pulumi.set(__self__, "data_fusion_custom_endpoint", data_fusion_custom_endpoint)
+        if data_lineage_custom_endpoint is not None:
+            pulumi.set(__self__, "data_lineage_custom_endpoint", data_lineage_custom_endpoint)
         if data_loss_prevention_custom_endpoint is not None:
             pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
         if data_pipeline_custom_endpoint is not None:
@@ -424,6 +433,8 @@ class ProviderArgs:
             pulumi.set(__self__, "firebase_extensions_custom_endpoint", firebase_extensions_custom_endpoint)
         if firebase_hosting_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
+        if firebase_remote_config_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_remote_config_custom_endpoint", firebase_remote_config_custom_endpoint)
         if firebase_storage_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_storage_custom_endpoint", firebase_storage_custom_endpoint)
         if firebaserules_custom_endpoint is not None:
@@ -528,6 +539,10 @@ class ProviderArgs:
             pulumi.set(__self__, "parameter_manager_regional_custom_endpoint", parameter_manager_regional_custom_endpoint)
         if poll_interval is not None:
             pulumi.set(__self__, "poll_interval", poll_interval)
+        if prefer_global_endpoints is not None:
+            pulumi.set(__self__, "prefer_global_endpoints", prefer_global_endpoints)
+        if prefer_regional_endpoints is not None:
+            pulumi.set(__self__, "prefer_regional_endpoints", prefer_regional_endpoints)
         if privateca_custom_endpoint is not None:
             pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
         if privileged_access_manager_custom_endpoint is not None:
@@ -889,6 +904,15 @@ class ProviderArgs:
         pulumi.set(self, "bigtable_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="billingBudgetsCustomEndpoint")
+    def billing_budgets_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "billing_budgets_custom_endpoint")
+
+    @billing_budgets_custom_endpoint.setter
+    def billing_budgets_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "billing_budgets_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="billingCustomEndpoint")
     def billing_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "billing_custom_endpoint")
@@ -1222,6 +1246,15 @@ class ProviderArgs:
         pulumi.set(self, "data_fusion_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataLineageCustomEndpoint")
+    def data_lineage_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "data_lineage_custom_endpoint")
+
+    @data_lineage_custom_endpoint.setter
+    def data_lineage_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_lineage_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataLossPreventionCustomEndpoint")
     def data_loss_prevention_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "data_loss_prevention_custom_endpoint")
@@ -1526,6 +1559,15 @@ class ProviderArgs:
     @firebase_hosting_custom_endpoint.setter
     def firebase_hosting_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "firebase_hosting_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firebaseRemoteConfigCustomEndpoint")
+    def firebase_remote_config_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "firebase_remote_config_custom_endpoint")
+
+    @firebase_remote_config_custom_endpoint.setter
+    def firebase_remote_config_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firebase_remote_config_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseStorageCustomEndpoint")
@@ -1994,6 +2036,24 @@ class ProviderArgs:
     @poll_interval.setter
     def poll_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "poll_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preferGlobalEndpoints")
+    def prefer_global_endpoints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "prefer_global_endpoints")
+
+    @prefer_global_endpoints.setter
+    def prefer_global_endpoints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prefer_global_endpoints", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preferRegionalEndpoints")
+    def prefer_regional_endpoints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "prefer_regional_endpoints")
+
+    @prefer_regional_endpoints.setter
+    def prefer_regional_endpoints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prefer_regional_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="privatecaCustomEndpoint")
@@ -2524,6 +2584,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_budgets_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_project: Optional[pulumi.Input[_builtins.str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2561,6 +2622,7 @@ class Provider(pulumi.ProviderResource):
                  credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_lineage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_pipeline_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  database_migration_service_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2595,6 +2657,7 @@ class Provider(pulumi.ProviderResource):
                  firebase_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_extensions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 firebase_remote_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2647,6 +2710,8 @@ class Provider(pulumi.ProviderResource):
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 prefer_global_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prefer_regional_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2768,6 +2833,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_budgets_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_project: Optional[pulumi.Input[_builtins.str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2805,6 +2871,7 @@ class Provider(pulumi.ProviderResource):
                  credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_lineage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  data_pipeline_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  database_migration_service_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2839,6 +2906,7 @@ class Provider(pulumi.ProviderResource):
                  firebase_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_extensions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 firebase_remote_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2891,6 +2959,8 @@ class Provider(pulumi.ProviderResource):
                  parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 prefer_global_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 prefer_regional_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2982,6 +3052,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["bigquery_datapolicyv2_custom_endpoint"] = bigquery_datapolicyv2_custom_endpoint
             __props__.__dict__["bigquery_reservation_custom_endpoint"] = bigquery_reservation_custom_endpoint
             __props__.__dict__["bigtable_custom_endpoint"] = bigtable_custom_endpoint
+            __props__.__dict__["billing_budgets_custom_endpoint"] = billing_budgets_custom_endpoint
             __props__.__dict__["billing_custom_endpoint"] = billing_custom_endpoint
             __props__.__dict__["billing_project"] = billing_project
             __props__.__dict__["binary_authorization_custom_endpoint"] = binary_authorization_custom_endpoint
@@ -3019,6 +3090,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
+            __props__.__dict__["data_lineage_custom_endpoint"] = data_lineage_custom_endpoint
             __props__.__dict__["data_loss_prevention_custom_endpoint"] = data_loss_prevention_custom_endpoint
             __props__.__dict__["data_pipeline_custom_endpoint"] = data_pipeline_custom_endpoint
             __props__.__dict__["database_migration_service_custom_endpoint"] = database_migration_service_custom_endpoint
@@ -3053,6 +3125,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["firebase_database_custom_endpoint"] = firebase_database_custom_endpoint
             __props__.__dict__["firebase_extensions_custom_endpoint"] = firebase_extensions_custom_endpoint
             __props__.__dict__["firebase_hosting_custom_endpoint"] = firebase_hosting_custom_endpoint
+            __props__.__dict__["firebase_remote_config_custom_endpoint"] = firebase_remote_config_custom_endpoint
             __props__.__dict__["firebase_storage_custom_endpoint"] = firebase_storage_custom_endpoint
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
@@ -3105,6 +3178,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["parameter_manager_custom_endpoint"] = parameter_manager_custom_endpoint
             __props__.__dict__["parameter_manager_regional_custom_endpoint"] = parameter_manager_regional_custom_endpoint
             __props__.__dict__["poll_interval"] = poll_interval
+            __props__.__dict__["prefer_global_endpoints"] = pulumi.Output.from_input(prefer_global_endpoints).apply(pulumi.runtime.to_json) if prefer_global_endpoints is not None else None
+            __props__.__dict__["prefer_regional_endpoints"] = pulumi.Output.from_input(prefer_regional_endpoints).apply(pulumi.runtime.to_json) if prefer_regional_endpoints is not None else None
             __props__.__dict__["privateca_custom_endpoint"] = privateca_custom_endpoint
             __props__.__dict__["privileged_access_manager_custom_endpoint"] = privileged_access_manager_custom_endpoint
             if project is None:
@@ -3300,6 +3375,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "bigtable_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="billingBudgetsCustomEndpoint")
+    def billing_budgets_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "billing_budgets_custom_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="billingCustomEndpoint")
     def billing_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "billing_custom_endpoint")
@@ -3485,6 +3565,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "data_fusion_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="dataLineageCustomEndpoint")
+    def data_lineage_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "data_lineage_custom_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="dataLossPreventionCustomEndpoint")
     def data_loss_prevention_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "data_loss_prevention_custom_endpoint")
@@ -3638,6 +3723,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="firebaseHostingCustomEndpoint")
     def firebase_hosting_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_hosting_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="firebaseRemoteConfigCustomEndpoint")
+    def firebase_remote_config_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "firebase_remote_config_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="firebaseStorageCustomEndpoint")

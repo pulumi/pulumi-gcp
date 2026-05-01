@@ -2687,6 +2687,15 @@
                 "current": "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy",
                 "majorVersion": 9
             },
+            "google_artifact_registry_rule": {
+                "current": "gcp:artifactregistry/rule:Rule",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_artifact_registry_vpcsc_config": {
                 "current": "gcp:artifactregistry/vpcscConfig:VpcscConfig",
                 "majorVersion": 9
@@ -3634,6 +3643,46 @@
                             "fields": {
                                 "credential": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "asset": {
+                                    "maxItemsOne": true
+                                },
+                                "authentication": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "username_password": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "password": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "endpoint": {
+                                    "maxItemsOne": true
+                                },
+                                "network": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "private_service_connect": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -12294,7 +12343,12 @@
             },
             "google_compute_instant_snapshot": {
                 "current": "gcp:compute/instantSnapshot:InstantSnapshot",
-                "majorVersion": 9
+                "majorVersion": 9,
+                "fields": {
+                    "params": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_compute_instant_snapshot_iam_binding": {
                 "current": "gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding",
@@ -12603,6 +12657,9 @@
                 "majorVersion": 9,
                 "fields": {
                     "machine_image_encryption_key": {
+                        "maxItemsOne": true
+                    },
+                    "params": {
                         "maxItemsOne": true
                     },
                     "storage_locations": {
@@ -15990,6 +16047,9 @@
                 "current": "gcp:compute/storagePool:StoragePool",
                 "majorVersion": 9,
                 "fields": {
+                    "params": {
+                        "maxItemsOne": true
+                    },
                     "resource_status": {
                         "maxItemsOne": false
                     },
@@ -18032,11 +18092,33 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "accurate_time_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "hugepages_config": {
                                                 "maxItemsOne": true
                                             },
                                             "node_kernel_module_loading": {
                                                 "maxItemsOne": true
+                                            },
+                                            "swap_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "boot_disk_profile": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "dedicated_local_ssd_profile": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "encryption_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "ephemeral_local_ssd_profile": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -18288,11 +18370,33 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "accurate_time_config": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "hugepages_config": {
                                                             "maxItemsOne": true
                                                         },
                                                         "node_kernel_module_loading": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "swap_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "boot_disk_profile": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "dedicated_local_ssd_profile": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "encryption_config": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "ephemeral_local_ssd_profile": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -18818,11 +18922,33 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "accurate_time_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "hugepages_config": {
                                                 "maxItemsOne": true
                                             },
                                             "node_kernel_module_loading": {
                                                 "maxItemsOne": true
+                                            },
+                                            "swap_config": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "boot_disk_profile": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "dedicated_local_ssd_profile": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "encryption_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "ephemeral_local_ssd_profile": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -19170,6 +19296,32 @@
             "google_data_fusion_instance_iam_policy": {
                 "current": "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy",
                 "majorVersion": 9
+            },
+            "google_data_lineage_config": {
+                "current": "gcp:datalineage/config:Config",
+                "majorVersion": 9,
+                "fields": {
+                    "ingestion": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "integration_selector": {
+                                                "maxItemsOne": true
+                                            },
+                                            "lineage_enablement": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_data_loss_prevention_deidentify_template": {
                 "current": "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate",
@@ -27233,6 +27385,10 @@
                 "current": "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion",
                 "majorVersion": 9
             },
+            "google_document_ai_schema": {
+                "current": "gcp:documentai/schema:Schema",
+                "majorVersion": 9
+            },
             "google_document_ai_warehouse_document_schema": {
                 "current": "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema",
                 "majorVersion": 9,
@@ -28223,6 +28379,58 @@
             "google_firebase_project": {
                 "current": "gcp:firebase/project:Project",
                 "majorVersion": 9
+            },
+            "google_firebase_remote_config_remote_config": {
+                "current": "gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false
+                    },
+                    "parameter_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "parameters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "conditional_values": {
+                                                "maxItemsOne": false
+                                            },
+                                            "default_value": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "parameters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditional_values": {
+                                    "maxItemsOne": false
+                                },
+                                "default_value": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "version": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "update_user": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_firebase_storage_bucket": {
                 "current": "gcp:firebase/storageBucket:StorageBucket",
@@ -33866,6 +34074,31 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_network_connectivity_hub_iam_binding": {
+                "current": "gcp:networkconnectivity/hubIamBinding:HubIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_network_connectivity_hub_iam_member": {
+                "current": "gcp:networkconnectivity/hubIamMember:HubIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_network_connectivity_hub_iam_policy": {
+                "current": "gcp:networkconnectivity/hubIamPolicy:HubIamPolicy",
+                "majorVersion": 9
             },
             "google_network_connectivity_internal_range": {
                 "current": "gcp:networkconnectivity/internalRange:InternalRange",
@@ -48866,6 +49099,9 @@
                 "current": "gcp:compute/getStoragePool:getStoragePool",
                 "majorVersion": 9,
                 "fields": {
+                    "params": {
+                        "maxItemsOne": false
+                    },
                     "resource_status": {
                         "maxItemsOne": false
                     },
@@ -49444,11 +49680,33 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "accurate_time_config": {
+                                                "maxItemsOne": false
+                                            },
                                             "hugepages_config": {
                                                 "maxItemsOne": false
                                             },
                                             "node_kernel_module_loading": {
                                                 "maxItemsOne": false
+                                            },
+                                            "swap_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "boot_disk_profile": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "dedicated_local_ssd_profile": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "encryption_config": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ephemeral_local_ssd_profile": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -49700,11 +49958,33 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "accurate_time_config": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "hugepages_config": {
                                                             "maxItemsOne": false
                                                         },
                                                         "node_kernel_module_loading": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "swap_config": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "boot_disk_profile": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "dedicated_local_ssd_profile": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "encryption_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "ephemeral_local_ssd_profile": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -50085,6 +50365,32 @@
             "google_data_fusion_instance_iam_policy": {
                 "current": "gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy",
                 "majorVersion": 9
+            },
+            "google_data_lineage_config": {
+                "current": "gcp:datalineage/getConfig:getConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "ingestion": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "integration_selector": {
+                                                "maxItemsOne": false
+                                            },
+                                            "lineage_enablement": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_dataform_repository_iam_policy": {
                 "current": "gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy",
@@ -51656,6 +51962,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_network_connectivity_hub_iam_policy": {
+                "current": "gcp:networkconnectivity/getHubIamPolicy:getHubIamPolicy",
+                "majorVersion": 9
             },
             "google_network_management_connectivity_test_run": {
                 "current": "gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun",
@@ -54925,6 +55235,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_document_ai_schema": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_edgecontainer_cluster": [
                 "effective_labels",
                 "terraform_labels"
@@ -56115,6 +56429,7 @@
             "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding": 0,
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": 0,
             "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": 0,
+            "gcp:artifactregistry/rule:Rule": 0,
             "gcp:artifactregistry/vpcscConfig:VpcscConfig": 0,
             "gcp:assuredworkloads/workload:Workload": 0,
             "gcp:backupdisasterrecovery/backupPlan:BackupPlan": 0,
@@ -56558,6 +56873,7 @@
             "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig": 0,
             "gcp:dataform/teamFolder:TeamFolder": 0,
             "gcp:datafusion/instance:Instance": 0,
+            "gcp:datalineage/config:Config": 0,
             "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate": 0,
             "gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig": 0,
             "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate": 0,
@@ -56694,6 +57010,7 @@
             "gcp:dns/recordSet:RecordSet": 0,
             "gcp:dns/responsePolicy:ResponsePolicy": 0,
             "gcp:dns/responsePolicyRule:ResponsePolicyRule": 0,
+            "gcp:documentai/schema:Schema": 0,
             "gcp:edgecontainer/cluster:Cluster": 0,
             "gcp:edgecontainer/nodePool:NodePool": 0,
             "gcp:edgecontainer/vpnConnection:VpnConnection": 0,
@@ -56748,6 +57065,7 @@
             "gcp:firebase/hostingSite:HostingSite": 0,
             "gcp:firebase/hostingVersion:HostingVersion": 0,
             "gcp:firebase/project:Project": 0,
+            "gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig": 0,
             "gcp:firebase/storageBucket:StorageBucket": 0,
             "gcp:firebase/storageDefaultBucket:StorageDefaultBucket": 0,
             "gcp:firebase/webApp:WebApp": 0,
@@ -57006,6 +57324,9 @@
             "gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute": 0,
             "gcp:networkconnectivity/group:Group": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
+            "gcp:networkconnectivity/hubIamBinding:HubIamBinding": 0,
+            "gcp:networkconnectivity/hubIamMember:HubIamMember": 0,
+            "gcp:networkconnectivity/hubIamPolicy:HubIamPolicy": 0,
             "gcp:networkconnectivity/internalRange:InternalRange": 0,
             "gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
@@ -57576,6 +57897,7 @@
             "gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy": 0,
             "gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy": 0,
+            "gcp:datalineage/getConfig:getConfig": 0,
             "gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy": 0,
             "gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy": 0,
             "gcp:dataplex/getDataQualityRules:getDataQualityRules": 0,
@@ -57685,6 +58007,7 @@
             "gcp:monitoring/getNotificationChannel:getNotificationChannel": 0,
             "gcp:monitoring/getSecretVersion:getSecretVersion": 0,
             "gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs": 0,
+            "gcp:networkconnectivity/getHubIamPolicy:getHubIamPolicy": 0,
             "gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun": 0,
             "gcp:networkmanagement/getConnectivityTests:getConnectivityTests": 0,
             "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": 0,

@@ -24,6 +24,11 @@ public final class DataConnectorDestinationConfig {
      * 
      */
     private @Nullable String key;
+    /**
+     * @return Additional parameters for this destination config in structured json format.
+     * 
+     */
+    private @Nullable String params;
 
     private DataConnectorDestinationConfig() {}
     /**
@@ -41,6 +46,13 @@ public final class DataConnectorDestinationConfig {
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Additional parameters for this destination config in structured json format.
+     * 
+     */
+    public Optional<String> params() {
+        return Optional.ofNullable(this.params);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,11 +65,13 @@ public final class DataConnectorDestinationConfig {
     public static final class Builder {
         private @Nullable List<DataConnectorDestinationConfigDestination> destinations;
         private @Nullable String key;
+        private @Nullable String params;
         public Builder() {}
         public Builder(DataConnectorDestinationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
     	      this.key = defaults.key;
+    	      this.params = defaults.params;
         }
 
         @CustomType.Setter
@@ -75,10 +89,17 @@ public final class DataConnectorDestinationConfig {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
+        public Builder params(@Nullable String params) {
+
+            this.params = params;
+            return this;
+        }
         public DataConnectorDestinationConfig build() {
             final var _resultValue = new DataConnectorDestinationConfig();
             _resultValue.destinations = destinations;
             _resultValue.key = key;
+            _resultValue.params = params;
             return _resultValue;
         }
     }

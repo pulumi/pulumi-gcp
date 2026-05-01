@@ -18,22 +18,12 @@ public final class ClusterAutopilotClusterPolicyConfigArgs extends com.pulumi.re
     /**
      * Whether to block non autopilot managed node pools in the cluster.
      * 
-     * ## Attributes Reference
-     * 
-     * In addition to the arguments listed above, the following computed attributes are
-     * exported:
-     * 
      */
     @Import(name="noStandardNodePools")
     private @Nullable Output<Boolean> noStandardNodePools;
 
     /**
      * @return Whether to block non autopilot managed node pools in the cluster.
-     * 
-     * ## Attributes Reference
-     * 
-     * In addition to the arguments listed above, the following computed attributes are
-     * exported:
      * 
      */
     public Optional<Output<Boolean>> noStandardNodePools() {
@@ -115,11 +105,6 @@ public final class ClusterAutopilotClusterPolicyConfigArgs extends com.pulumi.re
         /**
          * @param noStandardNodePools Whether to block non autopilot managed node pools in the cluster.
          * 
-         * ## Attributes Reference
-         * 
-         * In addition to the arguments listed above, the following computed attributes are
-         * exported:
-         * 
          * @return builder
          * 
          */
@@ -130,11 +115,6 @@ public final class ClusterAutopilotClusterPolicyConfigArgs extends com.pulumi.re
 
         /**
          * @param noStandardNodePools Whether to block non autopilot managed node pools in the cluster.
-         * 
-         * ## Attributes Reference
-         * 
-         * In addition to the arguments listed above, the following computed attributes are
-         * exported:
          * 
          * @return builder
          * 

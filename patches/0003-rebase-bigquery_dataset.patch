@@ -5,7 +5,7 @@ Subject: [PATCH] rebase bigquery_dataset
 
 
 diff --git a/google-beta/services/bigquery/resource_bigquery_dataset.go b/google-beta/services/bigquery/resource_bigquery_dataset.go
-index eb8df9c96..5ddc96fd3 100644
+index eb8df9c966..5ddc96fd3b 100644
 --- a/google-beta/services/bigquery/resource_bigquery_dataset.go
 +++ b/google-beta/services/bigquery/resource_bigquery_dataset.go
 @@ -923,8 +923,13 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error

@@ -131,6 +131,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -177,7 +178,12 @@ import javax.annotation.Nullable;
  *                 .key("url")
  *                 .destinations(DataConnectorDestinationConfigDestinationArgs.builder()
  *                     .host("https://example.atlassian.net")
+ *                     .port(123)
  *                     .build())
+ *                 .params(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("destination_type", "private")
+ *                     )))
  *                 .build())
  *             .connectorModes(            
  *                 "FEDERATED",

@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     modelSettings: {
- *         model: "gemini-2.5-flash-001",
+ *         model: "gemini-3.0-flash-001",
  *         temperature: 0.5,
  *     },
  *     evaluationMetricsThresholds: {
@@ -183,7 +183,6 @@ import * as utilities from "../utilities";
  *             input: "test-fixtures/cert.pem",
  *         }).then(invoke => invoke.result),
  *         privateKey: fakeSecretVersion.name,
- *         passphrase: fakeSecretVersion.name,
  *     },
  * });
  * ```
@@ -252,7 +251,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     modelSettings: {
- *         model: "gemini-2.5-flash-001",
+ *         model: "gemini-3.0-flash-001",
  *         temperature: 0.5,
  *     },
  *     evaluationMetricsThresholds: {

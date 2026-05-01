@@ -113,7 +113,11 @@ import * as utilities from "../utilities";
  *         key: "url",
  *         destinations: [{
  *             host: "https://example.atlassian.net",
+ *             port: 123,
  *         }],
+ *         params: JSON.stringify({
+ *             destination_type: "private",
+ *         }),
  *     }],
  *     connectorModes: [
  *         "FEDERATED",

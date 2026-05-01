@@ -13,6 +13,2694 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodePoolAutoConfigNetworkTag struct {
+	// List of network tags applied to auto-provisioned node pools.
+	Tags []string `pulumi:"tags"`
+}
+
+// GetClusterNodePoolAutoConfigNetworkTagInput is an input type that accepts GetClusterNodePoolAutoConfigNetworkTagArgs and GetClusterNodePoolAutoConfigNetworkTagOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNetworkTagInput` via:
+//
+//	GetClusterNodePoolAutoConfigNetworkTagArgs{...}
+type GetClusterNodePoolAutoConfigNetworkTagInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNetworkTagOutput() GetClusterNodePoolAutoConfigNetworkTagOutput
+	ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNetworkTagOutput
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagArgs struct {
+	// List of network tags applied to auto-provisioned node pools.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetClusterNodePoolAutoConfigNetworkTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArgs) ToGetClusterNodePoolAutoConfigNetworkTagOutput() GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return i.ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArgs) ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNetworkTagOutput)
+}
+
+// GetClusterNodePoolAutoConfigNetworkTagArrayInput is an input type that accepts GetClusterNodePoolAutoConfigNetworkTagArray and GetClusterNodePoolAutoConfigNetworkTagArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNetworkTagArrayInput` via:
+//
+//	GetClusterNodePoolAutoConfigNetworkTagArray{ GetClusterNodePoolAutoConfigNetworkTagArgs{...} }
+type GetClusterNodePoolAutoConfigNetworkTagArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNetworkTagArrayOutput() GetClusterNodePoolAutoConfigNetworkTagArrayOutput
+	ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNetworkTagArrayOutput
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagArray []GetClusterNodePoolAutoConfigNetworkTagInput
+
+func (GetClusterNodePoolAutoConfigNetworkTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArray) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutput() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return i.ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArray) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNetworkTagArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNetworkTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagOutput) ToGetClusterNodePoolAutoConfigNetworkTagOutput() GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagOutput) ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return o
+}
+
+// List of network tags applied to auto-provisioned node pools.
+func (o GetClusterNodePoolAutoConfigNetworkTagOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfigNetworkTag) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNetworkTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutput() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfigNetworkTag {
+		return vs[0].([]GetClusterNodePoolAutoConfigNetworkTag)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoConfigNetworkTagOutput)
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfig struct {
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
+}
+
+// GetClusterNodePoolAutoConfigNodeKubeletConfigInput is an input type that accepts GetClusterNodePoolAutoConfigNodeKubeletConfigArgs and GetClusterNodePoolAutoConfigNodeKubeletConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNodeKubeletConfigInput` via:
+//
+//	GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{...}
+type GetClusterNodePoolAutoConfigNodeKubeletConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigOutput
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArgs struct {
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
+}
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return i.ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput)
+}
+
+// GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput is an input type that accepts GetClusterNodePoolAutoConfigNodeKubeletConfigArray and GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput` via:
+//
+//	GetClusterNodePoolAutoConfigNodeKubeletConfigArray{ GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{...} }
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArray []GetClusterNodePoolAutoConfigNodeKubeletConfigInput
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArray) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return i.ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArray) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfigNodeKubeletConfig) string {
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfigNodeKubeletConfig {
+		return vs[0].([]GetClusterNodePoolAutoConfigNodeKubeletConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput)
+}
+
+type GetClusterNodePoolAutoscaling struct {
+	// Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+	LocationPolicy string `pulumi:"locationPolicy"`
+	// Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+	MinNodeCount int `pulumi:"minNodeCount"`
+	// Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+	TotalMaxNodeCount int `pulumi:"totalMaxNodeCount"`
+	// Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+	TotalMinNodeCount int `pulumi:"totalMinNodeCount"`
+}
+
+// GetClusterNodePoolAutoscalingInput is an input type that accepts GetClusterNodePoolAutoscalingArgs and GetClusterNodePoolAutoscalingOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoscalingInput` via:
+//
+//	GetClusterNodePoolAutoscalingArgs{...}
+type GetClusterNodePoolAutoscalingInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoscalingOutput() GetClusterNodePoolAutoscalingOutput
+	ToGetClusterNodePoolAutoscalingOutputWithContext(context.Context) GetClusterNodePoolAutoscalingOutput
+}
+
+type GetClusterNodePoolAutoscalingArgs struct {
+	// Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+	LocationPolicy pulumi.StringInput `pulumi:"locationPolicy"`
+	// Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+	// Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+	TotalMaxNodeCount pulumi.IntInput `pulumi:"totalMaxNodeCount"`
+	// Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+	TotalMinNodeCount pulumi.IntInput `pulumi:"totalMinNodeCount"`
+}
+
+func (GetClusterNodePoolAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoscalingArgs) ToGetClusterNodePoolAutoscalingOutput() GetClusterNodePoolAutoscalingOutput {
+	return i.ToGetClusterNodePoolAutoscalingOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoscalingArgs) ToGetClusterNodePoolAutoscalingOutputWithContext(ctx context.Context) GetClusterNodePoolAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoscalingOutput)
+}
+
+// GetClusterNodePoolAutoscalingArrayInput is an input type that accepts GetClusterNodePoolAutoscalingArray and GetClusterNodePoolAutoscalingArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoscalingArrayInput` via:
+//
+//	GetClusterNodePoolAutoscalingArray{ GetClusterNodePoolAutoscalingArgs{...} }
+type GetClusterNodePoolAutoscalingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoscalingArrayOutput() GetClusterNodePoolAutoscalingArrayOutput
+	ToGetClusterNodePoolAutoscalingArrayOutputWithContext(context.Context) GetClusterNodePoolAutoscalingArrayOutput
+}
+
+type GetClusterNodePoolAutoscalingArray []GetClusterNodePoolAutoscalingInput
+
+func (GetClusterNodePoolAutoscalingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoscalingArray) ToGetClusterNodePoolAutoscalingArrayOutput() GetClusterNodePoolAutoscalingArrayOutput {
+	return i.ToGetClusterNodePoolAutoscalingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoscalingArray) ToGetClusterNodePoolAutoscalingArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoscalingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoscalingArrayOutput)
+}
+
+type GetClusterNodePoolAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoscalingOutput) ToGetClusterNodePoolAutoscalingOutput() GetClusterNodePoolAutoscalingOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoscalingOutput) ToGetClusterNodePoolAutoscalingOutputWithContext(ctx context.Context) GetClusterNodePoolAutoscalingOutput {
+	return o
+}
+
+// Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+func (o GetClusterNodePoolAutoscalingOutput) LocationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) string { return v.LocationPolicy }).(pulumi.StringOutput)
+}
+
+// Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+func (o GetClusterNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+func (o GetClusterNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+// Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+func (o GetClusterNodePoolAutoscalingOutput) TotalMaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.TotalMaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+func (o GetClusterNodePoolAutoscalingOutput) TotalMinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.TotalMinNodeCount }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolAutoscalingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoscalingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoscalingArrayOutput) ToGetClusterNodePoolAutoscalingArrayOutput() GetClusterNodePoolAutoscalingArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoscalingArrayOutput) ToGetClusterNodePoolAutoscalingArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoscalingArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoscalingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoscaling {
+		return vs[0].([]GetClusterNodePoolAutoscaling)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoscalingOutput)
+}
+
+type GetClusterNodePoolDefault struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults []GetClusterNodePoolDefaultNodeConfigDefault `pulumi:"nodeConfigDefaults"`
+}
+
+// GetClusterNodePoolDefaultInput is an input type that accepts GetClusterNodePoolDefaultArgs and GetClusterNodePoolDefaultOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultInput` via:
+//
+//	GetClusterNodePoolDefaultArgs{...}
+type GetClusterNodePoolDefaultInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultOutput() GetClusterNodePoolDefaultOutput
+	ToGetClusterNodePoolDefaultOutputWithContext(context.Context) GetClusterNodePoolDefaultOutput
+}
+
+type GetClusterNodePoolDefaultArgs struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults GetClusterNodePoolDefaultNodeConfigDefaultArrayInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (GetClusterNodePoolDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultArgs) ToGetClusterNodePoolDefaultOutput() GetClusterNodePoolDefaultOutput {
+	return i.ToGetClusterNodePoolDefaultOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultArgs) ToGetClusterNodePoolDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultOutput)
+}
+
+// GetClusterNodePoolDefaultArrayInput is an input type that accepts GetClusterNodePoolDefaultArray and GetClusterNodePoolDefaultArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultArrayInput` via:
+//
+//	GetClusterNodePoolDefaultArray{ GetClusterNodePoolDefaultArgs{...} }
+type GetClusterNodePoolDefaultArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultArrayOutput() GetClusterNodePoolDefaultArrayOutput
+	ToGetClusterNodePoolDefaultArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultArrayOutput
+}
+
+type GetClusterNodePoolDefaultArray []GetClusterNodePoolDefaultInput
+
+func (GetClusterNodePoolDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultArray) ToGetClusterNodePoolDefaultArrayOutput() GetClusterNodePoolDefaultArrayOutput {
+	return i.ToGetClusterNodePoolDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultArray) ToGetClusterNodePoolDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultArrayOutput)
+}
+
+type GetClusterNodePoolDefaultOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultOutput) ToGetClusterNodePoolDefaultOutput() GetClusterNodePoolDefaultOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultOutput) ToGetClusterNodePoolDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultOutput {
+	return o
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o GetClusterNodePoolDefaultOutput) NodeConfigDefaults() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefault) []GetClusterNodePoolDefaultNodeConfigDefault {
+		return v.NodeConfigDefaults
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput)
+}
+
+type GetClusterNodePoolDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultArrayOutput) ToGetClusterNodePoolDefaultArrayOutput() GetClusterNodePoolDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultArrayOutput) ToGetClusterNodePoolDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefault {
+		return vs[0].([]GetClusterNodePoolDefault)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefault struct {
+	// Parameters for containerd configuration.
+	ContainerdConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig `pulumi:"containerdConfigs"`
+	// GCFS configuration for this node.
+	GcfsConfigs []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig `pulumi:"gcfsConfigs"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
+	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+	LoggingVariant string `pulumi:"loggingVariant"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultArgs and GetClusterNodePoolDefaultNodeConfigDefaultOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultOutput() GetClusterNodePoolDefaultNodeConfigDefaultOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultArgs struct {
+	// Parameters for containerd configuration.
+	ContainerdConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput `pulumi:"containerdConfigs"`
+	// GCFS configuration for this node.
+	GcfsConfigs GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
+	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultOutput() GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultArray and GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultArray{ GetClusterNodePoolDefaultNodeConfigDefaultArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultArray []GetClusterNodePoolDefaultNodeConfigDefaultInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArray) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArray) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultOutput() GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return o
+}
+
+// Parameters for containerd configuration.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ContainerdConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
+		return v.ContainerdConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput)
+}
+
+// GCFS configuration for this node.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) GcfsConfigs() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
+		return v.GcfsConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringOutput)
+}
+
+// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) LoggingVariant() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) string { return v.LoggingVariant }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefault {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefault)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfigs"`
+	// Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+	RegistryHosts []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost `pulumi:"registryHosts"`
+	// Parameters for writable cgroups configuration.
+	WritableCgroups []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup `pulumi:"writableCgroups"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs struct {
+	// Parameters for private container registries configuration.
+	PrivateRegistryAccessConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput `pulumi:"privateRegistryAccessConfigs"`
+	// Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+	RegistryHosts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayInput `pulumi:"registryHosts"`
+	// Parameters for writable cgroups configuration.
+	WritableCgroups GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayInput `pulumi:"writableCgroups"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return o
+}
+
+// Parameters for private container registries configuration.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) PrivateRegistryAccessConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig {
+		return v.PrivateRegistryAccessConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+// Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) RegistryHosts() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost {
+		return v.RegistryHosts
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput)
+}
+
+// Parameters for writable cgroups configuration.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput) WritableCgroups() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup {
+		return v.WritableCgroups
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs struct {
+	// Parameters for configuring CA certificate and domains.
+	CertificateAuthorityDomainConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
+	// Whether or not private registries are configured.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return o
+}
+
+// Parameters for configuring CA certificate and domains.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return v.CertificateAuthorityDomainConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+// Whether or not private registries are configured.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig) bool {
+		return v.Enabled
+	}).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns []string `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
+	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
+	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	GcpSecretManagerCertificateConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput `pulumi:"gcpSecretManagerCertificateConfigs"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return o
+}
+
+// List of fully-qualified-domain-names. IPv4s and port specification are supported.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []string {
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for configuring a certificate hosted in GCP SecretManager.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfigs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return v.GcpSecretManagerCertificateConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri string `pulumi:"secretUri"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
+	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	SecretUri pulumi.StringInput `pulumi:"secretUri"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return o
+}
+
+// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
+		return v.SecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost struct {
+	// Configures a list of host-specific configurations for the server.
+	Hosts []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost `pulumi:"hosts"`
+	// Defines the host name of the registry server.
+	Server string `pulumi:"server"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs struct {
+	// Configures a list of host-specific configurations for the server.
+	Hosts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayInput `pulumi:"hosts"`
+	// Defines the host name of the registry server.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput {
+	return o
+}
+
+// Configures a list of host-specific configurations for the server.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput) Hosts() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost {
+		return v.Hosts
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput)
+}
+
+// Defines the host name of the registry server.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost struct {
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	Capabilities []string `pulumi:"capabilities"`
+	// Configures the registry host certificate.
+	Cas []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa `pulumi:"cas"`
+	// Configures the registry host client certificate and key.
+	Clients []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient `pulumi:"clients"`
+	// Specifies the maximum duration allowed for a connection attempt to complete.
+	DialTimeout string `pulumi:"dialTimeout"`
+	// Configures the registry host headers.
+	Headers []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader `pulumi:"headers"`
+	// Configures the registry host/mirror.
+	Host string `pulumi:"host"`
+	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	OverridePath bool `pulumi:"overridePath"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs struct {
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
+	// Configures the registry host certificate.
+	Cas GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayInput `pulumi:"cas"`
+	// Configures the registry host client certificate and key.
+	Clients GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayInput `pulumi:"clients"`
+	// Specifies the maximum duration allowed for a connection attempt to complete.
+	DialTimeout pulumi.StringInput `pulumi:"dialTimeout"`
+	// Configures the registry host headers.
+	Headers GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayInput `pulumi:"headers"`
+	// Configures the registry host/mirror.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	OverridePath pulumi.BoolInput `pulumi:"overridePath"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput {
+	return o
+}
+
+// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) []string {
+		return v.Capabilities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the registry host certificate.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) Cas() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa {
+		return v.Cas
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput)
+}
+
+// Configures the registry host client certificate and key.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) Clients() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient {
+		return v.Clients
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput)
+}
+
+// Specifies the maximum duration allowed for a connection attempt to complete.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) DialTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) string {
+		return v.DialTimeout
+	}).(pulumi.StringOutput)
+}
+
+// Configures the registry host headers.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) Headers() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader {
+		return v.Headers
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput)
+}
+
+// Configures the registry host/mirror.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) string {
+		return v.Host
+	}).(pulumi.StringOutput)
+}
+
+// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput) OverridePath() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost) bool {
+		return v.OverridePath
+	}).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa struct {
+	// URI for the Secret Manager secret that hosts the certificate.
+	GcpSecretManagerSecretUri string `pulumi:"gcpSecretManagerSecretUri"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs struct {
+	// URI for the Secret Manager secret that hosts the certificate.
+	GcpSecretManagerSecretUri pulumi.StringInput `pulumi:"gcpSecretManagerSecretUri"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput {
+	return o
+}
+
+// URI for the Secret Manager secret that hosts the certificate.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput) GcpSecretManagerSecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa) string {
+		return v.GcpSecretManagerSecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCa)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient struct {
+	// Configures the client certificate.
+	Certs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert `pulumi:"certs"`
+	// Configures the client private key.
+	Keys []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey `pulumi:"keys"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs struct {
+	// Configures the client certificate.
+	Certs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayInput `pulumi:"certs"`
+	// Configures the client private key.
+	Keys GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayInput `pulumi:"keys"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput {
+	return o
+}
+
+// Configures the client certificate.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput) Certs() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert {
+		return v.Certs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput)
+}
+
+// Configures the client private key.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput) Keys() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient) []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey {
+		return v.Keys
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert struct {
+	// URI for the Secret Manager secret that hosts the client certificate.
+	GcpSecretManagerSecretUri string `pulumi:"gcpSecretManagerSecretUri"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs struct {
+	// URI for the Secret Manager secret that hosts the client certificate.
+	GcpSecretManagerSecretUri pulumi.StringInput `pulumi:"gcpSecretManagerSecretUri"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput {
+	return o
+}
+
+// URI for the Secret Manager secret that hosts the client certificate.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput) GcpSecretManagerSecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert) string {
+		return v.GcpSecretManagerSecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCert)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey struct {
+	// URI for the Secret Manager secret that hosts the private key.
+	GcpSecretManagerSecretUri string `pulumi:"gcpSecretManagerSecretUri"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs struct {
+	// URI for the Secret Manager secret that hosts the private key.
+	GcpSecretManagerSecretUri pulumi.StringInput `pulumi:"gcpSecretManagerSecretUri"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput {
+	return o
+}
+
+// URI for the Secret Manager secret that hosts the private key.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput) GcpSecretManagerSecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey) string {
+		return v.GcpSecretManagerSecretUri
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKey)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader struct {
+	// Configures the header key.
+	Key string `pulumi:"key"`
+	// Configures the header value.
+	Values []string `pulumi:"values"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs struct {
+	// Configures the header key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Configures the header value.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput {
+	return o
+}
+
+// Configures the header key.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// Configures the header value.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup struct {
+	// Whether writable cgroups are enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs struct {
+	// Whether writable cgroups are enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray and GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray{ GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput {
+	return o
+}
+
+// Whether writable cgroups are enabled.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup) bool {
+		return v.Enabled
+	}).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig struct {
+	// Whether or not GCFS is enabled
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs struct {
+	// Whether or not GCFS is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return o
+}
+
+// Whether or not GCFS is enabled
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput)
+}
+
+type GetClusterNodePoolManagement struct {
+	// Whether the nodes will be automatically repaired. Enabled by default.
+	AutoRepair bool `pulumi:"autoRepair"`
+	// Whether the nodes will be automatically upgraded. Enabled by default.
+	AutoUpgrade bool `pulumi:"autoUpgrade"`
+}
+
+// GetClusterNodePoolManagementInput is an input type that accepts GetClusterNodePoolManagementArgs and GetClusterNodePoolManagementOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolManagementInput` via:
+//
+//	GetClusterNodePoolManagementArgs{...}
+type GetClusterNodePoolManagementInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolManagementOutput() GetClusterNodePoolManagementOutput
+	ToGetClusterNodePoolManagementOutputWithContext(context.Context) GetClusterNodePoolManagementOutput
+}
+
+type GetClusterNodePoolManagementArgs struct {
+	// Whether the nodes will be automatically repaired. Enabled by default.
+	AutoRepair pulumi.BoolInput `pulumi:"autoRepair"`
+	// Whether the nodes will be automatically upgraded. Enabled by default.
+	AutoUpgrade pulumi.BoolInput `pulumi:"autoUpgrade"`
+}
+
+func (GetClusterNodePoolManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolManagement)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolManagementArgs) ToGetClusterNodePoolManagementOutput() GetClusterNodePoolManagementOutput {
+	return i.ToGetClusterNodePoolManagementOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolManagementArgs) ToGetClusterNodePoolManagementOutputWithContext(ctx context.Context) GetClusterNodePoolManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolManagementOutput)
+}
+
+// GetClusterNodePoolManagementArrayInput is an input type that accepts GetClusterNodePoolManagementArray and GetClusterNodePoolManagementArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolManagementArrayInput` via:
+//
+//	GetClusterNodePoolManagementArray{ GetClusterNodePoolManagementArgs{...} }
+type GetClusterNodePoolManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolManagementArrayOutput() GetClusterNodePoolManagementArrayOutput
+	ToGetClusterNodePoolManagementArrayOutputWithContext(context.Context) GetClusterNodePoolManagementArrayOutput
+}
+
+type GetClusterNodePoolManagementArray []GetClusterNodePoolManagementInput
+
+func (GetClusterNodePoolManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolManagement)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolManagementArray) ToGetClusterNodePoolManagementArrayOutput() GetClusterNodePoolManagementArrayOutput {
+	return i.ToGetClusterNodePoolManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolManagementArray) ToGetClusterNodePoolManagementArrayOutputWithContext(ctx context.Context) GetClusterNodePoolManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolManagementArrayOutput)
+}
+
+type GetClusterNodePoolManagementOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolManagement)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolManagementOutput) ToGetClusterNodePoolManagementOutput() GetClusterNodePoolManagementOutput {
+	return o
+}
+
+func (o GetClusterNodePoolManagementOutput) ToGetClusterNodePoolManagementOutputWithContext(ctx context.Context) GetClusterNodePoolManagementOutput {
+	return o
+}
+
+// Whether the nodes will be automatically repaired. Enabled by default.
+func (o GetClusterNodePoolManagementOutput) AutoRepair() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolManagement) bool { return v.AutoRepair }).(pulumi.BoolOutput)
+}
+
+// Whether the nodes will be automatically upgraded. Enabled by default.
+func (o GetClusterNodePoolManagementOutput) AutoUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolManagement) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolManagement)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolManagementArrayOutput) ToGetClusterNodePoolManagementArrayOutput() GetClusterNodePoolManagementArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolManagementArrayOutput) ToGetClusterNodePoolManagementArrayOutputWithContext(ctx context.Context) GetClusterNodePoolManagementArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolManagement {
+		return vs[0].([]GetClusterNodePoolManagement)[vs[1].(int)]
+	}).(GetClusterNodePoolManagementOutput)
+}
+
+type GetClusterNodePoolNetworkConfig struct {
+	// The accelerator network profile to use for this node pool.
+	AcceleratorNetworkProfile string `pulumi:"acceleratorNetworkProfile"`
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+	AdditionalNodeNetworkConfigs []GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+	AdditionalPodNetworkConfigs []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig `pulumi:"additionalPodNetworkConfigs"`
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
+	CreatePodRange bool `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only.
+	EnablePrivateNodes bool `pulumi:"enablePrivateNodes"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfigs []GetClusterNodePoolNetworkConfigNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
+	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+	PodCidrOverprovisionConfigs []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfigs"`
+	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
+	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
+	PodRange string `pulumi:"podRange"`
+	// The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested networkConfig block (setting this attribute directly is supported for backward compatibility). Once created the node pool's subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetClusterNodePoolNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigArgs and GetClusterNodePoolNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigArgs{...}
+type GetClusterNodePoolNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigOutput() GetClusterNodePoolNetworkConfigOutput
+	ToGetClusterNodePoolNetworkConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigArgs struct {
+	// The accelerator network profile to use for this node pool.
+	AcceleratorNetworkProfile pulumi.StringInput `pulumi:"acceleratorNetworkProfile"`
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+	AdditionalNodeNetworkConfigs GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+	AdditionalPodNetworkConfigs GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput `pulumi:"additionalPodNetworkConfigs"`
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
+	CreatePodRange pulumi.BoolInput `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only.
+	EnablePrivateNodes pulumi.BoolInput `pulumi:"enablePrivateNodes"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfigs GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput `pulumi:"networkPerformanceConfigs"`
+	// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+	PodCidrOverprovisionConfigs GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput `pulumi:"podCidrOverprovisionConfigs"`
+	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+	PodIpv4CidrBlock pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
+	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
+	PodRange pulumi.StringInput `pulumi:"podRange"`
+	// The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested networkConfig block (setting this attribute directly is supported for backward compatibility). Once created the node pool's subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigOutput() GetClusterNodePoolNetworkConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigArray and GetClusterNodePoolNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigArray{ GetClusterNodePoolNetworkConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigArray []GetClusterNodePoolNetworkConfigInput
+
+func (GetClusterNodePoolNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigArray) ToGetClusterNodePoolNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigArray) ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigOutput() GetClusterNodePoolNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigOutput {
+	return o
+}
+
+// The accelerator network profile to use for this node pool.
+func (o GetClusterNodePoolNetworkConfigOutput) AcceleratorNetworkProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.AcceleratorNetworkProfile }).(pulumi.StringOutput)
+}
+
+// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+func (o GetClusterNodePoolNetworkConfigOutput) AdditionalNodeNetworkConfigs() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return v.AdditionalNodeNetworkConfigs
+	}).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+func (o GetClusterNodePoolNetworkConfigOutput) AdditionalPodNetworkConfigs() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return v.AdditionalPodNetworkConfigs
+	}).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
+func (o GetClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
+}
+
+// Whether nodes have internal IP addresses only.
+func (o GetClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o GetClusterNodePoolNetworkConfigOutput) NetworkPerformanceConfigs() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		return v.NetworkPerformanceConfigs
+	}).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput)
+}
+
+// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+func (o GetClusterNodePoolNetworkConfigOutput) PodCidrOverprovisionConfigs() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return v.PodCidrOverprovisionConfigs
+	}).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput)
+}
+
+// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+func (o GetClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
+func (o GetClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork name/path for the node pool. Format: subnetwork or projects/{project}/regions/{region}/subnetworks/{subnetwork}. This value may be specified via the nested networkConfig block (setting this attribute directly is supported for backward compatibility). Once created the node pool's subnetwork is immutable. If not set, the provider/API will choose the subnetwork (e.g. based on IP utilization) and report it here.
+func (o GetClusterNodePoolNetworkConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
+	// Name of the VPC where the additional interface belongs.
+	Network string `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs and GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...}
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
+	// Name of the VPC where the additional interface belongs.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray and GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{ GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray []GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+// Name of the VPC where the additional interface belongs.
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Name of the subnetwork where the additional interface belongs.
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig struct {
+	// The maximum number of pods per node which use this pod network.
+	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range.
+	SecondaryPodRange string `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs and GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...}
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs struct {
+	// The maximum number of pods per node which use this pod network.
+	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range.
+	SecondaryPodRange pulumi.StringInput `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray and GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{ GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+// The maximum number of pods per node which use this pod network.
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) MaxPodsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
+}
+
+// The name of the secondary range on the subnet which provides IP address for this pod range.
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) SecondaryPodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) string { return v.SecondaryPodRange }).(pulumi.StringOutput)
+}
+
+// Name of the subnetwork where the additional pod network belongs.
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfig struct {
+	// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs and GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{...}
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
+	// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray and GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray{ GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray []GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+// Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigNetworkPerformanceConfig) string {
+		return v.TotalEgressBandwidthTier
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs and GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...}
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray and GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray{ GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
 type GetClusterNodePoolNodeConfig struct {
 	// Specifies options for controlling advanced machine features.
 	AdvancedMachineFeatures []GetClusterNodePoolNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
@@ -4189,12 +6877,16 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerArrayOutput) Ind
 }
 
 type GetClusterNodePoolNodeConfigLinuxNodeConfig struct {
+	// The settings for the accurate time configuration.
+	AccurateTimeConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig `pulumi:"accurateTimeConfigs"`
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode string `pulumi:"cgroupMode"`
 	// Amounts for 2M and 1G hugepages.
 	HugepagesConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfigs"`
 	// The settings for kernel module loading.
 	NodeKernelModuleLoadings []GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading `pulumi:"nodeKernelModuleLoadings"`
+	// Swap configuration for the node.
+	SwapConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig `pulumi:"swapConfigs"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls map[string]string `pulumi:"sysctls"`
 	// The Linux kernel transparent hugepage defrag setting.
@@ -4215,12 +6907,16 @@ type GetClusterNodePoolNodeConfigLinuxNodeConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
+	// The settings for the accurate time configuration.
+	AccurateTimeConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput `pulumi:"accurateTimeConfigs"`
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode pulumi.StringInput `pulumi:"cgroupMode"`
 	// Amounts for 2M and 1G hugepages.
 	HugepagesConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput `pulumi:"hugepagesConfigs"`
 	// The settings for kernel module loading.
 	NodeKernelModuleLoadings GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput `pulumi:"nodeKernelModuleLoadings"`
+	// Swap configuration for the node.
+	SwapConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayInput `pulumi:"swapConfigs"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 	// The Linux kernel transparent hugepage defrag setting.
@@ -4280,6 +6976,13 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) ToGetClusterNodePoolN
 	return o
 }
 
+// The settings for the accurate time configuration.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) AccurateTimeConfigs() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig {
+		return v.AccurateTimeConfigs
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput)
+}
+
 // cgroupMode specifies the cgroup mode to be used on the node.
 func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) string { return v.CgroupMode }).(pulumi.StringOutput)
@@ -4297,6 +7000,13 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) NodeKernelModuleLoadi
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 		return v.NodeKernelModuleLoadings
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput)
+}
+
+// Swap configuration for the node.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) SwapConfigs() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig {
+		return v.SwapConfigs
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput)
 }
 
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -4332,6 +7042,105 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig struct {
+	// Whether to enable accurate time synchronization with PTP-KVM.
+	EnablePtpKvmTimeSync bool `pulumi:"enablePtpKvmTimeSync"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs struct {
+	// Whether to enable accurate time synchronization with PTP-KVM.
+	EnablePtpKvmTimeSync pulumi.BoolInput `pulumi:"enablePtpKvmTimeSync"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray and GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray []GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return o
+}
+
+// Whether to enable accurate time synchronization with PTP-KVM.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) EnablePtpKvmTimeSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig) bool {
+		return v.EnablePtpKvmTimeSync
+	}).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig struct {
@@ -4535,6 +7344,561 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayO
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig struct {
+	// Swap on the node's boot disk.
+	BootDiskProfiles []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile `pulumi:"bootDiskProfiles"`
+	// Provisions a new, separate local NVMe SSD exclusively for swap.
+	DedicatedLocalSsdProfiles []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile `pulumi:"dedicatedLocalSsdProfiles"`
+	// Enables or disables swap for the node pool.
+	Enabled bool `pulumi:"enabled"`
+	// If omitted, swap space is encrypted by default.
+	EncryptionConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig `pulumi:"encryptionConfigs"`
+	// Swap on the local SSD shared with pod ephemeral storage.
+	EphemeralLocalSsdProfiles []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile `pulumi:"ephemeralLocalSsdProfiles"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs struct {
+	// Swap on the node's boot disk.
+	BootDiskProfiles GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput `pulumi:"bootDiskProfiles"`
+	// Provisions a new, separate local NVMe SSD exclusively for swap.
+	DedicatedLocalSsdProfiles GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput `pulumi:"dedicatedLocalSsdProfiles"`
+	// Enables or disables swap for the node pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// If omitted, swap space is encrypted by default.
+	EncryptionConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput `pulumi:"encryptionConfigs"`
+	// Swap on the local SSD shared with pod ephemeral storage.
+	EphemeralLocalSsdProfiles GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput `pulumi:"ephemeralLocalSsdProfiles"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return o
+}
+
+// Swap on the node's boot disk.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) BootDiskProfiles() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
+		return v.BootDiskProfiles
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput)
+}
+
+// Provisions a new, separate local NVMe SSD exclusively for swap.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) DedicatedLocalSsdProfiles() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile {
+		return v.DedicatedLocalSsdProfiles
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput)
+}
+
+// Enables or disables swap for the node pool.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If omitted, swap space is encrypted by default.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) EncryptionConfigs() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig {
+		return v.EncryptionConfigs
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput)
+}
+
+// Swap on the local SSD shared with pod ephemeral storage.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput) EphemeralLocalSsdProfiles() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile {
+		return v.EphemeralLocalSsdProfiles
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile struct {
+	// Specifies the size of the swap space in gibibytes (GiB).
+	SwapSizeGib int `pulumi:"swapSizeGib"`
+	// Specifies the size of the swap space as a percentage of the boot disk size.
+	SwapSizePercent int `pulumi:"swapSizePercent"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs struct {
+	// Specifies the size of the swap space in gibibytes (GiB).
+	SwapSizeGib pulumi.IntInput `pulumi:"swapSizeGib"`
+	// Specifies the size of the swap space as a percentage of the boot disk size.
+	SwapSizePercent pulumi.IntInput `pulumi:"swapSizePercent"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return o
+}
+
+// Specifies the size of the swap space in gibibytes (GiB).
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) SwapSizeGib() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile) int { return v.SwapSizeGib }).(pulumi.IntOutput)
+}
+
+// Specifies the size of the swap space as a percentage of the boot disk size.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) SwapSizePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile) int {
+		return v.SwapSizePercent
+	}).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile struct {
+	// The number of physical local NVMe SSD disks to attach.
+	DiskCount int `pulumi:"diskCount"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs struct {
+	// The number of physical local NVMe SSD disks to attach.
+	DiskCount pulumi.IntInput `pulumi:"diskCount"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return o
+}
+
+// The number of physical local NVMe SSD disks to attach.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) DiskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile) int {
+		return v.DiskCount
+	}).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig struct {
+	// If true, swap space will not be encrypted. Defaults to false (encrypted).
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs struct {
+	// If true, swap space will not be encrypted. Defaults to false (encrypted).
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return o
+}
+
+// If true, swap space will not be encrypted. Defaults to false (encrypted).
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile struct {
+	// Specifies the size of the swap space in gibibytes (GiB).
+	SwapSizeGib int `pulumi:"swapSizeGib"`
+	// Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+	SwapSizePercent int `pulumi:"swapSizePercent"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs struct {
+	// Specifies the size of the swap space in gibibytes (GiB).
+	SwapSizeGib pulumi.IntInput `pulumi:"swapSizeGib"`
+	// Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+	SwapSizePercent pulumi.IntInput `pulumi:"swapSizePercent"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray and GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray []GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput {
+	return o
+}
+
+// Specifies the size of the swap space in gibibytes (GiB).
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput) SwapSizeGib() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile) int {
+		return v.SwapSizeGib
+	}).(pulumi.IntOutput)
+}
+
+// Specifies the size of the swap space as a percentage of the ephemeral local SSD capacity.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput) SwapSizePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile) int {
+		return v.SwapSizePercent
+	}).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput)
 }
 
 type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
@@ -8989,6 +12353,54 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNodeKubeletConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingArrayInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultInput)(nil)).Elem(), GetClusterNodePoolDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementInput)(nil)).Elem(), GetClusterNodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementArrayInput)(nil)).Elem(), GetClusterNodePoolManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{})
@@ -9055,10 +12467,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArgs{})
@@ -9141,6 +12565,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolManagementOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput{})
@@ -9207,10 +12679,22 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityOutput{})

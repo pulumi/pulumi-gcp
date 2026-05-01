@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
  * ## gcp.dns.DnsManagedZoneIamPolicy
  * 
  * <pre>
@@ -59,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/viewer")
+ *                 .role("roles/dns.admin")
  *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
@@ -75,6 +77,54 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamPolicy;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/dns.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ## gcp.dns.DnsManagedZoneIamBinding
  * 
  * <pre>
@@ -102,7 +152,7 @@ import javax.annotation.Nullable;
  *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role("roles/viewer")
+ *             .role("roles/dns.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
@@ -111,6 +161,47 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamBinding;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamBindingArgs;
+ * import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .role("roles/dns.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(DnsManagedZoneIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ## gcp.dns.DnsManagedZoneIamMember
  * 
  * <pre>
@@ -138,8 +229,50 @@ import javax.annotation.Nullable;
  *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role("roles/viewer")
+ *             .role("roles/dns.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
+ * import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .role("roles/dns.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(DnsManagedZoneIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -167,6 +300,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
  * ## gcp.dns.DnsManagedZoneIamPolicy
  * 
  * <pre>
@@ -195,7 +330,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role("roles/viewer")
+ *                 .role("roles/dns.admin")
  *                 .members("user:jane}{@literal @}{@code example.com")
  *                 .build())
  *             .build());
@@ -211,6 +346,54 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamPolicy;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/dns.admin")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title("expires_after_2019_12_31")
+ *                     .description("Expiring at midnight of 2019-12-31")
+ *                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ## gcp.dns.DnsManagedZoneIamBinding
  * 
  * <pre>
@@ -238,7 +421,7 @@ import javax.annotation.Nullable;
  *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role("roles/viewer")
+ *             .role("roles/dns.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
  * 
@@ -247,6 +430,47 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamBinding;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamBindingArgs;
+ * import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .role("roles/dns.admin")
+ *             .members("user:jane}{@literal @}{@code example.com")
+ *             .condition(DnsManagedZoneIamBindingConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ## gcp.dns.DnsManagedZoneIamMember
  * 
  * <pre>
@@ -274,8 +498,50 @@ import javax.annotation.Nullable;
  *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
  *             .project(default_.project())
  *             .managedZone(default_.name())
- *             .role("roles/viewer")
+ *             .role("roles/dns.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * With IAM Conditions:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
+ * import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .role("roles/dns.admin")
+ *             .member("user:jane}{@literal @}{@code example.com")
+ *             .condition(DnsManagedZoneIamMemberConditionArgs.builder()
+ *                 .title("expires_after_2019_12_31")
+ *                 .description("Expiring at midnight of 2019-12-31")
+ *                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -297,12 +563,12 @@ import javax.annotation.Nullable;
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * ```sh
- * $ terraform import google_dns_managed_zone_iam_member.editor &#34;projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ terraform import google_dns_managed_zone_iam_member.editor &#34;projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * ```sh
- * $ terraform import google_dns_managed_zone_iam_binding.editor &#34;projects/{{project}}/managedZones/{{managed_zone}} roles/viewer&#34;
+ * $ terraform import google_dns_managed_zone_iam_binding.editor &#34;projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
@@ -316,9 +582,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding")
 public class DnsManagedZoneIamBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="condition", refs={DnsManagedZoneIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ DnsManagedZoneIamBindingCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<DnsManagedZoneIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }

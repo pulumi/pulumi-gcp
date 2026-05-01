@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// Structure is documented below.
         /// </summary>
         [Output("multiTenant")]
-        public Output<Outputs.ConfigMultiTenant?> MultiTenant { get; private set; } = null!;
+        public Output<Outputs.ConfigMultiTenant> MultiTenant { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Config resource
