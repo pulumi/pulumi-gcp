@@ -42,8 +42,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumiverse.time.Sleep;
  * import com.pulumiverse.time.SleepArgs;
- * import com.pulumi.gcp.projects.ServiceIdentity;
- * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.diagflow.Agent;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import com.pulumi.gcp.diagflow.Version;
@@ -81,13 +79,6 @@ import javax.annotation.Nullable;
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(dialogflow)
- *                 .build());
- * 
- *         var gcpSa = new ServiceIdentity("gcpSa", ServiceIdentityArgs.builder()
- *             .service("dialogflow.googleapis.com")
- *             .project(project.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(waitEnableServiceApi)
  *                 .build());
  * 
  *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()

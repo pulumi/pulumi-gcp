@@ -42,6 +42,7 @@ __all__ = [
     'RepositoryVirtualRepositoryConfig',
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
     'RepositoryVulnerabilityScanningConfig',
+    'RuleCondition',
     'GetDockerImagesDockerImageResult',
     'GetMavenArtifactsMavenArtifactResult',
     'GetNpmPackagesNpmPackageResult',
@@ -1376,6 +1377,64 @@ class RepositoryVulnerabilityScanningConfig(dict):
         This provides an explanation for the state of scanning on this repository.
         """
         return pulumi.get(self, "enablement_state_reason")
+
+
+@pulumi.output_type
+class RuleCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional[_builtins.str] = None,
+                 title: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param _builtins.str description: Optional. Description of the expression. This is a longer text which
+               describes the expression, e.g. when hovered over it in a UI.
+        :param _builtins.str location: Optional. String indicating the location of the expression for error
+               reporting, e.g. a file name and a position in the file.
+        :param _builtins.str title: Optional. Title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Optional. Description of the expression. This is a longer text which
+        describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[_builtins.str]:
+        """
+        Optional. String indicating the location of the expression for error
+        reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> Optional[_builtins.str]:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -123,6 +125,11 @@ export class InstantSnapshot extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.InstantSnapshotParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -169,6 +176,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["selfLink"] = state?.selfLink;
@@ -183,6 +191,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["sourceDisk"] = args?.sourceDisk;
             resourceInputs["zone"] = args?.zone;
@@ -243,6 +252,11 @@ export interface InstantSnapshotState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.InstantSnapshotParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -294,6 +308,11 @@ export interface InstantSnapshotArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.InstantSnapshotParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

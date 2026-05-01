@@ -143,7 +143,7 @@ import * as utilities from "../utilities";
  *         customPolicy: {
  *             maxConversationMessages: 10,
  *             modelSettings: {
- *                 model: "gemini-2.5-flash-001",
+ *                 model: "gemini-3.0-flash-001",
  *                 temperature: 50,
  *             },
  *             prompt: "example_prompt",
@@ -257,7 +257,7 @@ import * as utilities from "../utilities";
  *     llmPolicy: {
  *         maxConversationMessages: 10,
  *         modelSettings: {
- *             model: "gemini-2.5-flash-001",
+ *             model: "gemini-3.0-flash-001",
  *             temperature: 50,
  *         },
  *         prompt: "example_prompt",

@@ -27,7 +27,7 @@ class GetAddressGroupsResult:
     """
     A collection of values returned by getAddressGroups.
     """
-    def __init__(__self__, address_groups=None, id=None, location=None, project=None):
+    def __init__(__self__, address_groups=None, id=None, location=None, parent=None, project=None):
         if address_groups and not isinstance(address_groups, list):
             raise TypeError("Expected argument 'address_groups' to be a list")
         pulumi.set(__self__, "address_groups", address_groups)
@@ -37,6 +37,9 @@ class GetAddressGroupsResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if parent and not isinstance(parent, str):
+            raise TypeError("Expected argument 'parent' to be a str")
+        pulumi.set(__self__, "parent", parent)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -45,7 +48,7 @@ class GetAddressGroupsResult:
     @pulumi.getter(name="addressGroups")
     def address_groups(self) -> Sequence['outputs.GetAddressGroupsAddressGroupResult']:
         """
-        A list of Address Groups in the selected project and location. Structure is defined below.
+        A list of Address Groups in the selected project or organization and location. Structure is defined below.
         """
         return pulumi.get(self, "address_groups")
 
@@ -61,6 +64,11 @@ class GetAddressGroupsResult:
     @pulumi.getter
     def location(self) -> _builtins.str:
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def parent(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "parent")
 
     @_builtins.property
     @pulumi.getter
@@ -80,14 +88,16 @@ class AwaitableGetAddressGroupsResult(GetAddressGroupsResult):
             address_groups=self.address_groups,
             id=self.id,
             location=self.location,
+            parent=self.parent,
             project=self.project)
 
 
 def get_address_groups(location: Optional[_builtins.str] = None,
+                       parent: Optional[_builtins.str] = None,
                        project: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddressGroupsResult:
     """
-    AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+    AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
 
     To get more information about Address Groups, see:
 
@@ -97,6 +107,8 @@ def get_address_groups(location: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Project Level
+
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -105,12 +117,28 @@ def get_address_groups(location: Optional[_builtins.str] = None,
         project="my-project-id")
     ```
 
+    ### Organization Level
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    org_all = gcp.networksecurity.get_address_groups(location="us-central1",
+        parent="organizations/123456789")
+    ```
+
 
     :param _builtins.str location: The location of the Address Group.
-    :param _builtins.str project: The ID of the project.
+           
+           - - -
+    :param _builtins.str parent: The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+           
+           > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+    :param _builtins.str project: The ID of the project. Conflicts with `parent`.
     """
     __args__ = dict()
     __args__['location'] = location
+    __args__['parent'] = parent
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:networksecurity/getAddressGroups:getAddressGroups', __args__, opts=opts, typ=GetAddressGroupsResult).value
@@ -119,12 +147,14 @@ def get_address_groups(location: Optional[_builtins.str] = None,
         address_groups=pulumi.get(__ret__, 'address_groups'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
+        parent=pulumi.get(__ret__, 'parent'),
         project=pulumi.get(__ret__, 'project'))
 def get_address_groups_output(location: Optional[pulumi.Input[_builtins.str]] = None,
+                              parent: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressGroupsResult]:
     """
-    AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+    AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
 
     To get more information about Address Groups, see:
 
@@ -134,6 +164,8 @@ def get_address_groups_output(location: Optional[pulumi.Input[_builtins.str]] = 
 
     ## Example Usage
 
+    ### Project Level
+
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -142,12 +174,28 @@ def get_address_groups_output(location: Optional[pulumi.Input[_builtins.str]] = 
         project="my-project-id")
     ```
 
+    ### Organization Level
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    org_all = gcp.networksecurity.get_address_groups(location="us-central1",
+        parent="organizations/123456789")
+    ```
+
 
     :param _builtins.str location: The location of the Address Group.
-    :param _builtins.str project: The ID of the project.
+           
+           - - -
+    :param _builtins.str parent: The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+           
+           > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+    :param _builtins.str project: The ID of the project. Conflicts with `parent`.
     """
     __args__ = dict()
     __args__['location'] = location
+    __args__['parent'] = parent
     __args__['project'] = project
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:networksecurity/getAddressGroups:getAddressGroups', __args__, opts=opts, typ=GetAddressGroupsResult)
@@ -155,4 +203,5 @@ def get_address_groups_output(location: Optional[pulumi.Input[_builtins.str]] = 
         address_groups=pulumi.get(__response__, 'address_groups'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
+        parent=pulumi.get(__response__, 'parent'),
         project=pulumi.get(__response__, 'project')))

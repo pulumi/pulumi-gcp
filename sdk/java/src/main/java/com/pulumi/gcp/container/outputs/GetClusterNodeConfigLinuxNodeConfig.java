@@ -5,8 +5,10 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigSwapConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigLinuxNodeConfig {
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    private List<GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs;
     /**
      * @return cgroupMode specifies the cgroup mode to be used on the node.
      * 
@@ -29,6 +36,11 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      * 
      */
     private List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    private List<GetClusterNodeConfigLinuxNodeConfigSwapConfig> swapConfigs;
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
@@ -46,6 +58,13 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     private String transparentHugepageEnabled;
 
     private GetClusterNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return The settings for the accurate time configuration.
+     * 
+     */
+    public List<GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs() {
+        return this.accurateTimeConfigs;
+    }
     /**
      * @return cgroupMode specifies the cgroup mode to be used on the node.
      * 
@@ -66,6 +85,13 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      */
     public List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings() {
         return this.nodeKernelModuleLoadings;
+    }
+    /**
+     * @return Swap configuration for the node.
+     * 
+     */
+    public List<GetClusterNodeConfigLinuxNodeConfigSwapConfig> swapConfigs() {
+        return this.swapConfigs;
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -98,23 +124,38 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs;
         private String cgroupMode;
         private List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
         private List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
+        private List<GetClusterNodeConfigLinuxNodeConfigSwapConfig> swapConfigs;
         private Map<String,String> sysctls;
         private String transparentHugepageDefrag;
         private String transparentHugepageEnabled;
         public Builder() {}
         public Builder(GetClusterNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accurateTimeConfigs = defaults.accurateTimeConfigs;
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfigs = defaults.hugepagesConfigs;
     	      this.nodeKernelModuleLoadings = defaults.nodeKernelModuleLoadings;
+    	      this.swapConfigs = defaults.swapConfigs;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
+        @CustomType.Setter
+        public Builder accurateTimeConfigs(List<GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs) {
+            if (accurateTimeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "accurateTimeConfigs");
+            }
+            this.accurateTimeConfigs = accurateTimeConfigs;
+            return this;
+        }
+        public Builder accurateTimeConfigs(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig... accurateTimeConfigs) {
+            return accurateTimeConfigs(List.of(accurateTimeConfigs));
+        }
         @CustomType.Setter
         public Builder cgroupMode(String cgroupMode) {
             if (cgroupMode == null) {
@@ -146,6 +187,17 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
             return nodeKernelModuleLoadings(List.of(nodeKernelModuleLoadings));
         }
         @CustomType.Setter
+        public Builder swapConfigs(List<GetClusterNodeConfigLinuxNodeConfigSwapConfig> swapConfigs) {
+            if (swapConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "swapConfigs");
+            }
+            this.swapConfigs = swapConfigs;
+            return this;
+        }
+        public Builder swapConfigs(GetClusterNodeConfigLinuxNodeConfigSwapConfig... swapConfigs) {
+            return swapConfigs(List.of(swapConfigs));
+        }
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             if (sysctls == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "sysctls");
@@ -171,9 +223,11 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
         }
         public GetClusterNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new GetClusterNodeConfigLinuxNodeConfig();
+            _resultValue.accurateTimeConfigs = accurateTimeConfigs;
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfigs = hugepagesConfigs;
             _resultValue.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
+            _resultValue.swapConfigs = swapConfigs;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

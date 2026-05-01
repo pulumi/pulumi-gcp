@@ -13,6 +13,509 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceGuestAttributesQueryValue struct {
+	// Key of the guest_attribute.
+	Key string `pulumi:"key"`
+	// Namespace of the guest_attribute.
+	Namespace string `pulumi:"namespace"`
+	// Value of the guest_attribute.
+	Value string `pulumi:"value"`
+}
+
+// GetInstanceGuestAttributesQueryValueInput is an input type that accepts GetInstanceGuestAttributesQueryValueArgs and GetInstanceGuestAttributesQueryValueOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAttributesQueryValueInput` via:
+//
+//	GetInstanceGuestAttributesQueryValueArgs{...}
+type GetInstanceGuestAttributesQueryValueInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAttributesQueryValueOutput() GetInstanceGuestAttributesQueryValueOutput
+	ToGetInstanceGuestAttributesQueryValueOutputWithContext(context.Context) GetInstanceGuestAttributesQueryValueOutput
+}
+
+type GetInstanceGuestAttributesQueryValueArgs struct {
+	// Key of the guest_attribute.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Namespace of the guest_attribute.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Value of the guest_attribute.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetInstanceGuestAttributesQueryValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAttributesQueryValueArgs) ToGetInstanceGuestAttributesQueryValueOutput() GetInstanceGuestAttributesQueryValueOutput {
+	return i.ToGetInstanceGuestAttributesQueryValueOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAttributesQueryValueArgs) ToGetInstanceGuestAttributesQueryValueOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAttributesQueryValueOutput)
+}
+
+// GetInstanceGuestAttributesQueryValueArrayInput is an input type that accepts GetInstanceGuestAttributesQueryValueArray and GetInstanceGuestAttributesQueryValueArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAttributesQueryValueArrayInput` via:
+//
+//	GetInstanceGuestAttributesQueryValueArray{ GetInstanceGuestAttributesQueryValueArgs{...} }
+type GetInstanceGuestAttributesQueryValueArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAttributesQueryValueArrayOutput() GetInstanceGuestAttributesQueryValueArrayOutput
+	ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(context.Context) GetInstanceGuestAttributesQueryValueArrayOutput
+}
+
+type GetInstanceGuestAttributesQueryValueArray []GetInstanceGuestAttributesQueryValueInput
+
+func (GetInstanceGuestAttributesQueryValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAttributesQueryValueArray) ToGetInstanceGuestAttributesQueryValueArrayOutput() GetInstanceGuestAttributesQueryValueArrayOutput {
+	return i.ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAttributesQueryValueArray) ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAttributesQueryValueArrayOutput)
+}
+
+type GetInstanceGuestAttributesQueryValueOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAttributesQueryValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAttributesQueryValueOutput) ToGetInstanceGuestAttributesQueryValueOutput() GetInstanceGuestAttributesQueryValueOutput {
+	return o
+}
+
+func (o GetInstanceGuestAttributesQueryValueOutput) ToGetInstanceGuestAttributesQueryValueOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueOutput {
+	return o
+}
+
+// Key of the guest_attribute.
+func (o GetInstanceGuestAttributesQueryValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAttributesQueryValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Namespace of the guest_attribute.
+func (o GetInstanceGuestAttributesQueryValueOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAttributesQueryValue) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Value of the guest_attribute.
+func (o GetInstanceGuestAttributesQueryValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAttributesQueryValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetInstanceGuestAttributesQueryValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAttributesQueryValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAttributesQueryValueArrayOutput) ToGetInstanceGuestAttributesQueryValueArrayOutput() GetInstanceGuestAttributesQueryValueArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAttributesQueryValueArrayOutput) ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAttributesQueryValueArrayOutput) Index(i pulumi.IntInput) GetInstanceGuestAttributesQueryValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGuestAttributesQueryValue {
+		return vs[0].([]GetInstanceGuestAttributesQueryValue)[vs[1].(int)]
+	}).(GetInstanceGuestAttributesQueryValueOutput)
+}
+
+type GetInstanceInstanceEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// The SHA256 hash of the customer's encryption key.
+	Sha256 string `pulumi:"sha256"`
+}
+
+// GetInstanceInstanceEncryptionKeyInput is an input type that accepts GetInstanceInstanceEncryptionKeyArgs and GetInstanceInstanceEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetInstanceInstanceEncryptionKeyInput` via:
+//
+//	GetInstanceInstanceEncryptionKeyArgs{...}
+type GetInstanceInstanceEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceInstanceEncryptionKeyOutput() GetInstanceInstanceEncryptionKeyOutput
+	ToGetInstanceInstanceEncryptionKeyOutputWithContext(context.Context) GetInstanceInstanceEncryptionKeyOutput
+}
+
+type GetInstanceInstanceEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// The SHA256 hash of the customer's encryption key.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetInstanceInstanceEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceInstanceEncryptionKeyArgs) ToGetInstanceInstanceEncryptionKeyOutput() GetInstanceInstanceEncryptionKeyOutput {
+	return i.ToGetInstanceInstanceEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceInstanceEncryptionKeyArgs) ToGetInstanceInstanceEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceInstanceEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceInstanceEncryptionKeyOutput)
+}
+
+// GetInstanceInstanceEncryptionKeyArrayInput is an input type that accepts GetInstanceInstanceEncryptionKeyArray and GetInstanceInstanceEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceInstanceEncryptionKeyArrayInput` via:
+//
+//	GetInstanceInstanceEncryptionKeyArray{ GetInstanceInstanceEncryptionKeyArgs{...} }
+type GetInstanceInstanceEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceInstanceEncryptionKeyArrayOutput() GetInstanceInstanceEncryptionKeyArrayOutput
+	ToGetInstanceInstanceEncryptionKeyArrayOutputWithContext(context.Context) GetInstanceInstanceEncryptionKeyArrayOutput
+}
+
+type GetInstanceInstanceEncryptionKeyArray []GetInstanceInstanceEncryptionKeyInput
+
+func (GetInstanceInstanceEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceInstanceEncryptionKeyArray) ToGetInstanceInstanceEncryptionKeyArrayOutput() GetInstanceInstanceEncryptionKeyArrayOutput {
+	return i.ToGetInstanceInstanceEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceInstanceEncryptionKeyArray) ToGetInstanceInstanceEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceInstanceEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceInstanceEncryptionKeyArrayOutput)
+}
+
+type GetInstanceInstanceEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceInstanceEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceInstanceEncryptionKeyOutput) ToGetInstanceInstanceEncryptionKeyOutput() GetInstanceInstanceEncryptionKeyOutput {
+	return o
+}
+
+func (o GetInstanceInstanceEncryptionKeyOutput) ToGetInstanceInstanceEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceInstanceEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS.
+func (o GetInstanceInstanceEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceInstanceEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+func (o GetInstanceInstanceEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceInstanceEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+// The SHA256 hash of the customer's encryption key.
+func (o GetInstanceInstanceEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceInstanceEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetInstanceInstanceEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceInstanceEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceInstanceEncryptionKeyArrayOutput) ToGetInstanceInstanceEncryptionKeyArrayOutput() GetInstanceInstanceEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceInstanceEncryptionKeyArrayOutput) ToGetInstanceInstanceEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceInstanceEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceInstanceEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceInstanceEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceInstanceEncryptionKey {
+		return vs[0].([]GetInstanceInstanceEncryptionKey)[vs[1].(int)]
+	}).(GetInstanceInstanceEncryptionKeyOutput)
+}
+
+type GetInstanceNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Structure documented below.
+	AccessConfigs []GetInstanceNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// An array of alias IP ranges for this network interface. Structure documented below.
+	AliasIpRanges []GetInstanceNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+	IgmpQuery string `pulumi:"igmpQuery"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength int `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs []GetInstanceNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// MAC address assigned to this network interface.
+	MacAddress string `pulumi:"macAddress"`
+	// The name of the instance. One of `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The name or selfLink of the network attached to this interface.
+	Network string `pulumi:"network"`
+	// The URL of the network attachment to this interface.
+	NetworkAttachment string `pulumi:"networkAttachment"`
+	// The internal ip address of the instance, either manually or dynamically assigned.
+	NetworkIp string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+	NicType string `pulumi:"nicType"`
+	// Name of the parent network interface of a dynamic network interface.
+	ParentNicName string `pulumi:"parentNicName"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount int `pulumi:"queueCount"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+	SecurityPolicy string `pulumi:"securityPolicy"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType string `pulumi:"stackType"`
+	// The name or selfLink of the subnetwork attached to this interface.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The project in which the subnetwork belongs.
+	SubnetworkProject string `pulumi:"subnetworkProject"`
+	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+	Vlan int `pulumi:"vlan"`
+}
+
+// GetInstanceNetworkInterfaceInput is an input type that accepts GetInstanceNetworkInterfaceArgs and GetInstanceNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceInput` via:
+//
+//	GetInstanceNetworkInterfaceArgs{...}
+type GetInstanceNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceOutput() GetInstanceNetworkInterfaceOutput
+	ToGetInstanceNetworkInterfaceOutputWithContext(context.Context) GetInstanceNetworkInterfaceOutput
+}
+
+type GetInstanceNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Structure documented below.
+	AccessConfigs GetInstanceNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// An array of alias IP ranges for this network interface. Structure documented below.
+	AliasIpRanges GetInstanceNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntInput `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType pulumi.StringInput `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// MAC address assigned to this network interface.
+	MacAddress pulumi.StringInput `pulumi:"macAddress"`
+	// The name of the instance. One of `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name or selfLink of the network attached to this interface.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The URL of the network attachment to this interface.
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+	// The internal ip address of the instance, either manually or dynamically assigned.
+	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+	NicType pulumi.StringInput `pulumi:"nicType"`
+	// Name of the parent network interface of a dynamic network interface.
+	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringInput `pulumi:"stackType"`
+	// The name or selfLink of the subnetwork attached to this interface.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The project in which the subnetwork belongs.
+	SubnetworkProject pulumi.StringInput `pulumi:"subnetworkProject"`
+	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+	Vlan pulumi.IntInput `pulumi:"vlan"`
+}
+
+func (GetInstanceNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceArgs) ToGetInstanceNetworkInterfaceOutput() GetInstanceNetworkInterfaceOutput {
+	return i.ToGetInstanceNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceArgs) ToGetInstanceNetworkInterfaceOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceOutput)
+}
+
+// GetInstanceNetworkInterfaceArrayInput is an input type that accepts GetInstanceNetworkInterfaceArray and GetInstanceNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceArrayInput` via:
+//
+//	GetInstanceNetworkInterfaceArray{ GetInstanceNetworkInterfaceArgs{...} }
+type GetInstanceNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceArrayOutput() GetInstanceNetworkInterfaceArrayOutput
+	ToGetInstanceNetworkInterfaceArrayOutputWithContext(context.Context) GetInstanceNetworkInterfaceArrayOutput
+}
+
+type GetInstanceNetworkInterfaceArray []GetInstanceNetworkInterfaceInput
+
+func (GetInstanceNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceArray) ToGetInstanceNetworkInterfaceArrayOutput() GetInstanceNetworkInterfaceArrayOutput {
+	return i.ToGetInstanceNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceArray) ToGetInstanceNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceArrayOutput)
+}
+
+type GetInstanceNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceOutput) ToGetInstanceNetworkInterfaceOutput() GetInstanceNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceOutput) ToGetInstanceNetworkInterfaceOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceOutput {
+	return o
+}
+
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Structure documented below.
+func (o GetInstanceNetworkInterfaceOutput) AccessConfigs() GetInstanceNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAccessConfig { return v.AccessConfigs }).(GetInstanceNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// An array of alias IP ranges for this network interface. Structure documented below.
+func (o GetInstanceNetworkInterfaceOutput) AliasIpRanges() GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+func (o GetInstanceNetworkInterfaceOutput) IgmpQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.IgmpQuery }).(pulumi.StringOutput)
+}
+
+// The prefix length of the primary internal IPv6 range.
+func (o GetInstanceNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
+}
+
+// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceIpv6AccessConfig {
+		return v.Ipv6AccessConfigs
+	}).(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+func (o GetInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// MAC address assigned to this network interface.
+func (o GetInstanceNetworkInterfaceOutput) MacAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.MacAddress }).(pulumi.StringOutput)
+}
+
+// The name of the instance. One of `name` or `selfLink` must be provided.
+func (o GetInstanceNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the network attached to this interface.
+func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The URL of the network attachment to this interface.
+func (o GetInstanceNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+// The internal ip address of the instance, either manually or dynamically assigned.
+func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
+func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// Name of the parent network interface of a dynamic network interface.
+func (o GetInstanceNetworkInterfaceOutput) ParentNicName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.ParentNicName }).(pulumi.StringOutput)
+}
+
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+func (o GetInstanceNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
+}
+
+// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+func (o GetInstanceNetworkInterfaceOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.SecurityPolicy }).(pulumi.StringOutput)
+}
+
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+func (o GetInstanceNetworkInterfaceOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.StackType }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the subnetwork attached to this interface.
+func (o GetInstanceNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The project in which the subnetwork belongs.
+func (o GetInstanceNetworkInterfaceOutput) SubnetworkProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.SubnetworkProject }).(pulumi.StringOutput)
+}
+
+// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+func (o GetInstanceNetworkInterfaceOutput) Vlan() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.Vlan }).(pulumi.IntOutput)
+}
+
+type GetInstanceNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceArrayOutput) ToGetInstanceNetworkInterfaceArrayOutput() GetInstanceNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceArrayOutput) ToGetInstanceNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterface {
+		return vs[0].([]GetInstanceNetworkInterface)[vs[1].(int)]
+	}).(GetInstanceNetworkInterfaceOutput)
+}
+
 type GetInstanceNetworkInterfaceAccessConfig struct {
 	// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
 	NatIp string `pulumi:"natIp"`
@@ -33557,6 +34060,121 @@ func (o GetSnapshotSourceDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetSnapshotSourceDiskEncryptionKeyOutput)
 }
 
+type GetStoragePoolParam struct {
+	// Resource manager tags to be bound to the storage pool. Tag keys and values have the
+	// same definition as resource manager tags. Keys and values can be either in numeric format,
+	// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in namespaced format such as
+	// {org_id|projectId}/{tag_key_short_name} and {tag_value_short_name}. The field is ignored when empty.
+	// The field is immutable and causes resource replacement when mutated. This field is only
+	// set at create time and modifying this field after creation will trigger recreation.
+	// To apply tags to an existing resource, see the tags.TagBinding resource.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetStoragePoolParamInput is an input type that accepts GetStoragePoolParamArgs and GetStoragePoolParamOutput values.
+// You can construct a concrete instance of `GetStoragePoolParamInput` via:
+//
+//	GetStoragePoolParamArgs{...}
+type GetStoragePoolParamInput interface {
+	pulumi.Input
+
+	ToGetStoragePoolParamOutput() GetStoragePoolParamOutput
+	ToGetStoragePoolParamOutputWithContext(context.Context) GetStoragePoolParamOutput
+}
+
+type GetStoragePoolParamArgs struct {
+	// Resource manager tags to be bound to the storage pool. Tag keys and values have the
+	// same definition as resource manager tags. Keys and values can be either in numeric format,
+	// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in namespaced format such as
+	// {org_id|projectId}/{tag_key_short_name} and {tag_value_short_name}. The field is ignored when empty.
+	// The field is immutable and causes resource replacement when mutated. This field is only
+	// set at create time and modifying this field after creation will trigger recreation.
+	// To apply tags to an existing resource, see the tags.TagBinding resource.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetStoragePoolParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragePoolParam)(nil)).Elem()
+}
+
+func (i GetStoragePoolParamArgs) ToGetStoragePoolParamOutput() GetStoragePoolParamOutput {
+	return i.ToGetStoragePoolParamOutputWithContext(context.Background())
+}
+
+func (i GetStoragePoolParamArgs) ToGetStoragePoolParamOutputWithContext(ctx context.Context) GetStoragePoolParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragePoolParamOutput)
+}
+
+// GetStoragePoolParamArrayInput is an input type that accepts GetStoragePoolParamArray and GetStoragePoolParamArrayOutput values.
+// You can construct a concrete instance of `GetStoragePoolParamArrayInput` via:
+//
+//	GetStoragePoolParamArray{ GetStoragePoolParamArgs{...} }
+type GetStoragePoolParamArrayInput interface {
+	pulumi.Input
+
+	ToGetStoragePoolParamArrayOutput() GetStoragePoolParamArrayOutput
+	ToGetStoragePoolParamArrayOutputWithContext(context.Context) GetStoragePoolParamArrayOutput
+}
+
+type GetStoragePoolParamArray []GetStoragePoolParamInput
+
+func (GetStoragePoolParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragePoolParam)(nil)).Elem()
+}
+
+func (i GetStoragePoolParamArray) ToGetStoragePoolParamArrayOutput() GetStoragePoolParamArrayOutput {
+	return i.ToGetStoragePoolParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoragePoolParamArray) ToGetStoragePoolParamArrayOutputWithContext(ctx context.Context) GetStoragePoolParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragePoolParamArrayOutput)
+}
+
+type GetStoragePoolParamOutput struct{ *pulumi.OutputState }
+
+func (GetStoragePoolParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragePoolParam)(nil)).Elem()
+}
+
+func (o GetStoragePoolParamOutput) ToGetStoragePoolParamOutput() GetStoragePoolParamOutput {
+	return o
+}
+
+func (o GetStoragePoolParamOutput) ToGetStoragePoolParamOutputWithContext(ctx context.Context) GetStoragePoolParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the storage pool. Tag keys and values have the
+// same definition as resource manager tags. Keys and values can be either in numeric format,
+// such as tagKeys/{tag_key_id} and tagValues/{tag_value_id} or in namespaced format such as
+// {org_id|projectId}/{tag_key_short_name} and {tag_value_short_name}. The field is ignored when empty.
+// The field is immutable and causes resource replacement when mutated. This field is only
+// set at create time and modifying this field after creation will trigger recreation.
+// To apply tags to an existing resource, see the tags.TagBinding resource.
+func (o GetStoragePoolParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStoragePoolParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetStoragePoolParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoragePoolParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragePoolParam)(nil)).Elem()
+}
+
+func (o GetStoragePoolParamArrayOutput) ToGetStoragePoolParamArrayOutput() GetStoragePoolParamArrayOutput {
+	return o
+}
+
+func (o GetStoragePoolParamArrayOutput) ToGetStoragePoolParamArrayOutputWithContext(ctx context.Context) GetStoragePoolParamArrayOutput {
+	return o
+}
+
+func (o GetStoragePoolParamArrayOutput) Index(i pulumi.IntInput) GetStoragePoolParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoragePoolParam {
+		return vs[0].([]GetStoragePoolParam)[vs[1].(int)]
+	}).(GetStoragePoolParamOutput)
+}
+
 type GetStoragePoolResourceStatus struct {
 	// Number of disks used.
 	DiskCount string `pulumi:"diskCount"`
@@ -34376,6 +34994,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueArrayInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInstanceEncryptionKeyInput)(nil)).Elem(), GetInstanceInstanceEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInstanceEncryptionKeyArrayInput)(nil)).Elem(), GetInstanceInstanceEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceInput)(nil)).Elem(), GetInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfigInput)(nil)).Elem(), GetInstanceNetworkInterfaceAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpRangeArgs{})
@@ -34880,6 +35504,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolParamInput)(nil)).Elem(), GetStoragePoolParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolParamArrayInput)(nil)).Elem(), GetStoragePoolParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolResourceStatusInput)(nil)).Elem(), GetStoragePoolResourceStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolResourceStatusArrayInput)(nil)).Elem(), GetStoragePoolResourceStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolStatusInput)(nil)).Elem(), GetStoragePoolStatusArgs{})
@@ -34890,6 +35516,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceInstanceEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceInstanceEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeOutput{})
@@ -35394,6 +36026,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetStoragePoolParamOutput{})
+	pulumi.RegisterOutputType(GetStoragePoolParamArrayOutput{})
 	pulumi.RegisterOutputType(GetStoragePoolResourceStatusOutput{})
 	pulumi.RegisterOutputType(GetStoragePoolResourceStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetStoragePoolStatusOutput{})

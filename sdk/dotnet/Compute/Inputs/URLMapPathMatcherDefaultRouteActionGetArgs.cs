@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherDefaultRouteActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the cache policy configuration for matched traffic. Available
         /// only for Global EXTERNAL_MANAGED load balancer schemes. At least one
         /// property must be specified. This policy cannot be specified if any target

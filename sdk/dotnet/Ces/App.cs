@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.5-flash-001",
+    ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
     ///         },
     ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
@@ -250,7 +250,6 @@ namespace Pulumi.Gcp.Ces
     ///                 Input = "test-fixtures/cert.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             PrivateKey = fakeSecretVersion.Name,
-    ///             Passphrase = fakeSecretVersion.Name,
     ///         },
     ///     });
     /// 
@@ -342,7 +341,7 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
     ///         {
-    ///             Model = "gemini-2.5-flash-001",
+    ///             Model = "gemini-3.0-flash-001",
     ///             Temperature = 0.5,
     ///         },
     ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs

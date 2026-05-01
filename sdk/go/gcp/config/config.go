@@ -92,6 +92,9 @@ func GetBigqueryReservationCustomEndpoint(ctx *pulumi.Context) string {
 func GetBigtableCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigtableCustomEndpoint")
 }
+func GetBillingBudgetsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:billingBudgetsCustomEndpoint")
+}
 func GetBillingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:billingCustomEndpoint")
 }
@@ -202,6 +205,9 @@ func GetDataCatalogCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataFusionCustomEndpoint")
+}
+func GetDataLineageCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataLineageCustomEndpoint")
 }
 func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataLossPreventionCustomEndpoint")
@@ -315,6 +321,9 @@ func GetFirebaseExtensionsCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetFirebaseHostingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseHostingCustomEndpoint")
+}
+func GetFirebaseRemoteConfigCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseRemoteConfigCustomEndpoint")
 }
 func GetFirebaseStorageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseStorageCustomEndpoint")
@@ -471,6 +480,12 @@ func GetParameterManagerRegionalCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetPollInterval(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pollInterval")
+}
+func GetPreferGlobalEndpoints(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "gcp:preferGlobalEndpoints")
+}
+func GetPreferRegionalEndpoints(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "gcp:preferRegionalEndpoints")
 }
 func GetPrivatecaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:privatecaCustomEndpoint")

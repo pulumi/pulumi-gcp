@@ -38,12 +38,6 @@ import * as utilities from "../utilities";
  * const waitEnableServiceApi = new time.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
  *     dependsOn: [dialogflow],
  * });
- * const gcpSa = new gcp.projects.ServiceIdentity("gcp_sa", {
- *     service: "dialogflow.googleapis.com",
- *     project: project.projectId,
- * }, {
- *     dependsOn: [waitEnableServiceApi],
- * });
  * const basicAgent = new gcp.diagflow.Agent("basic_agent", {
  *     displayName: "example_agent",
  *     defaultLanguageCode: "en-us",

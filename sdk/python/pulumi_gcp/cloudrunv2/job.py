@@ -1144,6 +1144,36 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Emptydir Disk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            launch_stage="BETA",
+            deletion_protection=True,
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                        "volume_mounts": [{
+                            "name": "empty-dir-volume",
+                            "mount_path": "/mnt",
+                        }],
+                    }],
+                    "volumes": [{
+                        "name": "empty-dir-volume",
+                        "empty_dir": {
+                            "medium": "DISK",
+                            "size_limit": "10Gi",
+                        },
+                    }],
+                },
+            })
+        ```
         ### Cloudrunv2 Job Run Job
 
         ```python
@@ -1538,6 +1568,36 @@ class Job(pulumi.CustomResource):
                         "empty_dir": {
                             "medium": "MEMORY",
                             "size_limit": "128Mi",
+                        },
+                    }],
+                },
+            })
+        ```
+        ### Cloudrunv2 Job Emptydir Disk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            launch_stage="BETA",
+            deletion_protection=True,
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                        "volume_mounts": [{
+                            "name": "empty-dir-volume",
+                            "mount_path": "/mnt",
+                        }],
+                    }],
+                    "volumes": [{
+                        "name": "empty-dir-volume",
+                        "empty_dir": {
+                            "medium": "DISK",
+                            "size_limit": "10Gi",
                         },
                     }],
                 },

@@ -27,7 +27,7 @@ public final class InstanceGceSetupDataDisks {
     private @Nullable String diskSizeGb;
     /**
      * @return Optional. Input only. Indicates the type of the disk.
-     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
      * 
      */
     private @Nullable String diskType;
@@ -60,7 +60,7 @@ public final class InstanceGceSetupDataDisks {
     }
     /**
      * @return Optional. Input only. Indicates the type of the disk.
-     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+     * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
      * 
      */
     public Optional<String> diskType() {

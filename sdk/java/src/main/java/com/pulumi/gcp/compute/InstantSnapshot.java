@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.InstantSnapshotArgs;
 import com.pulumi.gcp.compute.inputs.InstantSnapshotState;
+import com.pulumi.gcp.compute.outputs.InstantSnapshotParams;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -213,6 +214,22 @@ public class InstantSnapshot extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={InstantSnapshotParams.class}, tree="[0]")
+    private Output</* @Nullable */ InstantSnapshotParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstantSnapshotParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

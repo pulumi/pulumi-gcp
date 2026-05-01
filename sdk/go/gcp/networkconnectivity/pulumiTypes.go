@@ -507,6 +507,332 @@ func (o GroupAutoAcceptPtrOutput) AutoAcceptProjects() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+type HubIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HubIamBindingConditionInput is an input type that accepts HubIamBindingConditionArgs and HubIamBindingConditionOutput values.
+// You can construct a concrete instance of `HubIamBindingConditionInput` via:
+//
+//	HubIamBindingConditionArgs{...}
+type HubIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToHubIamBindingConditionOutput() HubIamBindingConditionOutput
+	ToHubIamBindingConditionOutputWithContext(context.Context) HubIamBindingConditionOutput
+}
+
+type HubIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HubIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HubIamBindingCondition)(nil)).Elem()
+}
+
+func (i HubIamBindingConditionArgs) ToHubIamBindingConditionOutput() HubIamBindingConditionOutput {
+	return i.ToHubIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i HubIamBindingConditionArgs) ToHubIamBindingConditionOutputWithContext(ctx context.Context) HubIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubIamBindingConditionOutput)
+}
+
+func (i HubIamBindingConditionArgs) ToHubIamBindingConditionPtrOutput() HubIamBindingConditionPtrOutput {
+	return i.ToHubIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HubIamBindingConditionArgs) ToHubIamBindingConditionPtrOutputWithContext(ctx context.Context) HubIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubIamBindingConditionOutput).ToHubIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// HubIamBindingConditionPtrInput is an input type that accepts HubIamBindingConditionArgs, HubIamBindingConditionPtr and HubIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `HubIamBindingConditionPtrInput` via:
+//
+//	        HubIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HubIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToHubIamBindingConditionPtrOutput() HubIamBindingConditionPtrOutput
+	ToHubIamBindingConditionPtrOutputWithContext(context.Context) HubIamBindingConditionPtrOutput
+}
+
+type hubIamBindingConditionPtrType HubIamBindingConditionArgs
+
+func HubIamBindingConditionPtr(v *HubIamBindingConditionArgs) HubIamBindingConditionPtrInput {
+	return (*hubIamBindingConditionPtrType)(v)
+}
+
+func (*hubIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HubIamBindingCondition)(nil)).Elem()
+}
+
+func (i *hubIamBindingConditionPtrType) ToHubIamBindingConditionPtrOutput() HubIamBindingConditionPtrOutput {
+	return i.ToHubIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hubIamBindingConditionPtrType) ToHubIamBindingConditionPtrOutputWithContext(ctx context.Context) HubIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubIamBindingConditionPtrOutput)
+}
+
+type HubIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (HubIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HubIamBindingCondition)(nil)).Elem()
+}
+
+func (o HubIamBindingConditionOutput) ToHubIamBindingConditionOutput() HubIamBindingConditionOutput {
+	return o
+}
+
+func (o HubIamBindingConditionOutput) ToHubIamBindingConditionOutputWithContext(ctx context.Context) HubIamBindingConditionOutput {
+	return o
+}
+
+func (o HubIamBindingConditionOutput) ToHubIamBindingConditionPtrOutput() HubIamBindingConditionPtrOutput {
+	return o.ToHubIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HubIamBindingConditionOutput) ToHubIamBindingConditionPtrOutputWithContext(ctx context.Context) HubIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HubIamBindingCondition) *HubIamBindingCondition {
+		return &v
+	}).(HubIamBindingConditionPtrOutput)
+}
+
+func (o HubIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HubIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HubIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HubIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HubIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HubIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HubIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HubIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HubIamBindingCondition)(nil)).Elem()
+}
+
+func (o HubIamBindingConditionPtrOutput) ToHubIamBindingConditionPtrOutput() HubIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HubIamBindingConditionPtrOutput) ToHubIamBindingConditionPtrOutputWithContext(ctx context.Context) HubIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HubIamBindingConditionPtrOutput) Elem() HubIamBindingConditionOutput {
+	return o.ApplyT(func(v *HubIamBindingCondition) HubIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HubIamBindingCondition
+		return ret
+	}).(HubIamBindingConditionOutput)
+}
+
+func (o HubIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HubIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HubIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HubIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HubIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HubIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type HubIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HubIamMemberConditionInput is an input type that accepts HubIamMemberConditionArgs and HubIamMemberConditionOutput values.
+// You can construct a concrete instance of `HubIamMemberConditionInput` via:
+//
+//	HubIamMemberConditionArgs{...}
+type HubIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToHubIamMemberConditionOutput() HubIamMemberConditionOutput
+	ToHubIamMemberConditionOutputWithContext(context.Context) HubIamMemberConditionOutput
+}
+
+type HubIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HubIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HubIamMemberCondition)(nil)).Elem()
+}
+
+func (i HubIamMemberConditionArgs) ToHubIamMemberConditionOutput() HubIamMemberConditionOutput {
+	return i.ToHubIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i HubIamMemberConditionArgs) ToHubIamMemberConditionOutputWithContext(ctx context.Context) HubIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubIamMemberConditionOutput)
+}
+
+func (i HubIamMemberConditionArgs) ToHubIamMemberConditionPtrOutput() HubIamMemberConditionPtrOutput {
+	return i.ToHubIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HubIamMemberConditionArgs) ToHubIamMemberConditionPtrOutputWithContext(ctx context.Context) HubIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubIamMemberConditionOutput).ToHubIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// HubIamMemberConditionPtrInput is an input type that accepts HubIamMemberConditionArgs, HubIamMemberConditionPtr and HubIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `HubIamMemberConditionPtrInput` via:
+//
+//	        HubIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HubIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToHubIamMemberConditionPtrOutput() HubIamMemberConditionPtrOutput
+	ToHubIamMemberConditionPtrOutputWithContext(context.Context) HubIamMemberConditionPtrOutput
+}
+
+type hubIamMemberConditionPtrType HubIamMemberConditionArgs
+
+func HubIamMemberConditionPtr(v *HubIamMemberConditionArgs) HubIamMemberConditionPtrInput {
+	return (*hubIamMemberConditionPtrType)(v)
+}
+
+func (*hubIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HubIamMemberCondition)(nil)).Elem()
+}
+
+func (i *hubIamMemberConditionPtrType) ToHubIamMemberConditionPtrOutput() HubIamMemberConditionPtrOutput {
+	return i.ToHubIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hubIamMemberConditionPtrType) ToHubIamMemberConditionPtrOutputWithContext(ctx context.Context) HubIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubIamMemberConditionPtrOutput)
+}
+
+type HubIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (HubIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HubIamMemberCondition)(nil)).Elem()
+}
+
+func (o HubIamMemberConditionOutput) ToHubIamMemberConditionOutput() HubIamMemberConditionOutput {
+	return o
+}
+
+func (o HubIamMemberConditionOutput) ToHubIamMemberConditionOutputWithContext(ctx context.Context) HubIamMemberConditionOutput {
+	return o
+}
+
+func (o HubIamMemberConditionOutput) ToHubIamMemberConditionPtrOutput() HubIamMemberConditionPtrOutput {
+	return o.ToHubIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HubIamMemberConditionOutput) ToHubIamMemberConditionPtrOutputWithContext(ctx context.Context) HubIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HubIamMemberCondition) *HubIamMemberCondition {
+		return &v
+	}).(HubIamMemberConditionPtrOutput)
+}
+
+func (o HubIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HubIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HubIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HubIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HubIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HubIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HubIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HubIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HubIamMemberCondition)(nil)).Elem()
+}
+
+func (o HubIamMemberConditionPtrOutput) ToHubIamMemberConditionPtrOutput() HubIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HubIamMemberConditionPtrOutput) ToHubIamMemberConditionPtrOutputWithContext(ctx context.Context) HubIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HubIamMemberConditionPtrOutput) Elem() HubIamMemberConditionOutput {
+	return o.ApplyT(func(v *HubIamMemberCondition) HubIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HubIamMemberCondition
+		return ret
+	}).(HubIamMemberConditionOutput)
+}
+
+func (o HubIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HubIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HubIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HubIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HubIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HubIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type HubRoutingVpc struct {
 	// The URI of the VPC network.
 	Uri *string `pulumi:"uri"`
@@ -4171,6 +4497,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationStateTimelineStateArrayInput)(nil)).Elem(), DestinationStateTimelineStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptPtrInput)(nil)).Elem(), GroupAutoAcceptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HubIamBindingConditionInput)(nil)).Elem(), HubIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HubIamBindingConditionPtrInput)(nil)).Elem(), HubIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HubIamMemberConditionInput)(nil)).Elem(), HubIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HubIamMemberConditionPtrInput)(nil)).Elem(), HubIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeAllocationOptionsInput)(nil)).Elem(), InternalRangeAllocationOptionsArgs{})
@@ -4223,6 +4553,10 @@ func init() {
 	pulumi.RegisterOutputType(DestinationStateTimelineStateArrayOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptPtrOutput{})
+	pulumi.RegisterOutputType(HubIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(HubIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(HubIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(HubIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
 	pulumi.RegisterOutputType(InternalRangeAllocationOptionsOutput{})

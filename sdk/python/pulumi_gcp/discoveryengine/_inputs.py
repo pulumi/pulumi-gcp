@@ -1673,21 +1673,29 @@ class DataConnectorDestinationConfigArgsDict(TypedDict):
     """
     The key of the destination configuration, for example `url`.
     """
+    params: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional parameters for this destination config in structured json format.
+    """
 
 @pulumi.input_type
 class DataConnectorDestinationConfigArgs:
     def __init__(__self__, *,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]] destinations: The list of destinations for this configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] key: The key of the destination configuration, for example `url`.
+        :param pulumi.Input[_builtins.str] params: Additional parameters for this destination config in structured json format.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
 
     @_builtins.property
     @pulumi.getter
@@ -1714,6 +1722,18 @@ class DataConnectorDestinationConfigArgs:
     def key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "key", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Additional parameters for this destination config in structured json format.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "params", value)
+
 
 class DataConnectorDestinationConfigDestinationArgsDict(TypedDict):
     host: NotRequired[pulumi.Input[_builtins.str]]
@@ -1721,17 +1741,25 @@ class DataConnectorDestinationConfigDestinationArgsDict(TypedDict):
     The host of the destination, for example
     `https://example.atlassian.net`.
     """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Target port number accepted by the destination.
+    """
 
 @pulumi.input_type
 class DataConnectorDestinationConfigDestinationArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] host: The host of the destination, for example
                `https://example.atlassian.net`.
+        :param pulumi.Input[_builtins.int] port: Target port number accepted by the destination.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
@@ -1745,6 +1773,18 @@ class DataConnectorDestinationConfigDestinationArgs:
     @host.setter
     def host(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Target port number accepted by the destination.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
 
 
 class DataConnectorEntityArgsDict(TypedDict):

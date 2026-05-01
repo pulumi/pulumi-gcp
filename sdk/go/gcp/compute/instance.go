@@ -215,6 +215,8 @@ type Instance struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
+	// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrOutput `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
@@ -407,6 +409,8 @@ type instanceState struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
+	// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
@@ -556,6 +560,8 @@ type InstanceState struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
+	// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
@@ -701,6 +707,8 @@ type instanceArgs struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
+	// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
@@ -831,6 +839,8 @@ type InstanceArgs struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
+	// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
 	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
@@ -1094,6 +1104,11 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 // **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 func (o InstanceOutput) EnableDisplay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableDisplay }).(pulumi.BoolPtrOutput)
+}
+
+// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+func (o InstanceOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EraseWindowsVssSignature }).(pulumi.BoolPtrOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure documented below.

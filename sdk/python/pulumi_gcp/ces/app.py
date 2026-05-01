@@ -957,7 +957,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1041,7 +1041,6 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
-                "passphrase": fake_secret_version.name,
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1110,7 +1109,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1346,7 +1345,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={
@@ -1430,7 +1429,6 @@ class App(pulumi.CustomResource):
             client_certificate_settings={
                 "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "private_key": fake_secret_version.name,
-                "passphrase": fake_secret_version.name,
             })
         ```
         ### Ces App Ambient Sound Gcs Uri
@@ -1499,7 +1497,7 @@ class App(pulumi.CustomResource):
                 },
             },
             model_settings={
-                "model": "gemini-2.5-flash-001",
+                "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
             },
             evaluation_metrics_thresholds={

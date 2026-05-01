@@ -65,15 +65,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewServiceIdentity(ctx, "gcp_sa", &projects.ServiceIdentityArgs{
-//				Service: pulumi.String("dialogflow.googleapis.com"),
-//				Project: project.ProjectId,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				waitEnableServiceApi,
-//			}))
-//			if err != nil {
-//				return err
-//			}
 //			basicAgent, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				DisplayName:         pulumi.String("example_agent"),
 //				DefaultLanguageCode: pulumi.String("en"),

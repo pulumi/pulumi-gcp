@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.Ces
     ///                     {
     ///                         ModelSettings = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs
     ///                         {
-    ///                             Model = "gemini-2.5-flash-001",
+    ///                             Model = "gemini-3.0-flash-001",
     ///                             Temperature = 1,
     ///                         },
     ///                         Prompt = "example-prompt",
@@ -294,7 +294,7 @@ namespace Pulumi.Gcp.Ces
     ///                     {
     ///                         ModelSettings = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs
     ///                         {
-    ///                             Model = "gemini-2.5-flash-001",
+    ///                             Model = "gemini-3.0-flash-001",
     ///                             Temperature = 1,
     ///                         },
     ///                         Prompt = "example-prompt",
@@ -323,7 +323,6 @@ namespace Pulumi.Gcp.Ces
     ///                 },
     ///                 Filter = "example_field: ANY(\"specific_example\")",
     ///             },
-    ///             MaxResults = 5,
     ///         },
     ///     });
     /// 

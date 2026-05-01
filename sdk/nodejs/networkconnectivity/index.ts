@@ -15,6 +15,11 @@ export type GatewayAdvertisedRoute = import("./gatewayAdvertisedRoute").GatewayA
 export const GatewayAdvertisedRoute: typeof import("./gatewayAdvertisedRoute").GatewayAdvertisedRoute = null as any;
 utilities.lazyLoad(exports, ["GatewayAdvertisedRoute"], () => require("./gatewayAdvertisedRoute"));
 
+export { GetHubIamPolicyArgs, GetHubIamPolicyResult, GetHubIamPolicyOutputArgs } from "./getHubIamPolicy";
+export const getHubIamPolicy: typeof import("./getHubIamPolicy").getHubIamPolicy = null as any;
+export const getHubIamPolicyOutput: typeof import("./getHubIamPolicy").getHubIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getHubIamPolicy","getHubIamPolicyOutput"], () => require("./getHubIamPolicy"));
+
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
@@ -24,6 +29,21 @@ export { HubArgs, HubState } from "./hub";
 export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
 utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
+
+export { HubIamBindingArgs, HubIamBindingState } from "./hubIamBinding";
+export type HubIamBinding = import("./hubIamBinding").HubIamBinding;
+export const HubIamBinding: typeof import("./hubIamBinding").HubIamBinding = null as any;
+utilities.lazyLoad(exports, ["HubIamBinding"], () => require("./hubIamBinding"));
+
+export { HubIamMemberArgs, HubIamMemberState } from "./hubIamMember";
+export type HubIamMember = import("./hubIamMember").HubIamMember;
+export const HubIamMember: typeof import("./hubIamMember").HubIamMember = null as any;
+utilities.lazyLoad(exports, ["HubIamMember"], () => require("./hubIamMember"));
+
+export { HubIamPolicyArgs, HubIamPolicyState } from "./hubIamPolicy";
+export type HubIamPolicy = import("./hubIamPolicy").HubIamPolicy;
+export const HubIamPolicy: typeof import("./hubIamPolicy").HubIamPolicy = null as any;
+utilities.lazyLoad(exports, ["HubIamPolicy"], () => require("./hubIamPolicy"));
 
 export { InternalRangeArgs, InternalRangeState } from "./internalRange";
 export type InternalRange = import("./internalRange").InternalRange;
@@ -73,6 +93,12 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/hub:Hub":
                 return new Hub(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/hubIamBinding:HubIamBinding":
+                return new HubIamBinding(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/hubIamMember:HubIamMember":
+                return new HubIamMember(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/hubIamPolicy:HubIamPolicy":
+                return new HubIamPolicy(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/internalRange:InternalRange":
                 return new InternalRange(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig":
@@ -96,6 +122,9 @@ pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/destination", 
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/gatewayAdvertisedRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hubIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hubIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hubIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/internalRange", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/multicloudDataTransferConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/policyBasedRoute", _module)

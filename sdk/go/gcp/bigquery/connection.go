@@ -446,6 +446,110 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Connection Connector Configuration
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nameSuffix := "my-connection"
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.Sprintf("alloydb-network-%v", nameSuffix),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.Sprintf("alloydb-cluster-%v", nameSuffix),
+//				Location:  pulumi.String("us-central1"),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: defaultNetwork.ID(),
+//				},
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("alloydb-cluster-password"),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.Sprintf("alloydb-ip-%v", nameSuffix),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: defaultNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
+//				Cluster:      _default.Name,
+//				InstanceId:   pulumi.Sprintf("alloydb-instance-%v", nameSuffix),
+//				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("us-central1"),
+//				FriendlyName: pulumi.String("alloydb connection"),
+//				Description:  pulumi.String("AlloyDB connection using connector configuration"),
+//				Configuration: &bigquery.ConnectionConfigurationArgs{
+//					ConnectorId: pulumi.String("google-alloydb"),
+//					Asset: &bigquery.ConnectionConfigurationAssetArgs{
+//						Database: pulumi.String("postgres"),
+//						GoogleCloudResource: defaultInstance.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//alloydb.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					Authentication: &bigquery.ConnectionConfigurationAuthenticationArgs{
+//						UsernamePassword: &bigquery.ConnectionConfigurationAuthenticationUsernamePasswordArgs{
+//							Username: pulumi.String("user"),
+//							Password: &bigquery.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs{
+//								Plaintext: pulumi.String("password"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -480,6 +584,11 @@ type Connection struct {
 	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrOutput `pulumi:"cloudSql"`
+	// Connector configuration. This is a generic configuration that is used to connect to
+	// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+	// Connector framework.
+	// Structure is documented below.
+	Configuration ConnectionConfigurationPtrOutput `pulumi:"configuration"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// A descriptive description for the connection
@@ -555,6 +664,11 @@ type connectionState struct {
 	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
+	// Connector configuration. This is a generic configuration that is used to connect to
+	// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+	// Connector framework.
+	// Structure is documented below.
+	Configuration *ConnectionConfiguration `pulumi:"configuration"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
 	// A descriptive description for the connection
@@ -601,6 +715,11 @@ type ConnectionState struct {
 	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
+	// Connector configuration. This is a generic configuration that is used to connect to
+	// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+	// Connector framework.
+	// Structure is documented below.
+	Configuration ConnectionConfigurationPtrInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
 	// A descriptive description for the connection
@@ -651,6 +770,11 @@ type connectionArgs struct {
 	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
+	// Connector configuration. This is a generic configuration that is used to connect to
+	// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+	// Connector framework.
+	// Structure is documented below.
+	Configuration *ConnectionConfiguration `pulumi:"configuration"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
 	// A descriptive description for the connection
@@ -693,6 +817,11 @@ type ConnectionArgs struct {
 	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
+	// Connector configuration. This is a generic configuration that is used to connect to
+	// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+	// Connector framework.
+	// Structure is documented below.
+	Configuration ConnectionConfigurationPtrInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
 	// A descriptive description for the connection
@@ -833,6 +962,14 @@ func (o ConnectionOutput) CloudSpanner() ConnectionCloudSpannerPtrOutput {
 // Structure is documented below.
 func (o ConnectionOutput) CloudSql() ConnectionCloudSqlPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionCloudSqlPtrOutput { return v.CloudSql }).(ConnectionCloudSqlPtrOutput)
+}
+
+// Connector configuration. This is a generic configuration that is used to connect to
+// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+// Connector framework.
+// Structure is documented below.
+func (o ConnectionOutput) Configuration() ConnectionConfigurationPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionConfigurationPtrOutput { return v.Configuration }).(ConnectionConfigurationPtrOutput)
 }
 
 // Optional connection id that should be assigned to the created connection.

@@ -63,6 +63,48 @@ import (
 //	}
 //
 // ```
+// ### Datastream Private Connection Force Delete
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("my-network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewPrivateConnection(ctx, "default", &datastream.PrivateConnectionArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				PrivateConnectionId: pulumi.String("my-connection"),
+//				DeletionPolicy:      pulumi.String("FORCE"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
+//					Vpc:    defaultNetwork.ID(),
+//					Subnet: pulumi.String("10.0.0.0/29"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Datastream Private Connection Psc Interface
 //
 // ```go
@@ -146,6 +188,11 @@ type PrivateConnection struct {
 
 	// If set to true, will skip validations.
 	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
+	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+	// child routes exist. Defaults to `FORCE` for backwards compatibility.
+	// Possible values: `DEFAULT`, `FORCE`.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -227,6 +274,11 @@ func GetPrivateConnection(ctx *pulumi.Context,
 type privateConnectionState struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
+	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+	// child routes exist. Defaults to `FORCE` for backwards compatibility.
+	// Possible values: `DEFAULT`, `FORCE`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -265,6 +317,11 @@ type privateConnectionState struct {
 type PrivateConnectionState struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation pulumi.BoolPtrInput
+	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+	// child routes exist. Defaults to `FORCE` for backwards compatibility.
+	// Possible values: `DEFAULT`, `FORCE`.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -307,6 +364,11 @@ func (PrivateConnectionState) ElementType() reflect.Type {
 type privateConnectionArgs struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
+	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+	// child routes exist. Defaults to `FORCE` for backwards compatibility.
+	// Possible values: `DEFAULT`, `FORCE`.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
@@ -334,6 +396,11 @@ type privateConnectionArgs struct {
 type PrivateConnectionArgs struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation pulumi.BoolPtrInput
+	// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+	// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+	// child routes exist. Defaults to `FORCE` for backwards compatibility.
+	// Possible values: `DEFAULT`, `FORCE`.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Labels.
@@ -447,6 +514,14 @@ func (o PrivateConnectionOutput) ToPrivateConnectionOutputWithContext(ctx contex
 // If set to true, will skip validations.
 func (o PrivateConnectionOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
+}
+
+// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+// child routes exist. Defaults to `FORCE` for backwards compatibility.
+// Possible values: `DEFAULT`, `FORCE`.
+func (o PrivateConnectionOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Display name.

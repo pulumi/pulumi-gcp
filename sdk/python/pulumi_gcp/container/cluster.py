@@ -1913,7 +1913,9 @@ class _ClusterState:
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] master_version: The current version of the master in the cluster. This may be different than the min_master_version set in the config if the master has been updated by GKE.
+        :param pulumi.Input[_builtins.str] master_version: The current version of the master in the cluster. This may
+               be different than the `min_master_version` set in the config if the master
+               has been updated by GKE.
         :param pulumi.Input['ClusterMeshCertificatesArgs'] mesh_certificates: Structure is documented below.
         :param pulumi.Input[_builtins.str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
@@ -2028,13 +2030,18 @@ class _ClusterState:
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-        :param pulumi.Input[_builtins.str] self_link: Server-defined URL for the resource.
+        :param pulumi.Input[_builtins.str] self_link: The server-defined URL for the resource.
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
-        :param pulumi.Input[_builtins.str] services_ipv4_cidr: The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+        :param pulumi.Input[_builtins.str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
+               cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+               `/16` from the container CIDR.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
+               [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
@@ -2918,7 +2925,9 @@ class _ClusterState:
     @pulumi.getter(name="masterVersion")
     def master_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The current version of the master in the cluster. This may be different than the min_master_version set in the config if the master has been updated by GKE.
+        The current version of the master in the cluster. This may
+        be different than the `min_master_version` set in the config if the master
+        has been updated by GKE.
         """
         return pulumi.get(self, "master_version")
 
@@ -3394,7 +3403,7 @@ class _ClusterState:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Server-defined URL for the resource.
+        The server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -3418,7 +3427,10 @@ class _ClusterState:
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+        The IP address range of the Kubernetes services in this
+        cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        `/16` from the container CIDR.
         """
         return pulumi.get(self, "services_ipv4_cidr")
 
@@ -3455,7 +3467,9 @@ class _ClusterState:
     @pulumi.getter(name="tpuIpv4CidrBlock")
     def tpu_ipv4_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        The IP address range of the Cloud TPUs in this cluster, in
+        [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`).
         """
         return pulumi.get(self, "tpu_ipv4_cidr_block")
 
@@ -3696,6 +3710,32 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             enable_autopilot=True)
         ```
+
+        ## Import
+
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
+        provider value will be used. Examples:
+
+        * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+        * `{{project_id}}/{{location}}/{{cluster_id}}`
+        * `{{location}}/{{cluster_id}}`
+
+        When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
+
+        ```sh
+        $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
+
+        $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+
+        $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
+        ```
+
+        > **Note:** This resource has several fields that control Terraform-specific behavior and aren't present in the API. If they are set in config and you import a cluster, Terraform may need to perform an update immediately after import. Most of these updates should be no-ops but some may modify your cluster if the imported state differs.
+
+        For example, the following fields will show diffs if set in config:
+
+        - `min_master_version`
+        - `remove_default_node_pool`
 
 
         :param str resource_name: The name of the resource.
@@ -4033,6 +4073,32 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             enable_autopilot=True)
         ```
+
+        ## Import
+
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
+        provider value will be used. Examples:
+
+        * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+        * `{{project_id}}/{{location}}/{{cluster_id}}`
+        * `{{location}}/{{cluster_id}}`
+
+        When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
+
+        ```sh
+        $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
+
+        $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+
+        $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
+        ```
+
+        > **Note:** This resource has several fields that control Terraform-specific behavior and aren't present in the API. If they are set in config and you import a cluster, Terraform may need to perform an update immediately after import. Most of these updates should be no-ops but some may modify your cluster if the imported state differs.
+
+        For example, the following fields will show diffs if set in config:
+
+        - `min_master_version`
+        - `remove_default_node_pool`
 
 
         :param str resource_name: The name of the resource.
@@ -4467,7 +4533,9 @@ class Cluster(pulumi.CustomResource):
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] master_version: The current version of the master in the cluster. This may be different than the min_master_version set in the config if the master has been updated by GKE.
+        :param pulumi.Input[_builtins.str] master_version: The current version of the master in the cluster. This may
+               be different than the `min_master_version` set in the config if the master
+               has been updated by GKE.
         :param pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']] mesh_certificates: Structure is documented below.
         :param pulumi.Input[_builtins.str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
@@ -4582,13 +4650,18 @@ class Cluster(pulumi.CustomResource):
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-        :param pulumi.Input[_builtins.str] self_link: Server-defined URL for the resource.
+        :param pulumi.Input[_builtins.str] self_link: The server-defined URL for the resource.
         :param pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']] service_external_ips_config: Structure is documented below.
-        :param pulumi.Input[_builtins.str] services_ipv4_cidr: The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+        :param pulumi.Input[_builtins.str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
+               cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+               `/16` from the container CIDR.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
+               [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
@@ -5176,7 +5249,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="masterVersion")
     def master_version(self) -> pulumi.Output[_builtins.str]:
         """
-        The current version of the master in the cluster. This may be different than the min_master_version set in the config if the master has been updated by GKE.
+        The current version of the master in the cluster. This may
+        be different than the `min_master_version` set in the config if the master
+        has been updated by GKE.
         """
         return pulumi.get(self, "master_version")
 
@@ -5520,7 +5595,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[_builtins.str]:
         """
-        Server-defined URL for the resource.
+        The server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -5536,7 +5611,10 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+        The IP address range of the Kubernetes services in this
+        cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        `/16` from the container CIDR.
         """
         return pulumi.get(self, "services_ipv4_cidr")
 
@@ -5561,7 +5639,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="tpuIpv4CidrBlock")
     def tpu_ipv4_cidr_block(self) -> pulumi.Output[_builtins.str]:
         """
-        The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        The IP address range of the Cloud TPUs in this cluster, in
+        [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        notation (e.g. `1.2.3.4/29`).
         """
         return pulumi.get(self, "tpu_ipv4_cidr_block")
 

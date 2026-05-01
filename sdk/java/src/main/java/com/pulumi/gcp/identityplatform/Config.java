@@ -263,15 +263,15 @@ public class Config extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="multiTenant", refs={ConfigMultiTenant.class}, tree="[0]")
-    private Output</* @Nullable */ ConfigMultiTenant> multiTenant;
+    private Output<ConfigMultiTenant> multiTenant;
 
     /**
      * @return Configuration related to multi-tenant functionality.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<ConfigMultiTenant>> multiTenant() {
-        return Codegen.optional(this.multiTenant);
+    public Output<ConfigMultiTenant> multiTenant() {
+        return this.multiTenant;
     }
     /**
      * The name of the Config resource

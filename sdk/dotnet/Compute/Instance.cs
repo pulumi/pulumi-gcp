@@ -274,6 +274,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EnableDisplay { get; private set; } = null!;
 
         /// <summary>
+        /// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        /// </summary>
+        [Output("eraseWindowsVssSignature")]
+        public Output<bool?> EraseWindowsVssSignature { get; private set; } = null!;
+
+        /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
         /// **Note:** GPU accelerators can only be used with `OnHostMaintenance` option set to TERMINATE.
         /// </summary>
@@ -624,6 +630,12 @@ namespace Pulumi.Gcp.Compute
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
 
+        /// <summary>
+        /// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        /// </summary>
+        [Input("eraseWindowsVssSignature")]
+        public Input<bool>? EraseWindowsVssSignature { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorArgs>? _guestAccelerators;
 
@@ -971,6 +983,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
+
+        /// <summary>
+        /// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        /// </summary>
+        [Input("eraseWindowsVssSignature")]
+        public Input<bool>? EraseWindowsVssSignature { get; set; }
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorGetArgs>? _guestAccelerators;

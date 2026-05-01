@@ -211,6 +211,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly enableDisplay: pulumi.Output<boolean | undefined>;
     /**
+     * Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     */
+    declare public readonly eraseWindowsVssSignature: pulumi.Output<boolean | undefined>;
+    /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
@@ -407,6 +411,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredStatus"] = state?.desiredStatus;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableDisplay"] = state?.enableDisplay;
+            resourceInputs["eraseWindowsVssSignature"] = state?.eraseWindowsVssSignature;
             resourceInputs["guestAccelerators"] = state?.guestAccelerators;
             resourceInputs["hostname"] = state?.hostname;
             resourceInputs["instanceEncryptionKey"] = state?.instanceEncryptionKey;
@@ -457,6 +462,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["desiredStatus"] = args?.desiredStatus;
             resourceInputs["enableDisplay"] = args?.enableDisplay;
+            resourceInputs["eraseWindowsVssSignature"] = args?.eraseWindowsVssSignature;
             resourceInputs["guestAccelerators"] = args?.guestAccelerators;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["instanceEncryptionKey"] = args?.instanceEncryptionKey;
@@ -565,6 +571,10 @@ export interface InstanceState {
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
@@ -787,6 +797,10 @@ export interface InstanceArgs {
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+     */
+    eraseWindowsVssSignature?: pulumi.Input<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.

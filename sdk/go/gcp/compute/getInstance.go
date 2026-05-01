@@ -92,7 +92,8 @@ type LookupInstanceResult struct {
 	DesiredStatus   string            `pulumi:"desiredStatus"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
-	EnableDisplay bool `pulumi:"enableDisplay"`
+	EnableDisplay            bool `pulumi:"enableDisplay"`
+	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	Hostname          string                        `pulumi:"hostname"`
@@ -254,6 +255,10 @@ func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Whether the instance has virtual displays enabled.
 func (o LookupInstanceResultOutput) EnableDisplay() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.EnableDisplay }).(pulumi.BoolOutput)
+}
+
+func (o LookupInstanceResultOutput) EraseWindowsVssSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.EraseWindowsVssSignature }).(pulumi.BoolOutput)
 }
 
 // List of the type and count of accelerator cards attached to the instance. Structure is documented below.

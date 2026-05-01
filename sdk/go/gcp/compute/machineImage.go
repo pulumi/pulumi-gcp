@@ -131,6 +131,77 @@ import (
 //	}
 //
 // ```
+// ### Machine Image Resource Manager Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
+// Parent: pulumi.Sprintf("projects/%v", project.Number),
+// ShortName: pulumi.String("tagkey"),
+// })
+// if err != nil {
+// return err
+// }
+// tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
+// Parent: tagKey1.ID(),
+// ShortName: pulumi.String("tagvalue"),
+// })
+// if err != nil {
+// return err
+// }
+// vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+// Name: pulumi.String("my-vm"),
+// MachineType: pulumi.String("e2-medium"),
+// BootDisk: &compute.InstanceBootDiskArgs{
+// InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// Image: pulumi.String("debian-cloud/debian-11"),
+// },
+// },
+// NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// &compute.InstanceNetworkInterfaceArgs{
+// Network: pulumi.String("default"),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+// Name: pulumi.String("my-image"),
+// SourceInstance: vm.SelfLink,
+// Params: &compute.MachineImageParamsArgs{
+// ResourceManagerTags: pulumi.All(tagKey1.ID(),tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// tagKey1Id := _args[0].(string)
+// tagValue1Id := _args[1].(string)
+// return map[string]string{
+// tagKey1Id: tagValue1Id,
+// }, nil
+// }).(pulumi.Map[string]stringOutput),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 //
 // ## Import
 //
@@ -163,6 +234,9 @@ type MachineImage struct {
 	MachineImageEncryptionKey MachineImageMachineImageEncryptionKeyPtrOutput `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params MachineImageParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -220,6 +294,9 @@ type machineImageState struct {
 	MachineImageEncryptionKey *MachineImageMachineImageEncryptionKey `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params *MachineImageParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -245,6 +322,9 @@ type MachineImageState struct {
 	MachineImageEncryptionKey MachineImageMachineImageEncryptionKeyPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params MachineImageParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -274,6 +354,9 @@ type machineImageArgs struct {
 	MachineImageEncryptionKey *MachineImageMachineImageEncryptionKey `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params *MachineImageParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -296,6 +379,9 @@ type MachineImageArgs struct {
 	MachineImageEncryptionKey MachineImageMachineImageEncryptionKeyPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params MachineImageParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -415,6 +501,12 @@ func (o MachineImageOutput) MachineImageEncryptionKey() MachineImageMachineImage
 // Name of the resource.
 func (o MachineImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload.
+// Structure is documented below.
+func (o MachineImageOutput) Params() MachineImageParamsPtrOutput {
+	return o.ApplyT(func(v *MachineImage) MachineImageParamsPtrOutput { return v.Params }).(MachineImageParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

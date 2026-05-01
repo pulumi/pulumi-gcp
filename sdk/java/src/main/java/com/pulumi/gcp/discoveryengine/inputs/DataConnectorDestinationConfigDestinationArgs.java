@@ -5,6 +5,7 @@ package com.pulumi.gcp.discoveryengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,10 +33,26 @@ public final class DataConnectorDestinationConfigDestinationArgs extends com.pul
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * Target port number accepted by the destination.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return Target port number accepted by the destination.
+     * 
+     */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
     private DataConnectorDestinationConfigDestinationArgs() {}
 
     private DataConnectorDestinationConfigDestinationArgs(DataConnectorDestinationConfigDestinationArgs $) {
         this.host = $.host;
+        this.port = $.port;
     }
 
     public static Builder builder() {
@@ -77,6 +94,27 @@ public final class DataConnectorDestinationConfigDestinationArgs extends com.pul
          */
         public Builder host(String host) {
             return host(Output.of(host));
+        }
+
+        /**
+         * @param port Target port number accepted by the destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port Target port number accepted by the destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         public DataConnectorDestinationConfigDestinationArgs build() {

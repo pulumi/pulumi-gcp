@@ -10,6 +10,7 @@ import com.pulumi.gcp.bigquery.inputs.ConnectionAzureArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
+import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -104,6 +105,27 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ConnectionCloudSqlArgs>> cloudSql() {
         return Optional.ofNullable(this.cloudSql);
+    }
+
+    /**
+     * Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="configuration")
+    private @Nullable Output<ConnectionConfigurationArgs> configuration;
+
+    /**
+     * @return Connector configuration. This is a generic configuration that is used to connect to
+     * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+     * Connector framework.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionConfigurationArgs>> configuration() {
+        return Optional.ofNullable(this.configuration);
     }
 
     /**
@@ -237,6 +259,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudResource = $.cloudResource;
         this.cloudSpanner = $.cloudSpanner;
         this.cloudSql = $.cloudSql;
+        this.configuration = $.configuration;
         this.connectionId = $.connectionId;
         this.description = $.description;
         this.friendlyName = $.friendlyName;
@@ -377,6 +400,33 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cloudSql(ConnectionCloudSqlArgs cloudSql) {
             return cloudSql(Output.of(cloudSql));
+        }
+
+        /**
+         * @param configuration Connector configuration. This is a generic configuration that is used to connect to
+         * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+         * Connector framework.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuration(@Nullable Output<ConnectionConfigurationArgs> configuration) {
+            $.configuration = configuration;
+            return this;
+        }
+
+        /**
+         * @param configuration Connector configuration. This is a generic configuration that is used to connect to
+         * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+         * Connector framework.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuration(ConnectionConfigurationArgs configuration) {
+            return configuration(Output.of(configuration));
         }
 
         /**

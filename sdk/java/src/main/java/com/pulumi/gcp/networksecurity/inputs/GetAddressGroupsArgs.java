@@ -19,6 +19,8 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The location of the Address Group.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
@@ -26,20 +28,41 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * @return The location of the Address Group.
      * 
+     * ***
+     * 
      */
     public Output<String> location() {
         return this.location;
     }
 
     /**
-     * The ID of the project.
+     * The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+     * 
+     * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+     * 
+     * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
+    /**
+     * The ID of the project. Conflicts with `parent`.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project.
+     * @return The ID of the project. Conflicts with `parent`.
      * 
      */
     public Optional<Output<String>> project() {
@@ -50,6 +73,7 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetAddressGroupsArgs(GetAddressGroupsArgs $) {
         this.location = $.location;
+        this.parent = $.parent;
         this.project = $.project;
     }
 
@@ -74,6 +98,8 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param location The location of the Address Group.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -85,6 +111,8 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param location The location of the Address Group.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -93,7 +121,32 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param project The ID of the project.
+         * @param parent The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+         * 
+         * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
+         * 
+         * &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
+        }
+
+        /**
+         * @param project The ID of the project. Conflicts with `parent`.
          * 
          * @return builder
          * 
@@ -104,7 +157,7 @@ public final class GetAddressGroupsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param project The ID of the project.
+         * @param project The ID of the project. Conflicts with `parent`.
          * 
          * @return builder
          * 

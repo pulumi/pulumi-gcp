@@ -73,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HostingVersion{}
 	case "gcp:firebase/project:Project":
 		r = &Project{}
+	case "gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig":
+		r = &RemoteConfigRemoteConfig{}
 	case "gcp:firebase/storageBucket:StorageBucket":
 		r = &StorageBucket{}
 	case "gcp:firebase/storageDefaultBucket:StorageDefaultBucket":
@@ -220,6 +222,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/remoteConfigRemoteConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -413,6 +413,39 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// ### Dns Managed Zone Iam Condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Dns.ManagedZone("default", new()
+    ///     {
+    ///         Name = "example-zone",
+    ///         DnsName = "example.com.",
+    ///         Description = "Example zone for IAM conditions",
+    ///     });
+    /// 
+    ///     var conditionTest = new Gcp.Dns.DnsManagedZoneIamMember("condition_test", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         ManagedZone = @default.Name,
+    ///         Role = "roles/dns.admin",
+    ///         Member = "user:admin@hashicorptest.com",
+    ///         Condition = new Gcp.Dns.Inputs.DnsManagedZoneIamMemberConditionArgs
+    ///         {
+    ///             Title = "Exact Record Match",
+    ///             Description = "Allow modifying only api.example.com. A records",
+    ///             Expression = "(resource.type == 'dns.googleapis.com/ResourceRecordSet' &amp;&amp; resource.name.endsWith('/rrsets/api.example.com./A')) || (resource.type != 'dns.googleapis.com/ResourceRecordSet')",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

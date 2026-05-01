@@ -97,6 +97,9 @@ public final class Config {
     public Optional<String> bigtableCustomEndpoint() {
         return Codegen.stringProp("bigtableCustomEndpoint").config(config).get();
     }
+    public Optional<String> billingBudgetsCustomEndpoint() {
+        return Codegen.stringProp("billingBudgetsCustomEndpoint").config(config).get();
+    }
     public Optional<String> billingCustomEndpoint() {
         return Codegen.stringProp("billingCustomEndpoint").config(config).get();
     }
@@ -208,6 +211,9 @@ public final class Config {
     public Optional<String> dataFusionCustomEndpoint() {
         return Codegen.stringProp("dataFusionCustomEndpoint").config(config).get();
     }
+    public Optional<String> dataLineageCustomEndpoint() {
+        return Codegen.stringProp("dataLineageCustomEndpoint").config(config).get();
+    }
     public Optional<String> dataLossPreventionCustomEndpoint() {
         return Codegen.stringProp("dataLossPreventionCustomEndpoint").config(config).get();
     }
@@ -312,6 +318,9 @@ public final class Config {
     }
     public Optional<String> firebaseHostingCustomEndpoint() {
         return Codegen.stringProp("firebaseHostingCustomEndpoint").config(config).get();
+    }
+    public Optional<String> firebaseRemoteConfigCustomEndpoint() {
+        return Codegen.stringProp("firebaseRemoteConfigCustomEndpoint").config(config).get();
     }
     public Optional<String> firebaseStorageCustomEndpoint() {
         return Codegen.stringProp("firebaseStorageCustomEndpoint").config(config).get();
@@ -468,6 +477,12 @@ public final class Config {
     }
     public Optional<String> pollInterval() {
         return Codegen.stringProp("pollInterval").config(config).get();
+    }
+    public Optional<Boolean> preferGlobalEndpoints() {
+        return Codegen.booleanProp("preferGlobalEndpoints").config(config).get();
+    }
+    public Optional<Boolean> preferRegionalEndpoints() {
+        return Codegen.booleanProp("preferRegionalEndpoints").config(config).get();
     }
     public Optional<String> privatecaCustomEndpoint() {
         return Codegen.stringProp("privatecaCustomEndpoint").config(config).get();

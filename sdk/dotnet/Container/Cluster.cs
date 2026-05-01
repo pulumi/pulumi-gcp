@@ -143,6 +143,32 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// GKE clusters can be imported using the `Project` , `Location`, and `Name`. If the project is omitted, the default
+    /// provider value will be used. Examples:
+    /// 
+    /// * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+    /// * `{{project_id}}/{{location}}/{{cluster_id}}`
+    /// * `{{location}}/{{cluster_id}}`
+    /// 
+    /// When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
+    /// 
+    /// $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+    /// 
+    /// $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
+    /// ```
+    /// 
+    /// &gt; **Note:** This resource has several fields that control Terraform-specific behavior and aren't present in the API. If they are set in config and you import a cluster, Terraform may need to perform an update immediately after import. Most of these updates should be no-ops but some may modify your cluster if the imported state differs.
+    /// 
+    /// For example, the following fields will show diffs if set in config:
+    /// 
+    /// - `MinMasterVersion`
+    /// - `RemoveDefaultNodePool`
     /// </summary>
     [GcpResourceType("gcp:container/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource
@@ -519,7 +545,9 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterMasterAuthorizedNetworksConfig> MasterAuthorizedNetworksConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The current version of the master in the cluster. This may be different than the MinMasterVersion set in the config if the master has been updated by GKE.
+        /// The current version of the master in the cluster. This may
+        /// be different than the `MinMasterVersion` set in the config if the master
+        /// has been updated by GKE.
         /// </summary>
         [Output("masterVersion")]
         public Output<string> MasterVersion { get; private set; } = null!;
@@ -797,7 +825,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterSecurityPostureConfig> SecurityPostureConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Server-defined URL for the resource.
+        /// The server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -809,7 +837,10 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterServiceExternalIpsConfig> ServiceExternalIpsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+        /// The IP address range of the Kubernetes services in this
+        /// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        /// `/16` from the container CIDR.
         /// </summary>
         [Output("servicesIpv4Cidr")]
         public Output<string> ServicesIpv4Cidr { get; private set; } = null!;
@@ -828,7 +859,9 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterTpuConfig> TpuConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        /// The IP address range of the Cloud TPUs in this cluster, in
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `1.2.3.4/29`).
         /// </summary>
         [Output("tpuIpv4CidrBlock")]
         public Output<string> TpuIpv4CidrBlock { get; private set; } = null!;
@@ -1995,7 +2028,9 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterMasterAuthorizedNetworksConfigGetArgs>? MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>
-        /// The current version of the master in the cluster. This may be different than the MinMasterVersion set in the config if the master has been updated by GKE.
+        /// The current version of the master in the cluster. This may
+        /// be different than the `MinMasterVersion` set in the config if the master
+        /// has been updated by GKE.
         /// </summary>
         [Input("masterVersion")]
         public Input<string>? MasterVersion { get; set; }
@@ -2301,7 +2336,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterSecurityPostureConfigGetArgs>? SecurityPostureConfig { get; set; }
 
         /// <summary>
-        /// Server-defined URL for the resource.
+        /// The server-defined URL for the resource.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
@@ -2313,7 +2348,10 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterServiceExternalIpsConfigGetArgs>? ServiceExternalIpsConfig { get; set; }
 
         /// <summary>
-        /// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
+        /// The IP address range of the Kubernetes services in this
+        /// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
+        /// `/16` from the container CIDR.
         /// </summary>
         [Input("servicesIpv4Cidr")]
         public Input<string>? ServicesIpv4Cidr { get; set; }
@@ -2332,7 +2370,9 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterTpuConfigGetArgs>? TpuConfig { get; set; }
 
         /// <summary>
-        /// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
+        /// The IP address range of the Cloud TPUs in this cluster, in
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `1.2.3.4/29`).
         /// </summary>
         [Input("tpuIpv4CidrBlock")]
         public Input<string>? TpuIpv4CidrBlock { get; set; }

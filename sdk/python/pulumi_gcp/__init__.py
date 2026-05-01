@@ -117,6 +117,8 @@ if typing.TYPE_CHECKING:
     dataform = __dataform
     import pulumi_gcp.datafusion as __datafusion
     datafusion = __datafusion
+    import pulumi_gcp.datalineage as __datalineage
+    datalineage = __datalineage
     import pulumi_gcp.dataloss as __dataloss
     dataloss = __dataloss
     import pulumi_gcp.dataplex as __dataplex
@@ -135,6 +137,8 @@ if typing.TYPE_CHECKING:
     discoveryengine = __discoveryengine
     import pulumi_gcp.dns as __dns
     dns = __dns
+    import pulumi_gcp.documentai as __documentai
+    documentai = __documentai
     import pulumi_gcp.edgecontainer as __edgecontainer
     edgecontainer = __edgecontainer
     import pulumi_gcp.edgenetwork as __edgenetwork
@@ -341,6 +345,7 @@ else:
     dataflow = _utilities.lazy_import('pulumi_gcp.dataflow')
     dataform = _utilities.lazy_import('pulumi_gcp.dataform')
     datafusion = _utilities.lazy_import('pulumi_gcp.datafusion')
+    datalineage = _utilities.lazy_import('pulumi_gcp.datalineage')
     dataloss = _utilities.lazy_import('pulumi_gcp.dataloss')
     dataplex = _utilities.lazy_import('pulumi_gcp.dataplex')
     dataproc = _utilities.lazy_import('pulumi_gcp.dataproc')
@@ -350,6 +355,7 @@ else:
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
     discoveryengine = _utilities.lazy_import('pulumi_gcp.discoveryengine')
     dns = _utilities.lazy_import('pulumi_gcp.dns')
+    documentai = _utilities.lazy_import('pulumi_gcp.documentai')
     edgecontainer = _utilities.lazy_import('pulumi_gcp.edgecontainer')
     edgenetwork = _utilities.lazy_import('pulumi_gcp.edgenetwork')
     endpoints = _utilities.lazy_import('pulumi_gcp.endpoints')
@@ -1236,6 +1242,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.artifactregistry",
   "classes": {
    "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": "RepositoryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "artifactregistry/rule",
+  "fqn": "pulumi_gcp.artifactregistry",
+  "classes": {
+   "gcp:artifactregistry/rule:Rule": "Rule"
   }
  },
  {
@@ -4784,6 +4798,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "datalineage/config",
+  "fqn": "pulumi_gcp.datalineage",
+  "classes": {
+   "gcp:datalineage/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataloss/preventionDeidentifyTemplate",
   "fqn": "pulumi_gcp.dataloss",
   "classes": {
@@ -5872,6 +5894,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "documentai/schema",
+  "fqn": "pulumi_gcp.documentai",
+  "classes": {
+   "gcp:documentai/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "edgecontainer/cluster",
   "fqn": "pulumi_gcp.edgecontainer",
   "classes": {
@@ -6300,6 +6330,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/remoteConfigRemoteConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig": "RemoteConfigRemoteConfig"
   }
  },
  {
@@ -8364,6 +8402,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
    "gcp:networkconnectivity/hub:Hub": "Hub"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/hubIamBinding",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/hubIamBinding:HubIamBinding": "HubIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/hubIamMember",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/hubIamMember:HubIamMember": "HubIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/hubIamPolicy",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/hubIamPolicy:HubIamPolicy": "HubIamPolicy"
   }
  },
  {

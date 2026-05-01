@@ -54,7 +54,7 @@ public final class NetworksecurityFunctions {
         return Deployment.getInstance().invokeAsync("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", TypeShape.of(GetAddressGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
      * 
      * To get more information about Address Groups, see:
      * 
@@ -63,6 +63,8 @@ public final class NetworksecurityFunctions {
      *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
      * 
      * ## Example Usage
+     * 
+     * ### Project Level
      * 
      * <pre>
      * {@code
@@ -89,6 +91,40 @@ public final class NetworksecurityFunctions {
      *         final var all = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
      *             .location("us-central1")
      *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Organization Level
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networksecurity.NetworksecurityFunctions;
+     * import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgAll = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
+     *             .location("us-central1")
+     *             .parent("organizations/123456789")
      *             .build());
      * 
      *     }
@@ -101,7 +137,7 @@ public final class NetworksecurityFunctions {
         return getAddressGroups(args, InvokeOptions.Empty);
     }
     /**
-     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
      * 
      * To get more information about Address Groups, see:
      * 
@@ -110,6 +146,8 @@ public final class NetworksecurityFunctions {
      *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
      * 
      * ## Example Usage
+     * 
+     * ### Project Level
      * 
      * <pre>
      * {@code
@@ -136,6 +174,40 @@ public final class NetworksecurityFunctions {
      *         final var all = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
      *             .location("us-central1")
      *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Organization Level
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networksecurity.NetworksecurityFunctions;
+     * import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgAll = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
+     *             .location("us-central1")
+     *             .parent("organizations/123456789")
      *             .build());
      * 
      *     }
@@ -148,7 +220,7 @@ public final class NetworksecurityFunctions {
         return getAddressGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
      * 
      * To get more information about Address Groups, see:
      * 
@@ -157,6 +229,8 @@ public final class NetworksecurityFunctions {
      *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
      * 
      * ## Example Usage
+     * 
+     * ### Project Level
      * 
      * <pre>
      * {@code
@@ -183,6 +257,40 @@ public final class NetworksecurityFunctions {
      *         final var all = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
      *             .location("us-central1")
      *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Organization Level
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networksecurity.NetworksecurityFunctions;
+     * import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgAll = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
+     *             .location("us-central1")
+     *             .parent("organizations/123456789")
      *             .build());
      * 
      *     }
@@ -195,7 +303,7 @@ public final class NetworksecurityFunctions {
         return Deployment.getInstance().invoke("gcp:networksecurity/getAddressGroups:getAddressGroups", TypeShape.of(GetAddressGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
      * 
      * To get more information about Address Groups, see:
      * 
@@ -204,6 +312,8 @@ public final class NetworksecurityFunctions {
      *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
      * 
      * ## Example Usage
+     * 
+     * ### Project Level
      * 
      * <pre>
      * {@code
@@ -237,12 +347,46 @@ public final class NetworksecurityFunctions {
      * }
      * </pre>
      * 
+     * ### Organization Level
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networksecurity.NetworksecurityFunctions;
+     * import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgAll = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
+     *             .location("us-central1")
+     *             .parent("organizations/123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAddressGroupsResult> getAddressGroups(GetAddressGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:networksecurity/getAddressGroups:getAddressGroups", TypeShape.of(GetAddressGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project and location.
+     * AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
      * 
      * To get more information about Address Groups, see:
      * 
@@ -251,6 +395,8 @@ public final class NetworksecurityFunctions {
      *     * [Official Documentation](https://cloud.google.com/firewall/docs/about-address-groups)
      * 
      * ## Example Usage
+     * 
+     * ### Project Level
      * 
      * <pre>
      * {@code
@@ -277,6 +423,40 @@ public final class NetworksecurityFunctions {
      *         final var all = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
      *             .location("us-central1")
      *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Organization Level
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.networksecurity.NetworksecurityFunctions;
+     * import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgAll = NetworksecurityFunctions.getAddressGroups(GetAddressGroupsArgs.builder()
+     *             .location("us-central1")
+     *             .parent("organizations/123456789")
      *             .build());
      * 
      *     }

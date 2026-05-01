@@ -26,6 +26,7 @@ class MachineImageArgs:
                  guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['MachineImageParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineImage resource.
@@ -40,6 +41,8 @@ class MachineImageArgs:
                instance from the image)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
+        :param pulumi.Input['MachineImageParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -52,6 +55,8 @@ class MachineImageArgs:
             pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -122,6 +127,19 @@ class MachineImageArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['MachineImageParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['MachineImageParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -141,6 +159,7 @@ class _MachineImageState:
                  guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['MachineImageParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  source_instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -157,6 +176,8 @@ class _MachineImageState:
                instance from the image)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
+        :param pulumi.Input['MachineImageParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -171,6 +192,8 @@ class _MachineImageState:
             pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
@@ -235,6 +258,19 @@ class _MachineImageState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['MachineImageParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['MachineImageParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -293,6 +329,7 @@ class MachineImage(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  source_instance: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -363,6 +400,43 @@ class MachineImage(pulumi.CustomResource):
                 "kms_key_name": crypto_key.id,
             })
         ```
+        ### Machine Image Resource Manager Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent=f"projects/{project.number}",
+            short_name="tagkey")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="tagvalue")
+        vm = gcp.compute.Instance("vm",
+            name="my-vm",
+            machine_type="e2-medium",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
+        image = gcp.compute.MachineImage("image",
+            name="my-image",
+            source_instance=vm.self_link,
+            params={
+                "resource_manager_tags": pulumi.Output.all(
+                    tagKey1Id=tag_key1.id,
+                    tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                    resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                })
+        ,
+            })
+        ```
 
         ## Import
 
@@ -392,6 +466,8 @@ class MachineImage(pulumi.CustomResource):
                instance from the image)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
+        :param pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
@@ -469,6 +545,43 @@ class MachineImage(pulumi.CustomResource):
                 "kms_key_name": crypto_key.id,
             })
         ```
+        ### Machine Image Resource Manager Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent=f"projects/{project.number}",
+            short_name="tagkey")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="tagvalue")
+        vm = gcp.compute.Instance("vm",
+            name="my-vm",
+            machine_type="e2-medium",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
+        image = gcp.compute.MachineImage("image",
+            name="my-image",
+            source_instance=vm.self_link,
+            params={
+                "resource_manager_tags": pulumi.Output.all(
+                    tagKey1Id=tag_key1.id,
+                    tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                    resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                })
+        ,
+            })
+        ```
 
         ## Import
 
@@ -506,6 +619,7 @@ class MachineImage(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  source_instance: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -521,6 +635,7 @@ class MachineImage(pulumi.CustomResource):
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             if source_instance is None and not opts.urn:
                 raise TypeError("Missing required property 'source_instance'")
@@ -541,6 +656,7 @@ class MachineImage(pulumi.CustomResource):
             guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
             machine_image_encryption_key: Optional[pulumi.Input[Union['MachineImageMachineImageEncryptionKeyArgs', 'MachineImageMachineImageEncryptionKeyArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             source_instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -561,6 +677,8 @@ class MachineImage(pulumi.CustomResource):
                instance from the image)
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
+        :param pulumi.Input[Union['MachineImageParamsArgs', 'MachineImageParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -575,6 +693,7 @@ class MachineImage(pulumi.CustomResource):
         __props__.__dict__["guest_flush"] = guest_flush
         __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["source_instance"] = source_instance
@@ -617,6 +736,15 @@ class MachineImage(pulumi.CustomResource):
         Name of the resource.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.MachineImageParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

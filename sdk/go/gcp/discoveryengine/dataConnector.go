@@ -125,6 +125,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -132,7 +134,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := discoveryengine.NewDataConnector(ctx, "jira-with-actions", &discoveryengine.DataConnectorArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"destination_type": "private",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = discoveryengine.NewDataConnector(ctx, "jira-with-actions", &discoveryengine.DataConnectorArgs{
 //				Location:              pulumi.String("global"),
 //				CollectionId:          pulumi.String("collection-id"),
 //				CollectionDisplayName: pulumi.String("Jira Federated"),
@@ -168,8 +177,10 @@ import (
 //						Destinations: discoveryengine.DataConnectorDestinationConfigDestinationArray{
 //							&discoveryengine.DataConnectorDestinationConfigDestinationArgs{
 //								Host: pulumi.String("https://example.atlassian.net"),
+//								Port: pulumi.Int(123),
 //							},
 //						},
+//						Params: pulumi.String(pulumi.String(json0)),
 //					},
 //				},
 //				ConnectorModes: pulumi.StringArray{

@@ -937,6 +937,27 @@ class ManagedZone(pulumi.CustomResource):
                 "enable_logging": True,
             })
         ```
+        ### Dns Managed Zone Iam Condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.dns.ManagedZone("default",
+            name="example-zone",
+            dns_name="example.com.",
+            description="Example zone for IAM conditions")
+        condition_test = gcp.dns.DnsManagedZoneIamMember("condition_test",
+            project=default.project,
+            managed_zone=default.name,
+            role="roles/dns.admin",
+            member="user:admin@hashicorptest.com",
+            condition={
+                "title": "Exact Record Match",
+                "description": "Allow modifying only api.example.com. A records",
+                "expression": "(resource.type == 'dns.googleapis.com/ResourceRecordSet' && resource.name.endsWith('/rrsets/api.example.com./A')) || (resource.type != 'dns.googleapis.com/ResourceRecordSet')",
+            })
+        ```
 
         ## Import
 
@@ -1253,6 +1274,27 @@ class ManagedZone(pulumi.CustomResource):
             },
             cloud_logging_config={
                 "enable_logging": True,
+            })
+        ```
+        ### Dns Managed Zone Iam Condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.dns.ManagedZone("default",
+            name="example-zone",
+            dns_name="example.com.",
+            description="Example zone for IAM conditions")
+        condition_test = gcp.dns.DnsManagedZoneIamMember("condition_test",
+            project=default.project,
+            managed_zone=default.name,
+            role="roles/dns.admin",
+            member="user:admin@hashicorptest.com",
+            condition={
+                "title": "Exact Record Match",
+                "description": "Allow modifying only api.example.com. A records",
+                "expression": "(resource.type == 'dns.googleapis.com/ResourceRecordSet' && resource.name.endsWith('/rrsets/api.example.com./A')) || (resource.type != 'dns.googleapis.com/ResourceRecordSet')",
             })
         ```
 

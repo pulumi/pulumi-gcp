@@ -53,6 +53,40 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Private Connection Force Delete
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.PrivateConnection("default", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         PrivateConnectionId = "my-connection",
+    ///         DeletionPolicy = "FORCE",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         VpcPeeringConfig = new Gcp.Datastream.Inputs.PrivateConnectionVpcPeeringConfigArgs
+    ///         {
+    ///             Vpc = defaultNetwork.Id,
+    ///             Subnet = "10.0.0.0/29",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Private Connection Psc Interface
     /// 
     /// ```csharp
@@ -131,6 +165,15 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Output("createWithoutValidation")]
         public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+        /// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+        /// child routes exist. Defaults to `FORCE` for backwards compatibility.
+        /// Possible values: `DEFAULT`, `FORCE`.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Display name.
@@ -271,6 +314,15 @@ namespace Pulumi.Gcp.Datastream
         public Input<bool>? CreateWithoutValidation { get; set; }
 
         /// <summary>
+        /// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+        /// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+        /// child routes exist. Defaults to `FORCE` for backwards compatibility.
+        /// Possible values: `DEFAULT`, `FORCE`.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Input("displayName", required: true)]
@@ -338,6 +390,15 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("createWithoutValidation")]
         public Input<bool>? CreateWithoutValidation { get; set; }
+
+        /// <summary>
+        /// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+        /// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+        /// child routes exist. Defaults to `FORCE` for backwards compatibility.
+        /// Possible values: `DEFAULT`, `FORCE`.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Display name.

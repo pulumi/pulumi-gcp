@@ -294,6 +294,37 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Job Emptydir Disk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     deletionProtection: true,
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
+ *                 volumeMounts: [{
+ *                     name: "empty-dir-volume",
+ *                     mountPath: "/mnt",
+ *                 }],
+ *             }],
+ *             volumes: [{
+ *                 name: "empty-dir-volume",
+ *                 emptyDir: {
+ *                     medium: "DISK",
+ *                     sizeLimit: "10Gi",
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Job Run Job
  *
  * ```typescript

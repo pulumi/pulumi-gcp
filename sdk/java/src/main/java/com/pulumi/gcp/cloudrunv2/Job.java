@@ -526,6 +526,61 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Job Emptydir Disk
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job("default", JobArgs.builder()
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
+ *             .deletionProtection(true)
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
+ *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
+ *                             .name("empty-dir-volume")
+ *                             .mountPath("/mnt")
+ *                             .build())
+ *                         .build())
+ *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
+ *                         .name("empty-dir-volume")
+ *                         .emptyDir(JobTemplateTemplateVolumeEmptyDirArgs.builder()
+ *                             .medium("DISK")
+ *                             .sizeLimit("10Gi")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Cloudrunv2 Job Run Job
  * 
  * <pre>

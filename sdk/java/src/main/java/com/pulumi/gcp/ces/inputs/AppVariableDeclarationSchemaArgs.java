@@ -55,8 +55,8 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
     /**
      * Optional. Default value of the data. Represents a dynamically typed value
      * which can be either null, a number, a string, a boolean, a struct,
-     * or a list of values. The provided default value must be compatible
-     * with the defined &#39;type&#39; and other schema constraints.
+     * or a list of values. The provided default value must be encoded as a JSON string.
+     * Use `jsonencode` in Terraform HCL to encode the default value.
      * 
      */
     @Import(name="default")
@@ -65,8 +65,8 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
     /**
      * @return Optional. Default value of the data. Represents a dynamically typed value
      * which can be either null, a number, a string, a boolean, a struct,
-     * or a list of values. The provided default value must be compatible
-     * with the defined &#39;type&#39; and other schema constraints.
+     * or a list of values. The provided default value must be encoded as a JSON string.
+     * Use `jsonencode` in Terraform HCL to encode the default value.
      * 
      */
     public Optional<Output<String>> default_() {
@@ -398,8 +398,8 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
         /**
          * @param default_ Optional. Default value of the data. Represents a dynamically typed value
          * which can be either null, a number, a string, a boolean, a struct,
-         * or a list of values. The provided default value must be compatible
-         * with the defined &#39;type&#39; and other schema constraints.
+         * or a list of values. The provided default value must be encoded as a JSON string.
+         * Use `jsonencode` in Terraform HCL to encode the default value.
          * 
          * @return builder
          * 
@@ -412,8 +412,8 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
         /**
          * @param default_ Optional. Default value of the data. Represents a dynamically typed value
          * which can be either null, a number, a string, a boolean, a struct,
-         * or a list of values. The provided default value must be compatible
-         * with the defined &#39;type&#39; and other schema constraints.
+         * or a list of values. The provided default value must be encoded as a JSON string.
+         * Use `jsonencode` in Terraform HCL to encode the default value.
          * 
          * @return builder
          * 

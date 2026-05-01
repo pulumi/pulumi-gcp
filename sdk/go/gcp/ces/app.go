@@ -196,7 +196,7 @@ import (
 //					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
-//					Model:       pulumi.String("gemini-2.5-flash-001"),
+//					Model:       pulumi.String("gemini-3.0-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
@@ -263,7 +263,6 @@ import (
 //				ClientCertificateSettings: &ces.AppClientCertificateSettingsArgs{
 //					TlsCertificate: pulumi.String(invokeFile1.Result),
 //					PrivateKey:     fakeSecretVersion.Name,
-//					Passphrase:     fakeSecretVersion.Name,
 //				},
 //			})
 //			if err != nil {
@@ -409,7 +408,7 @@ import (
 //					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
-//					Model:       pulumi.String("gemini-2.5-flash-001"),
+//					Model:       pulumi.String("gemini-3.0-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{

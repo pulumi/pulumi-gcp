@@ -29,8 +29,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.ToolDataStoreToolEngineSource? EngineSource;
         /// <summary>
+        /// (Optional, Deprecated)
         /// Number of search results to return per query.
         /// The default value is 10. The maximum allowed value is 10.
+        /// 
+        /// &gt; **Warning:** `MaxResults` is deprecated and will be removed in a future release.
         /// </summary>
         public readonly int? MaxResults;
         /// <summary>

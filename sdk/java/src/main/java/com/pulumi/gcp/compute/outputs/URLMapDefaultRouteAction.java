@@ -21,8 +21,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class URLMapDefaultRouteAction {
     /**
-     * @return (Optional, Beta)
-     * Specifies the cache policy configuration for matched traffic. Available
+     * @return Specifies the cache policy configuration for matched traffic. Available
      * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
      * property must be specified. This policy cannot be specified if any target
      * backend has Identity-Aware Proxy enabled.
@@ -100,8 +99,7 @@ public final class URLMapDefaultRouteAction {
 
     private URLMapDefaultRouteAction() {}
     /**
-     * @return (Optional, Beta)
-     * Specifies the cache policy configuration for matched traffic. Available
+     * @return Specifies the cache policy configuration for matched traffic. Available
      * only for Global EXTERNAL_MANAGED load balancer schemes. At least one
      * property must be specified. This policy cannot be specified if any target
      * backend has Identity-Aware Proxy enabled.

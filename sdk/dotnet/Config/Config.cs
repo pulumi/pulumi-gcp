@@ -221,6 +221,13 @@ namespace Pulumi.Gcp
             set => _bigtableCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _billingBudgetsCustomEndpoint = new __Value<string?>(() => __config.Get("billingBudgetsCustomEndpoint"));
+        public static string? BillingBudgetsCustomEndpoint
+        {
+            get => _billingBudgetsCustomEndpoint.Get();
+            set => _billingBudgetsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _billingCustomEndpoint = new __Value<string?>(() => __config.Get("billingCustomEndpoint"));
         public static string? BillingCustomEndpoint
         {
@@ -480,6 +487,13 @@ namespace Pulumi.Gcp
             set => _dataFusionCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _dataLineageCustomEndpoint = new __Value<string?>(() => __config.Get("dataLineageCustomEndpoint"));
+        public static string? DataLineageCustomEndpoint
+        {
+            get => _dataLineageCustomEndpoint.Get();
+            set => _dataLineageCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dataLossPreventionCustomEndpoint = new __Value<string?>(() => __config.Get("dataLossPreventionCustomEndpoint"));
         public static string? DataLossPreventionCustomEndpoint
         {
@@ -723,6 +737,13 @@ namespace Pulumi.Gcp
         {
             get => _firebaseHostingCustomEndpoint.Get();
             set => _firebaseHostingCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _firebaseRemoteConfigCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseRemoteConfigCustomEndpoint"));
+        public static string? FirebaseRemoteConfigCustomEndpoint
+        {
+            get => _firebaseRemoteConfigCustomEndpoint.Get();
+            set => _firebaseRemoteConfigCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _firebaseStorageCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseStorageCustomEndpoint"));
@@ -1087,6 +1108,20 @@ namespace Pulumi.Gcp
         {
             get => _pollInterval.Get();
             set => _pollInterval.Set(value);
+        }
+
+        private static readonly __Value<bool?> _preferGlobalEndpoints = new __Value<bool?>(() => __config.GetBoolean("preferGlobalEndpoints"));
+        public static bool? PreferGlobalEndpoints
+        {
+            get => _preferGlobalEndpoints.Get();
+            set => _preferGlobalEndpoints.Set(value);
+        }
+
+        private static readonly __Value<bool?> _preferRegionalEndpoints = new __Value<bool?>(() => __config.GetBoolean("preferRegionalEndpoints"));
+        public static bool? PreferRegionalEndpoints
+        {
+            get => _preferRegionalEndpoints.Get();
+            set => _preferRegionalEndpoints.Set(value);
         }
 
         private static readonly __Value<string?> _privatecaCustomEndpoint = new __Value<string?>(() => __config.Get("privatecaCustomEndpoint"));

@@ -105,7 +105,7 @@ import (
 //				DisplayName: pulumi.String("base agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-2.5-flash-001"),
+//					Model:       pulumi.String("gemini-3.0-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				LlmAgent: &ces.AgentLlmAgentArgs{},
@@ -120,7 +120,7 @@ import (
 //				DisplayName: pulumi.String("child agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-2.5-flash-001"),
+//					Model:       pulumi.String("gemini-3.0-flash-001"),
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				LlmAgent: &ces.AgentLlmAgentArgs{},

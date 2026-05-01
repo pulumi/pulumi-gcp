@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// `https://example.atlassian.net`.
         /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// Target port number accepted by the destination.
+        /// </summary>
+        public readonly int? Port;
 
         [OutputConstructor]
-        private DataConnectorDestinationConfigDestination(string? host)
+        private DataConnectorDestinationConfigDestination(
+            string? host,
+
+            int? port)
         {
             Host = host;
+            Port = port;
         }
     }
 }

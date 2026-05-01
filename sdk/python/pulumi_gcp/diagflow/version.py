@@ -188,10 +188,6 @@ class Version(pulumi.CustomResource):
             service="dialogflow.googleapis.com")
         wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[dialogflow]))
-        gcp_sa = gcp.projects.ServiceIdentity("gcp_sa",
-            service="dialogflow.googleapis.com",
-            project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",
@@ -260,10 +256,6 @@ class Version(pulumi.CustomResource):
             service="dialogflow.googleapis.com")
         wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[dialogflow]))
-        gcp_sa = gcp.projects.ServiceIdentity("gcp_sa",
-            service="dialogflow.googleapis.com",
-            project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
             default_language_code="en",

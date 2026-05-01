@@ -73,18 +73,32 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Optional, Deprecated)
      * Number of search results to return per query.
      * The default value is 10. The maximum allowed value is 10.
      * 
+     * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
+     * 
+     * @deprecated
+     * `maxResults` is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
     @Import(name="maxResults")
     private @Nullable Output<Integer> maxResults;
 
     /**
-     * @return Number of search results to return per query.
+     * @return (Optional, Deprecated)
+     * Number of search results to return per query.
      * The default value is 10. The maximum allowed value is 10.
      * 
+     * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
+     * 
+     * @deprecated
+     * `maxResults` is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
     public Optional<Output<Integer>> maxResults() {
         return Optional.ofNullable(this.maxResults);
     }
@@ -231,24 +245,38 @@ public final class ToolDataStoreToolArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxResults Number of search results to return per query.
+         * @param maxResults (Optional, Deprecated)
+         * Number of search results to return per query.
          * The default value is 10. The maximum allowed value is 10.
+         * 
+         * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `maxResults` is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
         public Builder maxResults(@Nullable Output<Integer> maxResults) {
             $.maxResults = maxResults;
             return this;
         }
 
         /**
-         * @param maxResults Number of search results to return per query.
+         * @param maxResults (Optional, Deprecated)
+         * Number of search results to return per query.
          * The default value is 10. The maximum allowed value is 10.
+         * 
+         * &gt; **Warning:** `maxResults` is deprecated and will be removed in a future release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `maxResults` is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* `maxResults` is deprecated and will be removed in a future release. */
         public Builder maxResults(Integer maxResults) {
             return maxResults(Output.of(maxResults));
         }

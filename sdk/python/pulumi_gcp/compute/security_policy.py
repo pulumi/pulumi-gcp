@@ -630,6 +630,32 @@ class SecurityPolicy(pulumi.CustomResource):
             }])
         ```
 
+        ### With Advanced Options Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            advanced_options_config={
+                "json_parsing": "STANDARD",
+                "json_custom_config": {
+                    "content_types": [
+                        "application/json",
+                        "application/vnd.api+json",
+                        "application/vnd.collection+json",
+                        "application/vnd.hyper+json",
+                    ],
+                },
+                "log_level": "VERBOSE",
+                "user_ip_request_headers": [
+                    "True-Client-IP",
+                    "x-custom-ip",
+                ],
+            })
+        ```
+
         ## Import
 
         Security policies can be imported using any of these accepted formats:
@@ -828,6 +854,32 @@ class SecurityPolicy(pulumi.CustomResource):
                     },
                 },
             }])
+        ```
+
+        ### With Advanced Options Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            advanced_options_config={
+                "json_parsing": "STANDARD",
+                "json_custom_config": {
+                    "content_types": [
+                        "application/json",
+                        "application/vnd.api+json",
+                        "application/vnd.collection+json",
+                        "application/vnd.hyper+json",
+                    ],
+                },
+                "log_level": "VERBOSE",
+                "user_ip_request_headers": [
+                    "True-Client-IP",
+                    "x-custom-ip",
+                ],
+            })
         ```
 
         ## Import

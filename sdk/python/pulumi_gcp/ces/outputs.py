@@ -2333,8 +2333,8 @@ class AppVariableDeclarationSchema(dict):
         :param _builtins.str any_of: Optional. The instance value should be valid against at least one of the schemas in this list.
         :param _builtins.str default: Optional. Default value of the data. Represents a dynamically typed value
                which can be either null, a number, a string, a boolean, a struct,
-               or a list of values. The provided default value must be compatible
-               with the defined 'type' and other schema constraints.
+               or a list of values. The provided default value must be encoded as a JSON string.
+               Use `jsonencode` in Terraform HCL to encode the default value.
         :param _builtins.str defs: A map of definitions for use by ref. Only allowed at the root of the schema.
         :param _builtins.str description: The description of the data.
         :param Sequence[_builtins.str] enums: Possible values of the element of primitive type with enum format.
@@ -2438,8 +2438,8 @@ class AppVariableDeclarationSchema(dict):
         """
         Optional. Default value of the data. Represents a dynamically typed value
         which can be either null, a number, a string, a boolean, a struct,
-        or a list of values. The provided default value must be compatible
-        with the defined 'type' and other schema constraints.
+        or a list of values. The provided default value must be encoded as a JSON string.
+        Use `jsonencode` in Terraform HCL to encode the default value.
         """
         return pulumi.get(self, "default")
 
@@ -14585,8 +14585,11 @@ class ToolDataStoreTool(dict):
         :param 'ToolDataStoreToolEngineSourceArgs' engine_source: Configuration for searching within an Engine, potentially targeting
                specific DataStores.
                Structure is documented below.
-        :param _builtins.int max_results: Number of search results to return per query.
+        :param _builtins.int max_results: (Optional, Deprecated)
+               Number of search results to return per query.
                The default value is 10. The maximum allowed value is 10.
+               
+               > **Warning:** `max_results` is deprecated and will be removed in a future release.
         :param Sequence['ToolDataStoreToolModalityConfigArgs'] modality_configs: The modality configs for the data store.
                Structure is documented below.
         """
@@ -14639,10 +14642,14 @@ class ToolDataStoreTool(dict):
 
     @_builtins.property
     @pulumi.getter(name="maxResults")
+    @_utilities.deprecated("""`max_results` is deprecated and will be removed in a future release.""")
     def max_results(self) -> Optional[_builtins.int]:
         """
+        (Optional, Deprecated)
         Number of search results to return per query.
         The default value is 10. The maximum allowed value is 10.
+
+        > **Warning:** `max_results` is deprecated and will be removed in a future release.
         """
         return pulumi.get(self, "max_results")
 

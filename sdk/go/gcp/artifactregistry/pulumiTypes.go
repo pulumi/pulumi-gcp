@@ -4268,6 +4268,208 @@ func (o RepositoryVulnerabilityScanningConfigPtrOutput) EnablementStateReason() 
 	}).(pulumi.StringPtrOutput)
 }
 
+type RuleCondition struct {
+	// Optional. Description of the expression. This is a longer text which
+	// describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error
+	// reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose.
+	Title *string `pulumi:"title"`
+}
+
+// RuleConditionInput is an input type that accepts RuleConditionArgs and RuleConditionOutput values.
+// You can construct a concrete instance of `RuleConditionInput` via:
+//
+//	RuleConditionArgs{...}
+type RuleConditionInput interface {
+	pulumi.Input
+
+	ToRuleConditionOutput() RuleConditionOutput
+	ToRuleConditionOutputWithContext(context.Context) RuleConditionOutput
+}
+
+type RuleConditionArgs struct {
+	// Optional. Description of the expression. This is a longer text which
+	// describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error
+	// reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (RuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCondition)(nil)).Elem()
+}
+
+func (i RuleConditionArgs) ToRuleConditionOutput() RuleConditionOutput {
+	return i.ToRuleConditionOutputWithContext(context.Background())
+}
+
+func (i RuleConditionArgs) ToRuleConditionOutputWithContext(ctx context.Context) RuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConditionOutput)
+}
+
+func (i RuleConditionArgs) ToRuleConditionPtrOutput() RuleConditionPtrOutput {
+	return i.ToRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RuleConditionArgs) ToRuleConditionPtrOutputWithContext(ctx context.Context) RuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConditionOutput).ToRuleConditionPtrOutputWithContext(ctx)
+}
+
+// RuleConditionPtrInput is an input type that accepts RuleConditionArgs, RuleConditionPtr and RuleConditionPtrOutput values.
+// You can construct a concrete instance of `RuleConditionPtrInput` via:
+//
+//	        RuleConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleConditionPtrInput interface {
+	pulumi.Input
+
+	ToRuleConditionPtrOutput() RuleConditionPtrOutput
+	ToRuleConditionPtrOutputWithContext(context.Context) RuleConditionPtrOutput
+}
+
+type ruleConditionPtrType RuleConditionArgs
+
+func RuleConditionPtr(v *RuleConditionArgs) RuleConditionPtrInput {
+	return (*ruleConditionPtrType)(v)
+}
+
+func (*ruleConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleCondition)(nil)).Elem()
+}
+
+func (i *ruleConditionPtrType) ToRuleConditionPtrOutput() RuleConditionPtrOutput {
+	return i.ToRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleConditionPtrType) ToRuleConditionPtrOutputWithContext(ctx context.Context) RuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConditionPtrOutput)
+}
+
+type RuleConditionOutput struct{ *pulumi.OutputState }
+
+func (RuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCondition)(nil)).Elem()
+}
+
+func (o RuleConditionOutput) ToRuleConditionOutput() RuleConditionOutput {
+	return o
+}
+
+func (o RuleConditionOutput) ToRuleConditionOutputWithContext(ctx context.Context) RuleConditionOutput {
+	return o
+}
+
+func (o RuleConditionOutput) ToRuleConditionPtrOutput() RuleConditionPtrOutput {
+	return o.ToRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RuleConditionOutput) ToRuleConditionPtrOutputWithContext(ctx context.Context) RuleConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleCondition) *RuleCondition {
+		return &v
+	}).(RuleConditionPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which
+// describes the expression, e.g. when hovered over it in a UI.
+func (o RuleConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RuleConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error
+// reporting, e.g. a file name and a position in the file.
+func (o RuleConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose.
+func (o RuleConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type RuleConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleCondition)(nil)).Elem()
+}
+
+func (o RuleConditionPtrOutput) ToRuleConditionPtrOutput() RuleConditionPtrOutput {
+	return o
+}
+
+func (o RuleConditionPtrOutput) ToRuleConditionPtrOutputWithContext(ctx context.Context) RuleConditionPtrOutput {
+	return o
+}
+
+func (o RuleConditionPtrOutput) Elem() RuleConditionOutput {
+	return o.ApplyT(func(v *RuleCondition) RuleCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RuleCondition
+		return ret
+	}).(RuleConditionOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which
+// describes the expression, e.g. when hovered over it in a UI.
+func (o RuleConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RuleConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error
+// reporting, e.g. a file name and a position in the file.
+func (o RuleConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose.
+func (o RuleConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetDockerImagesDockerImage struct {
 	// The time, as a RFC 3339 string, this image was built.
 	BuildTime string `pulumi:"buildTime"`
@@ -8316,6 +8518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigPtrInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleConditionInput)(nil)).Elem(), RuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleConditionPtrInput)(nil)).Elem(), RuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageInput)(nil)).Elem(), GetDockerImagesDockerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageArrayInput)(nil)).Elem(), GetDockerImagesDockerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMavenArtifactsMavenArtifactInput)(nil)).Elem(), GetMavenArtifactsMavenArtifactArgs{})
@@ -8436,6 +8640,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleConditionOutput{})
+	pulumi.RegisterOutputType(RuleConditionPtrOutput{})
 	pulumi.RegisterOutputType(GetDockerImagesDockerImageOutput{})
 	pulumi.RegisterOutputType(GetDockerImagesDockerImageArrayOutput{})
 	pulumi.RegisterOutputType(GetMavenArtifactsMavenArtifactOutput{})

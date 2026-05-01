@@ -462,6 +462,47 @@ import (
 //	}
 //
 // ```
+// ### Dns Managed Zone Iam Condition
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := dns.NewManagedZone(ctx, "default", &dns.ManagedZoneArgs{
+//				Name:        pulumi.String("example-zone"),
+//				DnsName:     pulumi.String("example.com."),
+//				Description: pulumi.String("Example zone for IAM conditions"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewDnsManagedZoneIamMember(ctx, "condition_test", &dns.DnsManagedZoneIamMemberArgs{
+//				Project:     _default.Project,
+//				ManagedZone: _default.Name,
+//				Role:        pulumi.String("roles/dns.admin"),
+//				Member:      pulumi.String("user:admin@hashicorptest.com"),
+//				Condition: &dns.DnsManagedZoneIamMemberConditionArgs{
+//					Title:       pulumi.String("Exact Record Match"),
+//					Description: pulumi.String("Allow modifying only api.example.com. A records"),
+//					Expression:  pulumi.String("(resource.type == 'dns.googleapis.com/ResourceRecordSet' && resource.name.endsWith('/rrsets/api.example.com./A')) || (resource.type != 'dns.googleapis.com/ResourceRecordSet')"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

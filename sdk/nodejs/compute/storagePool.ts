@@ -169,6 +169,11 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.StoragePoolParams | undefined>;
+    /**
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
@@ -242,6 +247,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["performanceProvisioningType"] = state?.performanceProvisioningType;
             resourceInputs["poolProvisionedCapacityGb"] = state?.poolProvisionedCapacityGb;
             resourceInputs["poolProvisionedIops"] = state?.poolProvisionedIops;
@@ -268,6 +274,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["performanceProvisioningType"] = args?.performanceProvisioningType;
             resourceInputs["poolProvisionedCapacityGb"] = args?.poolProvisionedCapacityGb;
             resourceInputs["poolProvisionedIops"] = args?.poolProvisionedIops;
@@ -344,6 +351,11 @@ export interface StoragePoolState {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.StoragePoolParams>;
     /**
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      * Possible values are: `STANDARD`, `ADVANCED`.
@@ -434,6 +446,11 @@ export interface StoragePoolArgs {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.StoragePoolParams>;
     /**
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      * Possible values are: `STANDARD`, `ADVANCED`.

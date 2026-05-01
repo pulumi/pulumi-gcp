@@ -15,12 +15,6 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         /// <summary>
         /// Whether to block non autopilot managed node pools in the cluster.
-        /// 
-        /// 
-        /// ## Attributes Reference
-        /// 
-        /// In addition to the arguments listed above, the following computed attributes are
-        /// exported:
         /// </summary>
         public readonly bool? NoStandardNodePools;
         /// <summary>

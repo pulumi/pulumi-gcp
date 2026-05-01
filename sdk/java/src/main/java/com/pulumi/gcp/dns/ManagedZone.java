@@ -509,6 +509,55 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dns Managed Zone Iam Condition
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamMember;
+ * import com.pulumi.gcp.dns.DnsManagedZoneIamMemberArgs;
+ * import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var default_ = new ManagedZone("default", ManagedZoneArgs.builder()
+ *             .name("example-zone")
+ *             .dnsName("example.com.")
+ *             .description("Example zone for IAM conditions")
+ *             .build());
+ * 
+ *         var conditionTest = new DnsManagedZoneIamMember("conditionTest", DnsManagedZoneIamMemberArgs.builder()
+ *             .project(default_.project())
+ *             .managedZone(default_.name())
+ *             .role("roles/dns.admin")
+ *             .member("user:admin}{@literal @}{@code hashicorptest.com")
+ *             .condition(DnsManagedZoneIamMemberConditionArgs.builder()
+ *                 .title("Exact Record Match")
+ *                 .description("Allow modifying only api.example.com. A records")
+ *                 .expression("(resource.type == 'dns.googleapis.com/ResourceRecordSet' && resource.name.endsWith('/rrsets/api.example.com./A')) || (resource.type != 'dns.googleapis.com/ResourceRecordSet')")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 

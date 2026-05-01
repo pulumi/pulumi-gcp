@@ -27,7 +27,7 @@ public final class RouterRoutePolicyTerm {
      */
     private RouterRoutePolicyTermMatch match;
     /**
-     * @return The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+     * @return The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
      * 
      */
     private Integer priority;
@@ -50,7 +50,7 @@ public final class RouterRoutePolicyTerm {
         return this.match;
     }
     /**
-     * @return The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
+     * @return The evaluation priority for this term, which must be between 0 (inclusive) and 2147483648 (exclusive), and unique within the list.
      * 
      */
     public Integer priority() {

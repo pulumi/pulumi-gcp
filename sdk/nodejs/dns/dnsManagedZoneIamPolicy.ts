@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## gcp.dns.DnsManagedZoneIamPolicy
  *
  * ```typescript
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
- *         role: "roles/viewer",
+ *         role: "roles/dns.admin",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
@@ -38,6 +40,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/dns.admin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.dns.DnsManagedZoneIamPolicy("policy", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
  * ## gcp.dns.DnsManagedZoneIamBinding
  *
  * ```typescript
@@ -47,11 +72,29 @@ import * as utilities from "../utilities";
  * const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
  *     project: _default.project,
  *     managedZone: _default.name,
- *     role: "roles/viewer",
+ *     role: "roles/dns.admin",
  *     members: ["user:jane@example.com"],
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     role: "roles/dns.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  * ## gcp.dns.DnsManagedZoneIamMember
  *
  * ```typescript
@@ -61,8 +104,27 @@ import * as utilities from "../utilities";
  * const member = new gcp.dns.DnsManagedZoneIamMember("member", {
  *     project: _default.project,
  *     managedZone: _default.name,
- *     role: "roles/viewer",
+ *     role: "roles/dns.admin",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.dns.DnsManagedZoneIamMember("member", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     role: "roles/dns.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
  * });
  * ```
  *
@@ -86,6 +148,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `gcp.dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## gcp.dns.DnsManagedZoneIamPolicy
  *
  * ```typescript
@@ -94,7 +158,7 @@ import * as utilities from "../utilities";
  *
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
- *         role: "roles/viewer",
+ *         role: "roles/dns.admin",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
@@ -105,6 +169,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/dns.admin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.dns.DnsManagedZoneIamPolicy("policy", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
  * ## gcp.dns.DnsManagedZoneIamBinding
  *
  * ```typescript
@@ -114,11 +201,29 @@ import * as utilities from "../utilities";
  * const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
  *     project: _default.project,
  *     managedZone: _default.name,
- *     role: "roles/viewer",
+ *     role: "roles/dns.admin",
  *     members: ["user:jane@example.com"],
  * });
  * ```
  *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.dns.DnsManagedZoneIamBinding("binding", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     role: "roles/dns.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  * ## gcp.dns.DnsManagedZoneIamMember
  *
  * ```typescript
@@ -128,8 +233,27 @@ import * as utilities from "../utilities";
  * const member = new gcp.dns.DnsManagedZoneIamMember("member", {
  *     project: _default.project,
  *     managedZone: _default.name,
- *     role: "roles/viewer",
+ *     role: "roles/dns.admin",
  *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.dns.DnsManagedZoneIamMember("member", {
+ *     project: _default.project,
+ *     managedZone: _default.name,
+ *     role: "roles/dns.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
  * });
  * ```
  *
@@ -147,12 +271,12 @@ import * as utilities from "../utilities";
  *
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * ```sh
- * $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer user:jane@example.com"
+ * $ terraform import google_dns_managed_zone_iam_member.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin user:jane@example.com"
  * ```
  *
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * ```sh
- * $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/viewer"
+ * $ terraform import google_dns_managed_zone_iam_binding.editor "projects/{{project}}/managedZones/{{managed_zone}} roles/dns.admin"
  * ```
  *
  * IAM policy imports use the identifier of the resource in question, e.g.

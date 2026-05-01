@@ -79,6 +79,7 @@ public final class GetInstanceResult {
      * 
      */
     private Boolean enableDisplay;
+    private Boolean eraseWindowsVssSignature;
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure is documented below.
      * 
@@ -268,6 +269,9 @@ public final class GetInstanceResult {
      */
     public Boolean enableDisplay() {
         return this.enableDisplay;
+    }
+    public Boolean eraseWindowsVssSignature() {
+        return this.eraseWindowsVssSignature;
     }
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -463,6 +467,7 @@ public final class GetInstanceResult {
         private String desiredStatus;
         private Map<String,String> effectiveLabels;
         private Boolean enableDisplay;
+        private Boolean eraseWindowsVssSignature;
         private List<GetInstanceGuestAccelerator> guestAccelerators;
         private String hostname;
         private String id;
@@ -510,6 +515,7 @@ public final class GetInstanceResult {
     	      this.desiredStatus = defaults.desiredStatus;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableDisplay = defaults.enableDisplay;
+    	      this.eraseWindowsVssSignature = defaults.eraseWindowsVssSignature;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
@@ -664,6 +670,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "enableDisplay");
             }
             this.enableDisplay = enableDisplay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eraseWindowsVssSignature(Boolean eraseWindowsVssSignature) {
+            if (eraseWindowsVssSignature == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "eraseWindowsVssSignature");
+            }
+            this.eraseWindowsVssSignature = eraseWindowsVssSignature;
             return this;
         }
         @CustomType.Setter
@@ -950,6 +964,7 @@ public final class GetInstanceResult {
             _resultValue.desiredStatus = desiredStatus;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableDisplay = enableDisplay;
+            _resultValue.eraseWindowsVssSignature = eraseWindowsVssSignature;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.hostname = hostname;
             _resultValue.id = id;

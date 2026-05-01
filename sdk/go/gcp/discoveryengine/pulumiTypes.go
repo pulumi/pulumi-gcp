@@ -3958,6 +3958,8 @@ type DataConnectorDestinationConfig struct {
 	Destinations []DataConnectorDestinationConfigDestination `pulumi:"destinations"`
 	// The key of the destination configuration, for example `url`.
 	Key *string `pulumi:"key"`
+	// Additional parameters for this destination config in structured json format.
+	Params *string `pulumi:"params"`
 }
 
 // DataConnectorDestinationConfigInput is an input type that accepts DataConnectorDestinationConfigArgs and DataConnectorDestinationConfigOutput values.
@@ -3977,6 +3979,8 @@ type DataConnectorDestinationConfigArgs struct {
 	Destinations DataConnectorDestinationConfigDestinationArrayInput `pulumi:"destinations"`
 	// The key of the destination configuration, for example `url`.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Additional parameters for this destination config in structured json format.
+	Params pulumi.StringPtrInput `pulumi:"params"`
 }
 
 func (DataConnectorDestinationConfigArgs) ElementType() reflect.Type {
@@ -4043,6 +4047,11 @@ func (o DataConnectorDestinationConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataConnectorDestinationConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Additional parameters for this destination config in structured json format.
+func (o DataConnectorDestinationConfigOutput) Params() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorDestinationConfig) *string { return v.Params }).(pulumi.StringPtrOutput)
+}
+
 type DataConnectorDestinationConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DataConnectorDestinationConfigArrayOutput) ElementType() reflect.Type {
@@ -4067,6 +4076,8 @@ type DataConnectorDestinationConfigDestination struct {
 	// The host of the destination, for example
 	// `https://example.atlassian.net`.
 	Host *string `pulumi:"host"`
+	// Target port number accepted by the destination.
+	Port *int `pulumi:"port"`
 }
 
 // DataConnectorDestinationConfigDestinationInput is an input type that accepts DataConnectorDestinationConfigDestinationArgs and DataConnectorDestinationConfigDestinationOutput values.
@@ -4084,6 +4095,8 @@ type DataConnectorDestinationConfigDestinationArgs struct {
 	// The host of the destination, for example
 	// `https://example.atlassian.net`.
 	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Target port number accepted by the destination.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (DataConnectorDestinationConfigDestinationArgs) ElementType() reflect.Type {
@@ -4141,6 +4154,11 @@ func (o DataConnectorDestinationConfigDestinationOutput) ToDataConnectorDestinat
 // `https://example.atlassian.net`.
 func (o DataConnectorDestinationConfigDestinationOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataConnectorDestinationConfigDestination) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Target port number accepted by the destination.
+func (o DataConnectorDestinationConfigDestinationOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataConnectorDestinationConfigDestination) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 type DataConnectorDestinationConfigDestinationArrayOutput struct{ *pulumi.OutputState }

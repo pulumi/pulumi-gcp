@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, erase_windows_vss_signature=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -70,6 +70,9 @@ class GetInstanceResult:
         if enable_display and not isinstance(enable_display, bool):
             raise TypeError("Expected argument 'enable_display' to be a bool")
         pulumi.set(__self__, "enable_display", enable_display)
+        if erase_windows_vss_signature and not isinstance(erase_windows_vss_signature, bool):
+            raise TypeError("Expected argument 'erase_windows_vss_signature' to be a bool")
+        pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_accelerators and not isinstance(guest_accelerators, list):
             raise TypeError("Expected argument 'guest_accelerators' to be a list")
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
@@ -257,6 +260,11 @@ class GetInstanceResult:
         Whether the instance has virtual displays enabled.
         """
         return pulumi.get(self, "enable_display")
+
+    @_builtins.property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> _builtins.bool:
+        return pulumi.get(self, "erase_windows_vss_signature")
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
@@ -489,6 +497,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             desired_status=self.desired_status,
             effective_labels=self.effective_labels,
             enable_display=self.enable_display,
+            erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
             id=self.id,
@@ -575,6 +584,7 @@ def get_instance(name: Optional[_builtins.str] = None,
         desired_status=pulumi.get(__ret__, 'desired_status'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_display=pulumi.get(__ret__, 'enable_display'),
+        erase_windows_vss_signature=pulumi.get(__ret__, 'erase_windows_vss_signature'),
         guest_accelerators=pulumi.get(__ret__, 'guest_accelerators'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
@@ -658,6 +668,7 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = 
         desired_status=pulumi.get(__response__, 'desired_status'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         enable_display=pulumi.get(__response__, 'enable_display'),
+        erase_windows_vss_signature=pulumi.get(__response__, 'erase_windows_vss_signature'),
         guest_accelerators=pulumi.get(__response__, 'guest_accelerators'),
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),

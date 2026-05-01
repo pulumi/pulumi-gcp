@@ -69,6 +69,7 @@ export interface GetStoragePoolResult {
     readonly labelFingerprint: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
+    readonly params: outputs.compute.GetStoragePoolParam[];
     readonly performanceProvisioningType: string;
     readonly poolProvisionedCapacityGb: string;
     readonly poolProvisionedIops: string;

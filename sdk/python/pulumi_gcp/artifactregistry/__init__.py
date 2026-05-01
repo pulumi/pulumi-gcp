@@ -28,6 +28,7 @@ from .repository import *
 from .repository_iam_binding import *
 from .repository_iam_member import *
 from .repository_iam_policy import *
+from .rule import *
 from .vpcsc_config import *
 from ._inputs import *
 from . import outputs
