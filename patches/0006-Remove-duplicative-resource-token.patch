@@ -5,14 +5,31 @@ Subject: [PATCH] Remove duplicative resource token
 
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index 7eb9e0435..089122316 100644
+index 225df27918..d899e3d14b 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
-@@ -1100,6 +1100,15 @@ func Provider() *schema.Provider {
+@@ -249,7 +249,7 @@ func Provider() *schema.Provider {
+ 			},
+ 		},
  
+-		DataSourcesMap: registry.DatasourceMap(),
++		DataSourcesMap: DatasourceMap(),
+ 		ResourcesMap:   registry.ResourceMap(),
+ 	}
+ 
+@@ -267,14 +267,21 @@ func Provider() *schema.Provider {
+ 	return provider
+ }
+ 
+-// Compatibility shim for diff-processor.
+ func ResourceMap() map[string]*schema.Resource {
+ 	return registry.ResourceMap()
+ }
+ 
+ // Compatibility shim for diff-processor.
  func DatasourceMap() map[string]*schema.Resource {
- 	datasourceMap, _ := DatasourceMapWithErrors()
-+
+-	return registry.DatasourceMap()
++	datasourceMap := registry.DatasourceMap()
 +	datasourcesToRemove := []string{
 +		"google_organization_iam_policy",
 +		"google_organization_iam_policy_legacy",
@@ -20,7 +37,7 @@ index 7eb9e0435..089122316 100644
 +	for _, datasourceToRemove := range datasourcesToRemove {
 +		delete(datasourceMap, datasourceToRemove)
 +	}
-+
- 	return datasourceMap
++	return datasourceMap
  }
  
+ func ProviderConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Provider) (interface{}, diag.Diagnostics) {
