@@ -16,6 +16,7 @@ env:
     PULUMI_MISSING_DOCS_ERROR: true
 upstream-provider-repo: terraform-provider-google-beta
 makeTemplate: bridged
+disableMajorProviderUpgrades: true
 goBuildParallelism: 2
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
