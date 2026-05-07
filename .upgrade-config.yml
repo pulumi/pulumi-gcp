@@ -2,6 +2,5 @@
 
 ---
 upstream-provider-name: terraform-provider-google-beta
-allow-major: true
 pulumi-infer-version: true
 remove-plugins: true
