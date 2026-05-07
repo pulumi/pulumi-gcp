@@ -13,6 +13,8 @@ import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagePlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesPlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetFileArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetFilePlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
@@ -47,6 +49,7 @@ import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetVersionsPlainArgs;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImagesResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetFileResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetLocationsResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetMavenArtifactResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetMavenArtifactsResult;
@@ -600,6 +603,116 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetDockerImagesResult> getDockerImagesPlain(GetDockerImagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getDockerImages:getDockerImages", TypeShape.of(GetDockerImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Downloads a single file from a Google Artifact Registry repository to a local
+     * path and exposes its metadata and content hashes. Applies to file-based
+     * Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
+     * Docker/OCI images, use
+     * `gcp.artifactregistry.getDockerImage`.
+     * 
+     * &gt; **Note:** This data source downloads the file on every Terraform read
+     * (i.e. every `plan` and `apply`). For large files this can add significant
+     * time to each run. Use `overwrite = false` to skip the download when the
+     * local file already matches the remote — see the `overwrite` argument below.
+     * 
+     * To get more information about Artifact Registry files, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.files)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetFileResult> getFile(GetFileArgs args) {
+        return getFile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Downloads a single file from a Google Artifact Registry repository to a local
+     * path and exposes its metadata and content hashes. Applies to file-based
+     * Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
+     * Docker/OCI images, use
+     * `gcp.artifactregistry.getDockerImage`.
+     * 
+     * &gt; **Note:** This data source downloads the file on every Terraform read
+     * (i.e. every `plan` and `apply`). For large files this can add significant
+     * time to each run. Use `overwrite = false` to skip the download when the
+     * local file already matches the remote — see the `overwrite` argument below.
+     * 
+     * To get more information about Artifact Registry files, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.files)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetFileResult> getFilePlain(GetFilePlainArgs args) {
+        return getFilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Downloads a single file from a Google Artifact Registry repository to a local
+     * path and exposes its metadata and content hashes. Applies to file-based
+     * Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
+     * Docker/OCI images, use
+     * `gcp.artifactregistry.getDockerImage`.
+     * 
+     * &gt; **Note:** This data source downloads the file on every Terraform read
+     * (i.e. every `plan` and `apply`). For large files this can add significant
+     * time to each run. Use `overwrite = false` to skip the download when the
+     * local file already matches the remote — see the `overwrite` argument below.
+     * 
+     * To get more information about Artifact Registry files, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.files)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetFileResult> getFile(GetFileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Downloads a single file from a Google Artifact Registry repository to a local
+     * path and exposes its metadata and content hashes. Applies to file-based
+     * Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
+     * Docker/OCI images, use
+     * `gcp.artifactregistry.getDockerImage`.
+     * 
+     * &gt; **Note:** This data source downloads the file on every Terraform read
+     * (i.e. every `plan` and `apply`). For large files this can add significant
+     * time to each run. Use `overwrite = false` to skip the download when the
+     * local file already matches the remote — see the `overwrite` argument below.
+     * 
+     * To get more information about Artifact Registry files, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.files)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetFileResult> getFile(GetFileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Downloads a single file from a Google Artifact Registry repository to a local
+     * path and exposes its metadata and content hashes. Applies to file-based
+     * Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
+     * Docker/OCI images, use
+     * `gcp.artifactregistry.getDockerImage`.
+     * 
+     * &gt; **Note:** This data source downloads the file on every Terraform read
+     * (i.e. every `plan` and `apply`). For large files this can add significant
+     * time to each run. Use `overwrite = false` to skip the download when the
+     * local file already matches the remote — see the `overwrite` argument below.
+     * 
+     * To get more information about Artifact Registry files, see:
+     * 
+     * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.files)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetFileResult> getFilePlain(GetFilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get Artifact Registry locations available for a project.

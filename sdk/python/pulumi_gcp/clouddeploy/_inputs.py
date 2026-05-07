@@ -83,18 +83,54 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs',
@@ -109,10 +145,36 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyStandardArgs',
     'DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgsDict',
     'DeployPolicyRuleArgs',
     'DeployPolicyRuleArgsDict',
     'DeployPolicyRuleRolloutRestrictionArgs',
@@ -153,6 +215,10 @@ __all__ = [
     'TargetCustomTargetArgsDict',
     'TargetExecutionConfigArgs',
     'TargetExecutionConfigArgsDict',
+    'TargetExecutionConfigDefaultPoolArgs',
+    'TargetExecutionConfigDefaultPoolArgsDict',
+    'TargetExecutionConfigPrivatePoolArgs',
+    'TargetExecutionConfigPrivatePoolArgsDict',
     'TargetGkeArgs',
     'TargetGkeArgsDict',
     'TargetIamBindingConditionArgs',
@@ -2228,6 +2294,10 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict(
     """
     Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
     """
+    analysis: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgsDict']]
+    """
+    Optional. Configuration for the analysis job.
+    """
     postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict']]
     """
     Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
@@ -2240,27 +2310,39 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict(
     """
     Whether to run verify tests after each percentage deployment.
     """
+    verify_config: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgsDict']]
+    """
+    Optional. Configuration for the verify job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
     def __init__(__self__, *,
                  percentages: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
+                 analysis: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs']] = None,
                  postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']] = None,
                  predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 verify_config: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] percentages: Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs'] analysis: Optional. Configuration for the analysis job.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs'] postdeploy: Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs'] predeploy: Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[_builtins.bool] verify: Whether to run verify tests after each percentage deployment.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs'] verify_config: Optional. Configuration for the verify job.
         """
         pulumi.set(__self__, "percentages", percentages)
+        if analysis is not None:
+            pulumi.set(__self__, "analysis", analysis)
         if postdeploy is not None:
             pulumi.set(__self__, "postdeploy", postdeploy)
         if predeploy is not None:
             pulumi.set(__self__, "predeploy", predeploy)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
+        if verify_config is not None:
+            pulumi.set(__self__, "verify_config", verify_config)
 
     @_builtins.property
     @pulumi.getter
@@ -2273,6 +2355,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
     @percentages.setter
     def percentages(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]):
         pulumi.set(self, "percentages", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def analysis(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs']]:
+        """
+        Optional. Configuration for the analysis job.
+        """
+        return pulumi.get(self, "analysis")
+
+    @analysis.setter
+    def analysis(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs']]):
+        pulumi.set(self, "analysis", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2309,6 +2403,367 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
     @verify.setter
     def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "verify", value)
+
+    @_builtins.property
+    @pulumi.getter(name="verifyConfig")
+    def verify_config(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs']]:
+        """
+        Optional. Configuration for the verify job.
+        """
+        return pulumi.get(self, "verify_config")
+
+    @verify_config.setter
+    def verify_config(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs']]):
+        pulumi.set(self, "verify_config", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+    """
+    custom_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgsDict']]]]
+    """
+    Optional. Custom analysis checks from 3P metric providers.
+    """
+    google_cloud: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgsDict']]
+    """
+    Optional. Google Cloud - based analysis checks.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[_builtins.str],
+                 custom_checks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs']]]] = None,
+                 google_cloud: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] duration: Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs']]] custom_checks: Optional. Custom analysis checks from 3P metric providers.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs'] google_cloud: Optional. Google Cloud - based analysis checks.
+        """
+        pulumi.set(__self__, "duration", duration)
+        if custom_checks is not None:
+            pulumi.set(__self__, "custom_checks", custom_checks)
+        if google_cloud is not None:
+            pulumi.set(__self__, "google_cloud", google_cloud)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customChecks")
+    def custom_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs']]]]:
+        """
+        Optional. Custom analysis checks from 3P metric providers.
+        """
+        return pulumi.get(self, "custom_checks")
+
+    @custom_checks.setter
+    def custom_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs']]]]):
+        pulumi.set(self, "custom_checks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloud")
+    def google_cloud(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs']]:
+        """
+        Optional. Google Cloud - based analysis checks.
+        """
+        return pulumi.get(self, "google_cloud")
+
+    @google_cloud.setter
+    def google_cloud(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs']]):
+        pulumi.set(self, "google_cloud", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the custom Analysis check.
+    """
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+    """
+    task: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgsDict']]
+    """
+    Required. The Task to be run for this custom check.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 task: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Required. The ID of the custom Analysis check.
+        :param pulumi.Input[_builtins.str] frequency: Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs'] task: Required. The Task to be run for this custom check.
+        """
+        pulumi.set(__self__, "id", id)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if task is not None:
+            pulumi.set(__self__, "task", task)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the custom Analysis check.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "frequency", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def task(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs']]:
+        """
+        Required. The Task to be run for this custom check.
+        """
+        return pulumi.get(self, "task")
+
+    @task.setter
+    def task(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs']]):
+        pulumi.set(self, "task", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgsDict(TypedDict):
+    alert_policy_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgsDict']]]]
+    """
+    Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs:
+    def __init__(__self__, *,
+                 alert_policy_checks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs']]] alert_policy_checks: Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        """
+        if alert_policy_checks is not None:
+            pulumi.set(__self__, "alert_policy_checks", alert_policy_checks)
+
+    @_builtins.property
+    @pulumi.getter(name="alertPolicyChecks")
+    def alert_policy_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs']]]]:
+        """
+        Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        """
+        return pulumi.get(self, "alert_policy_checks")
+
+    @alert_policy_checks.setter
+    def alert_policy_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs']]]]):
+        pulumi.set(self, "alert_policy_checks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgsDict(TypedDict):
+    alert_policies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the analysis check.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs:
+    def __init__(__self__, *,
+                 alert_policies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 id: pulumi.Input[_builtins.str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_policies: Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+        :param pulumi.Input[_builtins.str] id: Required. The ID of the analysis check.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+        """
+        pulumi.set(__self__, "alert_policies", alert_policies)
+        pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter(name="alertPolicies")
+    def alert_policies(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+        """
+        return pulumi.get(self, "alert_policies")
+
+    @alert_policies.setter
+    def alert_policies(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "alert_policies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the analysis check.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict(TypedDict):
@@ -2369,6 +2824,152 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
         pulumi.set(self, "actions", value)
 
 
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgsDict(TypedDict):
+    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgsDict']]]]
+    """
+    Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs:
+    def __init__(__self__, *,
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs']]] tasks: Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+        """
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
+
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs']]]]:
+        """
+        Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs']]]]):
+        pulumi.set(self, "tasks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
+
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict(TypedDict):
     phase_configs: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict']]]
     """
@@ -2406,6 +3007,10 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     """
     Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
     """
+    analysis: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgsDict']]
+    """
+    Optional. Configuration for the analysis job.
+    """
     postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict']]
     """
     Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
@@ -2422,26 +3027,36 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     """
     Whether to run verify tests after the deployment.
     """
+    verify_config: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgsDict']]
+    """
+    Optional. Configuration for the verify job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs:
     def __init__(__self__, *,
                  percentage: pulumi.Input[_builtins.int],
                  phase_id: pulumi.Input[_builtins.str],
+                 analysis: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs']] = None,
                  postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']] = None,
                  predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 verify_config: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] percentage: Required. Percentage deployment for the phase.
         :param pulumi.Input[_builtins.str] phase_id: Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs'] analysis: Optional. Configuration for the analysis job.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs'] postdeploy: Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs'] predeploy: Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param pulumi.Input[_builtins.bool] verify: Whether to run verify tests after the deployment.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs'] verify_config: Optional. Configuration for the verify job.
         """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "phase_id", phase_id)
+        if analysis is not None:
+            pulumi.set(__self__, "analysis", analysis)
         if postdeploy is not None:
             pulumi.set(__self__, "postdeploy", postdeploy)
         if predeploy is not None:
@@ -2450,6 +3065,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
             pulumi.set(__self__, "profiles", profiles)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
+        if verify_config is not None:
+            pulumi.set(__self__, "verify_config", verify_config)
 
     @_builtins.property
     @pulumi.getter
@@ -2474,6 +3091,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     @phase_id.setter
     def phase_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "phase_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def analysis(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs']]:
+        """
+        Optional. Configuration for the analysis job.
+        """
+        return pulumi.get(self, "analysis")
+
+    @analysis.setter
+    def analysis(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs']]):
+        pulumi.set(self, "analysis", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2522,6 +3151,367 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     @verify.setter
     def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "verify", value)
+
+    @_builtins.property
+    @pulumi.getter(name="verifyConfig")
+    def verify_config(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs']]:
+        """
+        Optional. Configuration for the verify job.
+        """
+        return pulumi.get(self, "verify_config")
+
+    @verify_config.setter
+    def verify_config(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs']]):
+        pulumi.set(self, "verify_config", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+    """
+    custom_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgsDict']]]]
+    """
+    Optional. Custom analysis checks from 3P metric providers.
+    """
+    google_cloud: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgsDict']]
+    """
+    Optional. Google Cloud - based analysis checks.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[_builtins.str],
+                 custom_checks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs']]]] = None,
+                 google_cloud: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] duration: Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs']]] custom_checks: Optional. Custom analysis checks from 3P metric providers.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs'] google_cloud: Optional. Google Cloud - based analysis checks.
+        """
+        pulumi.set(__self__, "duration", duration)
+        if custom_checks is not None:
+            pulumi.set(__self__, "custom_checks", custom_checks)
+        if google_cloud is not None:
+            pulumi.set(__self__, "google_cloud", google_cloud)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customChecks")
+    def custom_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs']]]]:
+        """
+        Optional. Custom analysis checks from 3P metric providers.
+        """
+        return pulumi.get(self, "custom_checks")
+
+    @custom_checks.setter
+    def custom_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs']]]]):
+        pulumi.set(self, "custom_checks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloud")
+    def google_cloud(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs']]:
+        """
+        Optional. Google Cloud - based analysis checks.
+        """
+        return pulumi.get(self, "google_cloud")
+
+    @google_cloud.setter
+    def google_cloud(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs']]):
+        pulumi.set(self, "google_cloud", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the custom Analysis check.
+    """
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+    """
+    task: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgsDict']]
+    """
+    Required. The Task to be run for this custom check.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 task: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Required. The ID of the custom Analysis check.
+        :param pulumi.Input[_builtins.str] frequency: Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs'] task: Required. The Task to be run for this custom check.
+        """
+        pulumi.set(__self__, "id", id)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if task is not None:
+            pulumi.set(__self__, "task", task)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the custom Analysis check.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "frequency", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def task(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs']]:
+        """
+        Required. The Task to be run for this custom check.
+        """
+        return pulumi.get(self, "task")
+
+    @task.setter
+    def task(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs']]):
+        pulumi.set(self, "task", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgsDict(TypedDict):
+    alert_policy_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgsDict']]]]
+    """
+    Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs:
+    def __init__(__self__, *,
+                 alert_policy_checks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs']]] alert_policy_checks: Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        """
+        if alert_policy_checks is not None:
+            pulumi.set(__self__, "alert_policy_checks", alert_policy_checks)
+
+    @_builtins.property
+    @pulumi.getter(name="alertPolicyChecks")
+    def alert_policy_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs']]]]:
+        """
+        Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        """
+        return pulumi.get(self, "alert_policy_checks")
+
+    @alert_policy_checks.setter
+    def alert_policy_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs']]]]):
+        pulumi.set(self, "alert_policy_checks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgsDict(TypedDict):
+    alert_policies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the analysis check.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs:
+    def __init__(__self__, *,
+                 alert_policies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 id: pulumi.Input[_builtins.str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_policies: Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+        :param pulumi.Input[_builtins.str] id: Required. The ID of the analysis check.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+        """
+        pulumi.set(__self__, "alert_policies", alert_policies)
+        pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter(name="alertPolicies")
+    def alert_policies(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+        """
+        return pulumi.get(self, "alert_policies")
+
+    @alert_policies.setter
+    def alert_policies(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "alert_policies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the analysis check.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict(TypedDict):
@@ -2580,6 +3570,152 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     @actions.setter
     def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgsDict(TypedDict):
+    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgsDict']]]]
+    """
+    Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs:
+    def __init__(__self__, *,
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs']]] tasks: Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+        """
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
+
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs']]]]:
+        """
+        Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs']]]]):
+        pulumi.set(self, "tasks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict(TypedDict):
@@ -3051,6 +4187,10 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict(TypedDict):
+    analysis: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgsDict']]
+    """
+    Optional. Configuration for the analysis job.
+    """
     postdeploy: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict']]
     """
     Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
@@ -3063,24 +4203,48 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict(TypedDict):
     """
     Whether to verify a deployment.
     """
+    verify_config: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgsDict']]
+    """
+    Optional. Configuration for the verify job.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
     def __init__(__self__, *,
+                 analysis: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs']] = None,
                  postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']] = None,
                  predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 verify_config: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs']] = None):
         """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs'] analysis: Optional. Configuration for the analysis job.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs'] postdeploy: Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs'] predeploy: Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[_builtins.bool] verify: Whether to verify a deployment.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs'] verify_config: Optional. Configuration for the verify job.
         """
+        if analysis is not None:
+            pulumi.set(__self__, "analysis", analysis)
         if postdeploy is not None:
             pulumi.set(__self__, "postdeploy", postdeploy)
         if predeploy is not None:
             pulumi.set(__self__, "predeploy", predeploy)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
+        if verify_config is not None:
+            pulumi.set(__self__, "verify_config", verify_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def analysis(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs']]:
+        """
+        Optional. Configuration for the analysis job.
+        """
+        return pulumi.get(self, "analysis")
+
+    @analysis.setter
+    def analysis(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs']]):
+        pulumi.set(self, "analysis", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3118,22 +4282,391 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
     def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "verify", value)
 
+    @_builtins.property
+    @pulumi.getter(name="verifyConfig")
+    def verify_config(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs']]:
+        """
+        Optional. Configuration for the verify job.
+        """
+        return pulumi.get(self, "verify_config")
+
+    @verify_config.setter
+    def verify_config(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs']]):
+        pulumi.set(self, "verify_config", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgsDict(TypedDict):
+    duration: pulumi.Input[_builtins.str]
+    """
+    Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+    """
+    custom_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgsDict']]]]
+    """
+    Optional. Custom analysis checks from 3P metric providers.
+    """
+    google_cloud: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgsDict']]
+    """
+    Optional. Google Cloud - based analysis checks.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[_builtins.str],
+                 custom_checks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs']]]] = None,
+                 google_cloud: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] duration: Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs']]] custom_checks: Optional. Custom analysis checks from 3P metric providers.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs'] google_cloud: Optional. Google Cloud - based analysis checks.
+        """
+        pulumi.set(__self__, "duration", duration)
+        if custom_checks is not None:
+            pulumi.set(__self__, "custom_checks", custom_checks)
+        if google_cloud is not None:
+            pulumi.set(__self__, "google_cloud", google_cloud)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customChecks")
+    def custom_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs']]]]:
+        """
+        Optional. Custom analysis checks from 3P metric providers.
+        """
+        return pulumi.get(self, "custom_checks")
+
+    @custom_checks.setter
+    def custom_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs']]]]):
+        pulumi.set(self, "custom_checks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloud")
+    def google_cloud(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs']]:
+        """
+        Optional. Google Cloud - based analysis checks.
+        """
+        return pulumi.get(self, "google_cloud")
+
+    @google_cloud.setter
+    def google_cloud(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs']]):
+        pulumi.set(self, "google_cloud", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the custom Analysis check.
+    """
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+    """
+    task: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgsDict']]
+    """
+    Required. The Task to be run for this custom check.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 task: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Required. The ID of the custom Analysis check.
+        :param pulumi.Input[_builtins.str] frequency: Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs'] task: Required. The Task to be run for this custom check.
+        """
+        pulumi.set(__self__, "id", id)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if task is not None:
+            pulumi.set(__self__, "task", task)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the custom Analysis check.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "frequency", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def task(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs']]:
+        """
+        Required. The Task to be run for this custom check.
+        """
+        return pulumi.get(self, "task")
+
+    @task.setter
+    def task(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs']]):
+        pulumi.set(self, "task", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgsDict(TypedDict):
+    alert_policy_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgsDict']]]]
+    """
+    Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs:
+    def __init__(__self__, *,
+                 alert_policy_checks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs']]] alert_policy_checks: Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        """
+        if alert_policy_checks is not None:
+            pulumi.set(__self__, "alert_policy_checks", alert_policy_checks)
+
+    @_builtins.property
+    @pulumi.getter(name="alertPolicyChecks")
+    def alert_policy_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs']]]]:
+        """
+        Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+        """
+        return pulumi.get(self, "alert_policy_checks")
+
+    @alert_policy_checks.setter
+    def alert_policy_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs']]]]):
+        pulumi.set(self, "alert_policy_checks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgsDict(TypedDict):
+    alert_policies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. The ID of the analysis check.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs:
+    def __init__(__self__, *,
+                 alert_policies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 id: pulumi.Input[_builtins.str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_policies: Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+        :param pulumi.Input[_builtins.str] id: Required. The ID of the analysis check.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+        """
+        pulumi.set(__self__, "alert_policies", alert_policies)
+        pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter(name="alertPolicies")
+    def alert_policies(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+        """
+        return pulumi.get(self, "alert_policies")
+
+    @alert_policies.setter
+    def alert_policies(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "alert_policies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The ID of the analysis check.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict(TypedDict):
     actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
     """
     Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
     """
+    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgsDict']]]]
+    """
+    Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs']]] tasks: Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
 
     @_builtins.property
     @pulumi.getter
@@ -3147,22 +4680,159 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
     def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs']]]]:
+        """
+        Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs']]]]):
+        pulumi.set(self, "tasks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict(TypedDict):
     actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
     """
     Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
     """
+    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgsDict']]]]
+    """
+    Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+    """
 
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs']]] tasks: Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
 
     @_builtins.property
     @pulumi.getter
@@ -3175,6 +4845,281 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
     @actions.setter
     def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs']]]]:
+        """
+        Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs']]]]):
+        pulumi.set(self, "tasks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgsDict(TypedDict):
+    tasks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgsDict']]]]
+    """
+    Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs:
+    def __init__(__self__, *,
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs']]] tasks: Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+        """
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
+
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs']]]]:
+        """
+        Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+        """
+        return pulumi.get(self, "tasks")
+
+    @tasks.setter
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs']]]]):
+        pulumi.set(self, "tasks", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgsDict(TypedDict):
+    container: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgsDict']]
+    """
+    Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs:
+    def __init__(__self__, *,
+                 container: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs'] container: Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs']]:
+        """
+        Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs']]):
+        pulumi.set(self, "container", value)
+
+
+class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Required. Image is the container image to use.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+    """
+    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Optional. Environment variables that are set in the container.
+    """
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs:
+    def __init__(__self__, *,
+                 image: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image: Required. Image is the container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env: Optional. Environment variables that are set in the container.
+        """
+        pulumi.set(__self__, "image", image)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Image is the container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Environment variables that are set in the container.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "env", value)
 
 
 class DeployPolicyRuleArgsDict(TypedDict):
@@ -4440,9 +6385,17 @@ class TargetExecutionConfigArgsDict(TypedDict):
     """
     Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
     """
+    default_pool: NotRequired[pulumi.Input['TargetExecutionConfigDefaultPoolArgsDict']]
+    """
+    Optional. Use default Cloud Build pool.
+    """
     execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
     """
     Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+    """
+    private_pool: NotRequired[pulumi.Input['TargetExecutionConfigPrivatePoolArgsDict']]
+    """
+    Optional. Use private Cloud Build pool.
     """
     service_account: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -4462,14 +6415,18 @@ class TargetExecutionConfigArgs:
     def __init__(__self__, *,
                  usages: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  artifact_storage: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_pool: Optional[pulumi.Input['TargetExecutionConfigDefaultPoolArgs']] = None,
                  execution_timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_pool: Optional[pulumi.Input['TargetExecutionConfigPrivatePoolArgs']] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  verbose: Optional[pulumi.Input[_builtins.bool]] = None,
                  worker_pool: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usages: Required. Usages when this configuration should be applied.
         :param pulumi.Input[_builtins.str] artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        :param pulumi.Input['TargetExecutionConfigDefaultPoolArgs'] default_pool: Optional. Use default Cloud Build pool.
         :param pulumi.Input[_builtins.str] execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        :param pulumi.Input['TargetExecutionConfigPrivatePoolArgs'] private_pool: Optional. Use private Cloud Build pool.
         :param pulumi.Input[_builtins.str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param pulumi.Input[_builtins.bool] verbose: Optional. If true, additional logging will be enabled when running builds in this execution environment.
         :param pulumi.Input[_builtins.str] worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
@@ -4477,8 +6434,12 @@ class TargetExecutionConfigArgs:
         pulumi.set(__self__, "usages", usages)
         if artifact_storage is not None:
             pulumi.set(__self__, "artifact_storage", artifact_storage)
+        if default_pool is not None:
+            pulumi.set(__self__, "default_pool", default_pool)
         if execution_timeout is not None:
             pulumi.set(__self__, "execution_timeout", execution_timeout)
+        if private_pool is not None:
+            pulumi.set(__self__, "private_pool", private_pool)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if verbose is not None:
@@ -4511,6 +6472,18 @@ class TargetExecutionConfigArgs:
         pulumi.set(self, "artifact_storage", value)
 
     @_builtins.property
+    @pulumi.getter(name="defaultPool")
+    def default_pool(self) -> Optional[pulumi.Input['TargetExecutionConfigDefaultPoolArgs']]:
+        """
+        Optional. Use default Cloud Build pool.
+        """
+        return pulumi.get(self, "default_pool")
+
+    @default_pool.setter
+    def default_pool(self, value: Optional[pulumi.Input['TargetExecutionConfigDefaultPoolArgs']]):
+        pulumi.set(self, "default_pool", value)
+
+    @_builtins.property
     @pulumi.getter(name="executionTimeout")
     def execution_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -4521,6 +6494,18 @@ class TargetExecutionConfigArgs:
     @execution_timeout.setter
     def execution_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "execution_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privatePool")
+    def private_pool(self) -> Optional[pulumi.Input['TargetExecutionConfigPrivatePoolArgs']]:
+        """
+        Optional. Use private Cloud Build pool.
+        """
+        return pulumi.get(self, "private_pool")
+
+    @private_pool.setter
+    def private_pool(self, value: Optional[pulumi.Input['TargetExecutionConfigPrivatePoolArgs']]):
+        pulumi.set(self, "private_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -4557,6 +6542,123 @@ class TargetExecutionConfigArgs:
     @worker_pool.setter
     def worker_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "worker_pool", value)
+
+
+class TargetExecutionConfigDefaultPoolArgsDict(TypedDict):
+    artifact_storage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+    """
+
+@pulumi.input_type
+class TargetExecutionConfigDefaultPoolArgs:
+    def __init__(__self__, *,
+                 artifact_storage: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] artifact_storage: Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        :param pulumi.Input[_builtins.str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        """
+        if artifact_storage is not None:
+            pulumi.set(__self__, "artifact_storage", artifact_storage)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="artifactStorage")
+    def artifact_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        """
+        return pulumi.get(self, "artifact_storage")
+
+    @artifact_storage.setter
+    def artifact_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "artifact_storage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+
+class TargetExecutionConfigPrivatePoolArgsDict(TypedDict):
+    worker_pool: pulumi.Input[_builtins.str]
+    """
+    Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+    """
+    artifact_storage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+    """
+    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+    """
+
+@pulumi.input_type
+class TargetExecutionConfigPrivatePoolArgs:
+    def __init__(__self__, *,
+                 worker_pool: pulumi.Input[_builtins.str],
+                 artifact_storage: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] worker_pool: Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+        :param pulumi.Input[_builtins.str] artifact_storage: Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        :param pulumi.Input[_builtins.str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        """
+        pulumi.set(__self__, "worker_pool", worker_pool)
+        if artifact_storage is not None:
+            pulumi.set(__self__, "artifact_storage", artifact_storage)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+        """
+        return pulumi.get(self, "worker_pool")
+
+    @worker_pool.setter
+    def worker_pool(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "worker_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="artifactStorage")
+    def artifact_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        """
+        return pulumi.get(self, "artifact_storage")
+
+    @artifact_storage.setter
+    def artifact_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "artifact_storage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
 
 
 class TargetGkeArgsDict(TypedDict):

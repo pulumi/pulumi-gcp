@@ -31,6 +31,7 @@ class MigrationJobArgs:
                  dump_type: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 objects_config: Optional[pulumi.Input['MigrationJobObjectsConfigArgs']] = None,
                  performance_config: Optional[pulumi.Input['MigrationJobPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input['MigrationJobReverseSshConnectivityArgs']] = None,
@@ -58,6 +59,9 @@ class MigrationJobArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location where the migration job should reside.
+        :param pulumi.Input['MigrationJobObjectsConfigArgs'] objects_config: The objects that need to be migrated. If unset, the default is to migrate
+               all objects available on the source.
+               Structure is documented below.
         :param pulumi.Input['MigrationJobPerformanceConfigArgs'] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -87,6 +91,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if objects_config is not None:
+            pulumi.set(__self__, "objects_config", objects_config)
         if performance_config is not None:
             pulumi.set(__self__, "performance_config", performance_config)
         if project is not None:
@@ -228,6 +234,20 @@ class MigrationJobArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="objectsConfig")
+    def objects_config(self) -> Optional[pulumi.Input['MigrationJobObjectsConfigArgs']]:
+        """
+        The objects that need to be migrated. If unset, the default is to migrate
+        all objects available on the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects_config")
+
+    @objects_config.setter
+    def objects_config(self, value: Optional[pulumi.Input['MigrationJobObjectsConfigArgs']]):
+        pulumi.set(self, "objects_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="performanceConfig")
     def performance_config(self) -> Optional[pulumi.Input['MigrationJobPerformanceConfigArgs']]:
         """
@@ -310,6 +330,7 @@ class _MigrationJobState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  migration_job_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 objects_config: Optional[pulumi.Input['MigrationJobObjectsConfigArgs']] = None,
                  performance_config: Optional[pulumi.Input['MigrationJobPerformanceConfigArgs']] = None,
                  phase: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -344,6 +365,9 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] location: The location where the migration job should reside.
         :param pulumi.Input[_builtins.str] migration_job_id: The ID of the migration job.
         :param pulumi.Input[_builtins.str] name: The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
+        :param pulumi.Input['MigrationJobObjectsConfigArgs'] objects_config: The objects that need to be migrated. If unset, the default is to migrate
+               all objects available on the source.
+               Structure is documented below.
         :param pulumi.Input['MigrationJobPerformanceConfigArgs'] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] phase: The current migration job phase.
@@ -388,6 +412,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "migration_job_id", migration_job_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if objects_config is not None:
+            pulumi.set(__self__, "objects_config", objects_config)
         if performance_config is not None:
             pulumi.set(__self__, "performance_config", performance_config)
         if phase is not None:
@@ -563,6 +589,20 @@ class _MigrationJobState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="objectsConfig")
+    def objects_config(self) -> Optional[pulumi.Input['MigrationJobObjectsConfigArgs']]:
+        """
+        The objects that need to be migrated. If unset, the default is to migrate
+        all objects available on the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects_config")
+
+    @objects_config.setter
+    def objects_config(self, value: Optional[pulumi.Input['MigrationJobObjectsConfigArgs']]):
+        pulumi.set(self, "objects_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="performanceConfig")
     def performance_config(self) -> Optional[pulumi.Input['MigrationJobPerformanceConfigArgs']]:
         """
@@ -706,6 +746,7 @@ class MigrationJob(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  migration_job_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 objects_config: Optional[pulumi.Input[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']]] = None,
                  performance_config: Optional[pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
@@ -890,6 +931,103 @@ class MigrationJob(pulumi.CustomResource):
             destination=destination_cp.name,
             type="CONTINUOUS")
         ```
+        ### Database Migration Service Migration Job Postgres To Postgres Objects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        source_csql = gcp.sql.DatabaseInstance("source_csql",
+            name="source-csql",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-custom-2-13312",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        source_sql_client_cert = gcp.sql.SslCert("source_sql_client_cert",
+            common_name="cert",
+            instance=source_csql.name,
+            opts = pulumi.ResourceOptions(depends_on=[source_csql]))
+        source_sqldb_user = gcp.sql.User("source_sqldb_user",
+            name="username",
+            instance=source_csql.name,
+            password="password",
+            opts = pulumi.ResourceOptions(depends_on=[source_sql_client_cert]))
+        source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
+            location="us-central1",
+            connection_profile_id="source-cp",
+            display_name="source-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "host": source_csql.ip_addresses[0].ip_address,
+                "port": 3306,
+                "username": source_sqldb_user.name,
+                "password": source_sqldb_user.password,
+                "ssl": {
+                    "client_key": source_sql_client_cert.private_key,
+                    "client_certificate": source_sql_client_cert.cert,
+                    "ca_certificate": source_sql_client_cert.server_ca_cert,
+                    "type": "SERVER_CLIENT",
+                },
+                "cloud_sql_id": "source-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[source_sqldb_user]))
+        destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+            name="destination-csql",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-custom-2-13312",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "cloud_sql_id": "destination-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+        psqltopsqlobjects = gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects",
+            location="us-central1",
+            migration_job_id="my-migrationid",
+            display_name="my-migrationid_display",
+            labels={
+                "foo": "bar",
+            },
+            static_ip_connectivity={},
+            source=source_cp.name,
+            destination=destination_cp.name,
+            type="CONTINUOUS",
+            objects_config={
+                "source_objects_config": {
+                    "objects_selection_type": "SPECIFIED_OBJECTS",
+                    "object_configs": [
+                        {
+                            "object_identifier": {
+                                "type": "DATABASE",
+                                "database": "my_database",
+                            },
+                        },
+                        {
+                            "object_identifier": {
+                                "type": "TABLE",
+                                "database": "my_other_database",
+                                "schema": "public",
+                                "table": "users",
+                            },
+                        },
+                    ],
+                },
+            })
+        ```
         ### Database Migration Service Migration Job Postgres To Alloydb
 
         ```python
@@ -1025,6 +1163,9 @@ class MigrationJob(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location where the migration job should reside.
         :param pulumi.Input[_builtins.str] migration_job_id: The ID of the migration job.
+        :param pulumi.Input[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']] objects_config: The objects that need to be migrated. If unset, the default is to migrate
+               all objects available on the source.
+               Structure is documented below.
         :param pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1223,6 +1364,103 @@ class MigrationJob(pulumi.CustomResource):
             destination=destination_cp.name,
             type="CONTINUOUS")
         ```
+        ### Database Migration Service Migration Job Postgres To Postgres Objects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        source_csql = gcp.sql.DatabaseInstance("source_csql",
+            name="source-csql",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-custom-2-13312",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        source_sql_client_cert = gcp.sql.SslCert("source_sql_client_cert",
+            common_name="cert",
+            instance=source_csql.name,
+            opts = pulumi.ResourceOptions(depends_on=[source_csql]))
+        source_sqldb_user = gcp.sql.User("source_sqldb_user",
+            name="username",
+            instance=source_csql.name,
+            password="password",
+            opts = pulumi.ResourceOptions(depends_on=[source_sql_client_cert]))
+        source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
+            location="us-central1",
+            connection_profile_id="source-cp",
+            display_name="source-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "host": source_csql.ip_addresses[0].ip_address,
+                "port": 3306,
+                "username": source_sqldb_user.name,
+                "password": source_sqldb_user.password,
+                "ssl": {
+                    "client_key": source_sql_client_cert.private_key,
+                    "client_certificate": source_sql_client_cert.cert,
+                    "ca_certificate": source_sql_client_cert.server_ca_cert,
+                    "type": "SERVER_CLIENT",
+                },
+                "cloud_sql_id": "source-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[source_sqldb_user]))
+        destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+            name="destination-csql",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-custom-2-13312",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "cloud_sql_id": "destination-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+        psqltopsqlobjects = gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects",
+            location="us-central1",
+            migration_job_id="my-migrationid",
+            display_name="my-migrationid_display",
+            labels={
+                "foo": "bar",
+            },
+            static_ip_connectivity={},
+            source=source_cp.name,
+            destination=destination_cp.name,
+            type="CONTINUOUS",
+            objects_config={
+                "source_objects_config": {
+                    "objects_selection_type": "SPECIFIED_OBJECTS",
+                    "object_configs": [
+                        {
+                            "object_identifier": {
+                                "type": "DATABASE",
+                                "database": "my_database",
+                            },
+                        },
+                        {
+                            "object_identifier": {
+                                "type": "TABLE",
+                                "database": "my_other_database",
+                                "schema": "public",
+                                "table": "users",
+                            },
+                        },
+                    ],
+                },
+            })
+        ```
         ### Database Migration Service Migration Job Postgres To Alloydb
 
         ```python
@@ -1363,6 +1601,7 @@ class MigrationJob(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  migration_job_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 objects_config: Optional[pulumi.Input[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']]] = None,
                  performance_config: Optional[pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[Union['MigrationJobReverseSshConnectivityArgs', 'MigrationJobReverseSshConnectivityArgsDict']]] = None,
@@ -1391,6 +1630,7 @@ class MigrationJob(pulumi.CustomResource):
             if migration_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'migration_job_id'")
             __props__.__dict__["migration_job_id"] = migration_job_id
+            __props__.__dict__["objects_config"] = objects_config
             __props__.__dict__["performance_config"] = performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity
@@ -1433,6 +1673,7 @@ class MigrationJob(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             migration_job_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            objects_config: Optional[pulumi.Input[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']]] = None,
             performance_config: Optional[pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']]] = None,
             phase: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1471,6 +1712,9 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location where the migration job should reside.
         :param pulumi.Input[_builtins.str] migration_job_id: The ID of the migration job.
         :param pulumi.Input[_builtins.str] name: The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
+        :param pulumi.Input[Union['MigrationJobObjectsConfigArgs', 'MigrationJobObjectsConfigArgsDict']] objects_config: The objects that need to be migrated. If unset, the default is to migrate
+               all objects available on the source.
+               Structure is documented below.
         :param pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] phase: The current migration job phase.
@@ -1507,6 +1751,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["migration_job_id"] = migration_job_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["objects_config"] = objects_config
         __props__.__dict__["performance_config"] = performance_config
         __props__.__dict__["phase"] = phase
         __props__.__dict__["project"] = project
@@ -1623,6 +1868,16 @@ class MigrationJob(pulumi.CustomResource):
         The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsConfig")
+    def objects_config(self) -> pulumi.Output['outputs.MigrationJobObjectsConfig']:
+        """
+        The objects that need to be migrated. If unset, the default is to migrate
+        all objects available on the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects_config")
 
     @_builtins.property
     @pulumi.getter(name="performanceConfig")

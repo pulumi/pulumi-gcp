@@ -88,6 +88,16 @@ public final class DbSystemPropertiesDbHomeDatabase {
      */
     private @Nullable String opsInsightsStatus;
     /**
+     * @return The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+     * 
+     */
+    private @Nullable String pluggableDatabaseId;
+    /**
+     * @return The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+     * 
+     */
+    private @Nullable String pluggableDatabaseName;
+    /**
      * @return The properties of a Database.
      * Structure is documented below.
      * 
@@ -199,6 +209,20 @@ public final class DbSystemPropertiesDbHomeDatabase {
         return Optional.ofNullable(this.opsInsightsStatus);
     }
     /**
+     * @return The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+     * 
+     */
+    public Optional<String> pluggableDatabaseId() {
+        return Optional.ofNullable(this.pluggableDatabaseId);
+    }
+    /**
+     * @return The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+     * 
+     */
+    public Optional<String> pluggableDatabaseName() {
+        return Optional.ofNullable(this.pluggableDatabaseName);
+    }
+    /**
      * @return The properties of a Database.
      * Structure is documented below.
      * 
@@ -235,6 +259,8 @@ public final class DbSystemPropertiesDbHomeDatabase {
         private @Nullable String ncharacterSet;
         private @Nullable String ociUrl;
         private @Nullable String opsInsightsStatus;
+        private @Nullable String pluggableDatabaseId;
+        private @Nullable String pluggableDatabaseName;
         private @Nullable DbSystemPropertiesDbHomeDatabaseProperties properties;
         private @Nullable String tdeWalletPassword;
         public Builder() {}
@@ -252,6 +278,8 @@ public final class DbSystemPropertiesDbHomeDatabase {
     	      this.ncharacterSet = defaults.ncharacterSet;
     	      this.ociUrl = defaults.ociUrl;
     	      this.opsInsightsStatus = defaults.opsInsightsStatus;
+    	      this.pluggableDatabaseId = defaults.pluggableDatabaseId;
+    	      this.pluggableDatabaseName = defaults.pluggableDatabaseName;
     	      this.properties = defaults.properties;
     	      this.tdeWalletPassword = defaults.tdeWalletPassword;
         }
@@ -333,6 +361,18 @@ public final class DbSystemPropertiesDbHomeDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder pluggableDatabaseId(@Nullable String pluggableDatabaseId) {
+
+            this.pluggableDatabaseId = pluggableDatabaseId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pluggableDatabaseName(@Nullable String pluggableDatabaseName) {
+
+            this.pluggableDatabaseName = pluggableDatabaseName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder properties(@Nullable DbSystemPropertiesDbHomeDatabaseProperties properties) {
 
             this.properties = properties;
@@ -358,6 +398,8 @@ public final class DbSystemPropertiesDbHomeDatabase {
             _resultValue.ncharacterSet = ncharacterSet;
             _resultValue.ociUrl = ociUrl;
             _resultValue.opsInsightsStatus = opsInsightsStatus;
+            _resultValue.pluggableDatabaseId = pluggableDatabaseId;
+            _resultValue.pluggableDatabaseName = pluggableDatabaseName;
             _resultValue.properties = properties;
             _resultValue.tdeWalletPassword = tdeWalletPassword;
             return _resultValue;

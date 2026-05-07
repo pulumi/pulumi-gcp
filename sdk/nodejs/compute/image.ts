@@ -231,6 +231,11 @@ export class Image extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.ImageParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -329,6 +334,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["licenses"] = state?.licenses;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["rawDisk"] = state?.rawDisk;
@@ -351,6 +357,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["licenses"] = args?.licenses;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["rawDisk"] = args?.rawDisk;
             resourceInputs["shieldedInstanceInitialState"] = args?.shieldedInstanceInitialState;
@@ -448,6 +455,11 @@ export interface ImageState {
      * last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.ImageParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -578,6 +590,11 @@ export interface ImageArgs {
      * last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.ImageParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -4,8 +4,10 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis analysis;
     /**
      * @return Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
      * 
@@ -28,8 +35,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
      * 
      */
     private @Nullable Boolean verify;
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig verifyConfig;
 
     private DeliveryPipelineSerialPipelineStageStrategyStandard() {}
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis> analysis() {
+        return Optional.ofNullable(this.analysis);
+    }
     /**
      * @return Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
      * 
@@ -51,6 +70,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
     public Optional<Boolean> verify() {
         return Optional.ofNullable(this.verify);
     }
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig> verifyConfig() {
+        return Optional.ofNullable(this.verifyConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,17 +87,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis analysis;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy predeploy;
         private @Nullable Boolean verify;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig verifyConfig;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyStandard defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.analysis = defaults.analysis;
     	      this.postdeploy = defaults.postdeploy;
     	      this.predeploy = defaults.predeploy;
     	      this.verify = defaults.verify;
+    	      this.verifyConfig = defaults.verifyConfig;
         }
 
+        @CustomType.Setter
+        public Builder analysis(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis analysis) {
+
+            this.analysis = analysis;
+            return this;
+        }
         @CustomType.Setter
         public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy) {
 
@@ -90,11 +126,19 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
             this.verify = verify;
             return this;
         }
+        @CustomType.Setter
+        public Builder verifyConfig(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig verifyConfig) {
+
+            this.verifyConfig = verifyConfig;
+            return this;
+        }
         public DeliveryPipelineSerialPipelineStageStrategyStandard build() {
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyStandard();
+            _resultValue.analysis = analysis;
             _resultValue.postdeploy = postdeploy;
             _resultValue.predeploy = predeploy;
             _resultValue.verify = verify;
+            _resultValue.verifyConfig = verifyConfig;
             return _resultValue;
         }
     }

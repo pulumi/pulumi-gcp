@@ -23,6 +23,10 @@ __all__ = [
     'FieldIndexConfigIndex',
     'FieldTtlConfig',
     'IndexField',
+    'IndexFieldSearchConfig',
+    'IndexFieldSearchConfigGeoSpec',
+    'IndexFieldSearchConfigTextSpec',
+    'IndexFieldSearchConfigTextSpecIndexSpec',
     'IndexFieldVectorConfig',
     'IndexFieldVectorConfigFlat',
     'UserCredsResourceIdentity',
@@ -263,6 +267,8 @@ class IndexField(dict):
             suggest = "array_config"
         elif key == "fieldPath":
             suggest = "field_path"
+        elif key == "searchConfig":
+            suggest = "search_config"
         elif key == "vectorConfig":
             suggest = "vector_config"
 
@@ -281,16 +287,20 @@ class IndexField(dict):
                  array_config: Optional[_builtins.str] = None,
                  field_path: Optional[_builtins.str] = None,
                  order: Optional[_builtins.str] = None,
+                 search_config: Optional['outputs.IndexFieldSearchConfig'] = None,
                  vector_config: Optional['outputs.IndexFieldVectorConfig'] = None):
         """
-        :param _builtins.str array_config: Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        :param _builtins.str array_config: Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
                `vectorConfig` can be specified.
                Possible values are: `CONTAINS`.
         :param _builtins.str field_path: Name of the field.
         :param _builtins.str order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-               Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+               Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
                Possible values are: `ASCENDING`, `DESCENDING`.
-        :param 'IndexFieldVectorConfigArgs' vector_config: Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        :param 'IndexFieldSearchConfigArgs' search_config: Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+               `vectorConfig` can be specified.
+               Structure is documented below.
+        :param 'IndexFieldVectorConfigArgs' vector_config: Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
                `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
                Structure is documented below.
         """
@@ -300,6 +310,8 @@ class IndexField(dict):
             pulumi.set(__self__, "field_path", field_path)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if search_config is not None:
+            pulumi.set(__self__, "search_config", search_config)
         if vector_config is not None:
             pulumi.set(__self__, "vector_config", vector_config)
 
@@ -307,7 +319,7 @@ class IndexField(dict):
     @pulumi.getter(name="arrayConfig")
     def array_config(self) -> Optional[_builtins.str]:
         """
-        Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified.
         Possible values are: `CONTAINS`.
         """
@@ -326,20 +338,208 @@ class IndexField(dict):
     def order(self) -> Optional[_builtins.str]:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-        Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+        Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
         Possible values are: `ASCENDING`, `DESCENDING`.
         """
         return pulumi.get(self, "order")
 
     @_builtins.property
+    @pulumi.getter(name="searchConfig")
+    def search_config(self) -> Optional['outputs.IndexFieldSearchConfig']:
+        """
+        Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+        `vectorConfig` can be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_config")
+
+    @_builtins.property
     @pulumi.getter(name="vectorConfig")
     def vector_config(self) -> Optional['outputs.IndexFieldVectorConfig']:
         """
-        Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
         Structure is documented below.
         """
         return pulumi.get(self, "vector_config")
+
+
+@pulumi.output_type
+class IndexFieldSearchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "geoSpec":
+            suggest = "geo_spec"
+        elif key == "textSpec":
+            suggest = "text_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexFieldSearchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexFieldSearchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexFieldSearchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 geo_spec: Optional['outputs.IndexFieldSearchConfigGeoSpec'] = None,
+                 text_spec: Optional['outputs.IndexFieldSearchConfigTextSpec'] = None):
+        """
+        :param 'IndexFieldSearchConfigGeoSpecArgs' geo_spec: The specification for building a geo search index for a field.
+               Structure is documented below.
+        :param 'IndexFieldSearchConfigTextSpecArgs' text_spec: The specification for building a text search index for a field.
+               Structure is documented below.
+        """
+        if geo_spec is not None:
+            pulumi.set(__self__, "geo_spec", geo_spec)
+        if text_spec is not None:
+            pulumi.set(__self__, "text_spec", text_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="geoSpec")
+    def geo_spec(self) -> Optional['outputs.IndexFieldSearchConfigGeoSpec']:
+        """
+        The specification for building a geo search index for a field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "geo_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="textSpec")
+    def text_spec(self) -> Optional['outputs.IndexFieldSearchConfigTextSpec']:
+        """
+        The specification for building a text search index for a field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_spec")
+
+
+@pulumi.output_type
+class IndexFieldSearchConfigGeoSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "geoJsonIndexingDisabled":
+            suggest = "geo_json_indexing_disabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexFieldSearchConfigGeoSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexFieldSearchConfigGeoSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexFieldSearchConfigGeoSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 geo_json_indexing_disabled: _builtins.bool):
+        """
+        :param _builtins.bool geo_json_indexing_disabled: If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+               Firestore GeoPoints are indexed regardless of the value of this field.
+        """
+        pulumi.set(__self__, "geo_json_indexing_disabled", geo_json_indexing_disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="geoJsonIndexingDisabled")
+    def geo_json_indexing_disabled(self) -> _builtins.bool:
+        """
+        If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+        Firestore GeoPoints are indexed regardless of the value of this field.
+        """
+        return pulumi.get(self, "geo_json_indexing_disabled")
+
+
+@pulumi.output_type
+class IndexFieldSearchConfigTextSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "indexSpecs":
+            suggest = "index_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexFieldSearchConfigTextSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexFieldSearchConfigTextSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexFieldSearchConfigTextSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 index_specs: Sequence['outputs.IndexFieldSearchConfigTextSpecIndexSpec']):
+        """
+        :param Sequence['IndexFieldSearchConfigTextSpecIndexSpecArgs'] index_specs: Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "index_specs", index_specs)
+
+    @_builtins.property
+    @pulumi.getter(name="indexSpecs")
+    def index_specs(self) -> Sequence['outputs.IndexFieldSearchConfigTextSpecIndexSpec']:
+        """
+        Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "index_specs")
+
+
+@pulumi.output_type
+class IndexFieldSearchConfigTextSpecIndexSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "indexType":
+            suggest = "index_type"
+        elif key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexFieldSearchConfigTextSpecIndexSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexFieldSearchConfigTextSpecIndexSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexFieldSearchConfigTextSpecIndexSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 index_type: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str index_type: Ways to index the text field value.
+        :param _builtins.str match_type: How to match the text field value.
+        """
+        if index_type is not None:
+            pulumi.set(__self__, "index_type", index_type)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter(name="indexType")
+    def index_type(self) -> Optional[_builtins.str]:
+        """
+        Ways to index the text field value.
+        """
+        return pulumi.get(self, "index_type")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        """
+        How to match the text field value.
+        """
+        return pulumi.get(self, "match_type")
 
 
 @pulumi.output_type

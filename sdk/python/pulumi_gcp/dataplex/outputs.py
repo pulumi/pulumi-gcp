@@ -61,6 +61,8 @@ __all__ = [
     'DatascanDataQualitySpecRuleSqlAssertion',
     'DatascanDataQualitySpecRuleStatisticRangeExpectation',
     'DatascanDataQualitySpecRuleTableConditionExpectation',
+    'DatascanDataQualitySpecRuleTemplateReference',
+    'DatascanDataQualitySpecRuleTemplateReferenceValue',
     'DatascanDataQualitySpecRuleUniquenessExpectation',
     'DatascanExecutionIdentity',
     'DatascanExecutionIdentityDataplexServiceAgent',
@@ -1700,6 +1702,8 @@ class DatascanDataQualitySpec(dict):
         suggest = None
         if key == "catalogPublishingEnabled":
             suggest = "catalog_publishing_enabled"
+        elif key == "enableCatalogBasedRules":
+            suggest = "enable_catalog_based_rules"
         elif key == "postScanActions":
             suggest = "post_scan_actions"
         elif key == "rowFilter":
@@ -1720,12 +1724,16 @@ class DatascanDataQualitySpec(dict):
 
     def __init__(__self__, *,
                  catalog_publishing_enabled: Optional[_builtins.bool] = None,
+                 enable_catalog_based_rules: Optional[_builtins.bool] = None,
+                 filter: Optional[_builtins.str] = None,
                  post_scan_actions: Optional['outputs.DatascanDataQualitySpecPostScanActions'] = None,
                  row_filter: Optional[_builtins.str] = None,
                  rules: Optional[Sequence['outputs.DatascanDataQualitySpecRule']] = None,
                  sampling_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.bool catalog_publishing_enabled: If set, the latest DataScan job result will be published to Dataplex Catalog.
+        :param _builtins.bool enable_catalog_based_rules: If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+        :param _builtins.str filter: A filter to selectively run a subset of rules.
         :param 'DatascanDataQualitySpecPostScanActionsArgs' post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param _builtins.str row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
@@ -1737,6 +1745,10 @@ class DatascanDataQualitySpec(dict):
         """
         if catalog_publishing_enabled is not None:
             pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
+        if enable_catalog_based_rules is not None:
+            pulumi.set(__self__, "enable_catalog_based_rules", enable_catalog_based_rules)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if post_scan_actions is not None:
             pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
@@ -1753,6 +1765,22 @@ class DatascanDataQualitySpec(dict):
         If set, the latest DataScan job result will be published to Dataplex Catalog.
         """
         return pulumi.get(self, "catalog_publishing_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enableCatalogBasedRules")
+    def enable_catalog_based_rules(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+        """
+        return pulumi.get(self, "enable_catalog_based_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional[_builtins.str]:
+        """
+        A filter to selectively run a subset of rules.
+        """
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter(name="postScanActions")
@@ -2052,6 +2080,8 @@ class DatascanDataQualitySpecRule(dict):
             suggest = "statistic_range_expectation"
         elif key == "tableConditionExpectation":
             suggest = "table_condition_expectation"
+        elif key == "templateReference":
+            suggest = "template_reference"
         elif key == "uniquenessExpectation":
             suggest = "uniqueness_expectation"
 
@@ -2068,6 +2098,7 @@ class DatascanDataQualitySpecRule(dict):
 
     def __init__(__self__, *,
                  dimension: _builtins.str,
+                 attributes: Optional[Mapping[str, _builtins.str]] = None,
                  column: Optional[_builtins.str] = None,
                  description: Optional[_builtins.str] = None,
                  ignore_null: Optional[_builtins.bool] = None,
@@ -2081,10 +2112,12 @@ class DatascanDataQualitySpecRule(dict):
                  statistic_range_expectation: Optional['outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation'] = None,
                  suspended: Optional[_builtins.bool] = None,
                  table_condition_expectation: Optional['outputs.DatascanDataQualitySpecRuleTableConditionExpectation'] = None,
+                 template_reference: Optional['outputs.DatascanDataQualitySpecRuleTemplateReference'] = None,
                  threshold: Optional[_builtins.float] = None,
                  uniqueness_expectation: Optional['outputs.DatascanDataQualitySpecRuleUniquenessExpectation'] = None):
         """
         :param _builtins.str dimension: The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
+        :param Mapping[str, _builtins.str] attributes: Map of attribute name and value linked to the rule.
         :param _builtins.str column: The unnested column which this rule is evaluated against.
         :param _builtins.str description: Description of the rule.
                The maximum length is 1,024 characters.
@@ -2110,10 +2143,14 @@ class DatascanDataQualitySpecRule(dict):
         :param _builtins.bool suspended: Whether the Rule is active or suspended. Default = false.
         :param 'DatascanDataQualitySpecRuleTableConditionExpectationArgs' table_condition_expectation: Table rule which evaluates whether the provided expression is true.
                Structure is documented below.
+        :param 'DatascanDataQualitySpecRuleTemplateReferenceArgs' template_reference: Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+               Structure is documented below.
         :param _builtins.float threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
         :param 'DatascanDataQualitySpecRuleUniquenessExpectationArgs' uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
         pulumi.set(__self__, "dimension", dimension)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
         if column is not None:
             pulumi.set(__self__, "column", column)
         if description is not None:
@@ -2140,6 +2177,8 @@ class DatascanDataQualitySpecRule(dict):
             pulumi.set(__self__, "suspended", suspended)
         if table_condition_expectation is not None:
             pulumi.set(__self__, "table_condition_expectation", table_condition_expectation)
+        if template_reference is not None:
+            pulumi.set(__self__, "template_reference", template_reference)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if uniqueness_expectation is not None:
@@ -2152,6 +2191,14 @@ class DatascanDataQualitySpecRule(dict):
         The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.
         """
         return pulumi.get(self, "dimension")
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Map of attribute name and value linked to the rule.
+        """
+        return pulumi.get(self, "attributes")
 
     @_builtins.property
     @pulumi.getter
@@ -2268,6 +2315,15 @@ class DatascanDataQualitySpecRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "table_condition_expectation")
+
+    @_builtins.property
+    @pulumi.getter(name="templateReference")
+    def template_reference(self) -> Optional['outputs.DatascanDataQualitySpecRuleTemplateReference']:
+        """
+        Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "template_reference")
 
     @_builtins.property
     @pulumi.getter
@@ -2612,6 +2668,67 @@ class DatascanDataQualitySpecRuleTableConditionExpectation(dict):
         The SQL expression.
         """
         return pulumi.get(self, "sql_expression")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecRuleTemplateReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Optional[Sequence['outputs.DatascanDataQualitySpecRuleTemplateReferenceValue']] = None):
+        """
+        :param _builtins.str name: The resource name of the template entry.
+        :param Sequence['DatascanDataQualitySpecRuleTemplateReferenceValueArgs'] values: The map of parameter name and value.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the template entry.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.DatascanDataQualitySpecRuleTemplateReferenceValue']]:
+        """
+        The map of parameter name and value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecRuleTemplateReferenceValue(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The identifier for this object. Format specified above.
+        :param _builtins.str value: The string representation of the parameter value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The string representation of the parameter value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

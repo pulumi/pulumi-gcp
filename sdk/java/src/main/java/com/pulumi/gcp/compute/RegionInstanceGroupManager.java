@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceFlexibil
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerParams;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerResourcePolicies;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulExternalIp;
@@ -526,6 +527,24 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.region;
     }
     /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="resourcePolicies", refs={RegionInstanceGroupManagerResourcePolicies.class}, tree="[0]")
+    private Output</* @Nullable */ RegionInstanceGroupManagerResourcePolicies> resourcePolicies;
+
+    /**
+     * @return Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<RegionInstanceGroupManagerResourcePolicies>> resourcePolicies() {
+        return Codegen.optional(this.resourcePolicies);
+    }
+    /**
      * The URL of the created resource.
      * 
      */
@@ -649,8 +668,6 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     }
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * ***
      * 
      */
     @Export(name="targetSizePolicies", refs={List.class,RegionInstanceGroupManagerTargetSizePolicy.class}, tree="[0,1]")
@@ -658,8 +675,6 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
 
     /**
      * @return The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * ***
      * 
      */
     public Output<List<RegionInstanceGroupManagerTargetSizePolicy>> targetSizePolicies() {

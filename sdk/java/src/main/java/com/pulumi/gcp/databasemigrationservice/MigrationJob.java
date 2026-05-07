@@ -12,6 +12,7 @@ import com.pulumi.gcp.databasemigrationservice.MigrationJobArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobState;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobDumpFlags;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobError;
+import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobObjectsConfig;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobPerformanceConfig;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobReverseSshConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobStaticIpConnectivity;
@@ -300,6 +301,155 @@ import javax.annotation.Nullable;
  *             .source(sourceCp.name())
  *             .destination(destinationCp.name())
  *             .type("CONTINUOUS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Database Migration Service Migration Job Postgres To Postgres Objects
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.SslCert;
+ * import com.pulumi.gcp.sql.SslCertArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
+ * import com.pulumi.gcp.databasemigrationservice.MigrationJob;
+ * import com.pulumi.gcp.databasemigrationservice.MigrationJobArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var sourceCsql = new DatabaseInstance("sourceCsql", DatabaseInstanceArgs.builder()
+ *             .name("source-csql")
+ *             .databaseVersion("POSTGRES_15")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-13312")
+ *                 .deletionProtectionEnabled(false)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var sourceSqlClientCert = new SslCert("sourceSqlClientCert", SslCertArgs.builder()
+ *             .commonName("cert")
+ *             .instance(sourceCsql.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceCsql)
+ *                 .build());
+ * 
+ *         var sourceSqldbUser = new User("sourceSqldbUser", UserArgs.builder()
+ *             .name("username")
+ *             .instance(sourceCsql.name())
+ *             .password("password")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceSqlClientCert)
+ *                 .build());
+ * 
+ *         var sourceCp = new ConnectionProfile("sourceCp", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("source-cp")
+ *             .displayName("source-cp_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+ *                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+ *                 .port(3306)
+ *                 .username(sourceSqldbUser.name())
+ *                 .password(sourceSqldbUser.password())
+ *                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
+ *                     .clientKey(sourceSqlClientCert.privateKey())
+ *                     .clientCertificate(sourceSqlClientCert.cert())
+ *                     .caCertificate(sourceSqlClientCert.serverCaCert())
+ *                     .type("SERVER_CLIENT")
+ *                     .build())
+ *                 .cloudSqlId("source-csql")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceSqldbUser)
+ *                 .build());
+ * 
+ *         var destinationCsql = new DatabaseInstance("destinationCsql", DatabaseInstanceArgs.builder()
+ *             .name("destination-csql")
+ *             .databaseVersion("POSTGRES_15")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-13312")
+ *                 .deletionProtectionEnabled(false)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var destinationCp = new ConnectionProfile("destinationCp", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-cp")
+ *             .displayName("destination-cp_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+ *                 .cloudSqlId("destination-csql")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(destinationCsql)
+ *                 .build());
+ * 
+ *         var psqltopsqlobjects = new MigrationJob("psqltopsqlobjects", MigrationJobArgs.builder()
+ *             .location("us-central1")
+ *             .migrationJobId("my-migrationid")
+ *             .displayName("my-migrationid_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
+ *                 .build())
+ *             .source(sourceCp.name())
+ *             .destination(destinationCp.name())
+ *             .type("CONTINUOUS")
+ *             .objectsConfig(MigrationJobObjectsConfigArgs.builder()
+ *                 .sourceObjectsConfig(MigrationJobObjectsConfigSourceObjectsConfigArgs.builder()
+ *                     .objectsSelectionType("SPECIFIED_OBJECTS")
+ *                     .objectConfigs(                    
+ *                         MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs.builder()
+ *                             .objectIdentifier(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs.builder()
+ *                                 .type("DATABASE")
+ *                                 .database("my_database")
+ *                                 .build())
+ *                             .build(),
+ *                         MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs.builder()
+ *                             .objectIdentifier(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs.builder()
+ *                                 .type("TABLE")
+ *                                 .database("my_other_database")
+ *                                 .schema("public")
+ *                                 .table("users")
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -682,6 +832,24 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="objectsConfig", refs={MigrationJobObjectsConfig.class}, tree="[0]")
+    private Output<MigrationJobObjectsConfig> objectsConfig;
+
+    /**
+     * @return The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     * 
+     */
+    public Output<MigrationJobObjectsConfig> objectsConfig() {
+        return this.objectsConfig;
     }
     /**
      * Data dump parallelism settings used by the migration.

@@ -250,6 +250,10 @@ type RegionInstanceGroupManager struct {
 	//
 	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrOutput `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -272,8 +276,6 @@ type RegionInstanceGroupManager struct {
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-	// *
-	// ***
 	TargetSizePolicies RegionInstanceGroupManagerTargetSizePolicyArrayOutput `pulumi:"targetSizePolicies"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntOutput `pulumi:"targetStoppedSize"`
@@ -390,6 +392,10 @@ type regionInstanceGroupManagerState struct {
 	//
 	// ***
 	Region *string `pulumi:"region"`
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies *RegionInstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -412,8 +418,6 @@ type regionInstanceGroupManagerState struct {
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
 	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-	// *
-	// ***
 	TargetSizePolicies []RegionInstanceGroupManagerTargetSizePolicy `pulumi:"targetSizePolicies"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
@@ -495,6 +499,10 @@ type RegionInstanceGroupManagerState struct {
 	//
 	// ***
 	Region pulumi.StringPtrInput
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
@@ -517,8 +525,6 @@ type RegionInstanceGroupManagerState struct {
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
 	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-	// *
-	// ***
 	TargetSizePolicies RegionInstanceGroupManagerTargetSizePolicyArrayInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
@@ -596,6 +602,10 @@ type regionInstanceGroupManagerArgs struct {
 	//
 	// ***
 	Region *string `pulumi:"region"`
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies *RegionInstanceGroupManagerResourcePolicies `pulumi:"resourcePolicies"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *RegionInstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -614,8 +624,6 @@ type regionInstanceGroupManagerArgs struct {
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
 	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-	// *
-	// ***
 	TargetSizePolicies []RegionInstanceGroupManagerTargetSizePolicy `pulumi:"targetSizePolicies"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
@@ -690,6 +698,10 @@ type RegionInstanceGroupManagerArgs struct {
 	//
 	// ***
 	Region pulumi.StringPtrInput
+	// Resource policies for this managed instance group. Structure is documented below.
+	//
+	// ***
+	ResourcePolicies RegionInstanceGroupManagerResourcePoliciesPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
@@ -708,8 +720,6 @@ type RegionInstanceGroupManagerArgs struct {
 	// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
 	// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-	// *
-	// ***
 	TargetSizePolicies RegionInstanceGroupManagerTargetSizePolicyArrayInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
@@ -941,6 +951,15 @@ func (o RegionInstanceGroupManagerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// Resource policies for this managed instance group. Structure is documented below.
+//
+// ***
+func (o RegionInstanceGroupManagerOutput) ResourcePolicies() RegionInstanceGroupManagerResourcePoliciesPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerResourcePoliciesPtrOutput {
+		return v.ResourcePolicies
+	}).(RegionInstanceGroupManagerResourcePoliciesPtrOutput)
+}
+
 // The URL of the created resource.
 func (o RegionInstanceGroupManagerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -995,8 +1014,6 @@ func (o RegionInstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 }
 
 // The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-// *
-// ***
 func (o RegionInstanceGroupManagerOutput) TargetSizePolicies() RegionInstanceGroupManagerTargetSizePolicyArrayOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerTargetSizePolicyArrayOutput {
 		return v.TargetSizePolicies

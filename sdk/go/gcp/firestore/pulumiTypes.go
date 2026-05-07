@@ -910,17 +910,21 @@ func (o FieldTtlConfigPtrOutput) State() pulumi.StringPtrOutput {
 }
 
 type IndexField struct {
-	// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+	// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
 	// `vectorConfig` can be specified.
 	// Possible values are: `CONTAINS`.
 	ArrayConfig *string `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath *string `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-	// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+	// Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
 	// Possible values are: `ASCENDING`, `DESCENDING`.
 	Order *string `pulumi:"order"`
-	// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+	// Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+	// `vectorConfig` can be specified.
+	// Structure is documented below.
+	SearchConfig *IndexFieldSearchConfig `pulumi:"searchConfig"`
+	// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
 	// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
 	// Structure is documented below.
 	VectorConfig *IndexFieldVectorConfig `pulumi:"vectorConfig"`
@@ -938,17 +942,21 @@ type IndexFieldInput interface {
 }
 
 type IndexFieldArgs struct {
-	// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+	// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
 	// `vectorConfig` can be specified.
 	// Possible values are: `CONTAINS`.
 	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-	// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+	// Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
 	// Possible values are: `ASCENDING`, `DESCENDING`.
 	Order pulumi.StringPtrInput `pulumi:"order"`
-	// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+	// Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+	// `vectorConfig` can be specified.
+	// Structure is documented below.
+	SearchConfig IndexFieldSearchConfigPtrInput `pulumi:"searchConfig"`
+	// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
 	// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
 	// Structure is documented below.
 	VectorConfig IndexFieldVectorConfigPtrInput `pulumi:"vectorConfig"`
@@ -1005,7 +1013,7 @@ func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) Ind
 	return o
 }
 
-// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
 // `vectorConfig` can be specified.
 // Possible values are: `CONTAINS`.
 func (o IndexFieldOutput) ArrayConfig() pulumi.StringPtrOutput {
@@ -1018,13 +1026,20 @@ func (o IndexFieldOutput) FieldPath() pulumi.StringPtrOutput {
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+// Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
 // Possible values are: `ASCENDING`, `DESCENDING`.
 func (o IndexFieldOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexField) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
-// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+// Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+// `vectorConfig` can be specified.
+// Structure is documented below.
+func (o IndexFieldOutput) SearchConfig() IndexFieldSearchConfigPtrOutput {
+	return o.ApplyT(func(v IndexField) *IndexFieldSearchConfig { return v.SearchConfig }).(IndexFieldSearchConfigPtrOutput)
+}
+
+// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
 // `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
 // Structure is documented below.
 func (o IndexFieldOutput) VectorConfig() IndexFieldVectorConfigPtrOutput {
@@ -1049,6 +1064,558 @@ func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndexField {
 		return vs[0].([]IndexField)[vs[1].(int)]
 	}).(IndexFieldOutput)
+}
+
+type IndexFieldSearchConfig struct {
+	// The specification for building a geo search index for a field.
+	// Structure is documented below.
+	GeoSpec *IndexFieldSearchConfigGeoSpec `pulumi:"geoSpec"`
+	// The specification for building a text search index for a field.
+	// Structure is documented below.
+	TextSpec *IndexFieldSearchConfigTextSpec `pulumi:"textSpec"`
+}
+
+// IndexFieldSearchConfigInput is an input type that accepts IndexFieldSearchConfigArgs and IndexFieldSearchConfigOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigInput` via:
+//
+//	IndexFieldSearchConfigArgs{...}
+type IndexFieldSearchConfigInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigOutput() IndexFieldSearchConfigOutput
+	ToIndexFieldSearchConfigOutputWithContext(context.Context) IndexFieldSearchConfigOutput
+}
+
+type IndexFieldSearchConfigArgs struct {
+	// The specification for building a geo search index for a field.
+	// Structure is documented below.
+	GeoSpec IndexFieldSearchConfigGeoSpecPtrInput `pulumi:"geoSpec"`
+	// The specification for building a text search index for a field.
+	// Structure is documented below.
+	TextSpec IndexFieldSearchConfigTextSpecPtrInput `pulumi:"textSpec"`
+}
+
+func (IndexFieldSearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfig)(nil)).Elem()
+}
+
+func (i IndexFieldSearchConfigArgs) ToIndexFieldSearchConfigOutput() IndexFieldSearchConfigOutput {
+	return i.ToIndexFieldSearchConfigOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigArgs) ToIndexFieldSearchConfigOutputWithContext(ctx context.Context) IndexFieldSearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigOutput)
+}
+
+func (i IndexFieldSearchConfigArgs) ToIndexFieldSearchConfigPtrOutput() IndexFieldSearchConfigPtrOutput {
+	return i.ToIndexFieldSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigArgs) ToIndexFieldSearchConfigPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigOutput).ToIndexFieldSearchConfigPtrOutputWithContext(ctx)
+}
+
+// IndexFieldSearchConfigPtrInput is an input type that accepts IndexFieldSearchConfigArgs, IndexFieldSearchConfigPtr and IndexFieldSearchConfigPtrOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigPtrInput` via:
+//
+//	        IndexFieldSearchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexFieldSearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigPtrOutput() IndexFieldSearchConfigPtrOutput
+	ToIndexFieldSearchConfigPtrOutputWithContext(context.Context) IndexFieldSearchConfigPtrOutput
+}
+
+type indexFieldSearchConfigPtrType IndexFieldSearchConfigArgs
+
+func IndexFieldSearchConfigPtr(v *IndexFieldSearchConfigArgs) IndexFieldSearchConfigPtrInput {
+	return (*indexFieldSearchConfigPtrType)(v)
+}
+
+func (*indexFieldSearchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldSearchConfig)(nil)).Elem()
+}
+
+func (i *indexFieldSearchConfigPtrType) ToIndexFieldSearchConfigPtrOutput() IndexFieldSearchConfigPtrOutput {
+	return i.ToIndexFieldSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *indexFieldSearchConfigPtrType) ToIndexFieldSearchConfigPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigPtrOutput)
+}
+
+type IndexFieldSearchConfigOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfig)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigOutput) ToIndexFieldSearchConfigOutput() IndexFieldSearchConfigOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigOutput) ToIndexFieldSearchConfigOutputWithContext(ctx context.Context) IndexFieldSearchConfigOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigOutput) ToIndexFieldSearchConfigPtrOutput() IndexFieldSearchConfigPtrOutput {
+	return o.ToIndexFieldSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IndexFieldSearchConfigOutput) ToIndexFieldSearchConfigPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexFieldSearchConfig) *IndexFieldSearchConfig {
+		return &v
+	}).(IndexFieldSearchConfigPtrOutput)
+}
+
+// The specification for building a geo search index for a field.
+// Structure is documented below.
+func (o IndexFieldSearchConfigOutput) GeoSpec() IndexFieldSearchConfigGeoSpecPtrOutput {
+	return o.ApplyT(func(v IndexFieldSearchConfig) *IndexFieldSearchConfigGeoSpec { return v.GeoSpec }).(IndexFieldSearchConfigGeoSpecPtrOutput)
+}
+
+// The specification for building a text search index for a field.
+// Structure is documented below.
+func (o IndexFieldSearchConfigOutput) TextSpec() IndexFieldSearchConfigTextSpecPtrOutput {
+	return o.ApplyT(func(v IndexFieldSearchConfig) *IndexFieldSearchConfigTextSpec { return v.TextSpec }).(IndexFieldSearchConfigTextSpecPtrOutput)
+}
+
+type IndexFieldSearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldSearchConfig)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigPtrOutput) ToIndexFieldSearchConfigPtrOutput() IndexFieldSearchConfigPtrOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigPtrOutput) ToIndexFieldSearchConfigPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigPtrOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigPtrOutput) Elem() IndexFieldSearchConfigOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfig) IndexFieldSearchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IndexFieldSearchConfig
+		return ret
+	}).(IndexFieldSearchConfigOutput)
+}
+
+// The specification for building a geo search index for a field.
+// Structure is documented below.
+func (o IndexFieldSearchConfigPtrOutput) GeoSpec() IndexFieldSearchConfigGeoSpecPtrOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfig) *IndexFieldSearchConfigGeoSpec {
+		if v == nil {
+			return nil
+		}
+		return v.GeoSpec
+	}).(IndexFieldSearchConfigGeoSpecPtrOutput)
+}
+
+// The specification for building a text search index for a field.
+// Structure is documented below.
+func (o IndexFieldSearchConfigPtrOutput) TextSpec() IndexFieldSearchConfigTextSpecPtrOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfig) *IndexFieldSearchConfigTextSpec {
+		if v == nil {
+			return nil
+		}
+		return v.TextSpec
+	}).(IndexFieldSearchConfigTextSpecPtrOutput)
+}
+
+type IndexFieldSearchConfigGeoSpec struct {
+	// If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+	// Firestore GeoPoints are indexed regardless of the value of this field.
+	GeoJsonIndexingDisabled bool `pulumi:"geoJsonIndexingDisabled"`
+}
+
+// IndexFieldSearchConfigGeoSpecInput is an input type that accepts IndexFieldSearchConfigGeoSpecArgs and IndexFieldSearchConfigGeoSpecOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigGeoSpecInput` via:
+//
+//	IndexFieldSearchConfigGeoSpecArgs{...}
+type IndexFieldSearchConfigGeoSpecInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigGeoSpecOutput() IndexFieldSearchConfigGeoSpecOutput
+	ToIndexFieldSearchConfigGeoSpecOutputWithContext(context.Context) IndexFieldSearchConfigGeoSpecOutput
+}
+
+type IndexFieldSearchConfigGeoSpecArgs struct {
+	// If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+	// Firestore GeoPoints are indexed regardless of the value of this field.
+	GeoJsonIndexingDisabled pulumi.BoolInput `pulumi:"geoJsonIndexingDisabled"`
+}
+
+func (IndexFieldSearchConfigGeoSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfigGeoSpec)(nil)).Elem()
+}
+
+func (i IndexFieldSearchConfigGeoSpecArgs) ToIndexFieldSearchConfigGeoSpecOutput() IndexFieldSearchConfigGeoSpecOutput {
+	return i.ToIndexFieldSearchConfigGeoSpecOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigGeoSpecArgs) ToIndexFieldSearchConfigGeoSpecOutputWithContext(ctx context.Context) IndexFieldSearchConfigGeoSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigGeoSpecOutput)
+}
+
+func (i IndexFieldSearchConfigGeoSpecArgs) ToIndexFieldSearchConfigGeoSpecPtrOutput() IndexFieldSearchConfigGeoSpecPtrOutput {
+	return i.ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigGeoSpecArgs) ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigGeoSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigGeoSpecOutput).ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(ctx)
+}
+
+// IndexFieldSearchConfigGeoSpecPtrInput is an input type that accepts IndexFieldSearchConfigGeoSpecArgs, IndexFieldSearchConfigGeoSpecPtr and IndexFieldSearchConfigGeoSpecPtrOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigGeoSpecPtrInput` via:
+//
+//	        IndexFieldSearchConfigGeoSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexFieldSearchConfigGeoSpecPtrInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigGeoSpecPtrOutput() IndexFieldSearchConfigGeoSpecPtrOutput
+	ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(context.Context) IndexFieldSearchConfigGeoSpecPtrOutput
+}
+
+type indexFieldSearchConfigGeoSpecPtrType IndexFieldSearchConfigGeoSpecArgs
+
+func IndexFieldSearchConfigGeoSpecPtr(v *IndexFieldSearchConfigGeoSpecArgs) IndexFieldSearchConfigGeoSpecPtrInput {
+	return (*indexFieldSearchConfigGeoSpecPtrType)(v)
+}
+
+func (*indexFieldSearchConfigGeoSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldSearchConfigGeoSpec)(nil)).Elem()
+}
+
+func (i *indexFieldSearchConfigGeoSpecPtrType) ToIndexFieldSearchConfigGeoSpecPtrOutput() IndexFieldSearchConfigGeoSpecPtrOutput {
+	return i.ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *indexFieldSearchConfigGeoSpecPtrType) ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigGeoSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigGeoSpecPtrOutput)
+}
+
+type IndexFieldSearchConfigGeoSpecOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigGeoSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfigGeoSpec)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigGeoSpecOutput) ToIndexFieldSearchConfigGeoSpecOutput() IndexFieldSearchConfigGeoSpecOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigGeoSpecOutput) ToIndexFieldSearchConfigGeoSpecOutputWithContext(ctx context.Context) IndexFieldSearchConfigGeoSpecOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigGeoSpecOutput) ToIndexFieldSearchConfigGeoSpecPtrOutput() IndexFieldSearchConfigGeoSpecPtrOutput {
+	return o.ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(context.Background())
+}
+
+func (o IndexFieldSearchConfigGeoSpecOutput) ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigGeoSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexFieldSearchConfigGeoSpec) *IndexFieldSearchConfigGeoSpec {
+		return &v
+	}).(IndexFieldSearchConfigGeoSpecPtrOutput)
+}
+
+// If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+// Firestore GeoPoints are indexed regardless of the value of this field.
+func (o IndexFieldSearchConfigGeoSpecOutput) GeoJsonIndexingDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IndexFieldSearchConfigGeoSpec) bool { return v.GeoJsonIndexingDisabled }).(pulumi.BoolOutput)
+}
+
+type IndexFieldSearchConfigGeoSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigGeoSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldSearchConfigGeoSpec)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigGeoSpecPtrOutput) ToIndexFieldSearchConfigGeoSpecPtrOutput() IndexFieldSearchConfigGeoSpecPtrOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigGeoSpecPtrOutput) ToIndexFieldSearchConfigGeoSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigGeoSpecPtrOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigGeoSpecPtrOutput) Elem() IndexFieldSearchConfigGeoSpecOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfigGeoSpec) IndexFieldSearchConfigGeoSpec {
+		if v != nil {
+			return *v
+		}
+		var ret IndexFieldSearchConfigGeoSpec
+		return ret
+	}).(IndexFieldSearchConfigGeoSpecOutput)
+}
+
+// If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+// Firestore GeoPoints are indexed regardless of the value of this field.
+func (o IndexFieldSearchConfigGeoSpecPtrOutput) GeoJsonIndexingDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfigGeoSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.GeoJsonIndexingDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type IndexFieldSearchConfigTextSpec struct {
+	// Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+	// Structure is documented below.
+	IndexSpecs []IndexFieldSearchConfigTextSpecIndexSpec `pulumi:"indexSpecs"`
+}
+
+// IndexFieldSearchConfigTextSpecInput is an input type that accepts IndexFieldSearchConfigTextSpecArgs and IndexFieldSearchConfigTextSpecOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigTextSpecInput` via:
+//
+//	IndexFieldSearchConfigTextSpecArgs{...}
+type IndexFieldSearchConfigTextSpecInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigTextSpecOutput() IndexFieldSearchConfigTextSpecOutput
+	ToIndexFieldSearchConfigTextSpecOutputWithContext(context.Context) IndexFieldSearchConfigTextSpecOutput
+}
+
+type IndexFieldSearchConfigTextSpecArgs struct {
+	// Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+	// Structure is documented below.
+	IndexSpecs IndexFieldSearchConfigTextSpecIndexSpecArrayInput `pulumi:"indexSpecs"`
+}
+
+func (IndexFieldSearchConfigTextSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfigTextSpec)(nil)).Elem()
+}
+
+func (i IndexFieldSearchConfigTextSpecArgs) ToIndexFieldSearchConfigTextSpecOutput() IndexFieldSearchConfigTextSpecOutput {
+	return i.ToIndexFieldSearchConfigTextSpecOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigTextSpecArgs) ToIndexFieldSearchConfigTextSpecOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigTextSpecOutput)
+}
+
+func (i IndexFieldSearchConfigTextSpecArgs) ToIndexFieldSearchConfigTextSpecPtrOutput() IndexFieldSearchConfigTextSpecPtrOutput {
+	return i.ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigTextSpecArgs) ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigTextSpecOutput).ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(ctx)
+}
+
+// IndexFieldSearchConfigTextSpecPtrInput is an input type that accepts IndexFieldSearchConfigTextSpecArgs, IndexFieldSearchConfigTextSpecPtr and IndexFieldSearchConfigTextSpecPtrOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigTextSpecPtrInput` via:
+//
+//	        IndexFieldSearchConfigTextSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexFieldSearchConfigTextSpecPtrInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigTextSpecPtrOutput() IndexFieldSearchConfigTextSpecPtrOutput
+	ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(context.Context) IndexFieldSearchConfigTextSpecPtrOutput
+}
+
+type indexFieldSearchConfigTextSpecPtrType IndexFieldSearchConfigTextSpecArgs
+
+func IndexFieldSearchConfigTextSpecPtr(v *IndexFieldSearchConfigTextSpecArgs) IndexFieldSearchConfigTextSpecPtrInput {
+	return (*indexFieldSearchConfigTextSpecPtrType)(v)
+}
+
+func (*indexFieldSearchConfigTextSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldSearchConfigTextSpec)(nil)).Elem()
+}
+
+func (i *indexFieldSearchConfigTextSpecPtrType) ToIndexFieldSearchConfigTextSpecPtrOutput() IndexFieldSearchConfigTextSpecPtrOutput {
+	return i.ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *indexFieldSearchConfigTextSpecPtrType) ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigTextSpecPtrOutput)
+}
+
+type IndexFieldSearchConfigTextSpecOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigTextSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfigTextSpec)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigTextSpecOutput) ToIndexFieldSearchConfigTextSpecOutput() IndexFieldSearchConfigTextSpecOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecOutput) ToIndexFieldSearchConfigTextSpecOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecOutput) ToIndexFieldSearchConfigTextSpecPtrOutput() IndexFieldSearchConfigTextSpecPtrOutput {
+	return o.ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(context.Background())
+}
+
+func (o IndexFieldSearchConfigTextSpecOutput) ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexFieldSearchConfigTextSpec) *IndexFieldSearchConfigTextSpec {
+		return &v
+	}).(IndexFieldSearchConfigTextSpecPtrOutput)
+}
+
+// Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+// Structure is documented below.
+func (o IndexFieldSearchConfigTextSpecOutput) IndexSpecs() IndexFieldSearchConfigTextSpecIndexSpecArrayOutput {
+	return o.ApplyT(func(v IndexFieldSearchConfigTextSpec) []IndexFieldSearchConfigTextSpecIndexSpec { return v.IndexSpecs }).(IndexFieldSearchConfigTextSpecIndexSpecArrayOutput)
+}
+
+type IndexFieldSearchConfigTextSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigTextSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldSearchConfigTextSpec)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigTextSpecPtrOutput) ToIndexFieldSearchConfigTextSpecPtrOutput() IndexFieldSearchConfigTextSpecPtrOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecPtrOutput) ToIndexFieldSearchConfigTextSpecPtrOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecPtrOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecPtrOutput) Elem() IndexFieldSearchConfigTextSpecOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfigTextSpec) IndexFieldSearchConfigTextSpec {
+		if v != nil {
+			return *v
+		}
+		var ret IndexFieldSearchConfigTextSpec
+		return ret
+	}).(IndexFieldSearchConfigTextSpecOutput)
+}
+
+// Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+// Structure is documented below.
+func (o IndexFieldSearchConfigTextSpecPtrOutput) IndexSpecs() IndexFieldSearchConfigTextSpecIndexSpecArrayOutput {
+	return o.ApplyT(func(v *IndexFieldSearchConfigTextSpec) []IndexFieldSearchConfigTextSpecIndexSpec {
+		if v == nil {
+			return nil
+		}
+		return v.IndexSpecs
+	}).(IndexFieldSearchConfigTextSpecIndexSpecArrayOutput)
+}
+
+type IndexFieldSearchConfigTextSpecIndexSpec struct {
+	// Ways to index the text field value.
+	IndexType *string `pulumi:"indexType"`
+	// How to match the text field value.
+	MatchType *string `pulumi:"matchType"`
+}
+
+// IndexFieldSearchConfigTextSpecIndexSpecInput is an input type that accepts IndexFieldSearchConfigTextSpecIndexSpecArgs and IndexFieldSearchConfigTextSpecIndexSpecOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigTextSpecIndexSpecInput` via:
+//
+//	IndexFieldSearchConfigTextSpecIndexSpecArgs{...}
+type IndexFieldSearchConfigTextSpecIndexSpecInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigTextSpecIndexSpecOutput() IndexFieldSearchConfigTextSpecIndexSpecOutput
+	ToIndexFieldSearchConfigTextSpecIndexSpecOutputWithContext(context.Context) IndexFieldSearchConfigTextSpecIndexSpecOutput
+}
+
+type IndexFieldSearchConfigTextSpecIndexSpecArgs struct {
+	// Ways to index the text field value.
+	IndexType pulumi.StringPtrInput `pulumi:"indexType"`
+	// How to match the text field value.
+	MatchType pulumi.StringPtrInput `pulumi:"matchType"`
+}
+
+func (IndexFieldSearchConfigTextSpecIndexSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfigTextSpecIndexSpec)(nil)).Elem()
+}
+
+func (i IndexFieldSearchConfigTextSpecIndexSpecArgs) ToIndexFieldSearchConfigTextSpecIndexSpecOutput() IndexFieldSearchConfigTextSpecIndexSpecOutput {
+	return i.ToIndexFieldSearchConfigTextSpecIndexSpecOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigTextSpecIndexSpecArgs) ToIndexFieldSearchConfigTextSpecIndexSpecOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecIndexSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigTextSpecIndexSpecOutput)
+}
+
+// IndexFieldSearchConfigTextSpecIndexSpecArrayInput is an input type that accepts IndexFieldSearchConfigTextSpecIndexSpecArray and IndexFieldSearchConfigTextSpecIndexSpecArrayOutput values.
+// You can construct a concrete instance of `IndexFieldSearchConfigTextSpecIndexSpecArrayInput` via:
+//
+//	IndexFieldSearchConfigTextSpecIndexSpecArray{ IndexFieldSearchConfigTextSpecIndexSpecArgs{...} }
+type IndexFieldSearchConfigTextSpecIndexSpecArrayInput interface {
+	pulumi.Input
+
+	ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutput() IndexFieldSearchConfigTextSpecIndexSpecArrayOutput
+	ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutputWithContext(context.Context) IndexFieldSearchConfigTextSpecIndexSpecArrayOutput
+}
+
+type IndexFieldSearchConfigTextSpecIndexSpecArray []IndexFieldSearchConfigTextSpecIndexSpecInput
+
+func (IndexFieldSearchConfigTextSpecIndexSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndexFieldSearchConfigTextSpecIndexSpec)(nil)).Elem()
+}
+
+func (i IndexFieldSearchConfigTextSpecIndexSpecArray) ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutput() IndexFieldSearchConfigTextSpecIndexSpecArrayOutput {
+	return i.ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutputWithContext(context.Background())
+}
+
+func (i IndexFieldSearchConfigTextSpecIndexSpecArray) ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecIndexSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldSearchConfigTextSpecIndexSpecArrayOutput)
+}
+
+type IndexFieldSearchConfigTextSpecIndexSpecOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigTextSpecIndexSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldSearchConfigTextSpecIndexSpec)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigTextSpecIndexSpecOutput) ToIndexFieldSearchConfigTextSpecIndexSpecOutput() IndexFieldSearchConfigTextSpecIndexSpecOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecIndexSpecOutput) ToIndexFieldSearchConfigTextSpecIndexSpecOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecIndexSpecOutput {
+	return o
+}
+
+// Ways to index the text field value.
+func (o IndexFieldSearchConfigTextSpecIndexSpecOutput) IndexType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexFieldSearchConfigTextSpecIndexSpec) *string { return v.IndexType }).(pulumi.StringPtrOutput)
+}
+
+// How to match the text field value.
+func (o IndexFieldSearchConfigTextSpecIndexSpecOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexFieldSearchConfigTextSpecIndexSpec) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type IndexFieldSearchConfigTextSpecIndexSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldSearchConfigTextSpecIndexSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndexFieldSearchConfigTextSpecIndexSpec)(nil)).Elem()
+}
+
+func (o IndexFieldSearchConfigTextSpecIndexSpecArrayOutput) ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutput() IndexFieldSearchConfigTextSpecIndexSpecArrayOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecIndexSpecArrayOutput) ToIndexFieldSearchConfigTextSpecIndexSpecArrayOutputWithContext(ctx context.Context) IndexFieldSearchConfigTextSpecIndexSpecArrayOutput {
+	return o
+}
+
+func (o IndexFieldSearchConfigTextSpecIndexSpecArrayOutput) Index(i pulumi.IntInput) IndexFieldSearchConfigTextSpecIndexSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndexFieldSearchConfigTextSpecIndexSpec {
+		return vs[0].([]IndexFieldSearchConfigTextSpecIndexSpec)[vs[1].(int)]
+	}).(IndexFieldSearchConfigTextSpecIndexSpecOutput)
 }
 
 type IndexFieldVectorConfig struct {
@@ -1447,6 +2014,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldTtlConfigPtrInput)(nil)).Elem(), FieldTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldInput)(nil)).Elem(), IndexFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldArrayInput)(nil)).Elem(), IndexFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigInput)(nil)).Elem(), IndexFieldSearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigPtrInput)(nil)).Elem(), IndexFieldSearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigGeoSpecInput)(nil)).Elem(), IndexFieldSearchConfigGeoSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigGeoSpecPtrInput)(nil)).Elem(), IndexFieldSearchConfigGeoSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigTextSpecInput)(nil)).Elem(), IndexFieldSearchConfigTextSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigTextSpecPtrInput)(nil)).Elem(), IndexFieldSearchConfigTextSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigTextSpecIndexSpecInput)(nil)).Elem(), IndexFieldSearchConfigTextSpecIndexSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldSearchConfigTextSpecIndexSpecArrayInput)(nil)).Elem(), IndexFieldSearchConfigTextSpecIndexSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigInput)(nil)).Elem(), IndexFieldVectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigPtrInput)(nil)).Elem(), IndexFieldVectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
@@ -1467,6 +2042,14 @@ func init() {
 	pulumi.RegisterOutputType(FieldTtlConfigPtrOutput{})
 	pulumi.RegisterOutputType(IndexFieldOutput{})
 	pulumi.RegisterOutputType(IndexFieldArrayOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigPtrOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigGeoSpecOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigGeoSpecPtrOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigTextSpecOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigTextSpecPtrOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigTextSpecIndexSpecOutput{})
+	pulumi.RegisterOutputType(IndexFieldSearchConfigTextSpecIndexSpecArrayOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigPtrOutput{})
 	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatOutput{})

@@ -24,6 +24,18 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
             set => _actions = value;
         }
 
+        [Input("tasks")]
+        private InputList<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskGetArgs>? _tasks;
+
+        /// <summary>
+        /// Optional. The tasks that will run as a part of the predeploy job. Only one of `Actions` or `Tasks` can be specified.
+        /// </summary>
+        public InputList<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskGetArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskGetArgs>());
+            set => _tasks = value;
+        }
+
         public DeliveryPipelineSerialPipelineStageStrategyStandardPredeployGetArgs()
         {
         }

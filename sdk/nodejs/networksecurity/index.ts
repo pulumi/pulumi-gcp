@@ -160,6 +160,11 @@ export type UllMirroringCollector = import("./ullMirroringCollector").UllMirrori
 export const UllMirroringCollector: typeof import("./ullMirroringCollector").UllMirroringCollector = null as any;
 utilities.lazyLoad(exports, ["UllMirroringCollector"], () => require("./ullMirroringCollector"));
 
+export { UllMirroringCollectorRuleArgs, UllMirroringCollectorRuleState } from "./ullMirroringCollectorRule";
+export type UllMirroringCollectorRule = import("./ullMirroringCollectorRule").UllMirroringCollectorRule;
+export const UllMirroringCollectorRule: typeof import("./ullMirroringCollectorRule").UllMirroringCollectorRule = null as any;
+utilities.lazyLoad(exports, ["UllMirroringCollectorRule"], () => require("./ullMirroringCollectorRule"));
+
 export { UllMirroringEngineArgs, UllMirroringEngineState } from "./ullMirroringEngine";
 export type UllMirroringEngine = import("./ullMirroringEngine").UllMirroringEngine;
 export const UllMirroringEngine: typeof import("./ullMirroringEngine").UllMirroringEngine = null as any;
@@ -233,6 +238,8 @@ const _module = {
                 return new TlsInspectionPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector":
                 return new UllMirroringCollector(name, <any>undefined, { urn })
+            case "gcp:networksecurity/ullMirroringCollectorRule:UllMirroringCollectorRule":
+                return new UllMirroringCollectorRule(name, <any>undefined, { urn })
             case "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine":
                 return new UllMirroringEngine(name, <any>undefined, { urn })
             case "gcp:networksecurity/urlList:UrlList":
@@ -271,5 +278,6 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfileGro
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/serverTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/tlsInspectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/ullMirroringCollector", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/ullMirroringCollectorRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/ullMirroringEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/urlList", _module)

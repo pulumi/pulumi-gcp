@@ -37,6 +37,7 @@ from .security_profile_group import *
 from .server_tls_policy import *
 from .tls_inspection_policy import *
 from .ull_mirroring_collector import *
+from .ull_mirroring_collector_rule import *
 from .ull_mirroring_engine import *
 from .url_list import *
 from ._inputs import *

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment
     {
         /// <summary>
+        /// Optional. Configuration for the analysis job.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis? Analysis;
+        /// <summary>
         /// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 &lt;= n &lt; 100.
         /// </summary>
         public readonly ImmutableArray<int> Percentages;
@@ -29,21 +33,31 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Whether to run verify tests after each percentage deployment.
         /// </summary>
         public readonly bool? Verify;
+        /// <summary>
+        /// Optional. Configuration for the verify job.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig? VerifyConfig;
 
         [OutputConstructor]
         private DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis? analysis,
+
             ImmutableArray<int> percentages,
 
             Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy? postdeploy,
 
             Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy? predeploy,
 
-            bool? verify)
+            bool? verify,
+
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig? verifyConfig)
         {
+            Analysis = analysis;
             Percentages = percentages;
             Postdeploy = postdeploy;
             Predeploy = predeploy;
             Verify = verify;
+            VerifyConfig = verifyConfig;
         }
     }
 }

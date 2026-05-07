@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.ImageArgs;
 import com.pulumi.gcp.compute.inputs.ImageState;
 import com.pulumi.gcp.compute.outputs.ImageGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.ImageImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.ImageParams;
 import com.pulumi.gcp.compute.outputs.ImageRawDisk;
 import com.pulumi.gcp.compute.outputs.ImageShieldedInstanceInitialState;
 import com.pulumi.gcp.compute.outputs.ImageSourceDiskEncryptionKey;
@@ -447,6 +448,22 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={ImageParams.class}, tree="[0]")
+    private Output</* @Nullable */ ImageParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ImageParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

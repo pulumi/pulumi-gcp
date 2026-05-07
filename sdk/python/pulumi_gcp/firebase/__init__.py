@@ -16,6 +16,7 @@ from .app_check_device_check_config import *
 from .app_check_play_integrity_config import *
 from .app_check_recaptcha_enterprise_config import *
 from .app_check_recaptcha_v3_config import *
+from .app_check_resource_policy import *
 from .app_check_service_config import *
 from .app_hosting_backend import *
 from .app_hosting_build import *

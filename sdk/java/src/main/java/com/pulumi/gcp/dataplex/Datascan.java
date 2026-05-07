@@ -333,6 +333,7 @@ import javax.annotation.Nullable;
  *                 .samplingPercent(5.0)
  *                 .rowFilter("station_id > 1000")
  *                 .catalogPublishingEnabled(true)
+ *                 .filter("attributes.priority = 'high'")
  *                 .postScanActions(DatascanDataQualitySpecPostScanActionsArgs.builder()
  *                     .notificationReport(DatascanDataQualitySpecPostScanActionsNotificationReportArgs.builder()
  *                         .recipients(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs.builder()
@@ -348,6 +349,7 @@ import javax.annotation.Nullable;
  *                         .column("address")
  *                         .dimension("VALIDITY")
  *                         .threshold(0.99)
+ *                         .attributes(Map.of("priority", "high"))
  *                         .nonNullExpectation(DatascanDataQualitySpecRuleNonNullExpectationArgs.builder()
  *                             .build())
  *                         .build(),
@@ -1190,6 +1192,455 @@ import javax.annotation.Nullable;
  *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
  *                 .build())
  *             .project("my-project-name")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     tfTestTable,
+ *                     wait120Seconds)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Dataplex Datascan Quality Reusable Rules Catalog Based
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.EntryGroup;
+ * import com.pulumi.gcp.dataplex.EntryGroupArgs;
+ * import com.pulumi.gcp.dataplex.Entry;
+ * import com.pulumi.gcp.dataplex.EntryArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityServiceAccountArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .projectId("my-project-name")
+ *             .build());
+ * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("tf-test-sa-_11380")
+ *             .displayName("DataScan Service Account")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var dataplexSaImpersonate = new com.pulumi.gcp.serviceaccount.IAMMember("dataplexSaImpersonate", com.pulumi.gcp.serviceaccount.IAMMemberArgs.builder()
+ *             .serviceAccountId(sa.name())
+ *             .role("roles/iam.serviceAccountTokenCreator")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataplex.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var saBqDataViewer = new com.pulumi.gcp.projects.IAMMember("saBqDataViewer", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/bigquery.dataViewer")
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var saBqJobUser = new com.pulumi.gcp.projects.IAMMember("saBqJobUser", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/bigquery.jobUser")
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
+ *             .datasetId("tf_test_dataset_id__35305")
+ *             .defaultTableExpirationMs(3600000)
+ *             .deleteContentsOnDestroy(true)
+ *             .project("my-project-name")
+ *             .location("us-central1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     dataplexSaImpersonate,
+ *                     saBqDataViewer,
+ *                     saBqJobUser)
+ *                 .build());
+ * 
+ *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
+ *             .datasetId(tfTestDataset.datasetId())
+ *             .tableId("tf_test_table_id__62793")
+ *             .deletionProtection(false)
+ *             .project("my-project-name")
+ *             .schema("""
+ *     [
+ *     }{{@code
+ *       "name": "name",
+ *       "type": "STRING",
+ *       "mode": "NULLABLE"
+ *     }}{@code
+ *     ]
+ *             """)
+ *             .build());
+ * 
+ *         var testGroup = new EntryGroup("testGroup", EntryGroupArgs.builder()
+ *             .location("us-central1")
+ *             .entryGroupId("test-group-_55438")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var testEntry = new Entry("testEntry", EntryArgs.builder()
+ *             .location("us-central1")
+ *             .entryGroupId(testGroup.entryGroupId())
+ *             .entryId("test-entry-_32706")
+ *             .entryType("projects/655216118709/locations/global/entryTypes/data-quality-rule-template")
+ *             .project(project.number())
+ *             .aspects(EntryAspectArgs.builder()
+ *                 .aspectKey("655216118709.global.data-quality-rule-template")
+ *                 .aspect(EntryAspectAspectArgs.builder()
+ *                     .data(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("dimension", "VALIDITY"),
+ *                             jsonProperty("sqlCollection", jsonArray(jsonObject(
+ *                                 jsonProperty("query", "SELECT * FROM $}{{@code param(table_name)}}{@code  WHERE $}{{@code param(column_name)}}{@code  IS NULL")
+ *                             ))),
+ *                             jsonProperty("inputParameters", jsonObject(
+ *                                 jsonProperty("table_name", jsonObject(
+ *                                     jsonProperty("description", "Table Name")
+ *                                 )),
+ *                                 jsonProperty("column_name", jsonObject(
+ *                                     jsonProperty("description", "Column Name")
+ *                                 ))
+ *                             ))
+ *                         )))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var waitForBqSync = new Sleep("waitForBqSync", SleepArgs.builder()
+ *             .createDuration("300s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(tfTestTable)
+ *                 .build());
+ * 
+ *         var bqTableEntry = new Entry("bqTableEntry", EntryArgs.builder()
+ *             .entryGroupId("}{@literal @}{@code bigquery")
+ *             .project(project.projectId())
+ *             .location("us-central1")
+ *             .entryId(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                 var datasetId = values.t1;
+ *                 var tableId = values.t2;
+ *                 return String.format("bigquery.googleapis.com/projects/%s/datasets/%s/tables/%s", project.projectId(),datasetId,tableId);
+ *             }}{@code ))
+ *             .entryType("projects/655216118709/locations/global/entryTypes/bigquery-table")
+ *             .fullyQualifiedName(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                 var datasetId = values.t1;
+ *                 var tableId = values.t2;
+ *                 return String.format("bigquery:%s.%s.%s", project.projectId(),datasetId,tableId);
+ *             }}{@code ))
+ *             .parentEntry(tfTestDataset.datasetId().applyValue(_datasetId -> String.format("projects/%s/locations/us-central1/entryGroups/}{@literal @}{@code bigquery/entries/bigquery.googleapis.com/projects/%s/datasets/%s", project.projectId(),project.projectId(),_datasetId)))
+ *             .aspects(EntryAspectArgs.builder()
+ *                 .aspectKey("655216118709.global.data-rules}{@literal @}{@code Schema.name")
+ *                 .aspect(EntryAspectAspectArgs.builder()
+ *                     .data(Output.tuple(testEntry.name(), tfTestDataset.datasetId(), tfTestTable.tableId(), testEntry.name(), tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                         var testEntryName = values.t1;
+ *                         var tfTestDatasetDatasetId = values.t2;
+ *                         var tfTestTableTableId = values.t3;
+ *                         var testEntryName1 = values.t4;
+ *                         var tfTestDatasetDatasetId1 = values.t5;
+ *                         var tfTestTableTableId1 = values.t6;
+ *                         return serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("rules", jsonArray(
+ *                                     jsonObject(
+ *                                         jsonProperty("name", "rule-to-filter-out"),
+ *                                         jsonProperty("dimension", "VALIDITY"),
+ *                                         jsonProperty("type", "TEMPLATE_REFERENCE"),
+ *                                         jsonProperty("templateReference", jsonObject(
+ *                                             jsonProperty("name", testEntryName),
+ *                                             jsonProperty("values", jsonObject(
+ *                                                 jsonProperty("table_name", jsonObject(
+ *                                                     jsonProperty("value", String.format("`%s.%s.%s`", project.projectId(),tfTestDatasetDatasetId,tfTestTableTableId))
+ *                                                 )),
+ *                                                 jsonProperty("column_name", jsonObject(
+ *                                                     jsonProperty("value", "name")
+ *                                                 ))
+ *                                             ))
+ *                                         )),
+ *                                         jsonProperty("attributes", jsonObject(
+ *                                             jsonProperty("priority", "low")
+ *                                         ))
+ *                                     ), 
+ *                                     jsonObject(
+ *                                         jsonProperty("name", "non-null-check-name-manual"),
+ *                                         jsonProperty("dimension", "VALIDITY"),
+ *                                         jsonProperty("type", "TEMPLATE_REFERENCE"),
+ *                                         jsonProperty("templateReference", jsonObject(
+ *                                             jsonProperty("name", testEntryName1),
+ *                                             jsonProperty("values", jsonObject(
+ *                                                 jsonProperty("table_name", jsonObject(
+ *                                                     jsonProperty("value", String.format("`%s.%s.%s`", project.projectId(),tfTestDatasetDatasetId1,tfTestTableTableId1))
+ *                                                 )),
+ *                                                 jsonProperty("column_name", jsonObject(
+ *                                                     jsonProperty("value", "name")
+ *                                                 ))
+ *                                             ))
+ *                                         )),
+ *                                         jsonProperty("attributes", jsonObject(
+ *                                             jsonProperty("priority", "high")
+ *                                         ))
+ *                                     )
+ *                                 ))
+ *                             ));
+ *                     }}{@code ))
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     waitForBqSync,
+ *                     testEntry)
+ *                 .build());
+ * 
+ *         var waitForAspectPropagation = new Sleep("waitForAspectPropagation", SleepArgs.builder()
+ *             .createDuration("300s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(bqTableEntry)
+ *                 .build());
+ * 
+ *         var reusableRulesCatalogBased = new Datascan("reusableRulesCatalogBased", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("dataquality-catalog")
+ *             .displayName("Catalog Datascan Quality")
+ *             .description("Example resource - Catalog Datascan Quality")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                     var datasetId = values.t1;
+ *                     var tableId = values.t2;
+ *                     return String.format("//bigquery.googleapis.com/projects/%s/datasets/%s/tables/%s", project.projectId(),datasetId,tableId);
+ *                 }}{@code ))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .onDemand(DatascanExecutionSpecTriggerOnDemandArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .executionIdentity(DatascanExecutionIdentityArgs.builder()
+ *                 .serviceAccount(DatascanExecutionIdentityServiceAccountArgs.builder()
+ *                     .email(sa.email())
+ *                     .build())
+ *                 .build())
+ *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
+ *                 .enableCatalogBasedRules(true)
+ *                 .filter("attributes.priority = \"high\"")
+ *                 .build())
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForAspectPropagation)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Dataplex Datascan Data Quality Template Reference
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.dataplex.EntryGroup;
+ * import com.pulumi.gcp.dataplex.EntryGroupArgs;
+ * import com.pulumi.gcp.dataplex.Entry;
+ * import com.pulumi.gcp.dataplex.EntryArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionIdentityServiceAccountArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .projectId("my-project-name")
+ *             .build());
+ * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("tf-test-sa-_49082")
+ *             .displayName("DataScan Service Account")
+ *             .project(project.projectId())
+ *             .build());
+ * 
+ *         var dataplexSaImpersonate = new com.pulumi.gcp.serviceaccount.IAMMember("dataplexSaImpersonate", com.pulumi.gcp.serviceaccount.IAMMemberArgs.builder()
+ *             .serviceAccountId(sa.name())
+ *             .role("roles/iam.serviceAccountTokenCreator")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataplex.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(dataplexSaImpersonate)
+ *                 .build());
+ * 
+ *         var saBqDataViewer = new com.pulumi.gcp.projects.IAMMember("saBqDataViewer", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/bigquery.dataViewer")
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var saBqJobUser = new com.pulumi.gcp.projects.IAMMember("saBqJobUser", com.pulumi.gcp.projects.IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/bigquery.jobUser")
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var testGroup = new EntryGroup("testGroup", EntryGroupArgs.builder()
+ *             .location("us-central1")
+ *             .entryGroupId("test-group-_60365")
+ *             .project(project.projectId())
+ *             .build());
+ * 
+ *         var testEntry = new Entry("testEntry", EntryArgs.builder()
+ *             .location("us-central1")
+ *             .entryGroupId(testGroup.entryGroupId())
+ *             .entryId("test-entry-_80215")
+ *             .entryType("projects/655216118709/locations/global/entryTypes/data-quality-rule-template")
+ *             .project(project.number())
+ *             .aspects(EntryAspectArgs.builder()
+ *                 .aspectKey("655216118709.global.data-quality-rule-template")
+ *                 .aspect(EntryAspectAspectArgs.builder()
+ *                     .data(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("dimension", "VALIDITY"),
+ *                             jsonProperty("sqlCollection", jsonArray(jsonObject(
+ *                                 jsonProperty("query", "SELECT * FROM $}{{@code data()}}{@code  WHERE $}{{@code column()}}{@code  IS NOT NULL")
+ *                             )))
+ *                         )))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
+ *             .datasetId("tf_test_dataset_id__59033")
+ *             .defaultTableExpirationMs(3600000)
+ *             .location("us-central1")
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     dataplexSaImpersonate,
+ *                     saBqDataViewer,
+ *                     saBqJobUser)
+ *                 .build());
+ * 
+ *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
+ *             .datasetId(tfTestDataset.datasetId())
+ *             .tableId("tf_test_table_id__32081")
+ *             .deletionProtection(false)
+ *             .project(project.projectId())
+ *             .schema("""
+ *     [
+ *     }{{@code
+ *       \"name\": \"name\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\"
+ *     }}{@code
+ *     ]
+ *             """)
+ *             .build());
+ * 
+ *         var dataQualityTemplateReference = new Datascan("dataQualityTemplateReference", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .displayName("Data Quality Template Reference")
+ *             .dataScanId("dataquality-template")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                     var datasetId = values.t1;
+ *                     var tableId = values.t2;
+ *                     return String.format("//bigquery.googleapis.com/projects/%s/datasets/%s/tables/%s", project.projectId(),datasetId,tableId);
+ *                 }}{@code ))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .onDemand(DatascanExecutionSpecTriggerOnDemandArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .executionIdentity(DatascanExecutionIdentityArgs.builder()
+ *                 .serviceAccount(DatascanExecutionIdentityServiceAccountArgs.builder()
+ *                     .email(sa.email())
+ *                     .build())
+ *                 .build())
+ *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
+ *                 .rules(DatascanDataQualitySpecRuleArgs.builder()
+ *                     .column("name")
+ *                     .dimension("VALIDITY")
+ *                     .templateReference(DatascanDataQualitySpecRuleTemplateReferenceArgs.builder()
+ *                         .name(testEntry.name())
+ *                         .values(DatascanDataQualitySpecRuleTemplateReferenceValueArgs.builder()
+ *                             .name("min_length")
+ *                             .value("10")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     tfTestTable,

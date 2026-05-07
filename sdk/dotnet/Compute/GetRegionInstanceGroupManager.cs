@@ -182,6 +182,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerParamResult> Params;
         public readonly string? Project;
         public readonly string? Region;
+        public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerResourcePolicyResult> ResourcePolicies;
         public readonly string? SelfLink;
         public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerStandbyPolicyResult> StandbyPolicies;
         public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerStatefulDiskResult> StatefulDisks;
@@ -238,6 +239,8 @@ namespace Pulumi.Gcp.Compute
 
             string? region,
 
+            ImmutableArray<Outputs.GetRegionInstanceGroupManagerResourcePolicyResult> resourcePolicies,
+
             string? selfLink,
 
             ImmutableArray<Outputs.GetRegionInstanceGroupManagerStandbyPolicyResult> standbyPolicies,
@@ -287,6 +290,7 @@ namespace Pulumi.Gcp.Compute
             Params = @params;
             Project = project;
             Region = region;
+            ResourcePolicies = resourcePolicies;
             SelfLink = selfLink;
             StandbyPolicies = standbyPolicies;
             StatefulDisks = statefulDisks;

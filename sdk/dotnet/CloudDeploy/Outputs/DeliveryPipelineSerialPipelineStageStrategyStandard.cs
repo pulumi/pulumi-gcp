@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategyStandard
     {
         /// <summary>
+        /// Optional. Configuration for the analysis job.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis? Analysis;
+        /// <summary>
         /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
         /// </summary>
         public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy? Postdeploy;
@@ -25,18 +29,28 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Whether to verify a deployment.
         /// </summary>
         public readonly bool? Verify;
+        /// <summary>
+        /// Optional. Configuration for the verify job.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig? VerifyConfig;
 
         [OutputConstructor]
         private DeliveryPipelineSerialPipelineStageStrategyStandard(
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis? analysis,
+
             Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy? postdeploy,
 
             Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy? predeploy,
 
-            bool? verify)
+            bool? verify,
+
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig? verifyConfig)
         {
+            Analysis = analysis;
             Postdeploy = postdeploy;
             Predeploy = predeploy;
             Verify = verify;
+            VerifyConfig = verifyConfig;
         }
     }
 }

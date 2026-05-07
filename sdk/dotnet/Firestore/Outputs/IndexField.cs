@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Firestore.Outputs
     public sealed class IndexField
     {
         /// <summary>
-        /// Indicates that this field supports operations on arrayValues. Only one of `Order`, `arrayConfig`, and
+        /// Indicates that this field supports operations on arrayValues. Only one of `Order`, `arrayConfig`, `searchConfig` and
         /// `vectorConfig` can be specified.
         /// Possible values are: `CONTAINS`.
         /// </summary>
@@ -25,12 +25,18 @@ namespace Pulumi.Gcp.Firestore.Outputs
         public readonly string? FieldPath;
         /// <summary>
         /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-        /// Only one of `Order`, `arrayConfig`, and `vectorConfig` can be specified.
+        /// Only one of `Order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
         /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         public readonly string? Order;
         /// <summary>
-        /// Indicates that this field supports vector search operations. Only one of `Order`, `arrayConfig`, and
+        /// Indicates that this field supports text or geo-search operations. Only one of `Order`, `arrayConfig`, `searchConfig` and
+        /// `vectorConfig` can be specified.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.IndexFieldSearchConfig? SearchConfig;
+        /// <summary>
+        /// Indicates that this field supports vector search operations. Only one of `Order`, `arrayConfig`, `searchConfig` and
         /// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
         /// Structure is documented below.
         /// </summary>
@@ -44,11 +50,14 @@ namespace Pulumi.Gcp.Firestore.Outputs
 
             string? order,
 
+            Outputs.IndexFieldSearchConfig? searchConfig,
+
             Outputs.IndexFieldVectorConfig? vectorConfig)
         {
             ArrayConfig = arrayConfig;
             FieldPath = fieldPath;
             Order = order;
+            SearchConfig = searchConfig;
             VectorConfig = vectorConfig;
         }
     }

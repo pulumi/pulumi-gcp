@@ -15,6 +15,11 @@ export const getDockerImages: typeof import("./getDockerImages").getDockerImages
 export const getDockerImagesOutput: typeof import("./getDockerImages").getDockerImagesOutput = null as any;
 utilities.lazyLoad(exports, ["getDockerImages","getDockerImagesOutput"], () => require("./getDockerImages"));
 
+export { GetFileArgs, GetFileResult, GetFileOutputArgs } from "./getFile";
+export const getFile: typeof import("./getFile").getFile = null as any;
+export const getFileOutput: typeof import("./getFile").getFileOutput = null as any;
+utilities.lazyLoad(exports, ["getFile","getFileOutput"], () => require("./getFile"));
+
 export { GetLocationsArgs, GetLocationsResult, GetLocationsOutputArgs } from "./getLocations";
 export const getLocations: typeof import("./getLocations").getLocations = null as any;
 export const getLocationsOutput: typeof import("./getLocations").getLocationsOutput = null as any;

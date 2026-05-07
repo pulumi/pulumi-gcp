@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * Read more about sensitive data in state. Passwords will not be retrieved when running
  * &#34;terraform import&#34;.
  * 
+ * &gt; **Note:** Write-Only argument `passwordWo` is available to use in place of `password`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+ * 
  * ## Example Usage
  * 
  * Example creating a SQL User.
@@ -257,16 +259,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Ephemeral Attributes Reference
- * 
- * The following write-only attributes are supported:
- * 
- * * `passwordWo` - (Optional) The password for the user. Can be updated. For Postgres
- *     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
- *     or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
- *     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
- *   **Note**: This property is write-only and will not be read from the API.
- * 
  * ## Import
  * 
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -329,6 +321,8 @@ public class User extends com.pulumi.resources.CustomResource {
      * 
      * Possible values are: `ABANDON`.
      * 
+     * ***
+     * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
@@ -339,6 +333,8 @@ public class User extends com.pulumi.resources.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
      * Possible values are: `ABANDON`.
+     * 
+     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {
@@ -436,8 +432,12 @@ public class User extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     * 
+     * * &gt; **Note:** One of `value` or `valueWo` can only be set.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -445,26 +445,26 @@ public class User extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     * 
+     * * &gt; **Note:** One of `value` or `valueWo` can only be set.
      * 
      */
     public Output<Optional<String>> passwordWo() {
         return Codegen.optional(this.passwordWo);
     }
     /**
-     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     * 
-     * ***
+     * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      * 
      */
     @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> passwordWoVersion;
 
     /**
-     * @return The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     * 
-     * ***
+     * @return An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      * 
      */
     public Output<Optional<Integer>> passwordWoVersion() {

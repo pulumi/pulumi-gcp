@@ -76,6 +76,14 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string? OpsInsightsStatus;
         /// <summary>
+        /// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+        /// </summary>
+        public readonly string? PluggableDatabaseId;
+        /// <summary>
+        /// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+        /// </summary>
+        public readonly string? PluggableDatabaseName;
+        /// <summary>
         /// The properties of a Database.
         /// Structure is documented below.
         /// </summary>
@@ -111,6 +119,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string? opsInsightsStatus,
 
+            string? pluggableDatabaseId,
+
+            string? pluggableDatabaseName,
+
             Outputs.DbSystemPropertiesDbHomeDatabaseProperties? properties,
 
             string? tdeWalletPassword)
@@ -127,6 +139,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             NcharacterSet = ncharacterSet;
             OciUrl = ociUrl;
             OpsInsightsStatus = opsInsightsStatus;
+            PluggableDatabaseId = pluggableDatabaseId;
+            PluggableDatabaseName = pluggableDatabaseName;
             Properties = properties;
             TdeWalletPassword = tdeWalletPassword;
         }

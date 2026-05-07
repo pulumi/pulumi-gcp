@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,10 +32,26 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy
         return Optional.ofNullable(this.actions);
     }
 
+    /**
+     * Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+     * 
+     */
+    @Import(name="tasks")
+    private @Nullable Output<List<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs>> tasks;
+
+    /**
+     * @return Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+     * 
+     */
+    public Optional<Output<List<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs>>> tasks() {
+        return Optional.ofNullable(this.tasks);
+    }
+
     private DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs() {}
 
     private DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs $) {
         this.actions = $.actions;
+        this.tasks = $.tasks;
     }
 
     public static Builder builder() {
@@ -84,6 +101,37 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy
          */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
+        }
+
+        /**
+         * @param tasks Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(@Nullable Output<List<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs>> tasks) {
+            $.tasks = tasks;
+            return this;
+        }
+
+        /**
+         * @param tasks Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(List<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs> tasks) {
+            return tasks(Output.of(tasks));
+        }
+
+        /**
+         * @param tasks Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs... tasks) {
+            return tasks(List.of(tasks));
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs build() {

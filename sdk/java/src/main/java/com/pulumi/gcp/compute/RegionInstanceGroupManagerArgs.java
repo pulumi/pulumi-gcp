@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceFlexibili
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerParamsArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerResourcePoliciesArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStandbyPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulExternalIpArgs;
@@ -287,6 +288,25 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="resourcePolicies")
+    private @Nullable Output<RegionInstanceGroupManagerResourcePoliciesArgs> resourcePolicies;
+
+    /**
+     * @return Resource policies for this managed instance group. Structure is documented below.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<RegionInstanceGroupManagerResourcePoliciesArgs>> resourcePolicies() {
+        return Optional.ofNullable(this.resourcePolicies);
+    }
+
+    /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */
@@ -388,8 +408,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * ***
      * 
      */
     @Import(name="targetSizePolicies")
@@ -397,8 +415,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
     /**
      * @return The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * ***
      * 
      */
     public Optional<Output<List<RegionInstanceGroupManagerTargetSizePolicyArgs>>> targetSizePolicies() {
@@ -526,6 +542,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         this.params = $.params;
         this.project = $.project;
         this.region = $.region;
+        this.resourcePolicies = $.resourcePolicies;
         this.standbyPolicy = $.standbyPolicy;
         this.statefulDisks = $.statefulDisks;
         this.statefulExternalIps = $.statefulExternalIps;
@@ -920,6 +937,31 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(@Nullable Output<RegionInstanceGroupManagerResourcePoliciesArgs> resourcePolicies) {
+            $.resourcePolicies = resourcePolicies;
+            return this;
+        }
+
+        /**
+         * @param resourcePolicies Resource policies for this managed instance group. Structure is documented below.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(RegionInstanceGroupManagerResourcePoliciesArgs resourcePolicies) {
+            return resourcePolicies(Output.of(resourcePolicies));
+        }
+
+        /**
          * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
          * 
          * @return builder
@@ -1099,8 +1141,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-         * *
-         * ***
          * 
          * @return builder
          * 
@@ -1112,8 +1152,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-         * *
-         * ***
          * 
          * @return builder
          * 
@@ -1124,8 +1162,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
 
         /**
          * @param targetSizePolicies The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-         * *
-         * ***
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .get_docker_image import *
 from .get_docker_images import *
+from .get_file import *
 from .get_locations import *
 from .get_maven_artifact import *
 from .get_maven_artifacts import *

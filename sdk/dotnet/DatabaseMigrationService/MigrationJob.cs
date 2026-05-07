@@ -306,6 +306,165 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// ### Database Migration Service Migration Job Postgres To Postgres Objects
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var sourceCsql = new Gcp.Sql.DatabaseInstance("source_csql", new()
+    ///     {
+    ///         Name = "source-csql",
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-13312",
+    ///             DeletionProtectionEnabled = false,
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var sourceSqlClientCert = new Gcp.Sql.SslCert("source_sql_client_cert", new()
+    ///     {
+    ///         CommonName = "cert",
+    ///         Instance = sourceCsql.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sourceCsql,
+    ///         },
+    ///     });
+    /// 
+    ///     var sourceSqldbUser = new Gcp.Sql.User("source_sqldb_user", new()
+    ///     {
+    ///         Name = "username",
+    ///         Instance = sourceCsql.Name,
+    ///         Password = "password",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sourceSqlClientCert,
+    ///         },
+    ///     });
+    /// 
+    ///     var sourceCp = new Gcp.DatabaseMigrationService.ConnectionProfile("source_cp", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-cp",
+    ///         DisplayName = "source-cp_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+    ///         {
+    ///             Host = sourceCsql.IpAddresses.Apply(ipAddresses =&gt; ipAddresses[0].IpAddress),
+    ///             Port = 3306,
+    ///             Username = sourceSqldbUser.Name,
+    ///             Password = sourceSqldbUser.Password,
+    ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
+    ///             {
+    ///                 ClientKey = sourceSqlClientCert.PrivateKey,
+    ///                 ClientCertificate = sourceSqlClientCert.Cert,
+    ///                 CaCertificate = sourceSqlClientCert.ServerCaCert,
+    ///                 Type = "SERVER_CLIENT",
+    ///             },
+    ///             CloudSqlId = "source-csql",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sourceSqldbUser,
+    ///         },
+    ///     });
+    /// 
+    ///     var destinationCsql = new Gcp.Sql.DatabaseInstance("destination_csql", new()
+    ///     {
+    ///         Name = "destination-csql",
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-13312",
+    ///             DeletionProtectionEnabled = false,
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var destinationCp = new Gcp.DatabaseMigrationService.ConnectionProfile("destination_cp", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-cp",
+    ///         DisplayName = "destination-cp_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+    ///         {
+    ///             CloudSqlId = "destination-csql",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             destinationCsql,
+    ///         },
+    ///     });
+    /// 
+    ///     var psqltopsqlobjects = new Gcp.DatabaseMigrationService.MigrationJob("psqltopsqlobjects", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         MigrationJobId = "my-migrationid",
+    ///         DisplayName = "my-migrationid_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         StaticIpConnectivity = null,
+    ///         Source = sourceCp.Name,
+    ///         Destination = destinationCp.Name,
+    ///         Type = "CONTINUOUS",
+    ///         ObjectsConfig = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigArgs
+    ///         {
+    ///             SourceObjectsConfig = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigArgs
+    ///             {
+    ///                 ObjectsSelectionType = "SPECIFIED_OBJECTS",
+    ///                 ObjectConfigs = new[]
+    ///                 {
+    ///                     new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs
+    ///                     {
+    ///                         ObjectIdentifier = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
+    ///                         {
+    ///                             Type = "DATABASE",
+    ///                             Database = "my_database",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs
+    ///                     {
+    ///                         ObjectIdentifier = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
+    ///                         {
+    ///                             Type = "TABLE",
+    ///                             Database = "my_other_database",
+    ///                             Schema = "public",
+    ///                             Table = "users",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Database Migration Service Migration Job Postgres To Alloydb
     /// 
     /// ```csharp
@@ -582,6 +741,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The objects that need to be migrated. If unset, the default is to migrate
+        /// all objects available on the source.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("objectsConfig")]
+        public Output<Outputs.MigrationJobObjectsConfig> ObjectsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Data dump parallelism settings used by the migration.
         /// Structure is documented below.
         /// </summary>
@@ -764,6 +931,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<string> MigrationJobId { get; set; } = null!;
 
         /// <summary>
+        /// The objects that need to be migrated. If unset, the default is to migrate
+        /// all objects available on the source.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("objectsConfig")]
+        public Input<Inputs.MigrationJobObjectsConfigArgs>? ObjectsConfig { get; set; }
+
+        /// <summary>
         /// Data dump parallelism settings used by the migration.
         /// Structure is documented below.
         /// </summary>
@@ -923,6 +1098,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The objects that need to be migrated. If unset, the default is to migrate
+        /// all objects available on the source.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("objectsConfig")]
+        public Input<Inputs.MigrationJobObjectsConfigGetArgs>? ObjectsConfig { get; set; }
 
         /// <summary>
         /// Data dump parallelism settings used by the migration.

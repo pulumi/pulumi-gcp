@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? AutoStopTime;
         /// <summary>
         /// The duration to keep the cluster alive while idling
-        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
         /// </summary>
         public readonly string? IdleDeleteTtl;
         /// <summary>

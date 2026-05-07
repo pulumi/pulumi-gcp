@@ -28,6 +28,7 @@ class RegionCommitmentArgs:
                  existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
                  license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['RegionCommitmentParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
@@ -56,6 +57,8 @@ class RegionCommitmentArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['RegionCommitmentParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: URL of the region where this commitment may be used.
@@ -81,6 +84,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "license_resource", license_resource)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -190,6 +195,19 @@ class RegionCommitmentArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RegionCommitmentParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RegionCommitmentParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -256,6 +274,7 @@ class _RegionCommitmentState:
                  existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
                  license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['RegionCommitmentParamsArgs']] = None,
                  plan: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -289,6 +308,8 @@ class _RegionCommitmentState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['RegionCommitmentParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -327,6 +348,8 @@ class _RegionCommitmentState:
             pulumi.set(__self__, "license_resource", license_resource)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if project is not None:
@@ -468,6 +491,19 @@ class _RegionCommitmentState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RegionCommitmentParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RegionCommitmentParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The plan for this commitment, which determines duration and discount rate.
@@ -597,6 +633,7 @@ class RegionCommitment(pulumi.CustomResource):
                  existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
                  license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
                  plan: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -644,6 +681,12 @@ class RegionCommitment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent="organizations/ORG_ID",
+            short_name="tagkey")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.id,
+            short_name="tagvalue")
         foobar = gcp.compute.RegionCommitment("foobar",
             name="my-full-commitment",
             description="some description",
@@ -660,7 +703,16 @@ class RegionCommitment(pulumi.CustomResource):
                     "type": "MEMORY",
                     "amount": "9",
                 },
-            ])
+            ],
+            params={
+                "resource_manager_tags": pulumi.Output.all(
+                    tagKeyId=tag_key.id,
+                    tagValueId=tag_value.id
+        ).apply(lambda resolved_outputs: {
+                    resolved_outputs['tagKeyId']: resolved_outputs['tagValueId'],
+                })
+        ,
+            })
         ```
 
         ## Import
@@ -702,6 +754,8 @@ class RegionCommitment(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -764,6 +818,12 @@ class RegionCommitment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent="organizations/ORG_ID",
+            short_name="tagkey")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.id,
+            short_name="tagvalue")
         foobar = gcp.compute.RegionCommitment("foobar",
             name="my-full-commitment",
             description="some description",
@@ -780,7 +840,16 @@ class RegionCommitment(pulumi.CustomResource):
                     "type": "MEMORY",
                     "amount": "9",
                 },
-            ])
+            ],
+            params={
+                "resource_manager_tags": pulumi.Output.all(
+                    tagKeyId=tag_key.id,
+                    tagValueId=tag_value.id
+        ).apply(lambda resolved_outputs: {
+                    resolved_outputs['tagKeyId']: resolved_outputs['tagValueId'],
+                })
+        ,
+            })
         ```
 
         ## Import
@@ -823,6 +892,7 @@ class RegionCommitment(pulumi.CustomResource):
                  existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
                  license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
                  plan: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -843,6 +913,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["existing_reservations"] = existing_reservations
             __props__.__dict__["license_resource"] = license_resource
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
@@ -876,6 +947,7 @@ class RegionCommitment(pulumi.CustomResource):
             existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
             license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
             plan: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -913,6 +985,8 @@ class RegionCommitment(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -946,6 +1020,7 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["existing_reservations"] = existing_reservations
         __props__.__dict__["license_resource"] = license_resource
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["plan"] = plan
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
@@ -1040,6 +1115,15 @@ class RegionCommitment(pulumi.CustomResource):
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.RegionCommitmentParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

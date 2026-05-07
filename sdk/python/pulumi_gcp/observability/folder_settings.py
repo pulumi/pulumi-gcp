@@ -219,7 +219,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_46731",
+            display_name="tf-test-_44154",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
@@ -249,7 +249,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_26240",
+            display_name="tf-test-_90221",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
@@ -308,7 +308,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_46731",
+            display_name="tf-test-_44154",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API
@@ -338,7 +338,7 @@ class FolderSettings(pulumi.CustomResource):
         import pulumiverse_time as time
 
         test_folder = gcp.organizations.Folder("test_folder",
-            display_name="tf-test-_26240",
+            display_name="tf-test-_90221",
             parent="organizations/123456789",
             deletion_protection=False)
         # Wait for the folder to be created and recognized by the Observability API

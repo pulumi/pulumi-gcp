@@ -12130,6 +12130,220 @@ func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) TargetUri() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type UllMirroringCollectorRuleMatch struct {
+	// Direction of traffic to match. When unset, matches any direction.
+	// Possible values:
+	// INGRESS: Traffic inbound to the capture point.
+	// EGRESS: Traffic outbound from the capture point.
+	Direction *string `pulumi:"direction"`
+	// Destination IP ranges to match. When unset, matches any destination IP
+	// range.
+	DstIpRanges []string `pulumi:"dstIpRanges"`
+	// IP protocols to match. When unset, matches any IP protocol.
+	// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+	IpProtocols []string `pulumi:"ipProtocols"`
+	// Source IP ranges to match. When unset, matches any source IP range.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+// UllMirroringCollectorRuleMatchInput is an input type that accepts UllMirroringCollectorRuleMatchArgs and UllMirroringCollectorRuleMatchOutput values.
+// You can construct a concrete instance of `UllMirroringCollectorRuleMatchInput` via:
+//
+//	UllMirroringCollectorRuleMatchArgs{...}
+type UllMirroringCollectorRuleMatchInput interface {
+	pulumi.Input
+
+	ToUllMirroringCollectorRuleMatchOutput() UllMirroringCollectorRuleMatchOutput
+	ToUllMirroringCollectorRuleMatchOutputWithContext(context.Context) UllMirroringCollectorRuleMatchOutput
+}
+
+type UllMirroringCollectorRuleMatchArgs struct {
+	// Direction of traffic to match. When unset, matches any direction.
+	// Possible values:
+	// INGRESS: Traffic inbound to the capture point.
+	// EGRESS: Traffic outbound from the capture point.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Destination IP ranges to match. When unset, matches any destination IP
+	// range.
+	DstIpRanges pulumi.StringArrayInput `pulumi:"dstIpRanges"`
+	// IP protocols to match. When unset, matches any IP protocol.
+	// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
+	// Source IP ranges to match. When unset, matches any source IP range.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+}
+
+func (UllMirroringCollectorRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UllMirroringCollectorRuleMatch)(nil)).Elem()
+}
+
+func (i UllMirroringCollectorRuleMatchArgs) ToUllMirroringCollectorRuleMatchOutput() UllMirroringCollectorRuleMatchOutput {
+	return i.ToUllMirroringCollectorRuleMatchOutputWithContext(context.Background())
+}
+
+func (i UllMirroringCollectorRuleMatchArgs) ToUllMirroringCollectorRuleMatchOutputWithContext(ctx context.Context) UllMirroringCollectorRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UllMirroringCollectorRuleMatchOutput)
+}
+
+func (i UllMirroringCollectorRuleMatchArgs) ToUllMirroringCollectorRuleMatchPtrOutput() UllMirroringCollectorRuleMatchPtrOutput {
+	return i.ToUllMirroringCollectorRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i UllMirroringCollectorRuleMatchArgs) ToUllMirroringCollectorRuleMatchPtrOutputWithContext(ctx context.Context) UllMirroringCollectorRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UllMirroringCollectorRuleMatchOutput).ToUllMirroringCollectorRuleMatchPtrOutputWithContext(ctx)
+}
+
+// UllMirroringCollectorRuleMatchPtrInput is an input type that accepts UllMirroringCollectorRuleMatchArgs, UllMirroringCollectorRuleMatchPtr and UllMirroringCollectorRuleMatchPtrOutput values.
+// You can construct a concrete instance of `UllMirroringCollectorRuleMatchPtrInput` via:
+//
+//	        UllMirroringCollectorRuleMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type UllMirroringCollectorRuleMatchPtrInput interface {
+	pulumi.Input
+
+	ToUllMirroringCollectorRuleMatchPtrOutput() UllMirroringCollectorRuleMatchPtrOutput
+	ToUllMirroringCollectorRuleMatchPtrOutputWithContext(context.Context) UllMirroringCollectorRuleMatchPtrOutput
+}
+
+type ullMirroringCollectorRuleMatchPtrType UllMirroringCollectorRuleMatchArgs
+
+func UllMirroringCollectorRuleMatchPtr(v *UllMirroringCollectorRuleMatchArgs) UllMirroringCollectorRuleMatchPtrInput {
+	return (*ullMirroringCollectorRuleMatchPtrType)(v)
+}
+
+func (*ullMirroringCollectorRuleMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UllMirroringCollectorRuleMatch)(nil)).Elem()
+}
+
+func (i *ullMirroringCollectorRuleMatchPtrType) ToUllMirroringCollectorRuleMatchPtrOutput() UllMirroringCollectorRuleMatchPtrOutput {
+	return i.ToUllMirroringCollectorRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *ullMirroringCollectorRuleMatchPtrType) ToUllMirroringCollectorRuleMatchPtrOutputWithContext(ctx context.Context) UllMirroringCollectorRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UllMirroringCollectorRuleMatchPtrOutput)
+}
+
+type UllMirroringCollectorRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (UllMirroringCollectorRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UllMirroringCollectorRuleMatch)(nil)).Elem()
+}
+
+func (o UllMirroringCollectorRuleMatchOutput) ToUllMirroringCollectorRuleMatchOutput() UllMirroringCollectorRuleMatchOutput {
+	return o
+}
+
+func (o UllMirroringCollectorRuleMatchOutput) ToUllMirroringCollectorRuleMatchOutputWithContext(ctx context.Context) UllMirroringCollectorRuleMatchOutput {
+	return o
+}
+
+func (o UllMirroringCollectorRuleMatchOutput) ToUllMirroringCollectorRuleMatchPtrOutput() UllMirroringCollectorRuleMatchPtrOutput {
+	return o.ToUllMirroringCollectorRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (o UllMirroringCollectorRuleMatchOutput) ToUllMirroringCollectorRuleMatchPtrOutputWithContext(ctx context.Context) UllMirroringCollectorRuleMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UllMirroringCollectorRuleMatch) *UllMirroringCollectorRuleMatch {
+		return &v
+	}).(UllMirroringCollectorRuleMatchPtrOutput)
+}
+
+// Direction of traffic to match. When unset, matches any direction.
+// Possible values:
+// INGRESS: Traffic inbound to the capture point.
+// EGRESS: Traffic outbound from the capture point.
+func (o UllMirroringCollectorRuleMatchOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Destination IP ranges to match. When unset, matches any destination IP
+// range.
+func (o UllMirroringCollectorRuleMatchOutput) DstIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) []string { return v.DstIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// IP protocols to match. When unset, matches any IP protocol.
+// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+func (o UllMirroringCollectorRuleMatchOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+// Source IP ranges to match. When unset, matches any source IP range.
+func (o UllMirroringCollectorRuleMatchOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type UllMirroringCollectorRuleMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (UllMirroringCollectorRuleMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UllMirroringCollectorRuleMatch)(nil)).Elem()
+}
+
+func (o UllMirroringCollectorRuleMatchPtrOutput) ToUllMirroringCollectorRuleMatchPtrOutput() UllMirroringCollectorRuleMatchPtrOutput {
+	return o
+}
+
+func (o UllMirroringCollectorRuleMatchPtrOutput) ToUllMirroringCollectorRuleMatchPtrOutputWithContext(ctx context.Context) UllMirroringCollectorRuleMatchPtrOutput {
+	return o
+}
+
+func (o UllMirroringCollectorRuleMatchPtrOutput) Elem() UllMirroringCollectorRuleMatchOutput {
+	return o.ApplyT(func(v *UllMirroringCollectorRuleMatch) UllMirroringCollectorRuleMatch {
+		if v != nil {
+			return *v
+		}
+		var ret UllMirroringCollectorRuleMatch
+		return ret
+	}).(UllMirroringCollectorRuleMatchOutput)
+}
+
+// Direction of traffic to match. When unset, matches any direction.
+// Possible values:
+// INGRESS: Traffic inbound to the capture point.
+// EGRESS: Traffic outbound from the capture point.
+func (o UllMirroringCollectorRuleMatchPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UllMirroringCollectorRuleMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Destination IP ranges to match. When unset, matches any destination IP
+// range.
+func (o UllMirroringCollectorRuleMatchPtrOutput) DstIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UllMirroringCollectorRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DstIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// IP protocols to match. When unset, matches any IP protocol.
+// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+func (o UllMirroringCollectorRuleMatchPtrOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UllMirroringCollectorRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// Source IP ranges to match. When unset, matches any source IP range.
+func (o UllMirroringCollectorRuleMatchPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UllMirroringCollectorRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetAddressGroupsAddressGroup struct {
 	Capacity int      `pulumi:"capacity"`
 	Items    []string `pulumi:"items"`
@@ -12417,6 +12631,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointPtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UllMirroringCollectorRuleMatchInput)(nil)).Elem(), UllMirroringCollectorRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UllMirroringCollectorRuleMatchPtrInput)(nil)).Elem(), UllMirroringCollectorRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressGroupsAddressGroupInput)(nil)).Elem(), GetAddressGroupsAddressGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressGroupsAddressGroupArrayInput)(nil)).Elem(), GetAddressGroupsAddressGroupArray{})
 	pulumi.RegisterOutputType(AddressGroupIamBindingConditionOutput{})
@@ -12581,6 +12797,8 @@ func init() {
 	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateGrpcEndpointOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(UllMirroringCollectorRuleMatchOutput{})
+	pulumi.RegisterOutputType(UllMirroringCollectorRuleMatchPtrOutput{})
 	pulumi.RegisterOutputType(GetAddressGroupsAddressGroupOutput{})
 	pulumi.RegisterOutputType(GetAddressGroupsAddressGroupArrayOutput{})
 }

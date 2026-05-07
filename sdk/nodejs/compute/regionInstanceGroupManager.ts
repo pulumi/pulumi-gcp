@@ -252,6 +252,12 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     *
+     * - - -
+     */
+    declare public readonly resourcePolicies: pulumi.Output<outputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
+    /**
      * The URL of the created resource.
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
@@ -290,8 +296,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     declare public readonly targetSize: pulumi.Output<number>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * - - -
      */
     declare public readonly targetSizePolicies: pulumi.Output<outputs.compute.RegionInstanceGroupManagerTargetSizePolicy[]>;
     /**
@@ -357,6 +361,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
+            resourceInputs["resourcePolicies"] = state?.resourcePolicies;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["standbyPolicy"] = state?.standbyPolicy;
             resourceInputs["statefulDisks"] = state?.statefulDisks;
@@ -394,6 +399,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
+            resourceInputs["resourcePolicies"] = args?.resourcePolicies;
             resourceInputs["standbyPolicy"] = args?.standbyPolicy;
             resourceInputs["statefulDisks"] = args?.statefulDisks;
             resourceInputs["statefulExternalIps"] = args?.statefulExternalIps;
@@ -518,6 +524,12 @@ export interface RegionInstanceGroupManagerState {
      */
     region?: pulumi.Input<string>;
     /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     *
+     * - - -
+     */
+    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies>;
+    /**
      * The URL of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -556,8 +568,6 @@ export interface RegionInstanceGroupManagerState {
     targetSize?: pulumi.Input<number>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * - - -
      */
     targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[]>;
     /**
@@ -676,6 +686,12 @@ export interface RegionInstanceGroupManagerArgs {
      */
     region?: pulumi.Input<string>;
     /**
+     * Resource policies for this managed instance group. Structure is documented below.
+     *
+     * - - -
+     */
+    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies>;
+    /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
     standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy>;
@@ -706,8 +722,6 @@ export interface RegionInstanceGroupManagerArgs {
     targetSize?: pulumi.Input<number>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     * *
-     * - - -
      */
     targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[]>;
     /**

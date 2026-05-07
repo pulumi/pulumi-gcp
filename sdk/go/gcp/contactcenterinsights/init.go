@@ -27,6 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssessmentRule{}
 	case "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule":
 		r = &AutoLabelingRule{}
+	case "gcp:contactcenterinsights/qaQuestion:QaQuestion":
+		r = &QaQuestion{}
+	case "gcp:contactcenterinsights/qaScorecard:QaScorecard":
+		r = &QaScorecard{}
+	case "gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision":
+		r = &QaScorecardRevision{}
 	case "gcp:contactcenterinsights/view:View":
 		r = &View{}
 	default:
@@ -55,6 +61,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"contactcenterinsights/autoLabelingRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"contactcenterinsights/qaQuestion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"contactcenterinsights/qaScorecard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"contactcenterinsights/qaScorecardRevision",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

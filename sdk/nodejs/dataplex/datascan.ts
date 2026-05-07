@@ -172,6 +172,7 @@ import * as utilities from "../utilities";
  *         samplingPercent: 5,
  *         rowFilter: "station_id > 1000",
  *         catalogPublishingEnabled: true,
+ *         filter: "attributes.priority = 'high'",
  *         postScanActions: {
  *             notificationReport: {
  *                 recipients: {
@@ -187,6 +188,9 @@ import * as utilities from "../utilities";
  *                 column: "address",
  *                 dimension: "VALIDITY",
  *                 threshold: 0.99,
+ *                 attributes: {
+ *                     priority: "high",
+ *                 },
  *                 nonNullExpectation: {},
  *             },
  *             {
@@ -709,6 +713,308 @@ import * as utilities from "../utilities";
  *     },
  *     dataProfileSpec: {},
  *     project: "my-project-name",
+ * }, {
+ *     dependsOn: [
+ *         tfTestTable,
+ *         wait120Seconds,
+ *     ],
+ * });
+ * ```
+ * ### Dataplex Datascan Quality Reusable Rules Catalog Based
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * const sa = new gcp.serviceaccount.Account("sa", {
+ *     accountId: "tf-test-sa-_11380",
+ *     displayName: "DataScan Service Account",
+ *     project: "my-project-name",
+ * });
+ * const dataplexSaImpersonate = new gcp.serviceaccount.IAMMember("dataplex_sa_impersonate", {
+ *     serviceAccountId: sa.name,
+ *     role: "roles/iam.serviceAccountTokenCreator",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-dataplex.iam.gserviceaccount.com`),
+ * });
+ * const saBqDataViewer = new gcp.projects.IAMMember("sa_bq_data_viewer", {
+ *     project: "my-project-name",
+ *     role: "roles/bigquery.dataViewer",
+ *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
+ * });
+ * const saBqJobUser = new gcp.projects.IAMMember("sa_bq_job_user", {
+ *     project: "my-project-name",
+ *     role: "roles/bigquery.jobUser",
+ *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
+ * });
+ * const tfTestDataset = new gcp.bigquery.Dataset("tf_test_dataset", {
+ *     datasetId: "tf_test_dataset_id__35305",
+ *     defaultTableExpirationMs: 3600000,
+ *     deleteContentsOnDestroy: true,
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ * }, {
+ *     dependsOn: [
+ *         dataplexSaImpersonate,
+ *         saBqDataViewer,
+ *         saBqJobUser,
+ *     ],
+ * });
+ * const tfTestTable = new gcp.bigquery.Table("tf_test_table", {
+ *     datasetId: tfTestDataset.datasetId,
+ *     tableId: "tf_test_table_id__62793",
+ *     deletionProtection: false,
+ *     project: "my-project-name",
+ *     schema: `    [
+ *     {
+ *       "name": "name",
+ *       "type": "STRING",
+ *       "mode": "NULLABLE"
+ *     }
+ *     ]
+ * `,
+ * });
+ * const testGroup = new gcp.dataplex.EntryGroup("test_group", {
+ *     location: "us-central1",
+ *     entryGroupId: "test-group-_55438",
+ *     project: "my-project-name",
+ * });
+ * const testEntry = new gcp.dataplex.Entry("test_entry", {
+ *     location: "us-central1",
+ *     entryGroupId: testGroup.entryGroupId,
+ *     entryId: "test-entry-_32706",
+ *     entryType: "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
+ *     project: project.then(project => project.number),
+ *     aspects: [{
+ *         aspectKey: "655216118709.global.data-quality-rule-template",
+ *         aspect: {
+ *             data: JSON.stringify({
+ *                 dimension: "VALIDITY",
+ *                 sqlCollection: [{
+ *                     query: "SELECT * FROM ${param(table_name)} WHERE ${param(column_name)} IS NULL",
+ *                 }],
+ *                 inputParameters: {
+ *                     table_name: {
+ *                         description: "Table Name",
+ *                     },
+ *                     column_name: {
+ *                         description: "Column Name",
+ *                     },
+ *                 },
+ *             }),
+ *         },
+ *     }],
+ * });
+ * const waitForBqSync = new time.Sleep("wait_for_bq_sync", {createDuration: "300s"}, {
+ *     dependsOn: [tfTestTable],
+ * });
+ * const bqTableEntry = new gcp.dataplex.Entry("bq_table_entry", {
+ *     entryGroupId: "@bigquery",
+ *     project: project.then(project => project.projectId),
+ *     location: "us-central1",
+ *     entryId: pulumi.all([project, tfTestDataset.datasetId, tfTestTable.tableId]).apply(([project, datasetId, tableId]) => `bigquery.googleapis.com/projects/${project.projectId}/datasets/${datasetId}/tables/${tableId}`),
+ *     entryType: "projects/655216118709/locations/global/entryTypes/bigquery-table",
+ *     fullyQualifiedName: pulumi.all([project, tfTestDataset.datasetId, tfTestTable.tableId]).apply(([project, datasetId, tableId]) => `bigquery:${project.projectId}.${datasetId}.${tableId}`),
+ *     parentEntry: pulumi.all([project, project, tfTestDataset.datasetId]).apply(([project, project1, datasetId]) => `projects/${project.projectId}/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/${project1.projectId}/datasets/${datasetId}`),
+ *     aspects: [{
+ *         aspectKey: "655216118709.global.data-rules@Schema.name",
+ *         aspect: {
+ *             data: pulumi.jsonStringify({
+ *                 rules: [
+ *                     {
+ *                         name: "rule-to-filter-out",
+ *                         dimension: "VALIDITY",
+ *                         type: "TEMPLATE_REFERENCE",
+ *                         templateReference: {
+ *                             name: testEntry.name,
+ *                             values: {
+ *                                 table_name: {
+ *                                     value: pulumi.all([project, tfTestDataset.datasetId, tfTestTable.tableId]).apply(([project, datasetId, tableId]) => ``${project.projectId}.${datasetId}.${tableId}``),
+ *                                 },
+ *                                 column_name: {
+ *                                     value: "name",
+ *                                 },
+ *                             },
+ *                         },
+ *                         attributes: {
+ *                             priority: "low",
+ *                         },
+ *                     },
+ *                     {
+ *                         name: "non-null-check-name-manual",
+ *                         dimension: "VALIDITY",
+ *                         type: "TEMPLATE_REFERENCE",
+ *                         templateReference: {
+ *                             name: testEntry.name,
+ *                             values: {
+ *                                 table_name: {
+ *                                     value: pulumi.all([project, tfTestDataset.datasetId, tfTestTable.tableId]).apply(([project, datasetId, tableId]) => ``${project.projectId}.${datasetId}.${tableId}``),
+ *                                 },
+ *                                 column_name: {
+ *                                     value: "name",
+ *                                 },
+ *                             },
+ *                         },
+ *                         attributes: {
+ *                             priority: "high",
+ *                         },
+ *                     },
+ *                 ],
+ *             }),
+ *         },
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         waitForBqSync,
+ *         testEntry,
+ *     ],
+ * });
+ * const waitForAspectPropagation = new time.Sleep("wait_for_aspect_propagation", {createDuration: "300s"}, {
+ *     dependsOn: [bqTableEntry],
+ * });
+ * const reusableRulesCatalogBased = new gcp.dataplex.Datascan("reusable_rules_catalog_based", {
+ *     location: "us-central1",
+ *     dataScanId: "dataquality-catalog",
+ *     displayName: "Catalog Datascan Quality",
+ *     description: "Example resource - Catalog Datascan Quality",
+ *     data: {
+ *         resource: pulumi.all([project, tfTestDataset.datasetId, tfTestTable.tableId]).apply(([project, datasetId, tableId]) => `//bigquery.googleapis.com/projects/${project.projectId}/datasets/${datasetId}/tables/${tableId}`),
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             onDemand: {},
+ *         },
+ *     },
+ *     executionIdentity: {
+ *         serviceAccount: {
+ *             email: sa.email,
+ *         },
+ *     },
+ *     dataQualitySpec: {
+ *         enableCatalogBasedRules: true,
+ *         filter: "attributes.priority = \"high\"",
+ *     },
+ *     project: project.then(project => project.projectId),
+ * }, {
+ *     dependsOn: [waitForAspectPropagation],
+ * });
+ * ```
+ * ### Dataplex Datascan Data Quality Template Reference
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * const sa = new gcp.serviceaccount.Account("sa", {
+ *     accountId: "tf-test-sa-_49082",
+ *     displayName: "DataScan Service Account",
+ *     project: project.then(project => project.projectId),
+ * });
+ * const dataplexSaImpersonate = new gcp.serviceaccount.IAMMember("dataplex_sa_impersonate", {
+ *     serviceAccountId: sa.name,
+ *     role: "roles/iam.serviceAccountTokenCreator",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-dataplex.iam.gserviceaccount.com`),
+ * });
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [dataplexSaImpersonate],
+ * });
+ * const saBqDataViewer = new gcp.projects.IAMMember("sa_bq_data_viewer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.dataViewer",
+ *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
+ * });
+ * const saBqJobUser = new gcp.projects.IAMMember("sa_bq_job_user", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.jobUser",
+ *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
+ * });
+ * const testGroup = new gcp.dataplex.EntryGroup("test_group", {
+ *     location: "us-central1",
+ *     entryGroupId: "test-group-_60365",
+ *     project: project.then(project => project.projectId),
+ * });
+ * const testEntry = new gcp.dataplex.Entry("test_entry", {
+ *     location: "us-central1",
+ *     entryGroupId: testGroup.entryGroupId,
+ *     entryId: "test-entry-_80215",
+ *     entryType: "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
+ *     project: project.then(project => project.number),
+ *     aspects: [{
+ *         aspectKey: "655216118709.global.data-quality-rule-template",
+ *         aspect: {
+ *             data: JSON.stringify({
+ *                 dimension: "VALIDITY",
+ *                 sqlCollection: [{
+ *                     query: "SELECT * FROM ${data()} WHERE ${column()} IS NOT NULL",
+ *                 }],
+ *             }),
+ *         },
+ *     }],
+ * });
+ * const tfTestDataset = new gcp.bigquery.Dataset("tf_test_dataset", {
+ *     datasetId: "tf_test_dataset_id__59033",
+ *     defaultTableExpirationMs: 3600000,
+ *     location: "us-central1",
+ *     project: project.then(project => project.projectId),
+ * }, {
+ *     dependsOn: [
+ *         dataplexSaImpersonate,
+ *         saBqDataViewer,
+ *         saBqJobUser,
+ *     ],
+ * });
+ * const tfTestTable = new gcp.bigquery.Table("tf_test_table", {
+ *     datasetId: tfTestDataset.datasetId,
+ *     tableId: "tf_test_table_id__32081",
+ *     deletionProtection: false,
+ *     project: project.then(project => project.projectId),
+ *     schema: `    [
+ *     {
+ *       \\"name\\": \\"name\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\"
+ *     }
+ *     ]
+ * `,
+ * });
+ * const dataQualityTemplateReference = new gcp.dataplex.Datascan("data_quality_template_reference", {
+ *     location: "us-central1",
+ *     displayName: "Data Quality Template Reference",
+ *     dataScanId: "dataquality-template",
+ *     data: {
+ *         resource: pulumi.all([project, tfTestDataset.datasetId, tfTestTable.tableId]).apply(([project, datasetId, tableId]) => `//bigquery.googleapis.com/projects/${project.projectId}/datasets/${datasetId}/tables/${tableId}`),
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             onDemand: {},
+ *         },
+ *     },
+ *     executionIdentity: {
+ *         serviceAccount: {
+ *             email: sa.email,
+ *         },
+ *     },
+ *     dataQualitySpec: {
+ *         rules: [{
+ *             column: "name",
+ *             dimension: "VALIDITY",
+ *             templateReference: {
+ *                 name: testEntry.name,
+ *                 values: [{
+ *                     name: "min_length",
+ *                     value: "10",
+ *                 }],
+ *             },
+ *         }],
+ *     },
+ *     project: project.then(project => project.projectId),
  * }, {
  *     dependsOn: [
  *         tfTestTable,

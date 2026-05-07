@@ -1468,6 +1468,1106 @@ func (o AutoLabelingRuleConditionArrayOutput) Index(i pulumi.IntInput) AutoLabel
 	}).(AutoLabelingRuleConditionOutput)
 }
 
+type QaQuestionAnswerChoice struct {
+	// Boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// A short string used as an identifier.
+	Key *string `pulumi:"key"`
+	// A value of "Not Applicable (N/A)". If provided, this field may only
+	// be set to `true`. If a question receives this answer, it will be
+	// excluded from any score calculations.
+	NaValue *bool `pulumi:"naValue"`
+	// Numerical value.
+	NumValue *float64 `pulumi:"numValue"`
+	// Numerical score of the answer, used for generating the overall score of
+	// a QaScorecardResult. If the answer uses na_value, this field is unused.
+	Score *float64 `pulumi:"score"`
+	// String value.
+	StrValue *string `pulumi:"strValue"`
+}
+
+// QaQuestionAnswerChoiceInput is an input type that accepts QaQuestionAnswerChoiceArgs and QaQuestionAnswerChoiceOutput values.
+// You can construct a concrete instance of `QaQuestionAnswerChoiceInput` via:
+//
+//	QaQuestionAnswerChoiceArgs{...}
+type QaQuestionAnswerChoiceInput interface {
+	pulumi.Input
+
+	ToQaQuestionAnswerChoiceOutput() QaQuestionAnswerChoiceOutput
+	ToQaQuestionAnswerChoiceOutputWithContext(context.Context) QaQuestionAnswerChoiceOutput
+}
+
+type QaQuestionAnswerChoiceArgs struct {
+	// Boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// A short string used as an identifier.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// A value of "Not Applicable (N/A)". If provided, this field may only
+	// be set to `true`. If a question receives this answer, it will be
+	// excluded from any score calculations.
+	NaValue pulumi.BoolPtrInput `pulumi:"naValue"`
+	// Numerical value.
+	NumValue pulumi.Float64PtrInput `pulumi:"numValue"`
+	// Numerical score of the answer, used for generating the overall score of
+	// a QaScorecardResult. If the answer uses na_value, this field is unused.
+	Score pulumi.Float64PtrInput `pulumi:"score"`
+	// String value.
+	StrValue pulumi.StringPtrInput `pulumi:"strValue"`
+}
+
+func (QaQuestionAnswerChoiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionAnswerChoice)(nil)).Elem()
+}
+
+func (i QaQuestionAnswerChoiceArgs) ToQaQuestionAnswerChoiceOutput() QaQuestionAnswerChoiceOutput {
+	return i.ToQaQuestionAnswerChoiceOutputWithContext(context.Background())
+}
+
+func (i QaQuestionAnswerChoiceArgs) ToQaQuestionAnswerChoiceOutputWithContext(ctx context.Context) QaQuestionAnswerChoiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionAnswerChoiceOutput)
+}
+
+// QaQuestionAnswerChoiceArrayInput is an input type that accepts QaQuestionAnswerChoiceArray and QaQuestionAnswerChoiceArrayOutput values.
+// You can construct a concrete instance of `QaQuestionAnswerChoiceArrayInput` via:
+//
+//	QaQuestionAnswerChoiceArray{ QaQuestionAnswerChoiceArgs{...} }
+type QaQuestionAnswerChoiceArrayInput interface {
+	pulumi.Input
+
+	ToQaQuestionAnswerChoiceArrayOutput() QaQuestionAnswerChoiceArrayOutput
+	ToQaQuestionAnswerChoiceArrayOutputWithContext(context.Context) QaQuestionAnswerChoiceArrayOutput
+}
+
+type QaQuestionAnswerChoiceArray []QaQuestionAnswerChoiceInput
+
+func (QaQuestionAnswerChoiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QaQuestionAnswerChoice)(nil)).Elem()
+}
+
+func (i QaQuestionAnswerChoiceArray) ToQaQuestionAnswerChoiceArrayOutput() QaQuestionAnswerChoiceArrayOutput {
+	return i.ToQaQuestionAnswerChoiceArrayOutputWithContext(context.Background())
+}
+
+func (i QaQuestionAnswerChoiceArray) ToQaQuestionAnswerChoiceArrayOutputWithContext(ctx context.Context) QaQuestionAnswerChoiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionAnswerChoiceArrayOutput)
+}
+
+type QaQuestionAnswerChoiceOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionAnswerChoiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionAnswerChoice)(nil)).Elem()
+}
+
+func (o QaQuestionAnswerChoiceOutput) ToQaQuestionAnswerChoiceOutput() QaQuestionAnswerChoiceOutput {
+	return o
+}
+
+func (o QaQuestionAnswerChoiceOutput) ToQaQuestionAnswerChoiceOutputWithContext(ctx context.Context) QaQuestionAnswerChoiceOutput {
+	return o
+}
+
+// Boolean value.
+func (o QaQuestionAnswerChoiceOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QaQuestionAnswerChoice) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// A short string used as an identifier.
+func (o QaQuestionAnswerChoiceOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaQuestionAnswerChoice) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// A value of "Not Applicable (N/A)". If provided, this field may only
+// be set to `true`. If a question receives this answer, it will be
+// excluded from any score calculations.
+func (o QaQuestionAnswerChoiceOutput) NaValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QaQuestionAnswerChoice) *bool { return v.NaValue }).(pulumi.BoolPtrOutput)
+}
+
+// Numerical value.
+func (o QaQuestionAnswerChoiceOutput) NumValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QaQuestionAnswerChoice) *float64 { return v.NumValue }).(pulumi.Float64PtrOutput)
+}
+
+// Numerical score of the answer, used for generating the overall score of
+// a QaScorecardResult. If the answer uses na_value, this field is unused.
+func (o QaQuestionAnswerChoiceOutput) Score() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QaQuestionAnswerChoice) *float64 { return v.Score }).(pulumi.Float64PtrOutput)
+}
+
+// String value.
+func (o QaQuestionAnswerChoiceOutput) StrValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaQuestionAnswerChoice) *string { return v.StrValue }).(pulumi.StringPtrOutput)
+}
+
+type QaQuestionAnswerChoiceArrayOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionAnswerChoiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QaQuestionAnswerChoice)(nil)).Elem()
+}
+
+func (o QaQuestionAnswerChoiceArrayOutput) ToQaQuestionAnswerChoiceArrayOutput() QaQuestionAnswerChoiceArrayOutput {
+	return o
+}
+
+func (o QaQuestionAnswerChoiceArrayOutput) ToQaQuestionAnswerChoiceArrayOutputWithContext(ctx context.Context) QaQuestionAnswerChoiceArrayOutput {
+	return o
+}
+
+func (o QaQuestionAnswerChoiceArrayOutput) Index(i pulumi.IntInput) QaQuestionAnswerChoiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QaQuestionAnswerChoice {
+		return vs[0].([]QaQuestionAnswerChoice)[vs[1].(int)]
+	}).(QaQuestionAnswerChoiceOutput)
+}
+
+type QaQuestionMetrics struct {
+	// (Output)
+	// Accuracy of the model. Measures the percentage of correct answers the
+	// model gave on the test set.
+	Accuracy *float64 `pulumi:"accuracy"`
+}
+
+// QaQuestionMetricsInput is an input type that accepts QaQuestionMetricsArgs and QaQuestionMetricsOutput values.
+// You can construct a concrete instance of `QaQuestionMetricsInput` via:
+//
+//	QaQuestionMetricsArgs{...}
+type QaQuestionMetricsInput interface {
+	pulumi.Input
+
+	ToQaQuestionMetricsOutput() QaQuestionMetricsOutput
+	ToQaQuestionMetricsOutputWithContext(context.Context) QaQuestionMetricsOutput
+}
+
+type QaQuestionMetricsArgs struct {
+	// (Output)
+	// Accuracy of the model. Measures the percentage of correct answers the
+	// model gave on the test set.
+	Accuracy pulumi.Float64PtrInput `pulumi:"accuracy"`
+}
+
+func (QaQuestionMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionMetrics)(nil)).Elem()
+}
+
+func (i QaQuestionMetricsArgs) ToQaQuestionMetricsOutput() QaQuestionMetricsOutput {
+	return i.ToQaQuestionMetricsOutputWithContext(context.Background())
+}
+
+func (i QaQuestionMetricsArgs) ToQaQuestionMetricsOutputWithContext(ctx context.Context) QaQuestionMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionMetricsOutput)
+}
+
+func (i QaQuestionMetricsArgs) ToQaQuestionMetricsPtrOutput() QaQuestionMetricsPtrOutput {
+	return i.ToQaQuestionMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i QaQuestionMetricsArgs) ToQaQuestionMetricsPtrOutputWithContext(ctx context.Context) QaQuestionMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionMetricsOutput).ToQaQuestionMetricsPtrOutputWithContext(ctx)
+}
+
+// QaQuestionMetricsPtrInput is an input type that accepts QaQuestionMetricsArgs, QaQuestionMetricsPtr and QaQuestionMetricsPtrOutput values.
+// You can construct a concrete instance of `QaQuestionMetricsPtrInput` via:
+//
+//	        QaQuestionMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type QaQuestionMetricsPtrInput interface {
+	pulumi.Input
+
+	ToQaQuestionMetricsPtrOutput() QaQuestionMetricsPtrOutput
+	ToQaQuestionMetricsPtrOutputWithContext(context.Context) QaQuestionMetricsPtrOutput
+}
+
+type qaQuestionMetricsPtrType QaQuestionMetricsArgs
+
+func QaQuestionMetricsPtr(v *QaQuestionMetricsArgs) QaQuestionMetricsPtrInput {
+	return (*qaQuestionMetricsPtrType)(v)
+}
+
+func (*qaQuestionMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionMetrics)(nil)).Elem()
+}
+
+func (i *qaQuestionMetricsPtrType) ToQaQuestionMetricsPtrOutput() QaQuestionMetricsPtrOutput {
+	return i.ToQaQuestionMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *qaQuestionMetricsPtrType) ToQaQuestionMetricsPtrOutputWithContext(ctx context.Context) QaQuestionMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionMetricsPtrOutput)
+}
+
+type QaQuestionMetricsOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionMetrics)(nil)).Elem()
+}
+
+func (o QaQuestionMetricsOutput) ToQaQuestionMetricsOutput() QaQuestionMetricsOutput {
+	return o
+}
+
+func (o QaQuestionMetricsOutput) ToQaQuestionMetricsOutputWithContext(ctx context.Context) QaQuestionMetricsOutput {
+	return o
+}
+
+func (o QaQuestionMetricsOutput) ToQaQuestionMetricsPtrOutput() QaQuestionMetricsPtrOutput {
+	return o.ToQaQuestionMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o QaQuestionMetricsOutput) ToQaQuestionMetricsPtrOutputWithContext(ctx context.Context) QaQuestionMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QaQuestionMetrics) *QaQuestionMetrics {
+		return &v
+	}).(QaQuestionMetricsPtrOutput)
+}
+
+// (Output)
+// Accuracy of the model. Measures the percentage of correct answers the
+// model gave on the test set.
+func (o QaQuestionMetricsOutput) Accuracy() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QaQuestionMetrics) *float64 { return v.Accuracy }).(pulumi.Float64PtrOutput)
+}
+
+type QaQuestionMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionMetrics)(nil)).Elem()
+}
+
+func (o QaQuestionMetricsPtrOutput) ToQaQuestionMetricsPtrOutput() QaQuestionMetricsPtrOutput {
+	return o
+}
+
+func (o QaQuestionMetricsPtrOutput) ToQaQuestionMetricsPtrOutputWithContext(ctx context.Context) QaQuestionMetricsPtrOutput {
+	return o
+}
+
+func (o QaQuestionMetricsPtrOutput) Elem() QaQuestionMetricsOutput {
+	return o.ApplyT(func(v *QaQuestionMetrics) QaQuestionMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret QaQuestionMetrics
+		return ret
+	}).(QaQuestionMetricsOutput)
+}
+
+// (Output)
+// Accuracy of the model. Measures the percentage of correct answers the
+// model gave on the test set.
+func (o QaQuestionMetricsPtrOutput) Accuracy() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *QaQuestionMetrics) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Accuracy
+	}).(pulumi.Float64PtrOutput)
+}
+
+type QaQuestionPredefinedQuestionConfig struct {
+	// The type of the predefined question.
+	// Possible values:
+	// CONVERSATION_OUTCOME
+	// CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
+	Type *string `pulumi:"type"`
+}
+
+// QaQuestionPredefinedQuestionConfigInput is an input type that accepts QaQuestionPredefinedQuestionConfigArgs and QaQuestionPredefinedQuestionConfigOutput values.
+// You can construct a concrete instance of `QaQuestionPredefinedQuestionConfigInput` via:
+//
+//	QaQuestionPredefinedQuestionConfigArgs{...}
+type QaQuestionPredefinedQuestionConfigInput interface {
+	pulumi.Input
+
+	ToQaQuestionPredefinedQuestionConfigOutput() QaQuestionPredefinedQuestionConfigOutput
+	ToQaQuestionPredefinedQuestionConfigOutputWithContext(context.Context) QaQuestionPredefinedQuestionConfigOutput
+}
+
+type QaQuestionPredefinedQuestionConfigArgs struct {
+	// The type of the predefined question.
+	// Possible values:
+	// CONVERSATION_OUTCOME
+	// CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (QaQuestionPredefinedQuestionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionPredefinedQuestionConfig)(nil)).Elem()
+}
+
+func (i QaQuestionPredefinedQuestionConfigArgs) ToQaQuestionPredefinedQuestionConfigOutput() QaQuestionPredefinedQuestionConfigOutput {
+	return i.ToQaQuestionPredefinedQuestionConfigOutputWithContext(context.Background())
+}
+
+func (i QaQuestionPredefinedQuestionConfigArgs) ToQaQuestionPredefinedQuestionConfigOutputWithContext(ctx context.Context) QaQuestionPredefinedQuestionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionPredefinedQuestionConfigOutput)
+}
+
+func (i QaQuestionPredefinedQuestionConfigArgs) ToQaQuestionPredefinedQuestionConfigPtrOutput() QaQuestionPredefinedQuestionConfigPtrOutput {
+	return i.ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i QaQuestionPredefinedQuestionConfigArgs) ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(ctx context.Context) QaQuestionPredefinedQuestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionPredefinedQuestionConfigOutput).ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(ctx)
+}
+
+// QaQuestionPredefinedQuestionConfigPtrInput is an input type that accepts QaQuestionPredefinedQuestionConfigArgs, QaQuestionPredefinedQuestionConfigPtr and QaQuestionPredefinedQuestionConfigPtrOutput values.
+// You can construct a concrete instance of `QaQuestionPredefinedQuestionConfigPtrInput` via:
+//
+//	        QaQuestionPredefinedQuestionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type QaQuestionPredefinedQuestionConfigPtrInput interface {
+	pulumi.Input
+
+	ToQaQuestionPredefinedQuestionConfigPtrOutput() QaQuestionPredefinedQuestionConfigPtrOutput
+	ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(context.Context) QaQuestionPredefinedQuestionConfigPtrOutput
+}
+
+type qaQuestionPredefinedQuestionConfigPtrType QaQuestionPredefinedQuestionConfigArgs
+
+func QaQuestionPredefinedQuestionConfigPtr(v *QaQuestionPredefinedQuestionConfigArgs) QaQuestionPredefinedQuestionConfigPtrInput {
+	return (*qaQuestionPredefinedQuestionConfigPtrType)(v)
+}
+
+func (*qaQuestionPredefinedQuestionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionPredefinedQuestionConfig)(nil)).Elem()
+}
+
+func (i *qaQuestionPredefinedQuestionConfigPtrType) ToQaQuestionPredefinedQuestionConfigPtrOutput() QaQuestionPredefinedQuestionConfigPtrOutput {
+	return i.ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *qaQuestionPredefinedQuestionConfigPtrType) ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(ctx context.Context) QaQuestionPredefinedQuestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionPredefinedQuestionConfigPtrOutput)
+}
+
+type QaQuestionPredefinedQuestionConfigOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionPredefinedQuestionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionPredefinedQuestionConfig)(nil)).Elem()
+}
+
+func (o QaQuestionPredefinedQuestionConfigOutput) ToQaQuestionPredefinedQuestionConfigOutput() QaQuestionPredefinedQuestionConfigOutput {
+	return o
+}
+
+func (o QaQuestionPredefinedQuestionConfigOutput) ToQaQuestionPredefinedQuestionConfigOutputWithContext(ctx context.Context) QaQuestionPredefinedQuestionConfigOutput {
+	return o
+}
+
+func (o QaQuestionPredefinedQuestionConfigOutput) ToQaQuestionPredefinedQuestionConfigPtrOutput() QaQuestionPredefinedQuestionConfigPtrOutput {
+	return o.ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o QaQuestionPredefinedQuestionConfigOutput) ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(ctx context.Context) QaQuestionPredefinedQuestionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QaQuestionPredefinedQuestionConfig) *QaQuestionPredefinedQuestionConfig {
+		return &v
+	}).(QaQuestionPredefinedQuestionConfigPtrOutput)
+}
+
+// The type of the predefined question.
+// Possible values:
+// CONVERSATION_OUTCOME
+// CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
+func (o QaQuestionPredefinedQuestionConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaQuestionPredefinedQuestionConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type QaQuestionPredefinedQuestionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionPredefinedQuestionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionPredefinedQuestionConfig)(nil)).Elem()
+}
+
+func (o QaQuestionPredefinedQuestionConfigPtrOutput) ToQaQuestionPredefinedQuestionConfigPtrOutput() QaQuestionPredefinedQuestionConfigPtrOutput {
+	return o
+}
+
+func (o QaQuestionPredefinedQuestionConfigPtrOutput) ToQaQuestionPredefinedQuestionConfigPtrOutputWithContext(ctx context.Context) QaQuestionPredefinedQuestionConfigPtrOutput {
+	return o
+}
+
+func (o QaQuestionPredefinedQuestionConfigPtrOutput) Elem() QaQuestionPredefinedQuestionConfigOutput {
+	return o.ApplyT(func(v *QaQuestionPredefinedQuestionConfig) QaQuestionPredefinedQuestionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret QaQuestionPredefinedQuestionConfig
+		return ret
+	}).(QaQuestionPredefinedQuestionConfigOutput)
+}
+
+// The type of the predefined question.
+// Possible values:
+// CONVERSATION_OUTCOME
+// CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
+func (o QaQuestionPredefinedQuestionConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QaQuestionPredefinedQuestionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type QaQuestionQaQuestionDataOptions struct {
+	// Options for configuring what metadata is included in the conversation data
+	// used in QAI and Discovery Engine.
+	// Structure is documented below.
+	ConversationDataOptions *QaQuestionQaQuestionDataOptionsConversationDataOptions `pulumi:"conversationDataOptions"`
+}
+
+// QaQuestionQaQuestionDataOptionsInput is an input type that accepts QaQuestionQaQuestionDataOptionsArgs and QaQuestionQaQuestionDataOptionsOutput values.
+// You can construct a concrete instance of `QaQuestionQaQuestionDataOptionsInput` via:
+//
+//	QaQuestionQaQuestionDataOptionsArgs{...}
+type QaQuestionQaQuestionDataOptionsInput interface {
+	pulumi.Input
+
+	ToQaQuestionQaQuestionDataOptionsOutput() QaQuestionQaQuestionDataOptionsOutput
+	ToQaQuestionQaQuestionDataOptionsOutputWithContext(context.Context) QaQuestionQaQuestionDataOptionsOutput
+}
+
+type QaQuestionQaQuestionDataOptionsArgs struct {
+	// Options for configuring what metadata is included in the conversation data
+	// used in QAI and Discovery Engine.
+	// Structure is documented below.
+	ConversationDataOptions QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrInput `pulumi:"conversationDataOptions"`
+}
+
+func (QaQuestionQaQuestionDataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionQaQuestionDataOptions)(nil)).Elem()
+}
+
+func (i QaQuestionQaQuestionDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsOutput() QaQuestionQaQuestionDataOptionsOutput {
+	return i.ToQaQuestionQaQuestionDataOptionsOutputWithContext(context.Background())
+}
+
+func (i QaQuestionQaQuestionDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionQaQuestionDataOptionsOutput)
+}
+
+func (i QaQuestionQaQuestionDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsPtrOutput {
+	return i.ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i QaQuestionQaQuestionDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionQaQuestionDataOptionsOutput).ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(ctx)
+}
+
+// QaQuestionQaQuestionDataOptionsPtrInput is an input type that accepts QaQuestionQaQuestionDataOptionsArgs, QaQuestionQaQuestionDataOptionsPtr and QaQuestionQaQuestionDataOptionsPtrOutput values.
+// You can construct a concrete instance of `QaQuestionQaQuestionDataOptionsPtrInput` via:
+//
+//	        QaQuestionQaQuestionDataOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type QaQuestionQaQuestionDataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToQaQuestionQaQuestionDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsPtrOutput
+	ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(context.Context) QaQuestionQaQuestionDataOptionsPtrOutput
+}
+
+type qaQuestionQaQuestionDataOptionsPtrType QaQuestionQaQuestionDataOptionsArgs
+
+func QaQuestionQaQuestionDataOptionsPtr(v *QaQuestionQaQuestionDataOptionsArgs) QaQuestionQaQuestionDataOptionsPtrInput {
+	return (*qaQuestionQaQuestionDataOptionsPtrType)(v)
+}
+
+func (*qaQuestionQaQuestionDataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionQaQuestionDataOptions)(nil)).Elem()
+}
+
+func (i *qaQuestionQaQuestionDataOptionsPtrType) ToQaQuestionQaQuestionDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsPtrOutput {
+	return i.ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *qaQuestionQaQuestionDataOptionsPtrType) ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionQaQuestionDataOptionsPtrOutput)
+}
+
+type QaQuestionQaQuestionDataOptionsOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionQaQuestionDataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionQaQuestionDataOptions)(nil)).Elem()
+}
+
+func (o QaQuestionQaQuestionDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsOutput() QaQuestionQaQuestionDataOptionsOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsPtrOutput {
+	return o.ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o QaQuestionQaQuestionDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QaQuestionQaQuestionDataOptions) *QaQuestionQaQuestionDataOptions {
+		return &v
+	}).(QaQuestionQaQuestionDataOptionsPtrOutput)
+}
+
+// Options for configuring what metadata is included in the conversation data
+// used in QAI and Discovery Engine.
+// Structure is documented below.
+func (o QaQuestionQaQuestionDataOptionsOutput) ConversationDataOptions() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return o.ApplyT(func(v QaQuestionQaQuestionDataOptions) *QaQuestionQaQuestionDataOptionsConversationDataOptions {
+		return v.ConversationDataOptions
+	}).(QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput)
+}
+
+type QaQuestionQaQuestionDataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionQaQuestionDataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionQaQuestionDataOptions)(nil)).Elem()
+}
+
+func (o QaQuestionQaQuestionDataOptionsPtrOutput) ToQaQuestionQaQuestionDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsPtrOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsPtrOutput) ToQaQuestionQaQuestionDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsPtrOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsPtrOutput) Elem() QaQuestionQaQuestionDataOptionsOutput {
+	return o.ApplyT(func(v *QaQuestionQaQuestionDataOptions) QaQuestionQaQuestionDataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret QaQuestionQaQuestionDataOptions
+		return ret
+	}).(QaQuestionQaQuestionDataOptionsOutput)
+}
+
+// Options for configuring what metadata is included in the conversation data
+// used in QAI and Discovery Engine.
+// Structure is documented below.
+func (o QaQuestionQaQuestionDataOptionsPtrOutput) ConversationDataOptions() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return o.ApplyT(func(v *QaQuestionQaQuestionDataOptions) *QaQuestionQaQuestionDataOptionsConversationDataOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ConversationDataOptions
+	}).(QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput)
+}
+
+type QaQuestionQaQuestionDataOptionsConversationDataOptions struct {
+	// Whether to include the per turn Dialogflow interaction data in conversation
+	// transcript.
+	IncludeDialogflowInteractionData *bool `pulumi:"includeDialogflowInteractionData"`
+}
+
+// QaQuestionQaQuestionDataOptionsConversationDataOptionsInput is an input type that accepts QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs and QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput values.
+// You can construct a concrete instance of `QaQuestionQaQuestionDataOptionsConversationDataOptionsInput` via:
+//
+//	QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs{...}
+type QaQuestionQaQuestionDataOptionsConversationDataOptionsInput interface {
+	pulumi.Input
+
+	ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput
+	ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutputWithContext(context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput
+}
+
+type QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs struct {
+	// Whether to include the per turn Dialogflow interaction data in conversation
+	// transcript.
+	IncludeDialogflowInteractionData pulumi.BoolPtrInput `pulumi:"includeDialogflowInteractionData"`
+}
+
+func (QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionQaQuestionDataOptionsConversationDataOptions)(nil)).Elem()
+}
+
+func (i QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput {
+	return i.ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutputWithContext(context.Background())
+}
+
+func (i QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput)
+}
+
+func (i QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return i.ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput).ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(ctx)
+}
+
+// QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrInput is an input type that accepts QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs, QaQuestionQaQuestionDataOptionsConversationDataOptionsPtr and QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput values.
+// You can construct a concrete instance of `QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrInput` via:
+//
+//	        QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput
+	ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput
+}
+
+type qaQuestionQaQuestionDataOptionsConversationDataOptionsPtrType QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs
+
+func QaQuestionQaQuestionDataOptionsConversationDataOptionsPtr(v *QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs) QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrInput {
+	return (*qaQuestionQaQuestionDataOptionsConversationDataOptionsPtrType)(v)
+}
+
+func (*qaQuestionQaQuestionDataOptionsConversationDataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionQaQuestionDataOptionsConversationDataOptions)(nil)).Elem()
+}
+
+func (i *qaQuestionQaQuestionDataOptionsConversationDataOptionsPtrType) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return i.ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *qaQuestionQaQuestionDataOptionsConversationDataOptionsPtrType) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput)
+}
+
+type QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionQaQuestionDataOptionsConversationDataOptions)(nil)).Elem()
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return o.ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QaQuestionQaQuestionDataOptionsConversationDataOptions) *QaQuestionQaQuestionDataOptionsConversationDataOptions {
+		return &v
+	}).(QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput)
+}
+
+// Whether to include the per turn Dialogflow interaction data in conversation
+// transcript.
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput) IncludeDialogflowInteractionData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QaQuestionQaQuestionDataOptionsConversationDataOptions) *bool {
+		return v.IncludeDialogflowInteractionData
+	}).(pulumi.BoolPtrOutput)
+}
+
+type QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionQaQuestionDataOptionsConversationDataOptions)(nil)).Elem()
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput() QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput) ToQaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutputWithContext(ctx context.Context) QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput {
+	return o
+}
+
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput) Elem() QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput {
+	return o.ApplyT(func(v *QaQuestionQaQuestionDataOptionsConversationDataOptions) QaQuestionQaQuestionDataOptionsConversationDataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret QaQuestionQaQuestionDataOptionsConversationDataOptions
+		return ret
+	}).(QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput)
+}
+
+// Whether to include the per turn Dialogflow interaction data in conversation
+// transcript.
+func (o QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput) IncludeDialogflowInteractionData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QaQuestionQaQuestionDataOptionsConversationDataOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeDialogflowInteractionData
+	}).(pulumi.BoolPtrOutput)
+}
+
+type QaQuestionTuningMetadata struct {
+	// A list of any applicable data validation warnings about the question's
+	// feedback labels.
+	DatasetValidationWarnings []string `pulumi:"datasetValidationWarnings"`
+	// Total number of valid labels provided for the question at the time of
+	// tuining.
+	TotalValidLabelCount *string `pulumi:"totalValidLabelCount"`
+	// Error status of the tuning operation for the question. Will only be set
+	// if the tuning operation failed.
+	TuningError *string `pulumi:"tuningError"`
+}
+
+// QaQuestionTuningMetadataInput is an input type that accepts QaQuestionTuningMetadataArgs and QaQuestionTuningMetadataOutput values.
+// You can construct a concrete instance of `QaQuestionTuningMetadataInput` via:
+//
+//	QaQuestionTuningMetadataArgs{...}
+type QaQuestionTuningMetadataInput interface {
+	pulumi.Input
+
+	ToQaQuestionTuningMetadataOutput() QaQuestionTuningMetadataOutput
+	ToQaQuestionTuningMetadataOutputWithContext(context.Context) QaQuestionTuningMetadataOutput
+}
+
+type QaQuestionTuningMetadataArgs struct {
+	// A list of any applicable data validation warnings about the question's
+	// feedback labels.
+	DatasetValidationWarnings pulumi.StringArrayInput `pulumi:"datasetValidationWarnings"`
+	// Total number of valid labels provided for the question at the time of
+	// tuining.
+	TotalValidLabelCount pulumi.StringPtrInput `pulumi:"totalValidLabelCount"`
+	// Error status of the tuning operation for the question. Will only be set
+	// if the tuning operation failed.
+	TuningError pulumi.StringPtrInput `pulumi:"tuningError"`
+}
+
+func (QaQuestionTuningMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionTuningMetadata)(nil)).Elem()
+}
+
+func (i QaQuestionTuningMetadataArgs) ToQaQuestionTuningMetadataOutput() QaQuestionTuningMetadataOutput {
+	return i.ToQaQuestionTuningMetadataOutputWithContext(context.Background())
+}
+
+func (i QaQuestionTuningMetadataArgs) ToQaQuestionTuningMetadataOutputWithContext(ctx context.Context) QaQuestionTuningMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionTuningMetadataOutput)
+}
+
+func (i QaQuestionTuningMetadataArgs) ToQaQuestionTuningMetadataPtrOutput() QaQuestionTuningMetadataPtrOutput {
+	return i.ToQaQuestionTuningMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i QaQuestionTuningMetadataArgs) ToQaQuestionTuningMetadataPtrOutputWithContext(ctx context.Context) QaQuestionTuningMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionTuningMetadataOutput).ToQaQuestionTuningMetadataPtrOutputWithContext(ctx)
+}
+
+// QaQuestionTuningMetadataPtrInput is an input type that accepts QaQuestionTuningMetadataArgs, QaQuestionTuningMetadataPtr and QaQuestionTuningMetadataPtrOutput values.
+// You can construct a concrete instance of `QaQuestionTuningMetadataPtrInput` via:
+//
+//	        QaQuestionTuningMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type QaQuestionTuningMetadataPtrInput interface {
+	pulumi.Input
+
+	ToQaQuestionTuningMetadataPtrOutput() QaQuestionTuningMetadataPtrOutput
+	ToQaQuestionTuningMetadataPtrOutputWithContext(context.Context) QaQuestionTuningMetadataPtrOutput
+}
+
+type qaQuestionTuningMetadataPtrType QaQuestionTuningMetadataArgs
+
+func QaQuestionTuningMetadataPtr(v *QaQuestionTuningMetadataArgs) QaQuestionTuningMetadataPtrInput {
+	return (*qaQuestionTuningMetadataPtrType)(v)
+}
+
+func (*qaQuestionTuningMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionTuningMetadata)(nil)).Elem()
+}
+
+func (i *qaQuestionTuningMetadataPtrType) ToQaQuestionTuningMetadataPtrOutput() QaQuestionTuningMetadataPtrOutput {
+	return i.ToQaQuestionTuningMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *qaQuestionTuningMetadataPtrType) ToQaQuestionTuningMetadataPtrOutputWithContext(ctx context.Context) QaQuestionTuningMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaQuestionTuningMetadataPtrOutput)
+}
+
+type QaQuestionTuningMetadataOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionTuningMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaQuestionTuningMetadata)(nil)).Elem()
+}
+
+func (o QaQuestionTuningMetadataOutput) ToQaQuestionTuningMetadataOutput() QaQuestionTuningMetadataOutput {
+	return o
+}
+
+func (o QaQuestionTuningMetadataOutput) ToQaQuestionTuningMetadataOutputWithContext(ctx context.Context) QaQuestionTuningMetadataOutput {
+	return o
+}
+
+func (o QaQuestionTuningMetadataOutput) ToQaQuestionTuningMetadataPtrOutput() QaQuestionTuningMetadataPtrOutput {
+	return o.ToQaQuestionTuningMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o QaQuestionTuningMetadataOutput) ToQaQuestionTuningMetadataPtrOutputWithContext(ctx context.Context) QaQuestionTuningMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QaQuestionTuningMetadata) *QaQuestionTuningMetadata {
+		return &v
+	}).(QaQuestionTuningMetadataPtrOutput)
+}
+
+// A list of any applicable data validation warnings about the question's
+// feedback labels.
+func (o QaQuestionTuningMetadataOutput) DatasetValidationWarnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v QaQuestionTuningMetadata) []string { return v.DatasetValidationWarnings }).(pulumi.StringArrayOutput)
+}
+
+// Total number of valid labels provided for the question at the time of
+// tuining.
+func (o QaQuestionTuningMetadataOutput) TotalValidLabelCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaQuestionTuningMetadata) *string { return v.TotalValidLabelCount }).(pulumi.StringPtrOutput)
+}
+
+// Error status of the tuning operation for the question. Will only be set
+// if the tuning operation failed.
+func (o QaQuestionTuningMetadataOutput) TuningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaQuestionTuningMetadata) *string { return v.TuningError }).(pulumi.StringPtrOutput)
+}
+
+type QaQuestionTuningMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (QaQuestionTuningMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QaQuestionTuningMetadata)(nil)).Elem()
+}
+
+func (o QaQuestionTuningMetadataPtrOutput) ToQaQuestionTuningMetadataPtrOutput() QaQuestionTuningMetadataPtrOutput {
+	return o
+}
+
+func (o QaQuestionTuningMetadataPtrOutput) ToQaQuestionTuningMetadataPtrOutputWithContext(ctx context.Context) QaQuestionTuningMetadataPtrOutput {
+	return o
+}
+
+func (o QaQuestionTuningMetadataPtrOutput) Elem() QaQuestionTuningMetadataOutput {
+	return o.ApplyT(func(v *QaQuestionTuningMetadata) QaQuestionTuningMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret QaQuestionTuningMetadata
+		return ret
+	}).(QaQuestionTuningMetadataOutput)
+}
+
+// A list of any applicable data validation warnings about the question's
+// feedback labels.
+func (o QaQuestionTuningMetadataPtrOutput) DatasetValidationWarnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *QaQuestionTuningMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetValidationWarnings
+	}).(pulumi.StringArrayOutput)
+}
+
+// Total number of valid labels provided for the question at the time of
+// tuining.
+func (o QaQuestionTuningMetadataPtrOutput) TotalValidLabelCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QaQuestionTuningMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TotalValidLabelCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error status of the tuning operation for the question. Will only be set
+// if the tuning operation failed.
+func (o QaQuestionTuningMetadataPtrOutput) TuningError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QaQuestionTuningMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TuningError
+	}).(pulumi.StringPtrOutput)
+}
+
+type QaScorecardRevisionSnapshot struct {
+	// (Output)
+	// The time at which this scorecard was created.
+	CreateTime *string `pulumi:"createTime"`
+	// A text description explaining the intent of the scorecard.
+	Description *string `pulumi:"description"`
+	// The user-specified display name of the scorecard.
+	DisplayName *string `pulumi:"displayName"`
+	// Whether the scorecard is the default one for the project.
+	// A default scorecard cannot be deleted and will always appear first in
+	// scorecard selector.
+	IsDefault *bool `pulumi:"isDefault"`
+	// (Output)
+	// Identifier. The scorecard name.
+	// Format:
+	// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+	Name *string `pulumi:"name"`
+	// Possible values:
+	// QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
+	// QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
+	Source *string `pulumi:"source"`
+	// (Output)
+	// The most recent time at which the scorecard was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// QaScorecardRevisionSnapshotInput is an input type that accepts QaScorecardRevisionSnapshotArgs and QaScorecardRevisionSnapshotOutput values.
+// You can construct a concrete instance of `QaScorecardRevisionSnapshotInput` via:
+//
+//	QaScorecardRevisionSnapshotArgs{...}
+type QaScorecardRevisionSnapshotInput interface {
+	pulumi.Input
+
+	ToQaScorecardRevisionSnapshotOutput() QaScorecardRevisionSnapshotOutput
+	ToQaScorecardRevisionSnapshotOutputWithContext(context.Context) QaScorecardRevisionSnapshotOutput
+}
+
+type QaScorecardRevisionSnapshotArgs struct {
+	// (Output)
+	// The time at which this scorecard was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// A text description explaining the intent of the scorecard.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The user-specified display name of the scorecard.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether the scorecard is the default one for the project.
+	// A default scorecard cannot be deleted and will always appear first in
+	// scorecard selector.
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// (Output)
+	// Identifier. The scorecard name.
+	// Format:
+	// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Possible values:
+	// QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
+	// QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// (Output)
+	// The most recent time at which the scorecard was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (QaScorecardRevisionSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaScorecardRevisionSnapshot)(nil)).Elem()
+}
+
+func (i QaScorecardRevisionSnapshotArgs) ToQaScorecardRevisionSnapshotOutput() QaScorecardRevisionSnapshotOutput {
+	return i.ToQaScorecardRevisionSnapshotOutputWithContext(context.Background())
+}
+
+func (i QaScorecardRevisionSnapshotArgs) ToQaScorecardRevisionSnapshotOutputWithContext(ctx context.Context) QaScorecardRevisionSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaScorecardRevisionSnapshotOutput)
+}
+
+// QaScorecardRevisionSnapshotArrayInput is an input type that accepts QaScorecardRevisionSnapshotArray and QaScorecardRevisionSnapshotArrayOutput values.
+// You can construct a concrete instance of `QaScorecardRevisionSnapshotArrayInput` via:
+//
+//	QaScorecardRevisionSnapshotArray{ QaScorecardRevisionSnapshotArgs{...} }
+type QaScorecardRevisionSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToQaScorecardRevisionSnapshotArrayOutput() QaScorecardRevisionSnapshotArrayOutput
+	ToQaScorecardRevisionSnapshotArrayOutputWithContext(context.Context) QaScorecardRevisionSnapshotArrayOutput
+}
+
+type QaScorecardRevisionSnapshotArray []QaScorecardRevisionSnapshotInput
+
+func (QaScorecardRevisionSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QaScorecardRevisionSnapshot)(nil)).Elem()
+}
+
+func (i QaScorecardRevisionSnapshotArray) ToQaScorecardRevisionSnapshotArrayOutput() QaScorecardRevisionSnapshotArrayOutput {
+	return i.ToQaScorecardRevisionSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i QaScorecardRevisionSnapshotArray) ToQaScorecardRevisionSnapshotArrayOutputWithContext(ctx context.Context) QaScorecardRevisionSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QaScorecardRevisionSnapshotArrayOutput)
+}
+
+type QaScorecardRevisionSnapshotOutput struct{ *pulumi.OutputState }
+
+func (QaScorecardRevisionSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QaScorecardRevisionSnapshot)(nil)).Elem()
+}
+
+func (o QaScorecardRevisionSnapshotOutput) ToQaScorecardRevisionSnapshotOutput() QaScorecardRevisionSnapshotOutput {
+	return o
+}
+
+func (o QaScorecardRevisionSnapshotOutput) ToQaScorecardRevisionSnapshotOutputWithContext(ctx context.Context) QaScorecardRevisionSnapshotOutput {
+	return o
+}
+
+// (Output)
+// The time at which this scorecard was created.
+func (o QaScorecardRevisionSnapshotOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// A text description explaining the intent of the scorecard.
+func (o QaScorecardRevisionSnapshotOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The user-specified display name of the scorecard.
+func (o QaScorecardRevisionSnapshotOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Whether the scorecard is the default one for the project.
+// A default scorecard cannot be deleted and will always appear first in
+// scorecard selector.
+func (o QaScorecardRevisionSnapshotOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Identifier. The scorecard name.
+// Format:
+// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+func (o QaScorecardRevisionSnapshotOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Possible values:
+// QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
+// QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
+func (o QaScorecardRevisionSnapshotOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The most recent time at which the scorecard was updated.
+func (o QaScorecardRevisionSnapshotOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QaScorecardRevisionSnapshot) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type QaScorecardRevisionSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (QaScorecardRevisionSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QaScorecardRevisionSnapshot)(nil)).Elem()
+}
+
+func (o QaScorecardRevisionSnapshotArrayOutput) ToQaScorecardRevisionSnapshotArrayOutput() QaScorecardRevisionSnapshotArrayOutput {
+	return o
+}
+
+func (o QaScorecardRevisionSnapshotArrayOutput) ToQaScorecardRevisionSnapshotArrayOutputWithContext(ctx context.Context) QaScorecardRevisionSnapshotArrayOutput {
+	return o
+}
+
+func (o QaScorecardRevisionSnapshotArrayOutput) Index(i pulumi.IntInput) QaScorecardRevisionSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QaScorecardRevisionSnapshot {
+		return vs[0].([]QaScorecardRevisionSnapshot)[vs[1].(int)]
+	}).(QaScorecardRevisionSnapshotOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisRuleAnnotatorSelectorPtrInput)(nil)).Elem(), AnalysisRuleAnnotatorSelectorArgs{})
@@ -1483,6 +2583,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentRuleScheduleInfoPtrInput)(nil)).Elem(), AssessmentRuleScheduleInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoLabelingRuleConditionInput)(nil)).Elem(), AutoLabelingRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoLabelingRuleConditionArrayInput)(nil)).Elem(), AutoLabelingRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionAnswerChoiceInput)(nil)).Elem(), QaQuestionAnswerChoiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionAnswerChoiceArrayInput)(nil)).Elem(), QaQuestionAnswerChoiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionMetricsInput)(nil)).Elem(), QaQuestionMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionMetricsPtrInput)(nil)).Elem(), QaQuestionMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionPredefinedQuestionConfigInput)(nil)).Elem(), QaQuestionPredefinedQuestionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionPredefinedQuestionConfigPtrInput)(nil)).Elem(), QaQuestionPredefinedQuestionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionQaQuestionDataOptionsInput)(nil)).Elem(), QaQuestionQaQuestionDataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionQaQuestionDataOptionsPtrInput)(nil)).Elem(), QaQuestionQaQuestionDataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionQaQuestionDataOptionsConversationDataOptionsInput)(nil)).Elem(), QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrInput)(nil)).Elem(), QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionTuningMetadataInput)(nil)).Elem(), QaQuestionTuningMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaQuestionTuningMetadataPtrInput)(nil)).Elem(), QaQuestionTuningMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaScorecardRevisionSnapshotInput)(nil)).Elem(), QaScorecardRevisionSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QaScorecardRevisionSnapshotArrayInput)(nil)).Elem(), QaScorecardRevisionSnapshotArray{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorPtrOutput{})
 	pulumi.RegisterOutputType(AnalysisRuleAnnotatorSelectorQaConfigOutput{})
@@ -1497,4 +2611,18 @@ func init() {
 	pulumi.RegisterOutputType(AssessmentRuleScheduleInfoPtrOutput{})
 	pulumi.RegisterOutputType(AutoLabelingRuleConditionOutput{})
 	pulumi.RegisterOutputType(AutoLabelingRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(QaQuestionAnswerChoiceOutput{})
+	pulumi.RegisterOutputType(QaQuestionAnswerChoiceArrayOutput{})
+	pulumi.RegisterOutputType(QaQuestionMetricsOutput{})
+	pulumi.RegisterOutputType(QaQuestionMetricsPtrOutput{})
+	pulumi.RegisterOutputType(QaQuestionPredefinedQuestionConfigOutput{})
+	pulumi.RegisterOutputType(QaQuestionPredefinedQuestionConfigPtrOutput{})
+	pulumi.RegisterOutputType(QaQuestionQaQuestionDataOptionsOutput{})
+	pulumi.RegisterOutputType(QaQuestionQaQuestionDataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(QaQuestionQaQuestionDataOptionsConversationDataOptionsOutput{})
+	pulumi.RegisterOutputType(QaQuestionQaQuestionDataOptionsConversationDataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(QaQuestionTuningMetadataOutput{})
+	pulumi.RegisterOutputType(QaQuestionTuningMetadataPtrOutput{})
+	pulumi.RegisterOutputType(QaScorecardRevisionSnapshotOutput{})
+	pulumi.RegisterOutputType(QaScorecardRevisionSnapshotArrayOutput{})
 }

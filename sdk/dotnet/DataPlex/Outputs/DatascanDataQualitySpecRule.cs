@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     public sealed class DatascanDataQualitySpecRule
     {
         /// <summary>
+        /// Map of attribute name and value linked to the rule.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Attributes;
+        /// <summary>
         /// The unnested column which this rule is evaluated against.
         /// </summary>
         public readonly string? Column;
@@ -82,6 +86,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly Outputs.DatascanDataQualitySpecRuleTableConditionExpectation? TableConditionExpectation;
         /// <summary>
+        /// Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatascanDataQualitySpecRuleTemplateReference? TemplateReference;
+        /// <summary>
         /// The minimum ratio of PassingRows / TotalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
         /// </summary>
         public readonly double? Threshold;
@@ -92,6 +101,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
         [OutputConstructor]
         private DatascanDataQualitySpecRule(
+            ImmutableDictionary<string, string>? attributes,
+
             string? column,
 
             string? description,
@@ -120,10 +131,13 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             Outputs.DatascanDataQualitySpecRuleTableConditionExpectation? tableConditionExpectation,
 
+            Outputs.DatascanDataQualitySpecRuleTemplateReference? templateReference,
+
             double? threshold,
 
             Outputs.DatascanDataQualitySpecRuleUniquenessExpectation? uniquenessExpectation)
         {
+            Attributes = attributes;
             Column = column;
             Description = description;
             Dimension = dimension;
@@ -138,6 +152,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
             StatisticRangeExpectation = statisticRangeExpectation;
             Suspended = suspended;
             TableConditionExpectation = tableConditionExpectation;
+            TemplateReference = templateReference;
             Threshold = threshold;
             UniquenessExpectation = uniquenessExpectation;
         }

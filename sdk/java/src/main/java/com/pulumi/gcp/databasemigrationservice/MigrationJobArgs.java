@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobDumpFlagsArgs;
+import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobPerformanceConfigArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobReverseSshConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
@@ -159,6 +160,25 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="objectsConfig")
+    private @Nullable Output<MigrationJobObjectsConfigArgs> objectsConfig;
+
+    /**
+     * @return The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MigrationJobObjectsConfigArgs>> objectsConfig() {
+        return Optional.ofNullable(this.objectsConfig);
+    }
+
+    /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.
      * 
@@ -290,6 +310,7 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.location = $.location;
         this.migrationJobId = $.migrationJobId;
+        this.objectsConfig = $.objectsConfig;
         this.performanceConfig = $.performanceConfig;
         this.project = $.project;
         this.reverseSshConnectivity = $.reverseSshConnectivity;
@@ -499,6 +520,31 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder migrationJobId(String migrationJobId) {
             return migrationJobId(Output.of(migrationJobId));
+        }
+
+        /**
+         * @param objectsConfig The objects that need to be migrated. If unset, the default is to migrate
+         * all objects available on the source.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectsConfig(@Nullable Output<MigrationJobObjectsConfigArgs> objectsConfig) {
+            $.objectsConfig = objectsConfig;
+            return this;
+        }
+
+        /**
+         * @param objectsConfig The objects that need to be migrated. If unset, the default is to migrate
+         * all objects available on the source.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectsConfig(MigrationJobObjectsConfigArgs objectsConfig) {
+            return objectsConfig(Output.of(objectsConfig));
         }
 
         /**

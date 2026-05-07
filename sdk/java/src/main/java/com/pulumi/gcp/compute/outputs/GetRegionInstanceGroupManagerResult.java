@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerInstanceFlexi
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerParam;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerResourcePolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerStandbyPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerStatefulExternalIp;
@@ -52,6 +53,7 @@ public final class GetRegionInstanceGroupManagerResult {
     private List<GetRegionInstanceGroupManagerParam> params;
     private @Nullable String project;
     private @Nullable String region;
+    private List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies;
     private @Nullable String selfLink;
     private List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies;
     private List<GetRegionInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -130,6 +132,9 @@ public final class GetRegionInstanceGroupManagerResult {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    public List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies() {
+        return this.resourcePolicies;
+    }
     public Optional<String> selfLink() {
         return Optional.ofNullable(this.selfLink);
     }
@@ -204,6 +209,7 @@ public final class GetRegionInstanceGroupManagerResult {
         private List<GetRegionInstanceGroupManagerParam> params;
         private @Nullable String project;
         private @Nullable String region;
+        private List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies;
         private @Nullable String selfLink;
         private List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies;
         private List<GetRegionInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -241,6 +247,7 @@ public final class GetRegionInstanceGroupManagerResult {
     	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
+    	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.standbyPolicies = defaults.standbyPolicies;
     	      this.statefulDisks = defaults.statefulDisks;
@@ -426,6 +433,17 @@ public final class GetRegionInstanceGroupManagerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder resourcePolicies(List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies) {
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
+            return this;
+        }
+        public Builder resourcePolicies(GetRegionInstanceGroupManagerResourcePolicy... resourcePolicies) {
+            return resourcePolicies(List.of(resourcePolicies));
+        }
+        @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
 
             this.selfLink = selfLink;
@@ -591,6 +609,7 @@ public final class GetRegionInstanceGroupManagerResult {
             _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.region = region;
+            _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.selfLink = selfLink;
             _resultValue.standbyPolicies = standbyPolicies;
             _resultValue.statefulDisks = statefulDisks;

@@ -4500,6 +4500,653 @@ func (o MigrationJobErrorArrayOutput) Index(i pulumi.IntInput) MigrationJobError
 	}).(MigrationJobErrorOutput)
 }
 
+type MigrationJobObjectsConfig struct {
+	// Configuration for the source objects to be migrated.
+	// Structure is documented below.
+	SourceObjectsConfig *MigrationJobObjectsConfigSourceObjectsConfig `pulumi:"sourceObjectsConfig"`
+}
+
+// MigrationJobObjectsConfigInput is an input type that accepts MigrationJobObjectsConfigArgs and MigrationJobObjectsConfigOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigInput` via:
+//
+//	MigrationJobObjectsConfigArgs{...}
+type MigrationJobObjectsConfigInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigOutput() MigrationJobObjectsConfigOutput
+	ToMigrationJobObjectsConfigOutputWithContext(context.Context) MigrationJobObjectsConfigOutput
+}
+
+type MigrationJobObjectsConfigArgs struct {
+	// Configuration for the source objects to be migrated.
+	// Structure is documented below.
+	SourceObjectsConfig MigrationJobObjectsConfigSourceObjectsConfigPtrInput `pulumi:"sourceObjectsConfig"`
+}
+
+func (MigrationJobObjectsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfig)(nil)).Elem()
+}
+
+func (i MigrationJobObjectsConfigArgs) ToMigrationJobObjectsConfigOutput() MigrationJobObjectsConfigOutput {
+	return i.ToMigrationJobObjectsConfigOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigArgs) ToMigrationJobObjectsConfigOutputWithContext(ctx context.Context) MigrationJobObjectsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigOutput)
+}
+
+func (i MigrationJobObjectsConfigArgs) ToMigrationJobObjectsConfigPtrOutput() MigrationJobObjectsConfigPtrOutput {
+	return i.ToMigrationJobObjectsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigArgs) ToMigrationJobObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigOutput).ToMigrationJobObjectsConfigPtrOutputWithContext(ctx)
+}
+
+// MigrationJobObjectsConfigPtrInput is an input type that accepts MigrationJobObjectsConfigArgs, MigrationJobObjectsConfigPtr and MigrationJobObjectsConfigPtrOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigPtrInput` via:
+//
+//	        MigrationJobObjectsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobObjectsConfigPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigPtrOutput() MigrationJobObjectsConfigPtrOutput
+	ToMigrationJobObjectsConfigPtrOutputWithContext(context.Context) MigrationJobObjectsConfigPtrOutput
+}
+
+type migrationJobObjectsConfigPtrType MigrationJobObjectsConfigArgs
+
+func MigrationJobObjectsConfigPtr(v *MigrationJobObjectsConfigArgs) MigrationJobObjectsConfigPtrInput {
+	return (*migrationJobObjectsConfigPtrType)(v)
+}
+
+func (*migrationJobObjectsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobObjectsConfig)(nil)).Elem()
+}
+
+func (i *migrationJobObjectsConfigPtrType) ToMigrationJobObjectsConfigPtrOutput() MigrationJobObjectsConfigPtrOutput {
+	return i.ToMigrationJobObjectsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobObjectsConfigPtrType) ToMigrationJobObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigPtrOutput)
+}
+
+type MigrationJobObjectsConfigOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfig)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigOutput) ToMigrationJobObjectsConfigOutput() MigrationJobObjectsConfigOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigOutput) ToMigrationJobObjectsConfigOutputWithContext(ctx context.Context) MigrationJobObjectsConfigOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigOutput) ToMigrationJobObjectsConfigPtrOutput() MigrationJobObjectsConfigPtrOutput {
+	return o.ToMigrationJobObjectsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobObjectsConfigOutput) ToMigrationJobObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobObjectsConfig) *MigrationJobObjectsConfig {
+		return &v
+	}).(MigrationJobObjectsConfigPtrOutput)
+}
+
+// Configuration for the source objects to be migrated.
+// Structure is documented below.
+func (o MigrationJobObjectsConfigOutput) SourceObjectsConfig() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfig) *MigrationJobObjectsConfigSourceObjectsConfig {
+		return v.SourceObjectsConfig
+	}).(MigrationJobObjectsConfigSourceObjectsConfigPtrOutput)
+}
+
+type MigrationJobObjectsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobObjectsConfig)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigPtrOutput) ToMigrationJobObjectsConfigPtrOutput() MigrationJobObjectsConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigPtrOutput) ToMigrationJobObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigPtrOutput) Elem() MigrationJobObjectsConfigOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfig) MigrationJobObjectsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobObjectsConfig
+		return ret
+	}).(MigrationJobObjectsConfigOutput)
+}
+
+// Configuration for the source objects to be migrated.
+// Structure is documented below.
+func (o MigrationJobObjectsConfigPtrOutput) SourceObjectsConfig() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfig) *MigrationJobObjectsConfigSourceObjectsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SourceObjectsConfig
+	}).(MigrationJobObjectsConfigSourceObjectsConfigPtrOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfig struct {
+	// The list of objects to migrate. Should only be set when
+	// `objectsSelectionType` is `SPECIFIED_OBJECTS`.
+	// Structure is documented below.
+	ObjectConfigs []MigrationJobObjectsConfigSourceObjectsConfigObjectConfig `pulumi:"objectConfigs"`
+	// The objects selection type of the migration job. When set to
+	// `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
+	// migrated. When set to `ALL_OBJECTS`, all objects available on the
+	// source are migrated.
+	// Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
+	ObjectsSelectionType *string `pulumi:"objectsSelectionType"`
+}
+
+// MigrationJobObjectsConfigSourceObjectsConfigInput is an input type that accepts MigrationJobObjectsConfigSourceObjectsConfigArgs and MigrationJobObjectsConfigSourceObjectsConfigOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigSourceObjectsConfigInput` via:
+//
+//	MigrationJobObjectsConfigSourceObjectsConfigArgs{...}
+type MigrationJobObjectsConfigSourceObjectsConfigInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigSourceObjectsConfigOutput() MigrationJobObjectsConfigSourceObjectsConfigOutput
+	ToMigrationJobObjectsConfigSourceObjectsConfigOutputWithContext(context.Context) MigrationJobObjectsConfigSourceObjectsConfigOutput
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigArgs struct {
+	// The list of objects to migrate. Should only be set when
+	// `objectsSelectionType` is `SPECIFIED_OBJECTS`.
+	// Structure is documented below.
+	ObjectConfigs MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayInput `pulumi:"objectConfigs"`
+	// The objects selection type of the migration job. When set to
+	// `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
+	// migrated. When set to `ALL_OBJECTS`, all objects available on the
+	// source are migrated.
+	// Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
+	ObjectsSelectionType pulumi.StringPtrInput `pulumi:"objectsSelectionType"`
+}
+
+func (MigrationJobObjectsConfigSourceObjectsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfig)(nil)).Elem()
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigArgs) ToMigrationJobObjectsConfigSourceObjectsConfigOutput() MigrationJobObjectsConfigSourceObjectsConfigOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigArgs) ToMigrationJobObjectsConfigSourceObjectsConfigOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigOutput)
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigArgs) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigArgs) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigOutput).ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(ctx)
+}
+
+// MigrationJobObjectsConfigSourceObjectsConfigPtrInput is an input type that accepts MigrationJobObjectsConfigSourceObjectsConfigArgs, MigrationJobObjectsConfigSourceObjectsConfigPtr and MigrationJobObjectsConfigSourceObjectsConfigPtrOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigSourceObjectsConfigPtrInput` via:
+//
+//	        MigrationJobObjectsConfigSourceObjectsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobObjectsConfigSourceObjectsConfigPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput
+	ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(context.Context) MigrationJobObjectsConfigSourceObjectsConfigPtrOutput
+}
+
+type migrationJobObjectsConfigSourceObjectsConfigPtrType MigrationJobObjectsConfigSourceObjectsConfigArgs
+
+func MigrationJobObjectsConfigSourceObjectsConfigPtr(v *MigrationJobObjectsConfigSourceObjectsConfigArgs) MigrationJobObjectsConfigSourceObjectsConfigPtrInput {
+	return (*migrationJobObjectsConfigSourceObjectsConfigPtrType)(v)
+}
+
+func (*migrationJobObjectsConfigSourceObjectsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobObjectsConfigSourceObjectsConfig)(nil)).Elem()
+}
+
+func (i *migrationJobObjectsConfigSourceObjectsConfigPtrType) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobObjectsConfigSourceObjectsConfigPtrType) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigPtrOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigSourceObjectsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfig)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigOutput) ToMigrationJobObjectsConfigSourceObjectsConfigOutput() MigrationJobObjectsConfigSourceObjectsConfigOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigOutput) ToMigrationJobObjectsConfigSourceObjectsConfigOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigOutput) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return o.ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigOutput) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobObjectsConfigSourceObjectsConfig) *MigrationJobObjectsConfigSourceObjectsConfig {
+		return &v
+	}).(MigrationJobObjectsConfigSourceObjectsConfigPtrOutput)
+}
+
+// The list of objects to migrate. Should only be set when
+// `objectsSelectionType` is `SPECIFIED_OBJECTS`.
+// Structure is documented below.
+func (o MigrationJobObjectsConfigSourceObjectsConfigOutput) ObjectConfigs() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfig) []MigrationJobObjectsConfigSourceObjectsConfigObjectConfig {
+		return v.ObjectConfigs
+	}).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput)
+}
+
+// The objects selection type of the migration job. When set to
+// `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
+// migrated. When set to `ALL_OBJECTS`, all objects available on the
+// source are migrated.
+// Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
+func (o MigrationJobObjectsConfigSourceObjectsConfigOutput) ObjectsSelectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfig) *string { return v.ObjectsSelectionType }).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigSourceObjectsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobObjectsConfigSourceObjectsConfig)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigPtrOutput) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigPtrOutput) ToMigrationJobObjectsConfigSourceObjectsConfigPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigPtrOutput) Elem() MigrationJobObjectsConfigSourceObjectsConfigOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfig) MigrationJobObjectsConfigSourceObjectsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobObjectsConfigSourceObjectsConfig
+		return ret
+	}).(MigrationJobObjectsConfigSourceObjectsConfigOutput)
+}
+
+// The list of objects to migrate. Should only be set when
+// `objectsSelectionType` is `SPECIFIED_OBJECTS`.
+// Structure is documented below.
+func (o MigrationJobObjectsConfigSourceObjectsConfigPtrOutput) ObjectConfigs() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfig) []MigrationJobObjectsConfigSourceObjectsConfigObjectConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectConfigs
+	}).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput)
+}
+
+// The objects selection type of the migration job. When set to
+// `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
+// migrated. When set to `ALL_OBJECTS`, all objects available on the
+// source are migrated.
+// Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
+func (o MigrationJobObjectsConfigSourceObjectsConfigPtrOutput) ObjectsSelectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectsSelectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfig struct {
+	// The identifier of the migration job object.
+	// Structure is documented below.
+	ObjectIdentifier *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier `pulumi:"objectIdentifier"`
+}
+
+// MigrationJobObjectsConfigSourceObjectsConfigObjectConfigInput is an input type that accepts MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs and MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigSourceObjectsConfigObjectConfigInput` via:
+//
+//	MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{...}
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutputWithContext(context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs struct {
+	// The identifier of the migration job object.
+	// Structure is documented below.
+	ObjectIdentifier MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput `pulumi:"objectIdentifier"`
+}
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfig)(nil)).Elem()
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput)
+}
+
+// MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayInput is an input type that accepts MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray and MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayInput` via:
+//
+//	MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray{ MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{...} }
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutputWithContext(context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray []MigrationJobObjectsConfigSourceObjectsConfigObjectConfigInput
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationJobObjectsConfigSourceObjectsConfigObjectConfig)(nil)).Elem()
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfig)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput {
+	return o
+}
+
+// The identifier of the migration job object.
+// Structure is documented below.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput) ObjectIdentifier() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfigObjectConfig) *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier {
+		return v.ObjectIdentifier
+	}).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationJobObjectsConfigSourceObjectsConfigObjectConfig)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput) Index(i pulumi.IntInput) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MigrationJobObjectsConfigSourceObjectsConfigObjectConfig {
+		return vs[0].([]MigrationJobObjectsConfigSourceObjectsConfigObjectConfig)[vs[1].(int)]
+	}).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier struct {
+	// The database name. Required only if the object uses
+	// a database name as part of its unique identifier.
+	Database *string `pulumi:"database"`
+	// The schema name. Required only if the object uses
+	// a schema name as part of its unique identifier.
+	Schema *string `pulumi:"schema"`
+	// The table name. Required only if the object is a level
+	// below database or schema.
+	Table *string `pulumi:"table"`
+	// The category of the migration job object: `DATABASE`,
+	// `SCHEMA`, or `TABLE`.
+	// Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
+	Type string `pulumi:"type"`
+}
+
+// MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierInput is an input type that accepts MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs and MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierInput` via:
+//
+//	MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{...}
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutputWithContext(context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs struct {
+	// The database name. Required only if the object uses
+	// a database name as part of its unique identifier.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The schema name. Required only if the object uses
+	// a schema name as part of its unique identifier.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// The table name. Required only if the object is a level
+	// below database or schema.
+	Table pulumi.StringPtrInput `pulumi:"table"`
+	// The category of the migration job object: `DATABASE`,
+	// `SCHEMA`, or `TABLE`.
+	// Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier)(nil)).Elem()
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput)
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput).ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(ctx)
+}
+
+// MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput is an input type that accepts MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs, MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtr and MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput values.
+// You can construct a concrete instance of `MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput` via:
+//
+//	        MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput
+	ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput
+}
+
+type migrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrType MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
+
+func MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtr(v *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput {
+	return (*migrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrType)(v)
+}
+
+func (*migrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier)(nil)).Elem()
+}
+
+func (i *migrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrType) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return i.ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrType) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return o.ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier {
+		return &v
+	}).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput)
+}
+
+// The database name. Required only if the object uses
+// a database name as part of its unique identifier.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The schema name. Required only if the object uses
+// a schema name as part of its unique identifier.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name. Required only if the object is a level
+// below database or schema.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// The category of the migration job object: `DATABASE`,
+// `SCHEMA`, or `TABLE`.
+// Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier)(nil)).Elem()
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) ToMigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutputWithContext(ctx context.Context) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput {
+	return o
+}
+
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) Elem() MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier
+		return ret
+	}).(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput)
+}
+
+// The database name. Required only if the object uses
+// a database name as part of its unique identifier.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The schema name. Required only if the object uses
+// a schema name as part of its unique identifier.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name. Required only if the object is a level
+// below database or schema.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// The category of the migration job object: `DATABASE`,
+// `SCHEMA`, or `TABLE`.
+// Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
+func (o MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type MigrationJobPerformanceConfig struct {
 	// Initial dump parallelism level.
 	// Possible values are: `MIN`, `OPTIMAL`, `MAX`.
@@ -5413,6 +6060,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobDumpFlagsDumpFlagArrayInput)(nil)).Elem(), MigrationJobDumpFlagsDumpFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobErrorInput)(nil)).Elem(), MigrationJobErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobErrorArrayInput)(nil)).Elem(), MigrationJobErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigInput)(nil)).Elem(), MigrationJobObjectsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigPtrInput)(nil)).Elem(), MigrationJobObjectsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigPtrInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrInput)(nil)).Elem(), MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPerformanceConfigInput)(nil)).Elem(), MigrationJobPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPerformanceConfigPtrInput)(nil)).Elem(), MigrationJobPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobReverseSshConnectivityInput)(nil)).Elem(), MigrationJobReverseSshConnectivityArgs{})
@@ -5469,6 +6124,14 @@ func init() {
 	pulumi.RegisterOutputType(MigrationJobDumpFlagsDumpFlagArrayOutput{})
 	pulumi.RegisterOutputType(MigrationJobErrorOutput{})
 	pulumi.RegisterOutputType(MigrationJobErrorArrayOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArrayOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierOutput{})
+	pulumi.RegisterOutputType(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobPerformanceConfigOutput{})
 	pulumi.RegisterOutputType(MigrationJobPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(MigrationJobReverseSshConnectivityOutput{})

@@ -26,11 +26,11 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const primary_network = new gcp.compute.Network("primary-network", {
- *     name: "tf-test-my-vpc-network_82591",
+ *     name: "tf-test-my-vpc-network_79580",
  *     autoCreateSubnetworks: false,
  * });
  * const primary = new gcp.networkconnectivity.Transport("primary", {
- *     name: "tf-test-basic-transport_24243",
+ *     name: "tf-test-basic-transport_98863",
  *     region: "us-east4",
  *     description: "A sample transport",
  *     remoteProfile: project.then(project => `https://networkconnectivity.googleapis.com/v1beta/${project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1`),

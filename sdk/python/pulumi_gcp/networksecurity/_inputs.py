@@ -177,6 +177,8 @@ __all__ = [
     'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict',
     'ServerTlsPolicyServerCertificateGrpcEndpointArgs',
     'ServerTlsPolicyServerCertificateGrpcEndpointArgsDict',
+    'UllMirroringCollectorRuleMatchArgs',
+    'UllMirroringCollectorRuleMatchArgsDict',
 ]
 
 class AddressGroupIamBindingConditionArgsDict(TypedDict):
@@ -5955,5 +5957,109 @@ class ServerTlsPolicyServerCertificateGrpcEndpointArgs:
     @target_uri.setter
     def target_uri(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "target_uri", value)
+
+
+class UllMirroringCollectorRuleMatchArgsDict(TypedDict):
+    direction: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Direction of traffic to match. When unset, matches any direction.
+    Possible values:
+    INGRESS: Traffic inbound to the capture point.
+    EGRESS: Traffic outbound from the capture point.
+    """
+    dst_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Destination IP ranges to match. When unset, matches any destination IP
+    range.
+    """
+    ip_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP protocols to match. When unset, matches any IP protocol.
+    Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+    """
+    src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Source IP ranges to match. When unset, matches any source IP range.
+    """
+
+@pulumi.input_type
+class UllMirroringCollectorRuleMatchArgs:
+    def __init__(__self__, *,
+                 direction: Optional[pulumi.Input[_builtins.str]] = None,
+                 dst_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] direction: Direction of traffic to match. When unset, matches any direction.
+               Possible values:
+               INGRESS: Traffic inbound to the capture point.
+               EGRESS: Traffic outbound from the capture point.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_ip_ranges: Destination IP ranges to match. When unset, matches any destination IP
+               range.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_protocols: IP protocols to match. When unset, matches any IP protocol.
+               Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ip_ranges: Source IP ranges to match. When unset, matches any source IP range.
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if dst_ip_ranges is not None:
+            pulumi.set(__self__, "dst_ip_ranges", dst_ip_ranges)
+        if ip_protocols is not None:
+            pulumi.set(__self__, "ip_protocols", ip_protocols)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Direction of traffic to match. When unset, matches any direction.
+        Possible values:
+        INGRESS: Traffic inbound to the capture point.
+        EGRESS: Traffic outbound from the capture point.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dstIpRanges")
+    def dst_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Destination IP ranges to match. When unset, matches any destination IP
+        range.
+        """
+        return pulumi.get(self, "dst_ip_ranges")
+
+    @dst_ip_ranges.setter
+    def dst_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dst_ip_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IP protocols to match. When unset, matches any IP protocol.
+        Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+        """
+        return pulumi.get(self, "ip_protocols")
+
+    @ip_protocols.setter
+    def ip_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ip_protocols", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Source IP ranges to match. When unset, matches any source IP range.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
 
 

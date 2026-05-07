@@ -65,6 +65,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+    ///     {
+    ///         Parent = "organizations/ORG_ID",
+    ///         ShortName = "tagkey",
+    ///     });
+    /// 
+    ///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+    ///     {
+    ///         Parent = tagKey.Id,
+    ///         ShortName = "tagvalue",
+    ///     });
+    /// 
     ///     var foobar = new Gcp.Compute.RegionCommitment("foobar", new()
     ///     {
     ///         Name = "my-full-commitment",
@@ -85,6 +97,18 @@ namespace Pulumi.Gcp.Compute
     ///                 Type = "MEMORY",
     ///                 Amount = "9",
     ///             },
+    ///         },
+    ///         Params = new Gcp.Compute.Inputs.RegionCommitmentParamsArgs
+    ///         {
+    ///             ResourceManagerTags = Output.Tuple(tagKey.Id, tagValue.Id).Apply(values =&gt;
+    ///             {
+    ///                 var tagKeyId = values.Item1;
+    ///                 var tagValueId = values.Item2;
+    ///                 return 
+    ///                 {
+    ///                     { tagKeyId, tagValueId },
+    ///                 };
+    ///             }),
     ///         },
     ///     });
     /// 
@@ -177,6 +201,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.RegionCommitmentParams?> Params { get; private set; } = null!;
 
         /// <summary>
         /// The plan for this commitment, which determines duration and discount rate.
@@ -337,6 +368,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RegionCommitmentParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The plan for this commitment, which determines duration and discount rate.
         /// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         /// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -454,6 +492,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RegionCommitmentParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The plan for this commitment, which determines duration and discount rate.

@@ -3365,7 +3365,7 @@ class ClusterClusterConfigLifecycleConfig(dict):
                
                - - -
         :param _builtins.str idle_delete_ttl: The duration to keep the cluster alive while idling
-               (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+               (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
         :param _builtins.str idle_start_time: Time when the cluster became idle
                (most recent job finished) and became eligible for deletion due to idleness.
         :param _builtins.str idle_stop_ttl: The duration to keep the cluster alive while idling
@@ -3409,7 +3409,7 @@ class ClusterClusterConfigLifecycleConfig(dict):
     def idle_delete_ttl(self) -> Optional[_builtins.str]:
         """
         The duration to keep the cluster alive while idling
-        (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
         """
         return pulumi.get(self, "idle_delete_ttl")
 

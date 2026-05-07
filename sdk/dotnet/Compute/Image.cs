@@ -275,6 +275,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.ImageParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -508,6 +515,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.ImageParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -725,6 +739,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.ImageParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

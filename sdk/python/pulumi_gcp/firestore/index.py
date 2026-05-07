@@ -484,7 +484,7 @@ class Index(pulumi.CustomResource):
                  __props__=None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
-         Both Firestore Native and Datastore Mode indexes are supported.
+         Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
          This resource manages composite indexes and not single field indexes.
          To manage single field indexes, use the `firestore.Field` resource instead.
 
@@ -748,6 +748,99 @@ class Index(pulumi.CustomResource):
             ],
             skip_wait=True)
         ```
+        ### Firestore Index Text Search
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="text-search-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            fields=[{
+                "field_path": "description",
+                "search_config": {
+                    "text_spec": {
+                        "index_specs": [{
+                            "index_type": "TOKENIZED",
+                            "match_type": "MATCH_GLOBALLY",
+                        }],
+                    },
+                },
+            }])
+        ```
+        ### Firestore Index Suppress Geojson Indexing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="suppress-geojson-indexing-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            query_scope="COLLECTION_GROUP",
+            density="SPARSE_ANY",
+            fields=[{
+                "field_path": "location",
+                "search_config": {
+                    "geo_spec": {
+                        "geo_json_indexing_disabled": True,
+                    },
+                },
+            }])
+        ```
+        ### Firestore Index Geo Search
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="geo-search-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            fields=[{
+                "field_path": "location",
+                "search_config": {
+                    "geo_spec": {
+                        "geo_json_indexing_disabled": False,
+                    },
+                },
+            }])
+        ```
+
         ## Import
 
         Index can be imported using any of these accepted formats:
@@ -798,7 +891,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
-         Both Firestore Native and Datastore Mode indexes are supported.
+         Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
          This resource manages composite indexes and not single field indexes.
          To manage single field indexes, use the `firestore.Field` resource instead.
 
@@ -1062,6 +1155,99 @@ class Index(pulumi.CustomResource):
             ],
             skip_wait=True)
         ```
+        ### Firestore Index Text Search
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="text-search-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            fields=[{
+                "field_path": "description",
+                "search_config": {
+                    "text_spec": {
+                        "index_specs": [{
+                            "index_type": "TOKENIZED",
+                            "match_type": "MATCH_GLOBALLY",
+                        }],
+                    },
+                },
+            }])
+        ```
+        ### Firestore Index Suppress Geojson Indexing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="suppress-geojson-indexing-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            query_scope="COLLECTION_GROUP",
+            density="SPARSE_ANY",
+            fields=[{
+                "field_path": "location",
+                "search_config": {
+                    "geo_spec": {
+                        "geo_json_indexing_disabled": True,
+                    },
+                },
+            }])
+        ```
+        ### Firestore Index Geo Search
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="geo-search-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            fields=[{
+                "field_path": "location",
+                "search_config": {
+                    "geo_spec": {
+                        "geo_json_indexing_disabled": False,
+                    },
+                },
+            }])
+        ```
+
         ## Import
 
         Index can be imported using any of these accepted formats:

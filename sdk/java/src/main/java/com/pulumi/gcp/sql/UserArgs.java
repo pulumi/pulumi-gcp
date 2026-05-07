@@ -55,6 +55,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * Possible values are: `ABANDON`.
      * 
+     * ***
+     * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
@@ -65,6 +67,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
      * Possible values are: `ABANDON`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -154,8 +158,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     * 
+     * * &gt; **Note:** One of `value` or `valueWo` can only be set.
      * 
      */
     @Import(name="passwordWo")
@@ -163,8 +171,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     * 
+     * * &gt; **Note:** One of `value` or `valueWo` can only be set.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -172,18 +184,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     * 
-     * ***
+     * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<Integer> passwordWoVersion;
 
     /**
-     * @return The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     * 
-     * ***
+     * @return An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      * 
      */
     public Optional<Output<Integer>> passwordWoVersion() {
@@ -325,6 +333,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * Possible values are: `ABANDON`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -339,6 +349,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
          * 
          * Possible values are: `ABANDON`.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -456,8 +468,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-         * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+         * The password for the user. Can be updated. For Postgres
+         * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+         * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+         * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+         * 
+         * * &gt; **Note:** One of `value` or `valueWo` can only be set.
          * 
          * @return builder
          * 
@@ -469,8 +485,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-         * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+         * The password for the user. Can be updated. For Postgres
+         * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+         * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+         * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+         * 
+         * * &gt; **Note:** One of `value` or `valueWo` can only be set.
          * 
          * @return builder
          * 
@@ -480,9 +500,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-         * 
-         * ***
+         * @param passwordWoVersion An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
          * 
          * @return builder
          * 
@@ -493,9 +511,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-         * 
-         * ***
+         * @param passwordWoVersion An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
          * 
          * @return builder
          * 

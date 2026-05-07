@@ -22,6 +22,16 @@ public final class DatascanDataQualitySpec {
      */
     private @Nullable Boolean catalogPublishingEnabled;
     /**
+     * @return If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+     * 
+     */
+    private @Nullable Boolean enableCatalogBasedRules;
+    /**
+     * @return A filter to selectively run a subset of rules.
+     * 
+     */
+    private @Nullable String filter;
+    /**
      * @return Actions to take upon job completion.
      * Structure is documented below.
      * 
@@ -53,6 +63,20 @@ public final class DatascanDataQualitySpec {
      */
     public Optional<Boolean> catalogPublishingEnabled() {
         return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
+    /**
+     * @return If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+     * 
+     */
+    public Optional<Boolean> enableCatalogBasedRules() {
+        return Optional.ofNullable(this.enableCatalogBasedRules);
+    }
+    /**
+     * @return A filter to selectively run a subset of rules.
+     * 
+     */
+    public Optional<String> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return Actions to take upon job completion.
@@ -97,6 +121,8 @@ public final class DatascanDataQualitySpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean catalogPublishingEnabled;
+        private @Nullable Boolean enableCatalogBasedRules;
+        private @Nullable String filter;
         private @Nullable DatascanDataQualitySpecPostScanActions postScanActions;
         private @Nullable String rowFilter;
         private @Nullable List<DatascanDataQualitySpecRule> rules;
@@ -105,6 +131,8 @@ public final class DatascanDataQualitySpec {
         public Builder(DatascanDataQualitySpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogPublishingEnabled = defaults.catalogPublishingEnabled;
+    	      this.enableCatalogBasedRules = defaults.enableCatalogBasedRules;
+    	      this.filter = defaults.filter;
     	      this.postScanActions = defaults.postScanActions;
     	      this.rowFilter = defaults.rowFilter;
     	      this.rules = defaults.rules;
@@ -115,6 +143,18 @@ public final class DatascanDataQualitySpec {
         public Builder catalogPublishingEnabled(@Nullable Boolean catalogPublishingEnabled) {
 
             this.catalogPublishingEnabled = catalogPublishingEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableCatalogBasedRules(@Nullable Boolean enableCatalogBasedRules) {
+
+            this.enableCatalogBasedRules = enableCatalogBasedRules;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable String filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -147,6 +187,8 @@ public final class DatascanDataQualitySpec {
         public DatascanDataQualitySpec build() {
             final var _resultValue = new DatascanDataQualitySpec();
             _resultValue.catalogPublishingEnabled = catalogPublishingEnabled;
+            _resultValue.enableCatalogBasedRules = enableCatalogBasedRules;
+            _resultValue.filter = filter;
             _resultValue.postScanActions = postScanActions;
             _resultValue.rowFilter = rowFilter;
             _resultValue.rules = rules;

@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        /// 
+        /// - - -
         /// </summary>
         public InputMap<string> ResourceManagerTags
         {

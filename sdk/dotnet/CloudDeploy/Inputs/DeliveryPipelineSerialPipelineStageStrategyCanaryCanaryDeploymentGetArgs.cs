@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
     public sealed class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Configuration for the analysis job.
+        /// </summary>
+        [Input("analysis")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGetArgs>? Analysis { get; set; }
+
         [Input("percentages", required: true)]
         private InputList<int>? _percentages;
 
@@ -41,6 +47,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         /// </summary>
         [Input("verify")]
         public Input<bool>? Verify { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the verify job.
+        /// </summary>
+        [Input("verifyConfig")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigGetArgs>? VerifyConfig { get; set; }
 
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentGetArgs()
         {

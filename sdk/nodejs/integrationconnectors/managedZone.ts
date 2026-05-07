@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const targetProject = new gcp.organizations.Project("target_project", {
- *     projectId: "tf-test_48675",
- *     name: "tf-test_42702",
+ *     projectId: "tf-test_2234",
+ *     name: "tf-test_29225",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -50,8 +50,8 @@ import * as utilities from "../utilities";
  *     dependsOn: [compute],
  * });
  * const zone = new gcp.dns.ManagedZone("zone", {
- *     name: "tf-test-dns_37426",
- *     dnsName: "private_67903.example.com.",
+ *     name: "tf-test-dns_40798",
+ *     dnsName: "private_82591.example.com.",
  *     visibility: "private",
  *     privateVisibilityConfig: {
  *         networks: [{

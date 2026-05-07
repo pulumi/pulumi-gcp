@@ -81,6 +81,7 @@ export interface GetRegionInstanceGroupManagerResult {
     readonly params: outputs.compute.GetRegionInstanceGroupManagerParam[];
     readonly project?: string;
     readonly region?: string;
+    readonly resourcePolicies: outputs.compute.GetRegionInstanceGroupManagerResourcePolicy[];
     readonly selfLink?: string;
     readonly standbyPolicies: outputs.compute.GetRegionInstanceGroupManagerStandbyPolicy[];
     readonly statefulDisks: outputs.compute.GetRegionInstanceGroupManagerStatefulDisk[];

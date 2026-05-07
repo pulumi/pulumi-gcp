@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategyStandardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Configuration for the analysis job.
+        /// </summary>
+        [Input("analysis")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs>? Analysis { get; set; }
+
+        /// <summary>
         /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
         /// </summary>
         [Input("postdeploy")]
@@ -29,6 +35,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         /// </summary>
         [Input("verify")]
         public Input<bool>? Verify { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the verify job.
+        /// </summary>
+        [Input("verifyConfig")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs>? VerifyConfig { get; set; }
 
         public DeliveryPipelineSerialPipelineStageStrategyStandardArgs()
         {

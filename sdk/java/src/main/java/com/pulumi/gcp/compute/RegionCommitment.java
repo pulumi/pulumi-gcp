@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionCommitmentArgs;
 import com.pulumi.gcp.compute.inputs.RegionCommitmentState;
 import com.pulumi.gcp.compute.outputs.RegionCommitmentLicenseResource;
+import com.pulumi.gcp.compute.outputs.RegionCommitmentParams;
 import com.pulumi.gcp.compute.outputs.RegionCommitmentResource;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -86,9 +87,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
  * import com.pulumi.gcp.compute.RegionCommitment;
  * import com.pulumi.gcp.compute.RegionCommitmentArgs;
  * import com.pulumi.gcp.compute.inputs.RegionCommitmentResourceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionCommitmentParamsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,6 +108,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
+ *             .parent("organizations/ORG_ID")
+ *             .shortName("tagkey")
+ *             .build());
+ * 
+ *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
+ *             .parent(tagKey.id())
+ *             .shortName("tagvalue")
+ *             .build());
+ * 
  *         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()
  *             .name("my-full-commitment")
  *             .description("some description")
@@ -118,6 +134,13 @@ import javax.annotation.Nullable;
  *                     .type("MEMORY")
  *                     .amount("9")
  *                     .build())
+ *             .params(RegionCommitmentParamsArgs.builder()
+ *                 .resourceManagerTags(Output.tuple(tagKey.id(), tagValue.id()).applyValue(values -> {
+ *                     var tagKeyId = values.t1;
+ *                     var tagValueId = values.t2;
+ *                     return Map.of(tagKeyId, tagValueId);
+ *                 }))
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -295,6 +318,22 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={RegionCommitmentParams.class}, tree="[0]")
+    private Output</* @Nullable */ RegionCommitmentParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionCommitmentParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The plan for this commitment, which determines duration and discount rate.

@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var entry_group_basic = new EntryGroup("entry-group-basic", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_11380")
+ *             .entryGroupId("tf-test-entry-group_10393")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_basic = new EntryType("entry-type-basic", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_62793")
+ *             .entryTypeId("tf-test-entry-type_3684")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-source-entry_35305")
+ *             .entryId("tf-test-source-entry_33052")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *         var target = new Entry("target", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryId("tf-test-target-entry_55438")
+ *             .entryId("tf-test-target-entry_10719")
  *             .entryType(entry_type_basic.name())
  *             .project("1111111111111")
  *             .build());
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_basic.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_32706")
+ *             .entryLinkId("tf-test-entry-link_1443")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()
@@ -146,12 +146,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var entry_group_full = new EntryGroup("entry-group-full", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("tf-test-entry-group_49082")
+ *             .entryGroupId("tf-test-entry-group_26032")
  *             .project("1111111111111")
  *             .build());
  * 
  *         var entry_type_full = new EntryType("entry-type-full", EntryTypeArgs.builder()
- *             .entryTypeId("tf-test-entry-type_80215")
+ *             .entryTypeId("tf-test-entry-type_50610")
  *             .location("us-central1")
  *             .project("1111111111111")
  *             .build());
@@ -159,13 +159,13 @@ import javax.annotation.Nullable;
  *         var source = new Entry("source", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryId("tf-test-source-entry_60365")
+ *             .entryId("tf-test-source-entry_8647")
  *             .entryType(entry_type_full.name())
  *             .project("1111111111111")
  *             .build());
  * 
  *         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
- *             .glossaryId("tf-test-glossary_59033")
+ *             .glossaryId("tf-test-glossary_77124")
  *             .location("us-central1")
  *             .build());
  * 
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             }}{@code ))
  *             .glossaryId(termTestIdFull.glossaryId())
  *             .location("us-central1")
- *             .termId("tf-test-term-full_32081")
+ *             .termId("tf-test-term-full_15335")
  *             .labels(Map.of("tag", "test-tf"))
  *             .displayName("terraform term")
  *             .description("term created by Terraform")
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *             .project("1111111111111")
  *             .location("us-central1")
  *             .entryGroupId(entry_group_full.entryGroupId())
- *             .entryLinkId("tf-test-entry-link_10393")
+ *             .entryLinkId("tf-test-entry-link_20665")
  *             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/definition")
  *             .entryReferences(            
  *                 EntryLinkEntryReferenceArgs.builder()

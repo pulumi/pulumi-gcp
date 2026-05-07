@@ -99,6 +99,18 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         public Input<string>? OpsInsightsStatus { get; set; }
 
         /// <summary>
+        /// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+        /// </summary>
+        [Input("pluggableDatabaseId")]
+        public Input<string>? PluggableDatabaseId { get; set; }
+
+        /// <summary>
+        /// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+        /// </summary>
+        [Input("pluggableDatabaseName")]
+        public Input<string>? PluggableDatabaseName { get; set; }
+
+        /// <summary>
         /// The properties of a Database.
         /// Structure is documented below.
         /// </summary>

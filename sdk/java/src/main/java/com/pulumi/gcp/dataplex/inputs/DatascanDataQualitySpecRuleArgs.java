@@ -14,10 +14,12 @@ import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSetExpectationA
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSqlAssertionArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTemplateReferenceArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleUniquenessExpectationArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,6 +28,21 @@ import javax.annotation.Nullable;
 public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatascanDataQualitySpecRuleArgs Empty = new DatascanDataQualitySpecRuleArgs();
+
+    /**
+     * Map of attribute name and value linked to the rule.
+     * 
+     */
+    @Import(name="attributes")
+    private @Nullable Output<Map<String,String>> attributes;
+
+    /**
+     * @return Map of attribute name and value linked to the rule.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> attributes() {
+        return Optional.ofNullable(this.attributes);
+    }
 
     /**
      * The unnested column which this rule is evaluated against.
@@ -262,6 +279,23 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
+     * Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="templateReference")
+    private @Nullable Output<DatascanDataQualitySpecRuleTemplateReferenceArgs> templateReference;
+
+    /**
+     * @return Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanDataQualitySpecRuleTemplateReferenceArgs>> templateReference() {
+        return Optional.ofNullable(this.templateReference);
+    }
+
+    /**
      * The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
@@ -294,6 +328,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     private DatascanDataQualitySpecRuleArgs() {}
 
     private DatascanDataQualitySpecRuleArgs(DatascanDataQualitySpecRuleArgs $) {
+        this.attributes = $.attributes;
         this.column = $.column;
         this.description = $.description;
         this.dimension = $.dimension;
@@ -308,6 +343,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         this.statisticRangeExpectation = $.statisticRangeExpectation;
         this.suspended = $.suspended;
         this.tableConditionExpectation = $.tableConditionExpectation;
+        this.templateReference = $.templateReference;
         this.threshold = $.threshold;
         this.uniquenessExpectation = $.uniquenessExpectation;
     }
@@ -328,6 +364,27 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
 
         public Builder(DatascanDataQualitySpecRuleArgs defaults) {
             $ = new DatascanDataQualitySpecRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attributes Map of attribute name and value linked to the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributes(@Nullable Output<Map<String,String>> attributes) {
+            $.attributes = attributes;
+            return this;
+        }
+
+        /**
+         * @param attributes Map of attribute name and value linked to the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attributes(Map<String,String> attributes) {
+            return attributes(Output.of(attributes));
         }
 
         /**
@@ -646,6 +703,29 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
          */
         public Builder tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs tableConditionExpectation) {
             return tableConditionExpectation(Output.of(tableConditionExpectation));
+        }
+
+        /**
+         * @param templateReference Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateReference(@Nullable Output<DatascanDataQualitySpecRuleTemplateReferenceArgs> templateReference) {
+            $.templateReference = templateReference;
+            return this;
+        }
+
+        /**
+         * @param templateReference Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateReference(DatascanDataQualitySpecRuleTemplateReferenceArgs templateReference) {
+            return templateReference(Output.of(templateReference));
         }
 
         /**

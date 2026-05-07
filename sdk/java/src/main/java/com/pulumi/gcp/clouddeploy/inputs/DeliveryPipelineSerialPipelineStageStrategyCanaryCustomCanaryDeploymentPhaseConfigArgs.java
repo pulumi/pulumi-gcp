@@ -6,8 +6,10 @@ package com.pulumi.gcp.clouddeploy.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,6 +22,21 @@ import javax.annotation.Nullable;
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs Empty = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs();
+
+    /**
+     * Optional. Configuration for the analysis job.
+     * 
+     */
+    @Import(name="analysis")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs> analysis;
+
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs>> analysis() {
+        return Optional.ofNullable(this.analysis);
+    }
 
     /**
      * Required. Percentage deployment for the phase.
@@ -111,15 +128,32 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         return Optional.ofNullable(this.verify);
     }
 
+    /**
+     * Optional. Configuration for the verify job.
+     * 
+     */
+    @Import(name="verifyConfig")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs> verifyConfig;
+
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs>> verifyConfig() {
+        return Optional.ofNullable(this.verifyConfig);
+    }
+
     private DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs() {}
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs $) {
+        this.analysis = $.analysis;
         this.percentage = $.percentage;
         this.phaseId = $.phaseId;
         this.postdeploy = $.postdeploy;
         this.predeploy = $.predeploy;
         this.profiles = $.profiles;
         this.verify = $.verify;
+        this.verifyConfig = $.verifyConfig;
     }
 
     public static Builder builder() {
@@ -138,6 +172,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
 
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs defaults) {
             $ = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param analysis Optional. Configuration for the analysis job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder analysis(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs> analysis) {
+            $.analysis = analysis;
+            return this;
+        }
+
+        /**
+         * @param analysis Optional. Configuration for the analysis job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder analysis(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs analysis) {
+            return analysis(Output.of(analysis));
         }
 
         /**
@@ -274,6 +329,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
          */
         public Builder verify(Boolean verify) {
             return verify(Output.of(verify));
+        }
+
+        /**
+         * @param verifyConfig Optional. Configuration for the verify job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verifyConfig(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs> verifyConfig) {
+            $.verifyConfig = verifyConfig;
+            return this;
+        }
+
+        /**
+         * @param verifyConfig Optional. Configuration for the verify job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verifyConfig(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs verifyConfig) {
+            return verifyConfig(Output.of(verifyConfig));
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs build() {

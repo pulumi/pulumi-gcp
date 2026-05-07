@@ -13,16 +13,23 @@ import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleSetExpectation
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleSqlAssertion;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleTableConditionExpectation;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleTemplateReference;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleUniquenessExpectation;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class DatascanDataQualitySpecRule {
+    /**
+     * @return Map of attribute name and value linked to the rule.
+     * 
+     */
+    private @Nullable Map<String,String> attributes;
     /**
      * @return The unnested column which this rule is evaluated against.
      * 
@@ -106,6 +113,12 @@ public final class DatascanDataQualitySpecRule {
      */
     private @Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation;
     /**
+     * @return Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatascanDataQualitySpecRuleTemplateReference templateReference;
+    /**
      * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
@@ -117,6 +130,13 @@ public final class DatascanDataQualitySpecRule {
     private @Nullable DatascanDataQualitySpecRuleUniquenessExpectation uniquenessExpectation;
 
     private DatascanDataQualitySpecRule() {}
+    /**
+     * @return Map of attribute name and value linked to the rule.
+     * 
+     */
+    public Map<String,String> attributes() {
+        return this.attributes == null ? Map.of() : this.attributes;
+    }
     /**
      * @return The unnested column which this rule is evaluated against.
      * 
@@ -228,6 +248,14 @@ public final class DatascanDataQualitySpecRule {
         return Optional.ofNullable(this.tableConditionExpectation);
     }
     /**
+     * @return Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatascanDataQualitySpecRuleTemplateReference> templateReference() {
+        return Optional.ofNullable(this.templateReference);
+    }
+    /**
      * @return The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
      * 
      */
@@ -251,6 +279,7 @@ public final class DatascanDataQualitySpecRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Map<String,String> attributes;
         private @Nullable String column;
         private @Nullable String description;
         private String dimension;
@@ -265,11 +294,13 @@ public final class DatascanDataQualitySpecRule {
         private @Nullable DatascanDataQualitySpecRuleStatisticRangeExpectation statisticRangeExpectation;
         private @Nullable Boolean suspended;
         private @Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation;
+        private @Nullable DatascanDataQualitySpecRuleTemplateReference templateReference;
         private @Nullable Double threshold;
         private @Nullable DatascanDataQualitySpecRuleUniquenessExpectation uniquenessExpectation;
         public Builder() {}
         public Builder(DatascanDataQualitySpecRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attributes = defaults.attributes;
     	      this.column = defaults.column;
     	      this.description = defaults.description;
     	      this.dimension = defaults.dimension;
@@ -284,10 +315,17 @@ public final class DatascanDataQualitySpecRule {
     	      this.statisticRangeExpectation = defaults.statisticRangeExpectation;
     	      this.suspended = defaults.suspended;
     	      this.tableConditionExpectation = defaults.tableConditionExpectation;
+    	      this.templateReference = defaults.templateReference;
     	      this.threshold = defaults.threshold;
     	      this.uniquenessExpectation = defaults.uniquenessExpectation;
         }
 
+        @CustomType.Setter
+        public Builder attributes(@Nullable Map<String,String> attributes) {
+
+            this.attributes = attributes;
+            return this;
+        }
         @CustomType.Setter
         public Builder column(@Nullable String column) {
 
@@ -375,6 +413,12 @@ public final class DatascanDataQualitySpecRule {
             return this;
         }
         @CustomType.Setter
+        public Builder templateReference(@Nullable DatascanDataQualitySpecRuleTemplateReference templateReference) {
+
+            this.templateReference = templateReference;
+            return this;
+        }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
 
             this.threshold = threshold;
@@ -388,6 +432,7 @@ public final class DatascanDataQualitySpecRule {
         }
         public DatascanDataQualitySpecRule build() {
             final var _resultValue = new DatascanDataQualitySpecRule();
+            _resultValue.attributes = attributes;
             _resultValue.column = column;
             _resultValue.description = description;
             _resultValue.dimension = dimension;
@@ -402,6 +447,7 @@ public final class DatascanDataQualitySpecRule {
             _resultValue.statisticRangeExpectation = statisticRangeExpectation;
             _resultValue.suspended = suspended;
             _resultValue.tableConditionExpectation = tableConditionExpectation;
+            _resultValue.templateReference = templateReference;
             _resultValue.threshold = threshold;
             _resultValue.uniquenessExpectation = uniquenessExpectation;
             return _resultValue;
