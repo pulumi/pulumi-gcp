@@ -18,9 +18,17 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly string? ArtifactStorage;
         /// <summary>
+        /// Optional. Use default Cloud Build pool.
+        /// </summary>
+        public readonly Outputs.TargetExecutionConfigDefaultPool? DefaultPool;
+        /// <summary>
         /// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         /// </summary>
         public readonly string? ExecutionTimeout;
+        /// <summary>
+        /// Optional. Use private Cloud Build pool.
+        /// </summary>
+        public readonly Outputs.TargetExecutionConfigPrivatePool? PrivatePool;
         /// <summary>
         /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         /// </summary>
@@ -42,7 +50,11 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         private TargetExecutionConfig(
             string? artifactStorage,
 
+            Outputs.TargetExecutionConfigDefaultPool? defaultPool,
+
             string? executionTimeout,
+
+            Outputs.TargetExecutionConfigPrivatePool? privatePool,
 
             string? serviceAccount,
 
@@ -53,7 +65,9 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
             string? workerPool)
         {
             ArtifactStorage = artifactStorage;
+            DefaultPool = defaultPool;
             ExecutionTimeout = executionTimeout;
+            PrivatePool = privatePool;
             ServiceAccount = serviceAccount;
             Usages = usages;
             Verbose = verbose;

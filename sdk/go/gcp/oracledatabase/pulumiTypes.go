@@ -7134,6 +7134,10 @@ type DbSystemPropertiesDbHomeDatabase struct {
 	// FAILED_ENABLING
 	// FAILED_DISABLING
 	OpsInsightsStatus *string `pulumi:"opsInsightsStatus"`
+	// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+	PluggableDatabaseId *string `pulumi:"pluggableDatabaseId"`
+	// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+	PluggableDatabaseName *string `pulumi:"pluggableDatabaseName"`
 	// The properties of a Database.
 	// Structure is documented below.
 	Properties *DbSystemPropertiesDbHomeDatabaseProperties `pulumi:"properties"`
@@ -7191,6 +7195,10 @@ type DbSystemPropertiesDbHomeDatabaseArgs struct {
 	// FAILED_ENABLING
 	// FAILED_DISABLING
 	OpsInsightsStatus pulumi.StringPtrInput `pulumi:"opsInsightsStatus"`
+	// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+	PluggableDatabaseId pulumi.StringPtrInput `pulumi:"pluggableDatabaseId"`
+	// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+	PluggableDatabaseName pulumi.StringPtrInput `pulumi:"pluggableDatabaseName"`
 	// The properties of a Database.
 	// Structure is documented below.
 	Properties DbSystemPropertiesDbHomeDatabasePropertiesPtrInput `pulumi:"properties"`
@@ -7347,6 +7355,16 @@ func (o DbSystemPropertiesDbHomeDatabaseOutput) OciUrl() pulumi.StringPtrOutput 
 // FAILED_DISABLING
 func (o DbSystemPropertiesDbHomeDatabaseOutput) OpsInsightsStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.OpsInsightsStatus }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) PluggableDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.PluggableDatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+func (o DbSystemPropertiesDbHomeDatabaseOutput) PluggableDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSystemPropertiesDbHomeDatabase) *string { return v.PluggableDatabaseName }).(pulumi.StringPtrOutput)
 }
 
 // The properties of a Database.
@@ -7517,6 +7535,26 @@ func (o DbSystemPropertiesDbHomeDatabasePtrOutput) OpsInsightsStatus() pulumi.St
 			return nil
 		}
 		return v.OpsInsightsStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) PluggableDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PluggableDatabaseId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+func (o DbSystemPropertiesDbHomeDatabasePtrOutput) PluggableDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSystemPropertiesDbHomeDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PluggableDatabaseName
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -38,6 +38,10 @@ __all__ = [
     'MigrationJobDumpFlags',
     'MigrationJobDumpFlagsDumpFlag',
     'MigrationJobError',
+    'MigrationJobObjectsConfig',
+    'MigrationJobObjectsConfigSourceObjectsConfig',
+    'MigrationJobObjectsConfigSourceObjectsConfigObjectConfig',
+    'MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier',
     'MigrationJobPerformanceConfig',
     'MigrationJobReverseSshConnectivity',
     'MigrationJobStaticIpConnectivity',
@@ -1856,6 +1860,208 @@ class MigrationJobError(dict):
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class MigrationJobObjectsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceObjectsConfig":
+            suggest = "source_objects_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobObjectsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobObjectsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobObjectsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_objects_config: Optional['outputs.MigrationJobObjectsConfigSourceObjectsConfig'] = None):
+        """
+        :param 'MigrationJobObjectsConfigSourceObjectsConfigArgs' source_objects_config: Configuration for the source objects to be migrated.
+               Structure is documented below.
+        """
+        if source_objects_config is not None:
+            pulumi.set(__self__, "source_objects_config", source_objects_config)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceObjectsConfig")
+    def source_objects_config(self) -> Optional['outputs.MigrationJobObjectsConfigSourceObjectsConfig']:
+        """
+        Configuration for the source objects to be migrated.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_objects_config")
+
+
+@pulumi.output_type
+class MigrationJobObjectsConfigSourceObjectsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectConfigs":
+            suggest = "object_configs"
+        elif key == "objectsSelectionType":
+            suggest = "objects_selection_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobObjectsConfigSourceObjectsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobObjectsConfigSourceObjectsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobObjectsConfigSourceObjectsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_configs: Optional[Sequence['outputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfig']] = None,
+                 objects_selection_type: Optional[_builtins.str] = None):
+        """
+        :param Sequence['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs'] object_configs: The list of objects to migrate. Should only be set when
+               `objectsSelectionType` is `SPECIFIED_OBJECTS`.
+               Structure is documented below.
+        :param _builtins.str objects_selection_type: The objects selection type of the migration job. When set to
+               `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
+               migrated. When set to `ALL_OBJECTS`, all objects available on the
+               source are migrated.
+               Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
+        """
+        if object_configs is not None:
+            pulumi.set(__self__, "object_configs", object_configs)
+        if objects_selection_type is not None:
+            pulumi.set(__self__, "objects_selection_type", objects_selection_type)
+
+    @_builtins.property
+    @pulumi.getter(name="objectConfigs")
+    def object_configs(self) -> Optional[Sequence['outputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfig']]:
+        """
+        The list of objects to migrate. Should only be set when
+        `objectsSelectionType` is `SPECIFIED_OBJECTS`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "object_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsSelectionType")
+    def objects_selection_type(self) -> Optional[_builtins.str]:
+        """
+        The objects selection type of the migration job. When set to
+        `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
+        migrated. When set to `ALL_OBJECTS`, all objects available on the
+        source are migrated.
+        Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
+        """
+        return pulumi.get(self, "objects_selection_type")
+
+
+@pulumi.output_type
+class MigrationJobObjectsConfigSourceObjectsConfigObjectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdentifier":
+            suggest = "object_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobObjectsConfigSourceObjectsConfigObjectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobObjectsConfigSourceObjectsConfigObjectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobObjectsConfigSourceObjectsConfigObjectConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_identifier: Optional['outputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier'] = None):
+        """
+        :param 'MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs' object_identifier: The identifier of the migration job object.
+               Structure is documented below.
+        """
+        if object_identifier is not None:
+            pulumi.set(__self__, "object_identifier", object_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="objectIdentifier")
+    def object_identifier(self) -> Optional['outputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier']:
+        """
+        The identifier of the migration job object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "object_identifier")
+
+
+@pulumi.output_type
+class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 database: Optional[_builtins.str] = None,
+                 schema: Optional[_builtins.str] = None,
+                 table: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The category of the migration job object: `DATABASE`,
+               `SCHEMA`, or `TABLE`.
+               Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
+        :param _builtins.str database: The database name. Required only if the object uses
+               a database name as part of its unique identifier.
+        :param _builtins.str schema: The schema name. Required only if the object uses
+               a schema name as part of its unique identifier.
+        :param _builtins.str table: The table name. Required only if the object is a level
+               below database or schema.
+        """
+        pulumi.set(__self__, "type", type)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The category of the migration job object: `DATABASE`,
+        `SCHEMA`, or `TABLE`.
+        Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The database name. Required only if the object uses
+        a database name as part of its unique identifier.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[_builtins.str]:
+        """
+        The schema name. Required only if the object uses
+        a schema name as part of its unique identifier.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional[_builtins.str]:
+        """
+        The table name. Required only if the object is a level
+        below database or schema.
+        """
+        return pulumi.get(self, "table")
 
 
 @pulumi.output_type

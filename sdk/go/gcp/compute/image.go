@@ -249,6 +249,9 @@ type Image struct {
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params ImageParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -380,6 +383,9 @@ type imageState struct {
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params *ImageParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -477,6 +483,9 @@ type ImageState struct {
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params ImageParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -568,6 +577,9 @@ type imageArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params *ImageParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -651,6 +663,9 @@ type ImageArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload.
+	// Structure is documented below.
+	Params ImageParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -863,6 +878,12 @@ func (o ImageOutput) Licenses() pulumi.StringArrayOutput {
 // last character, which cannot be a dash.
 func (o ImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload.
+// Structure is documented below.
+func (o ImageOutput) Params() ImageParamsPtrOutput {
+	return o.ApplyT(func(v *Image) ImageParamsPtrOutput { return v.Params }).(ImageParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,10 +32,26 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployA
         return Optional.ofNullable(this.actions);
     }
 
+    /**
+     * Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+     * 
+     */
+    @Import(name="tasks")
+    private @Nullable Output<List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs>> tasks;
+
+    /**
+     * @return Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+     * 
+     */
+    public Optional<Output<List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs>>> tasks() {
+        return Optional.ofNullable(this.tasks);
+    }
+
     private DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs() {}
 
     private DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs $) {
         this.actions = $.actions;
+        this.tasks = $.tasks;
     }
 
     public static Builder builder() {
@@ -84,6 +101,37 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployA
          */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
+        }
+
+        /**
+         * @param tasks Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(@Nullable Output<List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs>> tasks) {
+            $.tasks = tasks;
+            return this;
+        }
+
+        /**
+         * @param tasks Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs> tasks) {
+            return tasks(Output.of(tasks));
+        }
+
+        /**
+         * @param tasks Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tasks(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs... tasks) {
+            return tasks(List.of(tasks));
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs build() {

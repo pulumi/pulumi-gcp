@@ -6,6 +6,8 @@ package com.pulumi.gcp.clouddeploy.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigDefaultPoolArgs;
+import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigPrivatePoolArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -34,6 +36,21 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Optional. Use default Cloud Build pool.
+     * 
+     */
+    @Import(name="defaultPool")
+    private @Nullable Output<TargetExecutionConfigDefaultPoolArgs> defaultPool;
+
+    /**
+     * @return Optional. Use default Cloud Build pool.
+     * 
+     */
+    public Optional<Output<TargetExecutionConfigDefaultPoolArgs>> defaultPool() {
+        return Optional.ofNullable(this.defaultPool);
+    }
+
+    /**
      * Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
      * 
      */
@@ -46,6 +63,21 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> executionTimeout() {
         return Optional.ofNullable(this.executionTimeout);
+    }
+
+    /**
+     * Optional. Use private Cloud Build pool.
+     * 
+     */
+    @Import(name="privatePool")
+    private @Nullable Output<TargetExecutionConfigPrivatePoolArgs> privatePool;
+
+    /**
+     * @return Optional. Use private Cloud Build pool.
+     * 
+     */
+    public Optional<Output<TargetExecutionConfigPrivatePoolArgs>> privatePool() {
+        return Optional.ofNullable(this.privatePool);
     }
 
     /**
@@ -112,7 +144,9 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
 
     private TargetExecutionConfigArgs(TargetExecutionConfigArgs $) {
         this.artifactStorage = $.artifactStorage;
+        this.defaultPool = $.defaultPool;
         this.executionTimeout = $.executionTimeout;
+        this.privatePool = $.privatePool;
         this.serviceAccount = $.serviceAccount;
         this.usages = $.usages;
         this.verbose = $.verbose;
@@ -159,6 +193,27 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param defaultPool Optional. Use default Cloud Build pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPool(@Nullable Output<TargetExecutionConfigDefaultPoolArgs> defaultPool) {
+            $.defaultPool = defaultPool;
+            return this;
+        }
+
+        /**
+         * @param defaultPool Optional. Use default Cloud Build pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPool(TargetExecutionConfigDefaultPoolArgs defaultPool) {
+            return defaultPool(Output.of(defaultPool));
+        }
+
+        /**
          * @param executionTimeout Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
          * 
          * @return builder
@@ -177,6 +232,27 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder executionTimeout(String executionTimeout) {
             return executionTimeout(Output.of(executionTimeout));
+        }
+
+        /**
+         * @param privatePool Optional. Use private Cloud Build pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePool(@Nullable Output<TargetExecutionConfigPrivatePoolArgs> privatePool) {
+            $.privatePool = privatePool;
+            return this;
+        }
+
+        /**
+         * @param privatePool Optional. Use private Cloud Build pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatePool(TargetExecutionConfigPrivatePoolArgs privatePool) {
+            return privatePool(Output.of(privatePool));
         }
 
         /**

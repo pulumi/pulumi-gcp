@@ -70,37 +70,59 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
-//				Name:        pulumi.String("my-full-commitment"),
-//				Description: pulumi.String("some description"),
-//				Plan:        pulumi.String("THIRTY_SIX_MONTH"),
-//				Type:        pulumi.String("MEMORY_OPTIMIZED"),
-//				Category:    pulumi.String("MACHINE"),
-//				AutoRenew:   pulumi.Bool(true),
-//				Resources: compute.RegionCommitmentResourceArray{
-//					&compute.RegionCommitmentResourceArgs{
-//						Type:   pulumi.String("VCPU"),
-//						Amount: pulumi.String("4"),
-//					},
-//					&compute.RegionCommitmentResourceArgs{
-//						Type:   pulumi.String("MEMORY"),
-//						Amount: pulumi.String("9"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+// Parent: pulumi.String("organizations/ORG_ID"),
+// ShortName: pulumi.String("tagkey"),
+// })
+// if err != nil {
+// return err
+// }
+// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+// Parent: tagKey.ID(),
+// ShortName: pulumi.String("tagvalue"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
+// Name: pulumi.String("my-full-commitment"),
+// Description: pulumi.String("some description"),
+// Plan: pulumi.String("THIRTY_SIX_MONTH"),
+// Type: pulumi.String("MEMORY_OPTIMIZED"),
+// Category: pulumi.String("MACHINE"),
+// AutoRenew: pulumi.Bool(true),
+// Resources: compute.RegionCommitmentResourceArray{
+// &compute.RegionCommitmentResourceArgs{
+// Type: pulumi.String("VCPU"),
+// Amount: pulumi.String("4"),
+// },
+// &compute.RegionCommitmentResourceArgs{
+// Type: pulumi.String("MEMORY"),
+// Amount: pulumi.String("9"),
+// },
+// },
+// Params: &compute.RegionCommitmentParamsArgs{
+// ResourceManagerTags: pulumi.All(tagKey.ID(),tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// tagKeyId := _args[0].(string)
+// tagValueId := _args[1].(string)
+// return map[string]string{
+// tagKeyId: tagValueId,
+// }, nil
+// }).(pulumi.Map[string]stringOutput),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import
@@ -153,6 +175,9 @@ type RegionCommitment struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RegionCommitmentParamsPtrOutput `pulumi:"params"`
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -246,6 +271,9 @@ type regionCommitmentState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RegionCommitmentParams `pulumi:"params"`
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -307,6 +335,9 @@ type RegionCommitmentState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RegionCommitmentParamsPtrInput
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -366,6 +397,9 @@ type regionCommitmentArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RegionCommitmentParams `pulumi:"params"`
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -413,6 +447,9 @@ type RegionCommitmentArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RegionCommitmentParamsPtrInput
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -576,6 +613,12 @@ func (o RegionCommitmentOutput) LicenseResource() RegionCommitmentLicenseResourc
 // character, which cannot be a dash.
 func (o RegionCommitmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o RegionCommitmentOutput) Params() RegionCommitmentParamsPtrOutput {
+	return o.ApplyT(func(v *RegionCommitment) RegionCommitmentParamsPtrOutput { return v.Params }).(RegionCommitmentParamsPtrOutput)
 }
 
 // The plan for this commitment, which determines duration and discount rate.

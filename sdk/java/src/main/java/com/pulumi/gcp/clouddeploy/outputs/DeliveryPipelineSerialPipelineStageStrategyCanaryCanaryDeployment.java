@@ -5,8 +5,10 @@ package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -16,6 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis analysis;
     /**
      * @return Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 &lt;= n &lt; 100.
      * 
@@ -36,8 +43,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
      * 
      */
     private @Nullable Boolean verify;
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig verifyConfig;
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment() {}
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis> analysis() {
+        return Optional.ofNullable(this.analysis);
+    }
     /**
      * @return Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 &lt;= n &lt; 100.
      * 
@@ -66,6 +85,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
     public Optional<Boolean> verify() {
         return Optional.ofNullable(this.verify);
     }
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig> verifyConfig() {
+        return Optional.ofNullable(this.verifyConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,19 +102,29 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis analysis;
         private List<Integer> percentages;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy postdeploy;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy predeploy;
         private @Nullable Boolean verify;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig verifyConfig;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.analysis = defaults.analysis;
     	      this.percentages = defaults.percentages;
     	      this.postdeploy = defaults.postdeploy;
     	      this.predeploy = defaults.predeploy;
     	      this.verify = defaults.verify;
+    	      this.verifyConfig = defaults.verifyConfig;
         }
 
+        @CustomType.Setter
+        public Builder analysis(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis analysis) {
+
+            this.analysis = analysis;
+            return this;
+        }
         @CustomType.Setter
         public Builder percentages(List<Integer> percentages) {
             if (percentages == null) {
@@ -118,12 +154,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
             this.verify = verify;
             return this;
         }
+        @CustomType.Setter
+        public Builder verifyConfig(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig verifyConfig) {
+
+            this.verifyConfig = verifyConfig;
+            return this;
+        }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment build() {
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment();
+            _resultValue.analysis = analysis;
             _resultValue.percentages = percentages;
             _resultValue.postdeploy = postdeploy;
             _resultValue.predeploy = predeploy;
             _resultValue.verify = verify;
+            _resultValue.verifyConfig = verifyConfig;
             return _resultValue;
         }
     }

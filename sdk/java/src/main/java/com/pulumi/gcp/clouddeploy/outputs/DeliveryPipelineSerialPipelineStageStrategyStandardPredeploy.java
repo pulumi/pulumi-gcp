@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy 
      * 
      */
     private @Nullable List<String> actions;
+    /**
+     * @return Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+     * 
+     */
+    private @Nullable List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask> tasks;
 
     private DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy() {}
     /**
@@ -24,6 +30,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy 
      */
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
+    }
+    /**
+     * @return Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+     * 
+     */
+    public List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask> tasks() {
+        return this.tasks == null ? List.of() : this.tasks;
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy 
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> actions;
+        private @Nullable List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask> tasks;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.tasks = defaults.tasks;
         }
 
         @CustomType.Setter
@@ -51,9 +66,19 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy 
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
+        @CustomType.Setter
+        public Builder tasks(@Nullable List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask> tasks) {
+
+            this.tasks = tasks;
+            return this;
+        }
+        public Builder tasks(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask... tasks) {
+            return tasks(List.of(tasks));
+        }
         public DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy build() {
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy();
             _resultValue.actions = actions;
+            _resultValue.tasks = tasks;
             return _resultValue;
         }
     }

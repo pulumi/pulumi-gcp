@@ -5579,6 +5579,14 @@ class DbSystemPropertiesDbHomeDatabaseArgsDict(TypedDict):
     FAILED_ENABLING
     FAILED_DISABLING
     """
+    pluggable_database_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+    """
+    pluggable_database_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+    """
     properties: NotRequired[pulumi.Input['DbSystemPropertiesDbHomeDatabasePropertiesArgsDict']]
     """
     The properties of a Database.
@@ -5604,6 +5612,8 @@ class DbSystemPropertiesDbHomeDatabaseArgs:
                  ncharacter_set: Optional[pulumi.Input[_builtins.str]] = None,
                  oci_url: Optional[pulumi.Input[_builtins.str]] = None,
                  ops_insights_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 pluggable_database_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 pluggable_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input['DbSystemPropertiesDbHomeDatabasePropertiesArgs']] = None,
                  tde_wallet_password: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -5633,6 +5643,8 @@ class DbSystemPropertiesDbHomeDatabaseArgs:
                NOT_ENABLED
                FAILED_ENABLING
                FAILED_DISABLING
+        :param pulumi.Input[_builtins.str] pluggable_database_id: The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+        :param pulumi.Input[_builtins.str] pluggable_database_name: The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
         :param pulumi.Input['DbSystemPropertiesDbHomeDatabasePropertiesArgs'] properties: The properties of a Database.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] tde_wallet_password: The TDE wallet password for the database.
@@ -5659,6 +5671,10 @@ class DbSystemPropertiesDbHomeDatabaseArgs:
             pulumi.set(__self__, "oci_url", oci_url)
         if ops_insights_status is not None:
             pulumi.set(__self__, "ops_insights_status", ops_insights_status)
+        if pluggable_database_id is not None:
+            pulumi.set(__self__, "pluggable_database_id", pluggable_database_id)
+        if pluggable_database_name is not None:
+            pulumi.set(__self__, "pluggable_database_name", pluggable_database_name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if tde_wallet_password is not None:
@@ -5821,6 +5837,30 @@ class DbSystemPropertiesDbHomeDatabaseArgs:
     @ops_insights_status.setter
     def ops_insights_status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ops_insights_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluggableDatabaseId")
+    def pluggable_database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+        """
+        return pulumi.get(self, "pluggable_database_id")
+
+    @pluggable_database_id.setter
+    def pluggable_database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pluggable_database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluggableDatabaseName")
+    def pluggable_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+        """
+        return pulumi.get(self, "pluggable_database_name")
+
+    @pluggable_database_name.setter
+    def pluggable_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pluggable_database_name", value)
 
     @_builtins.property
     @pulumi.getter

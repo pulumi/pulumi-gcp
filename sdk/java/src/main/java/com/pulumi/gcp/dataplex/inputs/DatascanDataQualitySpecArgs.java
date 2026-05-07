@@ -36,6 +36,36 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+     * 
+     */
+    @Import(name="enableCatalogBasedRules")
+    private @Nullable Output<Boolean> enableCatalogBasedRules;
+
+    /**
+     * @return If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+     * 
+     */
+    public Optional<Output<Boolean>> enableCatalogBasedRules() {
+        return Optional.ofNullable(this.enableCatalogBasedRules);
+    }
+
+    /**
+     * A filter to selectively run a subset of rules.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return A filter to selectively run a subset of rules.
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * Actions to take upon job completion.
      * Structure is documented below.
      * 
@@ -107,6 +137,8 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
 
     private DatascanDataQualitySpecArgs(DatascanDataQualitySpecArgs $) {
         this.catalogPublishingEnabled = $.catalogPublishingEnabled;
+        this.enableCatalogBasedRules = $.enableCatalogBasedRules;
+        this.filter = $.filter;
         this.postScanActions = $.postScanActions;
         this.rowFilter = $.rowFilter;
         this.rules = $.rules;
@@ -150,6 +182,48 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
          */
         public Builder catalogPublishingEnabled(Boolean catalogPublishingEnabled) {
             return catalogPublishingEnabled(Output.of(catalogPublishingEnabled));
+        }
+
+        /**
+         * @param enableCatalogBasedRules If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableCatalogBasedRules(@Nullable Output<Boolean> enableCatalogBasedRules) {
+            $.enableCatalogBasedRules = enableCatalogBasedRules;
+            return this;
+        }
+
+        /**
+         * @param enableCatalogBasedRules If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableCatalogBasedRules(Boolean enableCatalogBasedRules) {
+            return enableCatalogBasedRules(Output.of(enableCatalogBasedRules));
+        }
+
+        /**
+         * @param filter A filter to selectively run a subset of rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter A filter to selectively run a subset of rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
         }
 
         /**

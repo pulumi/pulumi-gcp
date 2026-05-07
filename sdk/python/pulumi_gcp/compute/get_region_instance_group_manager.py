@@ -27,7 +27,7 @@ class GetRegionInstanceGroupManagerResult:
     """
     A collection of values returned by getRegionInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, distribution_policy_target_shape=None, distribution_policy_zones=None, fingerprint=None, id=None, instance_flexibility_policies=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, params=None, project=None, region=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_size_policies=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, distribution_policy_target_shape=None, distribution_policy_zones=None, fingerprint=None, id=None, instance_flexibility_policies=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, params=None, project=None, region=None, resource_policies=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_size_policies=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -85,6 +85,9 @@ class GetRegionInstanceGroupManagerResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if resource_policies and not isinstance(resource_policies, list):
+            raise TypeError("Expected argument 'resource_policies' to be a list")
+        pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -230,6 +233,11 @@ class GetRegionInstanceGroupManagerResult:
         return pulumi.get(self, "region")
 
     @_builtins.property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence['outputs.GetRegionInstanceGroupManagerResourcePolicyResult']:
+        return pulumi.get(self, "resource_policies")
+
+    @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "self_link")
@@ -330,6 +338,7 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             params=self.params,
             project=self.project,
             region=self.region,
+            resource_policies=self.resource_policies,
             self_link=self.self_link,
             standby_policies=self.standby_policies,
             stateful_disks=self.stateful_disks,
@@ -402,6 +411,7 @@ def get_region_instance_group_manager(name: Optional[_builtins.str] = None,
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
+        resource_policies=pulumi.get(__ret__, 'resource_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),
         standby_policies=pulumi.get(__ret__, 'standby_policies'),
         stateful_disks=pulumi.get(__ret__, 'stateful_disks'),
@@ -471,6 +481,7 @@ def get_region_instance_group_manager_output(name: Optional[pulumi.Input[Optiona
         params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
         region=pulumi.get(__response__, 'region'),
+        resource_policies=pulumi.get(__response__, 'resource_policies'),
         self_link=pulumi.get(__response__, 'self_link'),
         standby_policies=pulumi.get(__response__, 'standby_policies'),
         stateful_disks=pulumi.get(__response__, 'stateful_disks'),

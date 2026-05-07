@@ -7481,7 +7481,7 @@ type ClusterClusterConfigLifecycleConfig struct {
 	// ***
 	AutoStopTime *string `pulumi:"autoStopTime"`
 	// The duration to keep the cluster alive while idling
-	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
 	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
 	// Time when the cluster became idle
 	// (most recent job finished) and became eligible for deletion due to idleness.
@@ -7514,7 +7514,7 @@ type ClusterClusterConfigLifecycleConfigArgs struct {
 	// ***
 	AutoStopTime pulumi.StringPtrInput `pulumi:"autoStopTime"`
 	// The duration to keep the cluster alive while idling
-	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
 	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
 	// Time when the cluster became idle
 	// (most recent job finished) and became eligible for deletion due to idleness.
@@ -7618,7 +7618,7 @@ func (o ClusterClusterConfigLifecycleConfigOutput) AutoStopTime() pulumi.StringP
 }
 
 // The duration to keep the cluster alive while idling
-// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
 func (o ClusterClusterConfigLifecycleConfigOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.IdleDeleteTtl }).(pulumi.StringPtrOutput)
 }
@@ -7686,7 +7686,7 @@ func (o ClusterClusterConfigLifecycleConfigPtrOutput) AutoStopTime() pulumi.Stri
 }
 
 // The duration to keep the cluster alive while idling
-// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
 func (o ClusterClusterConfigLifecycleConfigPtrOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) *string {
 		if v == nil {

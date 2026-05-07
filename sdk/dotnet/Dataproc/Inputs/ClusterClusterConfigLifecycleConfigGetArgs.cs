@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// The duration to keep the cluster alive while idling
-        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
         /// </summary>
         [Input("idleDeleteTtl")]
         public Input<string>? IdleDeleteTtl { get; set; }

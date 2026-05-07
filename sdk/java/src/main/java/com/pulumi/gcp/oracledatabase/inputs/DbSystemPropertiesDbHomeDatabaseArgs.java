@@ -226,6 +226,36 @@ public final class DbSystemPropertiesDbHomeDatabaseArgs extends com.pulumi.resou
     }
 
     /**
+     * The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+     * 
+     */
+    @Import(name="pluggableDatabaseId")
+    private @Nullable Output<String> pluggableDatabaseId;
+
+    /**
+     * @return The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+     * 
+     */
+    public Optional<Output<String>> pluggableDatabaseId() {
+        return Optional.ofNullable(this.pluggableDatabaseId);
+    }
+
+    /**
+     * The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+     * 
+     */
+    @Import(name="pluggableDatabaseName")
+    private @Nullable Output<String> pluggableDatabaseName;
+
+    /**
+     * @return The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+     * 
+     */
+    public Optional<Output<String>> pluggableDatabaseName() {
+        return Optional.ofNullable(this.pluggableDatabaseName);
+    }
+
+    /**
      * The properties of a Database.
      * Structure is documented below.
      * 
@@ -272,6 +302,8 @@ public final class DbSystemPropertiesDbHomeDatabaseArgs extends com.pulumi.resou
         this.ncharacterSet = $.ncharacterSet;
         this.ociUrl = $.ociUrl;
         this.opsInsightsStatus = $.opsInsightsStatus;
+        this.pluggableDatabaseId = $.pluggableDatabaseId;
+        this.pluggableDatabaseName = $.pluggableDatabaseName;
         this.properties = $.properties;
         this.tdeWalletPassword = $.tdeWalletPassword;
     }
@@ -572,6 +604,48 @@ public final class DbSystemPropertiesDbHomeDatabaseArgs extends com.pulumi.resou
          */
         public Builder opsInsightsStatus(String opsInsightsStatus) {
             return opsInsightsStatus(Output.of(opsInsightsStatus));
+        }
+
+        /**
+         * @param pluggableDatabaseId The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluggableDatabaseId(@Nullable Output<String> pluggableDatabaseId) {
+            $.pluggableDatabaseId = pluggableDatabaseId;
+            return this;
+        }
+
+        /**
+         * @param pluggableDatabaseId The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluggableDatabaseId(String pluggableDatabaseId) {
+            return pluggableDatabaseId(Output.of(pluggableDatabaseId));
+        }
+
+        /**
+         * @param pluggableDatabaseName The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluggableDatabaseName(@Nullable Output<String> pluggableDatabaseName) {
+            $.pluggableDatabaseName = pluggableDatabaseName;
+            return this;
+        }
+
+        /**
+         * @param pluggableDatabaseName The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluggableDatabaseName(String pluggableDatabaseName) {
+            return pluggableDatabaseName(Output.of(pluggableDatabaseName));
         }
 
         /**

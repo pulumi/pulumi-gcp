@@ -5,6 +5,8 @@ package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.outputs.TargetExecutionConfigDefaultPool;
+import com.pulumi.gcp.clouddeploy.outputs.TargetExecutionConfigPrivatePool;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -20,10 +22,20 @@ public final class TargetExecutionConfig {
      */
     private @Nullable String artifactStorage;
     /**
+     * @return Optional. Use default Cloud Build pool.
+     * 
+     */
+    private @Nullable TargetExecutionConfigDefaultPool defaultPool;
+    /**
      * @return Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
      * 
      */
     private @Nullable String executionTimeout;
+    /**
+     * @return Optional. Use private Cloud Build pool.
+     * 
+     */
+    private @Nullable TargetExecutionConfigPrivatePool privatePool;
     /**
      * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
      * 
@@ -54,11 +66,25 @@ public final class TargetExecutionConfig {
         return Optional.ofNullable(this.artifactStorage);
     }
     /**
+     * @return Optional. Use default Cloud Build pool.
+     * 
+     */
+    public Optional<TargetExecutionConfigDefaultPool> defaultPool() {
+        return Optional.ofNullable(this.defaultPool);
+    }
+    /**
      * @return Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
      * 
      */
     public Optional<String> executionTimeout() {
         return Optional.ofNullable(this.executionTimeout);
+    }
+    /**
+     * @return Optional. Use private Cloud Build pool.
+     * 
+     */
+    public Optional<TargetExecutionConfigPrivatePool> privatePool() {
+        return Optional.ofNullable(this.privatePool);
     }
     /**
      * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute{@literal @}developer.gserviceaccount.com) is used.
@@ -99,7 +125,9 @@ public final class TargetExecutionConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String artifactStorage;
+        private @Nullable TargetExecutionConfigDefaultPool defaultPool;
         private @Nullable String executionTimeout;
+        private @Nullable TargetExecutionConfigPrivatePool privatePool;
         private @Nullable String serviceAccount;
         private List<String> usages;
         private @Nullable Boolean verbose;
@@ -108,7 +136,9 @@ public final class TargetExecutionConfig {
         public Builder(TargetExecutionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactStorage = defaults.artifactStorage;
+    	      this.defaultPool = defaults.defaultPool;
     	      this.executionTimeout = defaults.executionTimeout;
+    	      this.privatePool = defaults.privatePool;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.usages = defaults.usages;
     	      this.verbose = defaults.verbose;
@@ -122,9 +152,21 @@ public final class TargetExecutionConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder defaultPool(@Nullable TargetExecutionConfigDefaultPool defaultPool) {
+
+            this.defaultPool = defaultPool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder executionTimeout(@Nullable String executionTimeout) {
 
             this.executionTimeout = executionTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privatePool(@Nullable TargetExecutionConfigPrivatePool privatePool) {
+
+            this.privatePool = privatePool;
             return this;
         }
         @CustomType.Setter
@@ -159,7 +201,9 @@ public final class TargetExecutionConfig {
         public TargetExecutionConfig build() {
             final var _resultValue = new TargetExecutionConfig();
             _resultValue.artifactStorage = artifactStorage;
+            _resultValue.defaultPool = defaultPool;
             _resultValue.executionTimeout = executionTimeout;
+            _resultValue.privatePool = privatePool;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.usages = usages;
             _resultValue.verbose = verbose;

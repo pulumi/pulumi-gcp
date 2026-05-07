@@ -55,6 +55,11 @@ export type AppCheckRecaptchaV3Config = import("./appCheckRecaptchaV3Config").Ap
 export const AppCheckRecaptchaV3Config: typeof import("./appCheckRecaptchaV3Config").AppCheckRecaptchaV3Config = null as any;
 utilities.lazyLoad(exports, ["AppCheckRecaptchaV3Config"], () => require("./appCheckRecaptchaV3Config"));
 
+export { AppCheckResourcePolicyArgs, AppCheckResourcePolicyState } from "./appCheckResourcePolicy";
+export type AppCheckResourcePolicy = import("./appCheckResourcePolicy").AppCheckResourcePolicy;
+export const AppCheckResourcePolicy: typeof import("./appCheckResourcePolicy").AppCheckResourcePolicy = null as any;
+utilities.lazyLoad(exports, ["AppCheckResourcePolicy"], () => require("./appCheckResourcePolicy"));
+
 export { AppCheckServiceConfigArgs, AppCheckServiceConfigState } from "./appCheckServiceConfig";
 export type AppCheckServiceConfig = import("./appCheckServiceConfig").AppCheckServiceConfig;
 export const AppCheckServiceConfig: typeof import("./appCheckServiceConfig").AppCheckServiceConfig = null as any;
@@ -220,6 +225,8 @@ const _module = {
                 return new AppCheckRecaptchaEnterpriseConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config":
                 return new AppCheckRecaptchaV3Config(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy":
+                return new AppCheckResourcePolicy(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
                 return new AppCheckServiceConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appHostingBackend:AppHostingBackend":
@@ -275,6 +282,7 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckDeviceCheckConfig
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckPlayIntegrityConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaEnterpriseConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaV3Config", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckResourcePolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckServiceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appHostingBackend", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appHostingBuild", _module)

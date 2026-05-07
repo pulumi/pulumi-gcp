@@ -23149,6 +23149,5209 @@ func (o DeploymentChannelProfileWebWidgetConfigPtrOutput) WebWidgetTitle() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type EvaluationGolden struct {
+	// The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
+	EvaluationExpectations []string `pulumi:"evaluationExpectations"`
+	// The golden turns required to replay a golden conversation.
+	// Structure is documented below.
+	Turns []EvaluationGoldenTurn `pulumi:"turns"`
+}
+
+// EvaluationGoldenInput is an input type that accepts EvaluationGoldenArgs and EvaluationGoldenOutput values.
+// You can construct a concrete instance of `EvaluationGoldenInput` via:
+//
+//	EvaluationGoldenArgs{...}
+type EvaluationGoldenInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenOutput() EvaluationGoldenOutput
+	ToEvaluationGoldenOutputWithContext(context.Context) EvaluationGoldenOutput
+}
+
+type EvaluationGoldenArgs struct {
+	// The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
+	EvaluationExpectations pulumi.StringArrayInput `pulumi:"evaluationExpectations"`
+	// The golden turns required to replay a golden conversation.
+	// Structure is documented below.
+	Turns EvaluationGoldenTurnArrayInput `pulumi:"turns"`
+}
+
+func (EvaluationGoldenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGolden)(nil)).Elem()
+}
+
+func (i EvaluationGoldenArgs) ToEvaluationGoldenOutput() EvaluationGoldenOutput {
+	return i.ToEvaluationGoldenOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenArgs) ToEvaluationGoldenOutputWithContext(ctx context.Context) EvaluationGoldenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenOutput)
+}
+
+func (i EvaluationGoldenArgs) ToEvaluationGoldenPtrOutput() EvaluationGoldenPtrOutput {
+	return i.ToEvaluationGoldenPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenArgs) ToEvaluationGoldenPtrOutputWithContext(ctx context.Context) EvaluationGoldenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenOutput).ToEvaluationGoldenPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenPtrInput is an input type that accepts EvaluationGoldenArgs, EvaluationGoldenPtr and EvaluationGoldenPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenPtrInput` via:
+//
+//	        EvaluationGoldenArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenPtrOutput() EvaluationGoldenPtrOutput
+	ToEvaluationGoldenPtrOutputWithContext(context.Context) EvaluationGoldenPtrOutput
+}
+
+type evaluationGoldenPtrType EvaluationGoldenArgs
+
+func EvaluationGoldenPtr(v *EvaluationGoldenArgs) EvaluationGoldenPtrInput {
+	return (*evaluationGoldenPtrType)(v)
+}
+
+func (*evaluationGoldenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGolden)(nil)).Elem()
+}
+
+func (i *evaluationGoldenPtrType) ToEvaluationGoldenPtrOutput() EvaluationGoldenPtrOutput {
+	return i.ToEvaluationGoldenPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenPtrType) ToEvaluationGoldenPtrOutputWithContext(ctx context.Context) EvaluationGoldenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenPtrOutput)
+}
+
+type EvaluationGoldenOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGolden)(nil)).Elem()
+}
+
+func (o EvaluationGoldenOutput) ToEvaluationGoldenOutput() EvaluationGoldenOutput {
+	return o
+}
+
+func (o EvaluationGoldenOutput) ToEvaluationGoldenOutputWithContext(ctx context.Context) EvaluationGoldenOutput {
+	return o
+}
+
+func (o EvaluationGoldenOutput) ToEvaluationGoldenPtrOutput() EvaluationGoldenPtrOutput {
+	return o.ToEvaluationGoldenPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenOutput) ToEvaluationGoldenPtrOutputWithContext(ctx context.Context) EvaluationGoldenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGolden) *EvaluationGolden {
+		return &v
+	}).(EvaluationGoldenPtrOutput)
+}
+
+// The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
+func (o EvaluationGoldenOutput) EvaluationExpectations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvaluationGolden) []string { return v.EvaluationExpectations }).(pulumi.StringArrayOutput)
+}
+
+// The golden turns required to replay a golden conversation.
+// Structure is documented below.
+func (o EvaluationGoldenOutput) Turns() EvaluationGoldenTurnArrayOutput {
+	return o.ApplyT(func(v EvaluationGolden) []EvaluationGoldenTurn { return v.Turns }).(EvaluationGoldenTurnArrayOutput)
+}
+
+type EvaluationGoldenPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGolden)(nil)).Elem()
+}
+
+func (o EvaluationGoldenPtrOutput) ToEvaluationGoldenPtrOutput() EvaluationGoldenPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenPtrOutput) ToEvaluationGoldenPtrOutputWithContext(ctx context.Context) EvaluationGoldenPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenPtrOutput) Elem() EvaluationGoldenOutput {
+	return o.ApplyT(func(v *EvaluationGolden) EvaluationGolden {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGolden
+		return ret
+	}).(EvaluationGoldenOutput)
+}
+
+// The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
+func (o EvaluationGoldenPtrOutput) EvaluationExpectations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EvaluationGolden) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationExpectations
+	}).(pulumi.StringArrayOutput)
+}
+
+// The golden turns required to replay a golden conversation.
+// Structure is documented below.
+func (o EvaluationGoldenPtrOutput) Turns() EvaluationGoldenTurnArrayOutput {
+	return o.ApplyT(func(v *EvaluationGolden) []EvaluationGoldenTurn {
+		if v == nil {
+			return nil
+		}
+		return v.Turns
+	}).(EvaluationGoldenTurnArrayOutput)
+}
+
+type EvaluationGoldenTurn struct {
+	// (Output)
+	// The root span of the golden turn for processing and maintaining audio information.
+	// Structure is documented below.
+	RootSpans []EvaluationGoldenTurnRootSpan `pulumi:"rootSpans"`
+	// The sequence of steps required to replay a golden conversation turn.
+	// Structure is documented below.
+	//
+	// <a name="nestedGoldenTurnsRootSpan"></a>The `rootSpan` block contains:
+	Steps []EvaluationGoldenTurnStep `pulumi:"steps"`
+}
+
+// EvaluationGoldenTurnInput is an input type that accepts EvaluationGoldenTurnArgs and EvaluationGoldenTurnOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnInput` via:
+//
+//	EvaluationGoldenTurnArgs{...}
+type EvaluationGoldenTurnInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnOutput() EvaluationGoldenTurnOutput
+	ToEvaluationGoldenTurnOutputWithContext(context.Context) EvaluationGoldenTurnOutput
+}
+
+type EvaluationGoldenTurnArgs struct {
+	// (Output)
+	// The root span of the golden turn for processing and maintaining audio information.
+	// Structure is documented below.
+	RootSpans EvaluationGoldenTurnRootSpanArrayInput `pulumi:"rootSpans"`
+	// The sequence of steps required to replay a golden conversation turn.
+	// Structure is documented below.
+	//
+	// <a name="nestedGoldenTurnsRootSpan"></a>The `rootSpan` block contains:
+	Steps EvaluationGoldenTurnStepArrayInput `pulumi:"steps"`
+}
+
+func (EvaluationGoldenTurnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurn)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnArgs) ToEvaluationGoldenTurnOutput() EvaluationGoldenTurnOutput {
+	return i.ToEvaluationGoldenTurnOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnArgs) ToEvaluationGoldenTurnOutputWithContext(ctx context.Context) EvaluationGoldenTurnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnOutput)
+}
+
+// EvaluationGoldenTurnArrayInput is an input type that accepts EvaluationGoldenTurnArray and EvaluationGoldenTurnArrayOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnArrayInput` via:
+//
+//	EvaluationGoldenTurnArray{ EvaluationGoldenTurnArgs{...} }
+type EvaluationGoldenTurnArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnArrayOutput() EvaluationGoldenTurnArrayOutput
+	ToEvaluationGoldenTurnArrayOutputWithContext(context.Context) EvaluationGoldenTurnArrayOutput
+}
+
+type EvaluationGoldenTurnArray []EvaluationGoldenTurnInput
+
+func (EvaluationGoldenTurnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurn)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnArray) ToEvaluationGoldenTurnArrayOutput() EvaluationGoldenTurnArrayOutput {
+	return i.ToEvaluationGoldenTurnArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnArray) ToEvaluationGoldenTurnArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnArrayOutput)
+}
+
+type EvaluationGoldenTurnOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurn)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnOutput) ToEvaluationGoldenTurnOutput() EvaluationGoldenTurnOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnOutput) ToEvaluationGoldenTurnOutputWithContext(ctx context.Context) EvaluationGoldenTurnOutput {
+	return o
+}
+
+// (Output)
+// The root span of the golden turn for processing and maintaining audio information.
+// Structure is documented below.
+func (o EvaluationGoldenTurnOutput) RootSpans() EvaluationGoldenTurnRootSpanArrayOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurn) []EvaluationGoldenTurnRootSpan { return v.RootSpans }).(EvaluationGoldenTurnRootSpanArrayOutput)
+}
+
+// The sequence of steps required to replay a golden conversation turn.
+// Structure is documented below.
+//
+// <a name="nestedGoldenTurnsRootSpan"></a>The `rootSpan` block contains:
+func (o EvaluationGoldenTurnOutput) Steps() EvaluationGoldenTurnStepArrayOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurn) []EvaluationGoldenTurnStep { return v.Steps }).(EvaluationGoldenTurnStepArrayOutput)
+}
+
+type EvaluationGoldenTurnArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurn)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnArrayOutput) ToEvaluationGoldenTurnArrayOutput() EvaluationGoldenTurnArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnArrayOutput) ToEvaluationGoldenTurnArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnArrayOutput) Index(i pulumi.IntInput) EvaluationGoldenTurnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationGoldenTurn {
+		return vs[0].([]EvaluationGoldenTurn)[vs[1].(int)]
+	}).(EvaluationGoldenTurnOutput)
+}
+
+type EvaluationGoldenTurnRootSpan struct {
+	// Output only. Key-value attributes associated with the span.
+	Attributes *string `pulumi:"attributes"`
+	// Output only. The child spans that are nested under this span.
+	ChildSpans *string `pulumi:"childSpans"`
+	// Output only. The duration of the span.
+	Duration *string `pulumi:"duration"`
+	// Output only. The end time of the span.
+	EndTime *string `pulumi:"endTime"`
+	// Identifier. The unique identifier of the evaluation.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+	Name *string `pulumi:"name"`
+	// Output only. The start time of the span.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// EvaluationGoldenTurnRootSpanInput is an input type that accepts EvaluationGoldenTurnRootSpanArgs and EvaluationGoldenTurnRootSpanOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnRootSpanInput` via:
+//
+//	EvaluationGoldenTurnRootSpanArgs{...}
+type EvaluationGoldenTurnRootSpanInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnRootSpanOutput() EvaluationGoldenTurnRootSpanOutput
+	ToEvaluationGoldenTurnRootSpanOutputWithContext(context.Context) EvaluationGoldenTurnRootSpanOutput
+}
+
+type EvaluationGoldenTurnRootSpanArgs struct {
+	// Output only. Key-value attributes associated with the span.
+	Attributes pulumi.StringPtrInput `pulumi:"attributes"`
+	// Output only. The child spans that are nested under this span.
+	ChildSpans pulumi.StringPtrInput `pulumi:"childSpans"`
+	// Output only. The duration of the span.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Output only. The end time of the span.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Identifier. The unique identifier of the evaluation.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Output only. The start time of the span.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (EvaluationGoldenTurnRootSpanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnRootSpan)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnRootSpanArgs) ToEvaluationGoldenTurnRootSpanOutput() EvaluationGoldenTurnRootSpanOutput {
+	return i.ToEvaluationGoldenTurnRootSpanOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnRootSpanArgs) ToEvaluationGoldenTurnRootSpanOutputWithContext(ctx context.Context) EvaluationGoldenTurnRootSpanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnRootSpanOutput)
+}
+
+// EvaluationGoldenTurnRootSpanArrayInput is an input type that accepts EvaluationGoldenTurnRootSpanArray and EvaluationGoldenTurnRootSpanArrayOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnRootSpanArrayInput` via:
+//
+//	EvaluationGoldenTurnRootSpanArray{ EvaluationGoldenTurnRootSpanArgs{...} }
+type EvaluationGoldenTurnRootSpanArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnRootSpanArrayOutput() EvaluationGoldenTurnRootSpanArrayOutput
+	ToEvaluationGoldenTurnRootSpanArrayOutputWithContext(context.Context) EvaluationGoldenTurnRootSpanArrayOutput
+}
+
+type EvaluationGoldenTurnRootSpanArray []EvaluationGoldenTurnRootSpanInput
+
+func (EvaluationGoldenTurnRootSpanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnRootSpan)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnRootSpanArray) ToEvaluationGoldenTurnRootSpanArrayOutput() EvaluationGoldenTurnRootSpanArrayOutput {
+	return i.ToEvaluationGoldenTurnRootSpanArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnRootSpanArray) ToEvaluationGoldenTurnRootSpanArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnRootSpanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnRootSpanArrayOutput)
+}
+
+type EvaluationGoldenTurnRootSpanOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnRootSpanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnRootSpan)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnRootSpanOutput) ToEvaluationGoldenTurnRootSpanOutput() EvaluationGoldenTurnRootSpanOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnRootSpanOutput) ToEvaluationGoldenTurnRootSpanOutputWithContext(ctx context.Context) EvaluationGoldenTurnRootSpanOutput {
+	return o
+}
+
+// Output only. Key-value attributes associated with the span.
+func (o EvaluationGoldenTurnRootSpanOutput) Attributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnRootSpan) *string { return v.Attributes }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The child spans that are nested under this span.
+func (o EvaluationGoldenTurnRootSpanOutput) ChildSpans() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnRootSpan) *string { return v.ChildSpans }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The duration of the span.
+func (o EvaluationGoldenTurnRootSpanOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnRootSpan) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The end time of the span.
+func (o EvaluationGoldenTurnRootSpanOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnRootSpan) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Identifier. The unique identifier of the evaluation.
+// Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+func (o EvaluationGoldenTurnRootSpanOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnRootSpan) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The start time of the span.
+func (o EvaluationGoldenTurnRootSpanOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnRootSpan) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnRootSpanArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnRootSpanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnRootSpan)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnRootSpanArrayOutput) ToEvaluationGoldenTurnRootSpanArrayOutput() EvaluationGoldenTurnRootSpanArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnRootSpanArrayOutput) ToEvaluationGoldenTurnRootSpanArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnRootSpanArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnRootSpanArrayOutput) Index(i pulumi.IntInput) EvaluationGoldenTurnRootSpanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationGoldenTurnRootSpan {
+		return vs[0].([]EvaluationGoldenTurnRootSpan)[vs[1].(int)]
+	}).(EvaluationGoldenTurnRootSpanOutput)
+}
+
+type EvaluationGoldenTurnStep struct {
+	// Represents an event indicating the transfer of the conversation to a different agent.
+	// Structure is documented below.
+	AgentTransfer *EvaluationGoldenTurnStepAgentTransfer `pulumi:"agentTransfer"`
+	// Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
+	// Structure is documented below.
+	Expectation *EvaluationGoldenTurnStepExpectation `pulumi:"expectation"`
+	// Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
+	// Structure is documented below.
+	UserInput *EvaluationGoldenTurnStepUserInput `pulumi:"userInput"`
+}
+
+// EvaluationGoldenTurnStepInput is an input type that accepts EvaluationGoldenTurnStepArgs and EvaluationGoldenTurnStepOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepInput` via:
+//
+//	EvaluationGoldenTurnStepArgs{...}
+type EvaluationGoldenTurnStepInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepOutput() EvaluationGoldenTurnStepOutput
+	ToEvaluationGoldenTurnStepOutputWithContext(context.Context) EvaluationGoldenTurnStepOutput
+}
+
+type EvaluationGoldenTurnStepArgs struct {
+	// Represents an event indicating the transfer of the conversation to a different agent.
+	// Structure is documented below.
+	AgentTransfer EvaluationGoldenTurnStepAgentTransferPtrInput `pulumi:"agentTransfer"`
+	// Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
+	// Structure is documented below.
+	Expectation EvaluationGoldenTurnStepExpectationPtrInput `pulumi:"expectation"`
+	// Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
+	// Structure is documented below.
+	UserInput EvaluationGoldenTurnStepUserInputPtrInput `pulumi:"userInput"`
+}
+
+func (EvaluationGoldenTurnStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStep)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepArgs) ToEvaluationGoldenTurnStepOutput() EvaluationGoldenTurnStepOutput {
+	return i.ToEvaluationGoldenTurnStepOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepArgs) ToEvaluationGoldenTurnStepOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepOutput)
+}
+
+// EvaluationGoldenTurnStepArrayInput is an input type that accepts EvaluationGoldenTurnStepArray and EvaluationGoldenTurnStepArrayOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepArrayInput` via:
+//
+//	EvaluationGoldenTurnStepArray{ EvaluationGoldenTurnStepArgs{...} }
+type EvaluationGoldenTurnStepArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepArrayOutput() EvaluationGoldenTurnStepArrayOutput
+	ToEvaluationGoldenTurnStepArrayOutputWithContext(context.Context) EvaluationGoldenTurnStepArrayOutput
+}
+
+type EvaluationGoldenTurnStepArray []EvaluationGoldenTurnStepInput
+
+func (EvaluationGoldenTurnStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnStep)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepArray) ToEvaluationGoldenTurnStepArrayOutput() EvaluationGoldenTurnStepArrayOutput {
+	return i.ToEvaluationGoldenTurnStepArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepArray) ToEvaluationGoldenTurnStepArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepArrayOutput)
+}
+
+type EvaluationGoldenTurnStepOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStep)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepOutput) ToEvaluationGoldenTurnStepOutput() EvaluationGoldenTurnStepOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepOutput) ToEvaluationGoldenTurnStepOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepOutput {
+	return o
+}
+
+// Represents an event indicating the transfer of the conversation to a different agent.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepOutput) AgentTransfer() EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStep) *EvaluationGoldenTurnStepAgentTransfer { return v.AgentTransfer }).(EvaluationGoldenTurnStepAgentTransferPtrOutput)
+}
+
+// Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepOutput) Expectation() EvaluationGoldenTurnStepExpectationPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStep) *EvaluationGoldenTurnStepExpectation { return v.Expectation }).(EvaluationGoldenTurnStepExpectationPtrOutput)
+}
+
+// Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepOutput) UserInput() EvaluationGoldenTurnStepUserInputPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStep) *EvaluationGoldenTurnStepUserInput { return v.UserInput }).(EvaluationGoldenTurnStepUserInputPtrOutput)
+}
+
+type EvaluationGoldenTurnStepArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnStep)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepArrayOutput) ToEvaluationGoldenTurnStepArrayOutput() EvaluationGoldenTurnStepArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepArrayOutput) ToEvaluationGoldenTurnStepArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepArrayOutput) Index(i pulumi.IntInput) EvaluationGoldenTurnStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationGoldenTurnStep {
+		return vs[0].([]EvaluationGoldenTurnStep)[vs[1].(int)]
+	}).(EvaluationGoldenTurnStepOutput)
+}
+
+type EvaluationGoldenTurnStepAgentTransfer struct {
+	// The display name of the target agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The resource name of the target agent.
+	TargetAgent string `pulumi:"targetAgent"`
+}
+
+// EvaluationGoldenTurnStepAgentTransferInput is an input type that accepts EvaluationGoldenTurnStepAgentTransferArgs and EvaluationGoldenTurnStepAgentTransferOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepAgentTransferInput` via:
+//
+//	EvaluationGoldenTurnStepAgentTransferArgs{...}
+type EvaluationGoldenTurnStepAgentTransferInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepAgentTransferOutput() EvaluationGoldenTurnStepAgentTransferOutput
+	ToEvaluationGoldenTurnStepAgentTransferOutputWithContext(context.Context) EvaluationGoldenTurnStepAgentTransferOutput
+}
+
+type EvaluationGoldenTurnStepAgentTransferArgs struct {
+	// The display name of the target agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The resource name of the target agent.
+	TargetAgent pulumi.StringInput `pulumi:"targetAgent"`
+}
+
+func (EvaluationGoldenTurnStepAgentTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepAgentTransfer)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepAgentTransferArgs) ToEvaluationGoldenTurnStepAgentTransferOutput() EvaluationGoldenTurnStepAgentTransferOutput {
+	return i.ToEvaluationGoldenTurnStepAgentTransferOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepAgentTransferArgs) ToEvaluationGoldenTurnStepAgentTransferOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepAgentTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepAgentTransferOutput)
+}
+
+func (i EvaluationGoldenTurnStepAgentTransferArgs) ToEvaluationGoldenTurnStepAgentTransferPtrOutput() EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return i.ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepAgentTransferArgs) ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepAgentTransferOutput).ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepAgentTransferPtrInput is an input type that accepts EvaluationGoldenTurnStepAgentTransferArgs, EvaluationGoldenTurnStepAgentTransferPtr and EvaluationGoldenTurnStepAgentTransferPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepAgentTransferPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepAgentTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepAgentTransferPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepAgentTransferPtrOutput() EvaluationGoldenTurnStepAgentTransferPtrOutput
+	ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepAgentTransferPtrOutput
+}
+
+type evaluationGoldenTurnStepAgentTransferPtrType EvaluationGoldenTurnStepAgentTransferArgs
+
+func EvaluationGoldenTurnStepAgentTransferPtr(v *EvaluationGoldenTurnStepAgentTransferArgs) EvaluationGoldenTurnStepAgentTransferPtrInput {
+	return (*evaluationGoldenTurnStepAgentTransferPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepAgentTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepAgentTransfer)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepAgentTransferPtrType) ToEvaluationGoldenTurnStepAgentTransferPtrOutput() EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return i.ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepAgentTransferPtrType) ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepAgentTransferPtrOutput)
+}
+
+type EvaluationGoldenTurnStepAgentTransferOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepAgentTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferOutput) ToEvaluationGoldenTurnStepAgentTransferOutput() EvaluationGoldenTurnStepAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferOutput) ToEvaluationGoldenTurnStepAgentTransferOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferOutput) ToEvaluationGoldenTurnStepAgentTransferPtrOutput() EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return o.ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferOutput) ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepAgentTransfer) *EvaluationGoldenTurnStepAgentTransfer {
+		return &v
+	}).(EvaluationGoldenTurnStepAgentTransferPtrOutput)
+}
+
+// The display name of the target agent.
+func (o EvaluationGoldenTurnStepAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepAgentTransfer) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the target agent.
+func (o EvaluationGoldenTurnStepAgentTransferOutput) TargetAgent() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepAgentTransfer) string { return v.TargetAgent }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepAgentTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepAgentTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) ToEvaluationGoldenTurnStepAgentTransferPtrOutput() EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) ToEvaluationGoldenTurnStepAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) Elem() EvaluationGoldenTurnStepAgentTransferOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepAgentTransfer) EvaluationGoldenTurnStepAgentTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepAgentTransfer
+		return ret
+	}).(EvaluationGoldenTurnStepAgentTransferOutput)
+}
+
+// The display name of the target agent.
+func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the target agent.
+func (o EvaluationGoldenTurnStepAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAgent
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectation struct {
+	// Expectation on agent response.
+	// Structure is documented below.
+	AgentResponse *EvaluationGoldenTurnStepExpectationAgentResponse `pulumi:"agentResponse"`
+	// Expectation on agent transfer.
+	// Structure is documented below.
+	AgentTransfer *EvaluationGoldenTurnStepExpectationAgentTransfer `pulumi:"agentTransfer"`
+	// A mock response to provide if a tool is called.
+	// Structure is documented below.
+	MockToolResponse *EvaluationGoldenTurnStepExpectationMockToolResponse `pulumi:"mockToolResponse"`
+	// A note describing the expectation.
+	Note *string `pulumi:"note"`
+	// Expectation on tool call.
+	// Structure is documented below.
+	ToolCall *EvaluationGoldenTurnStepExpectationToolCall `pulumi:"toolCall"`
+	// Expectation on tool response.
+	// Structure is documented below.
+	ToolResponse *EvaluationGoldenTurnStepExpectationToolResponse `pulumi:"toolResponse"`
+	// Expectation on updated variables.
+	// Structure is documented below.
+	UpdatedVariables *EvaluationGoldenTurnStepExpectationUpdatedVariables `pulumi:"updatedVariables"`
+}
+
+// EvaluationGoldenTurnStepExpectationInput is an input type that accepts EvaluationGoldenTurnStepExpectationArgs and EvaluationGoldenTurnStepExpectationOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationArgs{...}
+type EvaluationGoldenTurnStepExpectationInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationOutput() EvaluationGoldenTurnStepExpectationOutput
+	ToEvaluationGoldenTurnStepExpectationOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationOutput
+}
+
+type EvaluationGoldenTurnStepExpectationArgs struct {
+	// Expectation on agent response.
+	// Structure is documented below.
+	AgentResponse EvaluationGoldenTurnStepExpectationAgentResponsePtrInput `pulumi:"agentResponse"`
+	// Expectation on agent transfer.
+	// Structure is documented below.
+	AgentTransfer EvaluationGoldenTurnStepExpectationAgentTransferPtrInput `pulumi:"agentTransfer"`
+	// A mock response to provide if a tool is called.
+	// Structure is documented below.
+	MockToolResponse EvaluationGoldenTurnStepExpectationMockToolResponsePtrInput `pulumi:"mockToolResponse"`
+	// A note describing the expectation.
+	Note pulumi.StringPtrInput `pulumi:"note"`
+	// Expectation on tool call.
+	// Structure is documented below.
+	ToolCall EvaluationGoldenTurnStepExpectationToolCallPtrInput `pulumi:"toolCall"`
+	// Expectation on tool response.
+	// Structure is documented below.
+	ToolResponse EvaluationGoldenTurnStepExpectationToolResponsePtrInput `pulumi:"toolResponse"`
+	// Expectation on updated variables.
+	// Structure is documented below.
+	UpdatedVariables EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrInput `pulumi:"updatedVariables"`
+}
+
+func (EvaluationGoldenTurnStepExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectation)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationArgs) ToEvaluationGoldenTurnStepExpectationOutput() EvaluationGoldenTurnStepExpectationOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationArgs) ToEvaluationGoldenTurnStepExpectationOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationArgs) ToEvaluationGoldenTurnStepExpectationPtrOutput() EvaluationGoldenTurnStepExpectationPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationArgs) ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationOutput).ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationArgs, EvaluationGoldenTurnStepExpectationPtr and EvaluationGoldenTurnStepExpectationPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationPtrOutput() EvaluationGoldenTurnStepExpectationPtrOutput
+	ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationPtrType EvaluationGoldenTurnStepExpectationArgs
+
+func EvaluationGoldenTurnStepExpectationPtr(v *EvaluationGoldenTurnStepExpectationArgs) EvaluationGoldenTurnStepExpectationPtrInput {
+	return (*evaluationGoldenTurnStepExpectationPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectation)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationPtrType) ToEvaluationGoldenTurnStepExpectationPtrOutput() EvaluationGoldenTurnStepExpectationPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationPtrType) ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectation)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationOutput) ToEvaluationGoldenTurnStepExpectationOutput() EvaluationGoldenTurnStepExpectationOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationOutput) ToEvaluationGoldenTurnStepExpectationOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationOutput) ToEvaluationGoldenTurnStepExpectationPtrOutput() EvaluationGoldenTurnStepExpectationPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationOutput) ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectation {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationPtrOutput)
+}
+
+// Expectation on agent response.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationOutput) AgentResponse() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationAgentResponse {
+		return v.AgentResponse
+	}).(EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput)
+}
+
+// Expectation on agent transfer.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationOutput) AgentTransfer() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationAgentTransfer {
+		return v.AgentTransfer
+	}).(EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput)
+}
+
+// A mock response to provide if a tool is called.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationOutput) MockToolResponse() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationMockToolResponse {
+		return v.MockToolResponse
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput)
+}
+
+// A note describing the expectation.
+func (o EvaluationGoldenTurnStepExpectationOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *string { return v.Note }).(pulumi.StringPtrOutput)
+}
+
+// Expectation on tool call.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationOutput) ToolCall() EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationToolCall {
+		return v.ToolCall
+	}).(EvaluationGoldenTurnStepExpectationToolCallPtrOutput)
+}
+
+// Expectation on tool response.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationOutput) ToolResponse() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationToolResponse {
+		return v.ToolResponse
+	}).(EvaluationGoldenTurnStepExpectationToolResponsePtrOutput)
+}
+
+// Expectation on updated variables.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationOutput) UpdatedVariables() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationUpdatedVariables {
+		return v.UpdatedVariables
+	}).(EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectation)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) ToEvaluationGoldenTurnStepExpectationPtrOutput() EvaluationGoldenTurnStepExpectationPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) ToEvaluationGoldenTurnStepExpectationPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) Elem() EvaluationGoldenTurnStepExpectationOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) EvaluationGoldenTurnStepExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectation
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationOutput)
+}
+
+// Expectation on agent response.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) AgentResponse() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationAgentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AgentResponse
+	}).(EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput)
+}
+
+// Expectation on agent transfer.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) AgentTransfer() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationAgentTransfer {
+		if v == nil {
+			return nil
+		}
+		return v.AgentTransfer
+	}).(EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput)
+}
+
+// A mock response to provide if a tool is called.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) MockToolResponse() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationMockToolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MockToolResponse
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput)
+}
+
+// A note describing the expectation.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Note
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expectation on tool call.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) ToolCall() EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationToolCall {
+		if v == nil {
+			return nil
+		}
+		return v.ToolCall
+	}).(EvaluationGoldenTurnStepExpectationToolCallPtrOutput)
+}
+
+// Expectation on tool response.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) ToolResponse() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationToolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ToolResponse
+	}).(EvaluationGoldenTurnStepExpectationToolResponsePtrOutput)
+}
+
+// Expectation on updated variables.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationPtrOutput) UpdatedVariables() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectation) *EvaluationGoldenTurnStepExpectationUpdatedVariables {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedVariables
+	}).(EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponse struct {
+	// Content of the message as a series of chunks.
+	// Structure is documented below.
+	Chunks []EvaluationGoldenTurnStepExpectationAgentResponseChunk `pulumi:"chunks"`
+	// The role within the conversation, e.g., user, agent.
+	Role *string `pulumi:"role"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseArgs and EvaluationGoldenTurnStepExpectationAgentResponseOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseOutput() EvaluationGoldenTurnStepExpectationAgentResponseOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseArgs struct {
+	// Content of the message as a series of chunks.
+	// Structure is documented below.
+	Chunks EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayInput `pulumi:"chunks"`
+	// The role within the conversation, e.g., user, agent.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponse)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseOutput() EvaluationGoldenTurnStepExpectationAgentResponseOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseOutput).ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponsePtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseArgs, EvaluationGoldenTurnStepExpectationAgentResponsePtr and EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponsePtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponsePtrType EvaluationGoldenTurnStepExpectationAgentResponseArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponsePtr(v *EvaluationGoldenTurnStepExpectationAgentResponseArgs) EvaluationGoldenTurnStepExpectationAgentResponsePtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponsePtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponse)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponsePtrType) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponsePtrType) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseOutput() EvaluationGoldenTurnStepExpectationAgentResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponse) *EvaluationGoldenTurnStepExpectationAgentResponse {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput)
+}
+
+// Content of the message as a series of chunks.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseOutput) Chunks() EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponse) []EvaluationGoldenTurnStepExpectationAgentResponseChunk {
+		return v.Chunks
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput)
+}
+
+// The role within the conversation, e.g., user, agent.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponse) EvaluationGoldenTurnStepExpectationAgentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponse
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseOutput)
+}
+
+// Content of the message as a series of chunks.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput) Chunks() EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponse) []EvaluationGoldenTurnStepExpectationAgentResponseChunk {
+		if v == nil {
+			return nil
+		}
+		return v.Chunks
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput)
+}
+
+// The role within the conversation, e.g., user, agent.
+func (o EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunk struct {
+	// Represents an event indicating the transfer of a conversation to a different agent.
+	// Structure is documented below.
+	AgentTransfer *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer `pulumi:"agentTransfer"`
+	// Represents a blob input or output in the conversation.
+	// Structure is documented below.
+	Blob *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob `pulumi:"blob"`
+	// Represents an image input or output in the conversation.
+	// Structure is documented below.
+	Image *EvaluationGoldenTurnStepExpectationAgentResponseChunkImage `pulumi:"image"`
+	// Text data.
+	Text *string `pulumi:"text"`
+	// Request for the client or the agent to execute the specified tool.
+	// Structure is documented below.
+	ToolCall *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall `pulumi:"toolCall"`
+	// The execution result of a specific tool from the client or the agent.
+	// Structure is documented below.
+	ToolResponse *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse `pulumi:"toolResponse"`
+	// Updated variables in JSON object format.
+	UpdatedVariables map[string]string `pulumi:"updatedVariables"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs struct {
+	// Represents an event indicating the transfer of a conversation to a different agent.
+	// Structure is documented below.
+	AgentTransfer EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrInput `pulumi:"agentTransfer"`
+	// Represents a blob input or output in the conversation.
+	// Structure is documented below.
+	Blob EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrInput `pulumi:"blob"`
+	// Represents an image input or output in the conversation.
+	// Structure is documented below.
+	Image EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrInput `pulumi:"image"`
+	// Text data.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Request for the client or the agent to execute the specified tool.
+	// Structure is documented below.
+	ToolCall EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrInput `pulumi:"toolCall"`
+	// The execution result of a specific tool from the client or the agent.
+	// Structure is documented below.
+	ToolResponse EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrInput `pulumi:"toolResponse"`
+	// Updated variables in JSON object format.
+	UpdatedVariables pulumi.StringMapInput `pulumi:"updatedVariables"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkArray and EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkArray{ EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs{...} }
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkArray []EvaluationGoldenTurnStepExpectationAgentResponseChunkInput
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnStepExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkArray) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkArray) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput {
+	return o
+}
+
+// Represents an event indicating the transfer of a conversation to a different agent.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) AgentTransfer() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer {
+		return v.AgentTransfer
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput)
+}
+
+// Represents a blob input or output in the conversation.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) Blob() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob {
+		return v.Blob
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput)
+}
+
+// Represents an image input or output in the conversation.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) Image() EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) *EvaluationGoldenTurnStepExpectationAgentResponseChunkImage {
+		return v.Image
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput)
+}
+
+// Text data.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// Request for the client or the agent to execute the specified tool.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) ToolCall() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall {
+		return v.ToolCall
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput)
+}
+
+// The execution result of a specific tool from the client or the agent.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) ToolResponse() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse {
+		return v.ToolResponse
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput)
+}
+
+// Updated variables in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput) UpdatedVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunk) map[string]string {
+		return v.UpdatedVariables
+	}).(pulumi.StringMapOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnStepExpectationAgentResponseChunk)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput) Index(i pulumi.IntInput) EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationGoldenTurnStepExpectationAgentResponseChunk {
+		return vs[0].([]EvaluationGoldenTurnStepExpectationAgentResponseChunk)[vs[1].(int)]
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer struct {
+	// The display name of the target agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The resource name of the target agent.
+	TargetAgent string `pulumi:"targetAgent"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs struct {
+	// The display name of the target agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The resource name of the target agent.
+	TargetAgent pulumi.StringInput `pulumi:"targetAgent"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput)
+}
+
+// The display name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput) TargetAgent() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) string {
+		return v.TargetAgent
+	}).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput)
+}
+
+// The display name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAgent
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob struct {
+	// Raw bytes of the blob.
+	Data string `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs struct {
+	// Raw bytes of the blob.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob) *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput)
+}
+
+// Raw bytes of the blob.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob) EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput)
+}
+
+// Raw bytes of the blob.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkImage struct {
+	// Raw bytes of the image.
+	Data string `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkImageInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkImageInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkImageInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs struct {
+	// Raw bytes of the image.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkImage) *EvaluationGoldenTurnStepExpectationAgentResponseChunkImage {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput)
+}
+
+// Raw bytes of the image.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkImage) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkImage) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkImage)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkImage) EvaluationGoldenTurnStepExpectationAgentResponseChunkImage {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkImage
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput)
+}
+
+// Raw bytes of the image.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args map[string]string `pulumi:"args"`
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the tool call.
+	Id *string `pulumi:"id"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args pulumi.StringMapInput `pulumi:"args"`
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the tool call.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) map[string]string { return v.Args }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the tool call.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the tool call.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool) *string {
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool) string {
+		return v.Toolset
+	}).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id *string `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response map[string]string `pulumi:"response"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response pulumi.StringMapInput `pulumi:"response"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) map[string]string {
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput).ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs, EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtr and EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrType EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs
+
+func EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtr(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool) *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool) *string {
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool) string {
+		return v.Toolset
+	}).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool) EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentTransfer struct {
+	// The display name of the target agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The resource name of the target agent.
+	TargetAgent *string `pulumi:"targetAgent"`
+}
+
+// EvaluationGoldenTurnStepExpectationAgentTransferInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentTransferArgs and EvaluationGoldenTurnStepExpectationAgentTransferOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentTransferInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationAgentTransferArgs{...}
+type EvaluationGoldenTurnStepExpectationAgentTransferInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentTransferOutput() EvaluationGoldenTurnStepExpectationAgentTransferOutput
+	ToEvaluationGoldenTurnStepExpectationAgentTransferOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentTransferOutput
+}
+
+type EvaluationGoldenTurnStepExpectationAgentTransferArgs struct {
+	// The display name of the target agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The resource name of the target agent.
+	TargetAgent pulumi.StringPtrInput `pulumi:"targetAgent"`
+}
+
+func (EvaluationGoldenTurnStepExpectationAgentTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentTransfer)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentTransferOutput() EvaluationGoldenTurnStepExpectationAgentTransferOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentTransferOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentTransferOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentTransferOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationAgentTransferArgs) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentTransferOutput).ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationAgentTransferPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationAgentTransferArgs, EvaluationGoldenTurnStepExpectationAgentTransferPtr and EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationAgentTransferPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationAgentTransferArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationAgentTransferPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput
+	ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationAgentTransferPtrType EvaluationGoldenTurnStepExpectationAgentTransferArgs
+
+func EvaluationGoldenTurnStepExpectationAgentTransferPtr(v *EvaluationGoldenTurnStepExpectationAgentTransferArgs) EvaluationGoldenTurnStepExpectationAgentTransferPtrInput {
+	return (*evaluationGoldenTurnStepExpectationAgentTransferPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationAgentTransferPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentTransfer)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentTransferPtrType) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationAgentTransferPtrType) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentTransferOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentTransferOutput() EvaluationGoldenTurnStepExpectationAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentTransferOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentTransferOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationAgentTransfer) *EvaluationGoldenTurnStepExpectationAgentTransfer {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput)
+}
+
+// The display name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentTransfer) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentTransferOutput) TargetAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationAgentTransfer) *string { return v.TargetAgent }).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationAgentTransfer)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutput() EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) ToEvaluationGoldenTurnStepExpectationAgentTransferPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) Elem() EvaluationGoldenTurnStepExpectationAgentTransferOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentTransfer) EvaluationGoldenTurnStepExpectationAgentTransfer {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationAgentTransfer
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationAgentTransferOutput)
+}
+
+// The display name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the target agent.
+func (o EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput) TargetAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationAgentTransfer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAgent
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponse struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id *string `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response map[string]string `pulumi:"response"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationGoldenTurnStepExpectationMockToolResponseInput is an input type that accepts EvaluationGoldenTurnStepExpectationMockToolResponseArgs and EvaluationGoldenTurnStepExpectationMockToolResponseOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationMockToolResponseInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationMockToolResponseArgs{...}
+type EvaluationGoldenTurnStepExpectationMockToolResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationMockToolResponseOutput() EvaluationGoldenTurnStepExpectationMockToolResponseOutput
+	ToEvaluationGoldenTurnStepExpectationMockToolResponseOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseOutput
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponseArgs struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response pulumi.StringMapInput `pulumi:"response"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationGoldenTurnStepExpectationMockToolResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponseOutput() EvaluationGoldenTurnStepExpectationMockToolResponseOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationMockToolResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationMockToolResponseOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationMockToolResponseOutput).ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationMockToolResponsePtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationMockToolResponseArgs, EvaluationGoldenTurnStepExpectationMockToolResponsePtr and EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationMockToolResponsePtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationMockToolResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationMockToolResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput
+	ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationMockToolResponsePtrType EvaluationGoldenTurnStepExpectationMockToolResponseArgs
+
+func EvaluationGoldenTurnStepExpectationMockToolResponsePtr(v *EvaluationGoldenTurnStepExpectationMockToolResponseArgs) EvaluationGoldenTurnStepExpectationMockToolResponsePtrInput {
+	return (*evaluationGoldenTurnStepExpectationMockToolResponsePtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationMockToolResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationMockToolResponsePtrType) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationMockToolResponsePtrType) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseOutput() EvaluationGoldenTurnStepExpectationMockToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationMockToolResponse) *EvaluationGoldenTurnStepExpectationMockToolResponse {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponse) *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationMockToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Elem() EvaluationGoldenTurnStepExpectationMockToolResponseOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) EvaluationGoldenTurnStepExpectationMockToolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationMockToolResponse
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponseOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponse) *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolInput is an input type that accepts EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs and EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs{...}
+type EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput
+	ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput).ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs, EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtr and EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput
+	ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrType EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs
+
+func EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtr(v *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput {
+	return (*evaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool) *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool) *string { return v.ToolId }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool) string { return v.Toolset }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput) Elem() EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool) EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolCall struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args map[string]string `pulumi:"args"`
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the tool call.
+	Id *string `pulumi:"id"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationGoldenTurnStepExpectationToolCallToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationGoldenTurnStepExpectationToolCallInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolCallArgs and EvaluationGoldenTurnStepExpectationToolCallOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolCallInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationToolCallArgs{...}
+type EvaluationGoldenTurnStepExpectationToolCallInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolCallOutput() EvaluationGoldenTurnStepExpectationToolCallOutput
+	ToEvaluationGoldenTurnStepExpectationToolCallOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolCallOutput
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallArgs struct {
+	// The input parameters and values for the tool in JSON object format.
+	Args pulumi.StringMapInput `pulumi:"args"`
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the tool call.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationGoldenTurnStepExpectationToolCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCall)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallArgs) ToEvaluationGoldenTurnStepExpectationToolCallOutput() EvaluationGoldenTurnStepExpectationToolCallOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolCallOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallArgs) ToEvaluationGoldenTurnStepExpectationToolCallOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolCallOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallArgs) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutput() EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallArgs) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolCallOutput).ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationToolCallPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolCallArgs, EvaluationGoldenTurnStepExpectationToolCallPtr and EvaluationGoldenTurnStepExpectationToolCallPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolCallPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationToolCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationToolCallPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolCallPtrOutput() EvaluationGoldenTurnStepExpectationToolCallPtrOutput
+	ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolCallPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationToolCallPtrType EvaluationGoldenTurnStepExpectationToolCallArgs
+
+func EvaluationGoldenTurnStepExpectationToolCallPtr(v *EvaluationGoldenTurnStepExpectationToolCallArgs) EvaluationGoldenTurnStepExpectationToolCallPtrInput {
+	return (*evaluationGoldenTurnStepExpectationToolCallPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationToolCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolCall)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolCallPtrType) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutput() EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolCallPtrType) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolCallPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCall)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) ToEvaluationGoldenTurnStepExpectationToolCallOutput() EvaluationGoldenTurnStepExpectationToolCallOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) ToEvaluationGoldenTurnStepExpectationToolCallOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutput() EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationToolCall) *EvaluationGoldenTurnStepExpectationToolCall {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationToolCallPtrOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCall) map[string]string { return v.Args }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCall) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the tool call.
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCall) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCall) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationToolCallOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCall) *EvaluationGoldenTurnStepExpectationToolCallToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolCall)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutput() EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) ToEvaluationGoldenTurnStepExpectationToolCallPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) Elem() EvaluationGoldenTurnStepExpectationToolCallOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCall) EvaluationGoldenTurnStepExpectationToolCall {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationToolCall
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationToolCallOutput)
+}
+
+// The input parameters and values for the tool in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCall) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the tool call.
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationToolCallPtrOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCall) *EvaluationGoldenTurnStepExpectationToolCallToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationGoldenTurnStepExpectationToolCallToolsetToolInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs and EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolCallToolsetToolInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs{...}
+type EvaluationGoldenTurnStepExpectationToolCallToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput
+	ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput).ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs, EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtr and EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput
+	ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationToolCallToolsetToolPtrType EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs
+
+func EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtr(v *EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs) EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrInput {
+	return (*evaluationGoldenTurnStepExpectationToolCallToolsetToolPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationToolCallToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolCallToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolCallToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolCallToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationToolCallToolsetTool) *EvaluationGoldenTurnStepExpectationToolCallToolsetTool {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCallToolsetTool) *string { return v.ToolId }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolCallToolsetTool) string { return v.Toolset }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolCallToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput) Elem() EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCallToolsetTool) EvaluationGoldenTurnStepExpectationToolCallToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationToolCallToolsetTool
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolCallToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponse struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id *string `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response map[string]string `pulumi:"response"`
+	// The resource name of the tool.
+	Tool *string `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationGoldenTurnStepExpectationToolResponseInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolResponseArgs and EvaluationGoldenTurnStepExpectationToolResponseOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolResponseInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationToolResponseArgs{...}
+type EvaluationGoldenTurnStepExpectationToolResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolResponseOutput() EvaluationGoldenTurnStepExpectationToolResponseOutput
+	ToEvaluationGoldenTurnStepExpectationToolResponseOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolResponseOutput
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponseArgs struct {
+	// (Output)
+	// Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The matching ID of the tool call the response is for.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The tool execution result in JSON object format.
+	Response pulumi.StringMapInput `pulumi:"response"`
+	// The resource name of the tool.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// A tool that is created from a toolset.
+	// Structure is documented below.
+	ToolsetTool EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationGoldenTurnStepExpectationToolResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseArgs) ToEvaluationGoldenTurnStepExpectationToolResponseOutput() EvaluationGoldenTurnStepExpectationToolResponseOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseArgs) ToEvaluationGoldenTurnStepExpectationToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolResponseOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseArgs) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseArgs) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolResponseOutput).ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationToolResponsePtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolResponseArgs, EvaluationGoldenTurnStepExpectationToolResponsePtr and EvaluationGoldenTurnStepExpectationToolResponsePtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolResponsePtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationToolResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationToolResponsePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput
+	ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolResponsePtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationToolResponsePtrType EvaluationGoldenTurnStepExpectationToolResponseArgs
+
+func EvaluationGoldenTurnStepExpectationToolResponsePtr(v *EvaluationGoldenTurnStepExpectationToolResponseArgs) EvaluationGoldenTurnStepExpectationToolResponsePtrInput {
+	return (*evaluationGoldenTurnStepExpectationToolResponsePtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationToolResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolResponse)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolResponsePtrType) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolResponsePtrType) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolResponsePtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) ToEvaluationGoldenTurnStepExpectationToolResponseOutput() EvaluationGoldenTurnStepExpectationToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) ToEvaluationGoldenTurnStepExpectationToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationToolResponse) *EvaluationGoldenTurnStepExpectationToolResponse {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationToolResponsePtrOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationToolResponseOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponse) *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutput() EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) ToEvaluationGoldenTurnStepExpectationToolResponsePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponsePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) Elem() EvaluationGoldenTurnStepExpectationToolResponseOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponse) EvaluationGoldenTurnStepExpectationToolResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationToolResponse
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationToolResponseOutput)
+}
+
+// (Output)
+// Display name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The matching ID of the tool call the response is for.
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tool execution result in JSON object format.
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// The resource name of the tool.
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A tool that is created from a toolset.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepExpectationToolResponsePtrOutput) ToolsetTool() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponse) *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool {
+		if v == nil {
+			return nil
+		}
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponseToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationGoldenTurnStepExpectationToolResponseToolsetToolInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs and EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolResponseToolsetToolInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs{...}
+type EvaluationGoldenTurnStepExpectationToolResponseToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput
+	ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput).ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs, EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtr and EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput
+	ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrType EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs
+
+func EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtr(v *EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrInput {
+	return (*evaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationToolResponseToolsetTool) *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponseToolsetTool) *string { return v.ToolId }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationToolResponseToolsetTool) string { return v.Toolset }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput) Elem() EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool) EvaluationGoldenTurnStepExpectationToolResponseToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationToolResponseToolsetTool
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationUpdatedVariables struct {
+	// Dummy property.
+	Notes *string `pulumi:"notes"`
+}
+
+// EvaluationGoldenTurnStepExpectationUpdatedVariablesInput is an input type that accepts EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs and EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationUpdatedVariablesInput` via:
+//
+//	EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs{...}
+type EvaluationGoldenTurnStepExpectationUpdatedVariablesInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput
+	ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput
+}
+
+type EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs struct {
+	// Dummy property.
+	Notes pulumi.StringPtrInput `pulumi:"notes"`
+}
+
+func (EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationUpdatedVariables)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput)
+}
+
+func (i EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput).ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrInput is an input type that accepts EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs, EvaluationGoldenTurnStepExpectationUpdatedVariablesPtr and EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput
+	ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput
+}
+
+type evaluationGoldenTurnStepExpectationUpdatedVariablesPtrType EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs
+
+func EvaluationGoldenTurnStepExpectationUpdatedVariablesPtr(v *EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs) EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrInput {
+	return (*evaluationGoldenTurnStepExpectationUpdatedVariablesPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepExpectationUpdatedVariablesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationUpdatedVariables)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepExpectationUpdatedVariablesPtrType) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return i.ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepExpectationUpdatedVariablesPtrType) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepExpectationUpdatedVariables)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return o.ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepExpectationUpdatedVariables) *EvaluationGoldenTurnStepExpectationUpdatedVariables {
+		return &v
+	}).(EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput)
+}
+
+// Dummy property.
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepExpectationUpdatedVariables) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepExpectationUpdatedVariables)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput() EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput) ToEvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput) Elem() EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationUpdatedVariables) EvaluationGoldenTurnStepExpectationUpdatedVariables {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepExpectationUpdatedVariables
+		return ret
+	}).(EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput)
+}
+
+// Dummy property.
+func (o EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepExpectationUpdatedVariables) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Notes
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInput struct {
+	// Audio data from the end user.
+	Audio *string `pulumi:"audio"`
+	// Blob data from the end user.
+	// Structure is documented below.
+	Blob *EvaluationGoldenTurnStepUserInputBlob `pulumi:"blob"`
+	// DTMF digits from the end user.
+	Dtmf *string `pulumi:"dtmf"`
+	// An event to be sent to the session.
+	// Structure is documented below.
+	Event *EvaluationGoldenTurnStepUserInputEvent `pulumi:"event"`
+	// Image data from the end user.
+	// Structure is documented below.
+	Image *EvaluationGoldenTurnStepUserInputImage `pulumi:"image"`
+	// Natural language query.
+	Text *string `pulumi:"text"`
+	// The list of tool execution results.
+	// Structure is documented below.
+	ToolResponses *EvaluationGoldenTurnStepUserInputToolResponses `pulumi:"toolResponses"`
+	// Map of variables to set.
+	Variables map[string]string `pulumi:"variables"`
+	// Whether the session should continue.
+	WillContinue *bool `pulumi:"willContinue"`
+}
+
+// EvaluationGoldenTurnStepUserInputInput is an input type that accepts EvaluationGoldenTurnStepUserInputArgs and EvaluationGoldenTurnStepUserInputOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputArgs{...}
+type EvaluationGoldenTurnStepUserInputInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputOutput() EvaluationGoldenTurnStepUserInputOutput
+	ToEvaluationGoldenTurnStepUserInputOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputOutput
+}
+
+type EvaluationGoldenTurnStepUserInputArgs struct {
+	// Audio data from the end user.
+	Audio pulumi.StringPtrInput `pulumi:"audio"`
+	// Blob data from the end user.
+	// Structure is documented below.
+	Blob EvaluationGoldenTurnStepUserInputBlobPtrInput `pulumi:"blob"`
+	// DTMF digits from the end user.
+	Dtmf pulumi.StringPtrInput `pulumi:"dtmf"`
+	// An event to be sent to the session.
+	// Structure is documented below.
+	Event EvaluationGoldenTurnStepUserInputEventPtrInput `pulumi:"event"`
+	// Image data from the end user.
+	// Structure is documented below.
+	Image EvaluationGoldenTurnStepUserInputImagePtrInput `pulumi:"image"`
+	// Natural language query.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The list of tool execution results.
+	// Structure is documented below.
+	ToolResponses EvaluationGoldenTurnStepUserInputToolResponsesPtrInput `pulumi:"toolResponses"`
+	// Map of variables to set.
+	Variables pulumi.StringMapInput `pulumi:"variables"`
+	// Whether the session should continue.
+	WillContinue pulumi.BoolPtrInput `pulumi:"willContinue"`
+}
+
+func (EvaluationGoldenTurnStepUserInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInput)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputArgs) ToEvaluationGoldenTurnStepUserInputOutput() EvaluationGoldenTurnStepUserInputOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputArgs) ToEvaluationGoldenTurnStepUserInputOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputOutput)
+}
+
+func (i EvaluationGoldenTurnStepUserInputArgs) ToEvaluationGoldenTurnStepUserInputPtrOutput() EvaluationGoldenTurnStepUserInputPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputArgs) ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputOutput).ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepUserInputPtrInput is an input type that accepts EvaluationGoldenTurnStepUserInputArgs, EvaluationGoldenTurnStepUserInputPtr and EvaluationGoldenTurnStepUserInputPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepUserInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepUserInputPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputPtrOutput() EvaluationGoldenTurnStepUserInputPtrOutput
+	ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputPtrOutput
+}
+
+type evaluationGoldenTurnStepUserInputPtrType EvaluationGoldenTurnStepUserInputArgs
+
+func EvaluationGoldenTurnStepUserInputPtr(v *EvaluationGoldenTurnStepUserInputArgs) EvaluationGoldenTurnStepUserInputPtrInput {
+	return (*evaluationGoldenTurnStepUserInputPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepUserInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInput)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepUserInputPtrType) ToEvaluationGoldenTurnStepUserInputPtrOutput() EvaluationGoldenTurnStepUserInputPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepUserInputPtrType) ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInput)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputOutput) ToEvaluationGoldenTurnStepUserInputOutput() EvaluationGoldenTurnStepUserInputOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputOutput) ToEvaluationGoldenTurnStepUserInputOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputOutput) ToEvaluationGoldenTurnStepUserInputPtrOutput() EvaluationGoldenTurnStepUserInputPtrOutput {
+	return o.ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepUserInputOutput) ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInput {
+		return &v
+	}).(EvaluationGoldenTurnStepUserInputPtrOutput)
+}
+
+// Audio data from the end user.
+func (o EvaluationGoldenTurnStepUserInputOutput) Audio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *string { return v.Audio }).(pulumi.StringPtrOutput)
+}
+
+// Blob data from the end user.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputOutput) Blob() EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputBlob { return v.Blob }).(EvaluationGoldenTurnStepUserInputBlobPtrOutput)
+}
+
+// DTMF digits from the end user.
+func (o EvaluationGoldenTurnStepUserInputOutput) Dtmf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *string { return v.Dtmf }).(pulumi.StringPtrOutput)
+}
+
+// An event to be sent to the session.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputOutput) Event() EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputEvent { return v.Event }).(EvaluationGoldenTurnStepUserInputEventPtrOutput)
+}
+
+// Image data from the end user.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputOutput) Image() EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputImage { return v.Image }).(EvaluationGoldenTurnStepUserInputImagePtrOutput)
+}
+
+// Natural language query.
+func (o EvaluationGoldenTurnStepUserInputOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// The list of tool execution results.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputOutput) ToolResponses() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputToolResponses {
+		return v.ToolResponses
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput)
+}
+
+// Map of variables to set.
+func (o EvaluationGoldenTurnStepUserInputOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
+}
+
+// Whether the session should continue.
+func (o EvaluationGoldenTurnStepUserInputOutput) WillContinue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInput) *bool { return v.WillContinue }).(pulumi.BoolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInput)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) ToEvaluationGoldenTurnStepUserInputPtrOutput() EvaluationGoldenTurnStepUserInputPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) ToEvaluationGoldenTurnStepUserInputPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Elem() EvaluationGoldenTurnStepUserInputOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) EvaluationGoldenTurnStepUserInput {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepUserInput
+		return ret
+	}).(EvaluationGoldenTurnStepUserInputOutput)
+}
+
+// Audio data from the end user.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Audio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audio
+	}).(pulumi.StringPtrOutput)
+}
+
+// Blob data from the end user.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Blob() EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputBlob {
+		if v == nil {
+			return nil
+		}
+		return v.Blob
+	}).(EvaluationGoldenTurnStepUserInputBlobPtrOutput)
+}
+
+// DTMF digits from the end user.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Dtmf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dtmf
+	}).(pulumi.StringPtrOutput)
+}
+
+// An event to be sent to the session.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Event() EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputEvent {
+		if v == nil {
+			return nil
+		}
+		return v.Event
+	}).(EvaluationGoldenTurnStepUserInputEventPtrOutput)
+}
+
+// Image data from the end user.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Image() EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputImage {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(EvaluationGoldenTurnStepUserInputImagePtrOutput)
+}
+
+// Natural language query.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of tool execution results.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) ToolResponses() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *EvaluationGoldenTurnStepUserInputToolResponses {
+		if v == nil {
+			return nil
+		}
+		return v.ToolResponses
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput)
+}
+
+// Map of variables to set.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Variables
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether the session should continue.
+func (o EvaluationGoldenTurnStepUserInputPtrOutput) WillContinue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WillContinue
+	}).(pulumi.BoolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputBlob struct {
+	// Raw bytes of the blob.
+	Data string `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// EvaluationGoldenTurnStepUserInputBlobInput is an input type that accepts EvaluationGoldenTurnStepUserInputBlobArgs and EvaluationGoldenTurnStepUserInputBlobOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputBlobInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputBlobArgs{...}
+type EvaluationGoldenTurnStepUserInputBlobInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputBlobOutput() EvaluationGoldenTurnStepUserInputBlobOutput
+	ToEvaluationGoldenTurnStepUserInputBlobOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputBlobOutput
+}
+
+type EvaluationGoldenTurnStepUserInputBlobArgs struct {
+	// Raw bytes of the blob.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (EvaluationGoldenTurnStepUserInputBlobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputBlob)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputBlobArgs) ToEvaluationGoldenTurnStepUserInputBlobOutput() EvaluationGoldenTurnStepUserInputBlobOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputBlobOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputBlobArgs) ToEvaluationGoldenTurnStepUserInputBlobOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputBlobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputBlobOutput)
+}
+
+func (i EvaluationGoldenTurnStepUserInputBlobArgs) ToEvaluationGoldenTurnStepUserInputBlobPtrOutput() EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputBlobArgs) ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputBlobOutput).ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepUserInputBlobPtrInput is an input type that accepts EvaluationGoldenTurnStepUserInputBlobArgs, EvaluationGoldenTurnStepUserInputBlobPtr and EvaluationGoldenTurnStepUserInputBlobPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputBlobPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepUserInputBlobArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepUserInputBlobPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputBlobPtrOutput() EvaluationGoldenTurnStepUserInputBlobPtrOutput
+	ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputBlobPtrOutput
+}
+
+type evaluationGoldenTurnStepUserInputBlobPtrType EvaluationGoldenTurnStepUserInputBlobArgs
+
+func EvaluationGoldenTurnStepUserInputBlobPtr(v *EvaluationGoldenTurnStepUserInputBlobArgs) EvaluationGoldenTurnStepUserInputBlobPtrInput {
+	return (*evaluationGoldenTurnStepUserInputBlobPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepUserInputBlobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputBlob)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepUserInputBlobPtrType) ToEvaluationGoldenTurnStepUserInputBlobPtrOutput() EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepUserInputBlobPtrType) ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputBlobPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputBlobOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputBlobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputBlob)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobOutput) ToEvaluationGoldenTurnStepUserInputBlobOutput() EvaluationGoldenTurnStepUserInputBlobOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobOutput) ToEvaluationGoldenTurnStepUserInputBlobOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputBlobOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobOutput) ToEvaluationGoldenTurnStepUserInputBlobPtrOutput() EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return o.ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobOutput) ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepUserInputBlob) *EvaluationGoldenTurnStepUserInputBlob {
+		return &v
+	}).(EvaluationGoldenTurnStepUserInputBlobPtrOutput)
+}
+
+// Raw bytes of the blob.
+func (o EvaluationGoldenTurnStepUserInputBlobOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputBlob) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepUserInputBlobOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputBlob) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputBlobPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputBlobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputBlob)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobPtrOutput) ToEvaluationGoldenTurnStepUserInputBlobPtrOutput() EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobPtrOutput) ToEvaluationGoldenTurnStepUserInputBlobPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputBlobPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputBlobPtrOutput) Elem() EvaluationGoldenTurnStepUserInputBlobOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputBlob) EvaluationGoldenTurnStepUserInputBlob {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepUserInputBlob
+		return ret
+	}).(EvaluationGoldenTurnStepUserInputBlobOutput)
+}
+
+// Raw bytes of the blob.
+func (o EvaluationGoldenTurnStepUserInputBlobPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepUserInputBlobPtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputBlob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputEvent struct {
+	// Event name.
+	Event string `pulumi:"event"`
+}
+
+// EvaluationGoldenTurnStepUserInputEventInput is an input type that accepts EvaluationGoldenTurnStepUserInputEventArgs and EvaluationGoldenTurnStepUserInputEventOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputEventInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputEventArgs{...}
+type EvaluationGoldenTurnStepUserInputEventInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputEventOutput() EvaluationGoldenTurnStepUserInputEventOutput
+	ToEvaluationGoldenTurnStepUserInputEventOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputEventOutput
+}
+
+type EvaluationGoldenTurnStepUserInputEventArgs struct {
+	// Event name.
+	Event pulumi.StringInput `pulumi:"event"`
+}
+
+func (EvaluationGoldenTurnStepUserInputEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputEvent)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputEventArgs) ToEvaluationGoldenTurnStepUserInputEventOutput() EvaluationGoldenTurnStepUserInputEventOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputEventOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputEventArgs) ToEvaluationGoldenTurnStepUserInputEventOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputEventOutput)
+}
+
+func (i EvaluationGoldenTurnStepUserInputEventArgs) ToEvaluationGoldenTurnStepUserInputEventPtrOutput() EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputEventArgs) ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputEventOutput).ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepUserInputEventPtrInput is an input type that accepts EvaluationGoldenTurnStepUserInputEventArgs, EvaluationGoldenTurnStepUserInputEventPtr and EvaluationGoldenTurnStepUserInputEventPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputEventPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepUserInputEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepUserInputEventPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputEventPtrOutput() EvaluationGoldenTurnStepUserInputEventPtrOutput
+	ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputEventPtrOutput
+}
+
+type evaluationGoldenTurnStepUserInputEventPtrType EvaluationGoldenTurnStepUserInputEventArgs
+
+func EvaluationGoldenTurnStepUserInputEventPtr(v *EvaluationGoldenTurnStepUserInputEventArgs) EvaluationGoldenTurnStepUserInputEventPtrInput {
+	return (*evaluationGoldenTurnStepUserInputEventPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepUserInputEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputEvent)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepUserInputEventPtrType) ToEvaluationGoldenTurnStepUserInputEventPtrOutput() EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepUserInputEventPtrType) ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputEventPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputEventOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputEvent)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventOutput) ToEvaluationGoldenTurnStepUserInputEventOutput() EvaluationGoldenTurnStepUserInputEventOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventOutput) ToEvaluationGoldenTurnStepUserInputEventOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputEventOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventOutput) ToEvaluationGoldenTurnStepUserInputEventPtrOutput() EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return o.ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventOutput) ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepUserInputEvent) *EvaluationGoldenTurnStepUserInputEvent {
+		return &v
+	}).(EvaluationGoldenTurnStepUserInputEventPtrOutput)
+}
+
+// Event name.
+func (o EvaluationGoldenTurnStepUserInputEventOutput) Event() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputEvent) string { return v.Event }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputEventPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputEvent)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventPtrOutput) ToEvaluationGoldenTurnStepUserInputEventPtrOutput() EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventPtrOutput) ToEvaluationGoldenTurnStepUserInputEventPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputEventPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputEventPtrOutput) Elem() EvaluationGoldenTurnStepUserInputEventOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputEvent) EvaluationGoldenTurnStepUserInputEvent {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepUserInputEvent
+		return ret
+	}).(EvaluationGoldenTurnStepUserInputEventOutput)
+}
+
+// Event name.
+func (o EvaluationGoldenTurnStepUserInputEventPtrOutput) Event() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Event
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputImage struct {
+	// Raw bytes of the image.
+	Data string `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// EvaluationGoldenTurnStepUserInputImageInput is an input type that accepts EvaluationGoldenTurnStepUserInputImageArgs and EvaluationGoldenTurnStepUserInputImageOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputImageInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputImageArgs{...}
+type EvaluationGoldenTurnStepUserInputImageInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputImageOutput() EvaluationGoldenTurnStepUserInputImageOutput
+	ToEvaluationGoldenTurnStepUserInputImageOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputImageOutput
+}
+
+type EvaluationGoldenTurnStepUserInputImageArgs struct {
+	// Raw bytes of the image.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The IANA standard MIME type of the source data.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (EvaluationGoldenTurnStepUserInputImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputImage)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputImageArgs) ToEvaluationGoldenTurnStepUserInputImageOutput() EvaluationGoldenTurnStepUserInputImageOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputImageOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputImageArgs) ToEvaluationGoldenTurnStepUserInputImageOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputImageOutput)
+}
+
+func (i EvaluationGoldenTurnStepUserInputImageArgs) ToEvaluationGoldenTurnStepUserInputImagePtrOutput() EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputImageArgs) ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputImageOutput).ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepUserInputImagePtrInput is an input type that accepts EvaluationGoldenTurnStepUserInputImageArgs, EvaluationGoldenTurnStepUserInputImagePtr and EvaluationGoldenTurnStepUserInputImagePtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputImagePtrInput` via:
+//
+//	        EvaluationGoldenTurnStepUserInputImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepUserInputImagePtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputImagePtrOutput() EvaluationGoldenTurnStepUserInputImagePtrOutput
+	ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputImagePtrOutput
+}
+
+type evaluationGoldenTurnStepUserInputImagePtrType EvaluationGoldenTurnStepUserInputImageArgs
+
+func EvaluationGoldenTurnStepUserInputImagePtr(v *EvaluationGoldenTurnStepUserInputImageArgs) EvaluationGoldenTurnStepUserInputImagePtrInput {
+	return (*evaluationGoldenTurnStepUserInputImagePtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepUserInputImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputImage)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepUserInputImagePtrType) ToEvaluationGoldenTurnStepUserInputImagePtrOutput() EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepUserInputImagePtrType) ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputImagePtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputImageOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputImage)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputImageOutput) ToEvaluationGoldenTurnStepUserInputImageOutput() EvaluationGoldenTurnStepUserInputImageOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputImageOutput) ToEvaluationGoldenTurnStepUserInputImageOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputImageOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputImageOutput) ToEvaluationGoldenTurnStepUserInputImagePtrOutput() EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return o.ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepUserInputImageOutput) ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepUserInputImage) *EvaluationGoldenTurnStepUserInputImage {
+		return &v
+	}).(EvaluationGoldenTurnStepUserInputImagePtrOutput)
+}
+
+// Raw bytes of the image.
+func (o EvaluationGoldenTurnStepUserInputImageOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputImage) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepUserInputImageOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputImage) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputImagePtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputImage)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputImagePtrOutput) ToEvaluationGoldenTurnStepUserInputImagePtrOutput() EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputImagePtrOutput) ToEvaluationGoldenTurnStepUserInputImagePtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputImagePtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputImagePtrOutput) Elem() EvaluationGoldenTurnStepUserInputImageOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputImage) EvaluationGoldenTurnStepUserInputImage {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepUserInputImage
+		return ret
+	}).(EvaluationGoldenTurnStepUserInputImageOutput)
+}
+
+// Raw bytes of the image.
+func (o EvaluationGoldenTurnStepUserInputImagePtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IANA standard MIME type of the source data.
+func (o EvaluationGoldenTurnStepUserInputImagePtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponses struct {
+	// The list of tool execution results.
+	// Structure is documented below.
+	ToolResponses []EvaluationGoldenTurnStepUserInputToolResponsesToolResponse `pulumi:"toolResponses"`
+}
+
+// EvaluationGoldenTurnStepUserInputToolResponsesInput is an input type that accepts EvaluationGoldenTurnStepUserInputToolResponsesArgs and EvaluationGoldenTurnStepUserInputToolResponsesOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputToolResponsesInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputToolResponsesArgs{...}
+type EvaluationGoldenTurnStepUserInputToolResponsesInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputToolResponsesOutput() EvaluationGoldenTurnStepUserInputToolResponsesOutput
+	ToEvaluationGoldenTurnStepUserInputToolResponsesOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputToolResponsesOutput
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesArgs struct {
+	// The list of tool execution results.
+	// Structure is documented below.
+	ToolResponses EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayInput `pulumi:"toolResponses"`
+}
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponses)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesOutput() EvaluationGoldenTurnStepUserInputToolResponsesOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesOutput)
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesOutput).ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepUserInputToolResponsesPtrInput is an input type that accepts EvaluationGoldenTurnStepUserInputToolResponsesArgs, EvaluationGoldenTurnStepUserInputToolResponsesPtr and EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputToolResponsesPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepUserInputToolResponsesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepUserInputToolResponsesPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput
+	ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput
+}
+
+type evaluationGoldenTurnStepUserInputToolResponsesPtrType EvaluationGoldenTurnStepUserInputToolResponsesArgs
+
+func EvaluationGoldenTurnStepUserInputToolResponsesPtr(v *EvaluationGoldenTurnStepUserInputToolResponsesArgs) EvaluationGoldenTurnStepUserInputToolResponsesPtrInput {
+	return (*evaluationGoldenTurnStepUserInputToolResponsesPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepUserInputToolResponsesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputToolResponses)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepUserInputToolResponsesPtrType) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepUserInputToolResponsesPtrType) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponses)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesOutput() EvaluationGoldenTurnStepUserInputToolResponsesOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return o.ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepUserInputToolResponses) *EvaluationGoldenTurnStepUserInputToolResponses {
+		return &v
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput)
+}
+
+// The list of tool execution results.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesOutput) ToolResponses() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponses) []EvaluationGoldenTurnStepUserInputToolResponsesToolResponse {
+		return v.ToolResponses
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputToolResponses)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput) Elem() EvaluationGoldenTurnStepUserInputToolResponsesOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputToolResponses) EvaluationGoldenTurnStepUserInputToolResponses {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepUserInputToolResponses
+		return ret
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesOutput)
+}
+
+// The list of tool execution results.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput) ToolResponses() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputToolResponses) []EvaluationGoldenTurnStepUserInputToolResponsesToolResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ToolResponses
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponse struct {
+	// (Output)
+	// Output only. Display name of the tool.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Matching ID of the tool call.
+	Id *string `pulumi:"id"`
+	// Required. The tool execution result in JSON.
+	Response map[string]string `pulumi:"response"`
+	// Name of the tool to execute.
+	Tool *string `pulumi:"tool"`
+	// The toolset tool that got executed.
+	// Structure is documented below.
+	ToolsetTool *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool `pulumi:"toolsetTool"`
+}
+
+// EvaluationGoldenTurnStepUserInputToolResponsesToolResponseInput is an input type that accepts EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs and EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputToolResponsesToolResponseInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs{...}
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs struct {
+	// (Output)
+	// Output only. Display name of the tool.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. Matching ID of the tool call.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Required. The tool execution result in JSON.
+	Response pulumi.StringMapInput `pulumi:"response"`
+	// Name of the tool to execute.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+	// The toolset tool that got executed.
+	// Structure is documented below.
+	ToolsetTool EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput `pulumi:"toolsetTool"`
+}
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput)
+}
+
+// EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayInput is an input type that accepts EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray and EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray{ EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs{...} }
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray []EvaluationGoldenTurnStepUserInputToolResponsesToolResponseInput
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnStepUserInputToolResponsesToolResponse)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput {
+	return o
+}
+
+// (Output)
+// Output only. Display name of the tool.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Matching ID of the tool call.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Required. The tool execution result in JSON.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponse) map[string]string {
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// Name of the tool to execute.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+// The toolset tool that got executed.
+// Structure is documented below.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput) ToolsetTool() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponse) *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool {
+		return v.ToolsetTool
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EvaluationGoldenTurnStepUserInputToolResponsesToolResponse)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput) Index(i pulumi.IntInput) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EvaluationGoldenTurnStepUserInputToolResponsesToolResponse {
+		return vs[0].([]EvaluationGoldenTurnStepUserInputToolResponsesToolResponse)[vs[1].(int)]
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId *string `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset string `pulumi:"toolset"`
+}
+
+// EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolInput is an input type that accepts EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs and EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolInput` via:
+//
+//	EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs{...}
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs struct {
+	// The tool ID to filter the tools to retrieve the schema for.
+	ToolId pulumi.StringPtrInput `pulumi:"toolId"`
+	// The resource name of the Toolset.
+	Toolset pulumi.StringInput `pulumi:"toolset"`
+}
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput)
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput).ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(ctx)
+}
+
+// EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput is an input type that accepts EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs, EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtr and EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput values.
+// You can construct a concrete instance of `EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput` via:
+//
+//	        EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs{...}
+//
+//	or:
+//
+//	        nil
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput interface {
+	pulumi.Input
+
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput
+	ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput
+}
+
+type evaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrType EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs
+
+func EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtr(v *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput {
+	return (*evaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrType)(v)
+}
+
+func (*evaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (i *evaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return i.ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (i *evaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrType) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return o.ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(context.Background())
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool) *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool {
+		return &v
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool) *string { return v.ToolId }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput) Toolset() pulumi.StringOutput {
+	return o.ApplyT(func(v EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool) string { return v.Toolset }).(pulumi.StringOutput)
+}
+
+type EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput struct{ *pulumi.OutputState }
+
+func (EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool)(nil)).Elem()
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput) ToEvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutputWithContext(ctx context.Context) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput {
+	return o
+}
+
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput) Elem() EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool) EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool {
+		if v != nil {
+			return *v
+		}
+		var ret EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool
+		return ret
+	}).(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput)
+}
+
+// The tool ID to filter the tools to retrieve the schema for.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput) ToolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Toolset.
+func (o EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput) Toolset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Toolset
+	}).(pulumi.StringPtrOutput)
+}
+
 type ExampleMessage struct {
 	// Content of the message as a series of chunks.
 	// Structure is documented below.
@@ -38156,6 +43359,66 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfilePersonaPropertyPtrInput)(nil)).Elem(), DeploymentChannelProfilePersonaPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWebWidgetConfigInput)(nil)).Elem(), DeploymentChannelProfileWebWidgetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentChannelProfileWebWidgetConfigPtrInput)(nil)).Elem(), DeploymentChannelProfileWebWidgetConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenInput)(nil)).Elem(), EvaluationGoldenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenPtrInput)(nil)).Elem(), EvaluationGoldenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnInput)(nil)).Elem(), EvaluationGoldenTurnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnArrayInput)(nil)).Elem(), EvaluationGoldenTurnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnRootSpanInput)(nil)).Elem(), EvaluationGoldenTurnRootSpanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnRootSpanArrayInput)(nil)).Elem(), EvaluationGoldenTurnRootSpanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepInput)(nil)).Elem(), EvaluationGoldenTurnStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepArrayInput)(nil)).Elem(), EvaluationGoldenTurnStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepAgentTransferInput)(nil)).Elem(), EvaluationGoldenTurnStepAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepAgentTransferPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponsePtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkImageInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentTransferInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationAgentTransferPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationAgentTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponseInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationMockToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponsePtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationMockToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCallInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCallPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCallToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponseInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponsePtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponseToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationUpdatedVariablesInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputBlobInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputBlobPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputBlobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputEventInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputEventPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputImageInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputImagePtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrInput)(nil)).Elem(), EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageInput)(nil)).Elem(), ExampleMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageArrayInput)(nil)).Elem(), ExampleMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExampleMessageChunkInput)(nil)).Elem(), ExampleMessageChunkArgs{})
@@ -38609,6 +43872,66 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentChannelProfilePersonaPropertyPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfileWebWidgetConfigOutput{})
 	pulumi.RegisterOutputType(DeploymentChannelProfileWebWidgetConfigPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnRootSpanOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnRootSpanArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepAgentTransferOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepAgentTransferPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkImageOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkImagePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentTransferOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationAgentTransferPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationMockToolResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationMockToolResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolCallOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolCallPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolCallToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolCallToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolResponsePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationToolResponseToolsetToolPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationUpdatedVariablesOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepExpectationUpdatedVariablesPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputBlobOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputBlobPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputEventOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputEventPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputImageOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputImagePtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesPtrOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArrayOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolOutput{})
+	pulumi.RegisterOutputType(EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolPtrOutput{})
 	pulumi.RegisterOutputType(ExampleMessageOutput{})
 	pulumi.RegisterOutputType(ExampleMessageArrayOutput{})
 	pulumi.RegisterOutputType(ExampleMessageChunkOutput{})

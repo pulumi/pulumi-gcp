@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly bool? CatalogPublishingEnabled;
         /// <summary>
+        /// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+        /// </summary>
+        public readonly bool? EnableCatalogBasedRules;
+        /// <summary>
+        /// A filter to selectively run a subset of rules.
+        /// </summary>
+        public readonly string? Filter;
+        /// <summary>
         /// Actions to take upon job completion.
         /// Structure is documented below.
         /// </summary>
@@ -42,6 +50,10 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         private DatascanDataQualitySpec(
             bool? catalogPublishingEnabled,
 
+            bool? enableCatalogBasedRules,
+
+            string? filter,
+
             Outputs.DatascanDataQualitySpecPostScanActions? postScanActions,
 
             string? rowFilter,
@@ -51,6 +63,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
             double? samplingPercent)
         {
             CatalogPublishingEnabled = catalogPublishingEnabled;
+            EnableCatalogBasedRules = enableCatalogBasedRules;
+            Filter = filter;
             PostScanActions = postScanActions;
             RowFilter = rowFilter;
             Rules = rules;

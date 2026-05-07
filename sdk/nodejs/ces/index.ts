@@ -15,6 +15,11 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { AppRootAgentAssociationArgs, AppRootAgentAssociationState } from "./appRootAgentAssociation";
+export type AppRootAgentAssociation = import("./appRootAgentAssociation").AppRootAgentAssociation;
+export const AppRootAgentAssociation: typeof import("./appRootAgentAssociation").AppRootAgentAssociation = null as any;
+utilities.lazyLoad(exports, ["AppRootAgentAssociation"], () => require("./appRootAgentAssociation"));
+
 export { AppVersionArgs, AppVersionState } from "./appVersion";
 export type AppVersion = import("./appVersion").AppVersion;
 export const AppVersion: typeof import("./appVersion").AppVersion = null as any;
@@ -24,6 +29,11 @@ export { DeploymentArgs, DeploymentState } from "./deployment";
 export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
 utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
+
+export { EvaluationArgs, EvaluationState } from "./evaluation";
+export type Evaluation = import("./evaluation").Evaluation;
+export const Evaluation: typeof import("./evaluation").Evaluation = null as any;
+utilities.lazyLoad(exports, ["Evaluation"], () => require("./evaluation"));
 
 export { ExampleArgs, ExampleState } from "./example";
 export type Example = import("./example").Example;
@@ -54,10 +64,14 @@ const _module = {
                 return new Agent(name, <any>undefined, { urn })
             case "gcp:ces/app:App":
                 return new App(name, <any>undefined, { urn })
+            case "gcp:ces/appRootAgentAssociation:AppRootAgentAssociation":
+                return new AppRootAgentAssociation(name, <any>undefined, { urn })
             case "gcp:ces/appVersion:AppVersion":
                 return new AppVersion(name, <any>undefined, { urn })
             case "gcp:ces/deployment:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
+            case "gcp:ces/evaluation:Evaluation":
+                return new Evaluation(name, <any>undefined, { urn })
             case "gcp:ces/example:Example":
                 return new Example(name, <any>undefined, { urn })
             case "gcp:ces/guardrail:Guardrail":
@@ -73,8 +87,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "ces/agent", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/app", _module)
+pulumi.runtime.registerResourceModule("gcp", "ces/appRootAgentAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/appVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/deployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "ces/evaluation", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/example", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/guardrail", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/tool", _module)

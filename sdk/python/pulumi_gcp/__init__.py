@@ -2206,6 +2206,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "ces/appRootAgentAssociation",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/appRootAgentAssociation:AppRootAgentAssociation": "AppRootAgentAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "ces/appVersion",
   "fqn": "pulumi_gcp.ces",
   "classes": {
@@ -2218,6 +2226,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.ces",
   "classes": {
    "gcp:ces/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "ces/evaluation",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/evaluation:Evaluation": "Evaluation"
   }
  },
  {
@@ -4406,6 +4422,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "contactcenterinsights/qaQuestion",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/qaQuestion:QaQuestion": "QaQuestion"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "contactcenterinsights/qaScorecard",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/qaScorecard:QaScorecard": "QaScorecard"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "contactcenterinsights/qaScorecardRevision",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision": "QaScorecardRevision"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "contactcenterinsights/view",
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
@@ -6202,6 +6242,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config": "AppCheckRecaptchaV3Config"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appCheckResourcePolicy",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy": "AppCheckResourcePolicy"
   }
  },
  {
@@ -8738,6 +8786,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector": "UllMirroringCollector"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/ullMirroringCollectorRule",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/ullMirroringCollectorRule:UllMirroringCollectorRule": "UllMirroringCollectorRule"
   }
  },
  {

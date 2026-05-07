@@ -255,6 +255,7 @@ import (
 //					SamplingPercent:          pulumi.Float64(5),
 //					RowFilter:                pulumi.String("station_id > 1000"),
 //					CatalogPublishingEnabled: pulumi.Bool(true),
+//					Filter:                   pulumi.String("attributes.priority = 'high'"),
 //					PostScanActions: &dataplex.DatascanDataQualitySpecPostScanActionsArgs{
 //						NotificationReport: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportArgs{
 //							Recipients: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{
@@ -269,9 +270,12 @@ import (
 //					},
 //					Rules: dataplex.DatascanDataQualitySpecRuleArray{
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
-//							Column:             pulumi.String("address"),
-//							Dimension:          pulumi.String("VALIDITY"),
-//							Threshold:          pulumi.Float64(0.99),
+//							Column:    pulumi.String("address"),
+//							Dimension: pulumi.String("VALIDITY"),
+//							Threshold: pulumi.Float64(0.99),
+//							Attributes: pulumi.StringMap{
+//								"priority": pulumi.String("high"),
+//							},
 //							NonNullExpectation: &dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs{},
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
@@ -1042,6 +1046,484 @@ import (
 //				},
 //				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{},
 //				Project:         pulumi.String("my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				tfTestTable,
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Datascan Quality Reusable Rules Catalog Based
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("tf-test-sa-_11380"),
+//				DisplayName: pulumi.String("DataScan Service Account"),
+//				Project:     pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dataplexSaImpersonate, err := serviceaccount.NewIAMMember(ctx, "dataplex_sa_impersonate", &serviceaccount.IAMMemberArgs{
+//				ServiceAccountId: sa.Name,
+//				Role:             pulumi.String("roles/iam.serviceAccountTokenCreator"),
+//				Member:           pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataplex.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			saBqDataViewer, err := projects.NewIAMMember(ctx, "sa_bq_data_viewer", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/bigquery.dataViewer"),
+//				Member: sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			saBqJobUser, err := projects.NewIAMMember(ctx, "sa_bq_job_user", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/bigquery.jobUser"),
+//				Member: sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_test_dataset_id__35305"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//				DeleteContentsOnDestroy:  pulumi.Bool(true),
+//				Project:                  pulumi.String("my-project-name"),
+//				Location:                 pulumi.String("us-central1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dataplexSaImpersonate,
+//				saBqDataViewer,
+//				saBqJobUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
+//				DatasetId:          tfTestDataset.DatasetId,
+//				TableId:            pulumi.String("tf_test_table_id__62793"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Project:            pulumi.String("my-project-name"),
+//				Schema: pulumi.String(`    [
+//	    {
+//	      "name": "name",
+//	      "type": "STRING",
+//	      "mode": "NULLABLE"
+//	    }
+//	    ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
+//				Location:     pulumi.String("us-central1"),
+//				EntryGroupId: pulumi.String("test-group-_55438"),
+//				Project:      pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"dimension": "VALIDITY",
+//				"sqlCollection": []map[string]interface{}{
+//					map[string]interface{}{
+//						"query": "SELECT * FROM ${param(table_name)} WHERE ${param(column_name)} IS NULL",
+//					},
+//				},
+//				"inputParameters": map[string]interface{}{
+//					"table_name": map[string]interface{}{
+//						"description": "Table Name",
+//					},
+//					"column_name": map[string]interface{}{
+//						"description": "Column Name",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				EntryGroupId: testGroup.EntryGroupId,
+//				EntryId:      pulumi.String("test-entry-_32706"),
+//				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
+//				Project:      pulumi.String(pulumi.String(project.Number)),
+//				Aspects: dataplex.EntryAspectArray{
+//					&dataplex.EntryAspectArgs{
+//						AspectKey: pulumi.String("655216118709.global.data-quality-rule-template"),
+//						Aspect: &dataplex.EntryAspectAspectArgs{
+//							Data: pulumi.String(pulumi.String(json0)),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			waitForBqSync, err := time.NewSleep(ctx, "wait_for_bq_sync", &time.SleepArgs{
+//				CreateDuration: pulumi.String("300s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				tfTestTable,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			bqTableEntry, err := dataplex.NewEntry(ctx, "bq_table_entry", &dataplex.EntryArgs{
+//				EntryGroupId: pulumi.String("@bigquery"),
+//				Project:      pulumi.String(pulumi.String(project.ProjectId)),
+//				Location:     pulumi.String("us-central1"),
+//				EntryId: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//					datasetId := _args[0].(string)
+//					tableId := _args[1].(string)
+//					return fmt.Sprintf("bigquery.googleapis.com/projects/%v/datasets/%v/tables/%v", project.ProjectId, datasetId, tableId), nil
+//				}).(pulumi.StringOutput),
+//				EntryType: pulumi.String("projects/655216118709/locations/global/entryTypes/bigquery-table"),
+//				FullyQualifiedName: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//					datasetId := _args[0].(string)
+//					tableId := _args[1].(string)
+//					return fmt.Sprintf("bigquery:%v.%v.%v", project.ProjectId, datasetId, tableId), nil
+//				}).(pulumi.StringOutput),
+//				ParentEntry: tfTestDataset.DatasetId.ApplyT(func(datasetId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/%v/datasets/%v", project.ProjectId, project.ProjectId, datasetId), nil
+//				}).(pulumi.StringOutput),
+//				Aspects: dataplex.EntryAspectArray{
+//					&dataplex.EntryAspectArgs{
+//						AspectKey: pulumi.String("655216118709.global.data-rules@Schema.name"),
+//						Aspect: &dataplex.EntryAspectAspectArgs{
+//							Data: pulumi.All(testEntry.Name, tfTestDataset.DatasetId, tfTestTable.TableId, testEntry.Name, tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//								testEntryName := _args[0].(string)
+//								tfTestDatasetDatasetId := _args[1].(string)
+//								tfTestTableTableId := _args[2].(string)
+//								testEntryName1 := _args[3].(string)
+//								tfTestDatasetDatasetId1 := _args[4].(string)
+//								tfTestTableTableId1 := _args[5].(string)
+//								var _zero string
+//								tmpJSON1, err := json.Marshal(map[string]interface{}{
+//									"rules": []map[string]interface{}{
+//										map[string]interface{}{
+//											"name":      "rule-to-filter-out",
+//											"dimension": "VALIDITY",
+//											"type":      "TEMPLATE_REFERENCE",
+//											"templateReference": map[string]interface{}{
+//												"name": testEntryName,
+//												"values": map[string]interface{}{
+//													"table_name": map[string]interface{}{
+//														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, tfTestDatasetDatasetId, tfTestTableTableId),
+//													},
+//													"column_name": map[string]interface{}{
+//														"value": "name",
+//													},
+//												},
+//											},
+//											"attributes": map[string]interface{}{
+//												"priority": "low",
+//											},
+//										},
+//										map[string]interface{}{
+//											"name":      "non-null-check-name-manual",
+//											"dimension": "VALIDITY",
+//											"type":      "TEMPLATE_REFERENCE",
+//											"templateReference": map[string]interface{}{
+//												"name": testEntryName1,
+//												"values": map[string]interface{}{
+//													"table_name": map[string]interface{}{
+//														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, tfTestDatasetDatasetId1, tfTestTableTableId1),
+//													},
+//													"column_name": map[string]interface{}{
+//														"value": "name",
+//													},
+//												},
+//											},
+//											"attributes": map[string]interface{}{
+//												"priority": "high",
+//											},
+//										},
+//									},
+//								})
+//								if err != nil {
+//									return _zero, err
+//								}
+//								json1 := string(tmpJSON1)
+//								return json1, nil
+//							}).(pulumi.StringOutput),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForBqSync,
+//				testEntry,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			waitForAspectPropagation, err := time.NewSleep(ctx, "wait_for_aspect_propagation", &time.SleepArgs{
+//				CreateDuration: pulumi.String("300s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bqTableEntry,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "reusable_rules_catalog_based", &dataplex.DatascanArgs{
+//				Location:    pulumi.String("us-central1"),
+//				DataScanId:  pulumi.String("dataquality-catalog"),
+//				DisplayName: pulumi.String("Catalog Datascan Quality"),
+//				Description: pulumi.String("Example resource - Catalog Datascan Quality"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						datasetId := _args[0].(string)
+//						tableId := _args[1].(string)
+//						return fmt.Sprintf("//bigquery.googleapis.com/projects/%v/datasets/%v/tables/%v", project.ProjectId, datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
+//					},
+//				},
+//				ExecutionIdentity: &dataplex.DatascanExecutionIdentityArgs{
+//					ServiceAccount: &dataplex.DatascanExecutionIdentityServiceAccountArgs{
+//						Email: sa.Email,
+//					},
+//				},
+//				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
+//					EnableCatalogBasedRules: pulumi.Bool(true),
+//					Filter:                  pulumi.String("attributes.priority = \"high\""),
+//				},
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForAspectPropagation,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Datascan Data Quality Template Reference
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("tf-test-sa-_49082"),
+//				DisplayName: pulumi.String("DataScan Service Account"),
+//				Project:     pulumi.String(pulumi.String(project.ProjectId)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dataplexSaImpersonate, err := serviceaccount.NewIAMMember(ctx, "dataplex_sa_impersonate", &serviceaccount.IAMMemberArgs{
+//				ServiceAccountId: sa.Name,
+//				Role:             pulumi.String("roles/iam.serviceAccountTokenCreator"),
+//				Member:           pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataplex.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dataplexSaImpersonate,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			saBqDataViewer, err := projects.NewIAMMember(ctx, "sa_bq_data_viewer", &projects.IAMMemberArgs{
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Role:    pulumi.String("roles/bigquery.dataViewer"),
+//				Member: sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			saBqJobUser, err := projects.NewIAMMember(ctx, "sa_bq_job_user", &projects.IAMMemberArgs{
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
+//				Role:    pulumi.String("roles/bigquery.jobUser"),
+//				Member: sa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
+//				Location:     pulumi.String("us-central1"),
+//				EntryGroupId: pulumi.String("test-group-_60365"),
+//				Project:      pulumi.String(pulumi.String(project.ProjectId)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"dimension": "VALIDITY",
+//				"sqlCollection": []map[string]interface{}{
+//					map[string]interface{}{
+//						"query": "SELECT * FROM ${data()} WHERE ${column()} IS NOT NULL",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				EntryGroupId: testGroup.EntryGroupId,
+//				EntryId:      pulumi.String("test-entry-_80215"),
+//				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
+//				Project:      pulumi.String(pulumi.String(project.Number)),
+//				Aspects: dataplex.EntryAspectArray{
+//					&dataplex.EntryAspectArgs{
+//						AspectKey: pulumi.String("655216118709.global.data-quality-rule-template"),
+//						Aspect: &dataplex.EntryAspectAspectArgs{
+//							Data: pulumi.String(pulumi.String(json0)),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_test_dataset_id__59033"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//				Location:                 pulumi.String("us-central1"),
+//				Project:                  pulumi.String(pulumi.String(project.ProjectId)),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				dataplexSaImpersonate,
+//				saBqDataViewer,
+//				saBqJobUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
+//				DatasetId:          tfTestDataset.DatasetId,
+//				TableId:            pulumi.String("tf_test_table_id__32081"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Project:            pulumi.String(pulumi.String(project.ProjectId)),
+//				Schema: pulumi.String(`    [
+//	    {
+//	      \"name\": \"name\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\"
+//	    }
+//	    ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "data_quality_template_reference", &dataplex.DatascanArgs{
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("Data Quality Template Reference"),
+//				DataScanId:  pulumi.String("dataquality-template"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						datasetId := _args[0].(string)
+//						tableId := _args[1].(string)
+//						return fmt.Sprintf("//bigquery.googleapis.com/projects/%v/datasets/%v/tables/%v", project.ProjectId, datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
+//					},
+//				},
+//				ExecutionIdentity: &dataplex.DatascanExecutionIdentityArgs{
+//					ServiceAccount: &dataplex.DatascanExecutionIdentityServiceAccountArgs{
+//						Email: sa.Email,
+//					},
+//				},
+//				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
+//					Rules: dataplex.DatascanDataQualitySpecRuleArray{
+//						&dataplex.DatascanDataQualitySpecRuleArgs{
+//							Column:    pulumi.String("name"),
+//							Dimension: pulumi.String("VALIDITY"),
+//							TemplateReference: &dataplex.DatascanDataQualitySpecRuleTemplateReferenceArgs{
+//								Name: testEntry.Name,
+//								Values: dataplex.DatascanDataQualitySpecRuleTemplateReferenceValueArray{
+//									&dataplex.DatascanDataQualitySpecRuleTemplateReferenceValueArgs{
+//										Name:  pulumi.String("min_length"),
+//										Value: pulumi.String("10"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Project: pulumi.String(pulumi.String(project.ProjectId)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				tfTestTable,
 //				wait120Seconds,

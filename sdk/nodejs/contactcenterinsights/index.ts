@@ -20,6 +20,21 @@ export type AutoLabelingRule = import("./autoLabelingRule").AutoLabelingRule;
 export const AutoLabelingRule: typeof import("./autoLabelingRule").AutoLabelingRule = null as any;
 utilities.lazyLoad(exports, ["AutoLabelingRule"], () => require("./autoLabelingRule"));
 
+export { QaQuestionArgs, QaQuestionState } from "./qaQuestion";
+export type QaQuestion = import("./qaQuestion").QaQuestion;
+export const QaQuestion: typeof import("./qaQuestion").QaQuestion = null as any;
+utilities.lazyLoad(exports, ["QaQuestion"], () => require("./qaQuestion"));
+
+export { QaScorecardArgs, QaScorecardState } from "./qaScorecard";
+export type QaScorecard = import("./qaScorecard").QaScorecard;
+export const QaScorecard: typeof import("./qaScorecard").QaScorecard = null as any;
+utilities.lazyLoad(exports, ["QaScorecard"], () => require("./qaScorecard"));
+
+export { QaScorecardRevisionArgs, QaScorecardRevisionState } from "./qaScorecardRevision";
+export type QaScorecardRevision = import("./qaScorecardRevision").QaScorecardRevision;
+export const QaScorecardRevision: typeof import("./qaScorecardRevision").QaScorecardRevision = null as any;
+utilities.lazyLoad(exports, ["QaScorecardRevision"], () => require("./qaScorecardRevision"));
+
 export { ViewArgs, ViewState } from "./view";
 export type View = import("./view").View;
 export const View: typeof import("./view").View = null as any;
@@ -36,6 +51,12 @@ const _module = {
                 return new AssessmentRule(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule":
                 return new AutoLabelingRule(name, <any>undefined, { urn })
+            case "gcp:contactcenterinsights/qaQuestion:QaQuestion":
+                return new QaQuestion(name, <any>undefined, { urn })
+            case "gcp:contactcenterinsights/qaScorecard:QaScorecard":
+                return new QaScorecard(name, <any>undefined, { urn })
+            case "gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision":
+                return new QaScorecardRevision(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/view:View":
                 return new View(name, <any>undefined, { urn })
             default:
@@ -46,4 +67,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/analysisRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/assessmentRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/autoLabelingRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/qaQuestion", _module)
+pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/qaScorecard", _module)
+pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/qaScorecardRevision", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/view", _module)

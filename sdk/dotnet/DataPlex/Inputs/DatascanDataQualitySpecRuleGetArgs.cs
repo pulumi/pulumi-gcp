@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
     public sealed class DatascanDataQualitySpecRuleGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("attributes")]
+        private InputMap<string>? _attributes;
+
+        /// <summary>
+        /// Map of attribute name and value linked to the rule.
+        /// </summary>
+        public InputMap<string> Attributes
+        {
+            get => _attributes ?? (_attributes = new InputMap<string>());
+            set => _attributes = value;
+        }
+
         /// <summary>
         /// The unnested column which this rule is evaluated against.
         /// </summary>
@@ -107,6 +119,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         /// </summary>
         [Input("tableConditionExpectation")]
         public Input<Inputs.DatascanDataQualitySpecRuleTableConditionExpectationGetArgs>? TableConditionExpectation { get; set; }
+
+        /// <summary>
+        /// Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("templateReference")]
+        public Input<Inputs.DatascanDataQualitySpecRuleTemplateReferenceGetArgs>? TemplateReference { get; set; }
 
         /// <summary>
         /// The minimum ratio of PassingRows / TotalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).

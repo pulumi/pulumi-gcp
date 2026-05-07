@@ -58,6 +58,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
     /**
      * Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="rawKey")
@@ -66,6 +67,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> rawKey() {
@@ -173,6 +175,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
         /**
          * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -185,6 +188,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
         /**
          * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

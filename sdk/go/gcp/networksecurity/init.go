@@ -79,6 +79,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TlsInspectionPolicy{}
 	case "gcp:networksecurity/ullMirroringCollector:UllMirroringCollector":
 		r = &UllMirroringCollector{}
+	case "gcp:networksecurity/ullMirroringCollectorRule:UllMirroringCollectorRule":
+		r = &UllMirroringCollectorRule{}
 	case "gcp:networksecurity/ullMirroringEngine:UllMirroringEngine":
 		r = &UllMirroringEngine{}
 	case "gcp:networksecurity/urlList:UrlList":
@@ -239,6 +241,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/ullMirroringCollector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/ullMirroringCollectorRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

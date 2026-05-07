@@ -14,7 +14,7 @@ import (
 
 // Cloud Firestore indexes enable simple and complex queries against documents in a database.
 //
-//	Both Firestore Native and Datastore Mode indexes are supported.
+//	Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
 //	This resource manages composite indexes and not single field indexes.
 //	To manage single field indexes, use the `firestore.Field` resource instead.
 //
@@ -440,6 +440,167 @@ import (
 //	}
 //
 // ```
+// ### Firestore Index Text Search
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("text-search-database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("atestcollection"),
+//				ApiScope:   pulumi.String("MONGODB_COMPATIBLE_API"),
+//				QueryScope: pulumi.String("COLLECTION_GROUP"),
+//				Multikey:   pulumi.Bool(true),
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("description"),
+//						SearchConfig: &firestore.IndexFieldSearchConfigArgs{
+//							TextSpec: &firestore.IndexFieldSearchConfigTextSpecArgs{
+//								IndexSpecs: firestore.IndexFieldSearchConfigTextSpecIndexSpecArray{
+//									&firestore.IndexFieldSearchConfigTextSpecIndexSpecArgs{
+//										IndexType: pulumi.String("TOKENIZED"),
+//										MatchType: pulumi.String("MATCH_GLOBALLY"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Index Suppress Geojson Indexing
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("suppress-geojson-indexing-database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("atestcollection"),
+//				QueryScope: pulumi.String("COLLECTION_GROUP"),
+//				Density:    pulumi.String("SPARSE_ANY"),
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("location"),
+//						SearchConfig: &firestore.IndexFieldSearchConfigArgs{
+//							GeoSpec: &firestore.IndexFieldSearchConfigGeoSpecArgs{
+//								GeoJsonIndexingDisabled: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Index Geo Search
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("geo-search-database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("atestcollection"),
+//				ApiScope:   pulumi.String("MONGODB_COMPATIBLE_API"),
+//				QueryScope: pulumi.String("COLLECTION_GROUP"),
+//				Multikey:   pulumi.Bool(true),
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("location"),
+//						SearchConfig: &firestore.IndexFieldSearchConfigArgs{
+//							GeoSpec: &firestore.IndexFieldSearchConfigGeoSpecArgs{
+//								GeoJsonIndexingDisabled: pulumi.Bool(false),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Index can be imported using any of these accepted formats:

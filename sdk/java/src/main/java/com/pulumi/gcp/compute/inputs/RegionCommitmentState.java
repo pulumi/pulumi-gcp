@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionCommitmentLicenseResourceArgs;
+import com.pulumi.gcp.compute.inputs.RegionCommitmentParamsArgs;
 import com.pulumi.gcp.compute.inputs.RegionCommitmentResourceArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -180,6 +181,23 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<RegionCommitmentParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionCommitmentParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -346,6 +364,7 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
         this.existingReservations = $.existingReservations;
         this.licenseResource = $.licenseResource;
         this.name = $.name;
+        this.params = $.params;
         this.plan = $.plan;
         this.project = $.project;
         this.region = $.region;
@@ -586,6 +605,29 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<RegionCommitmentParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(RegionCommitmentParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

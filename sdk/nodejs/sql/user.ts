@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state. Passwords will not be retrieved when running
  * "terraform import".
  *
+ * > **Note:** Write-Only argument `passwordWo` is available to use in place of `password`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+ *
  * ## Example Usage
  *
  * Example creating a SQL User.
@@ -123,16 +125,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Ephemeral Attributes Reference
- *
- * The following write-only attributes are supported:
- *
- * * `passwordWo` - (Optional) The password for the user. Can be updated. For Postgres
- *     instances this is a Required field, unless type is set to either CLOUD_IAM_USER
- *     or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
- *     and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
- *   **Note**: This property is write-only and will not be read from the API.
- *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -202,6 +194,8 @@ export class User extends pulumi.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
+     *
+     * - - -
      */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
@@ -234,14 +228,16 @@ export class User extends pulumi.CustomResource {
     declare public readonly passwordPolicy: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     *
+     * * > **Note:** One of `value` or `valueWo` can only be set.
      */
     declare public readonly passwordWo: pulumi.Output<string | undefined>;
     /**
-     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     *
-     * - - -
+     * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      */
     declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
@@ -333,6 +329,8 @@ export interface UserState {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
+     *
+     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -365,14 +363,16 @@ export interface UserState {
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     *
+     * * > **Note:** One of `value` or `valueWo` can only be set.
      */
     passwordWo?: pulumi.Input<string>;
     /**
-     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     *
-     * - - -
+     * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      */
     passwordWoVersion?: pulumi.Input<number>;
     /**
@@ -413,6 +413,8 @@ export interface UserArgs {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
+     *
+     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -441,14 +443,16 @@ export interface UserArgs {
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-     * 				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
+     *
+     * * > **Note:** One of `value` or `valueWo` can only be set.
      */
     passwordWo?: pulumi.Input<string>;
     /**
-     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-     *
-     * - - -
+     * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      */
     passwordWoVersion?: pulumi.Input<number>;
     /**

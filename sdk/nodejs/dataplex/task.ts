@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const example = new gcp.dataplex.Lake("example", {
- *     name: "tf-test-lake_21563",
+ *     name: "tf-test-lake_9329",
  *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * const exampleTask = new gcp.dataplex.Task("example", {
- *     taskId: "tf-test-task_25141",
+ *     taskId: "tf-test-task_37135",
  *     location: "us-central1",
  *     lake: example.name,
  *     description: "Test Task Basic",
@@ -65,17 +65,17 @@ import * as utilities from "../utilities";
  *
  * // VPC network
  * const _default = new gcp.compute.Network("default", {
- *     name: "tf-test-workstation-cluster_30827",
+ *     name: "tf-test-workstation-cluster_42503",
  *     autoCreateSubnetworks: true,
  * });
  * const project = gcp.organizations.getProject({});
  * const exampleSpark = new gcp.dataplex.Lake("example_spark", {
- *     name: "tf-test-lake_6529",
+ *     name: "tf-test-lake_9991",
  *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * const exampleSparkTask = new gcp.dataplex.Task("example_spark", {
- *     taskId: "tf-test-task_16178",
+ *     taskId: "tf-test-task_12125",
  *     location: "us-central1",
  *     lake: exampleSpark.name,
  *     triggerSpec: {
@@ -124,17 +124,17 @@ import * as utilities from "../utilities";
  *
  * // VPC network
  * const _default = new gcp.compute.Network("default", {
- *     name: "tf-test-workstation-cluster_26317",
+ *     name: "tf-test-workstation-cluster_82749",
  *     autoCreateSubnetworks: true,
  * });
  * const project = gcp.organizations.getProject({});
  * const exampleNotebook = new gcp.dataplex.Lake("example_notebook", {
- *     name: "tf-test-lake_4866",
+ *     name: "tf-test-lake_15022",
  *     location: "us-central1",
  *     project: "my-project-name",
  * });
  * const exampleNotebookTask = new gcp.dataplex.Task("example_notebook", {
- *     taskId: "tf-test-task_12618",
+ *     taskId: "tf-test-task_89648",
  *     location: "us-central1",
  *     lake: exampleNotebook.name,
  *     triggerSpec: {

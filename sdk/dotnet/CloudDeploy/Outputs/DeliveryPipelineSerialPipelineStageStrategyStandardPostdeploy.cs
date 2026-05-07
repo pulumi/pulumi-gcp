@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
         /// </summary>
         public readonly ImmutableArray<string> Actions;
+        /// <summary>
+        /// Optional. The tasks that will run as a part of the postdeploy job. Only one of `Actions` or `Tasks` can be specified.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask> Tasks;
 
         [OutputConstructor]
-        private DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(ImmutableArray<string> actions)
+        private DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(
+            ImmutableArray<string> actions,
+
+            ImmutableArray<Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask> tasks)
         {
             Actions = actions;
+            Tasks = tasks;
         }
     }
 }

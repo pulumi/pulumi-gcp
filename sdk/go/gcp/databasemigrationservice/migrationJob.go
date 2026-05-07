@@ -297,6 +297,154 @@ import (
 //	}
 //
 // ```
+// ### Database Migration Service Migration Job Postgres To Postgres Objects
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sourceCsql, err := sql.NewDatabaseInstance(ctx, "source_csql", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("source-csql"),
+//				DatabaseVersion: pulumi.String("POSTGRES_15"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier:                      pulumi.String("db-custom-2-13312"),
+//					DeletionProtectionEnabled: pulumi.Bool(false),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceSqlClientCert, err := sql.NewSslCert(ctx, "source_sql_client_cert", &sql.SslCertArgs{
+//				CommonName: pulumi.String("cert"),
+//				Instance:   sourceCsql.Name,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sourceCsql,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sourceSqldbUser, err := sql.NewUser(ctx, "source_sqldb_user", &sql.UserArgs{
+//				Name:     pulumi.String("username"),
+//				Instance: sourceCsql.Name,
+//				Password: pulumi.String("password"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sourceSqlClientCert,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-cp"),
+//				DisplayName:         pulumi.String("source-cp_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+//					Host: sourceCsql.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
+//						return &ipAddresses[0].IpAddress, nil
+//					}).(pulumi.StringPtrOutput),
+//					Port:     pulumi.Int(3306),
+//					Username: sourceSqldbUser.Name,
+//					Password: sourceSqldbUser.Password,
+//					Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
+//						ClientKey:         sourceSqlClientCert.PrivateKey,
+//						ClientCertificate: sourceSqlClientCert.Cert,
+//						CaCertificate:     sourceSqlClientCert.ServerCaCert,
+//						Type:              pulumi.String("SERVER_CLIENT"),
+//					},
+//					CloudSqlId: pulumi.String("source-csql"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sourceSqldbUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			destinationCsql, err := sql.NewDatabaseInstance(ctx, "destination_csql", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("destination-csql"),
+//				DatabaseVersion: pulumi.String("POSTGRES_15"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier:                      pulumi.String("db-custom-2-13312"),
+//					DeletionProtectionEnabled: pulumi.Bool(false),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-cp"),
+//				DisplayName:         pulumi.String("destination-cp_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+//					CloudSqlId: pulumi.String("destination-csql"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				destinationCsql,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltopsqlobjects", &databasemigrationservice.MigrationJobArgs{
+//				Location:       pulumi.String("us-central1"),
+//				MigrationJobId: pulumi.String("my-migrationid"),
+//				DisplayName:    pulumi.String("my-migrationid_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				StaticIpConnectivity: &databasemigrationservice.MigrationJobStaticIpConnectivityArgs{},
+//				Source:               sourceCp.Name,
+//				Destination:          destinationCp.Name,
+//				Type:                 pulumi.String("CONTINUOUS"),
+//				ObjectsConfig: &databasemigrationservice.MigrationJobObjectsConfigArgs{
+//					SourceObjectsConfig: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigArgs{
+//						ObjectsSelectionType: pulumi.String("SPECIFIED_OBJECTS"),
+//						ObjectConfigs: databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray{
+//							&databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{
+//								ObjectIdentifier: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{
+//									Type:     pulumi.String("DATABASE"),
+//									Database: pulumi.String("my_database"),
+//								},
+//							},
+//							&databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{
+//								ObjectIdentifier: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{
+//									Type:     pulumi.String("TABLE"),
+//									Database: pulumi.String("my_other_database"),
+//									Schema:   pulumi.String("public"),
+//									Table:    pulumi.String("users"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Database Migration Service Migration Job Postgres To Alloydb
 //
 // ```go
@@ -520,6 +668,10 @@ type MigrationJob struct {
 	MigrationJobId pulumi.StringOutput `pulumi:"migrationJobId"`
 	// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The objects that need to be migrated. If unset, the default is to migrate
+	// all objects available on the source.
+	// Structure is documented below.
+	ObjectsConfig MigrationJobObjectsConfigOutput `pulumi:"objectsConfig"`
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig MigrationJobPerformanceConfigPtrOutput `pulumi:"performanceConfig"`
@@ -631,6 +783,10 @@ type migrationJobState struct {
 	MigrationJobId *string `pulumi:"migrationJobId"`
 	// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name *string `pulumi:"name"`
+	// The objects that need to be migrated. If unset, the default is to migrate
+	// all objects available on the source.
+	// Structure is documented below.
+	ObjectsConfig *MigrationJobObjectsConfig `pulumi:"objectsConfig"`
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig *MigrationJobPerformanceConfig `pulumi:"performanceConfig"`
@@ -696,6 +852,10 @@ type MigrationJobState struct {
 	MigrationJobId pulumi.StringPtrInput
 	// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringPtrInput
+	// The objects that need to be migrated. If unset, the default is to migrate
+	// all objects available on the source.
+	// Structure is documented below.
+	ObjectsConfig MigrationJobObjectsConfigPtrInput
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig MigrationJobPerformanceConfigPtrInput
@@ -756,6 +916,10 @@ type migrationJobArgs struct {
 	Location *string `pulumi:"location"`
 	// The ID of the migration job.
 	MigrationJobId string `pulumi:"migrationJobId"`
+	// The objects that need to be migrated. If unset, the default is to migrate
+	// all objects available on the source.
+	// Structure is documented below.
+	ObjectsConfig *MigrationJobObjectsConfig `pulumi:"objectsConfig"`
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig *MigrationJobPerformanceConfig `pulumi:"performanceConfig"`
@@ -806,6 +970,10 @@ type MigrationJobArgs struct {
 	Location pulumi.StringPtrInput
 	// The ID of the migration job.
 	MigrationJobId pulumi.StringInput
+	// The objects that need to be migrated. If unset, the default is to migrate
+	// all objects available on the source.
+	// Structure is documented below.
+	ObjectsConfig MigrationJobObjectsConfigPtrInput
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
 	PerformanceConfig MigrationJobPerformanceConfigPtrInput
@@ -984,6 +1152,13 @@ func (o MigrationJobOutput) MigrationJobId() pulumi.StringOutput {
 // The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 func (o MigrationJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The objects that need to be migrated. If unset, the default is to migrate
+// all objects available on the source.
+// Structure is documented below.
+func (o MigrationJobOutput) ObjectsConfig() MigrationJobObjectsConfigOutput {
+	return o.ApplyT(func(v *MigrationJob) MigrationJobObjectsConfigOutput { return v.ObjectsConfig }).(MigrationJobObjectsConfigOutput)
 }
 
 // Data dump parallelism settings used by the migration.

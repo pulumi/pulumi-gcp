@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Cloud Firestore indexes enable simple and complex queries against documents in a database.
- *  Both Firestore Native and Datastore Mode indexes are supported.
+ *  Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
  *  This resource manages composite indexes and not single field indexes.
  *  To manage single field indexes, use the `gcp.firestore.Field` resource instead.
  *
@@ -288,6 +288,105 @@ import * as utilities from "../utilities";
  *     skipWait: true,
  * });
  * ```
+ * ### Firestore Index Text Search
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "text-search-database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     apiScope: "MONGODB_COMPATIBLE_API",
+ *     queryScope: "COLLECTION_GROUP",
+ *     multikey: true,
+ *     fields: [{
+ *         fieldPath: "description",
+ *         searchConfig: {
+ *             textSpec: {
+ *                 indexSpecs: [{
+ *                     indexType: "TOKENIZED",
+ *                     matchType: "MATCH_GLOBALLY",
+ *                 }],
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Firestore Index Suppress Geojson Indexing
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "suppress-geojson-indexing-database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     queryScope: "COLLECTION_GROUP",
+ *     density: "SPARSE_ANY",
+ *     fields: [{
+ *         fieldPath: "location",
+ *         searchConfig: {
+ *             geoSpec: {
+ *                 geoJsonIndexingDisabled: true,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Firestore Index Geo Search
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "geo-search-database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     apiScope: "MONGODB_COMPATIBLE_API",
+ *     queryScope: "COLLECTION_GROUP",
+ *     multikey: true,
+ *     fields: [{
+ *         fieldPath: "location",
+ *         searchConfig: {
+ *             geoSpec: {
+ *                 geoJsonIndexingDisabled: false,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Index can be imported using any of these accepted formats:

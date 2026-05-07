@@ -29,6 +29,14 @@ __all__ = [
     'FieldTtlConfigArgsDict',
     'IndexFieldArgs',
     'IndexFieldArgsDict',
+    'IndexFieldSearchConfigArgs',
+    'IndexFieldSearchConfigArgsDict',
+    'IndexFieldSearchConfigGeoSpecArgs',
+    'IndexFieldSearchConfigGeoSpecArgsDict',
+    'IndexFieldSearchConfigTextSpecArgs',
+    'IndexFieldSearchConfigTextSpecArgsDict',
+    'IndexFieldSearchConfigTextSpecIndexSpecArgs',
+    'IndexFieldSearchConfigTextSpecIndexSpecArgsDict',
     'IndexFieldVectorConfigArgs',
     'IndexFieldVectorConfigArgsDict',
     'IndexFieldVectorConfigFlatArgs',
@@ -331,7 +339,7 @@ class FieldTtlConfigArgs:
 class IndexFieldArgsDict(TypedDict):
     array_config: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+    Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified.
     Possible values are: `CONTAINS`.
     """
@@ -342,12 +350,18 @@ class IndexFieldArgsDict(TypedDict):
     order: NotRequired[pulumi.Input[_builtins.str]]
     """
     Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-    Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+    Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
     Possible values are: `ASCENDING`, `DESCENDING`.
+    """
+    search_config: NotRequired[pulumi.Input['IndexFieldSearchConfigArgsDict']]
+    """
+    Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+    `vectorConfig` can be specified.
+    Structure is documented below.
     """
     vector_config: NotRequired[pulumi.Input['IndexFieldVectorConfigArgsDict']]
     """
-    Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+    Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
     Structure is documented below.
     """
@@ -358,16 +372,20 @@ class IndexFieldArgs:
                  array_config: Optional[pulumi.Input[_builtins.str]] = None,
                  field_path: Optional[pulumi.Input[_builtins.str]] = None,
                  order: Optional[pulumi.Input[_builtins.str]] = None,
+                 search_config: Optional[pulumi.Input['IndexFieldSearchConfigArgs']] = None,
                  vector_config: Optional[pulumi.Input['IndexFieldVectorConfigArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] array_config: Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        :param pulumi.Input[_builtins.str] array_config: Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
                `vectorConfig` can be specified.
                Possible values are: `CONTAINS`.
         :param pulumi.Input[_builtins.str] field_path: Name of the field.
         :param pulumi.Input[_builtins.str] order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-               Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+               Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
                Possible values are: `ASCENDING`, `DESCENDING`.
-        :param pulumi.Input['IndexFieldVectorConfigArgs'] vector_config: Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        :param pulumi.Input['IndexFieldSearchConfigArgs'] search_config: Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+               `vectorConfig` can be specified.
+               Structure is documented below.
+        :param pulumi.Input['IndexFieldVectorConfigArgs'] vector_config: Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
                `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
                Structure is documented below.
         """
@@ -377,6 +395,8 @@ class IndexFieldArgs:
             pulumi.set(__self__, "field_path", field_path)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if search_config is not None:
+            pulumi.set(__self__, "search_config", search_config)
         if vector_config is not None:
             pulumi.set(__self__, "vector_config", vector_config)
 
@@ -384,7 +404,7 @@ class IndexFieldArgs:
     @pulumi.getter(name="arrayConfig")
     def array_config(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified.
         Possible values are: `CONTAINS`.
         """
@@ -411,7 +431,7 @@ class IndexFieldArgs:
     def order(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-        Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+        Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
         Possible values are: `ASCENDING`, `DESCENDING`.
         """
         return pulumi.get(self, "order")
@@ -421,10 +441,24 @@ class IndexFieldArgs:
         pulumi.set(self, "order", value)
 
     @_builtins.property
+    @pulumi.getter(name="searchConfig")
+    def search_config(self) -> Optional[pulumi.Input['IndexFieldSearchConfigArgs']]:
+        """
+        Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+        `vectorConfig` can be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_config")
+
+    @search_config.setter
+    def search_config(self, value: Optional[pulumi.Input['IndexFieldSearchConfigArgs']]):
+        pulumi.set(self, "search_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="vectorConfig")
     def vector_config(self) -> Optional[pulumi.Input['IndexFieldVectorConfigArgs']]:
         """
-        Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
         Structure is documented below.
         """
@@ -433,6 +467,172 @@ class IndexFieldArgs:
     @vector_config.setter
     def vector_config(self, value: Optional[pulumi.Input['IndexFieldVectorConfigArgs']]):
         pulumi.set(self, "vector_config", value)
+
+
+class IndexFieldSearchConfigArgsDict(TypedDict):
+    geo_spec: NotRequired[pulumi.Input['IndexFieldSearchConfigGeoSpecArgsDict']]
+    """
+    The specification for building a geo search index for a field.
+    Structure is documented below.
+    """
+    text_spec: NotRequired[pulumi.Input['IndexFieldSearchConfigTextSpecArgsDict']]
+    """
+    The specification for building a text search index for a field.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class IndexFieldSearchConfigArgs:
+    def __init__(__self__, *,
+                 geo_spec: Optional[pulumi.Input['IndexFieldSearchConfigGeoSpecArgs']] = None,
+                 text_spec: Optional[pulumi.Input['IndexFieldSearchConfigTextSpecArgs']] = None):
+        """
+        :param pulumi.Input['IndexFieldSearchConfigGeoSpecArgs'] geo_spec: The specification for building a geo search index for a field.
+               Structure is documented below.
+        :param pulumi.Input['IndexFieldSearchConfigTextSpecArgs'] text_spec: The specification for building a text search index for a field.
+               Structure is documented below.
+        """
+        if geo_spec is not None:
+            pulumi.set(__self__, "geo_spec", geo_spec)
+        if text_spec is not None:
+            pulumi.set(__self__, "text_spec", text_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="geoSpec")
+    def geo_spec(self) -> Optional[pulumi.Input['IndexFieldSearchConfigGeoSpecArgs']]:
+        """
+        The specification for building a geo search index for a field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "geo_spec")
+
+    @geo_spec.setter
+    def geo_spec(self, value: Optional[pulumi.Input['IndexFieldSearchConfigGeoSpecArgs']]):
+        pulumi.set(self, "geo_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="textSpec")
+    def text_spec(self) -> Optional[pulumi.Input['IndexFieldSearchConfigTextSpecArgs']]:
+        """
+        The specification for building a text search index for a field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_spec")
+
+    @text_spec.setter
+    def text_spec(self, value: Optional[pulumi.Input['IndexFieldSearchConfigTextSpecArgs']]):
+        pulumi.set(self, "text_spec", value)
+
+
+class IndexFieldSearchConfigGeoSpecArgsDict(TypedDict):
+    geo_json_indexing_disabled: pulumi.Input[_builtins.bool]
+    """
+    If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+    Firestore GeoPoints are indexed regardless of the value of this field.
+    """
+
+@pulumi.input_type
+class IndexFieldSearchConfigGeoSpecArgs:
+    def __init__(__self__, *,
+                 geo_json_indexing_disabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] geo_json_indexing_disabled: If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+               Firestore GeoPoints are indexed regardless of the value of this field.
+        """
+        pulumi.set(__self__, "geo_json_indexing_disabled", geo_json_indexing_disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="geoJsonIndexingDisabled")
+    def geo_json_indexing_disabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        If true, disables GeoJSON indexing for the field. By default, GeoJSON points are indexed.
+        Firestore GeoPoints are indexed regardless of the value of this field.
+        """
+        return pulumi.get(self, "geo_json_indexing_disabled")
+
+    @geo_json_indexing_disabled.setter
+    def geo_json_indexing_disabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "geo_json_indexing_disabled", value)
+
+
+class IndexFieldSearchConfigTextSpecArgsDict(TypedDict):
+    index_specs: pulumi.Input[Sequence[pulumi.Input['IndexFieldSearchConfigTextSpecIndexSpecArgsDict']]]
+    """
+    Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class IndexFieldSearchConfigTextSpecArgs:
+    def __init__(__self__, *,
+                 index_specs: pulumi.Input[Sequence[pulumi.Input['IndexFieldSearchConfigTextSpecIndexSpecArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldSearchConfigTextSpecIndexSpecArgs']]] index_specs: Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "index_specs", index_specs)
+
+    @_builtins.property
+    @pulumi.getter(name="indexSpecs")
+    def index_specs(self) -> pulumi.Input[Sequence[pulumi.Input['IndexFieldSearchConfigTextSpecIndexSpecArgs']]]:
+        """
+        Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "index_specs")
+
+    @index_specs.setter
+    def index_specs(self, value: pulumi.Input[Sequence[pulumi.Input['IndexFieldSearchConfigTextSpecIndexSpecArgs']]]):
+        pulumi.set(self, "index_specs", value)
+
+
+class IndexFieldSearchConfigTextSpecIndexSpecArgsDict(TypedDict):
+    index_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Ways to index the text field value.
+    """
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How to match the text field value.
+    """
+
+@pulumi.input_type
+class IndexFieldSearchConfigTextSpecIndexSpecArgs:
+    def __init__(__self__, *,
+                 index_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 match_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] index_type: Ways to index the text field value.
+        :param pulumi.Input[_builtins.str] match_type: How to match the text field value.
+        """
+        if index_type is not None:
+            pulumi.set(__self__, "index_type", index_type)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+
+    @_builtins.property
+    @pulumi.getter(name="indexType")
+    def index_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Ways to index the text field value.
+        """
+        return pulumi.get(self, "index_type")
+
+    @index_type.setter
+    def index_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "index_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How to match the text field value.
+        """
+        return pulumi.get(self, "match_type")
+
+    @match_type.setter
+    def match_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "match_type", value)
 
 
 class IndexFieldVectorConfigArgsDict(TypedDict):

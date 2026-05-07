@@ -5116,6 +5116,8 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) RuntimeConfi
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment struct {
+	// Optional. Configuration for the analysis job.
+	Analysis *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis `pulumi:"analysis"`
 	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages []int `pulumi:"percentages"`
 	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
@@ -5124,6 +5126,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment struct {
 	Predeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify *bool `pulumi:"verify"`
+	// Optional. Configuration for the verify job.
+	VerifyConfig *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig `pulumi:"verifyConfig"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput values.
@@ -5138,6 +5142,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput inte
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs struct {
+	// Optional. Configuration for the analysis job.
+	Analysis DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrInput `pulumi:"analysis"`
 	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages pulumi.IntArrayInput `pulumi:"percentages"`
 	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
@@ -5146,6 +5152,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs struc
 	Predeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+	// Optional. Configuration for the verify job.
+	VerifyConfig DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrInput `pulumi:"verifyConfig"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ElementType() reflect.Type {
@@ -5225,6 +5233,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
 }
 
+// Optional. Configuration for the analysis job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Analysis() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis {
+		return v.Analysis
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput)
+}
+
 // Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Percentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
@@ -5249,6 +5264,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Configuration for the verify job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) VerifyConfig() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig {
+		return v.VerifyConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) ElementType() reflect.Type {
@@ -5271,6 +5293,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment
 		return ret
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
+}
+
+// Optional. Configuration for the analysis job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Analysis() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis {
+		if v == nil {
+			return nil
+		}
+		return v.Analysis
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput)
 }
 
 // Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
@@ -5311,6 +5343,919 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 		}
 		return v.Verify
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Configuration for the verify job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) VerifyConfig() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.VerifyConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis struct {
+	// Optional. Custom analysis checks from 3P metric providers.
+	CustomChecks []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck `pulumi:"customChecks"`
+	// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+	Duration string `pulumi:"duration"`
+	// Optional. Google Cloud - based analysis checks.
+	GoogleCloud *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud `pulumi:"googleCloud"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs struct {
+	// Optional. Custom analysis checks from 3P metric providers.
+	CustomChecks DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayInput `pulumi:"customChecks"`
+	// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Optional. Google Cloud - based analysis checks.
+	GoogleCloud DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrInput `pulumi:"googleCloud"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput)
+}
+
+// Optional. Custom analysis checks from 3P metric providers.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) CustomChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck {
+		return v.CustomChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput)
+}
+
+// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) string {
+		return v.Duration
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Google Cloud - based analysis checks.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput) GoogleCloud() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud {
+		return v.GoogleCloud
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput)
+}
+
+// Optional. Custom analysis checks from 3P metric providers.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) CustomChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck {
+		if v == nil {
+			return nil
+		}
+		return v.CustomChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput)
+}
+
+// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google Cloud - based analysis checks.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput) GoogleCloud() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCloud
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck struct {
+	// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+	Frequency *string `pulumi:"frequency"`
+	// Required. The ID of the custom Analysis check.
+	Id string `pulumi:"id"`
+	// Required. The Task to be run for this custom check.
+	Task *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask `pulumi:"task"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs struct {
+	// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// Required. The ID of the custom Analysis check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Required. The Task to be run for this custom check.
+	Task DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrInput `pulumi:"task"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput {
+	return o
+}
+
+// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck) *string {
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The ID of the custom Analysis check.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Required. The Task to be run for this custom check.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput) Task() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask {
+		return v.Task
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput)
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput)
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput) Container() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud struct {
+	// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+	AlertPolicyChecks []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck `pulumi:"alertPolicyChecks"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs struct {
+	// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+	AlertPolicyChecks DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayInput `pulumi:"alertPolicyChecks"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput)
+}
+
+// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput) AlertPolicyChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud) []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck {
+		return v.AlertPolicyChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput)
+}
+
+// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput) AlertPolicyChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud) []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck {
+		if v == nil {
+			return nil
+		}
+		return v.AlertPolicyChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck struct {
+	// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+	AlertPolicies []string `pulumi:"alertPolicies"`
+	// Required. The ID of the analysis check.
+	Id string `pulumi:"id"`
+	// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs struct {
+	// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+	AlertPolicies pulumi.StringArrayInput `pulumi:"alertPolicies"`
+	// Required. The ID of the analysis check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return o
+}
+
+// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput) AlertPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck) []string {
+		return v.AlertPolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The ID of the analysis check.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheck)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy struct {
@@ -5591,6 +6536,446 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredepl
 	}).(pulumi.StringArrayOutput)
 }
 
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig struct {
+	// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+	Tasks []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask `pulumi:"tasks"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs struct {
+	// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+	Tasks DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayInput `pulumi:"tasks"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput)
+}
+
+// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig) []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask {
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput)
+}
+
+// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig) []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask {
+		if v == nil {
+			return nil
+		}
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput {
+	return o
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment struct {
 	// Required. Configuration for each phase in the canary deployment in the order executed.
 	PhaseConfigs []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig `pulumi:"phaseConfigs"`
@@ -5731,6 +7116,8 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig struct {
+	// Optional. Configuration for the analysis job.
+	Analysis *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis `pulumi:"analysis"`
 	// Required. Percentage deployment for the phase.
 	Percentage int `pulumi:"percentage"`
 	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
@@ -5743,6 +7130,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	Profiles []string `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
 	Verify *bool `pulumi:"verify"`
+	// Optional. Configuration for the verify job.
+	VerifyConfig *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig `pulumi:"verifyConfig"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput values.
@@ -5757,6 +7146,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs struct {
+	// Optional. Configuration for the analysis job.
+	Analysis DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrInput `pulumi:"analysis"`
 	// Required. Percentage deployment for the phase.
 	Percentage pulumi.IntInput `pulumi:"percentage"`
 	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
@@ -5769,6 +7160,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+	// Optional. Configuration for the verify job.
+	VerifyConfig DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrInput `pulumi:"verifyConfig"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs) ElementType() reflect.Type {
@@ -5822,6 +7215,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return o
 }
 
+// Optional. Configuration for the analysis job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Analysis() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis {
+		return v.Analysis
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput)
+}
+
 // Required. Percentage deployment for the phase.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Percentage() pulumi.IntOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) int {
@@ -5864,6 +7264,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Configuration for the verify job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) VerifyConfig() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig {
+		return v.VerifyConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) ElementType() reflect.Type {
@@ -5882,6 +7289,909 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
 		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)[vs[1].(int)]
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis struct {
+	// Optional. Custom analysis checks from 3P metric providers.
+	CustomChecks []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck `pulumi:"customChecks"`
+	// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+	Duration string `pulumi:"duration"`
+	// Optional. Google Cloud - based analysis checks.
+	GoogleCloud *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud `pulumi:"googleCloud"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs struct {
+	// Optional. Custom analysis checks from 3P metric providers.
+	CustomChecks DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayInput `pulumi:"customChecks"`
+	// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Optional. Google Cloud - based analysis checks.
+	GoogleCloud DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrInput `pulumi:"googleCloud"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput)
+}
+
+// Optional. Custom analysis checks from 3P metric providers.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) CustomChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck {
+		return v.CustomChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput)
+}
+
+// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) string {
+		return v.Duration
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Google Cloud - based analysis checks.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput) GoogleCloud() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud {
+		return v.GoogleCloud
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput)
+}
+
+// Optional. Custom analysis checks from 3P metric providers.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) CustomChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck {
+		if v == nil {
+			return nil
+		}
+		return v.CustomChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput)
+}
+
+// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google Cloud - based analysis checks.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput) GoogleCloud() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCloud
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck struct {
+	// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+	Frequency *string `pulumi:"frequency"`
+	// Required. The ID of the custom Analysis check.
+	Id string `pulumi:"id"`
+	// Required. The Task to be run for this custom check.
+	Task *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask `pulumi:"task"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs struct {
+	// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// Required. The ID of the custom Analysis check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Required. The Task to be run for this custom check.
+	Task DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrInput `pulumi:"task"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput {
+	return o
+}
+
+// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck) *string {
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The ID of the custom Analysis check.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Required. The Task to be run for this custom check.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput) Task() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask {
+		return v.Task
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput)
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput)
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput) Container() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud struct {
+	// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+	AlertPolicyChecks []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck `pulumi:"alertPolicyChecks"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs struct {
+	// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+	AlertPolicyChecks DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayInput `pulumi:"alertPolicyChecks"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput)
+}
+
+// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput) AlertPolicyChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck {
+		return v.AlertPolicyChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput)
+}
+
+// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput) AlertPolicyChecks() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck {
+		if v == nil {
+			return nil
+		}
+		return v.AlertPolicyChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck struct {
+	// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+	AlertPolicies []string `pulumi:"alertPolicies"`
+	// Required. The ID of the analysis check.
+	Id string `pulumi:"id"`
+	// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs struct {
+	// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+	AlertPolicies pulumi.StringArrayInput `pulumi:"alertPolicies"`
+	// Required. The ID of the analysis check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return o
+}
+
+// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput) AlertPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck) []string {
+		return v.AlertPolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The ID of the analysis check.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy struct {
@@ -6160,6 +8470,446 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 		}
 		return v.Actions
 	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig struct {
+	// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+	Tasks []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask `pulumi:"tasks"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs struct {
+	// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+	Tasks DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayInput `pulumi:"tasks"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput)
+}
+
+// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask {
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput)
+}
+
+// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask {
+		if v == nil {
+			return nil
+		}
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput {
+	return o
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTask)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig struct {
@@ -7312,12 +10062,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandard struct {
+	// Optional. Configuration for the analysis job.
+	Analysis *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis `pulumi:"analysis"`
 	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy `pulumi:"postdeploy"`
 	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
 	Predeploy *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify *bool `pulumi:"verify"`
+	// Optional. Configuration for the verify job.
+	VerifyConfig *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig `pulumi:"verifyConfig"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyStandardInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardArgs and DeliveryPipelineSerialPipelineStageStrategyStandardOutput values.
@@ -7332,12 +10086,16 @@ type DeliveryPipelineSerialPipelineStageStrategyStandardInput interface {
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandardArgs struct {
+	// Optional. Configuration for the analysis job.
+	Analysis DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrInput `pulumi:"analysis"`
 	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 	Postdeploy DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput `pulumi:"postdeploy"`
 	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
 	Predeploy DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+	// Optional. Configuration for the verify job.
+	VerifyConfig DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrInput `pulumi:"verifyConfig"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ElementType() reflect.Type {
@@ -7417,6 +10175,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPip
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
 }
 
+// Optional. Configuration for the analysis job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Analysis() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis {
+		return v.Analysis
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput)
+}
+
 // Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
@@ -7434,6 +10199,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Predeploy() D
 // Whether to verify a deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Configuration for the verify job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) VerifyConfig() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig {
+		return v.VerifyConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput struct{ *pulumi.OutputState }
@@ -7458,6 +10230,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Elem() Del
 		var ret DeliveryPipelineSerialPipelineStageStrategyStandard
 		return ret
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput)
+}
+
+// Optional. Configuration for the analysis job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Analysis() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis {
+		if v == nil {
+			return nil
+		}
+		return v.Analysis
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput)
 }
 
 // Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
@@ -7490,9 +10272,920 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Verify() p
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Configuration for the verify job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) VerifyConfig() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.VerifyConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis struct {
+	// Optional. Custom analysis checks from 3P metric providers.
+	CustomChecks []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck `pulumi:"customChecks"`
+	// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+	Duration string `pulumi:"duration"`
+	// Optional. Google Cloud - based analysis checks.
+	GoogleCloud *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud `pulumi:"googleCloud"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs struct {
+	// Optional. Custom analysis checks from 3P metric providers.
+	CustomChecks DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayInput `pulumi:"customChecks"`
+	// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Optional. Google Cloud - based analysis checks.
+	GoogleCloud DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrInput `pulumi:"googleCloud"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs, DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtr and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrType DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput)
+}
+
+// Optional. Custom analysis checks from 3P metric providers.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) CustomChecks() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck {
+		return v.CustomChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput)
+}
+
+// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Optional. Google Cloud - based analysis checks.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput) GoogleCloud() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud {
+		return v.GoogleCloud
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput)
+}
+
+// Optional. Custom analysis checks from 3P metric providers.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) CustomChecks() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck {
+		if v == nil {
+			return nil
+		}
+		return v.CustomChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput)
+}
+
+// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google Cloud - based analysis checks.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput) GoogleCloud() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCloud
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck struct {
+	// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+	Frequency *string `pulumi:"frequency"`
+	// Required. The ID of the custom Analysis check.
+	Id string `pulumi:"id"`
+	// Required. The Task to be run for this custom check.
+	Task *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask `pulumi:"task"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs struct {
+	// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// Required. The ID of the custom Analysis check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Required. The Task to be run for this custom check.
+	Task DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrInput `pulumi:"task"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray{ DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput {
+	return o
+}
+
+// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck) *string {
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The ID of the custom Analysis check.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Required. The Task to be run for this custom check.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput) Task() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask {
+		return v.Task
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheck)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs, DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtr and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrType DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput)
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput)
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput) Container() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud struct {
+	// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+	AlertPolicyChecks []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck `pulumi:"alertPolicyChecks"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs struct {
+	// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+	AlertPolicyChecks DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayInput `pulumi:"alertPolicyChecks"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs, DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtr and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrType DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud) *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput)
+}
+
+// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput) AlertPolicyChecks() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud) []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck {
+		return v.AlertPolicyChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput)
+}
+
+// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput) AlertPolicyChecks() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud) []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck {
+		if v == nil {
+			return nil
+		}
+		return v.AlertPolicyChecks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck struct {
+	// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+	AlertPolicies []string `pulumi:"alertPolicies"`
+	// Required. The ID of the analysis check.
+	Id string `pulumi:"id"`
+	// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs struct {
+	// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+	AlertPolicies pulumi.StringArrayInput `pulumi:"alertPolicies"`
+	// Required. The ID of the analysis check.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray and DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray{ DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray []DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return o
+}
+
+// Required. The Cloud Monitoring Alert Policies to check for active alerts. Format is `projects/{project}/alertPolicies/{alert_policy}`.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput) AlertPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck) []string {
+		return v.AlertPolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The ID of the analysis check.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy struct {
 	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
 	Actions []string `pulumi:"actions"`
+	// Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+	Tasks []DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask `pulumi:"tasks"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput values.
@@ -7509,6 +11202,8 @@ type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput interfac
 type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs struct {
 	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+	Tasks DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayInput `pulumi:"tasks"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ElementType() reflect.Type {
@@ -7593,6 +11288,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) Act
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) []DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask {
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) ElementType() reflect.Type {
@@ -7627,9 +11329,322 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) []DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask {
+		if v == nil {
+			return nil
+		}
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray{ DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray []DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput {
+	return o
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy struct {
 	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
 	Actions []string `pulumi:"actions"`
+	// Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+	Tasks []DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask `pulumi:"tasks"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput values.
@@ -7646,6 +11661,8 @@ type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput interface
 type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs struct {
 	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+	Tasks DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayInput `pulumi:"tasks"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ElementType() reflect.Type {
@@ -7730,6 +11747,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) Acti
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) []DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask {
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) ElementType() reflect.Type {
@@ -7762,6 +11786,757 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) A
 		}
 		return v.Actions
 	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) []DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask {
+		if v == nil {
+			return nil
+		}
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray{ DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray []DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput {
+	return o
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig struct {
+	// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+	Tasks []DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask `pulumi:"tasks"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs and DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs struct {
+	// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+	Tasks DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayInput `pulumi:"tasks"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs, DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtr and DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrType DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig) *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput)
+}
+
+// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig) []DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask {
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput)
+}
+
+// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput) Tasks() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig) []DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask {
+		if v == nil {
+			return nil
+		}
+		return v.Tasks
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer `pulumi:"container"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs and DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs struct {
+	// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+	Container DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrInput `pulumi:"container"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray and DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray{ DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray []DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput {
+	return o
+}
+
+// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput) Container() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask) *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer {
+		return v.Container
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args []string `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands []string `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env map[string]string `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image string `pulumi:"image"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs and DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs struct {
+	// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. Environment variables that are set in the container.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Required. Image is the container image to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs, DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtr and DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrType DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) map[string]string {
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) string {
+		return v.Image
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput)
+}
+
+// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Environment variables that are set in the container.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Image is the container image to use.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
 }
 
 type DeployPolicyRule struct {
@@ -10253,8 +15028,12 @@ func (o TargetCustomTargetPtrOutput) CustomTargetType() pulumi.StringPtrOutput {
 type TargetExecutionConfig struct {
 	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage *string `pulumi:"artifactStorage"`
+	// Optional. Use default Cloud Build pool.
+	DefaultPool *TargetExecutionConfigDefaultPool `pulumi:"defaultPool"`
 	// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
 	ExecutionTimeout *string `pulumi:"executionTimeout"`
+	// Optional. Use private Cloud Build pool.
+	PrivatePool *TargetExecutionConfigPrivatePool `pulumi:"privatePool"`
 	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Required. Usages when this configuration should be applied.
@@ -10279,8 +15058,12 @@ type TargetExecutionConfigInput interface {
 type TargetExecutionConfigArgs struct {
 	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage pulumi.StringPtrInput `pulumi:"artifactStorage"`
+	// Optional. Use default Cloud Build pool.
+	DefaultPool TargetExecutionConfigDefaultPoolPtrInput `pulumi:"defaultPool"`
 	// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
 	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
+	// Optional. Use private Cloud Build pool.
+	PrivatePool TargetExecutionConfigPrivatePoolPtrInput `pulumi:"privatePool"`
 	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Required. Usages when this configuration should be applied.
@@ -10347,9 +15130,19 @@ func (o TargetExecutionConfigOutput) ArtifactStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetExecutionConfig) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Use default Cloud Build pool.
+func (o TargetExecutionConfigOutput) DefaultPool() TargetExecutionConfigDefaultPoolPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfig) *TargetExecutionConfigDefaultPool { return v.DefaultPool }).(TargetExecutionConfigDefaultPoolPtrOutput)
+}
+
 // Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
 func (o TargetExecutionConfigOutput) ExecutionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetExecutionConfig) *string { return v.ExecutionTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Use private Cloud Build pool.
+func (o TargetExecutionConfigOutput) PrivatePool() TargetExecutionConfigPrivatePoolPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfig) *TargetExecutionConfigPrivatePool { return v.PrivatePool }).(TargetExecutionConfigPrivatePoolPtrOutput)
 }
 
 // Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
@@ -10390,6 +15183,337 @@ func (o TargetExecutionConfigArrayOutput) Index(i pulumi.IntInput) TargetExecuti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetExecutionConfig {
 		return vs[0].([]TargetExecutionConfig)[vs[1].(int)]
 	}).(TargetExecutionConfigOutput)
+}
+
+type TargetExecutionConfigDefaultPool struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage *string `pulumi:"artifactStorage"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+}
+
+// TargetExecutionConfigDefaultPoolInput is an input type that accepts TargetExecutionConfigDefaultPoolArgs and TargetExecutionConfigDefaultPoolOutput values.
+// You can construct a concrete instance of `TargetExecutionConfigDefaultPoolInput` via:
+//
+//	TargetExecutionConfigDefaultPoolArgs{...}
+type TargetExecutionConfigDefaultPoolInput interface {
+	pulumi.Input
+
+	ToTargetExecutionConfigDefaultPoolOutput() TargetExecutionConfigDefaultPoolOutput
+	ToTargetExecutionConfigDefaultPoolOutputWithContext(context.Context) TargetExecutionConfigDefaultPoolOutput
+}
+
+type TargetExecutionConfigDefaultPoolArgs struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage pulumi.StringPtrInput `pulumi:"artifactStorage"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+}
+
+func (TargetExecutionConfigDefaultPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetExecutionConfigDefaultPool)(nil)).Elem()
+}
+
+func (i TargetExecutionConfigDefaultPoolArgs) ToTargetExecutionConfigDefaultPoolOutput() TargetExecutionConfigDefaultPoolOutput {
+	return i.ToTargetExecutionConfigDefaultPoolOutputWithContext(context.Background())
+}
+
+func (i TargetExecutionConfigDefaultPoolArgs) ToTargetExecutionConfigDefaultPoolOutputWithContext(ctx context.Context) TargetExecutionConfigDefaultPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigDefaultPoolOutput)
+}
+
+func (i TargetExecutionConfigDefaultPoolArgs) ToTargetExecutionConfigDefaultPoolPtrOutput() TargetExecutionConfigDefaultPoolPtrOutput {
+	return i.ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(context.Background())
+}
+
+func (i TargetExecutionConfigDefaultPoolArgs) ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigDefaultPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigDefaultPoolOutput).ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(ctx)
+}
+
+// TargetExecutionConfigDefaultPoolPtrInput is an input type that accepts TargetExecutionConfigDefaultPoolArgs, TargetExecutionConfigDefaultPoolPtr and TargetExecutionConfigDefaultPoolPtrOutput values.
+// You can construct a concrete instance of `TargetExecutionConfigDefaultPoolPtrInput` via:
+//
+//	        TargetExecutionConfigDefaultPoolArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetExecutionConfigDefaultPoolPtrInput interface {
+	pulumi.Input
+
+	ToTargetExecutionConfigDefaultPoolPtrOutput() TargetExecutionConfigDefaultPoolPtrOutput
+	ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(context.Context) TargetExecutionConfigDefaultPoolPtrOutput
+}
+
+type targetExecutionConfigDefaultPoolPtrType TargetExecutionConfigDefaultPoolArgs
+
+func TargetExecutionConfigDefaultPoolPtr(v *TargetExecutionConfigDefaultPoolArgs) TargetExecutionConfigDefaultPoolPtrInput {
+	return (*targetExecutionConfigDefaultPoolPtrType)(v)
+}
+
+func (*targetExecutionConfigDefaultPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetExecutionConfigDefaultPool)(nil)).Elem()
+}
+
+func (i *targetExecutionConfigDefaultPoolPtrType) ToTargetExecutionConfigDefaultPoolPtrOutput() TargetExecutionConfigDefaultPoolPtrOutput {
+	return i.ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *targetExecutionConfigDefaultPoolPtrType) ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigDefaultPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigDefaultPoolPtrOutput)
+}
+
+type TargetExecutionConfigDefaultPoolOutput struct{ *pulumi.OutputState }
+
+func (TargetExecutionConfigDefaultPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetExecutionConfigDefaultPool)(nil)).Elem()
+}
+
+func (o TargetExecutionConfigDefaultPoolOutput) ToTargetExecutionConfigDefaultPoolOutput() TargetExecutionConfigDefaultPoolOutput {
+	return o
+}
+
+func (o TargetExecutionConfigDefaultPoolOutput) ToTargetExecutionConfigDefaultPoolOutputWithContext(ctx context.Context) TargetExecutionConfigDefaultPoolOutput {
+	return o
+}
+
+func (o TargetExecutionConfigDefaultPoolOutput) ToTargetExecutionConfigDefaultPoolPtrOutput() TargetExecutionConfigDefaultPoolPtrOutput {
+	return o.ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(context.Background())
+}
+
+func (o TargetExecutionConfigDefaultPoolOutput) ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigDefaultPoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetExecutionConfigDefaultPool) *TargetExecutionConfigDefaultPool {
+		return &v
+	}).(TargetExecutionConfigDefaultPoolPtrOutput)
+}
+
+// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+func (o TargetExecutionConfigDefaultPoolOutput) ArtifactStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfigDefaultPool) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+func (o TargetExecutionConfigDefaultPoolOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfigDefaultPool) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type TargetExecutionConfigDefaultPoolPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetExecutionConfigDefaultPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetExecutionConfigDefaultPool)(nil)).Elem()
+}
+
+func (o TargetExecutionConfigDefaultPoolPtrOutput) ToTargetExecutionConfigDefaultPoolPtrOutput() TargetExecutionConfigDefaultPoolPtrOutput {
+	return o
+}
+
+func (o TargetExecutionConfigDefaultPoolPtrOutput) ToTargetExecutionConfigDefaultPoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigDefaultPoolPtrOutput {
+	return o
+}
+
+func (o TargetExecutionConfigDefaultPoolPtrOutput) Elem() TargetExecutionConfigDefaultPoolOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigDefaultPool) TargetExecutionConfigDefaultPool {
+		if v != nil {
+			return *v
+		}
+		var ret TargetExecutionConfigDefaultPool
+		return ret
+	}).(TargetExecutionConfigDefaultPoolOutput)
+}
+
+// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+func (o TargetExecutionConfigDefaultPoolPtrOutput) ArtifactStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigDefaultPool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactStorage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+func (o TargetExecutionConfigDefaultPoolPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigDefaultPool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetExecutionConfigPrivatePool struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage *string `pulumi:"artifactStorage"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+	WorkerPool string `pulumi:"workerPool"`
+}
+
+// TargetExecutionConfigPrivatePoolInput is an input type that accepts TargetExecutionConfigPrivatePoolArgs and TargetExecutionConfigPrivatePoolOutput values.
+// You can construct a concrete instance of `TargetExecutionConfigPrivatePoolInput` via:
+//
+//	TargetExecutionConfigPrivatePoolArgs{...}
+type TargetExecutionConfigPrivatePoolInput interface {
+	pulumi.Input
+
+	ToTargetExecutionConfigPrivatePoolOutput() TargetExecutionConfigPrivatePoolOutput
+	ToTargetExecutionConfigPrivatePoolOutputWithContext(context.Context) TargetExecutionConfigPrivatePoolOutput
+}
+
+type TargetExecutionConfigPrivatePoolArgs struct {
+	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+	ArtifactStorage pulumi.StringPtrInput `pulumi:"artifactStorage"`
+	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+	WorkerPool pulumi.StringInput `pulumi:"workerPool"`
+}
+
+func (TargetExecutionConfigPrivatePoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetExecutionConfigPrivatePool)(nil)).Elem()
+}
+
+func (i TargetExecutionConfigPrivatePoolArgs) ToTargetExecutionConfigPrivatePoolOutput() TargetExecutionConfigPrivatePoolOutput {
+	return i.ToTargetExecutionConfigPrivatePoolOutputWithContext(context.Background())
+}
+
+func (i TargetExecutionConfigPrivatePoolArgs) ToTargetExecutionConfigPrivatePoolOutputWithContext(ctx context.Context) TargetExecutionConfigPrivatePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigPrivatePoolOutput)
+}
+
+func (i TargetExecutionConfigPrivatePoolArgs) ToTargetExecutionConfigPrivatePoolPtrOutput() TargetExecutionConfigPrivatePoolPtrOutput {
+	return i.ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(context.Background())
+}
+
+func (i TargetExecutionConfigPrivatePoolArgs) ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigPrivatePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigPrivatePoolOutput).ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(ctx)
+}
+
+// TargetExecutionConfigPrivatePoolPtrInput is an input type that accepts TargetExecutionConfigPrivatePoolArgs, TargetExecutionConfigPrivatePoolPtr and TargetExecutionConfigPrivatePoolPtrOutput values.
+// You can construct a concrete instance of `TargetExecutionConfigPrivatePoolPtrInput` via:
+//
+//	        TargetExecutionConfigPrivatePoolArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetExecutionConfigPrivatePoolPtrInput interface {
+	pulumi.Input
+
+	ToTargetExecutionConfigPrivatePoolPtrOutput() TargetExecutionConfigPrivatePoolPtrOutput
+	ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(context.Context) TargetExecutionConfigPrivatePoolPtrOutput
+}
+
+type targetExecutionConfigPrivatePoolPtrType TargetExecutionConfigPrivatePoolArgs
+
+func TargetExecutionConfigPrivatePoolPtr(v *TargetExecutionConfigPrivatePoolArgs) TargetExecutionConfigPrivatePoolPtrInput {
+	return (*targetExecutionConfigPrivatePoolPtrType)(v)
+}
+
+func (*targetExecutionConfigPrivatePoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetExecutionConfigPrivatePool)(nil)).Elem()
+}
+
+func (i *targetExecutionConfigPrivatePoolPtrType) ToTargetExecutionConfigPrivatePoolPtrOutput() TargetExecutionConfigPrivatePoolPtrOutput {
+	return i.ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(context.Background())
+}
+
+func (i *targetExecutionConfigPrivatePoolPtrType) ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigPrivatePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetExecutionConfigPrivatePoolPtrOutput)
+}
+
+type TargetExecutionConfigPrivatePoolOutput struct{ *pulumi.OutputState }
+
+func (TargetExecutionConfigPrivatePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetExecutionConfigPrivatePool)(nil)).Elem()
+}
+
+func (o TargetExecutionConfigPrivatePoolOutput) ToTargetExecutionConfigPrivatePoolOutput() TargetExecutionConfigPrivatePoolOutput {
+	return o
+}
+
+func (o TargetExecutionConfigPrivatePoolOutput) ToTargetExecutionConfigPrivatePoolOutputWithContext(ctx context.Context) TargetExecutionConfigPrivatePoolOutput {
+	return o
+}
+
+func (o TargetExecutionConfigPrivatePoolOutput) ToTargetExecutionConfigPrivatePoolPtrOutput() TargetExecutionConfigPrivatePoolPtrOutput {
+	return o.ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(context.Background())
+}
+
+func (o TargetExecutionConfigPrivatePoolOutput) ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigPrivatePoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetExecutionConfigPrivatePool) *TargetExecutionConfigPrivatePool {
+		return &v
+	}).(TargetExecutionConfigPrivatePoolPtrOutput)
+}
+
+// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+func (o TargetExecutionConfigPrivatePoolOutput) ArtifactStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfigPrivatePool) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+func (o TargetExecutionConfigPrivatePoolOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfigPrivatePool) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+func (o TargetExecutionConfigPrivatePoolOutput) WorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetExecutionConfigPrivatePool) string { return v.WorkerPool }).(pulumi.StringOutput)
+}
+
+type TargetExecutionConfigPrivatePoolPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetExecutionConfigPrivatePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetExecutionConfigPrivatePool)(nil)).Elem()
+}
+
+func (o TargetExecutionConfigPrivatePoolPtrOutput) ToTargetExecutionConfigPrivatePoolPtrOutput() TargetExecutionConfigPrivatePoolPtrOutput {
+	return o
+}
+
+func (o TargetExecutionConfigPrivatePoolPtrOutput) ToTargetExecutionConfigPrivatePoolPtrOutputWithContext(ctx context.Context) TargetExecutionConfigPrivatePoolPtrOutput {
+	return o
+}
+
+func (o TargetExecutionConfigPrivatePoolPtrOutput) Elem() TargetExecutionConfigPrivatePoolOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigPrivatePool) TargetExecutionConfigPrivatePool {
+		if v != nil {
+			return *v
+		}
+		var ret TargetExecutionConfigPrivatePool
+		return ret
+	}).(TargetExecutionConfigPrivatePoolOutput)
+}
+
+// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+func (o TargetExecutionConfigPrivatePoolPtrOutput) ArtifactStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigPrivatePool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactStorage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
+func (o TargetExecutionConfigPrivatePoolPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigPrivatePool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
+func (o TargetExecutionConfigPrivatePoolPtrOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetExecutionConfigPrivatePool) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkerPool
+	}).(pulumi.StringPtrOutput)
 }
 
 type TargetGke struct {
@@ -11255,18 +16379,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs{})
@@ -11281,10 +16441,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleInput)(nil)).Elem(), DeployPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleArrayInput)(nil)).Elem(), DeployPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionArgs{})
@@ -11321,6 +16507,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetCustomTargetPtrInput)(nil)).Elem(), TargetCustomTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigInput)(nil)).Elem(), TargetExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigArrayInput)(nil)).Elem(), TargetExecutionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigDefaultPoolInput)(nil)).Elem(), TargetExecutionConfigDefaultPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigDefaultPoolPtrInput)(nil)).Elem(), TargetExecutionConfigDefaultPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigPrivatePoolInput)(nil)).Elem(), TargetExecutionConfigPrivatePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigPrivatePoolPtrInput)(nil)).Elem(), TargetExecutionConfigPrivatePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGkeInput)(nil)).Elem(), TargetGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGkePtrInput)(nil)).Elem(), TargetGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetIamBindingConditionInput)(nil)).Elem(), TargetIamBindingConditionArgs{})
@@ -11399,18 +16589,54 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput{})
@@ -11425,10 +16651,36 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerPtrOutput{})
 	pulumi.RegisterOutputType(DeployPolicyRuleOutput{})
 	pulumi.RegisterOutputType(DeployPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionOutput{})
@@ -11465,6 +16717,10 @@ func init() {
 	pulumi.RegisterOutputType(TargetCustomTargetPtrOutput{})
 	pulumi.RegisterOutputType(TargetExecutionConfigOutput{})
 	pulumi.RegisterOutputType(TargetExecutionConfigArrayOutput{})
+	pulumi.RegisterOutputType(TargetExecutionConfigDefaultPoolOutput{})
+	pulumi.RegisterOutputType(TargetExecutionConfigDefaultPoolPtrOutput{})
+	pulumi.RegisterOutputType(TargetExecutionConfigPrivatePoolOutput{})
+	pulumi.RegisterOutputType(TargetExecutionConfigPrivatePoolPtrOutput{})
 	pulumi.RegisterOutputType(TargetGkeOutput{})
 	pulumi.RegisterOutputType(TargetGkePtrOutput{})
 	pulumi.RegisterOutputType(TargetIamBindingConditionOutput{})

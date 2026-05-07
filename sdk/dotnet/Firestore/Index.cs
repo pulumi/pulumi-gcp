@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Firestore
 {
     /// <summary>
     /// Cloud Firestore indexes enable simple and complex queries against documents in a database.
-    ///  Both Firestore Native and Datastore Mode indexes are supported.
+    ///  Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
     ///  This resource manages composite indexes and not single field indexes.
     ///  To manage single field indexes, use the `gcp.firestore.Field` resource instead.
     /// 
@@ -390,6 +390,154 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Index Text Search
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "text-search-database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         ApiScope = "MONGODB_COMPATIBLE_API",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Multikey = true,
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 SearchConfig = new Gcp.Firestore.Inputs.IndexFieldSearchConfigArgs
+    ///                 {
+    ///                     TextSpec = new Gcp.Firestore.Inputs.IndexFieldSearchConfigTextSpecArgs
+    ///                     {
+    ///                         IndexSpecs = new[]
+    ///                         {
+    ///                             new Gcp.Firestore.Inputs.IndexFieldSearchConfigTextSpecIndexSpecArgs
+    ///                             {
+    ///                                 IndexType = "TOKENIZED",
+    ///                                 MatchType = "MATCH_GLOBALLY",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Index Suppress Geojson Indexing
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "suppress-geojson-indexing-database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Density = "SPARSE_ANY",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "location",
+    ///                 SearchConfig = new Gcp.Firestore.Inputs.IndexFieldSearchConfigArgs
+    ///                 {
+    ///                     GeoSpec = new Gcp.Firestore.Inputs.IndexFieldSearchConfigGeoSpecArgs
+    ///                     {
+    ///                         GeoJsonIndexingDisabled = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Index Geo Search
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "geo-search-database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         ApiScope = "MONGODB_COMPATIBLE_API",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Multikey = true,
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "location",
+    ///                 SearchConfig = new Gcp.Firestore.Inputs.IndexFieldSearchConfigArgs
+    ///                 {
+    ///                     GeoSpec = new Gcp.Firestore.Inputs.IndexFieldSearchConfigGeoSpecArgs
+    ///                     {
+    ///                         GeoJsonIndexingDisabled = false,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Index can be imported using any of these accepted formats:

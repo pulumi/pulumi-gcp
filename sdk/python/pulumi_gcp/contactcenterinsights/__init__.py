@@ -9,6 +9,9 @@ import typing
 from .analysis_rule import *
 from .assessment_rule import *
 from .auto_labeling_rule import *
+from .qa_question import *
+from .qa_scorecard import *
+from .qa_scorecard_revision import *
 from .view import *
 from ._inputs import *
 from . import outputs

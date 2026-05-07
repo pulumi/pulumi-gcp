@@ -13,6 +13,321 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetInstanceGroupManagerVersionTargetSize struct {
+	// The number of instances which are managed for this version. Conflicts with percent.
+	Fixed int `pulumi:"fixed"`
+	// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+	Percent int `pulumi:"percent"`
+}
+
+// GetInstanceGroupManagerVersionTargetSizeInput is an input type that accepts GetInstanceGroupManagerVersionTargetSizeArgs and GetInstanceGroupManagerVersionTargetSizeOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionTargetSizeInput` via:
+//
+//	GetInstanceGroupManagerVersionTargetSizeArgs{...}
+type GetInstanceGroupManagerVersionTargetSizeInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionTargetSizeOutput() GetInstanceGroupManagerVersionTargetSizeOutput
+	ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(context.Context) GetInstanceGroupManagerVersionTargetSizeOutput
+}
+
+type GetInstanceGroupManagerVersionTargetSizeArgs struct {
+	// The number of instances which are managed for this version. Conflicts with percent.
+	Fixed pulumi.IntInput `pulumi:"fixed"`
+	// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (GetInstanceGroupManagerVersionTargetSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArgs) ToGetInstanceGroupManagerVersionTargetSizeOutput() GetInstanceGroupManagerVersionTargetSizeOutput {
+	return i.ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArgs) ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionTargetSizeOutput)
+}
+
+// GetInstanceGroupManagerVersionTargetSizeArrayInput is an input type that accepts GetInstanceGroupManagerVersionTargetSizeArray and GetInstanceGroupManagerVersionTargetSizeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionTargetSizeArrayInput` via:
+//
+//	GetInstanceGroupManagerVersionTargetSizeArray{ GetInstanceGroupManagerVersionTargetSizeArgs{...} }
+type GetInstanceGroupManagerVersionTargetSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionTargetSizeArrayOutput() GetInstanceGroupManagerVersionTargetSizeArrayOutput
+	ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(context.Context) GetInstanceGroupManagerVersionTargetSizeArrayOutput
+}
+
+type GetInstanceGroupManagerVersionTargetSizeArray []GetInstanceGroupManagerVersionTargetSizeInput
+
+func (GetInstanceGroupManagerVersionTargetSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArray) ToGetInstanceGroupManagerVersionTargetSizeArrayOutput() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return i.ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArray) ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionTargetSizeArrayOutput)
+}
+
+type GetInstanceGroupManagerVersionTargetSizeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionTargetSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) ToGetInstanceGroupManagerVersionTargetSizeOutput() GetInstanceGroupManagerVersionTargetSizeOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeOutput {
+	return o
+}
+
+// The number of instances which are managed for this version. Conflicts with percent.
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) Fixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersionTargetSize) int { return v.Fixed }).(pulumi.IntOutput)
+}
+
+// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersionTargetSize) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupManagerVersionTargetSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionTargetSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeArrayOutput) ToGetInstanceGroupManagerVersionTargetSizeArrayOutput() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeArrayOutput) ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerVersionTargetSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerVersionTargetSize {
+		return vs[0].([]GetInstanceGroupManagerVersionTargetSize)[vs[1].(int)]
+	}).(GetInstanceGroupManagerVersionTargetSizeOutput)
+}
+
+type GetInstanceGroupNamedPortType struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	Port int    `pulumi:"port"`
+}
+
+// GetInstanceGroupNamedPortTypeInput is an input type that accepts GetInstanceGroupNamedPortTypeArgs and GetInstanceGroupNamedPortTypeOutput values.
+// You can construct a concrete instance of `GetInstanceGroupNamedPortTypeInput` via:
+//
+//	GetInstanceGroupNamedPortTypeArgs{...}
+type GetInstanceGroupNamedPortTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput
+	ToGetInstanceGroupNamedPortTypeOutputWithContext(context.Context) GetInstanceGroupNamedPortTypeOutput
+}
+
+type GetInstanceGroupNamedPortTypeArgs struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	Port pulumi.IntInput    `pulumi:"port"`
+}
+
+func (GetInstanceGroupNamedPortTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (i GetInstanceGroupNamedPortTypeArgs) ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput {
+	return i.ToGetInstanceGroupNamedPortTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupNamedPortTypeArgs) ToGetInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortTypeOutput)
+}
+
+// GetInstanceGroupNamedPortTypeArrayInput is an input type that accepts GetInstanceGroupNamedPortTypeArray and GetInstanceGroupNamedPortTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupNamedPortTypeArrayInput` via:
+//
+//	GetInstanceGroupNamedPortTypeArray{ GetInstanceGroupNamedPortTypeArgs{...} }
+type GetInstanceGroupNamedPortTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput
+	ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(context.Context) GetInstanceGroupNamedPortTypeArrayOutput
+}
+
+type GetInstanceGroupNamedPortTypeArray []GetInstanceGroupNamedPortTypeInput
+
+func (GetInstanceGroupNamedPortTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (i GetInstanceGroupNamedPortTypeArray) ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput {
+	return i.ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupNamedPortTypeArray) ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortTypeArrayOutput)
+}
+
+type GetInstanceGroupNamedPortTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupNamedPortTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (o GetInstanceGroupNamedPortTypeOutput) ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput {
+	return o
+}
+
+func (o GetInstanceGroupNamedPortTypeOutput) ToGetInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeOutput {
+	return o
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetInstanceGroupNamedPortTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupNamedPortType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupNamedPortTypeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupNamedPortType) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupNamedPortTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupNamedPortTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (o GetInstanceGroupNamedPortTypeArrayOutput) ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupNamedPortTypeArrayOutput) ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupNamedPortTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupNamedPortTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupNamedPortType {
+		return vs[0].([]GetInstanceGroupNamedPortType)[vs[1].(int)]
+	}).(GetInstanceGroupNamedPortTypeOutput)
+}
+
+type GetInstanceGuestAccelerator struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceGuestAcceleratorInput is an input type that accepts GetInstanceGuestAcceleratorArgs and GetInstanceGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAcceleratorInput` via:
+//
+//	GetInstanceGuestAcceleratorArgs{...}
+type GetInstanceGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAcceleratorOutput() GetInstanceGuestAcceleratorOutput
+	ToGetInstanceGuestAcceleratorOutputWithContext(context.Context) GetInstanceGuestAcceleratorOutput
+}
+
+type GetInstanceGuestAcceleratorArgs struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAcceleratorArgs) ToGetInstanceGuestAcceleratorOutput() GetInstanceGuestAcceleratorOutput {
+	return i.ToGetInstanceGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAcceleratorArgs) ToGetInstanceGuestAcceleratorOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAcceleratorOutput)
+}
+
+// GetInstanceGuestAcceleratorArrayInput is an input type that accepts GetInstanceGuestAcceleratorArray and GetInstanceGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAcceleratorArrayInput` via:
+//
+//	GetInstanceGuestAcceleratorArray{ GetInstanceGuestAcceleratorArgs{...} }
+type GetInstanceGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAcceleratorArrayOutput() GetInstanceGuestAcceleratorArrayOutput
+	ToGetInstanceGuestAcceleratorArrayOutputWithContext(context.Context) GetInstanceGuestAcceleratorArrayOutput
+}
+
+type GetInstanceGuestAcceleratorArray []GetInstanceGuestAcceleratorInput
+
+func (GetInstanceGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAcceleratorArray) ToGetInstanceGuestAcceleratorArrayOutput() GetInstanceGuestAcceleratorArrayOutput {
+	return i.ToGetInstanceGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAcceleratorArray) ToGetInstanceGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAcceleratorArrayOutput)
+}
+
+type GetInstanceGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAcceleratorOutput) ToGetInstanceGuestAcceleratorOutput() GetInstanceGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetInstanceGuestAcceleratorOutput) ToGetInstanceGuestAcceleratorOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the guest accelerator cards exposed to this instance.
+func (o GetInstanceGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAcceleratorArrayOutput) ToGetInstanceGuestAcceleratorArrayOutput() GetInstanceGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAcceleratorArrayOutput) ToGetInstanceGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetInstanceGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGuestAccelerator {
+		return vs[0].([]GetInstanceGuestAccelerator)[vs[1].(int)]
+	}).(GetInstanceGuestAcceleratorOutput)
+}
+
 type GetInstanceGuestAttributesQueryValue struct {
 	// Key of the guest_attribute.
 	Key string `pulumi:"key"`
@@ -14316,6 +14631,103 @@ func (o GetRegionInstanceGroupManagerParamArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerParam {
 		return vs[0].([]GetRegionInstanceGroupManagerParam)[vs[1].(int)]
 	}).(GetRegionInstanceGroupManagerParamOutput)
+}
+
+type GetRegionInstanceGroupManagerResourcePolicy struct {
+	// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+	WorkloadPolicy string `pulumi:"workloadPolicy"`
+}
+
+// GetRegionInstanceGroupManagerResourcePolicyInput is an input type that accepts GetRegionInstanceGroupManagerResourcePolicyArgs and GetRegionInstanceGroupManagerResourcePolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerResourcePolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerResourcePolicyArgs{...}
+type GetRegionInstanceGroupManagerResourcePolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerResourcePolicyOutput() GetRegionInstanceGroupManagerResourcePolicyOutput
+	ToGetRegionInstanceGroupManagerResourcePolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerResourcePolicyOutput
+}
+
+type GetRegionInstanceGroupManagerResourcePolicyArgs struct {
+	// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+	WorkloadPolicy pulumi.StringInput `pulumi:"workloadPolicy"`
+}
+
+func (GetRegionInstanceGroupManagerResourcePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerResourcePolicyArgs) ToGetRegionInstanceGroupManagerResourcePolicyOutput() GetRegionInstanceGroupManagerResourcePolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerResourcePolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerResourcePolicyArgs) ToGetRegionInstanceGroupManagerResourcePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerResourcePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerResourcePolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerResourcePolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerResourcePolicyArray and GetRegionInstanceGroupManagerResourcePolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerResourcePolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerResourcePolicyArray{ GetRegionInstanceGroupManagerResourcePolicyArgs{...} }
+type GetRegionInstanceGroupManagerResourcePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerResourcePolicyArrayOutput() GetRegionInstanceGroupManagerResourcePolicyArrayOutput
+	ToGetRegionInstanceGroupManagerResourcePolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerResourcePolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerResourcePolicyArray []GetRegionInstanceGroupManagerResourcePolicyInput
+
+func (GetRegionInstanceGroupManagerResourcePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerResourcePolicyArray) ToGetRegionInstanceGroupManagerResourcePolicyArrayOutput() GetRegionInstanceGroupManagerResourcePolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerResourcePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerResourcePolicyArray) ToGetRegionInstanceGroupManagerResourcePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerResourcePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerResourcePolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerResourcePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerResourcePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerResourcePolicyOutput) ToGetRegionInstanceGroupManagerResourcePolicyOutput() GetRegionInstanceGroupManagerResourcePolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerResourcePolicyOutput) ToGetRegionInstanceGroupManagerResourcePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerResourcePolicyOutput {
+	return o
+}
+
+// The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
+func (o GetRegionInstanceGroupManagerResourcePolicyOutput) WorkloadPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerResourcePolicy) string { return v.WorkloadPolicy }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerResourcePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerResourcePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerResourcePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerResourcePolicyArrayOutput) ToGetRegionInstanceGroupManagerResourcePolicyArrayOutput() GetRegionInstanceGroupManagerResourcePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerResourcePolicyArrayOutput) ToGetRegionInstanceGroupManagerResourcePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerResourcePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerResourcePolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerResourcePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerResourcePolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerResourcePolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerResourcePolicyOutput)
 }
 
 type GetRegionInstanceGroupManagerStandbyPolicy struct {
@@ -34994,6 +35406,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeArrayInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeArrayInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorInput)(nil)).Elem(), GetInstanceGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorArrayInput)(nil)).Elem(), GetInstanceGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueArrayInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceInstanceEncryptionKeyInput)(nil)).Elem(), GetInstanceInstanceEncryptionKeyArgs{})
@@ -35202,6 +35620,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerParamInput)(nil)).Elem(), GetRegionInstanceGroupManagerParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerResourcePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerResourcePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerResourcePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerResourcePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerStandbyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStandbyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArgs{})
@@ -35516,6 +35936,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceInstanceEncryptionKeyOutput{})
@@ -35724,6 +36150,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerParamOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerParamArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerResourcePolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerResourcePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStandbyPolicyOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStandbyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskOutput{})

@@ -252,6 +252,7 @@ namespace Pulumi.Gcp.DataPlex
     ///             SamplingPercent = 5,
     ///             RowFilter = "station_id &gt; 1000",
     ///             CatalogPublishingEnabled = true,
+    ///             Filter = "attributes.priority = 'high'",
     ///             PostScanActions = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsArgs
     ///             {
     ///                 NotificationReport = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportArgs
@@ -276,6 +277,10 @@ namespace Pulumi.Gcp.DataPlex
     ///                     Column = "address",
     ///                     Dimension = "VALIDITY",
     ///                     Threshold = 0.99,
+    ///                     Attributes = 
+    ///                     {
+    ///                         { "priority", "high" },
+    ///                     },
     ///                     NonNullExpectation = null,
     ///                 },
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
@@ -1004,6 +1009,503 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///         DataProfileSpec = null,
     ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             tfTestTable,
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Datascan Quality Reusable Rules Catalog Based
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "tf-test-sa-_11380",
+    ///         DisplayName = "DataScan Service Account",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var dataplexSaImpersonate = new Gcp.ServiceAccount.IAMMember("dataplex_sa_impersonate", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountTokenCreator",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-dataplex.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var saBqDataViewer = new Gcp.Projects.IAMMember("sa_bq_data_viewer", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var saBqJobUser = new Gcp.Projects.IAMMember("sa_bq_job_user", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/bigquery.jobUser",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
+    ///     {
+    ///         DatasetId = "tf_test_dataset_id__35305",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         DeleteContentsOnDestroy = true,
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dataplexSaImpersonate,
+    ///             saBqDataViewer,
+    ///             saBqJobUser,
+    ///         },
+    ///     });
+    /// 
+    ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
+    ///     {
+    ///         DatasetId = tfTestDataset.DatasetId,
+    ///         TableId = "tf_test_table_id__62793",
+    ///         DeletionProtection = false,
+    ///         Project = "my-project-name",
+    ///         Schema = @"    [
+    ///     {
+    ///       ""name"": ""name"",
+    ///       ""type"": ""STRING"",
+    ///       ""mode"": ""NULLABLE""
+    ///     }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var testGroup = new Gcp.DataPlex.EntryGroup("test_group", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         EntryGroupId = "test-group-_55438",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var testEntry = new Gcp.DataPlex.Entry("test_entry", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         EntryGroupId = testGroup.EntryGroupId,
+    ///         EntryId = "test-entry-_32706",
+    ///         EntryType = "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         Aspects = new[]
+    ///         {
+    ///             new Gcp.DataPlex.Inputs.EntryAspectArgs
+    ///             {
+    ///                 AspectKey = "655216118709.global.data-quality-rule-template",
+    ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
+    ///                 {
+    ///                     Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["dimension"] = "VALIDITY",
+    ///                         ["sqlCollection"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["query"] = "SELECT * FROM ${param(table_name)} WHERE ${param(column_name)} IS NULL",
+    ///                             },
+    ///                         },
+    ///                         ["inputParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["table_name"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["description"] = "Table Name",
+    ///                             },
+    ///                             ["column_name"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["description"] = "Column Name",
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var waitForBqSync = new Time.Index.Sleep("wait_for_bq_sync", new()
+    ///     {
+    ///         CreateDuration = "300s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             tfTestTable,
+    ///         },
+    ///     });
+    /// 
+    ///     var bqTableEntry = new Gcp.DataPlex.Entry("bq_table_entry", new()
+    ///     {
+    ///         EntryGroupId = "@bigquery",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Location = "us-central1",
+    ///         EntryId = Output.Tuple(project, tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var datasetId = values.Item2;
+    ///             var tableId = values.Item3;
+    ///             return $"bigquery.googleapis.com/projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/datasets/{datasetId}/tables/{tableId}";
+    ///         }),
+    ///         EntryType = "projects/655216118709/locations/global/entryTypes/bigquery-table",
+    ///         FullyQualifiedName = Output.Tuple(project, tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var datasetId = values.Item2;
+    ///             var tableId = values.Item3;
+    ///             return $"bigquery:{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}.{datasetId}.{tableId}";
+    ///         }),
+    ///         ParentEntry = Output.Tuple(project, project, tfTestDataset.DatasetId).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var project1 = values.Item2;
+    ///             var datasetId = values.Item3;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/{project1.ProjectId}/datasets/{datasetId}";
+    ///         }),
+    ///         Aspects = new[]
+    ///         {
+    ///             new Gcp.DataPlex.Inputs.EntryAspectArgs
+    ///             {
+    ///                 AspectKey = "655216118709.global.data-rules@Schema.name",
+    ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
+    ///                 {
+    ///                     Data = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["rules"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "rule-to-filter-out",
+    ///                                 ["dimension"] = "VALIDITY",
+    ///                                 ["type"] = "TEMPLATE_REFERENCE",
+    ///                                 ["templateReference"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["name"] = testEntry.Name,
+    ///                                     ["values"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["table_name"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["value"] = Output.Tuple(project, tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///                                             {
+    ///                                                 var project = values.Item1;
+    ///                                                 var datasetId = values.Item2;
+    ///                                                 var tableId = values.Item3;
+    ///                                                 return $"`{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}.{datasetId}.{tableId}`";
+    ///                                             }),
+    ///                                         },
+    ///                                         ["column_name"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["value"] = "name",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 ["attributes"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["priority"] = "low",
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "non-null-check-name-manual",
+    ///                                 ["dimension"] = "VALIDITY",
+    ///                                 ["type"] = "TEMPLATE_REFERENCE",
+    ///                                 ["templateReference"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["name"] = testEntry.Name,
+    ///                                     ["values"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["table_name"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["value"] = Output.Tuple(project, tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///                                             {
+    ///                                                 var project = values.Item1;
+    ///                                                 var datasetId = values.Item2;
+    ///                                                 var tableId = values.Item3;
+    ///                                                 return $"`{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}.{datasetId}.{tableId}`";
+    ///                                             }),
+    ///                                         },
+    ///                                         ["column_name"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["value"] = "name",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 ["attributes"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["priority"] = "high",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     })),
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForBqSync,
+    ///             testEntry,
+    ///         },
+    ///     });
+    /// 
+    ///     var waitForAspectPropagation = new Time.Index.Sleep("wait_for_aspect_propagation", new()
+    ///     {
+    ///         CreateDuration = "300s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             bqTableEntry,
+    ///         },
+    ///     });
+    /// 
+    ///     var reusableRulesCatalogBased = new Gcp.DataPlex.Datascan("reusable_rules_catalog_based", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataquality-catalog",
+    ///         DisplayName = "Catalog Datascan Quality",
+    ///         Description = "Example resource - Catalog Datascan Quality",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(project, tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"//bigquery.googleapis.com/projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/datasets/{datasetId}/tables/{tableId}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OnDemand = null,
+    ///             },
+    ///         },
+    ///         ExecutionIdentity = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityArgs
+    ///         {
+    ///             ServiceAccount = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityServiceAccountArgs
+    ///             {
+    ///                 Email = sa.Email,
+    ///             },
+    ///         },
+    ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
+    ///         {
+    ///             EnableCatalogBasedRules = true,
+    ///             Filter = "attributes.priority = \"high\"",
+    ///         },
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForAspectPropagation,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Datascan Data Quality Template Reference
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "tf-test-sa-_49082",
+    ///         DisplayName = "DataScan Service Account",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
+    ///     var dataplexSaImpersonate = new Gcp.ServiceAccount.IAMMember("dataplex_sa_impersonate", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountTokenCreator",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-dataplex.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dataplexSaImpersonate,
+    ///         },
+    ///     });
+    /// 
+    ///     var saBqDataViewer = new Gcp.Projects.IAMMember("sa_bq_data_viewer", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var saBqJobUser = new Gcp.Projects.IAMMember("sa_bq_job_user", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.jobUser",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var testGroup = new Gcp.DataPlex.EntryGroup("test_group", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         EntryGroupId = "test-group-_60365",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
+    ///     var testEntry = new Gcp.DataPlex.Entry("test_entry", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         EntryGroupId = testGroup.EntryGroupId,
+    ///         EntryId = "test-entry-_80215",
+    ///         EntryType = "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         Aspects = new[]
+    ///         {
+    ///             new Gcp.DataPlex.Inputs.EntryAspectArgs
+    ///             {
+    ///                 AspectKey = "655216118709.global.data-quality-rule-template",
+    ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
+    ///                 {
+    ///                     Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["dimension"] = "VALIDITY",
+    ///                         ["sqlCollection"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["query"] = "SELECT * FROM ${data()} WHERE ${column()} IS NOT NULL",
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
+    ///     {
+    ///         DatasetId = "tf_test_dataset_id__59033",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         Location = "us-central1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             dataplexSaImpersonate,
+    ///             saBqDataViewer,
+    ///             saBqJobUser,
+    ///         },
+    ///     });
+    /// 
+    ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
+    ///     {
+    ///         DatasetId = tfTestDataset.DatasetId,
+    ///         TableId = "tf_test_table_id__32081",
+    ///         DeletionProtection = false,
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Schema = @"    [
+    ///     {
+    ///       \""name\"": \""name\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\""
+    ///     }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var dataQualityTemplateReference = new Gcp.DataPlex.Datascan("data_quality_template_reference", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DisplayName = "Data Quality Template Reference",
+    ///         DataScanId = "dataquality-template",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(project, tfTestDataset.DatasetId, tfTestTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"//bigquery.googleapis.com/projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/datasets/{datasetId}/tables/{tableId}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OnDemand = null,
+    ///             },
+    ///         },
+    ///         ExecutionIdentity = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityArgs
+    ///         {
+    ///             ServiceAccount = new Gcp.DataPlex.Inputs.DatascanExecutionIdentityServiceAccountArgs
+    ///             {
+    ///                 Email = sa.Email,
+    ///             },
+    ///         },
+    ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
+    ///                 {
+    ///                     Column = "name",
+    ///                     Dimension = "VALIDITY",
+    ///                     TemplateReference = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleTemplateReferenceArgs
+    ///                     {
+    ///                         Name = testEntry.Name,
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleTemplateReferenceValueArgs
+    ///                             {
+    ///                                 Name = "min_length",
+    ///                                 Value = "10",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

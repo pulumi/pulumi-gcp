@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.firestore.outputs.IndexFieldSearchConfig;
 import com.pulumi.gcp.firestore.outputs.IndexFieldVectorConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class IndexField {
     /**
-     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
      * `vectorConfig` can be specified.
      * Possible values are: `CONTAINS`.
      * 
@@ -26,13 +27,20 @@ public final class IndexField {
     private @Nullable String fieldPath;
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-     * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+     * Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
      * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     private @Nullable String order;
     /**
-     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+     * @return Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+     * `vectorConfig` can be specified.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable IndexFieldSearchConfig searchConfig;
+    /**
+     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
      * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
      * Structure is documented below.
      * 
@@ -41,7 +49,7 @@ public final class IndexField {
 
     private IndexField() {}
     /**
-     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
      * `vectorConfig` can be specified.
      * Possible values are: `CONTAINS`.
      * 
@@ -58,7 +66,7 @@ public final class IndexField {
     }
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-     * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+     * Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
      * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
@@ -66,7 +74,16 @@ public final class IndexField {
         return Optional.ofNullable(this.order);
     }
     /**
-     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+     * @return Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
+     * `vectorConfig` can be specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<IndexFieldSearchConfig> searchConfig() {
+        return Optional.ofNullable(this.searchConfig);
+    }
+    /**
+     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
      * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
      * Structure is documented below.
      * 
@@ -87,6 +104,7 @@ public final class IndexField {
         private @Nullable String arrayConfig;
         private @Nullable String fieldPath;
         private @Nullable String order;
+        private @Nullable IndexFieldSearchConfig searchConfig;
         private @Nullable IndexFieldVectorConfig vectorConfig;
         public Builder() {}
         public Builder(IndexField defaults) {
@@ -94,6 +112,7 @@ public final class IndexField {
     	      this.arrayConfig = defaults.arrayConfig;
     	      this.fieldPath = defaults.fieldPath;
     	      this.order = defaults.order;
+    	      this.searchConfig = defaults.searchConfig;
     	      this.vectorConfig = defaults.vectorConfig;
         }
 
@@ -116,6 +135,12 @@ public final class IndexField {
             return this;
         }
         @CustomType.Setter
+        public Builder searchConfig(@Nullable IndexFieldSearchConfig searchConfig) {
+
+            this.searchConfig = searchConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vectorConfig(@Nullable IndexFieldVectorConfig vectorConfig) {
 
             this.vectorConfig = vectorConfig;
@@ -126,6 +151,7 @@ public final class IndexField {
             _resultValue.arrayConfig = arrayConfig;
             _resultValue.fieldPath = fieldPath;
             _resultValue.order = order;
+            _resultValue.searchConfig = searchConfig;
             _resultValue.vectorConfig = vectorConfig;
             return _resultValue;
         }

@@ -4038,6 +4038,10 @@ class DbSystemPropertiesDbHomeDatabase(dict):
             suggest = "oci_url"
         elif key == "opsInsightsStatus":
             suggest = "ops_insights_status"
+        elif key == "pluggableDatabaseId":
+            suggest = "pluggable_database_id"
+        elif key == "pluggableDatabaseName":
+            suggest = "pluggable_database_name"
         elif key == "tdeWalletPassword":
             suggest = "tde_wallet_password"
 
@@ -4065,6 +4069,8 @@ class DbSystemPropertiesDbHomeDatabase(dict):
                  ncharacter_set: Optional[_builtins.str] = None,
                  oci_url: Optional[_builtins.str] = None,
                  ops_insights_status: Optional[_builtins.str] = None,
+                 pluggable_database_id: Optional[_builtins.str] = None,
+                 pluggable_database_name: Optional[_builtins.str] = None,
                  properties: Optional['outputs.DbSystemPropertiesDbHomeDatabaseProperties'] = None,
                  tde_wallet_password: Optional[_builtins.str] = None):
         """
@@ -4094,6 +4100,8 @@ class DbSystemPropertiesDbHomeDatabase(dict):
                NOT_ENABLED
                FAILED_ENABLING
                FAILED_DISABLING
+        :param _builtins.str pluggable_database_id: The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+        :param _builtins.str pluggable_database_name: The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
         :param 'DbSystemPropertiesDbHomeDatabasePropertiesArgs' properties: The properties of a Database.
                Structure is documented below.
         :param _builtins.str tde_wallet_password: The TDE wallet password for the database.
@@ -4120,6 +4128,10 @@ class DbSystemPropertiesDbHomeDatabase(dict):
             pulumi.set(__self__, "oci_url", oci_url)
         if ops_insights_status is not None:
             pulumi.set(__self__, "ops_insights_status", ops_insights_status)
+        if pluggable_database_id is not None:
+            pulumi.set(__self__, "pluggable_database_id", pluggable_database_id)
+        if pluggable_database_name is not None:
+            pulumi.set(__self__, "pluggable_database_name", pluggable_database_name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if tde_wallet_password is not None:
@@ -4234,6 +4246,22 @@ class DbSystemPropertiesDbHomeDatabase(dict):
         FAILED_DISABLING
         """
         return pulumi.get(self, "ops_insights_status")
+
+    @_builtins.property
+    @pulumi.getter(name="pluggableDatabaseId")
+    def pluggable_database_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+        """
+        return pulumi.get(self, "pluggable_database_id")
+
+    @_builtins.property
+    @pulumi.getter(name="pluggableDatabaseName")
+    def pluggable_database_name(self) -> Optional[_builtins.str]:
+        """
+        The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+        """
+        return pulumi.get(self, "pluggable_database_name")
 
     @_builtins.property
     @pulumi.getter

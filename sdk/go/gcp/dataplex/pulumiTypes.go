@@ -4380,6 +4380,10 @@ func (o DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) ResultsTa
 type DatascanDataQualitySpec struct {
 	// If set, the latest DataScan job result will be published to Dataplex Catalog.
 	CatalogPublishingEnabled *bool `pulumi:"catalogPublishingEnabled"`
+	// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+	EnableCatalogBasedRules *bool `pulumi:"enableCatalogBasedRules"`
+	// A filter to selectively run a subset of rules.
+	Filter *string `pulumi:"filter"`
 	// Actions to take upon job completion.
 	// Structure is documented below.
 	PostScanActions *DatascanDataQualitySpecPostScanActions `pulumi:"postScanActions"`
@@ -4408,6 +4412,10 @@ type DatascanDataQualitySpecInput interface {
 type DatascanDataQualitySpecArgs struct {
 	// If set, the latest DataScan job result will be published to Dataplex Catalog.
 	CatalogPublishingEnabled pulumi.BoolPtrInput `pulumi:"catalogPublishingEnabled"`
+	// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+	EnableCatalogBasedRules pulumi.BoolPtrInput `pulumi:"enableCatalogBasedRules"`
+	// A filter to selectively run a subset of rules.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// Actions to take upon job completion.
 	// Structure is documented below.
 	PostScanActions DatascanDataQualitySpecPostScanActionsPtrInput `pulumi:"postScanActions"`
@@ -4504,6 +4512,16 @@ func (o DatascanDataQualitySpecOutput) CatalogPublishingEnabled() pulumi.BoolPtr
 	return o.ApplyT(func(v DatascanDataQualitySpec) *bool { return v.CatalogPublishingEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+func (o DatascanDataQualitySpecOutput) EnableCatalogBasedRules() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) *bool { return v.EnableCatalogBasedRules }).(pulumi.BoolPtrOutput)
+}
+
+// A filter to selectively run a subset of rules.
+func (o DatascanDataQualitySpecOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
 // Actions to take upon job completion.
 // Structure is documented below.
 func (o DatascanDataQualitySpecOutput) PostScanActions() DatascanDataQualitySpecPostScanActionsPtrOutput {
@@ -4560,6 +4578,26 @@ func (o DatascanDataQualitySpecPtrOutput) CatalogPublishingEnabled() pulumi.Bool
 		}
 		return v.CatalogPublishingEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+func (o DatascanDataQualitySpecPtrOutput) EnableCatalogBasedRules() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCatalogBasedRules
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A filter to selectively run a subset of rules.
+func (o DatascanDataQualitySpecPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
 }
 
 // Actions to take upon job completion.
@@ -5638,6 +5676,8 @@ func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTr
 }
 
 type DatascanDataQualitySpecRule struct {
+	// Map of attribute name and value linked to the rule.
+	Attributes map[string]string `pulumi:"attributes"`
 	// The unnested column which this rule is evaluated against.
 	Column *string `pulumi:"column"`
 	// Description of the rule.
@@ -5678,6 +5718,9 @@ type DatascanDataQualitySpecRule struct {
 	// Table rule which evaluates whether the provided expression is true.
 	// Structure is documented below.
 	TableConditionExpectation *DatascanDataQualitySpecRuleTableConditionExpectation `pulumi:"tableConditionExpectation"`
+	// Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+	// Structure is documented below.
+	TemplateReference *DatascanDataQualitySpecRuleTemplateReference `pulumi:"templateReference"`
 	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 	Threshold *float64 `pulumi:"threshold"`
 	// Row-level rule which evaluates whether each column value is unique.
@@ -5696,6 +5739,8 @@ type DatascanDataQualitySpecRuleInput interface {
 }
 
 type DatascanDataQualitySpecRuleArgs struct {
+	// Map of attribute name and value linked to the rule.
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The unnested column which this rule is evaluated against.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// Description of the rule.
@@ -5736,6 +5781,9 @@ type DatascanDataQualitySpecRuleArgs struct {
 	// Table rule which evaluates whether the provided expression is true.
 	// Structure is documented below.
 	TableConditionExpectation DatascanDataQualitySpecRuleTableConditionExpectationPtrInput `pulumi:"tableConditionExpectation"`
+	// Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+	// Structure is documented below.
+	TemplateReference DatascanDataQualitySpecRuleTemplateReferencePtrInput `pulumi:"templateReference"`
 	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
 	// Row-level rule which evaluates whether each column value is unique.
@@ -5791,6 +5839,11 @@ func (o DatascanDataQualitySpecRuleOutput) ToDatascanDataQualitySpecRuleOutput()
 
 func (o DatascanDataQualitySpecRuleOutput) ToDatascanDataQualitySpecRuleOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleOutput {
 	return o
+}
+
+// Map of attribute name and value linked to the rule.
+func (o DatascanDataQualitySpecRuleOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // The unnested column which this rule is evaluated against.
@@ -5887,6 +5940,14 @@ func (o DatascanDataQualitySpecRuleOutput) TableConditionExpectation() DatascanD
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleTableConditionExpectation {
 		return v.TableConditionExpectation
 	}).(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput)
+}
+
+// Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) TemplateReference() DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleTemplateReference {
+		return v.TemplateReference
+	}).(DatascanDataQualitySpecRuleTemplateReferencePtrOutput)
 }
 
 // The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
@@ -7157,6 +7218,274 @@ func (o DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput) SqlExpres
 		}
 		return &v.SqlExpression
 	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleTemplateReference struct {
+	// The resource name of the template entry.
+	Name string `pulumi:"name"`
+	// The map of parameter name and value.
+	// Structure is documented below.
+	Values []DatascanDataQualitySpecRuleTemplateReferenceValue `pulumi:"values"`
+}
+
+// DatascanDataQualitySpecRuleTemplateReferenceInput is an input type that accepts DatascanDataQualitySpecRuleTemplateReferenceArgs and DatascanDataQualitySpecRuleTemplateReferenceOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleTemplateReferenceInput` via:
+//
+//	DatascanDataQualitySpecRuleTemplateReferenceArgs{...}
+type DatascanDataQualitySpecRuleTemplateReferenceInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleTemplateReferenceOutput() DatascanDataQualitySpecRuleTemplateReferenceOutput
+	ToDatascanDataQualitySpecRuleTemplateReferenceOutputWithContext(context.Context) DatascanDataQualitySpecRuleTemplateReferenceOutput
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceArgs struct {
+	// The resource name of the template entry.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The map of parameter name and value.
+	// Structure is documented below.
+	Values DatascanDataQualitySpecRuleTemplateReferenceValueArrayInput `pulumi:"values"`
+}
+
+func (DatascanDataQualitySpecRuleTemplateReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReference)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceArgs) ToDatascanDataQualitySpecRuleTemplateReferenceOutput() DatascanDataQualitySpecRuleTemplateReferenceOutput {
+	return i.ToDatascanDataQualitySpecRuleTemplateReferenceOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceArgs) ToDatascanDataQualitySpecRuleTemplateReferenceOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTemplateReferenceOutput)
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceArgs) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutput() DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return i.ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceArgs) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTemplateReferenceOutput).ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleTemplateReferencePtrInput is an input type that accepts DatascanDataQualitySpecRuleTemplateReferenceArgs, DatascanDataQualitySpecRuleTemplateReferencePtr and DatascanDataQualitySpecRuleTemplateReferencePtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleTemplateReferencePtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleTemplateReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleTemplateReferencePtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleTemplateReferencePtrOutput() DatascanDataQualitySpecRuleTemplateReferencePtrOutput
+	ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleTemplateReferencePtrOutput
+}
+
+type datascanDataQualitySpecRuleTemplateReferencePtrType DatascanDataQualitySpecRuleTemplateReferenceArgs
+
+func DatascanDataQualitySpecRuleTemplateReferencePtr(v *DatascanDataQualitySpecRuleTemplateReferenceArgs) DatascanDataQualitySpecRuleTemplateReferencePtrInput {
+	return (*datascanDataQualitySpecRuleTemplateReferencePtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleTemplateReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleTemplateReference)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleTemplateReferencePtrType) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutput() DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return i.ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleTemplateReferencePtrType) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTemplateReferencePtrOutput)
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleTemplateReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReference)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceOutput) ToDatascanDataQualitySpecRuleTemplateReferenceOutput() DatascanDataQualitySpecRuleTemplateReferenceOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceOutput) ToDatascanDataQualitySpecRuleTemplateReferenceOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferenceOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceOutput) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutput() DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return o.ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceOutput) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleTemplateReference) *DatascanDataQualitySpecRuleTemplateReference {
+		return &v
+	}).(DatascanDataQualitySpecRuleTemplateReferencePtrOutput)
+}
+
+// The resource name of the template entry.
+func (o DatascanDataQualitySpecRuleTemplateReferenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleTemplateReference) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The map of parameter name and value.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleTemplateReferenceOutput) Values() DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleTemplateReference) []DatascanDataQualitySpecRuleTemplateReferenceValue {
+		return v.Values
+	}).(DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleTemplateReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleTemplateReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleTemplateReference)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferencePtrOutput) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutput() DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferencePtrOutput) ToDatascanDataQualitySpecRuleTemplateReferencePtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferencePtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferencePtrOutput) Elem() DatascanDataQualitySpecRuleTemplateReferenceOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleTemplateReference) DatascanDataQualitySpecRuleTemplateReference {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleTemplateReference
+		return ret
+	}).(DatascanDataQualitySpecRuleTemplateReferenceOutput)
+}
+
+// The resource name of the template entry.
+func (o DatascanDataQualitySpecRuleTemplateReferencePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleTemplateReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The map of parameter name and value.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleTemplateReferencePtrOutput) Values() DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleTemplateReference) []DatascanDataQualitySpecRuleTemplateReferenceValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceValue struct {
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The string representation of the parameter value.
+	Value string `pulumi:"value"`
+}
+
+// DatascanDataQualitySpecRuleTemplateReferenceValueInput is an input type that accepts DatascanDataQualitySpecRuleTemplateReferenceValueArgs and DatascanDataQualitySpecRuleTemplateReferenceValueOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleTemplateReferenceValueInput` via:
+//
+//	DatascanDataQualitySpecRuleTemplateReferenceValueArgs{...}
+type DatascanDataQualitySpecRuleTemplateReferenceValueInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleTemplateReferenceValueOutput() DatascanDataQualitySpecRuleTemplateReferenceValueOutput
+	ToDatascanDataQualitySpecRuleTemplateReferenceValueOutputWithContext(context.Context) DatascanDataQualitySpecRuleTemplateReferenceValueOutput
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceValueArgs struct {
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The string representation of the parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DatascanDataQualitySpecRuleTemplateReferenceValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReferenceValue)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceValueArgs) ToDatascanDataQualitySpecRuleTemplateReferenceValueOutput() DatascanDataQualitySpecRuleTemplateReferenceValueOutput {
+	return i.ToDatascanDataQualitySpecRuleTemplateReferenceValueOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceValueArgs) ToDatascanDataQualitySpecRuleTemplateReferenceValueOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferenceValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTemplateReferenceValueOutput)
+}
+
+// DatascanDataQualitySpecRuleTemplateReferenceValueArrayInput is an input type that accepts DatascanDataQualitySpecRuleTemplateReferenceValueArray and DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleTemplateReferenceValueArrayInput` via:
+//
+//	DatascanDataQualitySpecRuleTemplateReferenceValueArray{ DatascanDataQualitySpecRuleTemplateReferenceValueArgs{...} }
+type DatascanDataQualitySpecRuleTemplateReferenceValueArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput() DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput
+	ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutputWithContext(context.Context) DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceValueArray []DatascanDataQualitySpecRuleTemplateReferenceValueInput
+
+func (DatascanDataQualitySpecRuleTemplateReferenceValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualitySpecRuleTemplateReferenceValue)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceValueArray) ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput() DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput {
+	return i.ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleTemplateReferenceValueArray) ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceValueOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleTemplateReferenceValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReferenceValue)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueOutput) ToDatascanDataQualitySpecRuleTemplateReferenceValueOutput() DatascanDataQualitySpecRuleTemplateReferenceValueOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueOutput) ToDatascanDataQualitySpecRuleTemplateReferenceValueOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferenceValueOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleTemplateReferenceValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The string representation of the parameter value.
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleTemplateReferenceValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualitySpecRuleTemplateReferenceValue)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput) ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput() DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput) ToDatascanDataQualitySpecRuleTemplateReferenceValueArrayOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput) Index(i pulumi.IntInput) DatascanDataQualitySpecRuleTemplateReferenceValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualitySpecRuleTemplateReferenceValue {
+		return vs[0].([]DatascanDataQualitySpecRuleTemplateReferenceValue)[vs[1].(int)]
+	}).(DatascanDataQualitySpecRuleTemplateReferenceValueOutput)
 }
 
 type DatascanDataQualitySpecRuleUniquenessExpectation struct {
@@ -17176,6 +17505,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleTableConditionExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReferenceInput)(nil)).Elem(), DatascanDataQualitySpecRuleTemplateReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReferencePtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleTemplateReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReferenceValueInput)(nil)).Elem(), DatascanDataQualitySpecRuleTemplateReferenceValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTemplateReferenceValueArrayInput)(nil)).Elem(), DatascanDataQualitySpecRuleTemplateReferenceValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleUniquenessExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleUniquenessExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionIdentityInput)(nil)).Elem(), DatascanExecutionIdentityArgs{})
@@ -17393,6 +17726,10 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTableConditionExpectationOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTemplateReferenceOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTemplateReferencePtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTemplateReferenceValueOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTemplateReferenceValueArrayOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleUniquenessExpectationOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionIdentityOutput{})

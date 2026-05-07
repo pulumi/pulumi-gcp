@@ -97,6 +97,7 @@ __all__ = [
     'ServerTlsPolicyServerCertificate',
     'ServerTlsPolicyServerCertificateCertificateProviderInstance',
     'ServerTlsPolicyServerCertificateGrpcEndpoint',
+    'UllMirroringCollectorRuleMatch',
     'GetAddressGroupsAddressGroupResult',
 ]
 
@@ -4636,6 +4637,92 @@ class ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
         The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class UllMirroringCollectorRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dstIpRanges":
+            suggest = "dst_ip_ranges"
+        elif key == "ipProtocols":
+            suggest = "ip_protocols"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UllMirroringCollectorRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UllMirroringCollectorRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UllMirroringCollectorRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 dst_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 ip_protocols: Optional[Sequence[_builtins.str]] = None,
+                 src_ip_ranges: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str direction: Direction of traffic to match. When unset, matches any direction.
+               Possible values:
+               INGRESS: Traffic inbound to the capture point.
+               EGRESS: Traffic outbound from the capture point.
+        :param Sequence[_builtins.str] dst_ip_ranges: Destination IP ranges to match. When unset, matches any destination IP
+               range.
+        :param Sequence[_builtins.str] ip_protocols: IP protocols to match. When unset, matches any IP protocol.
+               Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+        :param Sequence[_builtins.str] src_ip_ranges: Source IP ranges to match. When unset, matches any source IP range.
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if dst_ip_ranges is not None:
+            pulumi.set(__self__, "dst_ip_ranges", dst_ip_ranges)
+        if ip_protocols is not None:
+            pulumi.set(__self__, "ip_protocols", ip_protocols)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Direction of traffic to match. When unset, matches any direction.
+        Possible values:
+        INGRESS: Traffic inbound to the capture point.
+        EGRESS: Traffic outbound from the capture point.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="dstIpRanges")
+    def dst_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Destination IP ranges to match. When unset, matches any destination IP
+        range.
+        """
+        return pulumi.get(self, "dst_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IP protocols to match. When unset, matches any IP protocol.
+        Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+        """
+        return pulumi.get(self, "ip_protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Source IP ranges to match. When unset, matches any source IP range.
+        """
+        return pulumi.get(self, "src_ip_ranges")
 
 
 @pulumi.output_type

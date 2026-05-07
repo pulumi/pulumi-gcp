@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig
     {
         /// <summary>
+        /// Optional. Configuration for the analysis job.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis? Analysis;
+        /// <summary>
         /// Required. Percentage deployment for the phase.
         /// </summary>
         public readonly int Percentage;
@@ -37,9 +41,15 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Whether to run verify tests after the deployment.
         /// </summary>
         public readonly bool? Verify;
+        /// <summary>
+        /// Optional. Configuration for the verify job.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig? VerifyConfig;
 
         [OutputConstructor]
         private DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig(
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis? analysis,
+
             int percentage,
 
             string phaseId,
@@ -50,14 +60,18 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             ImmutableArray<string> profiles,
 
-            bool? verify)
+            bool? verify,
+
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig? verifyConfig)
         {
+            Analysis = analysis;
             Percentage = percentage;
             PhaseId = phaseId;
             Postdeploy = postdeploy;
             Predeploy = predeploy;
             Profiles = profiles;
             Verify = verify;
+            VerifyConfig = verifyConfig;
         }
     }
 }

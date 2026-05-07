@@ -204,6 +204,114 @@ import * as utilities from "../utilities";
  *     type: "CONTINUOUS",
  * });
  * ```
+ * ### Database Migration Service Migration Job Postgres To Postgres Objects
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const sourceCsql = new gcp.sql.DatabaseInstance("source_csql", {
+ *     name: "source-csql",
+ *     databaseVersion: "POSTGRES_15",
+ *     settings: {
+ *         tier: "db-custom-2-13312",
+ *         deletionProtectionEnabled: false,
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const sourceSqlClientCert = new gcp.sql.SslCert("source_sql_client_cert", {
+ *     commonName: "cert",
+ *     instance: sourceCsql.name,
+ * }, {
+ *     dependsOn: [sourceCsql],
+ * });
+ * const sourceSqldbUser = new gcp.sql.User("source_sqldb_user", {
+ *     name: "username",
+ *     instance: sourceCsql.name,
+ *     password: "password",
+ * }, {
+ *     dependsOn: [sourceSqlClientCert],
+ * });
+ * const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
+ *     location: "us-central1",
+ *     connectionProfileId: "source-cp",
+ *     displayName: "source-cp_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         port: 3306,
+ *         username: sourceSqldbUser.name,
+ *         password: sourceSqldbUser.password,
+ *         ssl: {
+ *             clientKey: sourceSqlClientCert.privateKey,
+ *             clientCertificate: sourceSqlClientCert.cert,
+ *             caCertificate: sourceSqlClientCert.serverCaCert,
+ *             type: "SERVER_CLIENT",
+ *         },
+ *         cloudSqlId: "source-csql",
+ *     },
+ * }, {
+ *     dependsOn: [sourceSqldbUser],
+ * });
+ * const destinationCsql = new gcp.sql.DatabaseInstance("destination_csql", {
+ *     name: "destination-csql",
+ *     databaseVersion: "POSTGRES_15",
+ *     settings: {
+ *         tier: "db-custom-2-13312",
+ *         deletionProtectionEnabled: false,
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-cp",
+ *     displayName: "destination-cp_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         cloudSqlId: "destination-csql",
+ *     },
+ * }, {
+ *     dependsOn: [destinationCsql],
+ * });
+ * const psqltopsqlobjects = new gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects", {
+ *     location: "us-central1",
+ *     migrationJobId: "my-migrationid",
+ *     displayName: "my-migrationid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     staticIpConnectivity: {},
+ *     source: sourceCp.name,
+ *     destination: destinationCp.name,
+ *     type: "CONTINUOUS",
+ *     objectsConfig: {
+ *         sourceObjectsConfig: {
+ *             objectsSelectionType: "SPECIFIED_OBJECTS",
+ *             objectConfigs: [
+ *                 {
+ *                     objectIdentifier: {
+ *                         type: "DATABASE",
+ *                         database: "my_database",
+ *                     },
+ *                 },
+ *                 {
+ *                     objectIdentifier: {
+ *                         type: "TABLE",
+ *                         database: "my_other_database",
+ *                         schema: "public",
+ *                         table: "users",
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Database Migration Service Migration Job Postgres To Alloydb
  *
  * ```typescript
@@ -421,6 +529,12 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     */
+    declare public readonly objectsConfig: pulumi.Output<outputs.databasemigrationservice.MigrationJobObjectsConfig>;
+    /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.
      */
@@ -495,6 +609,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["migrationJobId"] = state?.migrationJobId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["objectsConfig"] = state?.objectsConfig;
             resourceInputs["performanceConfig"] = state?.performanceConfig;
             resourceInputs["phase"] = state?.phase;
             resourceInputs["project"] = state?.project;
@@ -527,6 +642,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["migrationJobId"] = args?.migrationJobId;
+            resourceInputs["objectsConfig"] = args?.objectsConfig;
             resourceInputs["performanceConfig"] = args?.performanceConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["reverseSshConnectivity"] = args?.reverseSshConnectivity;
@@ -610,6 +726,12 @@ export interface MigrationJobState {
      * The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     */
+    objectsConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobObjectsConfig>;
     /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.
@@ -705,6 +827,12 @@ export interface MigrationJobArgs {
      * The ID of the migration job.
      */
     migrationJobId: pulumi.Input<string>;
+    /**
+     * The objects that need to be migrated. If unset, the default is to migrate
+     * all objects available on the source.
+     * Structure is documented below.
+     */
+    objectsConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobObjectsConfig>;
     /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.

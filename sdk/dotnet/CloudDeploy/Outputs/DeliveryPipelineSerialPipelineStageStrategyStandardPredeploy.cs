@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
         /// </summary>
         public readonly ImmutableArray<string> Actions;
+        /// <summary>
+        /// Optional. The tasks that will run as a part of the predeploy job. Only one of `Actions` or `Tasks` can be specified.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask> Tasks;
 
         [OutputConstructor]
-        private DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(ImmutableArray<string> actions)
+        private DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(
+            ImmutableArray<string> actions,
+
+            ImmutableArray<Outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask> tasks)
         {
             Actions = actions;
+            Tasks = tasks;
         }
     }
 }

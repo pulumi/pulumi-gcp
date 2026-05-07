@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 /**
  * Cloud Firestore indexes enable simple and complex queries against documents in a database.
- *  Both Firestore Native and Datastore Mode indexes are supported.
+ *  Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
  *  This resource manages composite indexes and not single field indexes.
  *  To manage single field indexes, use the `gcp.firestore.Field` resource instead.
  * 
@@ -503,6 +503,189 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Firestore Index Text Search
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("text-search-database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .apiScope("MONGODB_COMPATIBLE_API")
+ *             .queryScope("COLLECTION_GROUP")
+ *             .multikey(true)
+ *             .fields(IndexFieldArgs.builder()
+ *                 .fieldPath("description")
+ *                 .searchConfig(IndexFieldSearchConfigArgs.builder()
+ *                     .textSpec(IndexFieldSearchConfigTextSpecArgs.builder()
+ *                         .indexSpecs(IndexFieldSearchConfigTextSpecIndexSpecArgs.builder()
+ *                             .indexType("TOKENIZED")
+ *                             .matchType("MATCH_GLOBALLY")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Firestore Index Suppress Geojson Indexing
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigGeoSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("suppress-geojson-indexing-database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .queryScope("COLLECTION_GROUP")
+ *             .density("SPARSE_ANY")
+ *             .fields(IndexFieldArgs.builder()
+ *                 .fieldPath("location")
+ *                 .searchConfig(IndexFieldSearchConfigArgs.builder()
+ *                     .geoSpec(IndexFieldSearchConfigGeoSpecArgs.builder()
+ *                         .geoJsonIndexingDisabled(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Firestore Index Geo Search
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigGeoSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("geo-search-database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .apiScope("MONGODB_COMPATIBLE_API")
+ *             .queryScope("COLLECTION_GROUP")
+ *             .multikey(true)
+ *             .fields(IndexFieldArgs.builder()
+ *                 .fieldPath("location")
+ *                 .searchConfig(IndexFieldSearchConfigArgs.builder()
+ *                     .geoSpec(IndexFieldSearchConfigGeoSpecArgs.builder()
+ *                         .geoJsonIndexingDisabled(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Index can be imported using any of these accepted formats:

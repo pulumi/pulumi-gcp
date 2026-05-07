@@ -25,10 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Agent{}
 	case "gcp:ces/app:App":
 		r = &App{}
+	case "gcp:ces/appRootAgentAssociation:AppRootAgentAssociation":
+		r = &AppRootAgentAssociation{}
 	case "gcp:ces/appVersion:AppVersion":
 		r = &AppVersion{}
 	case "gcp:ces/deployment:Deployment":
 		r = &Deployment{}
+	case "gcp:ces/evaluation:Evaluation":
+		r = &Evaluation{}
 	case "gcp:ces/example:Example":
 		r = &Example{}
 	case "gcp:ces/guardrail:Guardrail":
@@ -62,12 +66,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"ces/appRootAgentAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"ces/appVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"ces/deployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"ces/evaluation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

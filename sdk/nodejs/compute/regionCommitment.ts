@@ -48,6 +48,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const tagKey = new gcp.tags.TagKey("tag_key", {
+ *     parent: "organizations/ORG_ID",
+ *     shortName: "tagkey",
+ * });
+ * const tagValue = new gcp.tags.TagValue("tag_value", {
+ *     parent: tagKey.id,
+ *     shortName: "tagvalue",
+ * });
  * const foobar = new gcp.compute.RegionCommitment("foobar", {
  *     name: "my-full-commitment",
  *     description: "some description",
@@ -65,6 +73,11 @@ import * as utilities from "../utilities";
  *             amount: "9",
  *         },
  *     ],
+ *     params: {
+ *         resourceManagerTags: pulumi.all([tagKey.id, tagValue.id]).apply(([tagKeyId, tagValueId]) => {
+ *             [tagKeyId]: tagValueId,
+ *         }),
+ *     },
  * });
  * ```
  *
@@ -163,6 +176,11 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.RegionCommitmentParams | undefined>;
+    /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -231,6 +249,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["existingReservations"] = state?.existingReservations;
             resourceInputs["licenseResource"] = state?.licenseResource;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["plan"] = state?.plan;
             resourceInputs["project"] = state?.project;
             resourceInputs["region"] = state?.region;
@@ -251,6 +270,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["existingReservations"] = args?.existingReservations;
             resourceInputs["licenseResource"] = args?.licenseResource;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["plan"] = args?.plan;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
@@ -321,6 +341,11 @@ export interface RegionCommitmentState {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RegionCommitmentParams>;
     /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -409,6 +434,11 @@ export interface RegionCommitmentArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RegionCommitmentParams>;
     /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).

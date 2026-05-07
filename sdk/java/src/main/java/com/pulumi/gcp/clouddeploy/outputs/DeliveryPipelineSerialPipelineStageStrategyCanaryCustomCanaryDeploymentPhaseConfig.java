@@ -5,8 +5,10 @@ package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,6 +19,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis analysis;
     /**
      * @return Required. Percentage deployment for the phase.
      * 
@@ -47,8 +54,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
      * 
      */
     private @Nullable Boolean verify;
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig verifyConfig;
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig() {}
+    /**
+     * @return Optional. Configuration for the analysis job.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis> analysis() {
+        return Optional.ofNullable(this.analysis);
+    }
     /**
      * @return Required. Percentage deployment for the phase.
      * 
@@ -91,6 +110,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     public Optional<Boolean> verify() {
         return Optional.ofNullable(this.verify);
     }
+    /**
+     * @return Optional. Configuration for the verify job.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig> verifyConfig() {
+        return Optional.ofNullable(this.verifyConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,23 +127,33 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis analysis;
         private Integer percentage;
         private String phaseId;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy postdeploy;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy predeploy;
         private @Nullable List<String> profiles;
         private @Nullable Boolean verify;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig verifyConfig;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.analysis = defaults.analysis;
     	      this.percentage = defaults.percentage;
     	      this.phaseId = defaults.phaseId;
     	      this.postdeploy = defaults.postdeploy;
     	      this.predeploy = defaults.predeploy;
     	      this.profiles = defaults.profiles;
     	      this.verify = defaults.verify;
+    	      this.verifyConfig = defaults.verifyConfig;
         }
 
+        @CustomType.Setter
+        public Builder analysis(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysis analysis) {
+
+            this.analysis = analysis;
+            return this;
+        }
         @CustomType.Setter
         public Builder percentage(Integer percentage) {
             if (percentage == null) {
@@ -161,14 +197,22 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
             this.verify = verify;
             return this;
         }
+        @CustomType.Setter
+        public Builder verifyConfig(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfig verifyConfig) {
+
+            this.verifyConfig = verifyConfig;
+            return this;
+        }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig build() {
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig();
+            _resultValue.analysis = analysis;
             _resultValue.percentage = percentage;
             _resultValue.phaseId = phaseId;
             _resultValue.postdeploy = postdeploy;
             _resultValue.predeploy = predeploy;
             _resultValue.profiles = profiles;
             _resultValue.verify = verify;
+            _resultValue.verifyConfig = verifyConfig;
             return _resultValue;
         }
     }

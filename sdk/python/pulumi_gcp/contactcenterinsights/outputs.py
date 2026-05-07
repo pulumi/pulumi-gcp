@@ -23,6 +23,13 @@ __all__ = [
     'AssessmentRuleSampleRule',
     'AssessmentRuleScheduleInfo',
     'AutoLabelingRuleCondition',
+    'QaQuestionAnswerChoice',
+    'QaQuestionMetrics',
+    'QaQuestionPredefinedQuestionConfig',
+    'QaQuestionQaQuestionDataOptions',
+    'QaQuestionQaQuestionDataOptionsConversationDataOptions',
+    'QaQuestionTuningMetadata',
+    'QaScorecardRevisionSnapshot',
 ]
 
 @pulumi.output_type
@@ -614,5 +621,441 @@ class AutoLabelingRuleCondition(dict):
         CEL expression to be evaluated as the value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class QaQuestionAnswerChoice(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boolValue":
+            suggest = "bool_value"
+        elif key == "naValue":
+            suggest = "na_value"
+        elif key == "numValue":
+            suggest = "num_value"
+        elif key == "strValue":
+            suggest = "str_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QaQuestionAnswerChoice. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QaQuestionAnswerChoice.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QaQuestionAnswerChoice.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bool_value: Optional[_builtins.bool] = None,
+                 key: Optional[_builtins.str] = None,
+                 na_value: Optional[_builtins.bool] = None,
+                 num_value: Optional[_builtins.float] = None,
+                 score: Optional[_builtins.float] = None,
+                 str_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool bool_value: Boolean value.
+        :param _builtins.str key: A short string used as an identifier.
+        :param _builtins.bool na_value: A value of "Not Applicable (N/A)". If provided, this field may only
+               be set to `true`. If a question receives this answer, it will be
+               excluded from any score calculations.
+        :param _builtins.float num_value: Numerical value.
+        :param _builtins.float score: Numerical score of the answer, used for generating the overall score of
+               a QaScorecardResult. If the answer uses na_value, this field is unused.
+        :param _builtins.str str_value: String value.
+        """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if na_value is not None:
+            pulumi.set(__self__, "na_value", na_value)
+        if num_value is not None:
+            pulumi.set(__self__, "num_value", num_value)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+        if str_value is not None:
+            pulumi.set(__self__, "str_value", str_value)
+
+    @_builtins.property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[_builtins.bool]:
+        """
+        Boolean value.
+        """
+        return pulumi.get(self, "bool_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        A short string used as an identifier.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="naValue")
+    def na_value(self) -> Optional[_builtins.bool]:
+        """
+        A value of "Not Applicable (N/A)". If provided, this field may only
+        be set to `true`. If a question receives this answer, it will be
+        excluded from any score calculations.
+        """
+        return pulumi.get(self, "na_value")
+
+    @_builtins.property
+    @pulumi.getter(name="numValue")
+    def num_value(self) -> Optional[_builtins.float]:
+        """
+        Numerical value.
+        """
+        return pulumi.get(self, "num_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> Optional[_builtins.float]:
+        """
+        Numerical score of the answer, used for generating the overall score of
+        a QaScorecardResult. If the answer uses na_value, this field is unused.
+        """
+        return pulumi.get(self, "score")
+
+    @_builtins.property
+    @pulumi.getter(name="strValue")
+    def str_value(self) -> Optional[_builtins.str]:
+        """
+        String value.
+        """
+        return pulumi.get(self, "str_value")
+
+
+@pulumi.output_type
+class QaQuestionMetrics(dict):
+    def __init__(__self__, *,
+                 accuracy: Optional[_builtins.float] = None):
+        """
+        :param _builtins.float accuracy: (Output)
+               Accuracy of the model. Measures the percentage of correct answers the
+               model gave on the test set.
+        """
+        if accuracy is not None:
+            pulumi.set(__self__, "accuracy", accuracy)
+
+    @_builtins.property
+    @pulumi.getter
+    def accuracy(self) -> Optional[_builtins.float]:
+        """
+        (Output)
+        Accuracy of the model. Measures the percentage of correct answers the
+        model gave on the test set.
+        """
+        return pulumi.get(self, "accuracy")
+
+
+@pulumi.output_type
+class QaQuestionPredefinedQuestionConfig(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The type of the predefined question.
+               Possible values:
+               CONVERSATION_OUTCOME
+               CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the predefined question.
+        Possible values:
+        CONVERSATION_OUTCOME
+        CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class QaQuestionQaQuestionDataOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationDataOptions":
+            suggest = "conversation_data_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QaQuestionQaQuestionDataOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QaQuestionQaQuestionDataOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QaQuestionQaQuestionDataOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conversation_data_options: Optional['outputs.QaQuestionQaQuestionDataOptionsConversationDataOptions'] = None):
+        """
+        :param 'QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs' conversation_data_options: Options for configuring what metadata is included in the conversation data
+               used in QAI and Discovery Engine.
+               Structure is documented below.
+        """
+        if conversation_data_options is not None:
+            pulumi.set(__self__, "conversation_data_options", conversation_data_options)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationDataOptions")
+    def conversation_data_options(self) -> Optional['outputs.QaQuestionQaQuestionDataOptionsConversationDataOptions']:
+        """
+        Options for configuring what metadata is included in the conversation data
+        used in QAI and Discovery Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_data_options")
+
+
+@pulumi.output_type
+class QaQuestionQaQuestionDataOptionsConversationDataOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeDialogflowInteractionData":
+            suggest = "include_dialogflow_interaction_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QaQuestionQaQuestionDataOptionsConversationDataOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QaQuestionQaQuestionDataOptionsConversationDataOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QaQuestionQaQuestionDataOptionsConversationDataOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 include_dialogflow_interaction_data: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool include_dialogflow_interaction_data: Whether to include the per turn Dialogflow interaction data in conversation
+               transcript.
+        """
+        if include_dialogflow_interaction_data is not None:
+            pulumi.set(__self__, "include_dialogflow_interaction_data", include_dialogflow_interaction_data)
+
+    @_builtins.property
+    @pulumi.getter(name="includeDialogflowInteractionData")
+    def include_dialogflow_interaction_data(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include the per turn Dialogflow interaction data in conversation
+        transcript.
+        """
+        return pulumi.get(self, "include_dialogflow_interaction_data")
+
+
+@pulumi.output_type
+class QaQuestionTuningMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetValidationWarnings":
+            suggest = "dataset_validation_warnings"
+        elif key == "totalValidLabelCount":
+            suggest = "total_valid_label_count"
+        elif key == "tuningError":
+            suggest = "tuning_error"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QaQuestionTuningMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QaQuestionTuningMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QaQuestionTuningMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_validation_warnings: Optional[Sequence[_builtins.str]] = None,
+                 total_valid_label_count: Optional[_builtins.str] = None,
+                 tuning_error: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] dataset_validation_warnings: A list of any applicable data validation warnings about the question's
+               feedback labels.
+        :param _builtins.str total_valid_label_count: Total number of valid labels provided for the question at the time of
+               tuining.
+        :param _builtins.str tuning_error: Error status of the tuning operation for the question. Will only be set
+               if the tuning operation failed.
+        """
+        if dataset_validation_warnings is not None:
+            pulumi.set(__self__, "dataset_validation_warnings", dataset_validation_warnings)
+        if total_valid_label_count is not None:
+            pulumi.set(__self__, "total_valid_label_count", total_valid_label_count)
+        if tuning_error is not None:
+            pulumi.set(__self__, "tuning_error", tuning_error)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetValidationWarnings")
+    def dataset_validation_warnings(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of any applicable data validation warnings about the question's
+        feedback labels.
+        """
+        return pulumi.get(self, "dataset_validation_warnings")
+
+    @_builtins.property
+    @pulumi.getter(name="totalValidLabelCount")
+    def total_valid_label_count(self) -> Optional[_builtins.str]:
+        """
+        Total number of valid labels provided for the question at the time of
+        tuining.
+        """
+        return pulumi.get(self, "total_valid_label_count")
+
+    @_builtins.property
+    @pulumi.getter(name="tuningError")
+    def tuning_error(self) -> Optional[_builtins.str]:
+        """
+        Error status of the tuning operation for the question. Will only be set
+        if the tuning operation failed.
+        """
+        return pulumi.get(self, "tuning_error")
+
+
+@pulumi.output_type
+class QaScorecardRevisionSnapshot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "isDefault":
+            suggest = "is_default"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QaScorecardRevisionSnapshot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QaScorecardRevisionSnapshot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QaScorecardRevisionSnapshot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 is_default: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 source: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: (Output)
+               The time at which this scorecard was created.
+        :param _builtins.str description: A text description explaining the intent of the scorecard.
+        :param _builtins.str display_name: The user-specified display name of the scorecard.
+        :param _builtins.bool is_default: Whether the scorecard is the default one for the project.
+               A default scorecard cannot be deleted and will always appear first in
+               scorecard selector.
+        :param _builtins.str name: (Output)
+               Identifier. The scorecard name.
+               Format:
+               projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+        :param _builtins.str source: Possible values:
+               QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
+               QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
+        :param _builtins.str update_time: (Output)
+               The most recent time at which the scorecard was updated.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time at which this scorecard was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A text description explaining the intent of the scorecard.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The user-specified display name of the scorecard.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[_builtins.bool]:
+        """
+        Whether the scorecard is the default one for the project.
+        A default scorecard cannot be deleted and will always appear first in
+        scorecard selector.
+        """
+        return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Identifier. The scorecard name.
+        Format:
+        projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        Possible values:
+        QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
+        QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The most recent time at which the scorecard was updated.
+        """
+        return pulumi.get(self, "update_time")
 
 

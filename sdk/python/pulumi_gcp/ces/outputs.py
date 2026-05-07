@@ -164,6 +164,36 @@ __all__ = [
     'DeploymentChannelProfile',
     'DeploymentChannelProfilePersonaProperty',
     'DeploymentChannelProfileWebWidgetConfig',
+    'EvaluationGolden',
+    'EvaluationGoldenTurn',
+    'EvaluationGoldenTurnRootSpan',
+    'EvaluationGoldenTurnStep',
+    'EvaluationGoldenTurnStepAgentTransfer',
+    'EvaluationGoldenTurnStepExpectation',
+    'EvaluationGoldenTurnStepExpectationAgentResponse',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunk',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkImage',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse',
+    'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool',
+    'EvaluationGoldenTurnStepExpectationAgentTransfer',
+    'EvaluationGoldenTurnStepExpectationMockToolResponse',
+    'EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool',
+    'EvaluationGoldenTurnStepExpectationToolCall',
+    'EvaluationGoldenTurnStepExpectationToolCallToolsetTool',
+    'EvaluationGoldenTurnStepExpectationToolResponse',
+    'EvaluationGoldenTurnStepExpectationToolResponseToolsetTool',
+    'EvaluationGoldenTurnStepExpectationUpdatedVariables',
+    'EvaluationGoldenTurnStepUserInput',
+    'EvaluationGoldenTurnStepUserInputBlob',
+    'EvaluationGoldenTurnStepUserInputEvent',
+    'EvaluationGoldenTurnStepUserInputImage',
+    'EvaluationGoldenTurnStepUserInputToolResponses',
+    'EvaluationGoldenTurnStepUserInputToolResponsesToolResponse',
+    'EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool',
     'ExampleMessage',
     'ExampleMessageChunk',
     'ExampleMessageChunkAgentTransfer',
@@ -12147,6 +12177,1941 @@ class DeploymentChannelProfileWebWidgetConfig(dict):
         The title of the web widget.
         """
         return pulumi.get(self, "web_widget_title")
+
+
+@pulumi.output_type
+class EvaluationGolden(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationExpectations":
+            suggest = "evaluation_expectations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGolden. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGolden.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGolden.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 turns: Sequence['outputs.EvaluationGoldenTurn'],
+                 evaluation_expectations: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence['EvaluationGoldenTurnArgs'] turns: The golden turns required to replay a golden conversation.
+               Structure is documented below.
+        :param Sequence[_builtins.str] evaluation_expectations: The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
+        """
+        pulumi.set(__self__, "turns", turns)
+        if evaluation_expectations is not None:
+            pulumi.set(__self__, "evaluation_expectations", evaluation_expectations)
+
+    @_builtins.property
+    @pulumi.getter
+    def turns(self) -> Sequence['outputs.EvaluationGoldenTurn']:
+        """
+        The golden turns required to replay a golden conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "turns")
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationExpectations")
+    def evaluation_expectations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
+        """
+        return pulumi.get(self, "evaluation_expectations")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootSpans":
+            suggest = "root_spans"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 steps: Sequence['outputs.EvaluationGoldenTurnStep'],
+                 root_spans: Optional[Sequence['outputs.EvaluationGoldenTurnRootSpan']] = None):
+        """
+        :param Sequence['EvaluationGoldenTurnStepArgs'] steps: The sequence of steps required to replay a golden conversation turn.
+               Structure is documented below.
+               
+               
+               <a name="nested_golden_turns_root_span"></a>The `root_span` block contains:
+        :param Sequence['EvaluationGoldenTurnRootSpanArgs'] root_spans: (Output)
+               The root span of the golden turn for processing and maintaining audio information.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "steps", steps)
+        if root_spans is not None:
+            pulumi.set(__self__, "root_spans", root_spans)
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.EvaluationGoldenTurnStep']:
+        """
+        The sequence of steps required to replay a golden conversation turn.
+        Structure is documented below.
+
+
+        <a name="nested_golden_turns_root_span"></a>The `root_span` block contains:
+        """
+        return pulumi.get(self, "steps")
+
+    @_builtins.property
+    @pulumi.getter(name="rootSpans")
+    def root_spans(self) -> Optional[Sequence['outputs.EvaluationGoldenTurnRootSpan']]:
+        """
+        (Output)
+        The root span of the golden turn for processing and maintaining audio information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "root_spans")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnRootSpan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "childSpans":
+            suggest = "child_spans"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnRootSpan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnRootSpan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnRootSpan.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attributes: Optional[_builtins.str] = None,
+                 child_spans: Optional[_builtins.str] = None,
+                 duration: Optional[_builtins.str] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str attributes: Output only. Key-value attributes associated with the span.
+        :param _builtins.str child_spans: Output only. The child spans that are nested under this span.
+        :param _builtins.str duration: Output only. The duration of the span.
+        :param _builtins.str end_time: Output only. The end time of the span.
+        :param _builtins.str name: Identifier. The unique identifier of the evaluation.
+               Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+        :param _builtins.str start_time: Output only. The start time of the span.
+        """
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if child_spans is not None:
+            pulumi.set(__self__, "child_spans", child_spans)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[_builtins.str]:
+        """
+        Output only. Key-value attributes associated with the span.
+        """
+        return pulumi.get(self, "attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="childSpans")
+    def child_spans(self) -> Optional[_builtins.str]:
+        """
+        Output only. The child spans that are nested under this span.
+        """
+        return pulumi.get(self, "child_spans")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        Output only. The duration of the span.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        Output only. The end time of the span.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Identifier. The unique identifier of the evaluation.
+        Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Output only. The start time of the span.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentTransfer":
+            suggest = "agent_transfer"
+        elif key == "userInput":
+            suggest = "user_input"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStep.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_transfer: Optional['outputs.EvaluationGoldenTurnStepAgentTransfer'] = None,
+                 expectation: Optional['outputs.EvaluationGoldenTurnStepExpectation'] = None,
+                 user_input: Optional['outputs.EvaluationGoldenTurnStepUserInput'] = None):
+        """
+        :param 'EvaluationGoldenTurnStepAgentTransferArgs' agent_transfer: Represents an event indicating the transfer of the conversation to a different agent.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationArgs' expectation: Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepUserInputArgs' user_input: Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
+               Structure is documented below.
+        """
+        if agent_transfer is not None:
+            pulumi.set(__self__, "agent_transfer", agent_transfer)
+        if expectation is not None:
+            pulumi.set(__self__, "expectation", expectation)
+        if user_input is not None:
+            pulumi.set(__self__, "user_input", user_input)
+
+    @_builtins.property
+    @pulumi.getter(name="agentTransfer")
+    def agent_transfer(self) -> Optional['outputs.EvaluationGoldenTurnStepAgentTransfer']:
+        """
+        Represents an event indicating the transfer of the conversation to a different agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_transfer")
+
+    @_builtins.property
+    @pulumi.getter
+    def expectation(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectation']:
+        """
+        Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expectation")
+
+    @_builtins.property
+    @pulumi.getter(name="userInput")
+    def user_input(self) -> Optional['outputs.EvaluationGoldenTurnStepUserInput']:
+        """
+        Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_input")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepAgentTransfer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetAgent":
+            suggest = "target_agent"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepAgentTransfer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepAgentTransfer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepAgentTransfer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_agent: _builtins.str,
+                 display_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str target_agent: The resource name of the target agent.
+        :param _builtins.str display_name: The display name of the target agent.
+        """
+        pulumi.set(__self__, "target_agent", target_agent)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAgent")
+    def target_agent(self) -> _builtins.str:
+        """
+        The resource name of the target agent.
+        """
+        return pulumi.get(self, "target_agent")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the target agent.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentResponse":
+            suggest = "agent_response"
+        elif key == "agentTransfer":
+            suggest = "agent_transfer"
+        elif key == "mockToolResponse":
+            suggest = "mock_tool_response"
+        elif key == "toolCall":
+            suggest = "tool_call"
+        elif key == "toolResponse":
+            suggest = "tool_response"
+        elif key == "updatedVariables":
+            suggest = "updated_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_response: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponse'] = None,
+                 agent_transfer: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentTransfer'] = None,
+                 mock_tool_response: Optional['outputs.EvaluationGoldenTurnStepExpectationMockToolResponse'] = None,
+                 note: Optional[_builtins.str] = None,
+                 tool_call: Optional['outputs.EvaluationGoldenTurnStepExpectationToolCall'] = None,
+                 tool_response: Optional['outputs.EvaluationGoldenTurnStepExpectationToolResponse'] = None,
+                 updated_variables: Optional['outputs.EvaluationGoldenTurnStepExpectationUpdatedVariables'] = None):
+        """
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseArgs' agent_response: Expectation on agent response.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationAgentTransferArgs' agent_transfer: Expectation on agent transfer.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationMockToolResponseArgs' mock_tool_response: A mock response to provide if a tool is called.
+               Structure is documented below.
+        :param _builtins.str note: A note describing the expectation.
+        :param 'EvaluationGoldenTurnStepExpectationToolCallArgs' tool_call: Expectation on tool call.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationToolResponseArgs' tool_response: Expectation on tool response.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs' updated_variables: Expectation on updated variables.
+               Structure is documented below.
+        """
+        if agent_response is not None:
+            pulumi.set(__self__, "agent_response", agent_response)
+        if agent_transfer is not None:
+            pulumi.set(__self__, "agent_transfer", agent_transfer)
+        if mock_tool_response is not None:
+            pulumi.set(__self__, "mock_tool_response", mock_tool_response)
+        if note is not None:
+            pulumi.set(__self__, "note", note)
+        if tool_call is not None:
+            pulumi.set(__self__, "tool_call", tool_call)
+        if tool_response is not None:
+            pulumi.set(__self__, "tool_response", tool_response)
+        if updated_variables is not None:
+            pulumi.set(__self__, "updated_variables", updated_variables)
+
+    @_builtins.property
+    @pulumi.getter(name="agentResponse")
+    def agent_response(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponse']:
+        """
+        Expectation on agent response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_response")
+
+    @_builtins.property
+    @pulumi.getter(name="agentTransfer")
+    def agent_transfer(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentTransfer']:
+        """
+        Expectation on agent transfer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_transfer")
+
+    @_builtins.property
+    @pulumi.getter(name="mockToolResponse")
+    def mock_tool_response(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationMockToolResponse']:
+        """
+        A mock response to provide if a tool is called.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mock_tool_response")
+
+    @_builtins.property
+    @pulumi.getter
+    def note(self) -> Optional[_builtins.str]:
+        """
+        A note describing the expectation.
+        """
+        return pulumi.get(self, "note")
+
+    @_builtins.property
+    @pulumi.getter(name="toolCall")
+    def tool_call(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationToolCall']:
+        """
+        Expectation on tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call")
+
+    @_builtins.property
+    @pulumi.getter(name="toolResponse")
+    def tool_response(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationToolResponse']:
+        """
+        Expectation on tool response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_response")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedVariables")
+    def updated_variables(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationUpdatedVariables']:
+        """
+        Expectation on updated variables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "updated_variables")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponse(dict):
+    def __init__(__self__, *,
+                 chunks: Optional[Sequence['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunk']] = None,
+                 role: Optional[_builtins.str] = None):
+        """
+        :param Sequence['EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs'] chunks: Content of the message as a series of chunks.
+               Structure is documented below.
+        :param _builtins.str role: The role within the conversation, e.g., user, agent.
+        """
+        if chunks is not None:
+            pulumi.set(__self__, "chunks", chunks)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def chunks(self) -> Optional[Sequence['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunk']]:
+        """
+        Content of the message as a series of chunks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "chunks")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[_builtins.str]:
+        """
+        The role within the conversation, e.g., user, agent.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentTransfer":
+            suggest = "agent_transfer"
+        elif key == "toolCall":
+            suggest = "tool_call"
+        elif key == "toolResponse":
+            suggest = "tool_response"
+        elif key == "updatedVariables":
+            suggest = "updated_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_transfer: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer'] = None,
+                 blob: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob'] = None,
+                 image: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkImage'] = None,
+                 text: Optional[_builtins.str] = None,
+                 tool_call: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall'] = None,
+                 tool_response: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse'] = None,
+                 updated_variables: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs' agent_transfer: Represents an event indicating the transfer of a conversation to a different agent.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs' blob: Represents a blob input or output in the conversation.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs' image: Represents an image input or output in the conversation.
+               Structure is documented below.
+        :param _builtins.str text: Text data.
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs' tool_call: Request for the client or the agent to execute the specified tool.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs' tool_response: The execution result of a specific tool from the client or the agent.
+               Structure is documented below.
+        :param Mapping[str, _builtins.str] updated_variables: Updated variables in JSON object format.
+        """
+        if agent_transfer is not None:
+            pulumi.set(__self__, "agent_transfer", agent_transfer)
+        if blob is not None:
+            pulumi.set(__self__, "blob", blob)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if tool_call is not None:
+            pulumi.set(__self__, "tool_call", tool_call)
+        if tool_response is not None:
+            pulumi.set(__self__, "tool_response", tool_response)
+        if updated_variables is not None:
+            pulumi.set(__self__, "updated_variables", updated_variables)
+
+    @_builtins.property
+    @pulumi.getter(name="agentTransfer")
+    def agent_transfer(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer']:
+        """
+        Represents an event indicating the transfer of a conversation to a different agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_transfer")
+
+    @_builtins.property
+    @pulumi.getter
+    def blob(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob']:
+        """
+        Represents a blob input or output in the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blob")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkImage']:
+        """
+        Represents an image input or output in the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Text data.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter(name="toolCall")
+    def tool_call(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall']:
+        """
+        Request for the client or the agent to execute the specified tool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call")
+
+    @_builtins.property
+    @pulumi.getter(name="toolResponse")
+    def tool_response(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse']:
+        """
+        The execution result of a specific tool from the client or the agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_response")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedVariables")
+    def updated_variables(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Updated variables in JSON object format.
+        """
+        return pulumi.get(self, "updated_variables")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetAgent":
+            suggest = "target_agent"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_agent: _builtins.str,
+                 display_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str target_agent: The resource name of the target agent.
+        :param _builtins.str display_name: The display name of the target agent.
+        """
+        pulumi.set(__self__, "target_agent", target_agent)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAgent")
+    def target_agent(self) -> _builtins.str:
+        """
+        The resource name of the target agent.
+        """
+        return pulumi.get(self, "target_agent")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the target agent.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 mime_type: _builtins.str):
+        """
+        :param _builtins.str data: Raw bytes of the blob.
+        :param _builtins.str mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        """
+        Raw bytes of the blob.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> _builtins.str:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 mime_type: _builtins.str):
+        """
+        :param _builtins.str data: Raw bytes of the image.
+        :param _builtins.str mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        """
+        Raw bytes of the image.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> _builtins.str:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "toolsetTool":
+            suggest = "toolset_tool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Mapping[str, _builtins.str]] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 tool: Optional[_builtins.str] = None,
+                 toolset_tool: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool'] = None):
+        """
+        :param Mapping[str, _builtins.str] args: The input parameters and values for the tool in JSON object format.
+        :param _builtins.str display_name: (Output)
+               Display name of the tool.
+        :param _builtins.str id: The unique identifier of the tool call.
+        :param _builtins.str tool: The resource name of the tool.
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs' toolset_tool: A tool that is created from a toolset.
+               Structure is documented below.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+        if toolset_tool is not None:
+            pulumi.set(__self__, "toolset_tool", toolset_tool)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The input parameters and values for the tool in JSON object format.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Display name of the tool.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of the tool call.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the tool.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter(name="toolsetTool")
+    def toolset_tool(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool']:
+        """
+        A tool that is created from a toolset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "toolset_tool")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolId":
+            suggest = "tool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str toolset: The resource name of the Toolset.
+        :param _builtins.str tool_id: The tool ID to filter the tools to retrieve the schema for.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_id is not None:
+            pulumi.set(__self__, "tool_id", tool_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the Toolset.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolId")
+    def tool_id(self) -> Optional[_builtins.str]:
+        """
+        The tool ID to filter the tools to retrieve the schema for.
+        """
+        return pulumi.get(self, "tool_id")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "toolsetTool":
+            suggest = "toolset_tool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 response: Optional[Mapping[str, _builtins.str]] = None,
+                 tool: Optional[_builtins.str] = None,
+                 toolset_tool: Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool'] = None):
+        """
+        :param _builtins.str display_name: (Output)
+               Display name of the tool.
+        :param _builtins.str id: The matching ID of the tool call the response is for.
+        :param Mapping[str, _builtins.str] response: The tool execution result in JSON object format.
+        :param _builtins.str tool: The resource name of the tool.
+        :param 'EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs' toolset_tool: A tool that is created from a toolset.
+               Structure is documented below.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+        if toolset_tool is not None:
+            pulumi.set(__self__, "toolset_tool", toolset_tool)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Display name of the tool.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The matching ID of the tool call the response is for.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tool execution result in JSON object format.
+        """
+        return pulumi.get(self, "response")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the tool.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter(name="toolsetTool")
+    def toolset_tool(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool']:
+        """
+        A tool that is created from a toolset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "toolset_tool")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolId":
+            suggest = "tool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str toolset: The resource name of the Toolset.
+        :param _builtins.str tool_id: The tool ID to filter the tools to retrieve the schema for.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_id is not None:
+            pulumi.set(__self__, "tool_id", tool_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the Toolset.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolId")
+    def tool_id(self) -> Optional[_builtins.str]:
+        """
+        The tool ID to filter the tools to retrieve the schema for.
+        """
+        return pulumi.get(self, "tool_id")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationAgentTransfer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "targetAgent":
+            suggest = "target_agent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationAgentTransfer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentTransfer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationAgentTransfer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 target_agent: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The display name of the target agent.
+        :param _builtins.str target_agent: The resource name of the target agent.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if target_agent is not None:
+            pulumi.set(__self__, "target_agent", target_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The display name of the target agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetAgent")
+    def target_agent(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the target agent.
+        """
+        return pulumi.get(self, "target_agent")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationMockToolResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "toolsetTool":
+            suggest = "toolset_tool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationMockToolResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationMockToolResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationMockToolResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 response: Optional[Mapping[str, _builtins.str]] = None,
+                 tool: Optional[_builtins.str] = None,
+                 toolset_tool: Optional['outputs.EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool'] = None):
+        """
+        :param _builtins.str display_name: (Output)
+               Display name of the tool.
+        :param _builtins.str id: The matching ID of the tool call the response is for.
+        :param Mapping[str, _builtins.str] response: The tool execution result in JSON object format.
+        :param _builtins.str tool: The resource name of the tool.
+        :param 'EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs' toolset_tool: A tool that is created from a toolset.
+               Structure is documented below.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+        if toolset_tool is not None:
+            pulumi.set(__self__, "toolset_tool", toolset_tool)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Display name of the tool.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The matching ID of the tool call the response is for.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tool execution result in JSON object format.
+        """
+        return pulumi.get(self, "response")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the tool.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter(name="toolsetTool")
+    def toolset_tool(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool']:
+        """
+        A tool that is created from a toolset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "toolset_tool")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolId":
+            suggest = "tool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str toolset: The resource name of the Toolset.
+        :param _builtins.str tool_id: The tool ID to filter the tools to retrieve the schema for.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_id is not None:
+            pulumi.set(__self__, "tool_id", tool_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the Toolset.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolId")
+    def tool_id(self) -> Optional[_builtins.str]:
+        """
+        The tool ID to filter the tools to retrieve the schema for.
+        """
+        return pulumi.get(self, "tool_id")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationToolCall(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "toolsetTool":
+            suggest = "toolset_tool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationToolCall. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationToolCall.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationToolCall.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Mapping[str, _builtins.str]] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 tool: Optional[_builtins.str] = None,
+                 toolset_tool: Optional['outputs.EvaluationGoldenTurnStepExpectationToolCallToolsetTool'] = None):
+        """
+        :param Mapping[str, _builtins.str] args: The input parameters and values for the tool in JSON object format.
+        :param _builtins.str display_name: (Output)
+               Display name of the tool.
+        :param _builtins.str id: The unique identifier of the tool call.
+        :param _builtins.str tool: The resource name of the tool.
+        :param 'EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs' toolset_tool: A tool that is created from a toolset.
+               Structure is documented below.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+        if toolset_tool is not None:
+            pulumi.set(__self__, "toolset_tool", toolset_tool)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The input parameters and values for the tool in JSON object format.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Display name of the tool.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of the tool call.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the tool.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter(name="toolsetTool")
+    def toolset_tool(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationToolCallToolsetTool']:
+        """
+        A tool that is created from a toolset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "toolset_tool")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationToolCallToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolId":
+            suggest = "tool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationToolCallToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationToolCallToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationToolCallToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str toolset: The resource name of the Toolset.
+        :param _builtins.str tool_id: The tool ID to filter the tools to retrieve the schema for.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_id is not None:
+            pulumi.set(__self__, "tool_id", tool_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the Toolset.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolId")
+    def tool_id(self) -> Optional[_builtins.str]:
+        """
+        The tool ID to filter the tools to retrieve the schema for.
+        """
+        return pulumi.get(self, "tool_id")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationToolResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "toolsetTool":
+            suggest = "toolset_tool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationToolResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationToolResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationToolResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 response: Optional[Mapping[str, _builtins.str]] = None,
+                 tool: Optional[_builtins.str] = None,
+                 toolset_tool: Optional['outputs.EvaluationGoldenTurnStepExpectationToolResponseToolsetTool'] = None):
+        """
+        :param _builtins.str display_name: (Output)
+               Display name of the tool.
+        :param _builtins.str id: The matching ID of the tool call the response is for.
+        :param Mapping[str, _builtins.str] response: The tool execution result in JSON object format.
+        :param _builtins.str tool: The resource name of the tool.
+        :param 'EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs' toolset_tool: A tool that is created from a toolset.
+               Structure is documented below.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if response is not None:
+            pulumi.set(__self__, "response", response)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+        if toolset_tool is not None:
+            pulumi.set(__self__, "toolset_tool", toolset_tool)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Display name of the tool.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The matching ID of the tool call the response is for.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tool execution result in JSON object format.
+        """
+        return pulumi.get(self, "response")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> Optional[_builtins.str]:
+        """
+        The resource name of the tool.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter(name="toolsetTool")
+    def toolset_tool(self) -> Optional['outputs.EvaluationGoldenTurnStepExpectationToolResponseToolsetTool']:
+        """
+        A tool that is created from a toolset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "toolset_tool")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationToolResponseToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolId":
+            suggest = "tool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepExpectationToolResponseToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepExpectationToolResponseToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepExpectationToolResponseToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str toolset: The resource name of the Toolset.
+        :param _builtins.str tool_id: The tool ID to filter the tools to retrieve the schema for.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_id is not None:
+            pulumi.set(__self__, "tool_id", tool_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the Toolset.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolId")
+    def tool_id(self) -> Optional[_builtins.str]:
+        """
+        The tool ID to filter the tools to retrieve the schema for.
+        """
+        return pulumi.get(self, "tool_id")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepExpectationUpdatedVariables(dict):
+    def __init__(__self__, *,
+                 notes: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str notes: Dummy property.
+        """
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
+
+    @_builtins.property
+    @pulumi.getter
+    def notes(self) -> Optional[_builtins.str]:
+        """
+        Dummy property.
+        """
+        return pulumi.get(self, "notes")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolResponses":
+            suggest = "tool_responses"
+        elif key == "willContinue":
+            suggest = "will_continue"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepUserInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepUserInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepUserInput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audio: Optional[_builtins.str] = None,
+                 blob: Optional['outputs.EvaluationGoldenTurnStepUserInputBlob'] = None,
+                 dtmf: Optional[_builtins.str] = None,
+                 event: Optional['outputs.EvaluationGoldenTurnStepUserInputEvent'] = None,
+                 image: Optional['outputs.EvaluationGoldenTurnStepUserInputImage'] = None,
+                 text: Optional[_builtins.str] = None,
+                 tool_responses: Optional['outputs.EvaluationGoldenTurnStepUserInputToolResponses'] = None,
+                 variables: Optional[Mapping[str, _builtins.str]] = None,
+                 will_continue: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str audio: Audio data from the end user.
+        :param 'EvaluationGoldenTurnStepUserInputBlobArgs' blob: Blob data from the end user.
+               Structure is documented below.
+        :param _builtins.str dtmf: DTMF digits from the end user.
+        :param 'EvaluationGoldenTurnStepUserInputEventArgs' event: An event to be sent to the session.
+               Structure is documented below.
+        :param 'EvaluationGoldenTurnStepUserInputImageArgs' image: Image data from the end user.
+               Structure is documented below.
+        :param _builtins.str text: Natural language query.
+        :param 'EvaluationGoldenTurnStepUserInputToolResponsesArgs' tool_responses: The list of tool execution results.
+               Structure is documented below.
+        :param Mapping[str, _builtins.str] variables: Map of variables to set.
+        :param _builtins.bool will_continue: Whether the session should continue.
+        """
+        if audio is not None:
+            pulumi.set(__self__, "audio", audio)
+        if blob is not None:
+            pulumi.set(__self__, "blob", blob)
+        if dtmf is not None:
+            pulumi.set(__self__, "dtmf", dtmf)
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if tool_responses is not None:
+            pulumi.set(__self__, "tool_responses", tool_responses)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+        if will_continue is not None:
+            pulumi.set(__self__, "will_continue", will_continue)
+
+    @_builtins.property
+    @pulumi.getter
+    def audio(self) -> Optional[_builtins.str]:
+        """
+        Audio data from the end user.
+        """
+        return pulumi.get(self, "audio")
+
+    @_builtins.property
+    @pulumi.getter
+    def blob(self) -> Optional['outputs.EvaluationGoldenTurnStepUserInputBlob']:
+        """
+        Blob data from the end user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blob")
+
+    @_builtins.property
+    @pulumi.getter
+    def dtmf(self) -> Optional[_builtins.str]:
+        """
+        DTMF digits from the end user.
+        """
+        return pulumi.get(self, "dtmf")
+
+    @_builtins.property
+    @pulumi.getter
+    def event(self) -> Optional['outputs.EvaluationGoldenTurnStepUserInputEvent']:
+        """
+        An event to be sent to the session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional['outputs.EvaluationGoldenTurnStepUserInputImage']:
+        """
+        Image data from the end user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Natural language query.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter(name="toolResponses")
+    def tool_responses(self) -> Optional['outputs.EvaluationGoldenTurnStepUserInputToolResponses']:
+        """
+        The list of tool execution results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_responses")
+
+    @_builtins.property
+    @pulumi.getter
+    def variables(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Map of variables to set.
+        """
+        return pulumi.get(self, "variables")
+
+    @_builtins.property
+    @pulumi.getter(name="willContinue")
+    def will_continue(self) -> Optional[_builtins.bool]:
+        """
+        Whether the session should continue.
+        """
+        return pulumi.get(self, "will_continue")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInputBlob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepUserInputBlob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepUserInputBlob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepUserInputBlob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 mime_type: _builtins.str):
+        """
+        :param _builtins.str data: Raw bytes of the blob.
+        :param _builtins.str mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        """
+        Raw bytes of the blob.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> _builtins.str:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInputEvent(dict):
+    def __init__(__self__, *,
+                 event: _builtins.str):
+        """
+        :param _builtins.str event: Event name.
+        """
+        pulumi.set(__self__, "event", event)
+
+    @_builtins.property
+    @pulumi.getter
+    def event(self) -> _builtins.str:
+        """
+        Event name.
+        """
+        return pulumi.get(self, "event")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInputImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepUserInputImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepUserInputImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepUserInputImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 mime_type: _builtins.str):
+        """
+        :param _builtins.str data: Raw bytes of the image.
+        :param _builtins.str mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        """
+        Raw bytes of the image.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> _builtins.str:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInputToolResponses(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolResponses":
+            suggest = "tool_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepUserInputToolResponses. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepUserInputToolResponses.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepUserInputToolResponses.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tool_responses: Optional[Sequence['outputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponse']] = None):
+        """
+        :param Sequence['EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs'] tool_responses: The list of tool execution results.
+               Structure is documented below.
+        """
+        if tool_responses is not None:
+            pulumi.set(__self__, "tool_responses", tool_responses)
+
+    @_builtins.property
+    @pulumi.getter(name="toolResponses")
+    def tool_responses(self) -> Optional[Sequence['outputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponse']]:
+        """
+        The list of tool execution results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_responses")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInputToolResponsesToolResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "toolsetTool":
+            suggest = "toolset_tool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepUserInputToolResponsesToolResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepUserInputToolResponsesToolResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepUserInputToolResponsesToolResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 response: Mapping[str, _builtins.str],
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 tool: Optional[_builtins.str] = None,
+                 toolset_tool: Optional['outputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool'] = None):
+        """
+        :param Mapping[str, _builtins.str] response: Required. The tool execution result in JSON.
+        :param _builtins.str display_name: (Output)
+               Output only. Display name of the tool.
+        :param _builtins.str id: Optional. Matching ID of the tool call.
+        :param _builtins.str tool: Name of the tool to execute.
+        :param 'EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs' toolset_tool: The toolset tool that got executed.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "response", response)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+        if toolset_tool is not None:
+            pulumi.set(__self__, "toolset_tool", toolset_tool)
+
+    @_builtins.property
+    @pulumi.getter
+    def response(self) -> Mapping[str, _builtins.str]:
+        """
+        Required. The tool execution result in JSON.
+        """
+        return pulumi.get(self, "response")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. Display name of the tool.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Optional. Matching ID of the tool call.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> Optional[_builtins.str]:
+        """
+        Name of the tool to execute.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter(name="toolsetTool")
+    def toolset_tool(self) -> Optional['outputs.EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool']:
+        """
+        The toolset tool that got executed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "toolset_tool")
+
+
+@pulumi.output_type
+class EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolId":
+            suggest = "tool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 toolset: _builtins.str,
+                 tool_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str toolset: The resource name of the Toolset.
+        :param _builtins.str tool_id: The tool ID to filter the tools to retrieve the schema for.
+        """
+        pulumi.set(__self__, "toolset", toolset)
+        if tool_id is not None:
+            pulumi.set(__self__, "tool_id", tool_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def toolset(self) -> _builtins.str:
+        """
+        The resource name of the Toolset.
+        """
+        return pulumi.get(self, "toolset")
+
+    @_builtins.property
+    @pulumi.getter(name="toolId")
+    def tool_id(self) -> Optional[_builtins.str]:
+        """
+        The tool ID to filter the tools to retrieve the schema for.
+        """
+        return pulumi.get(self, "tool_id")
 
 
 @pulumi.output_type

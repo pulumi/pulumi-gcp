@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<bool>? CatalogPublishingEnabled { get; set; }
 
         /// <summary>
+        /// If set to true, the scan will retrieve rules defined in Data Catalog for the resource.
+        /// </summary>
+        [Input("enableCatalogBasedRules")]
+        public Input<bool>? EnableCatalogBasedRules { get; set; }
+
+        /// <summary>
+        /// A filter to selectively run a subset of rules.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
         /// Actions to take upon job completion.
         /// Structure is documented below.
         /// </summary>

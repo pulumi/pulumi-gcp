@@ -59,7 +59,7 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
 
     /**
      * The duration to keep the cluster alive while idling
-     * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+     * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
      * 
      */
     @Import(name="idleDeleteTtl")
@@ -67,7 +67,7 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
 
     /**
      * @return The duration to keep the cluster alive while idling
-     * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+     * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
      * 
      */
     public Optional<Output<String>> idleDeleteTtl() {
@@ -192,7 +192,7 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
 
         /**
          * @param idleDeleteTtl The duration to keep the cluster alive while idling
-         * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+         * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
 
         /**
          * @param idleDeleteTtl The duration to keep the cluster alive while idling
-         * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+         * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
          * 
          * @return builder
          * 
