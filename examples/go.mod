@@ -3,8 +3,8 @@ module github.com/pulumi/pulumi-gcp/examples/v8
 go 1.25.8
 
 require (
-	github.com/pulumi/providertest v0.6.0
-	github.com/pulumi/pulumi-gcp/sdk/v9 v9.20.0
+	github.com/pulumi/providertest v0.7.0
+	github.com/pulumi/pulumi-gcp/sdk/v9 v9.23.0
 	github.com/pulumi/pulumi/pkg/v3 v3.236.0
 	github.com/pulumi/pulumi/sdk/v3 v3.236.0
 	github.com/stretchr/testify v1.11.1
@@ -149,7 +149,7 @@ require (
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.17.0 // indirect
+	github.com/pulumi/esc v0.23.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
@@ -188,7 +188,7 @@ require (
 	gocloud.dev v0.37.0 // indirect
 	gocloud.dev/secrets/hashivault v0.37.0 // indirect
 	golang.org/x/crypto v0.50.0 // indirect
-	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
+	golang.org/x/exp v0.0.0-20250718183923-645b1fa84792 // indirect
 	golang.org/x/mod v0.34.0 // indirect
 	golang.org/x/net v0.53.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
